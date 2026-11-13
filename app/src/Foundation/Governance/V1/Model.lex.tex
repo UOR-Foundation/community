@@ -1,0 +1,815 @@
+\begin{lexlean}{Foundation.Governance.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Governance model}
+\begin{semanticmodule}
+inductive{
+  name: OrgClass,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: formalOrganization, fields: []}, {name: organizationalUnit, fields: []}]
+}
+
+inductive{
+  name: RuleKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: quorum, fields: []},
+    {name: act, fields: []},
+    {name: removal, fields: []},
+    {name: vacancy, fields: []},
+    {name: writtenAction, fields: []},
+    {name: bylawAmendment, fields: []},
+    {name: officerRemoval, fields: []},
+    {name: stageDecision, fields: []}
+  ]
+}
+
+inductive{
+  name: RuleBase,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: serving, fields: []},
+    {name: present, fields: []},
+    {name: whole, fields: []}
+  ]
+}
+
+inductive{
+  name: ActorType,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: person, fields: []}, {name: softwareApplication, fields: []}]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: provisionsCount, type: Nat},
+    {name: unitsCount, type: Nat},
+    {name: subOrganizationsCount, type: Nat},
+    {name: postsCount, type: Nat},
+    {name: rolesCount, type: Nat},
+    {name: voteRulesCount, type: Nat},
+    {name: stagesCount, type: Nat},
+    {name: bylawNumbersCount, type: Nat},
+    {name: serviceLevelsCount, type: Nat},
+    {name: tiersCount, type: Nat},
+    {name: topicTagsCount, type: Nat},
+    {name: rungsCount, type: Nat},
+    {name: peopleCount, type: Nat},
+    {name: holdingsCount, type: Nat},
+    {name: membershipsCount, type: Nat},
+    {name: delegationsCount, type: Nat},
+    {name: referencesCount, type: Nat},
+    {name: openClaimsCount, type: Nat},
+    {name: board, type: Nat},
+    {name: toc, type: Nat},
+    {name: boardMinimum, type: Nat},
+    {name: boardMaximum, type: Nat},
+    {name: sources, type: String},
+    {name: pdftotext, type: String}
+  ]
+}
+
+structure{
+  name: Provision,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: document, type: String},
+    {name: ref, type: String},
+    {name: title, type: String},
+    {name: digest, type: String}
+  ]
+}
+
+structure{
+  name: OrganizationalUnit,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: classification, type: OrgClass},
+    {name: purpose, type: String},
+    {name: provision, type: Nat}
+  ]
+}
+
+structure{
+  name: SubOrganization,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: unit, type: Nat},
+    {name: parent, type: Nat},
+    {name: provision, type: Nat}
+  ]
+}
+
+structure{
+  name: Post,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: unit, type: Nat},
+    {name: mandatory, type: Bool},
+    {name: provision, type: Nat}
+  ]
+}
+
+structure{
+  name: Role,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: unit, type: Nat},
+    {name: duty, type: String},
+    {name: provision, type: Nat}
+  ]
+}
+
+structure{
+  name: VoteRule,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: body, type: Nat},
+    {name: act, type: RuleKind},
+    {name: numerator, type: Nat},
+    {name: denominator, type: Nat},
+    {name: strict, type: Bool},
+    {name: base, type: RuleBase},
+    {name: excludesSubject, type: Bool},
+    {name: provision, type: Nat}
+  ]
+}
+
+structure{
+  name: Stage,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: signal, type: String},
+    {name: evidence, type: String},
+    {name: decision, type: String},
+    {name: voteRule, type: Nat},
+    {name: provision, type: Nat}
+  ]
+}
+
+structure{
+  name: BylawNumber,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: amount, type: Nat},
+    {name: provision, type: Nat}
+  ]
+}
+
+structure{
+  name: ServiceLevel,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: action, type: String},
+    {name: target, type: String},
+    {name: provision, type: Nat}
+  ]
+}
+
+structure{
+  name: Tier,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: useCase, type: String},
+    {name: expectation, type: String}
+  ]
+}
+
+structure{
+  name: TopicTag,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: category, type: String},
+    {name: label, type: String},
+    {name: applies, type: String}
+  ]
+}
+
+structure{
+  name: Rung,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: rank, type: Nat},
+    {name: name, type: String},
+    {name: event, type: String},
+    {name: consequence, type: String},
+    {name: provision, type: Nat}
+  ]
+}
+
+structure{
+  name: Actor,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: actorType, type: ActorType},
+    {name: name, type: String},
+    {name: identifier, type: String},
+    {name: sameAs, type: String},
+    {name: applicationCategory, type: String}
+  ]
+}
+
+structure{
+  name: Holding,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: person, type: Nat}, {name: post, type: Nat}]
+}
+
+structure{
+  name: Membership,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: person, type: Nat}, {name: role, type: Nat}]
+}
+
+structure{
+  name: Delegation,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: agent, type: Nat},
+    {name: onBehalfOf, type: Nat},
+    {name: repository, type: String},
+    {name: activities, type: Nat}
+  ]
+}
+
+structure{
+  name: Reference,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: source, type: Nat}, {name: target, type: Nat}]
+}
+
+structure{
+  name: OpenClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: area, type: String},
+    {name: subject, type: String},
+    {name: refusal, type: String},
+    {name: detail, type: String}
+  ]
+}
+
+definition{
+  name: provisionsValid,
+  parameters: [position : Nat, values : (List Provision)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons provision rest => (((project provision index) =? position) && (provisionsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: provisionsTotal,
+  parameters: [values : (List Provision)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons provision rest => (1 + (provisionsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: unitsValid,
+  parameters: [position : Nat, provisionsCount : Nat, values : (List OrganizationalUnit)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons organizationalUnit rest => (((project organizationalUnit index) =? position) && (((project organizationalUnit provision) <? provisionsCount) && (unitsValid (position + 1) provisionsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: unitsTotal,
+  parameters: [values : (List OrganizationalUnit)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons organizationalUnit rest => (1 + (unitsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: subOrganizationsValid,
+  parameters: [
+    position : Nat,
+    unitsCount : Nat,
+    provisionsCount : Nat,
+    values : (List SubOrganization)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons subOrganization rest => (((project subOrganization index) =? position) && (((project subOrganization unit) <? unitsCount) && (((project subOrganization parent) <? unitsCount) && (((project subOrganization provision) <? provisionsCount) && ((not ((project subOrganization unit) =? (project subOrganization parent))) && (subOrganizationsValid (position + 1) unitsCount provisionsCount rest))))))),
+  recursive_argument: values
+}
+
+definition{
+  name: subOrganizationsTotal,
+  parameters: [values : (List SubOrganization)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons subOrganization rest => (1 + (subOrganizationsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: postsValid,
+  parameters: [position : Nat, unitsCount : Nat, provisionsCount : Nat, values : (List Post)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons post rest => (((project post index) =? position) && (((project post unit) <? unitsCount) && (((project post provision) <? provisionsCount) && (postsValid (position + 1) unitsCount provisionsCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: postsTotal,
+  parameters: [values : (List Post)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons post rest => (1 + (postsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: rolesValid,
+  parameters: [position : Nat, unitsCount : Nat, provisionsCount : Nat, values : (List Role)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons role rest => (((project role index) =? position) && (((project role unit) <? unitsCount) && (((project role provision) <? provisionsCount) && (rolesValid (position + 1) unitsCount provisionsCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: rolesTotal,
+  parameters: [values : (List Role)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons role rest => (1 + (rolesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: voteRulesValid,
+  parameters: [position : Nat, unitsCount : Nat, provisionsCount : Nat, values : (List VoteRule)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons voteRule rest => (((project voteRule index) =? position) && (((project voteRule body) <? unitsCount) && (((project voteRule provision) <? provisionsCount) && ((0 <? (project voteRule numerator)) && (((project voteRule numerator) <? (project voteRule denominator)) && (voteRulesValid (position + 1) unitsCount provisionsCount rest))))))),
+  recursive_argument: values
+}
+
+definition{
+  name: voteRulesTotal,
+  parameters: [values : (List VoteRule)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons voteRule rest => (1 + (voteRulesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: stagesValid,
+  parameters: [position : Nat, voteRulesCount : Nat, provisionsCount : Nat, values : (List Stage)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons stage rest => (((project stage index) =? position) && (((project stage voteRule) <? voteRulesCount) && (((project stage provision) <? provisionsCount) && (stagesValid (position + 1) voteRulesCount provisionsCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: stagesTotal,
+  parameters: [values : (List Stage)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons stage rest => (1 + (stagesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: bylawNumbersValid,
+  parameters: [position : Nat, provisionsCount : Nat, values : (List BylawNumber)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons bylawNumber rest => (((project bylawNumber index) =? position) && (((project bylawNumber provision) <? provisionsCount) && (bylawNumbersValid (position + 1) provisionsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: bylawNumbersTotal,
+  parameters: [values : (List BylawNumber)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons bylawNumber rest => (1 + (bylawNumbersTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: serviceLevelsValid,
+  parameters: [position : Nat, provisionsCount : Nat, values : (List ServiceLevel)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons serviceLevel rest => (((project serviceLevel index) =? position) && (((project serviceLevel provision) <? provisionsCount) && (serviceLevelsValid (position + 1) provisionsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: serviceLevelsTotal,
+  parameters: [values : (List ServiceLevel)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons serviceLevel rest => (1 + (serviceLevelsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: tiersValid,
+  parameters: [position : Nat, values : (List Tier)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons tier rest => (((project tier index) =? position) && (tiersValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: tiersTotal,
+  parameters: [values : (List Tier)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons tier rest => (1 + (tiersTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: topicTagsValid,
+  parameters: [position : Nat, values : (List TopicTag)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons topicTag rest => (((project topicTag index) =? position) && (topicTagsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: topicTagsTotal,
+  parameters: [values : (List TopicTag)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons topicTag rest => (1 + (topicTagsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: rungsValid,
+  parameters: [position : Nat, provisionsCount : Nat, values : (List Rung)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons rung rest => (((project rung index) =? position) && (((project rung provision) <? provisionsCount) && (((project rung rank) =? (position + 1)) && (rungsValid (position + 1) provisionsCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: rungsTotal,
+  parameters: [values : (List Rung)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons rung rest => (1 + (rungsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: peopleValid,
+  parameters: [position : Nat, values : (List Actor)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons actor rest => (((project actor index) =? position) && (peopleValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: peopleTotal,
+  parameters: [values : (List Actor)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons actor rest => (1 + (peopleTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: holdingsValid,
+  parameters: [position : Nat, peopleCount : Nat, postsCount : Nat, values : (List Holding)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons holding rest => (((project holding index) =? position) && (((project holding person) <? peopleCount) && (((project holding post) <? postsCount) && (holdingsValid (position + 1) peopleCount postsCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: holdingsTotal,
+  parameters: [values : (List Holding)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons holding rest => (1 + (holdingsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: membershipsValid,
+  parameters: [position : Nat, peopleCount : Nat, rolesCount : Nat, values : (List Membership)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons membership rest => (((project membership index) =? position) && (((project membership person) <? peopleCount) && (((project membership role) <? rolesCount) && (membershipsValid (position + 1) peopleCount rolesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: membershipsTotal,
+  parameters: [values : (List Membership)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons membership rest => (1 + (membershipsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: delegationsValid,
+  parameters: [position : Nat, peopleCount : Nat, values : (List Delegation)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons delegation rest => (((project delegation index) =? position) && (((project delegation agent) <? peopleCount) && (((project delegation onBehalfOf) <? peopleCount) && ((0 <? (project delegation activities)) && (delegationsValid (position + 1) peopleCount rest)))))),
+  recursive_argument: values
+}
+
+definition{
+  name: delegationsTotal,
+  parameters: [values : (List Delegation)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons delegation rest => (1 + (delegationsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: referencesValid,
+  parameters: [position : Nat, provisionsCount : Nat, values : (List Reference)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons reference rest => (((project reference index) =? position) && (((project reference source) <? provisionsCount) && (((project reference target) <? provisionsCount) && (referencesValid (position + 1) provisionsCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: referencesTotal,
+  parameters: [values : (List Reference)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons reference rest => (1 + (referencesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsValid,
+  parameters: [position : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons openClaim rest => (((project openClaim index) =? position) && (openClaimsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsTotal,
+  parameters: [values : (List OpenClaim)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: actorIsSoftware,
+  parameters: [actorType : ActorType],
+  result: Bool,
+  body: (match actorType | ActorType.person => false | ActorType.softwareApplication => true)
+}
+
+definition{
+  name: ruleIsQuorum,
+  parameters: [act : RuleKind],
+  result: Bool,
+  body: (match act
+    | RuleKind.quorum => true
+    | RuleKind.act => false
+    | RuleKind.removal => false
+    | RuleKind.vacancy => false
+    | RuleKind.writtenAction => false
+    | RuleKind.bylawAmendment => false
+    | RuleKind.officerRemoval => false
+    | RuleKind.stageDecision => false)
+}
+
+definition{
+  name: softwareAt,
+  parameters: [actors : (List Actor), at : Nat],
+  result: Bool,
+  body: (match actors
+    | List.nil => false
+    | List.cons actor rest => (if ((project actor index) =? at) then (actorIsSoftware (project actor actorType)) else (softwareAt rest at))),
+  recursive_argument: actors
+}
+
+definition{
+  name: personAt,
+  parameters: [actors : (List Actor), at : Nat],
+  result: Bool,
+  body: (match actors
+    | List.nil => false
+    | List.cons actor rest => (if ((project actor index) =? at) then (not (actorIsSoftware (project actor actorType))) else (personAt rest at))),
+  recursive_argument: actors
+}
+
+definition{
+  name: delegationsTyped,
+  parameters: [actors : (List Actor), values : (List Delegation)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons delegation rest => ((softwareAt actors (project delegation agent)) && ((personAt actors (project delegation onBehalfOf)) && (delegationsTyped actors rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: membershipsTyped,
+  parameters: [actors : (List Actor), values : (List Membership)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons membership rest => ((personAt actors (project membership person)) && (membershipsTyped actors rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: holdingsTyped,
+  parameters: [actors : (List Actor), values : (List Holding)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons holding rest => ((personAt actors (project holding person)) && (holdingsTyped actors rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: postUnitAt,
+  parameters: [values : (List Post), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons post rest => (if ((project post index) =? at) then (project post unit) else (postUnitAt rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: holdersOf,
+  parameters: [values : (List Holding), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons holding rest => (if ((project holding post) =? at) then (1 + (holdersOf rest at)) else (holdersOf rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: seatsIn,
+  parameters: [allPosts : (List Post), values : (List Holding), body : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons holding rest => (if ((postUnitAt allPosts (project holding post)) =? body) then (1 + (seatsIn allPosts rest body)) else (seatsIn allPosts rest body))),
+  recursive_argument: values
+}
+
+definition{
+  name: positionsHeldOnce,
+  parameters: [values : (List Post), allHoldings : (List Holding), body : Nat],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons post rest => ((if ((project post unit) =? body) then ((holdersOf allHoldings (project post index)) =? 1) else true) && (positionsHeldOnce rest allHoldings body))),
+  recursive_argument: values
+}
+
+definition{
+  name: ruleBodyAt,
+  parameters: [values : (List VoteRule), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons voteRule rest => (if ((project voteRule index) =? at) then (project voteRule body) else (ruleBodyAt rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: stagesDecidedBy,
+  parameters: [allRules : (List VoteRule), values : (List Stage), body : Nat],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons stage rest => (((ruleBodyAt allRules (project stage voteRule)) =? body) && (stagesDecidedBy allRules rest body))),
+  recursive_argument: values
+}
+
+definition{
+  name: quorumFor,
+  parameters: [values : (List VoteRule), body : Nat],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons voteRule rest => ((((project voteRule body) =? body) && (ruleIsQuorum (project voteRule act))) || (quorumFor rest body))),
+  recursive_argument: values
+}
+
+definition{
+  name: rulesHaveQuorum,
+  parameters: [allRules : (List VoteRule), values : (List VoteRule)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons voteRule rest => ((quorumFor allRules (project voteRule body)) && (rulesHaveQuorum allRules rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    provisions : (List Provision),
+    units : (List OrganizationalUnit),
+    subOrganizations : (List SubOrganization),
+    posts : (List Post),
+    roles : (List Role),
+    voteRules : (List VoteRule),
+    stages : (List Stage),
+    bylawNumbers : (List BylawNumber),
+    serviceLevels : (List ServiceLevel),
+    tiers : (List Tier),
+    topicTags : (List TopicTag),
+    rungs : (List Rung),
+    people : (List Actor),
+    holdings : (List Holding),
+    memberships : (List Membership),
+    delegations : (List Delegation),
+    references : (List Reference),
+    openClaims : (List OpenClaim)
+  ],
+  result: Bool,
+  body: (((provisionsTotal provisions) =? (project release provisionsCount)) && (((unitsTotal units) =? (project release unitsCount)) && (((subOrganizationsTotal subOrganizations) =? (project release subOrganizationsCount)) && (((postsTotal posts) =? (project release postsCount)) && (((rolesTotal roles) =? (project release rolesCount)) && (((voteRulesTotal voteRules) =? (project release voteRulesCount)) && (((stagesTotal stages) =? (project release stagesCount)) && (((bylawNumbersTotal bylawNumbers) =? (project release bylawNumbersCount)) && (((serviceLevelsTotal serviceLevels) =? (project release serviceLevelsCount)) && (((tiersTotal tiers) =? (project release tiersCount)) && (((topicTagsTotal topicTags) =? (project release topicTagsCount)) && (((rungsTotal rungs) =? (project release rungsCount)) && (((peopleTotal people) =? (project release peopleCount)) && (((holdingsTotal holdings) =? (project release holdingsCount)) && (((membershipsTotal memberships) =? (project release membershipsCount)) && (((delegationsTotal delegations) =? (project release delegationsCount)) && (((referencesTotal references) =? (project release referencesCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && ((provisionsValid 0 provisions) && ((unitsValid 0 (provisionsTotal provisions) units) && ((subOrganizationsValid 0 (unitsTotal units) (provisionsTotal provisions) subOrganizations) && ((postsValid 0 (unitsTotal units) (provisionsTotal provisions) posts) && ((rolesValid 0 (unitsTotal units) (provisionsTotal provisions) roles) && ((voteRulesValid 0 (unitsTotal units) (provisionsTotal provisions) voteRules) && ((stagesValid 0 (voteRulesTotal voteRules) (provisionsTotal provisions) stages) && ((bylawNumbersValid 0 (provisionsTotal provisions) bylawNumbers) && ((serviceLevelsValid 0 (provisionsTotal provisions) serviceLevels) && ((tiersValid 0 tiers) && ((topicTagsValid 0 topicTags) && ((rungsValid 0 (provisionsTotal provisions) rungs) && ((peopleValid 0 people) && ((holdingsValid 0 (peopleTotal people) (postsTotal posts) holdings) && ((membershipsValid 0 (peopleTotal people) (rolesTotal roles) memberships) && ((delegationsValid 0 (peopleTotal people) delegations) && ((referencesValid 0 (provisionsTotal provisions) references) && ((openClaimsValid 0 openClaims) && ((delegationsTyped people delegations) && ((membershipsTyped people memberships) && ((holdingsTyped people holdings) && ((positionsHeldOnce posts holdings (project release board)) && (((project release boardMinimum) <? ((seatsIn posts holdings (project release board)) + 1)) && (((seatsIn posts holdings (project release board)) <? ((project release boardMaximum) + 1)) && ((stagesDecidedBy voteRules stages (project release toc)) && ((rulesHaveQuorum voteRules voteRules) && (((project release board) <? (unitsTotal units)) && ((project release toc) <? (unitsTotal units)))))))))))))))))))))))))))))))))))))))))))))))
+}
+\end{semanticmodule}
+\end{lexlean}
