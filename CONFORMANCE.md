@@ -26,6 +26,12 @@ model does not sanction.
 | `CC-02` | `build` | The CHAOSS catalog declares every metric and metrics model of chaoss/register.json with the content digest of its pinned working-group source |
 | `CC-03` | `open` | A released CHAOSS item the projector cannot match to a definition is carried as an open claim, never dropped or guessed |
 
+## compliance
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CP-01` | `build` | The control set the verified build emits as an OSCAL 1.1.0 component definition is accepted by the locked oscal-1.1.0-structural oracle |
+
 ## frame
 
 | ID | Level | Statement |
@@ -45,8 +51,9 @@ model does not sanction.
 | `UT-07` | `build` | The app always answers graduated when stage is graduated and application is not archival |
 | `UT-08` | `build` | The app always answers archived when stage is archived |
 | `UT-09` | `build` | The architecture description declares every stakeholder, concern, component, edge, viewpoint and view it references |
-| `UT-10` | `build` | The ISO/IEC 25010 quality model numbers every characteristic, subcharacteristic, requirement and measure, and every parent it names is declared |
-| `UT-11` | `build` | Every compliance obligation is numbered in order and names its evidence |
+| `UT-10` | `build` | The ISO/IEC 25010:2023 quality model declares all 9 characteristics and 40 subcharacteristics, states each subcharacteristic by a requirement or lists it open, and every parent it names is declared |
+| `UT-11` | `build` | Every STRIDE category each component and data flow is open to is answered by a threat or stated open, and no other pair is stated open |
+| `UT-12` | `build` | Every compliance obligation is numbered in order and names its evidence |
 
 ## Cited authorities
 

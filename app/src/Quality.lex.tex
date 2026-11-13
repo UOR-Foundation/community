@@ -14,94 +14,360 @@ structure{
 }
 
 definition{
-  name: characteristicFunctionalSuitability,
+  name: characteristicCompatibility,
   parameters: [],
   result: Foundation.Qual::ProductQualityCharacteristic,
   body: (record Foundation.Qual::ProductQualityCharacteristic {index := 0})
 }
 
 definition{
-  name: characteristicPerformanceEfficiency,
+  name: characteristicFlexibility,
   parameters: [],
   result: Foundation.Qual::ProductQualityCharacteristic,
   body: (record Foundation.Qual::ProductQualityCharacteristic {index := 1})
 }
 
 definition{
-  name: characteristicReliability,
+  name: characteristicFunctionalSuitability,
   parameters: [],
   result: Foundation.Qual::ProductQualityCharacteristic,
   body: (record Foundation.Qual::ProductQualityCharacteristic {index := 2})
 }
 
 definition{
-  name: characteristicSecurity,
+  name: characteristicInteractionCapability,
   parameters: [],
   result: Foundation.Qual::ProductQualityCharacteristic,
   body: (record Foundation.Qual::ProductQualityCharacteristic {index := 3})
 }
 
 definition{
+  name: characteristicMaintainability,
+  parameters: [],
+  result: Foundation.Qual::ProductQualityCharacteristic,
+  body: (record Foundation.Qual::ProductQualityCharacteristic {index := 4})
+}
+
+definition{
+  name: characteristicPerformanceEfficiency,
+  parameters: [],
+  result: Foundation.Qual::ProductQualityCharacteristic,
+  body: (record Foundation.Qual::ProductQualityCharacteristic {index := 5})
+}
+
+definition{
+  name: characteristicReliability,
+  parameters: [],
+  result: Foundation.Qual::ProductQualityCharacteristic,
+  body: (record Foundation.Qual::ProductQualityCharacteristic {index := 6})
+}
+
+definition{
+  name: characteristicSafety,
+  parameters: [],
+  result: Foundation.Qual::ProductQualityCharacteristic,
+  body: (record Foundation.Qual::ProductQualityCharacteristic {index := 7})
+}
+
+definition{
+  name: characteristicSecurity,
+  parameters: [],
+  result: Foundation.Qual::ProductQualityCharacteristic,
+  body: (record Foundation.Qual::ProductQualityCharacteristic {index := 8})
+}
+
+definition{
   name: subcharacteristicAccountability,
   parameters: [],
   result: Foundation.Qual::QualitySubcharacteristic,
-  body: (record Foundation.Qual::QualitySubcharacteristic {index := 0, characteristicIndex := 3})
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 0, characteristicIndex := 8})
+}
+
+definition{
+  name: subcharacteristicAdaptability,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 1, characteristicIndex := 1})
+}
+
+definition{
+  name: subcharacteristicAnalysability,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 2, characteristicIndex := 4})
+}
+
+definition{
+  name: subcharacteristicAppropriatenessRecognizability,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 3, characteristicIndex := 3})
+}
+
+definition{
+  name: subcharacteristicAuthenticity,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 4, characteristicIndex := 8})
+}
+
+definition{
+  name: subcharacteristicAvailability,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 5, characteristicIndex := 6})
+}
+
+definition{
+  name: subcharacteristicCapacity,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 6, characteristicIndex := 5})
+}
+
+definition{
+  name: subcharacteristicCoExistence,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 7, characteristicIndex := 0})
+}
+
+definition{
+  name: subcharacteristicConfidentiality,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 8, characteristicIndex := 8})
+}
+
+definition{
+  name: subcharacteristicFailSafe,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 9, characteristicIndex := 7})
+}
+
+definition{
+  name: subcharacteristicFaultTolerance,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 10, characteristicIndex := 6})
 }
 
 definition{
   name: subcharacteristicFaultlessness,
   parameters: [],
   result: Foundation.Qual::QualitySubcharacteristic,
-  body: (record Foundation.Qual::QualitySubcharacteristic {index := 1, characteristicIndex := 2})
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 11, characteristicIndex := 6})
+}
+
+definition{
+  name: subcharacteristicFunctionalAppropriateness,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 12, characteristicIndex := 2})
 }
 
 definition{
   name: subcharacteristicFunctionalCompleteness,
   parameters: [],
   result: Foundation.Qual::QualitySubcharacteristic,
-  body: (record Foundation.Qual::QualitySubcharacteristic {index := 2, characteristicIndex := 0})
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 13, characteristicIndex := 2})
 }
 
 definition{
   name: subcharacteristicFunctionalCorrectness,
   parameters: [],
   result: Foundation.Qual::QualitySubcharacteristic,
-  body: (record Foundation.Qual::QualitySubcharacteristic {index := 3, characteristicIndex := 0})
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 14, characteristicIndex := 2})
+}
+
+definition{
+  name: subcharacteristicHazardWarning,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 15, characteristicIndex := 7})
+}
+
+definition{
+  name: subcharacteristicInclusivity,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 16, characteristicIndex := 3})
+}
+
+definition{
+  name: subcharacteristicInstallability,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 17, characteristicIndex := 1})
 }
 
 definition{
   name: subcharacteristicIntegrity,
   parameters: [],
   result: Foundation.Qual::QualitySubcharacteristic,
-  body: (record Foundation.Qual::QualitySubcharacteristic {index := 4, characteristicIndex := 3})
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 18, characteristicIndex := 8})
+}
+
+definition{
+  name: subcharacteristicInteroperability,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 19, characteristicIndex := 0})
+}
+
+definition{
+  name: subcharacteristicLearnability,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 20, characteristicIndex := 3})
+}
+
+definition{
+  name: subcharacteristicModifiability,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 21, characteristicIndex := 4})
+}
+
+definition{
+  name: subcharacteristicModularity,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 22, characteristicIndex := 4})
+}
+
+definition{
+  name: subcharacteristicNonRepudiation,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 23, characteristicIndex := 8})
+}
+
+definition{
+  name: subcharacteristicOperability,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 24, characteristicIndex := 3})
+}
+
+definition{
+  name: subcharacteristicOperationalConstraint,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 25, characteristicIndex := 7})
+}
+
+definition{
+  name: subcharacteristicRecoverability,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 26, characteristicIndex := 6})
+}
+
+definition{
+  name: subcharacteristicReplaceability,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 27, characteristicIndex := 1})
+}
+
+definition{
+  name: subcharacteristicResistance,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 28, characteristicIndex := 8})
 }
 
 definition{
   name: subcharacteristicResourceUtilization,
   parameters: [],
   result: Foundation.Qual::QualitySubcharacteristic,
-  body: (record Foundation.Qual::QualitySubcharacteristic {index := 5, characteristicIndex := 1})
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 29, characteristicIndex := 5})
+}
+
+definition{
+  name: subcharacteristicReusability,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 30, characteristicIndex := 4})
+}
+
+definition{
+  name: subcharacteristicRiskIdentification,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 31, characteristicIndex := 7})
+}
+
+definition{
+  name: subcharacteristicSafeIntegration,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 32, characteristicIndex := 7})
+}
+
+definition{
+  name: subcharacteristicScalability,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 33, characteristicIndex := 1})
+}
+
+definition{
+  name: subcharacteristicSelfDescriptiveness,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 34, characteristicIndex := 3})
+}
+
+definition{
+  name: subcharacteristicTestability,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 35, characteristicIndex := 4})
 }
 
 definition{
   name: subcharacteristicTimeBehaviour,
   parameters: [],
   result: Foundation.Qual::QualitySubcharacteristic,
-  body: (record Foundation.Qual::QualitySubcharacteristic {index := 6, characteristicIndex := 1})
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 36, characteristicIndex := 5})
+}
+
+definition{
+  name: subcharacteristicUserAssistance,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 37, characteristicIndex := 3})
+}
+
+definition{
+  name: subcharacteristicUserEngagement,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 38, characteristicIndex := 3})
+}
+
+definition{
+  name: subcharacteristicUserErrorProtection,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 39, characteristicIndex := 3})
 }
 
 definition{
   name: requirementBoundedAllocation,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 0, subcharacteristicIndex := 5})
+  body: (record Foundation.Qual::QualityRequirement {index := 0, subcharacteristicIndex := 29})
 }
 
 definition{
   name: requirementBoundedRequest,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 1, subcharacteristicIndex := 6})
+  body: (record Foundation.Qual::QualityRequirement {index := 1, subcharacteristicIndex := 36})
 }
 
 definition{
@@ -115,35 +381,35 @@ definition{
   name: requirementEveryPropertyProved,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 3, subcharacteristicIndex := 4})
+  body: (record Foundation.Qual::QualityRequirement {index := 3, subcharacteristicIndex := 18})
 }
 
 definition{
   name: requirementEveryRequestAnswered,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 4, subcharacteristicIndex := 2})
+  body: (record Foundation.Qual::QualityRequirement {index := 4, subcharacteristicIndex := 13})
 }
 
 definition{
   name: requirementEveryStageDecisionModeled,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 5, subcharacteristicIndex := 2})
+  body: (record Foundation.Qual::QualityRequirement {index := 5, subcharacteristicIndex := 13})
 }
 
 definition{
   name: requirementEveryVectorReplays,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 6, subcharacteristicIndex := 1})
+  body: (record Foundation.Qual::QualityRequirement {index := 6, subcharacteristicIndex := 11})
 }
 
 definition{
   name: requirementExamplesAnsweredAsStated,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 7, subcharacteristicIndex := 3})
+  body: (record Foundation.Qual::QualityRequirement {index := 7, subcharacteristicIndex := 14})
 }
 
 definition{
@@ -206,14 +472,14 @@ definition{
   name: characteristicNames,
   parameters: [],
   result: (List Named),
-  body: (cons (record Named {index := 0, name := "Functional suitability", text := "Functional suitability, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (cons (record Named {index := 1, name := "Performance efficiency", text := "Performance efficiency, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (cons (record Named {index := 2, name := "Reliability", text := "Reliability, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (cons (record Named {index := 3, name := "Security", text := "Security, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (nil Named)))))
+  body: (cons (record Named {index := 0, name := "Compatibility", text := "Compatibility, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (cons (record Named {index := 1, name := "Flexibility", text := "Flexibility, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (cons (record Named {index := 2, name := "Functional suitability", text := "Functional suitability, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (cons (record Named {index := 3, name := "Interaction capability", text := "Interaction capability, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (cons (record Named {index := 4, name := "Maintainability", text := "Maintainability, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (cons (record Named {index := 5, name := "Performance efficiency", text := "Performance efficiency, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (cons (record Named {index := 6, name := "Reliability", text := "Reliability, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (cons (record Named {index := 7, name := "Safety", text := "Safety, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (cons (record Named {index := 8, name := "Security", text := "Security, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (nil Named))))))))))
 }
 
 definition{
   name: subcharacteristicNames,
   parameters: [],
   result: (List Named),
-  body: (cons (record Named {index := 0, name := "Accountability", text := "Security: Accountability."}) (cons (record Named {index := 1, name := "Faultlessness", text := "Reliability: Faultlessness."}) (cons (record Named {index := 2, name := "Functional completeness", text := "Functional suitability: Functional completeness."}) (cons (record Named {index := 3, name := "Functional correctness", text := "Functional suitability: Functional correctness."}) (cons (record Named {index := 4, name := "Integrity", text := "Security: Integrity."}) (cons (record Named {index := 5, name := "Resource utilization", text := "Performance efficiency: Resource utilization."}) (cons (record Named {index := 6, name := "Time behaviour", text := "Performance efficiency: Time behaviour."}) (nil Named))))))))
+  body: (cons (record Named {index := 0, name := "Accountability", text := "Security: Accountability."}) (cons (record Named {index := 1, name := "Adaptability", text := "Flexibility: Adaptability."}) (cons (record Named {index := 2, name := "Analysability", text := "Maintainability: Analysability."}) (cons (record Named {index := 3, name := "Appropriateness recognizability", text := "Interaction capability: Appropriateness recognizability."}) (cons (record Named {index := 4, name := "Authenticity", text := "Security: Authenticity."}) (cons (record Named {index := 5, name := "Availability", text := "Reliability: Availability."}) (cons (record Named {index := 6, name := "Capacity", text := "Performance efficiency: Capacity."}) (cons (record Named {index := 7, name := "Co-existence", text := "Compatibility: Co-existence."}) (cons (record Named {index := 8, name := "Confidentiality", text := "Security: Confidentiality."}) (cons (record Named {index := 9, name := "Fail safe", text := "Safety: Fail safe."}) (cons (record Named {index := 10, name := "Fault tolerance", text := "Reliability: Fault tolerance."}) (cons (record Named {index := 11, name := "Faultlessness", text := "Reliability: Faultlessness."}) (cons (record Named {index := 12, name := "Functional appropriateness", text := "Functional suitability: Functional appropriateness."}) (cons (record Named {index := 13, name := "Functional completeness", text := "Functional suitability: Functional completeness."}) (cons (record Named {index := 14, name := "Functional correctness", text := "Functional suitability: Functional correctness."}) (cons (record Named {index := 15, name := "Hazard warning", text := "Safety: Hazard warning."}) (cons (record Named {index := 16, name := "Inclusivity", text := "Interaction capability: Inclusivity."}) (cons (record Named {index := 17, name := "Installability", text := "Flexibility: Installability."}) (cons (record Named {index := 18, name := "Integrity", text := "Security: Integrity."}) (cons (record Named {index := 19, name := "Interoperability", text := "Compatibility: Interoperability."}) (cons (record Named {index := 20, name := "Learnability", text := "Interaction capability: Learnability."}) (cons (record Named {index := 21, name := "Modifiability", text := "Maintainability: Modifiability."}) (cons (record Named {index := 22, name := "Modularity", text := "Maintainability: Modularity."}) (cons (record Named {index := 23, name := "Non-repudiation", text := "Security: Non-repudiation."}) (cons (record Named {index := 24, name := "Operability", text := "Interaction capability: Operability."}) (cons (record Named {index := 25, name := "Operational constraint", text := "Safety: Operational constraint."}) (cons (record Named {index := 26, name := "Recoverability", text := "Reliability: Recoverability."}) (cons (record Named {index := 27, name := "Replaceability", text := "Flexibility: Replaceability."}) (cons (record Named {index := 28, name := "Resistance", text := "Security: Resistance."}) (cons (record Named {index := 29, name := "Resource utilization", text := "Performance efficiency: Resource utilization."}) (cons (record Named {index := 30, name := "Reusability", text := "Maintainability: Reusability."}) (cons (record Named {index := 31, name := "Risk identification", text := "Safety: Risk identification."}) (cons (record Named {index := 32, name := "Safe integration", text := "Safety: Safe integration."}) (cons (record Named {index := 33, name := "Scalability", text := "Flexibility: Scalability."}) (cons (record Named {index := 34, name := "Self-descriptiveness", text := "Interaction capability: Self-descriptiveness."}) (cons (record Named {index := 35, name := "Testability", text := "Maintainability: Testability."}) (cons (record Named {index := 36, name := "Time behaviour", text := "Performance efficiency: Time behaviour."}) (cons (record Named {index := 37, name := "User assistance", text := "Interaction capability: User assistance."}) (cons (record Named {index := 38, name := "User engagement", text := "Interaction capability: User engagement."}) (cons (record Named {index := 39, name := "User error protection", text := "Interaction capability: User error protection."}) (nil Named)))))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
@@ -234,7 +500,7 @@ definition{
   name: subcharacteristicRecords,
   parameters: [],
   result: (List Foundation.Qual::QualitySubcharacteristic),
-  body: (cons (subcharacteristicAccountability) (cons (subcharacteristicFaultlessness) (cons (subcharacteristicFunctionalCompleteness) (cons (subcharacteristicFunctionalCorrectness) (cons (subcharacteristicIntegrity) (cons (subcharacteristicResourceUtilization) (cons (subcharacteristicTimeBehaviour) (nil Foundation.Qual::QualitySubcharacteristic))))))))
+  body: (cons (subcharacteristicAccountability) (cons (subcharacteristicAdaptability) (cons (subcharacteristicAnalysability) (cons (subcharacteristicAppropriatenessRecognizability) (cons (subcharacteristicAuthenticity) (cons (subcharacteristicAvailability) (cons (subcharacteristicCapacity) (cons (subcharacteristicCoExistence) (cons (subcharacteristicConfidentiality) (cons (subcharacteristicFailSafe) (cons (subcharacteristicFaultTolerance) (cons (subcharacteristicFaultlessness) (cons (subcharacteristicFunctionalAppropriateness) (cons (subcharacteristicFunctionalCompleteness) (cons (subcharacteristicFunctionalCorrectness) (cons (subcharacteristicHazardWarning) (cons (subcharacteristicInclusivity) (cons (subcharacteristicInstallability) (cons (subcharacteristicIntegrity) (cons (subcharacteristicInteroperability) (cons (subcharacteristicLearnability) (cons (subcharacteristicModifiability) (cons (subcharacteristicModularity) (cons (subcharacteristicNonRepudiation) (cons (subcharacteristicOperability) (cons (subcharacteristicOperationalConstraint) (cons (subcharacteristicRecoverability) (cons (subcharacteristicReplaceability) (cons (subcharacteristicResistance) (cons (subcharacteristicResourceUtilization) (cons (subcharacteristicReusability) (cons (subcharacteristicRiskIdentification) (cons (subcharacteristicSafeIntegration) (cons (subcharacteristicScalability) (cons (subcharacteristicSelfDescriptiveness) (cons (subcharacteristicTestability) (cons (subcharacteristicTimeBehaviour) (cons (subcharacteristicUserAssistance) (cons (subcharacteristicUserEngagement) (cons (subcharacteristicUserErrorProtection) (nil Foundation.Qual::QualitySubcharacteristic)))))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
@@ -302,16 +568,83 @@ definition{
 }
 
 definition{
+  name: openSubcharacteristics,
+  parameters: [],
+  result: (List Nat),
+  body: (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 (cons 6 (cons 7 (cons 8 (cons 9 (cons 10 (cons 12 (cons 15 (cons 16 (cons 17 (cons 19 (cons 20 (cons 21 (cons 22 (cons 23 (cons 24 (cons 25 (cons 26 (cons 27 (cons 28 (cons 30 (cons 31 (cons 32 (cons 33 (cons 34 (cons 35 (cons 37 (cons 38 (cons 39 (nil Nat))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: namesLength,
+  parameters: [values : (List Named)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons value rest => ((namesLength rest) + 1)),
+  recursive_argument: values
+}
+
+definition{
+  name: natsLength,
+  parameters: [values : (List Nat)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons value rest => ((natsLength rest) + 1)),
+  recursive_argument: values
+}
+
+definition{
+  name: hasRequirement,
+  parameters: [wanted : Nat, records : (List Foundation.Qual::QualityRequirement)],
+  result: Bool,
+  body: (match records
+    | List.nil => false
+    | List.cons item rest => (((project item subcharacteristicIndex) =? wanted) || (hasRequirement wanted rest))),
+  recursive_argument: records
+}
+
+definition{
+  name: natListed,
+  parameters: [wanted : Nat, values : (List Nat)],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons value rest => ((value =? wanted) || (natListed wanted rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: exactlyOne,
+  parameters: [left : Bool, right : Bool],
+  result: Bool,
+  body: (if left then (if right then false else true) else right)
+}
+
+definition{
+  name: coverageStated,
+  parameters: [position : Nat, names : (List Named)],
+  result: Bool,
+  body: (match names
+    | List.nil => true
+    | List.cons item rest => ((exactlyOne (hasRequirement position (requirementRecords)) (natListed position (openSubcharacteristics))) && (coverageStated (position + 1) rest))),
+  recursive_argument: names
+}
+
+definition{
   name: qualityValid,
   parameters: [],
   result: Bool,
-  body: ((namesNumbered 0 (characteristicNames)) && ((namesNumbered 0 (subcharacteristicNames)) && ((namesNumbered 0 (requirementNames)) && ((namesNumbered 0 (measureNames)) && ((parentsKnown 4 (subcharacteristicRecords)) && ((requirementsKnown 7 (requirementRecords)) && (measuresKnown 8 (measureRecords))))))))
+  body: (((namesLength (characteristicNames)) =? 9) && (((namesLength (subcharacteristicNames)) =? 40) && ((coverageStated 0 (subcharacteristicNames)) && ((namesNumbered 0 (characteristicNames)) && ((namesNumbered 0 (subcharacteristicNames)) && ((namesNumbered 0 (requirementNames)) && ((namesNumbered 0 (measureNames)) && ((parentsKnown 9 (subcharacteristicRecords)) && ((requirementsKnown 40 (requirementRecords)) && (measuresKnown 8 (measureRecords)))))))))))
 }
 
 theorem{
   name: qualityModelHolds,
   parameters: [],
   statement: ((qualityValid) = true),
+  proof: decide{}
+}
+
+theorem{
+  name: openSubcharacteristicCount,
+  parameters: [],
+  statement: ((natsLength (openSubcharacteristics)) = 33),
   proof: decide{}
 }
 
