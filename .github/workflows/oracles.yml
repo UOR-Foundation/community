@@ -1,0 +1,181 @@
+# Runs the project's oracles and re-projects every register, spending compute
+# only on what changed. Each job's result is stored under a content address:
+# the hash of every file it reads plus the version of every tool it runs. A
+# result is reused only when the address re-derived from this checkout equals
+# the one the stored result records; anything else is a miss, and a miss does
+# the work in full. Project content, not universal policy.
+#
+#   grimoirelab  upstream Perceval (with the Discord backend under contribution)
+#                and SortingHat suites at the commits oracles/grimoirelab/
+#                oracle.lock.json pins; see oracles/grimoirelab/verify.sh.
+#   reproject    each register in oracles/registers.json, re-projected from its
+#                pinned sources with --check; see oracles/reproject.mjs.
+name: oracles
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'oracles/**'
+      - 'chaoss/**'
+      - 'governance/**'
+      - 'ecosystem/**'
+      - 'measurement/**'
+      - 'tools/**'
+      - '.github/workflows/oracles.yml'
+  pull_request:
+    paths:
+      - 'oracles/**'
+      - 'chaoss/**'
+      - 'governance/**'
+      - 'ecosystem/**'
+      - 'measurement/**'
+      - 'tools/**'
+      - '.github/workflows/oracles.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: oracles-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  grimoirelab:
+    name: GrimoireLab ${{ matrix.component }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        component: [perceval, sortinghat]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        id: python
+        with:
+          python-version: '3.13'
+      - name: The record matches the wrapper and corpus bytes
+        run: node oracles/grimoirelab/lock.mjs --check
+      - name: Address the inputs
+        id: address
+        # The lock pins the upstream commits and the dependency set (upstream's
+        # poetry.lock at that commit, hash-checked); oracles/grimoirelab/**
+        # holds the lock, the wrapper and the overlay. Python and the runner
+        # image are the remaining inputs the run reads.
+        # SortingHat's runner also starts the MariaDB image upstream names by
+        # tag in config/settings/config_testing.py; its digest is resolved here.
+        run: |
+          db=none
+          if [ "${{ matrix.component }}" = sortinghat ]; then
+            docker pull -q mariadb:11.4 >/dev/null
+            db="$(docker image inspect --format '{{index .RepoDigests 0}}' mariadb:11.4 | sed 's/.*@sha256://' | cut -c1-16)"
+          fi
+          printf 'key=grimoirelab-%s-%s-%s-py%s-db%s-%s\n' "${{ matrix.component }}" "$ImageOS" "$ImageVersion" \
+            "${{ steps.python.outputs.python-version }}" "$db" "${{ hashFiles('oracles/grimoirelab/**') }}" >>"$GITHUB_OUTPUT"
+      - name: The result of these exact inputs, kept by an earlier run
+        id: cache
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        with:
+          path: .oracle-result
+          key: ${{ steps.address.outputs.key }}
+      - name: Check the kept result's address
+        id: reuse
+        env:
+          KEY: ${{ steps.address.outputs.key }}
+        run: |
+          if [ -f .oracle-result/address ] && [ "$(cat .oracle-result/address)" = "$KEY" ]; then
+            echo "reuse=true" >>"$GITHUB_OUTPUT"
+            echo "Reusing the passing run recorded for $KEY"
+          else
+            rm -rf .oracle-result
+            echo "reuse=false" >>"$GITHUB_OUTPUT"
+          fi
+      - name: Run upstream's suite at the pinned commit
+        if: steps.reuse.outputs.reuse != 'true'
+        env:
+          KEY: ${{ steps.address.outputs.key }}
+        run: |
+          oracles/grimoirelab/verify.sh "${{ matrix.component }}" "$RUNNER_TEMP/grimoirelab"
+          mkdir -p .oracle-result
+          printf '%s' "$KEY" >.oracle-result/address
+
+  registers:
+    name: List the registers
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      matrix: ${{ steps.list.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - id: list
+        run: printf 'matrix=%s\n' "$(node oracles/reproject.mjs --matrix)" >>"$GITHUB_OUTPUT"
+
+  reproject:
+    name: Re-project ${{ matrix.area }}
+    needs: registers
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJSON(needs.registers.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        id: node
+        with:
+          node-version: 22
+      - name: Address the inputs
+        id: address
+        # A register reads its own files (its entry's `inputs`), the
+        # re-projection driver and manifest, the shared emitter in tools/, Node,
+        # and each tool its entry names (pdftotext for the Bylaws, say), by the
+        # version that tool reports.
+        env:
+          AREA: ${{ matrix.area }}
+        run: |
+          tools="$(node oracles/reproject.mjs --tools "$AREA" | sha256sum | cut -c1-16)"
+          printf 'key=reproject-%s-node%s-tools%s-%s\n' "$AREA" "$(node --version)" "$tools" \
+            "${{ hashFiles(matrix.inputs, 'oracles/reproject.mjs', 'oracles/registers.json', 'tools/**') }}" >>"$GITHUB_OUTPUT"
+      - name: The result of these exact inputs, kept by an earlier run
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        with:
+          path: .reproject-result
+          key: ${{ steps.address.outputs.key }}
+      - name: Check the kept result's address
+        id: reuse
+        env:
+          KEY: ${{ steps.address.outputs.key }}
+        run: |
+          if [ -f .reproject-result/address ] && [ "$(cat .reproject-result/address)" = "$KEY" ]; then
+            echo "reuse=true" >>"$GITHUB_OUTPUT"
+            echo "Reusing the passing re-projection recorded for $KEY"
+          else
+            rm -rf .reproject-result
+            echo "reuse=false" >>"$GITHUB_OUTPUT"
+          fi
+      - name: The pinned sources, fetched by an earlier run
+        if: steps.reuse.outputs.reuse != 'true'
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        with:
+          # Keyed by the file that pins the commits. reproject.mjs re-derives
+          # every checkout's commit on read and refetches any that differs.
+          path: ${{ runner.temp }}/sources/${{ matrix.area }}
+          key: sources-${{ matrix.area }}-${{ hashFiles(matrix.sources) }}
+      - name: Re-project with --check
+        if: steps.reuse.outputs.reuse != 'true'
+        env:
+          AREA: ${{ matrix.area }}
+          KEY: ${{ steps.address.outputs.key }}
+        run: |
+          node oracles/reproject.mjs "$AREA" "$RUNNER_TEMP/sources/$AREA"
+          mkdir -p .reproject-result
+          printf '%s' "$KEY" >.reproject-result/address
