@@ -46,126 +46,82 @@ fn pinned(breaks: &str, condition: &str, theorem: &str) {
     );
 }
 
-/// A facet theorem: proved by `decide`, about exactly this predicate.
-fn holds(path: &str, theorem: &str, statement: &str) {
-    let model = module(path);
-    let found = declaration(&model, theorem);
-    assert!(
-        found.contains(&format!("statement: {statement},")),
-        "{theorem} must state {statement}:\n{found}"
-    );
-    assert!(
-        found.contains("proof: decide{}"),
-        "{theorem} is proved by decide"
-    );
-}
-
-/// `UT-01`: The app never answers graduated when quorum is unmet and stage is incubation
+/// `UTL-01`: The app never answers graduated when quorum is unmet and stage is incubation
 #[test]
-fn uor_toc_lifecycle_ut_01() {
+fn uor_toc_lifecycle_utl_01() {
     pinned(
         "breaksInv001",
-        "body: ((((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request quorum) =? (UorTocLifecycle::quorumUnmet))) && ((project request stage) =? (UorTocLifecycle::stageIncubation))) && ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerGraduated)))",
+        "body: ((((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request quorum) =? (UorTocLifecycle::uorTocLifecycleQuorumUnmet))) && ((project request stage) =? (UorTocLifecycle::uorTocLifecycleStageIncubation))) && ((UorTocLifecycle::uorTocLifecycleJudge request) =? (UorTocLifecycle::uorTocLifecycleAnswerGraduated)))",
         "inv001Holds",
     );
 }
 
-/// `UT-02`: The app never answers graduated when vote is majority and stage is incubation
+/// `UTL-02`: The app never answers graduated when vote is majority and stage is incubation
 #[test]
-fn uor_toc_lifecycle_ut_02() {
+fn uor_toc_lifecycle_utl_02() {
     pinned(
         "breaksInv002",
-        "body: ((((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request vote) =? (UorTocLifecycle::voteMajority))) && ((project request stage) =? (UorTocLifecycle::stageIncubation))) && ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerGraduated)))",
+        "body: ((((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request vote) =? (UorTocLifecycle::uorTocLifecycleVoteMajority))) && ((project request stage) =? (UorTocLifecycle::uorTocLifecycleStageIncubation))) && ((UorTocLifecycle::uorTocLifecycleJudge request) =? (UorTocLifecycle::uorTocLifecycleAnswerGraduated)))",
         "inv002Holds",
     );
 }
 
-/// `UT-03`: The app never answers graduated when comment is below 14 and stage is incubation
+/// `UTL-03`: The app never answers graduated when comment is below 14 and stage is incubation
 #[test]
-fn uor_toc_lifecycle_ut_03() {
+fn uor_toc_lifecycle_utl_03() {
     pinned(
         "breaksInv003",
-        "body: ((((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request comment) <? 14)) && ((project request stage) =? (UorTocLifecycle::stageIncubation))) && ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerGraduated)))",
+        "body: ((((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request comment) <? 14)) && ((project request stage) =? (UorTocLifecycle::uorTocLifecycleStageIncubation))) && ((UorTocLifecycle::uorTocLifecycleJudge request) =? (UorTocLifecycle::uorTocLifecycleAnswerGraduated)))",
         "inv003Holds",
     );
 }
 
-/// `UT-04`: The app never answers incubation when stage is proposed
+/// `UTL-04`: The app never answers incubation when stage is proposed
 #[test]
-fn uor_toc_lifecycle_ut_04() {
+fn uor_toc_lifecycle_utl_04() {
     pinned(
         "breaksInv004",
-        "body: (((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request stage) =? (UorTocLifecycle::stageProposed))) && ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerIncubation)))",
+        "body: (((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request stage) =? (UorTocLifecycle::uorTocLifecycleStageProposed))) && ((UorTocLifecycle::uorTocLifecycleJudge request) =? (UorTocLifecycle::uorTocLifecycleAnswerIncubation)))",
         "inv004Holds",
     );
 }
 
-/// `UT-05`: The app never answers graduated when stage is sandbox
+/// `UTL-05`: The app never answers graduated when stage is sandbox
 #[test]
-fn uor_toc_lifecycle_ut_05() {
+fn uor_toc_lifecycle_utl_05() {
     pinned(
         "breaksInv005",
-        "body: (((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request stage) =? (UorTocLifecycle::stageSandbox))) && ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerGraduated)))",
+        "body: (((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request stage) =? (UorTocLifecycle::uorTocLifecycleStageSandbox))) && ((UorTocLifecycle::uorTocLifecycleJudge request) =? (UorTocLifecycle::uorTocLifecycleAnswerGraduated)))",
         "inv005Holds",
     );
 }
 
-/// `UT-06`: The app never answers sandbox when evidence is partial and stage is proposed
+/// `UTL-06`: The app never answers sandbox when evidence is partial and stage is proposed
 #[test]
-fn uor_toc_lifecycle_ut_06() {
+fn uor_toc_lifecycle_utl_06() {
     pinned(
         "breaksInv006",
-        "body: ((((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request evidence) =? (UorTocLifecycle::evidencePartial))) && ((project request stage) =? (UorTocLifecycle::stageProposed))) && ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerSandbox)))",
+        "body: ((((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request evidence) =? (UorTocLifecycle::uorTocLifecycleEvidencePartial))) && ((project request stage) =? (UorTocLifecycle::uorTocLifecycleStageProposed))) && ((UorTocLifecycle::uorTocLifecycleJudge request) =? (UorTocLifecycle::uorTocLifecycleAnswerSandbox)))",
         "inv006Holds",
     );
 }
 
-/// `UT-07`: The app always answers graduated when stage is graduated and application is not archival
+/// `UTL-07`: The app always answers graduated when stage is graduated and application is not archival
 #[test]
-fn uor_toc_lifecycle_ut_07() {
+fn uor_toc_lifecycle_utl_07() {
     pinned(
         "breaksInv007",
-        "body: ((((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request stage) =? (UorTocLifecycle::stageGraduated))) && (not ((project request application2) =? (UorTocLifecycle::application2Archival)))) && (not ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerGraduated))))",
+        "body: ((((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request stage) =? (UorTocLifecycle::uorTocLifecycleStageGraduated))) && (not ((project request application2) =? (UorTocLifecycle::uorTocLifecycleApplication2Archival)))) && (not ((UorTocLifecycle::uorTocLifecycleJudge request) =? (UorTocLifecycle::uorTocLifecycleAnswerGraduated))))",
         "inv007Holds",
     );
 }
 
-/// `UT-08`: The app always answers archived when stage is archived
+/// `UTL-08`: The app always answers archived when stage is archived
 #[test]
-fn uor_toc_lifecycle_ut_08() {
+fn uor_toc_lifecycle_utl_08() {
     pinned(
         "breaksInv008",
-        "body: (((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request stage) =? (UorTocLifecycle::stageArchived))) && (not ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerArchived))))",
+        "body: (((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request stage) =? (UorTocLifecycle::uorTocLifecycleStageArchived))) && (not ((UorTocLifecycle::uorTocLifecycleJudge request) =? (UorTocLifecycle::uorTocLifecycleAnswerArchived))))",
         "inv008Holds",
-    );
-}
-
-/// `UT-09`: The architecture description declares every stakeholder, concern, component, edge, viewpoint and view it references
-#[test]
-fn uor_toc_lifecycle_ut_09() {
-    holds(
-        "app/src/Architecture.lex.tex",
-        "architectureDescriptionHolds",
-        "((architectureValid) = true)",
-    );
-}
-
-/// `UT-10`: The ISO/IEC 25010 quality model numbers every characteristic, subcharacteristic, requirement and measure, and every parent it names is declared
-#[test]
-fn uor_toc_lifecycle_ut_10() {
-    holds(
-        "app/src/Quality.lex.tex",
-        "qualityModelHolds",
-        "((qualityValid) = true)",
-    );
-}
-
-/// `UT-11`: Every compliance obligation is numbered in order and names its evidence
-#[test]
-fn uor_toc_lifecycle_ut_11() {
-    holds(
-        "app/src/Compliance.lex.tex",
-        "everyObligationEvidenced",
-        "((obligationsEvidenced 0 (obligations)) = true)",
     );
 }

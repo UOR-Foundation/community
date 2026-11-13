@@ -1,0 +1,192 @@
+\begin{lexlean}{ChaossCollaborationDevelopmentIndex}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: chaossCollaborationDevelopmentIndexAnswerOpen,
+  parameters: [],
+  result: Nat,
+  body: 0
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexAnswerComplete,
+  parameters: [],
+  result: Nat,
+  body: 1
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexAnswerUnmeasured,
+  parameters: [],
+  result: Nat,
+  body: 2
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexAnswerPartial,
+  parameters: [],
+  result: Nat,
+  body: 3
+}
+
+structure{
+  name: ChaossCollaborationDevelopmentIndexRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: admitted, type: Nat}, {name: refused, type: Nat}]
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (chaossCollaborationDevelopmentIndexByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (chaossCollaborationDevelopmentIndexDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (chaossCollaborationDevelopmentIndexByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (chaossCollaborationDevelopmentIndexDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (chaossCollaborationDevelopmentIndexParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexParseAdmitted,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (chaossCollaborationDevelopmentIndexParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (5 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexParseRefused,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (chaossCollaborationDevelopmentIndexParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (5 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (chaossCollaborationDevelopmentIndexByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (chaossCollaborationDevelopmentIndexFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option ChaossCollaborationDevelopmentIndexRequest),
+  body: (let e : Nat := (chaossCollaborationDevelopmentIndexFieldEnd s start (Foundation.Bytes::byteLength s)); (match (chaossCollaborationDevelopmentIndexParseRefused (chaossCollaborationDevelopmentIndexSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [ChaossCollaborationDevelopmentIndexRequest])
+    | Option.some v2 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [ChaossCollaborationDevelopmentIndexRequest] (record ChaossCollaborationDevelopmentIndexRequest {admitted := v1, refused := v2})) else (ctor Option.none [ChaossCollaborationDevelopmentIndexRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option ChaossCollaborationDevelopmentIndexRequest),
+  body: (let e : Nat := (chaossCollaborationDevelopmentIndexFieldEnd s start (Foundation.Bytes::byteLength s)); (match (chaossCollaborationDevelopmentIndexParseAdmitted (chaossCollaborationDevelopmentIndexSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [ChaossCollaborationDevelopmentIndexRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (chaossCollaborationDevelopmentIndexDecodeField2 s (e + 1) v1) else (ctor Option.none [ChaossCollaborationDevelopmentIndexRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexRule1,
+  parameters: [request : ChaossCollaborationDevelopmentIndexRequest],
+  result: Bool,
+  body: (1 <=? (project request refused))
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexRule2,
+  parameters: [request : ChaossCollaborationDevelopmentIndexRequest],
+  result: Bool,
+  body: (5 <=? (project request admitted))
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexRule3,
+  parameters: [request : ChaossCollaborationDevelopmentIndexRequest],
+  result: Bool,
+  body: ((project request admitted) =? 0)
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexJudge,
+  parameters: [request : ChaossCollaborationDevelopmentIndexRequest],
+  result: Nat,
+  body: (if (chaossCollaborationDevelopmentIndexRule1 request) then (chaossCollaborationDevelopmentIndexAnswerOpen) else (if (chaossCollaborationDevelopmentIndexRule2 request) then (chaossCollaborationDevelopmentIndexAnswerComplete) else (if (chaossCollaborationDevelopmentIndexRule3 request) then (chaossCollaborationDevelopmentIndexAnswerUnmeasured) else (chaossCollaborationDevelopmentIndexAnswerPartial))))
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (chaossCollaborationDevelopmentIndexAnswerOpen)) then 0x6f70656e else (if (code =? (chaossCollaborationDevelopmentIndexAnswerComplete)) then 0x636f6d706c657465 else (if (code =? (chaossCollaborationDevelopmentIndexAnswerUnmeasured)) then 0x756e6d65617375726564 else (if (code =? (chaossCollaborationDevelopmentIndexAnswerPartial)) then 0x7061727469616c else 0x696e76616c6964))))
+}
+
+definition{
+  name: chaossCollaborationDevelopmentIndexDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (64 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (chaossCollaborationDevelopmentIndexDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (chaossCollaborationDevelopmentIndexEncodeAnswer (chaossCollaborationDevelopmentIndexJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

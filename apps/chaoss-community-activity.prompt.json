@@ -1,0 +1,182 @@
+{
+  "schema": "prism/prompt/1",
+  "pattern": "decisionTable",
+  "goal": "Tell whether the information need of the CHAOSS metrics model Community Activity is answered for the UOR Foundation community.",
+  "repository": "UOR-Foundation/community",
+  "app": {
+    "name": "chaoss-community-activity",
+    "title": "Community Activity indicator",
+    "purpose": "The ISO/IEC 15939 indicator of the CHAOSS metrics model Community Activity: from how many of its 11 measures have an admitted observation and how many were refused, tell whether its information need is answered, partly answered, unmeasured or an open claim.",
+    "fields": [
+      {
+        "name": "admitted",
+        "kind": "number",
+        "min": 0,
+        "max": 11,
+        "means": "how many of the model's 11 measures have an observation uor-observation-admission permitted: Contributor Count; Updated Issues Count; Recent Releases Count; Updated Since; Code Review Count; Organization Count; Commit Frequency; Issue Comment Frequency; Maintainer Count; Meeting Count; Meeting Attendee Count"
+      },
+      {
+        "name": "refused",
+        "kind": "number",
+        "min": 0,
+        "max": 11,
+        "means": "how many of them had their observation refused"
+      }
+    ],
+    "outcomes": [
+      "open",
+      "complete",
+      "unmeasured",
+      "partial"
+    ],
+    "meanings": {
+      "open": "a base measure was refused, so the information need stays an open claim",
+      "complete": "every one of the 11 measures has an admitted observation, so the information need is answered",
+      "unmeasured": "no base measure has an admitted observation yet",
+      "partial": "some base measures have admitted observations and none was refused"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "refused",
+            "op": ">=",
+            "value": 1
+          }
+        ],
+        "then": "open",
+        "why": "AGENTS.md R2: a refused observation is measured and reported, never restated as an answer; CC-03 carries an unmatched member the same way"
+      },
+      {
+        "when": [
+          {
+            "field": "admitted",
+            "op": ">=",
+            "value": 11
+          }
+        ],
+        "then": "complete",
+        "why": "ISO/IEC 15939 indicator: every base measure of wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/community-activity/definition/community-activity.md (sha256:505814967c8e390e88df1206e774b421b7b259f3f11554862d69324bf3750cc3) has an admitted measurement"
+      },
+      {
+        "when": [
+          {
+            "field": "admitted",
+            "op": "=",
+            "value": 0
+          }
+        ],
+        "then": "unmeasured",
+        "why": "ISO/IEC 15939: an indicator with no base measure measured answers no information need"
+      }
+    ],
+    "otherwise": "partial",
+    "otherwiseWhy": "some base measures are admitted, none refused and some not yet observed",
+    "properties": [
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "refused",
+            "op": ">=",
+            "value": 1
+          }
+        ],
+        "then": "complete",
+        "why": "an information need with a refused base measure is never answered complete"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "admitted",
+            "op": "<",
+            "value": 11
+          }
+        ],
+        "then": "complete",
+        "why": "an information need is answered complete only when every base measure is admitted"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "refused",
+            "op": "=",
+            "value": 0
+          },
+          {
+            "field": "admitted",
+            "op": ">=",
+            "value": 11
+          }
+        ],
+        "then": "complete",
+        "why": "every base measure admitted and none refused answers the information need"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "admitted",
+            "op": ">=",
+            "value": 1
+          },
+          {
+            "field": "refused",
+            "op": "=",
+            "value": 0
+          }
+        ],
+        "then": "unmeasured",
+        "why": "an admitted base measure is never reported unmeasured"
+      }
+    ],
+    "examples": [
+      {
+        "request": "11 0",
+        "response": "complete"
+      },
+      {
+        "request": "10 0",
+        "response": "partial"
+      },
+      {
+        "request": "0 0",
+        "response": "unmeasured"
+      },
+      {
+        "request": "1 1",
+        "response": "open"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Community and Outreach Committee",
+      "text": "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated.",
+      "concerns": [
+        "Correct answers",
+        "Proved guarantees"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "CHAOSS observation admission",
+      "kind": "service",
+      "text": "The uor-observation-admission app, whose permitted observations are the indicator's admitted count."
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Community and Outreach Committee",
+      "steps": [
+        "REQ-001",
+        "REQ-002",
+        "REQ-003",
+        "otherwise"
+      ]
+    }
+  ]
+}

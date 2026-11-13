@@ -1,0 +1,370 @@
+\begin{lexlean}{UorRepoFiles}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: uorRepoFilesTierT1, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoFilesTierT2, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoFilesTierT3, parameters: [], result: Nat, body: 2}
+
+definition{name: uorRepoFilesTierT4, parameters: [], result: Nat, body: 3}
+
+definition{name: uorRepoFilesReadmePresent, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoFilesReadmeMissing, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoFilesLicensePresent, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoFilesLicenseMissing, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoFilesContributingPresent, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoFilesContributingMissing, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoFilesConductPresent, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoFilesConductMissing, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoFilesSecurityPresent, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoFilesSecurityMissing, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoFilesCodeownersPresent, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoFilesCodeownersMissing, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoFilesCiPresent, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoFilesCiMissing, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoFilesAnswerMissingFile, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoFilesAnswerAdvisory, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoFilesAnswerConformant, parameters: [], result: Nat, body: 2}
+
+structure{
+  name: UorRepoFilesRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: tier, type: Nat},
+    {name: readme, type: Nat},
+    {name: license, type: Nat},
+    {name: contributing, type: Nat},
+    {name: conduct, type: Nat},
+    {name: security, type: Nat},
+    {name: codeowners, type: Nat},
+    {name: ci, type: Nat}
+  ]
+}
+
+definition{
+  name: uorRepoFilesByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoFilesDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (uorRepoFilesByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (uorRepoFilesDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorRepoFilesParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (uorRepoFilesByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (uorRepoFilesDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoFilesParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (uorRepoFilesParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoFilesParseTier,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x7431 : Bool) then (ctor Option.some [Nat] (uorRepoFilesTierT1)) else (if (prim equal value 0x7432 : Bool) then (ctor Option.some [Nat] (uorRepoFilesTierT2)) else (if (prim equal value 0x7433 : Bool) then (ctor Option.some [Nat] (uorRepoFilesTierT3)) else (if (prim equal value 0x7434 : Bool) then (ctor Option.some [Nat] (uorRepoFilesTierT4)) else (ctor Option.none [Nat])))))
+}
+
+definition{
+  name: uorRepoFilesParseReadme,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x70726573656e74 : Bool) then (ctor Option.some [Nat] (uorRepoFilesReadmePresent)) else (if (prim equal value 0x6d697373696e67 : Bool) then (ctor Option.some [Nat] (uorRepoFilesReadmeMissing)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoFilesParseLicense,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x70726573656e74 : Bool) then (ctor Option.some [Nat] (uorRepoFilesLicensePresent)) else (if (prim equal value 0x6d697373696e67 : Bool) then (ctor Option.some [Nat] (uorRepoFilesLicenseMissing)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoFilesParseContributing,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x70726573656e74 : Bool) then (ctor Option.some [Nat] (uorRepoFilesContributingPresent)) else (if (prim equal value 0x6d697373696e67 : Bool) then (ctor Option.some [Nat] (uorRepoFilesContributingMissing)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoFilesParseConduct,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x70726573656e74 : Bool) then (ctor Option.some [Nat] (uorRepoFilesConductPresent)) else (if (prim equal value 0x6d697373696e67 : Bool) then (ctor Option.some [Nat] (uorRepoFilesConductMissing)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoFilesParseSecurity,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x70726573656e74 : Bool) then (ctor Option.some [Nat] (uorRepoFilesSecurityPresent)) else (if (prim equal value 0x6d697373696e67 : Bool) then (ctor Option.some [Nat] (uorRepoFilesSecurityMissing)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoFilesParseCodeowners,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x70726573656e74 : Bool) then (ctor Option.some [Nat] (uorRepoFilesCodeownersPresent)) else (if (prim equal value 0x6d697373696e67 : Bool) then (ctor Option.some [Nat] (uorRepoFilesCodeownersMissing)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoFilesParseCi,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x70726573656e74 : Bool) then (ctor Option.some [Nat] (uorRepoFilesCiPresent)) else (if (prim equal value 0x6d697373696e67 : Bool) then (ctor Option.some [Nat] (uorRepoFilesCiMissing)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoFilesSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: uorRepoFilesFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (uorRepoFilesByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (uorRepoFilesFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorRepoFilesDecodeField8,
+  parameters: [
+    s : Bytes,
+    start : Nat,
+    v1 : Nat,
+    v2 : Nat,
+    v3 : Nat,
+    v4 : Nat,
+    v5 : Nat,
+    v6 : Nat,
+    v7 : Nat
+  ],
+  result: (Option UorRepoFilesRequest),
+  body: (let e : Nat := (uorRepoFilesFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoFilesParseCi (uorRepoFilesSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoFilesRequest])
+    | Option.some v8 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [UorRepoFilesRequest] (record UorRepoFilesRequest {tier := v1, readme := v2, license := v3, contributing := v4, conduct := v5, security := v6, codeowners := v7, ci := v8})) else (ctor Option.none [UorRepoFilesRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoFilesDecodeField7,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat, v5 : Nat, v6 : Nat],
+  result: (Option UorRepoFilesRequest),
+  body: (let e : Nat := (uorRepoFilesFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoFilesParseCodeowners (uorRepoFilesSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoFilesRequest])
+    | Option.some v7 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoFilesDecodeField8 s (e + 1) v1 v2 v3 v4 v5 v6 v7) else (ctor Option.none [UorRepoFilesRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoFilesDecodeField6,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat, v5 : Nat],
+  result: (Option UorRepoFilesRequest),
+  body: (let e : Nat := (uorRepoFilesFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoFilesParseSecurity (uorRepoFilesSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoFilesRequest])
+    | Option.some v6 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoFilesDecodeField7 s (e + 1) v1 v2 v3 v4 v5 v6) else (ctor Option.none [UorRepoFilesRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoFilesDecodeField5,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat],
+  result: (Option UorRepoFilesRequest),
+  body: (let e : Nat := (uorRepoFilesFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoFilesParseConduct (uorRepoFilesSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoFilesRequest])
+    | Option.some v5 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoFilesDecodeField6 s (e + 1) v1 v2 v3 v4 v5) else (ctor Option.none [UorRepoFilesRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoFilesDecodeField4,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat],
+  result: (Option UorRepoFilesRequest),
+  body: (let e : Nat := (uorRepoFilesFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoFilesParseContributing (uorRepoFilesSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoFilesRequest])
+    | Option.some v4 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoFilesDecodeField5 s (e + 1) v1 v2 v3 v4) else (ctor Option.none [UorRepoFilesRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoFilesDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option UorRepoFilesRequest),
+  body: (let e : Nat := (uorRepoFilesFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoFilesParseLicense (uorRepoFilesSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoFilesRequest])
+    | Option.some v3 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoFilesDecodeField4 s (e + 1) v1 v2 v3) else (ctor Option.none [UorRepoFilesRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoFilesDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option UorRepoFilesRequest),
+  body: (let e : Nat := (uorRepoFilesFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoFilesParseReadme (uorRepoFilesSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoFilesRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoFilesDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [UorRepoFilesRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoFilesDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option UorRepoFilesRequest),
+  body: (let e : Nat := (uorRepoFilesFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoFilesParseTier (uorRepoFilesSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoFilesRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoFilesDecodeField2 s (e + 1) v1) else (ctor Option.none [UorRepoFilesRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoFilesRule1,
+  parameters: [request : UorRepoFilesRequest],
+  result: Bool,
+  body: ((project request readme) =? (uorRepoFilesReadmeMissing))
+}
+
+definition{
+  name: uorRepoFilesRule2,
+  parameters: [request : UorRepoFilesRequest],
+  result: Bool,
+  body: ((project request license) =? (uorRepoFilesLicenseMissing))
+}
+
+definition{
+  name: uorRepoFilesRule3,
+  parameters: [request : UorRepoFilesRequest],
+  result: Bool,
+  body: (((not ((project request tier) =? (uorRepoFilesTierT3))) && (not ((project request tier) =? (uorRepoFilesTierT4)))) && ((project request contributing) =? (uorRepoFilesContributingMissing)))
+}
+
+definition{
+  name: uorRepoFilesRule4,
+  parameters: [request : UorRepoFilesRequest],
+  result: Bool,
+  body: (((not ((project request tier) =? (uorRepoFilesTierT3))) && (not ((project request tier) =? (uorRepoFilesTierT4)))) && ((project request conduct) =? (uorRepoFilesConductMissing)))
+}
+
+definition{
+  name: uorRepoFilesRule5,
+  parameters: [request : UorRepoFilesRequest],
+  result: Bool,
+  body: (((not ((project request tier) =? (uorRepoFilesTierT3))) && (not ((project request tier) =? (uorRepoFilesTierT4)))) && ((project request security) =? (uorRepoFilesSecurityMissing)))
+}
+
+definition{
+  name: uorRepoFilesRule6,
+  parameters: [request : UorRepoFilesRequest],
+  result: Bool,
+  body: (((not ((project request tier) =? (uorRepoFilesTierT3))) && (not ((project request tier) =? (uorRepoFilesTierT4)))) && ((project request codeowners) =? (uorRepoFilesCodeownersMissing)))
+}
+
+definition{
+  name: uorRepoFilesRule7,
+  parameters: [request : UorRepoFilesRequest],
+  result: Bool,
+  body: (((not ((project request tier) =? (uorRepoFilesTierT3))) && (not ((project request tier) =? (uorRepoFilesTierT4)))) && ((project request ci) =? (uorRepoFilesCiMissing)))
+}
+
+definition{
+  name: uorRepoFilesRule8,
+  parameters: [request : UorRepoFilesRequest],
+  result: Bool,
+  body: (((project request tier) =? (uorRepoFilesTierT3)) && ((project request contributing) =? (uorRepoFilesContributingMissing)))
+}
+
+definition{
+  name: uorRepoFilesRule9,
+  parameters: [request : UorRepoFilesRequest],
+  result: Bool,
+  body: (((project request tier) =? (uorRepoFilesTierT3)) && ((project request conduct) =? (uorRepoFilesConductMissing)))
+}
+
+definition{
+  name: uorRepoFilesRule10,
+  parameters: [request : UorRepoFilesRequest],
+  result: Bool,
+  body: (((project request tier) =? (uorRepoFilesTierT3)) && ((project request ci) =? (uorRepoFilesCiMissing)))
+}
+
+definition{
+  name: uorRepoFilesJudge,
+  parameters: [request : UorRepoFilesRequest],
+  result: Nat,
+  body: (if (uorRepoFilesRule1 request) then (uorRepoFilesAnswerMissingFile) else (if (uorRepoFilesRule2 request) then (uorRepoFilesAnswerMissingFile) else (if (uorRepoFilesRule3 request) then (uorRepoFilesAnswerMissingFile) else (if (uorRepoFilesRule4 request) then (uorRepoFilesAnswerMissingFile) else (if (uorRepoFilesRule5 request) then (uorRepoFilesAnswerMissingFile) else (if (uorRepoFilesRule6 request) then (uorRepoFilesAnswerMissingFile) else (if (uorRepoFilesRule7 request) then (uorRepoFilesAnswerMissingFile) else (if (uorRepoFilesRule8 request) then (uorRepoFilesAnswerAdvisory) else (if (uorRepoFilesRule9 request) then (uorRepoFilesAnswerAdvisory) else (if (uorRepoFilesRule10 request) then (uorRepoFilesAnswerAdvisory) else (uorRepoFilesAnswerConformant)))))))))))
+}
+
+definition{
+  name: uorRepoFilesEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (uorRepoFilesAnswerMissingFile)) then 0x6d697373696e672d66696c65 else (if (code =? (uorRepoFilesAnswerAdvisory)) then 0x61647669736f7279 else (if (code =? (uorRepoFilesAnswerConformant)) then 0x636f6e666f726d616e74 else 0x696e76616c6964)))
+}
+
+definition{
+  name: uorRepoFilesDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (208 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (uorRepoFilesDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (uorRepoFilesEncodeAnswer (uorRepoFilesJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}
