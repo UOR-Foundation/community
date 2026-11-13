@@ -1,6 +1,6 @@
 //! The `ecosystem` suite: one test per scenario in `features/suites/ecosystem.feature`.
 //!
-//! `ecosystemValidHolds` is checked by the Lean kernel when `just vv` runs
+//! `registerValidHolds` is checked by the Lean kernel when `just vv` runs
 //! `prismpm verify` on `app/`. These tests hold fixed what it is about, and that
 //! the catalog is the register's: a repository, digest or open claim in
 //! `ecosystem/register.json` missing from `app/src/Ecosystem.lex.tex` fails the gate.
@@ -37,27 +37,28 @@ fn values(json: &str, key: &str) -> Vec<String> {
 fn ecosystem_ec_01() {
     let catalog = read("app/src/Ecosystem.lex.tex");
     let start = catalog
-        .find("\n  name: ecosystemValidHolds,\n")
-        .expect("ecosystemValidHolds is declared");
+        .find("\n  name: registerValidHolds,\n")
+        .expect("registerValidHolds is declared");
     let theorem = &catalog[start..start + catalog[start..].find("\n}").expect("closed")];
     assert!(
         theorem.contains(&format!(
-            "statement: (({M}::registerValid (snapshot) (repositories) (openClaims)) = true),"
+            "statement: (({M}::registerValid (release) (repositories) (openClaims) (tocApplications)) = true),"
         )),
-        "ecosystemValidHolds is about the whole register:\n{theorem}"
+        "registerValidHolds is about the whole register:\n{theorem}"
     );
     assert!(
         theorem.contains("proof: decide{}"),
-        "ecosystemValidHolds is proved by decide"
+        "registerValidHolds is proved by decide"
     );
     let model = read("app/src/Foundation/Ecosystem/V1/Model.lex.tex");
     for part in [
-        "((repositoryTotal repositories) =? (project snapshot repositoryCount))",
-        "((conformantTotal repositories) =? (project snapshot conformantCount))",
-        "((claimTotal claims) =? (project snapshot openClaimCount))",
-        "(repositoriesNumbered 0 repositories)",
-        "(repositoriesAccounted claims repositories)",
-        "(claimsNumbered 0 (repositoryTotal repositories) claims)",
+        "((repositoriesTotal repositories) =? (project release repositoriesCount))",
+        "((openClaimsTotal openClaims) =? (project release openClaimsCount))",
+        "((tocApplicationsTotal tocApplications) =? (project release tocApplicationsCount))",
+        "(repositoriesValid 0 repositories)",
+        "(openClaimsValid 0 (repositoriesTotal repositories) openClaims)",
+        "((conformantTotal repositories) =? (project release conformantCount))",
+        "(repositoriesAccounted openClaims repositories)",
         "(agree (tierRecorded (project repository tier)) ((project repository tierTags) =? 1))",
         "(agree (statusRecorded (project repository status)) ((project repository statusTags) =? 1))",
         "((isConformant (project repository outcome)) || (claimed (project repository index) claims))",
@@ -134,9 +135,20 @@ fn ecosystem_ec_03() {
     let declared = catalog
         .matches(&format!("(record {M}::OpenClaim {{"))
         .count();
-    assert_eq!(declared, refusals.len(), "every refusal is one OpenClaim");
+    let applications = catalog
+        .matches(&format!("(record {M}::TocApplication {{"))
+        .count();
+    assert_eq!(
+        declared, failing,
+        "every failing repository is one OpenClaim"
+    );
+    assert_eq!(
+        applications, toc,
+        "every TOC application is one TocApplication"
+    );
     assert!(
-        catalog.contains(&format!("openClaimCount := {}", refusals.len())),
-        "the snapshot counts every open claim"
+        catalog.contains(&format!("openClaimsCount := {failing}"))
+            && catalog.contains(&format!("tocApplicationsCount := {toc}")),
+        "the release counts every open claim"
     );
 }

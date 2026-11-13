@@ -9,8 +9,8 @@ Feature: ecosystem
   @EC-01 @build
   Scenario: The ecosystem register is valid: every public UOR Foundation repository is numbered and counted against the snapshot, its tier and status are recorded exactly when it carries one tag of that kind, and every repository the repo-standards app does not find conformant is named by an open claim
     Given the catalog in app/src/Ecosystem.lex.tex
-    When the Lean kernel checks ecosystemValidHolds during prismpm verify
-    Then registerValid holds of the snapshot, its repositories and its open claims
+    When the Lean kernel checks registerValidHolds in the Ecosystem catalog during prismpm verify
+    Then registerValid holds of the release, its repositories, its open claims and its TOC applications
 
   @EC-02 @build
   Scenario: The ecosystem catalog declares every repository of ecosystem/register.json, the snapshot digest, and the digests of the pinned norms and decision app it was projected from

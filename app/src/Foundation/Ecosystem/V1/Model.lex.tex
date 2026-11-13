@@ -66,54 +66,20 @@ inductive{
   ]
 }
 
-definition{
-  name: tierRecorded,
-  parameters: [value : Tier],
-  result: Bool,
-  body: (match value
-    | Tier.tier1Core => true
-    | Tier.tier2Impl => true
-    | Tier.tier3Presentation => true
-    | Tier.tier4Experimental => true
-    | Tier.unrecorded => false)
-}
-
-definition{
-  name: statusRecorded,
-  parameters: [value : Status],
-  result: Bool,
-  body: (match value
-    | Status.active => true
-    | Status.maintenance => true
-    | Status.deprecated => true
-    | Status.archived => true
-    | Status.unrecorded => false)
-}
-
-definition{
-  name: isConformant,
-  parameters: [value : StandardsOutcome],
-  result: Bool,
-  body: (match value
-    | StandardsOutcome.untagged => false
-    | StandardsOutcome.unversioned => false
-    | StandardsOutcome.conformant => true
-    | StandardsOutcome.undecided => false)
-}
-
 structure{
-  name: Snapshot,
+  name: Release,
   type_parameters: [],
   parameters: [],
   fields: [
+    {name: repositoriesCount, type: Nat},
+    {name: openClaimsCount, type: Nat},
+    {name: tocApplicationsCount, type: Nat},
     {name: query, type: String},
     {name: snapshotDigest, type: String},
     {name: norms, type: String},
     {name: app, type: String},
     {name: appDigest, type: String},
-    {name: repositoryCount, type: Nat},
-    {name: conformantCount, type: Nat},
-    {name: openClaimCount, type: Nat}
+    {name: conformantCount, type: Nat}
   ]
 }
 
@@ -151,34 +117,110 @@ structure{
   ]
 }
 
+structure{
+  name: TocApplication,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: number, type: Nat},
+    {name: title, type: String},
+    {name: stage, type: TocStage},
+    {name: reason, type: String}
+  ]
+}
+
 definition{
-  name: repositoriesNumbered,
-  parameters: [position : Nat, repositories : (List Repository)],
+  name: repositoriesValid,
+  parameters: [position : Nat, values : (List Repository)],
   result: Bool,
-  body: (match repositories
+  body: (match values
     | List.nil => true
-    | List.cons repository rest => (((project repository index) =? position) && (repositoriesNumbered (position + 1) rest))),
-  recursive_argument: repositories
+    | List.cons repository rest => (((project repository index) =? position) && (repositoriesValid (position + 1) rest))),
+  recursive_argument: values
 }
 
 definition{
-  name: repositoryTotal,
-  parameters: [repositories : (List Repository)],
+  name: repositoriesTotal,
+  parameters: [values : (List Repository)],
   result: Nat,
-  body: (match repositories
+  body: (match values
     | List.nil => 0
-    | List.cons repository rest => (1 + (repositoryTotal rest))),
-  recursive_argument: repositories
+    | List.cons repository rest => (1 + (repositoriesTotal rest))),
+  recursive_argument: values
 }
 
 definition{
-  name: conformantTotal,
-  parameters: [repositories : (List Repository)],
+  name: openClaimsValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons openClaim rest => (((project openClaim index) =? position) && (((project openClaim repository) <? repositoriesCount) && (openClaimsValid (position + 1) repositoriesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsTotal,
+  parameters: [values : (List OpenClaim)],
   result: Nat,
-  body: (match repositories
+  body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: tocApplicationsValid,
+  parameters: [position : Nat, values : (List TocApplication)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons tocApplication rest => (((project tocApplication index) =? position) && (tocApplicationsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: tocApplicationsTotal,
+  parameters: [values : (List TocApplication)],
+  result: Nat,
+  body: (match values
     | List.nil => 0
-    | List.cons repository rest => ((if (isConformant (project repository outcome)) then 1 else 0) + (conformantTotal rest))),
-  recursive_argument: repositories
+    | List.cons tocApplication rest => (1 + (tocApplicationsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: tierRecorded,
+  parameters: [value : Tier],
+  result: Bool,
+  body: (match value
+    | Tier.tier1Core => true
+    | Tier.tier2Impl => true
+    | Tier.tier3Presentation => true
+    | Tier.tier4Experimental => true
+    | Tier.unrecorded => false)
+}
+
+definition{
+  name: statusRecorded,
+  parameters: [value : Status],
+  result: Bool,
+  body: (match value
+    | Status.active => true
+    | Status.maintenance => true
+    | Status.deprecated => true
+    | Status.archived => true
+    | Status.unrecorded => false)
+}
+
+definition{
+  name: isConformant,
+  parameters: [value : StandardsOutcome],
+  result: Bool,
+  body: (match value
+    | StandardsOutcome.untagged => false
+    | StandardsOutcome.unversioned => false
+    | StandardsOutcome.conformant => true
+    | StandardsOutcome.undecided => false)
 }
 
 definition{
@@ -196,6 +238,16 @@ definition{
 }
 
 definition{
+  name: conformantTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => ((if (isConformant (project repository outcome)) then 1 else 0) + (conformantTotal rest))),
+  recursive_argument: values
+}
+
+definition{
   name: claimed,
   parameters: [position : Nat, claims : (List OpenClaim)],
   result: Bool,
@@ -207,37 +259,24 @@ definition{
 
 definition{
   name: repositoriesAccounted,
-  parameters: [claims : (List OpenClaim), repositories : (List Repository)],
+  parameters: [claims : (List OpenClaim), values : (List Repository)],
   result: Bool,
-  body: (match repositories
+  body: (match values
     | List.nil => true
     | List.cons repository rest => (((tagsRead repository) && ((isConformant (project repository outcome)) || (claimed (project repository index) claims))) && (repositoriesAccounted claims rest))),
-  recursive_argument: repositories
-}
-
-definition{
-  name: claimsNumbered,
-  parameters: [position : Nat, bound : Nat, claims : (List OpenClaim)],
-  result: Bool,
-  body: (match claims
-    | List.nil => true
-    | List.cons claim rest => (((project claim index) =? position) && (((project claim repository) <=? bound) && (claimsNumbered (position + 1) bound rest)))),
-  recursive_argument: claims
-}
-
-definition{
-  name: claimTotal,
-  parameters: [claims : (List OpenClaim)],
-  result: Nat,
-  body: (match claims | List.nil => 0 | List.cons claim rest => (1 + (claimTotal rest))),
-  recursive_argument: claims
+  recursive_argument: values
 }
 
 definition{
   name: registerValid,
-  parameters: [snapshot : Snapshot, repositories : (List Repository), claims : (List OpenClaim)],
+  parameters: [
+    release : Release,
+    repositories : (List Repository),
+    openClaims : (List OpenClaim),
+    tocApplications : (List TocApplication)
+  ],
   result: Bool,
-  body: (((repositoryTotal repositories) =? (project snapshot repositoryCount)) && (((conformantTotal repositories) =? (project snapshot conformantCount)) && (((claimTotal claims) =? (project snapshot openClaimCount)) && ((repositoriesNumbered 0 repositories) && ((repositoriesAccounted claims repositories) && (claimsNumbered 0 (repositoryTotal repositories) claims))))))
+  body: (((repositoriesTotal repositories) =? (project release repositoriesCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && (((tocApplicationsTotal tocApplications) =? (project release tocApplicationsCount)) && ((repositoriesValid 0 repositories) && ((openClaimsValid 0 (repositoriesTotal repositories) openClaims) && ((tocApplicationsValid 0 tocApplications) && (((conformantTotal repositories) =? (project release conformantCount)) && (repositoriesAccounted openClaims repositories))))))))
 }
 \end{semanticmodule}
 \end{lexlean}
