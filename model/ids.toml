@@ -22,13 +22,91 @@
 spec = "template/1"
 
 [[id]]
-id = "TC-01"
-level = "build"
-suite = "contract"
-statement = "The checker answers conformant exactly when every universal policy file's observed digest equals its locked digest"
-
-[[id]]
 id = "FR-01"
 level = "build"
 suite = "frame"
 statement = "With a working worker, the page loads and verifies the archive only in that worker before using its identities or guest"
+
+[[id]]
+id = "UT-01"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when quorum is unmet and stage is incubation"
+
+[[id]]
+id = "UT-02"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when vote is majority and stage is incubation"
+
+[[id]]
+id = "UT-03"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when comment is below 14 and stage is incubation"
+
+[[id]]
+id = "UT-04"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers incubation when stage is proposed"
+
+[[id]]
+id = "UT-05"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when stage is sandbox"
+
+[[id]]
+id = "UT-06"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers sandbox when evidence is partial and stage is proposed"
+
+[[id]]
+id = "UT-07"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app always answers graduated when stage is graduated and application is not archival"
+
+[[id]]
+id = "UT-08"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app always answers archived when stage is archived"
+
+[[id]]
+id = "UT-09"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The architecture description declares every stakeholder, concern, component, edge, viewpoint and view it references"
+
+[[id]]
+id = "UT-10"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The ISO/IEC 25010 quality model numbers every characteristic, subcharacteristic, requirement and measure, and every parent it names is declared"
+
+[[id]]
+id = "UT-11"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "Every compliance obligation is numbered in order and names its evidence"
+
+[[id]]
+id = "CC-01"
+level = "build"
+suite = "chaoss"
+statement = "The CHAOSS register is valid: every released metric and metrics model is numbered and counted against the release, every model names only declared metrics or its own measures, and every open claim names a declared model"
+
+[[id]]
+id = "CC-02"
+level = "build"
+suite = "chaoss"
+statement = "The CHAOSS catalog declares every metric and metrics model of chaoss/register.json with the content digest of its pinned working-group source"
+
+[[id]]
+id = "CC-03"
+level = "open"
+suite = "chaoss"
+statement = "A released CHAOSS item the projector cannot match to a definition is carried as an open claim, never dropped or guessed"

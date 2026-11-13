@@ -18,17 +18,35 @@ The three honesty levels (R2):
 `cargo xtask audit-limits` fails if any code path returns an error the
 model does not sanction.
 
-## contract
+## chaoss
 
 | ID | Level | Statement |
 | --- | --- | --- |
-| `TC-01` | `build` | The checker answers conformant exactly when every universal policy file's observed digest equals its locked digest |
+| `CC-01` | `build` | The CHAOSS register is valid: every released metric and metrics model is numbered and counted against the release, every model names only declared metrics or its own measures, and every open claim names a declared model |
+| `CC-02` | `build` | The CHAOSS catalog declares every metric and metrics model of chaoss/register.json with the content digest of its pinned working-group source |
+| `CC-03` | `open` | A released CHAOSS item the projector cannot match to a definition is carried as an open claim, never dropped or guessed |
 
 ## frame
 
 | ID | Level | Statement |
 | --- | --- | --- |
 | `FR-01` | `build` | With a working worker, the page loads and verifies the archive only in that worker before using its identities or guest |
+
+## uor_toc_lifecycle
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `UT-01` | `build` | The app never answers graduated when quorum is unmet and stage is incubation |
+| `UT-02` | `build` | The app never answers graduated when vote is majority and stage is incubation |
+| `UT-03` | `build` | The app never answers graduated when comment is below 14 and stage is incubation |
+| `UT-04` | `build` | The app never answers incubation when stage is proposed |
+| `UT-05` | `build` | The app never answers graduated when stage is sandbox |
+| `UT-06` | `build` | The app never answers sandbox when evidence is partial and stage is proposed |
+| `UT-07` | `build` | The app always answers graduated when stage is graduated and application is not archival |
+| `UT-08` | `build` | The app always answers archived when stage is archived |
+| `UT-09` | `build` | The architecture description declares every stakeholder, concern, component, edge, viewpoint and view it references |
+| `UT-10` | `build` | The ISO/IEC 25010 quality model numbers every characteristic, subcharacteristic, requirement and measure, and every parent it names is declared |
+| `UT-11` | `build` | Every compliance obligation is numbered in order and names its evidence |
 
 ## Cited authorities
 

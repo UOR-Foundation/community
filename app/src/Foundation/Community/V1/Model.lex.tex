@@ -1,0 +1,172 @@
+\begin{lexlean}{Foundation.Community.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\title{Community health model (CHAOSS)}
+\begin{semanticmodule}
+inductive{
+  name: WorkingGroup,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: aiAlignment, fields: []},
+    {name: dei, fields: []},
+    {name: evolution, fields: []},
+    {name: metricsDevelopment, fields: []},
+    {name: risk, fields: []},
+    {name: value, fields: []},
+    {name: metricsModels, fields: []}
+  ]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: sitemapDigest, type: String},
+    {name: sources, type: String},
+    {name: metricCount, type: Nat},
+    {name: modelCount, type: Nat},
+    {name: openClaimCount, type: Nat}
+  ]
+}
+
+structure{
+  name: Metric,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: slug, type: String},
+    {name: title, type: String},
+    {name: question, type: String},
+    {name: workingGroup, type: WorkingGroup},
+    {name: focusArea, type: String},
+    {name: source, type: String},
+    {name: sourceDigest, type: String}
+  ]
+}
+
+structure{
+  name: MetricModel,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: slug, type: String},
+    {name: title, type: String},
+    {name: workingGroup, type: WorkingGroup},
+    {name: members, type: (List Nat)},
+    {name: localMeasures, type: Nat},
+    {name: source, type: String},
+    {name: sourceDigest, type: String}
+  ]
+}
+
+structure{
+  name: OpenClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: model, type: Nat},
+    {name: name, type: String},
+    {name: reason, type: String}
+  ]
+}
+
+definition{
+  name: allBelow,
+  parameters: [bound : Nat, values : (List Nat)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons value rest => ((value <? bound) && (allBelow bound rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: natCount,
+  parameters: [values : (List Nat)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons value rest => (1 + (natCount rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: metricsNumbered,
+  parameters: [position : Nat, metrics : (List Metric)],
+  result: Bool,
+  body: (match metrics
+    | List.nil => true
+    | List.cons metric rest => (((project metric index) =? position) && (metricsNumbered (position + 1) rest))),
+  recursive_argument: metrics
+}
+
+definition{
+  name: metricTotal,
+  parameters: [metrics : (List Metric)],
+  result: Nat,
+  body: (match metrics | List.nil => 0 | List.cons metric rest => (1 + (metricTotal rest))),
+  recursive_argument: metrics
+}
+
+definition{
+  name: modelsNumbered,
+  parameters: [position : Nat, models : (List MetricModel)],
+  result: Bool,
+  body: (match models
+    | List.nil => true
+    | List.cons model rest => (((project model index) =? position) && (modelsNumbered (position + 1) rest))),
+  recursive_argument: models
+}
+
+definition{
+  name: modelTotal,
+  parameters: [models : (List MetricModel)],
+  result: Nat,
+  body: (match models | List.nil => 0 | List.cons model rest => (1 + (modelTotal rest))),
+  recursive_argument: models
+}
+
+definition{
+  name: modelsWellFormed,
+  parameters: [metricCount : Nat, models : (List MetricModel)],
+  result: Bool,
+  body: (match models
+    | List.nil => true
+    | List.cons model rest => ((allBelow metricCount (project model members)) && ((0 <? ((natCount (project model members)) + (project model localMeasures))) && (modelsWellFormed metricCount rest)))),
+  recursive_argument: models
+}
+
+definition{
+  name: claimsNumbered,
+  parameters: [position : Nat, modelCount : Nat, claims : (List OpenClaim)],
+  result: Bool,
+  body: (match claims
+    | List.nil => true
+    | List.cons claim rest => (((project claim index) =? position) && (((project claim model) <? modelCount) && (claimsNumbered (position + 1) modelCount rest)))),
+  recursive_argument: claims
+}
+
+definition{
+  name: claimTotal,
+  parameters: [claims : (List OpenClaim)],
+  result: Nat,
+  body: (match claims | List.nil => 0 | List.cons claim rest => (1 + (claimTotal rest))),
+  recursive_argument: claims
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    metrics : (List Metric),
+    models : (List MetricModel),
+    claims : (List OpenClaim)
+  ],
+  result: Bool,
+  body: (((metricTotal metrics) =? (project release metricCount)) && (((modelTotal models) =? (project release modelCount)) && (((claimTotal claims) =? (project release openClaimCount)) && ((metricsNumbered 0 metrics) && ((modelsNumbered 0 models) && ((modelsWellFormed (metricTotal metrics) models) && (claimsNumbered 0 (modelTotal models) claims)))))))
+}
+\end{semanticmodule}
+\end{lexlean}

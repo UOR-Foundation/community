@@ -1,0 +1,374 @@
+\begin{lexlean}{Quality}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\useglossary{prism.qual@1.0.0}
+\importmodule{Foundation.Qual}
+\title{quality measure}
+\begin{semanticmodule}
+structure{
+  name: Named,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: name, type: String}, {name: text, type: String}]
+}
+
+definition{
+  name: characteristicFunctionalSuitability,
+  parameters: [],
+  result: Foundation.Qual::ProductQualityCharacteristic,
+  body: (record Foundation.Qual::ProductQualityCharacteristic {index := 0})
+}
+
+definition{
+  name: characteristicPerformanceEfficiency,
+  parameters: [],
+  result: Foundation.Qual::ProductQualityCharacteristic,
+  body: (record Foundation.Qual::ProductQualityCharacteristic {index := 1})
+}
+
+definition{
+  name: characteristicReliability,
+  parameters: [],
+  result: Foundation.Qual::ProductQualityCharacteristic,
+  body: (record Foundation.Qual::ProductQualityCharacteristic {index := 2})
+}
+
+definition{
+  name: characteristicSecurity,
+  parameters: [],
+  result: Foundation.Qual::ProductQualityCharacteristic,
+  body: (record Foundation.Qual::ProductQualityCharacteristic {index := 3})
+}
+
+definition{
+  name: subcharacteristicAccountability,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 0, characteristicIndex := 3})
+}
+
+definition{
+  name: subcharacteristicFaultlessness,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 1, characteristicIndex := 2})
+}
+
+definition{
+  name: subcharacteristicFunctionalCompleteness,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 2, characteristicIndex := 0})
+}
+
+definition{
+  name: subcharacteristicFunctionalCorrectness,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 3, characteristicIndex := 0})
+}
+
+definition{
+  name: subcharacteristicIntegrity,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 4, characteristicIndex := 3})
+}
+
+definition{
+  name: subcharacteristicResourceUtilization,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 5, characteristicIndex := 1})
+}
+
+definition{
+  name: subcharacteristicTimeBehaviour,
+  parameters: [],
+  result: Foundation.Qual::QualitySubcharacteristic,
+  body: (record Foundation.Qual::QualitySubcharacteristic {index := 6, characteristicIndex := 1})
+}
+
+definition{
+  name: requirementBoundedAllocation,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 0, subcharacteristicIndex := 5})
+}
+
+definition{
+  name: requirementBoundedRequest,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 1, subcharacteristicIndex := 6})
+}
+
+definition{
+  name: requirementEveryMoveIsACommitteeAct,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 2, subcharacteristicIndex := 0})
+}
+
+definition{
+  name: requirementEveryPropertyProved,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 3, subcharacteristicIndex := 4})
+}
+
+definition{
+  name: requirementEveryRequestAnswered,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 4, subcharacteristicIndex := 2})
+}
+
+definition{
+  name: requirementEveryStageDecisionModeled,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 5, subcharacteristicIndex := 2})
+}
+
+definition{
+  name: requirementEveryVectorReplays,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 6, subcharacteristicIndex := 1})
+}
+
+definition{
+  name: requirementExamplesAnsweredAsStated,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 7, subcharacteristicIndex := 3})
+}
+
+definition{
+  name: measureExampleMismatches,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 0, requirementIndex := 7, threshold := 0})
+}
+
+definition{
+  name: measureFailedVectors,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 1, requirementIndex := 6, threshold := 0})
+}
+
+definition{
+  name: measureGuestAllocationBytes,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 2, requirementIndex := 0, threshold := 320})
+}
+
+definition{
+  name: measureRequestBytesRead,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 3, requirementIndex := 1, threshold := 160})
+}
+
+definition{
+  name: measureTransitionsWithoutAnAct,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 4, requirementIndex := 2, threshold := 0})
+}
+
+definition{
+  name: measureUnansweredRequests,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 5, requirementIndex := 4, threshold := 0})
+}
+
+definition{
+  name: measureUnmodeledStageDecisions,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 6, requirementIndex := 5, threshold := 0})
+}
+
+definition{
+  name: measureUnprovedProperties,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 7, requirementIndex := 3, threshold := 0})
+}
+
+definition{
+  name: characteristicNames,
+  parameters: [],
+  result: (List Named),
+  body: (cons (record Named {index := 0, name := "Functional suitability", text := "Functional suitability, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (cons (record Named {index := 1, name := "Performance efficiency", text := "Performance efficiency, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (cons (record Named {index := 2, name := "Reliability", text := "Reliability, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (cons (record Named {index := 3, name := "Security", text := "Security, as ISO/IEC 25010:2023 defines it, for TOC project lifecycle."}) (nil Named)))))
+}
+
+definition{
+  name: subcharacteristicNames,
+  parameters: [],
+  result: (List Named),
+  body: (cons (record Named {index := 0, name := "Accountability", text := "Security: Accountability."}) (cons (record Named {index := 1, name := "Faultlessness", text := "Reliability: Faultlessness."}) (cons (record Named {index := 2, name := "Functional completeness", text := "Functional suitability: Functional completeness."}) (cons (record Named {index := 3, name := "Functional correctness", text := "Functional suitability: Functional correctness."}) (cons (record Named {index := 4, name := "Integrity", text := "Security: Integrity."}) (cons (record Named {index := 5, name := "Resource utilization", text := "Performance efficiency: Resource utilization."}) (cons (record Named {index := 6, name := "Time behaviour", text := "Performance efficiency: Time behaviour."}) (nil Named))))))))
+}
+
+definition{
+  name: requirementNames,
+  parameters: [],
+  result: (List Named),
+  body: (cons (record Named {index := 0, name := "Bounded allocation", text := "The guest allocates at most 320 bytes for one request."}) (cons (record Named {index := 1, name := "Bounded request", text := "A request over 160 bytes is refused before any field is read."}) (cons (record Named {index := 2, name := "Every move is a committee act", text := "No transition fires without a quorum and a carried vote."}) (cons (record Named {index := 3, name := "Every property proved", text := "All 8 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 4, name := "Every request answered", text := "Every request gets an answer: a rule, proposed otherwise, or invalid."}) (cons (record Named {index := 5, name := "Every stage decision modeled", text := "Each Decision row of the toc/README.md stage table is one rule of the machine."}) (cons (record Named {index := 6, name := "Every vector replays", text := "All 56 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 7, name := "Examples answered as stated", text := "Every one of the 15 examples of the spec is answered as it states."}) (nil Named)))))))))
+}
+
+definition{
+  name: measureNames,
+  parameters: [],
+  result: (List Named),
+  body: (cons (record Named {index := 0, name := "Example mismatches", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 1, name := "Failed vectors", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 2, name := "Guest allocation bytes", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 3, name := "Request bytes read", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 4, name := "Transitions without an act", text := "Rules that change the stage without quorum met and a carried vote."}) (cons (record Named {index := 5, name := "Unanswered requests", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 6, name := "Unmodeled stage decisions", text := "Stage table rows with no rule."}) (cons (record Named {index := 7, name := "Unproved properties", text := "Properties of the spec without a checked theorem."}) (nil Named)))))))))
+}
+
+definition{
+  name: subcharacteristicRecords,
+  parameters: [],
+  result: (List Foundation.Qual::QualitySubcharacteristic),
+  body: (cons (subcharacteristicAccountability) (cons (subcharacteristicFaultlessness) (cons (subcharacteristicFunctionalCompleteness) (cons (subcharacteristicFunctionalCorrectness) (cons (subcharacteristicIntegrity) (cons (subcharacteristicResourceUtilization) (cons (subcharacteristicTimeBehaviour) (nil Foundation.Qual::QualitySubcharacteristic))))))))
+}
+
+definition{
+  name: requirementRecords,
+  parameters: [],
+  result: (List Foundation.Qual::QualityRequirement),
+  body: (cons (requirementBoundedAllocation) (cons (requirementBoundedRequest) (cons (requirementEveryMoveIsACommitteeAct) (cons (requirementEveryPropertyProved) (cons (requirementEveryRequestAnswered) (cons (requirementEveryStageDecisionModeled) (cons (requirementEveryVectorReplays) (cons (requirementExamplesAnsweredAsStated) (nil Foundation.Qual::QualityRequirement)))))))))
+}
+
+definition{
+  name: measureRecords,
+  parameters: [],
+  result: (List Foundation.Qual::QualityMeasure),
+  body: (cons (measureExampleMismatches) (cons (measureFailedVectors) (cons (measureGuestAllocationBytes) (cons (measureRequestBytesRead) (cons (measureTransitionsWithoutAnAct) (cons (measureUnansweredRequests) (cons (measureUnmodeledStageDecisions) (cons (measureUnprovedProperties) (nil Foundation.Qual::QualityMeasure)))))))))
+}
+
+definition{
+  name: namesNumbered,
+  parameters: [position : Nat, names : (List Named)],
+  result: Bool,
+  body: (match names
+    | List.nil => true
+    | List.cons item rest => (((project item index) =? position) && (namesNumbered (position + 1) rest))),
+  recursive_argument: names
+}
+
+definition{
+  name: parentsKnown,
+  parameters: [count : Nat, records : (List Foundation.Qual::QualitySubcharacteristic)],
+  result: Bool,
+  body: (match records
+    | List.nil => true
+    | List.cons item rest => (((project item characteristicIndex) <? count) && (parentsKnown count rest))),
+  recursive_argument: records
+}
+
+definition{
+  name: requirementsKnown,
+  parameters: [count : Nat, records : (List Foundation.Qual::QualityRequirement)],
+  result: Bool,
+  body: (match records
+    | List.nil => true
+    | List.cons item rest => (((project item subcharacteristicIndex) <? count) && (requirementsKnown count rest))),
+  recursive_argument: records
+}
+
+definition{
+  name: measuresKnown,
+  parameters: [count : Nat, records : (List Foundation.Qual::QualityMeasure)],
+  result: Bool,
+  body: (match records
+    | List.nil => true
+    | List.cons item rest => (((project item requirementIndex) <? count) && (measuresKnown count rest))),
+  recursive_argument: records
+}
+
+definition{
+  name: thresholdOf,
+  parameters: [wanted : Nat, records : (List Foundation.Qual::QualityMeasure)],
+  result: Nat,
+  body: (match records
+    | List.nil => 0
+    | List.cons head rest => (if ((project head index) =? wanted) then (project head threshold) else (thresholdOf wanted rest))),
+  recursive_argument: records
+}
+
+definition{
+  name: qualityValid,
+  parameters: [],
+  result: Bool,
+  body: ((namesNumbered 0 (characteristicNames)) && ((namesNumbered 0 (subcharacteristicNames)) && ((namesNumbered 0 (requirementNames)) && ((namesNumbered 0 (measureNames)) && ((parentsKnown 4 (subcharacteristicRecords)) && ((requirementsKnown 7 (requirementRecords)) && (measuresKnown 8 (measureRecords))))))))
+}
+
+theorem{
+  name: qualityModelHolds,
+  parameters: [],
+  statement: ((qualityValid) = true),
+  proof: decide{}
+}
+
+theorem{
+  name: measureExampleMismatchesThreshold,
+  parameters: [],
+  statement: ((thresholdOf 0 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureFailedVectorsThreshold,
+  parameters: [],
+  statement: ((thresholdOf 1 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureGuestAllocationBytesThreshold,
+  parameters: [],
+  statement: ((thresholdOf 2 (measureRecords)) = 320),
+  proof: decide{}
+}
+
+theorem{
+  name: measureRequestBytesReadThreshold,
+  parameters: [],
+  statement: ((thresholdOf 3 (measureRecords)) = 160),
+  proof: decide{}
+}
+
+theorem{
+  name: measureTransitionsWithoutAnActThreshold,
+  parameters: [],
+  statement: ((thresholdOf 4 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUnansweredRequestsThreshold,
+  parameters: [],
+  statement: ((thresholdOf 5 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUnmodeledStageDecisionsThreshold,
+  parameters: [],
+  statement: ((thresholdOf 6 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUnprovedPropertiesThreshold,
+  parameters: [],
+  statement: ((thresholdOf 7 (measureRecords)) = 0),
+  proof: decide{}
+}
+\end{semanticmodule}
+\end{lexlean}
