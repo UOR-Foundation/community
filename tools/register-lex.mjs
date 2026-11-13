@@ -55,6 +55,8 @@ export function typesModule(decl) {
   const struct = (name, fields) => `structure{\n  name: ${name},\n  type_parameters: [],\n  parameters: [],\n${bracket('  fields: ', fields.map(([n, t]) => `{name: ${n}, type: ${typeOf(t)}}`))}\n}\n`;
   out.push(struct('Release', [...kinds.map((k) => [countOf(k), 'Nat']), ...release]));
   for (const k of kinds) out.push(struct(k.name, [['index', 'Nat'], ...k.fields]));
+  // The register's own definitions come before the kind validators, so a kind's checks may call them.
+  out.push(...definitions);
   for (const k of kinds) {
     const refs = [...new Set(k.fields.filter(([, t]) => t.ref).map(([, t]) => t.ref))];
     for (const r of refs) if (!byName.has(r)) throw new Error(`${k.name} refers to the undeclared kind ${r}`);
@@ -70,7 +72,6 @@ export function typesModule(decl) {
       match('values', [['List.nil', 'true'], [`List.cons ${v} rest`, and([...per, recur])]]), 'values'));
     out.push(def(`${camel(k.list)}Total`, [`values : (List ${k.name})`], 'Nat', match('values', [['List.nil', '0'], [`List.cons ${v} rest`, `(1 + (${camel(k.list)}Total rest))`]]), 'values'));
   }
-  out.push(...definitions);
   const params = ['release : Release', ...kinds.map((k) => `${camel(k.list)} : (List ${k.name})`)];
   const whole = and([
     ...kinds.map((k) => `((${camel(k.list)}Total ${camel(k.list)}) =? (project release ${countOf(k)}))`),
