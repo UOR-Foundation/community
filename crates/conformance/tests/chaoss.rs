@@ -95,3 +95,110 @@ fn chaoss_cc_03() {
         "the release counts every open claim"
     );
 }
+
+/// The value of every `"key": <number>` in `json`, in order.
+fn numbers(json: &str, key: &str) -> Vec<usize> {
+    let needle = format!("\"{key}\": ");
+    json.match_indices(&needle)
+        .filter_map(|(at, _)| {
+            let rest = &json[at + needle.len()..];
+            let end = rest
+                .find(|c: char| !c.is_ascii_digit())
+                .unwrap_or(rest.len());
+            rest[..end].parse().ok()
+        })
+        .collect()
+}
+
+/// `CC-04`: Every CHAOSS metric and metrics model has a complete ISO/IEC 15939 mapping
+#[test]
+fn chaoss_cc_04() {
+    let measures = read("app/src/Measures.lex.tex");
+    let start = measures
+        .find("\n  name: measuresValidHolds,\n")
+        .expect("measuresValidHolds is declared");
+    let theorem = &measures[start..start + measures[start..].find("\n}").expect("closed")];
+    assert!(
+        theorem.contains("(Foundation.Community.V1.Measurement::mappingValid (project (Chaoss::release) metricCount) (project (Chaoss::release) modelCount) (summary) (items) (needs) (concepts))"),
+        "measuresValidHolds is about every item of the CHAOSS release:\n{theorem}"
+    );
+    assert!(
+        theorem.contains("proof: decide{}"),
+        "measuresValidHolds is proved by decide"
+    );
+    let facet = read("app/src/Foundation/Community/V1/Measurement.lex.tex");
+    for part in [
+        "((itemTotal items) =? (metricCount + modelCount))",
+        "(itemsPlanned 0 metricCount items)",
+        "(position =? 7)",
+        "(position =? 6)",
+        "(conceptsNumbered 0 (needTotal needs) concepts)",
+    ] {
+        assert!(facet.contains(part), "mappingValid still checks {part}");
+    }
+    // Every item is the register's, in its order, and every stated element cites a digest.
+    let register = read("chaoss/register.json");
+    let mapping = read("chaoss/measurement.json");
+    let slugs = values(&register, "slug");
+    let mapped = values(&mapping, "slug");
+    let released = slugs.len() - values(&register, "refusal").len();
+    assert_eq!(
+        &mapped[..],
+        &slugs[..released],
+        "the mapping lists every metric and model in register order"
+    );
+    for slug in &mapped {
+        assert!(
+            measures.contains(&format!("slug := \"{slug}\"")),
+            "{slug} is mapped"
+        );
+    }
+    let digests = values(&mapping, "digest");
+    let stated = numbers(&mapping, "stated")[0];
+    assert_eq!(digests.len(), stated, "every stated element has a digest");
+    for digest in &digests {
+        assert!(
+            digest.len() == 64 && digest.bytes().all(|b| b.is_ascii_hexdigit()),
+            "{digest} is a sha256"
+        );
+        assert!(
+            measures.contains(&format!("evidence := \"sha256:{digest}\"")),
+            "the digest {digest} is declared"
+        );
+    }
+    assert!(
+        measures.contains(&format!("statedCount := {stated}")),
+        "the summary counts every stated element"
+    );
+}
+
+/// `CC-05`: An element CHAOSS does not carry is an open claim with its reason
+#[test]
+fn chaoss_cc_05() {
+    let mapping = read("chaoss/measurement.json");
+    let measures = read("app/src/Measures.lex.tex");
+    let reasons = values(&mapping, "reason");
+    let open = numbers(&mapping, "open")[0];
+    assert_eq!(reasons.len(), open, "every open element names its reason");
+    for reason in &reasons {
+        assert!(
+            [
+                "no-template-section",
+                "section-absent",
+                "section-ambiguous",
+                "section-empty"
+            ]
+            .contains(&reason.as_str()),
+            "{reason} is a typed refusal"
+        );
+    }
+    assert_eq!(
+        measures.matches("stated := false").count(),
+        open,
+        "every open element is a Mapping that is not stated"
+    );
+    assert!(
+        measures.contains(&format!("openCount := {open}")),
+        "the summary counts every open element"
+    );
+}

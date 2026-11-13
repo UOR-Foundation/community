@@ -25,6 +25,8 @@ model does not sanction.
 | `CC-01` | `build` | The CHAOSS register is valid: every released metric and metrics model is numbered and counted against the release, every model names only declared metrics or its own measures, and every open claim names a declared model |
 | `CC-02` | `build` | The CHAOSS catalog declares every metric and metrics model of chaoss/register.json with the content digest of its pinned working-group source |
 | `CC-03` | `open` | A released CHAOSS item the projector cannot match to a definition is carried as an open claim, never dropped or guessed |
+| `CC-04` | `build` | Every CHAOSS metric and metrics model has a complete ISO/IEC 15939 mapping: each element of its measurement information model is either stated from a CHAOSS template section cited by digest or carried as a typed open claim |
+| `CC-05` | `open` | An ISO/IEC 15939 element the CHAOSS templates do not carry, or a definition omits, is an open claim with its reason, never inferred from prose |
 
 ## frame
 
