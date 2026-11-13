@@ -1,0 +1,220 @@
+\begin{lexlean}{Features}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{UorTocLifecycle}
+\importmodule{Architecture}
+\importmodule{Foundation.Arch}
+\title{feature}
+\begin{semanticmodule}
+definition{
+  name: acceptINV001,
+  parameters: [],
+  result: String,
+  body: "UorTocLifecycleProofs::inv001Holds"
+}
+
+definition{
+  name: acceptINV002,
+  parameters: [],
+  result: String,
+  body: "UorTocLifecycleProofs::inv002Holds"
+}
+
+definition{
+  name: acceptINV003,
+  parameters: [],
+  result: String,
+  body: "UorTocLifecycleProofs::inv003Holds"
+}
+
+definition{
+  name: acceptINV004,
+  parameters: [],
+  result: String,
+  body: "UorTocLifecycleProofs::inv004Holds"
+}
+
+definition{
+  name: acceptINV005,
+  parameters: [],
+  result: String,
+  body: "UorTocLifecycleProofs::inv005Holds"
+}
+
+definition{
+  name: acceptINV006,
+  parameters: [],
+  result: String,
+  body: "UorTocLifecycleProofs::inv006Holds"
+}
+
+definition{
+  name: acceptINV007,
+  parameters: [],
+  result: String,
+  body: "UorTocLifecycleProofs::inv007Holds"
+}
+
+definition{
+  name: acceptINV008,
+  parameters: [],
+  result: String,
+  body: "UorTocLifecycleProofs::inv008Holds"
+}
+
+definition{
+  name: featureRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When stage is archived, the answer is archived.", calls := (cons "UorTocLifecycle::rule1" (cons "UorTocLifecycle::judge" (nil String))), acceptance := (cons "UorTocLifecycle::application" (nil String))})
+}
+
+definition{
+  name: featureRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When stage is proposed and application is sandbox and quorum is met and vote is not none and vote is not rejected and evidence is complete, the answer is sandbox.", calls := (cons "UorTocLifecycle::rule2" (cons "UorTocLifecycle::judge" (nil String))), acceptance := (cons "UorTocLifecycle::application" (nil String))})
+}
+
+definition{
+  name: featureRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When stage is sandbox and application is incubation and quorum is met and vote is not none and vote is not rejected and evidence is complete, the answer is incubation.", calls := (cons "UorTocLifecycle::rule3" (cons "UorTocLifecycle::judge" (nil String))), acceptance := (cons "UorTocLifecycle::application" (nil String))})
+}
+
+definition{
+  name: featureRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When stage is incubation and application is graduation and quorum is met and vote is twothirds and evidence is complete and comment is at least 14, the answer is graduated.", calls := (cons "UorTocLifecycle::rule4" (cons "UorTocLifecycle::judge" (nil String))), acceptance := (cons "UorTocLifecycle::application" (nil String))})
+}
+
+definition{
+  name: featureRule5,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When stage is not proposed and application is archival and quorum is met and vote is not none and vote is not rejected and evidence is complete, the answer is archived.", calls := (cons "UorTocLifecycle::rule5" (cons "UorTocLifecycle::judge" (nil String))), acceptance := (cons "UorTocLifecycle::application" (nil String))})
+}
+
+definition{
+  name: featureRule6,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When stage is sandbox, the answer is sandbox.", calls := (cons "UorTocLifecycle::rule6" (cons "UorTocLifecycle::judge" (nil String))), acceptance := (cons "UorTocLifecycle::application" (nil String))})
+}
+
+definition{
+  name: featureRule7,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When stage is incubation, the answer is incubation.", calls := (cons "UorTocLifecycle::rule7" (cons "UorTocLifecycle::judge" (nil String))), acceptance := (cons "UorTocLifecycle::application" (nil String))})
+}
+
+definition{
+  name: featureRule8,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When stage is graduated, the answer is graduated.", calls := (cons "UorTocLifecycle::rule8" (cons "UorTocLifecycle::judge" (nil String))), acceptance := (cons "UorTocLifecycle::application" (nil String))})
+}
+
+definition{
+  name: featureOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is proposed.", calls := (cons "UorTocLifecycle::judge" (nil String)), acceptance := (cons "UorTocLifecycle::application" (nil String))})
+}
+
+definition{
+  name: featureRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not stage, application, quorum, vote, evidence, comment in order, separated by single spaces, or is over 160 bytes, is answered invalid.", calls := (cons "UorTocLifecycle::dispatch" (cons "UorTocLifecycle::decodeField1" (nil String))), acceptance := (cons "UorTocLifecycle::application" (nil String))})
+}
+
+definition{
+  name: featureINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers graduated when quorum is unmet and stage is incubation.", calls := (cons "UorTocLifecycle::judge" (nil String)), acceptance := (cons "Features::acceptINV001" (nil String))})
+}
+
+definition{
+  name: featureINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers graduated when vote is majority and stage is incubation.", calls := (cons "UorTocLifecycle::judge" (nil String)), acceptance := (cons "Features::acceptINV002" (nil String))})
+}
+
+definition{
+  name: featureINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers graduated when comment is below 14 and stage is incubation.", calls := (cons "UorTocLifecycle::judge" (nil String)), acceptance := (cons "Features::acceptINV003" (nil String))})
+}
+
+definition{
+  name: featureINV004,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers incubation when stage is proposed.", calls := (cons "UorTocLifecycle::judge" (nil String)), acceptance := (cons "Features::acceptINV004" (nil String))})
+}
+
+definition{
+  name: featureINV005,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers graduated when stage is sandbox.", calls := (cons "UorTocLifecycle::judge" (nil String)), acceptance := (cons "Features::acceptINV005" (nil String))})
+}
+
+definition{
+  name: featureINV006,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers sandbox when evidence is partial and stage is proposed.", calls := (cons "UorTocLifecycle::judge" (nil String)), acceptance := (cons "Features::acceptINV006" (nil String))})
+}
+
+definition{
+  name: featureINV007,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers graduated when stage is graduated and application is not archival.", calls := (cons "UorTocLifecycle::judge" (nil String)), acceptance := (cons "Features::acceptINV007" (nil String))})
+}
+
+definition{
+  name: featureINV008,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers archived when stage is archived.", calls := (cons "UorTocLifecycle::judge" (nil String)), acceptance := (cons "Features::acceptINV008" (nil String))})
+}
+
+definition{
+  name: journeyCommunityAndOutreachCommittee,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderCommunityAndOutreachCommittee", steps := (cons "Features::featureRule1" (cons "Features::featureINV007" (nil String)))})
+}
+
+definition{
+  name: journeyProjectApplicant,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderProjectApplicant", steps := (cons "Features::featureOtherwise" (cons "Features::featureRule2" (cons "Features::featureRule3" (cons "Features::featureRule4" (nil String)))))})
+}
+
+definition{
+  name: journeyTOCMember,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderTOCMember", steps := (cons "Features::featureINV001" (cons "Features::featureINV002" (cons "Features::featureINV003" (cons "Features::featureRule5" (cons "Features::featureRefuseMalformed" (nil String))))))})
+}
+
+definition{
+  name: journeyVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureRefuseMalformed" (cons "Features::featureINV001" (cons "Features::featureINV002" (cons "Features::featureINV003" (cons "Features::featureINV004" (cons "Features::featureINV005" (cons "Features::featureINV006" (cons "Features::featureINV007" (cons "Features::featureINV008" (nil String))))))))))})
+}
+\end{semanticmodule}
+\end{lexlean}

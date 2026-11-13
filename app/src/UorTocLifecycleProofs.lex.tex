@@ -1,0 +1,448 @@
+\begin{lexlean}{UorTocLifecycleProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{UorTocLifecycle}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : UorTocLifecycle::Request],
+  result: Bool,
+  body: ((((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request quorum) =? (UorTocLifecycle::quorumUnmet))) && ((project request stage) =? (UorTocLifecycle::stageIncubation))) && ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerGraduated)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : UorTocLifecycle::Request],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorTocLifecycle::answerArchived,
+      UorTocLifecycle::answerGraduated,
+      UorTocLifecycle::answerIncubation,
+      UorTocLifecycle::answerProposed,
+      UorTocLifecycle::answerSandbox,
+      UorTocLifecycle::application2Archival,
+      UorTocLifecycle::application2Graduation,
+      UorTocLifecycle::application2Incubation,
+      UorTocLifecycle::application2Sandbox,
+      UorTocLifecycle::evidenceComplete,
+      UorTocLifecycle::evidencePartial,
+      UorTocLifecycle::judge,
+      UorTocLifecycle::quorumMet,
+      UorTocLifecycle::quorumUnmet,
+      UorTocLifecycle::rule1,
+      UorTocLifecycle::rule2,
+      UorTocLifecycle::rule3,
+      UorTocLifecycle::rule4,
+      UorTocLifecycle::rule5,
+      UorTocLifecycle::rule6,
+      UorTocLifecycle::rule7,
+      UorTocLifecycle::rule8,
+      UorTocLifecycle::stageArchived,
+      UorTocLifecycle::stageGraduated,
+      UorTocLifecycle::stageIncubation,
+      UorTocLifecycle::stageProposed,
+      UorTocLifecycle::stageSandbox,
+      UorTocLifecycle::stepArchived,
+      UorTocLifecycle::stepGraduated,
+      UorTocLifecycle::stepIncubation,
+      UorTocLifecycle::stepProposed,
+      UorTocLifecycle::stepSandbox,
+      UorTocLifecycle::voteMajority,
+      UorTocLifecycle::voteNone,
+      UorTocLifecycle::voteRejected,
+      UorTocLifecycle::voteTwothirds,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : UorTocLifecycle::Request],
+  result: Bool,
+  body: ((((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request vote) =? (UorTocLifecycle::voteMajority))) && ((project request stage) =? (UorTocLifecycle::stageIncubation))) && ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerGraduated)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : UorTocLifecycle::Request],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorTocLifecycle::answerArchived,
+      UorTocLifecycle::answerGraduated,
+      UorTocLifecycle::answerIncubation,
+      UorTocLifecycle::answerProposed,
+      UorTocLifecycle::answerSandbox,
+      UorTocLifecycle::application2Archival,
+      UorTocLifecycle::application2Graduation,
+      UorTocLifecycle::application2Incubation,
+      UorTocLifecycle::application2Sandbox,
+      UorTocLifecycle::evidenceComplete,
+      UorTocLifecycle::evidencePartial,
+      UorTocLifecycle::judge,
+      UorTocLifecycle::quorumMet,
+      UorTocLifecycle::quorumUnmet,
+      UorTocLifecycle::rule1,
+      UorTocLifecycle::rule2,
+      UorTocLifecycle::rule3,
+      UorTocLifecycle::rule4,
+      UorTocLifecycle::rule5,
+      UorTocLifecycle::rule6,
+      UorTocLifecycle::rule7,
+      UorTocLifecycle::rule8,
+      UorTocLifecycle::stageArchived,
+      UorTocLifecycle::stageGraduated,
+      UorTocLifecycle::stageIncubation,
+      UorTocLifecycle::stageProposed,
+      UorTocLifecycle::stageSandbox,
+      UorTocLifecycle::stepArchived,
+      UorTocLifecycle::stepGraduated,
+      UorTocLifecycle::stepIncubation,
+      UorTocLifecycle::stepProposed,
+      UorTocLifecycle::stepSandbox,
+      UorTocLifecycle::voteMajority,
+      UorTocLifecycle::voteNone,
+      UorTocLifecycle::voteRejected,
+      UorTocLifecycle::voteTwothirds,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : UorTocLifecycle::Request],
+  result: Bool,
+  body: ((((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request comment) <? 14)) && ((project request stage) =? (UorTocLifecycle::stageIncubation))) && ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerGraduated)))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : UorTocLifecycle::Request],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorTocLifecycle::answerArchived,
+      UorTocLifecycle::answerGraduated,
+      UorTocLifecycle::answerIncubation,
+      UorTocLifecycle::answerProposed,
+      UorTocLifecycle::answerSandbox,
+      UorTocLifecycle::application2Archival,
+      UorTocLifecycle::application2Graduation,
+      UorTocLifecycle::application2Incubation,
+      UorTocLifecycle::application2Sandbox,
+      UorTocLifecycle::evidenceComplete,
+      UorTocLifecycle::evidencePartial,
+      UorTocLifecycle::judge,
+      UorTocLifecycle::quorumMet,
+      UorTocLifecycle::quorumUnmet,
+      UorTocLifecycle::rule1,
+      UorTocLifecycle::rule2,
+      UorTocLifecycle::rule3,
+      UorTocLifecycle::rule4,
+      UorTocLifecycle::rule5,
+      UorTocLifecycle::rule6,
+      UorTocLifecycle::rule7,
+      UorTocLifecycle::rule8,
+      UorTocLifecycle::stageArchived,
+      UorTocLifecycle::stageGraduated,
+      UorTocLifecycle::stageIncubation,
+      UorTocLifecycle::stageProposed,
+      UorTocLifecycle::stageSandbox,
+      UorTocLifecycle::stepArchived,
+      UorTocLifecycle::stepGraduated,
+      UorTocLifecycle::stepIncubation,
+      UorTocLifecycle::stepProposed,
+      UorTocLifecycle::stepSandbox,
+      UorTocLifecycle::voteMajority,
+      UorTocLifecycle::voteNone,
+      UorTocLifecycle::voteRejected,
+      UorTocLifecycle::voteTwothirds,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : UorTocLifecycle::Request],
+  result: Bool,
+  body: (((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request stage) =? (UorTocLifecycle::stageProposed))) && ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerIncubation)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : UorTocLifecycle::Request],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorTocLifecycle::answerArchived,
+      UorTocLifecycle::answerGraduated,
+      UorTocLifecycle::answerIncubation,
+      UorTocLifecycle::answerProposed,
+      UorTocLifecycle::answerSandbox,
+      UorTocLifecycle::application2Archival,
+      UorTocLifecycle::application2Graduation,
+      UorTocLifecycle::application2Incubation,
+      UorTocLifecycle::application2Sandbox,
+      UorTocLifecycle::evidenceComplete,
+      UorTocLifecycle::evidencePartial,
+      UorTocLifecycle::judge,
+      UorTocLifecycle::quorumMet,
+      UorTocLifecycle::quorumUnmet,
+      UorTocLifecycle::rule1,
+      UorTocLifecycle::rule2,
+      UorTocLifecycle::rule3,
+      UorTocLifecycle::rule4,
+      UorTocLifecycle::rule5,
+      UorTocLifecycle::rule6,
+      UorTocLifecycle::rule7,
+      UorTocLifecycle::rule8,
+      UorTocLifecycle::stageArchived,
+      UorTocLifecycle::stageGraduated,
+      UorTocLifecycle::stageIncubation,
+      UorTocLifecycle::stageProposed,
+      UorTocLifecycle::stageSandbox,
+      UorTocLifecycle::stepArchived,
+      UorTocLifecycle::stepGraduated,
+      UorTocLifecycle::stepIncubation,
+      UorTocLifecycle::stepProposed,
+      UorTocLifecycle::stepSandbox,
+      UorTocLifecycle::voteMajority,
+      UorTocLifecycle::voteNone,
+      UorTocLifecycle::voteRejected,
+      UorTocLifecycle::voteTwothirds,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv005,
+  parameters: [request : UorTocLifecycle::Request],
+  result: Bool,
+  body: (((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request stage) =? (UorTocLifecycle::stageSandbox))) && ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerGraduated)))
+}
+
+theorem{
+  name: inv005Holds,
+  parameters: [request : UorTocLifecycle::Request],
+  statement: ((breaksInv005 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorTocLifecycle::answerArchived,
+      UorTocLifecycle::answerGraduated,
+      UorTocLifecycle::answerIncubation,
+      UorTocLifecycle::answerProposed,
+      UorTocLifecycle::answerSandbox,
+      UorTocLifecycle::application2Archival,
+      UorTocLifecycle::application2Graduation,
+      UorTocLifecycle::application2Incubation,
+      UorTocLifecycle::application2Sandbox,
+      UorTocLifecycle::evidenceComplete,
+      UorTocLifecycle::evidencePartial,
+      UorTocLifecycle::judge,
+      UorTocLifecycle::quorumMet,
+      UorTocLifecycle::quorumUnmet,
+      UorTocLifecycle::rule1,
+      UorTocLifecycle::rule2,
+      UorTocLifecycle::rule3,
+      UorTocLifecycle::rule4,
+      UorTocLifecycle::rule5,
+      UorTocLifecycle::rule6,
+      UorTocLifecycle::rule7,
+      UorTocLifecycle::rule8,
+      UorTocLifecycle::stageArchived,
+      UorTocLifecycle::stageGraduated,
+      UorTocLifecycle::stageIncubation,
+      UorTocLifecycle::stageProposed,
+      UorTocLifecycle::stageSandbox,
+      UorTocLifecycle::stepArchived,
+      UorTocLifecycle::stepGraduated,
+      UorTocLifecycle::stepIncubation,
+      UorTocLifecycle::stepProposed,
+      UorTocLifecycle::stepSandbox,
+      UorTocLifecycle::voteMajority,
+      UorTocLifecycle::voteNone,
+      UorTocLifecycle::voteRejected,
+      UorTocLifecycle::voteTwothirds,
+      breaksInv005
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv006,
+  parameters: [request : UorTocLifecycle::Request],
+  result: Bool,
+  body: ((((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request evidence) =? (UorTocLifecycle::evidencePartial))) && ((project request stage) =? (UorTocLifecycle::stageProposed))) && ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerSandbox)))
+}
+
+theorem{
+  name: inv006Holds,
+  parameters: [request : UorTocLifecycle::Request],
+  statement: ((breaksInv006 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorTocLifecycle::answerArchived,
+      UorTocLifecycle::answerGraduated,
+      UorTocLifecycle::answerIncubation,
+      UorTocLifecycle::answerProposed,
+      UorTocLifecycle::answerSandbox,
+      UorTocLifecycle::application2Archival,
+      UorTocLifecycle::application2Graduation,
+      UorTocLifecycle::application2Incubation,
+      UorTocLifecycle::application2Sandbox,
+      UorTocLifecycle::evidenceComplete,
+      UorTocLifecycle::evidencePartial,
+      UorTocLifecycle::judge,
+      UorTocLifecycle::quorumMet,
+      UorTocLifecycle::quorumUnmet,
+      UorTocLifecycle::rule1,
+      UorTocLifecycle::rule2,
+      UorTocLifecycle::rule3,
+      UorTocLifecycle::rule4,
+      UorTocLifecycle::rule5,
+      UorTocLifecycle::rule6,
+      UorTocLifecycle::rule7,
+      UorTocLifecycle::rule8,
+      UorTocLifecycle::stageArchived,
+      UorTocLifecycle::stageGraduated,
+      UorTocLifecycle::stageIncubation,
+      UorTocLifecycle::stageProposed,
+      UorTocLifecycle::stageSandbox,
+      UorTocLifecycle::stepArchived,
+      UorTocLifecycle::stepGraduated,
+      UorTocLifecycle::stepIncubation,
+      UorTocLifecycle::stepProposed,
+      UorTocLifecycle::stepSandbox,
+      UorTocLifecycle::voteMajority,
+      UorTocLifecycle::voteNone,
+      UorTocLifecycle::voteRejected,
+      UorTocLifecycle::voteTwothirds,
+      breaksInv006
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv007,
+  parameters: [request : UorTocLifecycle::Request],
+  result: Bool,
+  body: ((((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request stage) =? (UorTocLifecycle::stageGraduated))) && (not ((project request application2) =? (UorTocLifecycle::application2Archival)))) && (not ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerGraduated))))
+}
+
+theorem{
+  name: inv007Holds,
+  parameters: [request : UorTocLifecycle::Request],
+  statement: ((breaksInv007 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorTocLifecycle::answerArchived,
+      UorTocLifecycle::answerGraduated,
+      UorTocLifecycle::answerIncubation,
+      UorTocLifecycle::answerProposed,
+      UorTocLifecycle::answerSandbox,
+      UorTocLifecycle::application2Archival,
+      UorTocLifecycle::application2Graduation,
+      UorTocLifecycle::application2Incubation,
+      UorTocLifecycle::application2Sandbox,
+      UorTocLifecycle::evidenceComplete,
+      UorTocLifecycle::evidencePartial,
+      UorTocLifecycle::judge,
+      UorTocLifecycle::quorumMet,
+      UorTocLifecycle::quorumUnmet,
+      UorTocLifecycle::rule1,
+      UorTocLifecycle::rule2,
+      UorTocLifecycle::rule3,
+      UorTocLifecycle::rule4,
+      UorTocLifecycle::rule5,
+      UorTocLifecycle::rule6,
+      UorTocLifecycle::rule7,
+      UorTocLifecycle::rule8,
+      UorTocLifecycle::stageArchived,
+      UorTocLifecycle::stageGraduated,
+      UorTocLifecycle::stageIncubation,
+      UorTocLifecycle::stageProposed,
+      UorTocLifecycle::stageSandbox,
+      UorTocLifecycle::stepArchived,
+      UorTocLifecycle::stepGraduated,
+      UorTocLifecycle::stepIncubation,
+      UorTocLifecycle::stepProposed,
+      UorTocLifecycle::stepSandbox,
+      UorTocLifecycle::voteMajority,
+      UorTocLifecycle::voteNone,
+      UorTocLifecycle::voteRejected,
+      UorTocLifecycle::voteTwothirds,
+      breaksInv007
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv008,
+  parameters: [request : UorTocLifecycle::Request],
+  result: Bool,
+  body: (((((((((project request stage) <? 5) && ((project request application2) <? 4)) && ((project request quorum) <? 2)) && ((project request vote) <? 4)) && ((project request evidence) <? 2)) && ((project request comment) <=? 365)) && ((project request stage) =? (UorTocLifecycle::stageArchived))) && (not ((UorTocLifecycle::judge request) =? (UorTocLifecycle::answerArchived))))
+}
+
+theorem{
+  name: inv008Holds,
+  parameters: [request : UorTocLifecycle::Request],
+  statement: ((breaksInv008 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorTocLifecycle::answerArchived,
+      UorTocLifecycle::answerGraduated,
+      UorTocLifecycle::answerIncubation,
+      UorTocLifecycle::answerProposed,
+      UorTocLifecycle::answerSandbox,
+      UorTocLifecycle::application2Archival,
+      UorTocLifecycle::application2Graduation,
+      UorTocLifecycle::application2Incubation,
+      UorTocLifecycle::application2Sandbox,
+      UorTocLifecycle::evidenceComplete,
+      UorTocLifecycle::evidencePartial,
+      UorTocLifecycle::judge,
+      UorTocLifecycle::quorumMet,
+      UorTocLifecycle::quorumUnmet,
+      UorTocLifecycle::rule1,
+      UorTocLifecycle::rule2,
+      UorTocLifecycle::rule3,
+      UorTocLifecycle::rule4,
+      UorTocLifecycle::rule5,
+      UorTocLifecycle::rule6,
+      UorTocLifecycle::rule7,
+      UorTocLifecycle::rule8,
+      UorTocLifecycle::stageArchived,
+      UorTocLifecycle::stageGraduated,
+      UorTocLifecycle::stageIncubation,
+      UorTocLifecycle::stageProposed,
+      UorTocLifecycle::stageSandbox,
+      UorTocLifecycle::stepArchived,
+      UorTocLifecycle::stepGraduated,
+      UorTocLifecycle::stepIncubation,
+      UorTocLifecycle::stepProposed,
+      UorTocLifecycle::stepSandbox,
+      UorTocLifecycle::voteMajority,
+      UorTocLifecycle::voteNone,
+      UorTocLifecycle::voteRejected,
+      UorTocLifecycle::voteTwothirds,
+      breaksInv008
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

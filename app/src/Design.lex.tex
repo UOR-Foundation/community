@@ -1,0 +1,800 @@
+\begin{lexlean}{Design}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Architecture}
+\importmodule{Foundation.Arch}
+\title{design view}
+\begin{semanticmodule}
+definition{
+  name: processSendRequest,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentBrowser"})
+}
+
+definition{
+  name: processDecide,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: processParseRequest,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: processJudge,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: processEncodeAnswer,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: processBuildAndVerify,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentPrismBuild"})
+}
+
+definition{
+  name: processRule1,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: processRule2,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: processRule3,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: processRule4,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: processRule5,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: processRule6,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: processRule7,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: processRule8,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: processOtherwise,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: stateIdle,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: stateDeciding,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: stateRefused,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: stateAnsweredProposed,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: stateAnsweredSandbox,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: stateAnsweredIncubation,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: stateAnsweredGraduated,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: stateAnsweredArchived,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: stateMachineProposed,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: stateMachineSandbox,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: stateMachineIncubation,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: stateMachineGraduated,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: stateMachineArchived,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: viewOpmDecide,
+  parameters: [],
+  result: Foundation.Arch::DesignView,
+  body: (record Foundation.Arch::DesignView {title := "Deciding a TOC project lifecycle request", viewpoint := "Architecture::viewpointCommunityAndOutreachCommitteeCorrectAnswers", diagram := (ctor Foundation.Arch::DesignDiagram.opmObjectProcess)})
+}
+
+definition{
+  name: viewUmlComponents,
+  parameters: [],
+  result: Foundation.Arch::DesignView,
+  body: (record Foundation.Arch::DesignView {title := "Components of TOC project lifecycle", viewpoint := "Architecture::viewpointVerifierIntegrityOfThePublishedApp", diagram := (ctor Foundation.Arch::DesignDiagram.umlComponent)})
+}
+
+definition{
+  name: viewUmlRequest,
+  parameters: [],
+  result: Foundation.Arch::DesignView,
+  body: (record Foundation.Arch::DesignView {title := "Answering a TOC project lifecycle request", viewpoint := "Architecture::viewpointCommunityAndOutreachCommitteeCorrectAnswers", diagram := (ctor Foundation.Arch::DesignDiagram.umlSequence)})
+}
+
+definition{
+  name: viewUmlStates,
+  parameters: [],
+  result: Foundation.Arch::DesignView,
+  body: (record Foundation.Arch::DesignView {title := "States of the TOC project lifecycle guest", viewpoint := "Architecture::viewpointTOCMemberRefusedMalformedRequests", diagram := (ctor Foundation.Arch::DesignDiagram.umlStateMachine)})
+}
+
+definition{
+  name: viewUmlMachine,
+  parameters: [],
+  result: Foundation.Arch::DesignView,
+  body: (record Foundation.Arch::DesignView {title := "The TOC project lifecycle state machine", viewpoint := "Architecture::viewpointCommunityAndOutreachCommitteeCorrectAnswers", diagram := (ctor Foundation.Arch::DesignDiagram.umlStateMachine)})
+}
+
+definition{
+  name: opmBrowser,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.object), subject := "Architecture::componentBrowser"})
+}
+
+definition{
+  name: opmGuest,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.object), subject := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: opmDecide,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.process), subject := "Design::processDecide"})
+}
+
+definition{
+  name: opmParseRequest,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.process), subject := "Design::processParseRequest"})
+}
+
+definition{
+  name: opmJudge,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.process), subject := "Design::processJudge"})
+}
+
+definition{
+  name: opmEncodeAnswer,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.process), subject := "Design::processEncodeAnswer"})
+}
+
+definition{
+  name: opmGuestIdle,
+  parameters: [],
+  result: Foundation.Arch::OpmState,
+  body: (record Foundation.Arch::OpmState {view := "Design::viewOpmDecide", thing := "Architecture::componentTOCProjectLifecycleGuest", state := "Design::stateIdle"})
+}
+
+definition{
+  name: opmGuestDeciding,
+  parameters: [],
+  result: Foundation.Arch::OpmState,
+  body: (record Foundation.Arch::OpmState {view := "Design::viewOpmDecide", thing := "Architecture::componentTOCProjectLifecycleGuest", state := "Design::stateDeciding"})
+}
+
+definition{
+  name: opmGuestAgent,
+  parameters: [],
+  result: Foundation.Arch::OpmLink,
+  body: (record Foundation.Arch::OpmLink {view := "Design::viewOpmDecide", kind := (ctor Foundation.Arch::OpmLinkKind.agent), source := "Architecture::componentTOCProjectLifecycleGuest", target := "Design::processDecide"})
+}
+
+definition{
+  name: opmBrowserInstrument,
+  parameters: [],
+  result: Foundation.Arch::OpmLink,
+  body: (record Foundation.Arch::OpmLink {view := "Design::viewOpmDecide", kind := (ctor Foundation.Arch::OpmLinkKind.instrument), source := "Architecture::componentBrowser", target := "Design::processParseRequest"})
+}
+
+definition{
+  name: opmParseInvokesJudge,
+  parameters: [],
+  result: Foundation.Arch::OpmLink,
+  body: (record Foundation.Arch::OpmLink {view := "Design::viewOpmDecide", kind := (ctor Foundation.Arch::OpmLinkKind.invocation), source := "Design::processParseRequest", target := "Design::processJudge"})
+}
+
+definition{
+  name: opmJudgeInvokesEncode,
+  parameters: [],
+  result: Foundation.Arch::OpmLink,
+  body: (record Foundation.Arch::OpmLink {view := "Design::viewOpmDecide", kind := (ctor Foundation.Arch::OpmLinkKind.invocation), source := "Design::processJudge", target := "Design::processEncodeAnswer"})
+}
+
+definition{
+  name: opmEncodeAffectsBrowser,
+  parameters: [],
+  result: Foundation.Arch::OpmLink,
+  body: (record Foundation.Arch::OpmLink {view := "Design::viewOpmDecide", kind := (ctor Foundation.Arch::OpmLinkKind.effect), source := "Architecture::componentBrowser", target := "Design::processEncodeAnswer"})
+}
+
+definition{
+  name: opmZoomParseRequest,
+  parameters: [],
+  result: Foundation.Arch::OpmZoom,
+  body: (record Foundation.Arch::OpmZoom {view := "Design::viewOpmDecide", process := "Design::processDecide", subprocess := "Design::processParseRequest", order := 0})
+}
+
+definition{
+  name: opmZoomJudge,
+  parameters: [],
+  result: Foundation.Arch::OpmZoom,
+  body: (record Foundation.Arch::OpmZoom {view := "Design::viewOpmDecide", process := "Design::processDecide", subprocess := "Design::processJudge", order := 1})
+}
+
+definition{
+  name: opmZoomEncodeAnswer,
+  parameters: [],
+  result: Foundation.Arch::OpmZoom,
+  body: (record Foundation.Arch::OpmZoom {view := "Design::viewOpmDecide", process := "Design::processDecide", subprocess := "Design::processEncodeAnswer", order := 2})
+}
+
+definition{
+  name: umlBrowser,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUmlComponents", component := "Architecture::componentBrowser"})
+}
+
+definition{
+  name: umlGitHubPages,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUmlComponents", component := "Architecture::componentGitHubPages"})
+}
+
+definition{
+  name: umlPrismBuild,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUmlComponents", component := "Architecture::componentPrismBuild"})
+}
+
+definition{
+  name: umlSourceRepository,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUmlComponents", component := "Architecture::componentSourceRepository"})
+}
+
+definition{
+  name: umlTOCApplicationIssues,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUmlComponents", component := "Architecture::componentTOCApplicationIssues"})
+}
+
+definition{
+  name: umlTOCMinutes,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUmlComponents", component := "Architecture::componentTOCMinutes"})
+}
+
+definition{
+  name: umlTOCProjectLifecycleGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUmlComponents", component := "Architecture::componentTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: umlTOCProjectLifecyclePage,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUmlComponents", component := "Architecture::componentTOCProjectLifecyclePage"})
+}
+
+definition{
+  name: umlBrowserToTOCProjectLifecycleGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUmlComponents", edge := "Architecture::edgeBrowserToTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: umlGitHubPagesToBrowser,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUmlComponents", edge := "Architecture::edgeGitHubPagesToBrowser"})
+}
+
+definition{
+  name: umlPrismBuildToTOCProjectLifecycleGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUmlComponents", edge := "Architecture::edgePrismBuildToTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: umlPrismBuildToTOCProjectLifecyclePage,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUmlComponents", edge := "Architecture::edgePrismBuildToTOCProjectLifecyclePage"})
+}
+
+definition{
+  name: umlSourceRepositoryToPrismBuild,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUmlComponents", edge := "Architecture::edgeSourceRepositoryToPrismBuild"})
+}
+
+definition{
+  name: umlTOCApplicationIssuesToTOCProjectLifecycleGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUmlComponents", edge := "Architecture::edgeTOCApplicationIssuesToTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: umlTOCMinutesToTOCProjectLifecycleGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUmlComponents", edge := "Architecture::edgeTOCMinutesToTOCProjectLifecycleGuest"})
+}
+
+definition{
+  name: umlTOCProjectLifecycleGuestToBrowser,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUmlComponents", edge := "Architecture::edgeTOCProjectLifecycleGuestToBrowser"})
+}
+
+definition{
+  name: umlTOCProjectLifecycleGuestToTOCApplicationIssues,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUmlComponents", edge := "Architecture::edgeTOCProjectLifecycleGuestToTOCApplicationIssues"})
+}
+
+definition{
+  name: umlTOCProjectLifecycleGuestToTOCMinutes,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUmlComponents", edge := "Architecture::edgeTOCProjectLifecycleGuestToTOCMinutes"})
+}
+
+definition{
+  name: umlTOCProjectLifecyclePageToGitHubPages,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUmlComponents", edge := "Architecture::edgeTOCProjectLifecyclePageToGitHubPages"})
+}
+
+definition{
+  name: seqBrowser,
+  parameters: [],
+  result: Foundation.Arch::UmlLifeline,
+  body: (record Foundation.Arch::UmlLifeline {view := "Design::viewUmlRequest", component := "Architecture::componentBrowser", order := 0})
+}
+
+definition{
+  name: seqTOCProjectLifecycleGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlLifeline,
+  body: (record Foundation.Arch::UmlLifeline {view := "Design::viewUmlRequest", component := "Architecture::componentTOCProjectLifecycleGuest", order := 1})
+}
+
+definition{
+  name: seqRequest,
+  parameters: [],
+  result: Foundation.Arch::UmlMessage,
+  body: (record Foundation.Arch::UmlMessage {view := "Design::viewUmlRequest", kind := (ctor Foundation.Arch::UmlMessageKind.synchronous), order := 0, source := "Architecture::componentBrowser", target := "Architecture::componentTOCProjectLifecycleGuest", process := "Design::processDecide"})
+}
+
+definition{
+  name: seqReply,
+  parameters: [],
+  result: Foundation.Arch::UmlMessage,
+  body: (record Foundation.Arch::UmlMessage {view := "Design::viewUmlRequest", kind := (ctor Foundation.Arch::UmlMessageKind.reply), order := 1, source := "Architecture::componentTOCProjectLifecycleGuest", target := "Architecture::componentBrowser", process := "Design::processDecide"})
+}
+
+definition{
+  name: stIdle,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUmlStates", state := "Design::stateIdle", initial := true})
+}
+
+definition{
+  name: stDeciding,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUmlStates", state := "Design::stateDeciding", initial := false})
+}
+
+definition{
+  name: stRefused,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUmlStates", state := "Design::stateRefused", initial := false})
+}
+
+definition{
+  name: stAnsweredProposed,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUmlStates", state := "Design::stateAnsweredProposed", initial := false})
+}
+
+definition{
+  name: stAnsweredSandbox,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUmlStates", state := "Design::stateAnsweredSandbox", initial := false})
+}
+
+definition{
+  name: stAnsweredIncubation,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUmlStates", state := "Design::stateAnsweredIncubation", initial := false})
+}
+
+definition{
+  name: stAnsweredGraduated,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUmlStates", state := "Design::stateAnsweredGraduated", initial := false})
+}
+
+definition{
+  name: stAnsweredArchived,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUmlStates", state := "Design::stateAnsweredArchived", initial := false})
+}
+
+definition{
+  name: stMachineProposed,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUmlMachine", state := "Design::stateMachineProposed", initial := true})
+}
+
+definition{
+  name: stMachineSandbox,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUmlMachine", state := "Design::stateMachineSandbox", initial := false})
+}
+
+definition{
+  name: stMachineIncubation,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUmlMachine", state := "Design::stateMachineIncubation", initial := false})
+}
+
+definition{
+  name: stMachineGraduated,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUmlMachine", state := "Design::stateMachineGraduated", initial := false})
+}
+
+definition{
+  name: stMachineArchived,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUmlMachine", state := "Design::stateMachineArchived", initial := false})
+}
+
+definition{
+  name: trAccept,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 0, source := "Design::stateIdle", target := "Design::stateDeciding", trigger := "Design::processParseRequest"})
+}
+
+definition{
+  name: trRefuse,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 1, source := "Design::stateIdle", target := "Design::stateRefused", trigger := "Design::processParseRequest"})
+}
+
+definition{
+  name: trRule1,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 2, source := "Design::stateDeciding", target := "Design::stateAnsweredArchived", trigger := "Design::processRule1"})
+}
+
+definition{
+  name: trRule2,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 3, source := "Design::stateDeciding", target := "Design::stateAnsweredSandbox", trigger := "Design::processRule2"})
+}
+
+definition{
+  name: trRule3,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 4, source := "Design::stateDeciding", target := "Design::stateAnsweredIncubation", trigger := "Design::processRule3"})
+}
+
+definition{
+  name: trRule4,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 5, source := "Design::stateDeciding", target := "Design::stateAnsweredGraduated", trigger := "Design::processRule4"})
+}
+
+definition{
+  name: trRule5,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 6, source := "Design::stateDeciding", target := "Design::stateAnsweredArchived", trigger := "Design::processRule5"})
+}
+
+definition{
+  name: trRule6,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 7, source := "Design::stateDeciding", target := "Design::stateAnsweredSandbox", trigger := "Design::processRule6"})
+}
+
+definition{
+  name: trRule7,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 8, source := "Design::stateDeciding", target := "Design::stateAnsweredIncubation", trigger := "Design::processRule7"})
+}
+
+definition{
+  name: trRule8,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 9, source := "Design::stateDeciding", target := "Design::stateAnsweredGraduated", trigger := "Design::processRule8"})
+}
+
+definition{
+  name: trOtherwise,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 10, source := "Design::stateDeciding", target := "Design::stateAnsweredProposed", trigger := "Design::processOtherwise"})
+}
+
+definition{
+  name: trResetProposed,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 11, source := "Design::stateAnsweredProposed", target := "Design::stateIdle", trigger := "Design::processEncodeAnswer"})
+}
+
+definition{
+  name: trResetSandbox,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 12, source := "Design::stateAnsweredSandbox", target := "Design::stateIdle", trigger := "Design::processEncodeAnswer"})
+}
+
+definition{
+  name: trResetIncubation,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 13, source := "Design::stateAnsweredIncubation", target := "Design::stateIdle", trigger := "Design::processEncodeAnswer"})
+}
+
+definition{
+  name: trResetGraduated,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 14, source := "Design::stateAnsweredGraduated", target := "Design::stateIdle", trigger := "Design::processEncodeAnswer"})
+}
+
+definition{
+  name: trResetArchived,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 15, source := "Design::stateAnsweredArchived", target := "Design::stateIdle", trigger := "Design::processEncodeAnswer"})
+}
+
+definition{
+  name: trResetRefused,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlStates", order := 16, source := "Design::stateRefused", target := "Design::stateIdle", trigger := "Design::processEncodeAnswer"})
+}
+
+definition{
+  name: trMachineProposedToProposedByOtherwise,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlMachine", order := 0, source := "Design::stateMachineProposed", target := "Design::stateMachineProposed", trigger := "Design::processOtherwise"})
+}
+
+definition{
+  name: trMachineProposedToSandboxByREQ002,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlMachine", order := 1, source := "Design::stateMachineProposed", target := "Design::stateMachineSandbox", trigger := "Design::processRule2"})
+}
+
+definition{
+  name: trMachineSandboxToSandboxByREQ006,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlMachine", order := 2, source := "Design::stateMachineSandbox", target := "Design::stateMachineSandbox", trigger := "Design::processRule6"})
+}
+
+definition{
+  name: trMachineSandboxToIncubationByREQ003,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlMachine", order := 3, source := "Design::stateMachineSandbox", target := "Design::stateMachineIncubation", trigger := "Design::processRule3"})
+}
+
+definition{
+  name: trMachineSandboxToArchivedByREQ005,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlMachine", order := 4, source := "Design::stateMachineSandbox", target := "Design::stateMachineArchived", trigger := "Design::processRule5"})
+}
+
+definition{
+  name: trMachineIncubationToIncubationByREQ007,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlMachine", order := 5, source := "Design::stateMachineIncubation", target := "Design::stateMachineIncubation", trigger := "Design::processRule7"})
+}
+
+definition{
+  name: trMachineIncubationToGraduatedByREQ004,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlMachine", order := 6, source := "Design::stateMachineIncubation", target := "Design::stateMachineGraduated", trigger := "Design::processRule4"})
+}
+
+definition{
+  name: trMachineIncubationToArchivedByREQ005,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlMachine", order := 7, source := "Design::stateMachineIncubation", target := "Design::stateMachineArchived", trigger := "Design::processRule5"})
+}
+
+definition{
+  name: trMachineGraduatedToGraduatedByREQ008,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlMachine", order := 8, source := "Design::stateMachineGraduated", target := "Design::stateMachineGraduated", trigger := "Design::processRule8"})
+}
+
+definition{
+  name: trMachineGraduatedToArchivedByREQ005,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlMachine", order := 9, source := "Design::stateMachineGraduated", target := "Design::stateMachineArchived", trigger := "Design::processRule5"})
+}
+
+definition{
+  name: trMachineArchivedToArchivedByREQ001,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUmlMachine", order := 10, source := "Design::stateMachineArchived", target := "Design::stateMachineArchived", trigger := "Design::processRule1"})
+}
+\end{semanticmodule}
+\end{lexlean}

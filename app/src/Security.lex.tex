@@ -1,0 +1,760 @@
+\begin{lexlean}{Security}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\useglossary{prism.sec@1.0.0}
+\importmodule{Foundation.Sec}
+\importmodule{Production.ThreatModel}
+\importmodule{Architecture}
+\title{security threat}
+\begin{semanticmodule}
+definition{
+  name: assetAnswer,
+  parameters: [],
+  result: Foundation.Sec::Asset,
+  body: (record Foundation.Sec::Asset {index := 0, componentIndex := 6})
+}
+
+definition{
+  name: assetModelSource,
+  parameters: [],
+  result: Foundation.Sec::Asset,
+  body: (record Foundation.Sec::Asset {index := 1, componentIndex := 3})
+}
+
+definition{
+  name: assetPublishedHolo,
+  parameters: [],
+  result: Foundation.Sec::Asset,
+  body: (record Foundation.Sec::Asset {index := 2, componentIndex := 7})
+}
+
+definition{
+  name: assetRequestBytes,
+  parameters: [],
+  result: Foundation.Sec::Asset,
+  body: (record Foundation.Sec::Asset {index := 3, componentIndex := 6})
+}
+
+definition{
+  name: threatAnswerThatBreaksINV001,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 0})
+}
+
+definition{
+  name: threatAnswerThatBreaksINV002,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 1})
+}
+
+definition{
+  name: threatAnswerThatBreaksINV003,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 2})
+}
+
+definition{
+  name: threatAnswerThatBreaksINV004,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 3})
+}
+
+definition{
+  name: threatAnswerThatBreaksINV005,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 4})
+}
+
+definition{
+  name: threatAnswerThatBreaksINV006,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 5})
+}
+
+definition{
+  name: threatAnswerThatBreaksINV007,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 6})
+}
+
+definition{
+  name: threatAnswerThatBreaksINV008,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 7})
+}
+
+definition{
+  name: threatGraduationWithoutComment,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 8})
+}
+
+definition{
+  name: threatGrantedCapability,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 9})
+}
+
+definition{
+  name: threatMalformedRequest,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 10})
+}
+
+definition{
+  name: threatOversizedRequest,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 11})
+}
+
+definition{
+  name: threatStageSkipped,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 12})
+}
+
+definition{
+  name: threatSubstitutedHolo,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 13})
+}
+
+definition{
+  name: threatSubstitutedHost,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 14})
+}
+
+definition{
+  name: threatTamperedModel,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 15})
+}
+
+definition{
+  name: threatVoteMiscounted,
+  parameters: [],
+  result: Foundation.Sec::Threat,
+  body: (record Foundation.Sec::Threat {index := 16})
+}
+
+definition{
+  name: riskAnswerThatBreaksINV001,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 0, assetIndex := 0, threatIndex := 0, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskAnswerThatBreaksINV002,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 1, assetIndex := 0, threatIndex := 1, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskAnswerThatBreaksINV003,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 2, assetIndex := 0, threatIndex := 2, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskAnswerThatBreaksINV004,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 3, assetIndex := 0, threatIndex := 3, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskAnswerThatBreaksINV005,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 4, assetIndex := 0, threatIndex := 4, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskAnswerThatBreaksINV006,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 5, assetIndex := 0, threatIndex := 5, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskAnswerThatBreaksINV007,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 6, assetIndex := 0, threatIndex := 6, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskAnswerThatBreaksINV008,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 7, assetIndex := 0, threatIndex := 7, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskGraduationWithoutComment,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 8, assetIndex := 0, threatIndex := 8, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.major)})
+}
+
+definition{
+  name: riskGrantedCapability,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 9, assetIndex := 0, threatIndex := 9, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
+}
+
+definition{
+  name: riskMalformedRequest,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 10, assetIndex := 3, threatIndex := 10, likelihood := (ctor Foundation.Sec::Likelihood.high), impact := (ctor Foundation.Sec::Impact.major)})
+}
+
+definition{
+  name: riskOversizedRequest,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 11, assetIndex := 3, threatIndex := 11, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.minor)})
+}
+
+definition{
+  name: riskStageSkipped,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 12, assetIndex := 0, threatIndex := 12, likelihood := (ctor Foundation.Sec::Likelihood.medium), impact := (ctor Foundation.Sec::Impact.major)})
+}
+
+definition{
+  name: riskSubstitutedHolo,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 13, assetIndex := 2, threatIndex := 13, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskSubstitutedHost,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 14, assetIndex := 2, threatIndex := 14, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.critical)})
+}
+
+definition{
+  name: riskTamperedModel,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 15, assetIndex := 1, threatIndex := 15, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
+}
+
+definition{
+  name: riskVoteMiscounted,
+  parameters: [],
+  result: Foundation.Sec::Risk,
+  body: (record Foundation.Sec::Risk {index := 16, assetIndex := 3, threatIndex := 16, likelihood := (ctor Foundation.Sec::Likelihood.low), impact := (ctor Foundation.Sec::Impact.major)})
+}
+
+definition{
+  name: controlBoundedRequest,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 0, riskIndex := 11})
+}
+
+definition{
+  name: controlCommentPeriodFloor,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 1, riskIndex := 8})
+}
+
+definition{
+  name: controlFingerprintAndProvenance,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 2, riskIndex := 13})
+}
+
+definition{
+  name: controlNoCapabilityGranted,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 3, riskIndex := 9})
+}
+
+definition{
+  name: controlOneStagePerAct,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 4, riskIndex := 12})
+}
+
+definition{
+  name: controlProofOfINV001,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 5, riskIndex := 0})
+}
+
+definition{
+  name: controlProofOfINV002,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 6, riskIndex := 1})
+}
+
+definition{
+  name: controlProofOfINV003,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 7, riskIndex := 2})
+}
+
+definition{
+  name: controlProofOfINV004,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 8, riskIndex := 3})
+}
+
+definition{
+  name: controlProofOfINV005,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 9, riskIndex := 4})
+}
+
+definition{
+  name: controlProofOfINV006,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 10, riskIndex := 5})
+}
+
+definition{
+  name: controlProofOfINV007,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 11, riskIndex := 6})
+}
+
+definition{
+  name: controlProofOfINV008,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 12, riskIndex := 7})
+}
+
+definition{
+  name: controlRegeneratedFromThePrompt,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 13, riskIndex := 15})
+}
+
+definition{
+  name: controlStrictDecoder,
+  parameters: [],
+  result: Foundation.Sec::ApplicationSecurityControl,
+  body: (record Foundation.Sec::ApplicationSecurityControl {index := 14, riskIndex := 10})
+}
+
+definition{
+  name: controlSet,
+  parameters: [],
+  result: Production.ThreatModel::ControlSet,
+  body: (record Production.ThreatModel::ControlSet {title := "TOC project lifecycle security controls", text := "TOC project lifecycle answers one request with one answer in a Core-Wasm guest granted no capability. Give the next lifecycle stage of a UOR Foundation project from its stage now, the application before the TOC, whether a quorum met, the TOC's recorded vote, whether the stage's evidence is complete and how many days the public comment period ran.", version := "0.1.0", lastModified := "2026-11-13T19:07:51Z"})
+}
+
+definition{
+  name: modeledAssetAnswer,
+  parameters: [],
+  result: Production.ThreatModel::ModeledAsset,
+  body: (record Production.ThreatModel::ModeledAsset {asset := "Security::assetAnswer", name := "Answer", text := "The answer the guest returns: one of proposed, sandbox, incubation, graduated, archived, or invalid."})
+}
+
+definition{
+  name: modeledAssetModelSource,
+  parameters: [],
+  result: Production.ThreatModel::ModeledAsset,
+  body: (record Production.ThreatModel::ModeledAsset {asset := "Security::assetModelSource", name := "Model source", text := "The prompt, the spec and the LexLean model in the repository, from which the holo is built."})
+}
+
+definition{
+  name: modeledAssetPublishedHolo,
+  parameters: [],
+  result: Production.ThreatModel::ModeledAsset,
+  body: (record Production.ThreatModel::ModeledAsset {asset := "Security::assetPublishedHolo", name := "Published holo", text := "The holo and page the Pages workflow publishes, with its fingerprint and signed provenance."})
+}
+
+definition{
+  name: modeledAssetRequestBytes,
+  parameters: [],
+  result: Production.ThreatModel::ModeledAsset,
+  body: (record Production.ThreatModel::ModeledAsset {asset := "Security::assetRequestBytes", name := "Request bytes", text := "The bytes a caller sends, at most 160 of them."})
+}
+
+definition{
+  name: modeledThreatAnswerThatBreaksINV001,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatAnswerThatBreaksINV001", name := "Answer that breaks INV-001", text := "The guest answers graduated although quorum is unmet and stage is incubation, which matters because Bylaws 6.5: without a quorum there is no act of the committee.", category := (ctor Production.ThreatModel::Stride.repudiation)})
+}
+
+definition{
+  name: modeledThreatAnswerThatBreaksINV002,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatAnswerThatBreaksINV002", name := "Answer that breaks INV-002", text := "The guest answers graduated although vote is majority and stage is incubation, which matters because toc/README.md: Graduation takes two thirds, not a simple majority.", category := (ctor Production.ThreatModel::Stride.repudiation)})
+}
+
+definition{
+  name: modeledThreatAnswerThatBreaksINV003,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatAnswerThatBreaksINV003", name := "Answer that breaks INV-003", text := "The guest answers graduated although comment is below 14 and stage is incubation, which matters because toc/README.md: Graduation requires a public comment period of at least 2 weeks before voting.", category := (ctor Production.ThreatModel::Stride.repudiation)})
+}
+
+definition{
+  name: modeledThreatAnswerThatBreaksINV004,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatAnswerThatBreaksINV004", name := "Answer that breaks INV-004", text := "The guest answers incubation although stage is proposed, which matters because toc/README.md: projects enter at Sandbox; no stage is skipped.", category := (ctor Production.ThreatModel::Stride.repudiation)})
+}
+
+definition{
+  name: modeledThreatAnswerThatBreaksINV005,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatAnswerThatBreaksINV005", name := "Answer that breaks INV-005", text := "The guest answers graduated although stage is sandbox, which matters because toc/README.md: Graduation is applied for from Incubation.", category := (ctor Production.ThreatModel::Stride.repudiation)})
+}
+
+definition{
+  name: modeledThreatAnswerThatBreaksINV006,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatAnswerThatBreaksINV006", name := "Answer that breaks INV-006", text := "The guest answers sandbox although evidence is partial and stage is proposed, which matters because toc/README.md: the minimum repository baseline is required for Sandbox.", category := (ctor Production.ThreatModel::Stride.repudiation)})
+}
+
+definition{
+  name: modeledThreatAnswerThatBreaksINV007,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatAnswerThatBreaksINV007", name := "Answer that breaks INV-007", text := "The guest answers graduated not when stage is graduated and application is not archival, which matters because toc/README.md: a graduated project leaves its stage only by archival.", category := (ctor Production.ThreatModel::Stride.repudiation)})
+}
+
+definition{
+  name: modeledThreatAnswerThatBreaksINV008,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatAnswerThatBreaksINV008", name := "Answer that breaks INV-008", text := "The guest answers archived not when stage is archived, which matters because archived is a final state (UML 2.5.1 FinalState): a run that reaches it stays there.", category := (ctor Production.ThreatModel::Stride.repudiation)})
+}
+
+definition{
+  name: modeledThreatGraduationWithoutComment,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatGraduationWithoutComment", name := "Graduation without comment", text := "A Graduation vote is held before the community could comment.", category := (ctor Production.ThreatModel::Stride.repudiation)})
+}
+
+definition{
+  name: modeledThreatGrantedCapability,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatGrantedCapability", name := "Granted capability", text := "The guest reads, stores or sends data beyond the request it answers.", category := (ctor Production.ThreatModel::Stride.informationDisclosure)})
+}
+
+definition{
+  name: modeledThreatMalformedRequest,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatMalformedRequest", name := "Malformed request", text := "A request with a missing, extra, unknown or badly written field is answered as if it were well formed.", category := (ctor Production.ThreatModel::Stride.tampering)})
+}
+
+definition{
+  name: modeledThreatOversizedRequest,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatOversizedRequest", name := "Oversized request", text := "A request longer than 160 bytes makes the guest parse or allocate without bound.", category := (ctor Production.ThreatModel::Stride.denialOfService)})
+}
+
+definition{
+  name: modeledThreatStageSkipped,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatStageSkipped", name := "Stage skipped", text := "A proposed or Sandbox project is published as Incubation or Graduated without passing each stage.", category := (ctor Production.ThreatModel::Stride.elevationOfPrivilege)})
+}
+
+definition{
+  name: modeledThreatSubstitutedHolo,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatSubstitutedHolo", name := "Substituted holo", text := "A holo other than the one the build verified is served under the app address.", category := (ctor Production.ThreatModel::Stride.spoofing)})
+}
+
+definition{
+  name: modeledThreatSubstitutedHost,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatSubstitutedHost", name := "Substituted host", text := "Something other than the repository Pages workflow serves pages under its address.", category := (ctor Production.ThreatModel::Stride.spoofing)})
+}
+
+definition{
+  name: modeledThreatTamperedModel,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatTamperedModel", name := "Tampered model", text := "The model the holo is built from differs from the reviewed prompt and spec.", category := (ctor Production.ThreatModel::Stride.tampering)})
+}
+
+definition{
+  name: modeledThreatVoteMiscounted,
+  parameters: [],
+  result: Production.ThreatModel::ModeledThreat,
+  body: (record Production.ThreatModel::ModeledThreat {threat := "Security::threatVoteMiscounted", name := "Vote miscounted", text := "The tally of members present is recorded wrongly before it reaches the app.", category := (ctor Production.ThreatModel::Stride.tampering)})
+}
+
+definition{
+  name: modeledControlBoundedRequest,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlBoundedRequest", name := "Bounded request", text := "dispatch answers invalid for a request over 160 bytes before reading a field, and the guest allocates at most 320.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.gate), reference := "acceptance vectors at the request bound, one byte over it, and at the guest allocation bound, replayed by prismpm verify"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlCommentPeriodFloor,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlCommentPeriodFloor", name := "Comment period floor", text := "Graduation needs a comment period of at least 14 days.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.proof), reference := "UorTocLifecycleProofs::inv003Holds"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlFingerprintAndProvenance,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlFingerprintAndProvenance", name := "Fingerprint and provenance", text := "The page verifies the holo digests before it runs, and the build signs its provenance as the repository workflow.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.gate), reference := "actions/attest-build-provenance in the pages workflow"}) (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.gate), reference := "prism-code check of the holo identities in the page"}) (nil Production.ThreatModel::Evidence)))})
+}
+
+definition{
+  name: modeledControlNoCapabilityGranted,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlNoCapabilityGranted", name := "No capability granted", text := "prism.toml grants the holo nothing and the model declares capabilitiesEmpty, so a guest import of any host capability is refused.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.gate), reference := "prism-code check refuses an ungranted guest import"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlOneStagePerAct,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlOneStagePerAct", name := "One stage per act", text := "Each rule fires only from the stage below the one it admits.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.proof), reference := "UorTocLifecycleProofs::inv004Holds"}) (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.proof), reference := "UorTocLifecycleProofs::inv005Holds"}) (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.review), reference := "UOR-Foundation/.github toc/README.md"}) (nil Production.ThreatModel::Evidence))))})
+}
+
+definition{
+  name: modeledControlProofOfINV001,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlProofOfINV001", name := "Proof of INV-001", text := "It never answers graduated when quorum is unmet and stage is incubation. The Lean kernel proves it for every request.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.proof), reference := "UorTocLifecycleProofs::inv001Holds"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlProofOfINV002,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlProofOfINV002", name := "Proof of INV-002", text := "It never answers graduated when vote is majority and stage is incubation. The Lean kernel proves it for every request.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.proof), reference := "UorTocLifecycleProofs::inv002Holds"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlProofOfINV003,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlProofOfINV003", name := "Proof of INV-003", text := "It never answers graduated when comment is below 14 and stage is incubation. The Lean kernel proves it for every request.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.proof), reference := "UorTocLifecycleProofs::inv003Holds"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlProofOfINV004,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlProofOfINV004", name := "Proof of INV-004", text := "It never answers incubation when stage is proposed. The Lean kernel proves it for every request.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.proof), reference := "UorTocLifecycleProofs::inv004Holds"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlProofOfINV005,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlProofOfINV005", name := "Proof of INV-005", text := "It never answers graduated when stage is sandbox. The Lean kernel proves it for every request.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.proof), reference := "UorTocLifecycleProofs::inv005Holds"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlProofOfINV006,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlProofOfINV006", name := "Proof of INV-006", text := "It never answers sandbox when evidence is partial and stage is proposed. The Lean kernel proves it for every request.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.proof), reference := "UorTocLifecycleProofs::inv006Holds"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlProofOfINV007,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlProofOfINV007", name := "Proof of INV-007", text := "It always answers graduated when stage is graduated and application is not archival. The Lean kernel proves it for every request.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.proof), reference := "UorTocLifecycleProofs::inv007Holds"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlProofOfINV008,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlProofOfINV008", name := "Proof of INV-008", text := "It always answers archived when stage is archived. The Lean kernel proves it for every request.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.proof), reference := "UorTocLifecycleProofs::inv008Holds"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: modeledControlRegeneratedFromThePrompt,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlRegeneratedFromThePrompt", name := "Regenerated from the prompt", text := "The model is written from the prompt by the builder, and the build checks every theorem and replays every vector in the pinned SDK.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.gate), reference := "prismpm verify in the SDK image prismpm.lock pins"}) (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.review), reference := "app/prompt.json"}) (nil Production.ThreatModel::Evidence)))})
+}
+
+definition{
+  name: modeledControlStrictDecoder,
+  parameters: [],
+  result: Production.ThreatModel::ModeledControl,
+  body: (record Production.ThreatModel::ModeledControl {control := "Security::controlStrictDecoder", name := "Strict decoder", text := "Every field is decoded exactly: choices from their list, numbers as plain decimal digits within their bounds, single spaces between fields; anything else is invalid.", evidence := (cons (record Production.ThreatModel::Evidence {kind := (ctor Production.ThreatModel::EvidenceKind.gate), reference := "malformed-request acceptance vectors, replayed in the compiled guest by prismpm verify"}) (nil Production.ThreatModel::Evidence))})
+}
+
+definition{
+  name: mappingOversizedRequest,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatOversizedRequest", controls := (cons "Security::controlBoundedRequest" (nil String))})
+}
+
+definition{
+  name: mappingGraduationWithoutComment,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatGraduationWithoutComment", controls := (cons "Security::controlCommentPeriodFloor" (nil String))})
+}
+
+definition{
+  name: mappingSubstitutedHolo,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatSubstitutedHolo", controls := (cons "Security::controlFingerprintAndProvenance" (nil String))})
+}
+
+definition{
+  name: mappingGrantedCapability,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatGrantedCapability", controls := (cons "Security::controlNoCapabilityGranted" (nil String))})
+}
+
+definition{
+  name: mappingStageSkipped,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatStageSkipped", controls := (cons "Security::controlOneStagePerAct" (nil String))})
+}
+
+definition{
+  name: mappingAnswerThatBreaksINV001,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatAnswerThatBreaksINV001", controls := (cons "Security::controlProofOfINV001" (nil String))})
+}
+
+definition{
+  name: mappingAnswerThatBreaksINV002,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatAnswerThatBreaksINV002", controls := (cons "Security::controlProofOfINV002" (nil String))})
+}
+
+definition{
+  name: mappingAnswerThatBreaksINV003,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatAnswerThatBreaksINV003", controls := (cons "Security::controlProofOfINV003" (nil String))})
+}
+
+definition{
+  name: mappingAnswerThatBreaksINV004,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatAnswerThatBreaksINV004", controls := (cons "Security::controlProofOfINV004" (nil String))})
+}
+
+definition{
+  name: mappingAnswerThatBreaksINV005,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatAnswerThatBreaksINV005", controls := (cons "Security::controlProofOfINV005" (nil String))})
+}
+
+definition{
+  name: mappingAnswerThatBreaksINV006,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatAnswerThatBreaksINV006", controls := (cons "Security::controlProofOfINV006" (nil String))})
+}
+
+definition{
+  name: mappingAnswerThatBreaksINV007,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatAnswerThatBreaksINV007", controls := (cons "Security::controlProofOfINV007" (nil String))})
+}
+
+definition{
+  name: mappingAnswerThatBreaksINV008,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatAnswerThatBreaksINV008", controls := (cons "Security::controlProofOfINV008" (nil String))})
+}
+
+definition{
+  name: mappingTamperedModel,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatTamperedModel", controls := (cons "Security::controlRegeneratedFromThePrompt" (nil String))})
+}
+
+definition{
+  name: mappingMalformedRequest,
+  parameters: [],
+  result: Production.ThreatModel::ThreatMapping,
+  body: (record Production.ThreatModel::ThreatMapping {threat := "Security::threatMalformedRequest", controls := (cons "Security::controlStrictDecoder" (nil String))})
+}
+
+definition{
+  name: acceptedSubstitutedHost,
+  parameters: [],
+  result: Production.ThreatModel::AcceptedRisk,
+  body: (record Production.ThreatModel::AcceptedRisk {threat := "Security::threatSubstitutedHost", rationale := "A page cannot defend against its own host. The holo carries signed build provenance a visitor can check, and the app can be rebuilt from its prompt."})
+}
+
+definition{
+  name: acceptedVoteMiscounted,
+  parameters: [],
+  result: Production.ThreatModel::AcceptedRisk,
+  body: (record Production.ThreatModel::AcceptedRisk {threat := "Security::threatVoteMiscounted", rationale := "The app is given the committee's recorded act; counting members present and keeping minutes belongs to the TOC chair under Bylaws 6.3 and 6.5."})
+}
+\end{semanticmodule}
+\end{lexlean}

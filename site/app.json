@@ -1,18 +1,21 @@
 {
-  "name": "Template contract",
-  "shortName": "Contract",
-  "live": "https://uor-foundation.github.io/template/",
-  "purpose": "Checks each universal policy file of a UOR template repository against its locked digest. Send the six expected and observed digests; it answers conformant, or names every file that drifted, and invalid request for anything else.",
-  "inputLabel": "Expected and observed digests",
-  "placeholder": "hex: followed by 384 bytes",
-  "submitLabel": "Check",
-  "outputLabel": "Verdict",
+  "name": "TOC project lifecycle",
+  "shortName": "TOC",
+  "live": "https://uor-foundation.github.io/community/",
+  "purpose": "Give the next lifecycle stage of a UOR Foundation project from its stage now, the application before the TOC, whether a quorum met, the TOC's recorded vote, whether the stage's evidence is complete and how many days the public comment period ran. Send stage, application, quorum, vote, evidence or comment, separated by spaces; it answers proposed, sandbox, incubation, graduated or archived, and invalid request for anything else.",
+  "inputLabel": "Request: stage application quorum vote evidence comment",
+  "placeholder": "proposed sandbox met majority complete 0",
+  "submitLabel": "Decide",
+  "outputLabel": "Answer",
   "answers": {
     "positive": [
-      "conformant"
+      "proposed"
     ],
     "negative": [
-      "drift:*"
+      "sandbox",
+      "incubation",
+      "graduated",
+      "archived"
     ],
     "refusal": "invalid request"
   },
@@ -20,25 +23,102 @@
     "headline": "Says conformant exactly when every policy file matches its lock.",
     "detail": "Each of the six universal policy files is compared with the digest the lock records, and any file that drifted is named."
   },
-  "claim": "TC-01: the checker answers conformant exactly when every universal policy file's observed digest equals its locked digest.",
+  "claim": "UT-01: the app never answers graduated when quorum is unmet and stage is incubation. UT-02: the app never answers graduated when vote is majority and stage is incubation. UT-03: the app never answers graduated when comment is below 14 and stage is incubation. UT-04: the app never answers incubation when stage is proposed. UT-05: the app never answers graduated when stage is sandbox. UT-06: the app never answers sandbox when evidence is partial and stage is proposed. UT-07: the app always answers graduated when stage is graduated and application is not archival. UT-08: the app always answers archived when stage is archived.",
   "proposition": {
-    "name": "Conformant",
-    "text": "Conformant observation :=\n  SameDigest devcontainer.expected devcontainer.observed\n  /\\ SameDigest bootstrap.expected bootstrap.observed\n  /\\ SameDigest agents.expected agents.observed\n  /\\ SameDigest verification.expected verification.observed\n  /\\ SameDigest prismpmLock.expected prismpmLock.observed\n  /\\ SameDigest templateContract.expected templateContract.observed\n\nSameDigest left right :=\n  left.w0 = right.w0 /\\ left.w1 = right.w1 /\\ left.w2 = right.w2 /\\ left.w3 = right.w3",
-    "plain": "Every one of the six universal policy files has the digest the lock says it has."
+    "name": "judge",
+    "text": "judge request :=\n  stage is archived → archived\n  stage is proposed and application is sandbox and quorum is met and vote is not none and vote is not rejected and evidence is complete → sandbox\n  stage is sandbox and application is incubation and quorum is met and vote is not none and vote is not rejected and evidence is complete → incubation\n  stage is incubation and application is graduation and quorum is met and vote is twothirds and evidence is complete and comment is at least 14 → graduated\n  stage is not proposed and application is archival and quorum is met and vote is not none and vote is not rejected and evidence is complete → archived\n  stage is sandbox → sandbox\n  stage is incubation → incubation\n  stage is graduated → graduated\n  otherwise → proposed",
+    "plain": "Give the next lifecycle stage of a UOR Foundation project from its stage now, the application before the TOC, whether a quorum met, the TOC's recorded vote, whether the stage's evidence is complete and how many days the public comment period ran."
   },
   "theorems": [
     {
-      "name": "conformant_decides",
-      "statement": "conformant observation = true ↔ Conformant observation, for every observation",
-      "how": "Proved by simplification over the record fields, checked by the Lean kernel by prismpm verify in CI",
-      "where": "app/src/Contract.lex.tex"
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the app never answers graduated when quorum is unmet and stage is incubation",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "where": "app/src/UorTocLifecycleProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the app never answers graduated when vote is majority and stage is incubation",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "where": "app/src/UorTocLifecycleProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the app never answers graduated when comment is below 14 and stage is incubation",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "where": "app/src/UorTocLifecycleProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the app never answers incubation when stage is proposed",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "where": "app/src/UorTocLifecycleProofs.lex.tex"
+    },
+    {
+      "name": "inv005Holds",
+      "statement": "no request meets breaksInv005: the app never answers graduated when stage is sandbox",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "where": "app/src/UorTocLifecycleProofs.lex.tex"
+    },
+    {
+      "name": "inv006Holds",
+      "statement": "no request meets breaksInv006: the app never answers sandbox when evidence is partial and stage is proposed",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "where": "app/src/UorTocLifecycleProofs.lex.tex"
+    },
+    {
+      "name": "inv007Holds",
+      "statement": "no request meets breaksInv007: the app always answers graduated when stage is graduated and application is not archival",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "where": "app/src/UorTocLifecycleProofs.lex.tex"
+    },
+    {
+      "name": "inv008Holds",
+      "statement": "no request meets breaksInv008: the app always answers archived when stage is archived",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "where": "app/src/UorTocLifecycleProofs.lex.tex"
     }
   ],
   "pinned": [
     {
-      "name": "contract_tc_01",
-      "what": "The theorem's statement and axioms, the six files the proposition names against template-contract.json, that a drifted file is named in the verdict, and that the verdict is decided by conformant. A string-matching test, not a theorem: a planted defect fails it.",
-      "where": "crates/conformance/tests/contract.rs"
+      "name": "uor_toc_lifecycle_ut_01",
+      "what": "UT-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
+    },
+    {
+      "name": "uor_toc_lifecycle_ut_02",
+      "what": "UT-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
+    },
+    {
+      "name": "uor_toc_lifecycle_ut_03",
+      "what": "UT-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
+    },
+    {
+      "name": "uor_toc_lifecycle_ut_04",
+      "what": "UT-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
+    },
+    {
+      "name": "uor_toc_lifecycle_ut_05",
+      "what": "UT-05's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
+    },
+    {
+      "name": "uor_toc_lifecycle_ut_06",
+      "what": "UT-06's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
+    },
+    {
+      "name": "uor_toc_lifecycle_ut_07",
+      "what": "UT-07's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
+    },
+    {
+      "name": "uor_toc_lifecycle_ut_08",
+      "what": "UT-08's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
     }
   ],
   "trusted": [
@@ -65,14 +145,14 @@
   ],
   "attestations": {
     "proof": {
-      "id": "not recorded for the template's own app; an instance records the UOR MCP server's attestation here",
-      "url": "https://github.com/UOR-Foundation/template/actions/workflows/bootstrap.yml"
+      "id": "not recorded: the proof ran in the SDK image, not on the UOR MCP server",
+      "url": "https://github.com/UOR-Foundation/community/actions/workflows/bootstrap.yml"
     },
     "build": {
-      "id": "printed by prismpm verify in every pages run; an instance records it here",
-      "url": "https://github.com/UOR-Foundation/template/actions/workflows/pages.yml"
+      "id": "printed by prismpm verify in every pages run",
+      "url": "https://github.com/UOR-Foundation/community/actions/workflows/pages.yml"
     }
   },
-  "repository": "https://github.com/UOR-Foundation/template",
-  "report": "https://github.com/UOR-Foundation/template/blob/main/TEMPLATE-VERIFICATION.md"
+  "repository": "https://github.com/UOR-Foundation/community",
+  "report": "https://github.com/UOR-Foundation/community/blob/main/TEMPLATE-VERIFICATION.md"
 }
