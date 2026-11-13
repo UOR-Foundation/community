@@ -14,15 +14,16 @@
  *   node chaoss/measurement.mjs <checkouts-dir> [--check]   project chaoss/measurement.json, then write the modules
  *   node chaoss/measurement.mjs [--check]                   write the modules from chaoss/measurement.json
  *
- * Writes app/src/Foundation/Community/V1/Measurement.lex.tex (the mapping
- * types and their validity), app/src/Measures.lex.tex (the mapping, its
- * 15939 records and the theorem measuresValidHolds), and the two lexicon
+ * Writes, through tools/register-lex.mjs, app/src/Foundation/Community/V1/Measurement.lex.tex (the mapping
+ * types and their validity) and app/src/MeasurementMapping.lex.tex (the mapping); then app/src/Measures.lex.tex (its
+ * 15939 records and the theorem measuresValidHolds), and the three lexicon
  * entries that title them. The same inputs always write the same bytes.
  */
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { typesModule, catalogModule, def, match, camel, str } from '../tools/register-lex.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repo = join(here, '..');
@@ -129,50 +130,46 @@ if (root) outputs.set(jsonPath, JSON.stringify(project(JSON.parse(readFileSync(j
 const m = JSON.parse(outputs.get(jsonPath) ?? readFileSync(jsonPath, 'utf8'));
 if (m.register !== sha256(readFileSync(join(here, 'register.json')))) throw new Error('chaoss/measurement.json was projected from another register; rerun with the checkouts');
 
-// ---- The facet: the mapping types and their validity. ----
+// ---- The mapping register, written by the shared register emitter. ----
 const F = 'Foundation.Community.V1.Measurement';
 const S = 'Foundation.Measurement.V1.Model';
-const paramList = (params) => (`  parameters: [${params}],`.length > 100 ? `[\n    ${params.split(', ').join(',\n    ')}\n  ]` : `[${params}]`);
-const def = (name, params, type, body, rec) => `definition{\n  name: ${name},\n  parameters: ${paramList(params)},\n  result: ${type},\n  body: ${body}${rec ? `,\n  recursive_argument: ${rec}` : ''}\n}\n`;
-const rank = (kind) => `(match element\n    ${ELEMENTS.map((e) => `| Element.${e} => ${PLAN[kind].includes(e) ? PLAN[kind].indexOf(e) : 99}`).join('\n    ')})`;
-const total = (name, type) => def(name, `rows : (List ${type})`, 'Nat', `(match rows | List.nil => 0 | List.cons row rest => (1 + (${name} rest)))`, 'rows');
-const facet = [
-  `\\begin{lexlean}{${F}}\n\\useglossary{lexlean.std.bool@1.2.0}\n\\useglossary{lexlean.std.nat@1.2.0}\n\\useglossary{prism.arch@1.0.0}\n\\importmodule{${S}}\n\\title{Measurement mapping model}\n\\begin{semanticmodule}`,
-  `inductive{\n  name: Element,\n  type_parameters: [],\n  parameters: [],\n  constructors: [\n${ELEMENTS.map((e) => `    {name: ${e}, fields: []}`).join(',\n')}\n  ]\n}\n`,
-  `structure{\n  name: Mapping,\n  type_parameters: [],\n  parameters: [],\n  fields: [\n    {name: element, type: Element},\n    {name: stated, type: Bool},\n    {name: source, type: String},\n    {name: evidence, type: String}\n  ]\n}\n`,
-  `structure{\n  name: Item,\n  type_parameters: [],\n  parameters: [],\n  fields: [\n    {name: index, type: Nat},\n    {name: slug, type: String},\n    {name: entries, type: (List Mapping)}\n  ]\n}\n`,
-  `structure{\n  name: Summary,\n  type_parameters: [],\n  parameters: [],\n  fields: [\n    {name: standard, type: String},\n    {name: register, type: String},\n    {name: statedCount, type: Nat},\n    {name: openCount, type: Nat}\n  ]\n}\n`,
-  def('metricRank', 'element : Element', 'Nat', rank('metric')),
-  def('modelRank', 'element : Element', 'Nat', rank('model')),
-  def('metricPlanned', 'position : Nat, entries : (List Mapping)', 'Bool', `(match entries\n    | List.nil => (position =? ${PLAN.metric.length})\n    | List.cons entry rest => (((metricRank (project entry element)) =? position) && (metricPlanned (position + 1) rest)))`, 'entries'),
-  def('modelPlanned', 'position : Nat, entries : (List Mapping)', 'Bool', `(match entries\n    | List.nil => (position =? ${PLAN.model.length})\n    | List.cons entry rest => (((modelRank (project entry element)) =? position) && (modelPlanned (position + 1) rest)))`, 'entries'),
-  def('itemsPlanned', 'position : Nat, metricCount : Nat, items : (List Item)', 'Bool', `(match items\n    | List.nil => true\n    | List.cons item rest => (((project item index) =? position) && ((if (position <? metricCount) then (metricPlanned 0 (project item entries)) else (modelPlanned 0 (project item entries))) && (itemsPlanned (position + 1) metricCount rest))))`, 'items'),
-  def('statedIn', 'entries : (List Mapping)', 'Nat', `(match entries\n    | List.nil => 0\n    | List.cons entry rest => ((if (project entry stated) then 1 else 0) + (statedIn rest)))`, 'entries'),
-  def('entriesIn', 'entries : (List Mapping)', 'Nat', `(match entries | List.nil => 0 | List.cons entry rest => (1 + (entriesIn rest)))`, 'entries'),
-  def('statedTotal', 'items : (List Item)', 'Nat', `(match items\n    | List.nil => 0\n    | List.cons item rest => ((statedIn (project item entries)) + (statedTotal rest)))`, 'items'),
-  def('entryTotal', 'items : (List Item)', 'Nat', `(match items\n    | List.nil => 0\n    | List.cons item rest => ((entriesIn (project item entries)) + (entryTotal rest)))`, 'items'),
-  total('itemTotal', 'Item'),
-  total('needTotal', `${S}::InformationNeed`),
-  def('needsNumbered', `position : Nat, needs : (List ${S}::InformationNeed)`, 'Bool', `(match needs\n    | List.nil => true\n    | List.cons need rest => (((project need index) =? position) && (needsNumbered (position + 1) rest)))`, 'needs'),
-  def('conceptsNumbered', `position : Nat, needCount : Nat, concepts : (List ${S}::MeasurableConcept)`, 'Bool', `(match concepts\n    | List.nil => true\n    | List.cons concept rest => (((project concept index) =? position) && (((project concept informationNeedIndex) <? needCount) && (conceptsNumbered (position + 1) needCount rest))))`, 'concepts'),
-  def('mappingValid', `metricCount : Nat, modelCount : Nat, summary : Summary, items : (List Item), needs : (List ${S}::InformationNeed), concepts : (List ${S}::MeasurableConcept)`, 'Bool',
-    `(((itemTotal items) =? (metricCount + modelCount)) && ((itemsPlanned 0 metricCount items) && (((statedTotal items) =? (project summary statedCount)) && (((entryTotal items) =? ((project summary statedCount) + (project summary openCount))) && ((needsNumbered 0 needs) && (conceptsNumbered 0 (needTotal needs) concepts))))))`).trimEnd(),
-  '\\end{semanticmodule}\n\\end{lexlean}\n',
-].join('\n');
+const rank = (kind) => match('element', ELEMENTS.map((e) => [`Element.${camel(e)}`, String(PLAN[kind].includes(e) ? PLAN[kind].indexOf(e) : 99)]));
+// The plan check: the mappings walk every item's plan once, in order, metrics first.
+const planned = `(if ((project mapping item) =? item) then (if (item <? metricCount) then (((metricRank (project mapping element)) =? step) && (if ((step + 1) =? ${PLAN.metric.length}) then (planned metricCount itemCount (item + 1) 0 rest) else (planned metricCount itemCount item (step + 1) rest))) else (((modelRank (project mapping element)) =? step) && (if ((step + 1) =? ${PLAN.model.length}) then (planned metricCount itemCount (item + 1) 0 rest) else (planned metricCount itemCount item (step + 1) rest)))) else false)`;
+const decl = {
+  module: F,
+  title: 'Measurement mapping model',
+  catalog: 'MeasurementMapping',
+  catalogTitle: 'Measurement mapping',
+  enums: { Element: ELEMENTS },
+  kinds: [
+    { name: 'Item', list: 'items', fields: [['slug', 'String']] },
+    { name: 'Mapping', list: 'mappings', fields: [['item', { ref: 'Item' }], ['element', { enum: 'Element' }], ['stated', 'Bool'], ['source', 'String'], ['evidence', 'String']] },
+  ],
+  release: [['metricCount', 'Nat'], ['statedCount', 'Nat'], ['standard', 'String'], ['register', 'String']],
+  definitions: [
+    def('metricRank', ['element : Element'], 'Nat', rank('metric')),
+    def('modelRank', ['element : Element'], 'Nat', rank('model')),
+    def('planned', ['metricCount : Nat', 'itemCount : Nat', 'item : Nat', 'step : Nat', 'mappings : (List Mapping)'], 'Bool',
+      match('mappings', [['List.nil', '((item =? itemCount) && (step =? 0))'], ['List.cons mapping rest', planned]]), 'mappings'),
+    def('statedTotal', ['mappings : (List Mapping)'], 'Nat',
+      match('mappings', [['List.nil', '0'], ['List.cons mapping rest', '((if (project mapping stated) then 1 else 0) + (statedTotal rest))']]), 'mappings'),
+  ],
+  checks: [
+    '((project release metricCount) <? ((project release itemsCount) + 1))',
+    '(planned (project release metricCount) (project release itemsCount) 0 0 mappings)',
+    '((statedTotal mappings) =? (project release statedCount))',
+  ],
+};
+const records = {
+  items: m.items.map((x) => ({ slug: x.slug })),
+  mappings: m.items.flatMap((x) => x.entries.map((e) => ({ item: x.index, element: e.element, stated: e.status === 'stated', source: e.source ?? '', evidence: e.status === 'stated' ? `sha256:${e.digest}` : e.reason }))),
+};
+const releaseValues = { metricCount: m.counts.metrics, statedCount: m.counts.stated, standard: m.standard, register: `sha256:${m.register}` };
 
-// ---- The mapping of the register, and the 15939 records it supports. ----
-const str = (s) => JSON.stringify(String(s));
-const list = (type, names) => names.reduceRight((rest, n) => `(cons (${n}) ${rest})`, `(nil ${type})`);
-const pascal = (s) => s.split(/[^A-Za-z0-9]+/).filter(Boolean).map((w) => w[0].toUpperCase() + w.slice(1)).join('');
+// ---- The ISO/IEC 15939 records the mapping supports, tied to the CHAOSS release. ----
 const body = [];
-body.push(`\\begin{lexlean}{Measures}\n\\useglossary{lexlean.std.bool@1.2.0}\n\\useglossary{lexlean.std.nat@1.2.0}\n\\useglossary{prism.arch@1.0.0}\n\\importmodule{Chaoss}\n\\importmodule{Foundation.Community.V1.Model}\n\\importmodule{${S}}\n\\importmodule{${F}}\n\\title{CHAOSS measures}\n\\begin{semanticmodule}`);
-body.push(def('summary', '', `${F}::Summary`, `(record ${F}::Summary {standard := ${str(m.standard)}, register := ${str('sha256:' + m.register)}, statedCount := ${m.counts.stated}, openCount := ${m.counts.open}})`));
-const itemNames = m.items.map((x) => {
-  const name = `measure${pascal(x.kind)}${pascal(x.slug.replace(/^metrics?-model-/, '').replace(/^metric-/, ''))}`;
-  const entries = x.entries.map((e) => `(record ${F}::Mapping {element := (ctor ${F}::Element.${e.element}), stated := ${e.status === 'stated'}, source := ${str(e.source ?? '')}, evidence := ${str(e.status === 'stated' ? 'sha256:' + e.digest : e.reason)}})`);
-  body.push(def(name, '', `${F}::Item`, `(record ${F}::Item {index := ${x.index}, slug := ${str(x.slug)}, entries := ${entries.reduceRight((rest, e) => `(cons ${e} ${rest})`, `(nil ${F}::Mapping)`)}})`));
-  return name;
-});
+body.push(`\\begin{lexlean}{Measures}\n\\useglossary{lexlean.std.bool@1.2.0}\n\\useglossary{lexlean.std.nat@1.2.0}\n\\useglossary{prism.arch@1.0.0}\n\\importmodule{Chaoss}\n\\importmodule{Foundation.Community.V1.Model}\n\\importmodule{MeasurementMapping}\n\\importmodule{${F}}\n\\importmodule{${S}}\n\\title{CHAOSS measures}\n\\begin{semanticmodule}`);
 const needOf = new Map();
 const needNames = [];
 for (const x of m.items) {
@@ -180,7 +177,7 @@ for (const x of m.items) {
   if (e.status !== 'stated') continue;
   const name = `need${needNames.length}`;
   needOf.set(x.index, needNames.length);
-  body.push(def(name, '', `${S}::InformationNeed`, `(record ${S}::InformationNeed {index := ${needNames.length}, name := ${str(x.title)}, text := ${str(x.kind === 'metric' ? x.question : e.source)}})`));
+  body.push(def(name, [], `${S}::InformationNeed`, `(record ${S}::InformationNeed {index := ${needNames.length}, name := ${str(x.title)}, text := ${str(x.kind === 'metric' ? x.question : e.source)}})`));
   needNames.push(name);
 }
 const conceptNames = [];
@@ -188,19 +185,33 @@ for (const x of m.items) {
   const e = x.entries.find((y) => y.element === 'measurableConcept');
   if (e.status !== 'stated' || !needOf.has(x.index)) continue;
   const name = `concept${conceptNames.length}`;
-  body.push(def(name, '', `${S}::MeasurableConcept`, `(record ${S}::MeasurableConcept {index := ${conceptNames.length}, informationNeedIndex := ${needOf.get(x.index)}, name := ${str(x.title)}})`));
+  body.push(def(name, [], `${S}::MeasurableConcept`, `(record ${S}::MeasurableConcept {index := ${conceptNames.length}, informationNeedIndex := ${needOf.get(x.index)}, name := ${str(x.title)}})`));
   conceptNames.push(name);
 }
-body.push(def('items', '', `(List ${F}::Item)`, list(`${F}::Item`, itemNames)));
-body.push(def('needs', '', `(List ${S}::InformationNeed)`, list(`${S}::InformationNeed`, needNames)));
-body.push(def('concepts', '', `(List ${S}::MeasurableConcept)`, list(`${S}::MeasurableConcept`, conceptNames)));
-body.push(`theorem{\n  name: measuresValidHolds,\n  parameters: [],\n  statement: ((${F}::mappingValid (project (Chaoss::release) metricCount) (project (Chaoss::release) modelCount) (summary) (items) (needs) (concepts)) = true),\n  proof: decide{}\n}`);
+const chunked = (list, type, names) => {
+  for (let start = Math.floor(Math.max(names.length - 1, 0) / 48) * 48; start >= 0; start -= 48) {
+    const tail = start + 48 < names.length ? `(${list}From${start + 48})` : `(nil ${type})`;
+    body.push(def(`${list}From${start}`, [], `(List ${type})`, names.slice(start, start + 48).reduceRight((rest, n) => `(cons (${n}) ${rest})`, tail)));
+  }
+  body.push(def(list, [], `(List ${type})`, `(${list}From0)`));
+};
+chunked('needs', `${S}::InformationNeed`, needNames);
+chunked('concepts', `${S}::MeasurableConcept`, conceptNames);
+const total = (name, type) => def(name, [`values : (List ${type})`], 'Nat', match('values', [['List.nil', '0'], ['List.cons value rest', `(1 + (${name} rest))`]]), 'values');
+body.push(total('needTotal', `${S}::InformationNeed`));
+body.push(def('needsNumbered', ['position : Nat', `values : (List ${S}::InformationNeed)`], 'Bool', match('values', [['List.nil', 'true'], ['List.cons need rest', '(((project need index) =? position) && (needsNumbered (position + 1) rest))']]), 'values'));
+body.push(def('conceptsNumbered', ['position : Nat', 'needCount : Nat', `values : (List ${S}::MeasurableConcept)`], 'Bool', match('values', [['List.nil', 'true'], ['List.cons concept rest', '(((project concept index) =? position) && (((project concept informationNeedIndex) <? needCount) && (conceptsNumbered (position + 1) needCount rest)))']]), 'values'));
+// The mapping covers exactly the CHAOSS release: its metrics first, then its models.
+body.push(def('measuresValid', [], 'Bool', `(((project (MeasurementMapping::release) metricCount) =? (project (Chaoss::release) metricCount)) && (((project (MeasurementMapping::release) itemsCount) =? ((project (Chaoss::release) metricCount) + (project (Chaoss::release) modelCount))) && ((needsNumbered 0 (needs)) && (conceptsNumbered 0 (needTotal (needs)) (concepts)))))`));
+body.push(`theorem{\n  name: measuresValidHolds,\n  parameters: [],\n  statement: ((measuresValid) = true),\n  proof: decide{}\n}`);
 body.push('\\end{semanticmodule}\n\\end{lexlean}\n');
 
 const entry = (id, module, component, surface) => `spec = "lexlean/entry/1"\nid = "${id}"\ncategory = "label-word"\nsurface_arity = 0\nframe = "atom"\n\n[denotation]\nkind = "document"\nmodule = "${module}"\ncomponent = "${component}"\n\n[[form]]\nid = "${id}"\nchannel = "text"\nsurface = "${surface}"\ncanonical_source = true\nfeatures = ["sentence-case", "singular"]\n`;
-outputs.set(join(repo, 'app/src/Foundation/Community/V1/Measurement.lex.tex'), facet);
+outputs.set(join(repo, 'app/src/Foundation/Community/V1/Measurement.lex.tex'), typesModule(decl));
+outputs.set(join(repo, 'app/src/MeasurementMapping.lex.tex'), catalogModule(decl, records, releaseValues));
 outputs.set(join(repo, 'app/src/Measures.lex.tex'), body.join('\n'));
-outputs.set(join(repo, 'app/language/prism.arch/entries/measurement-mapping-model.toml'), entry('measurement-mapping-model', F, 'mappingValid', 'Measurement mapping model'));
+outputs.set(join(repo, 'app/language/prism.arch/entries/measurement-mapping-model.toml'), entry('measurement-mapping-model', F, 'registerValid', 'Measurement mapping model'));
+outputs.set(join(repo, 'app/language/prism.arch/entries/measurement-mapping.toml'), entry('measurement-mapping', 'MeasurementMapping', 'registerValidHolds', 'Measurement mapping'));
 outputs.set(join(repo, 'app/language/prism.arch/entries/chaoss-measures.toml'), entry('chaoss-measures', 'Measures', 'measuresValidHolds', 'CHAOSS measures'));
 
 let stale = 0;
