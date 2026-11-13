@@ -22,3 +22,9 @@ Feature: grimoirelab
     Given the Perceval oracle's does_not_cover
     When the repository is searched for a Discord token
     Then live retrieval is declared not covered and no token is committed
+
+  @GL-04 @build
+  Scenario: Each live Discord probe is an OpenTelemetry trace holding no message content or token, every trace is checked against the paging model the contribution Prism pins, and the next probes are scheduled by bounded Hebbian weights
+    Given oracles/grimoirelab/live, the model it pins and verify.sh
+    When verify.sh perceval runs the live harness against a local Discord, and verify.sh live runs a tick against the guild
+    Then every probe's trace is a run of the pinned model or the tick fails, no trace holds content or the token, and the engine's weights stay in their bounds

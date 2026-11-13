@@ -39,6 +39,7 @@ model does not sanction.
 | `GL-01` | `build` | The GrimoireLab oracle record pins Perceval, SortingHat and the GrimoireLab release by commit and PyPI digest, binds its wrapper and corpus by digest, and declares what each oracle covers and does not cover |
 | `GL-02` | `build` | The Perceval Discord backend is added to the pinned Perceval as new files only, with unit tests and offline archive replay run by upstream's own test runner |
 | `GL-03` | `open` | Live retrieval of the Foundation's Discord waits on a read-only bot in the guild, and its token stays out of the repository |
+| `GL-04` | `build` | Each live Discord probe is an OpenTelemetry trace holding no message content or token, every trace is checked against the paging model the contribution Prism pins, and the next probes are scheduled by bounded Hebbian weights |
 
 ## uor_toc_lifecycle
 

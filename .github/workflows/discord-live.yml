@@ -1,0 +1,90 @@
+# One tick of the live Discord validation (claims GL-03, GL-04): the Perceval
+# Discord backend runs against the Foundation's guild as the read-only bot,
+# each probe is recorded as an OpenTelemetry trace and checked against the
+# paging model oracles/grimoirelab/live/model.lock.json pins, and the engine
+# folds the outcomes into the weights that choose the next tick's probes.
+#
+# reuse-exempt: a live probe of an external service; what it reads changes
+# with every message sent to the guild, so no earlier result stands for it.
+#
+# The engine state, the traces and the reports are consolidated on the
+# telemetry/discord branch, one directory per tick, so the next tick starts
+# from the last one and the history stays reviewable. Traces hold ids, counts
+# and headers only, never message content, authors or the token.
+# Project content, not universal policy.
+name: discord-live
+
+on:
+  schedule:
+    # Off the hour, every six hours.
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: discord-live
+  cancel-in-progress: false
+
+jobs:
+  tick:
+    name: Probe the guild and check the traces
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+      - name: The engine state the last tick consolidated
+        run: |
+          mkdir -p "$RUNNER_TEMP/live"
+          if git fetch -q origin telemetry/discord; then
+            git show FETCH_HEAD:engine.json >"$RUNNER_TEMP/live/engine.json"
+          else
+            echo "No tick has been consolidated yet: the engine starts from its initial weights"
+          fi
+      - name: One tick
+        id: tick
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_GUILD_ID: ${{ vars.DISCORD_GUILD_ID }}
+          LIVE_STATE: ${{ runner.temp }}/live/engine.json
+          LIVE_OUT: ${{ runner.temp }}/live/out
+        run: |
+          set +e
+          oracles/grimoirelab/verify.sh live "$RUNNER_TEMP/grimoirelab"
+          code=$?
+          echo "code=$code" >>"$GITHUB_OUTPUT"
+          # 0 conforms, 1 diverged (consolidated, then failed below); anything
+          # else stopped the tick before it finished, so nothing is kept.
+          [ "$code" -le 1 ]
+      - name: Consolidate the tick on telemetry/discord
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OUT: ${{ runner.temp }}/live/out
+        run: |
+          tick="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["tick"])' "$OUT/report.json")"
+          work="$RUNNER_TEMP/telemetry"
+          remote="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}"
+          if git fetch -q "$remote" telemetry/discord; then
+            git worktree add -q "$work" FETCH_HEAD
+          else
+            git worktree add -q --orphan -b telemetry/discord "$work"
+          fi
+          mkdir -p "$work/ticks/$tick"
+          cp "$OUT/engine.json" "$work/engine.json"
+          cp "$OUT/traces.otlp.json" "$OUT/report.json" "$work/ticks/$tick/"
+          cd "$work"
+          git add -A
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+            commit -q -m "telemetry: tick $tick of the live Discord validation"
+          git push -q "$remote" HEAD:telemetry/discord
+      - name: A divergence from the model fails the run
+        if: steps.tick.outputs.code == '1'
+        run: |
+          python3 -m json.tool "$RUNNER_TEMP/live/out/report.json"
+          exit 1
