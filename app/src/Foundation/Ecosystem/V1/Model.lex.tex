@@ -131,64 +131,6 @@ structure{
 }
 
 definition{
-  name: repositoriesValid,
-  parameters: [position : Nat, values : (List Repository)],
-  result: Bool,
-  body: (match values
-    | List.nil => true
-    | List.cons repository rest => (((project repository index) =? position) && (repositoriesValid (position + 1) rest))),
-  recursive_argument: values
-}
-
-definition{
-  name: repositoriesTotal,
-  parameters: [values : (List Repository)],
-  result: Nat,
-  body: (match values
-    | List.nil => 0
-    | List.cons repository rest => (1 + (repositoriesTotal rest))),
-  recursive_argument: values
-}
-
-definition{
-  name: openClaimsValid,
-  parameters: [position : Nat, repositoriesCount : Nat, values : (List OpenClaim)],
-  result: Bool,
-  body: (match values
-    | List.nil => true
-    | List.cons openClaim rest => (((project openClaim index) =? position) && (((project openClaim repository) <? repositoriesCount) && (openClaimsValid (position + 1) repositoriesCount rest)))),
-  recursive_argument: values
-}
-
-definition{
-  name: openClaimsTotal,
-  parameters: [values : (List OpenClaim)],
-  result: Nat,
-  body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
-  recursive_argument: values
-}
-
-definition{
-  name: tocApplicationsValid,
-  parameters: [position : Nat, values : (List TocApplication)],
-  result: Bool,
-  body: (match values
-    | List.nil => true
-    | List.cons tocApplication rest => (((project tocApplication index) =? position) && (tocApplicationsValid (position + 1) rest))),
-  recursive_argument: values
-}
-
-definition{
-  name: tocApplicationsTotal,
-  parameters: [values : (List TocApplication)],
-  result: Nat,
-  body: (match values
-    | List.nil => 0
-    | List.cons tocApplication rest => (1 + (tocApplicationsTotal rest))),
-  recursive_argument: values
-}
-
-definition{
   name: tierRecorded,
   parameters: [value : Tier],
   result: Bool,
@@ -263,7 +205,65 @@ definition{
   result: Bool,
   body: (match values
     | List.nil => true
-    | List.cons repository rest => (((tagsRead repository) && ((isConformant (project repository outcome)) || (claimed (project repository index) claims))) && (repositoriesAccounted claims rest))),
+    | List.cons repository rest => (((isConformant (project repository outcome)) || (claimed (project repository index) claims)) && (repositoriesAccounted claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesValid,
+  parameters: [position : Nat, values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => (((project repository index) =? position) && ((tagsRead repository) && (repositoriesValid (position + 1) rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => (1 + (repositoriesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons openClaim rest => (((project openClaim index) =? position) && (((project openClaim repository) <? repositoriesCount) && (openClaimsValid (position + 1) repositoriesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsTotal,
+  parameters: [values : (List OpenClaim)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: tocApplicationsValid,
+  parameters: [position : Nat, values : (List TocApplication)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons tocApplication rest => (((project tocApplication index) =? position) && (tocApplicationsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: tocApplicationsTotal,
+  parameters: [values : (List TocApplication)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons tocApplication rest => (1 + (tocApplicationsTotal rest))),
   recursive_argument: values
 }
 
