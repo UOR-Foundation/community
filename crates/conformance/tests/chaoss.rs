@@ -113,32 +113,45 @@ fn numbers(json: &str, key: &str) -> Vec<usize> {
 /// `CC-04`: Every CHAOSS metric and metrics model has a complete ISO/IEC 15939 mapping
 #[test]
 fn chaoss_cc_04() {
+    let theorem = |path: &str, name: &str| {
+        let text = read(path);
+        let start = text
+            .find(&format!("\n  name: {name},\n"))
+            .unwrap_or_else(|| panic!("{name} is declared in {path}"));
+        let end = start + text[start..].find("\n}").expect("closed");
+        text[start..end].to_string()
+    };
+    let holds = theorem("app/src/Measures.lex.tex", "measuresValidHolds");
+    assert!(
+        holds.contains("statement: ((measuresValid) = true),") && holds.contains("proof: decide{}"),
+        "measuresValidHolds is proved by decide:\n{holds}"
+    );
+    let mapped = theorem("app/src/MeasurementMapping.lex.tex", "registerValidHolds");
+    assert!(
+        mapped.contains("proof: decide{}"),
+        "the mapping register is proved valid by decide"
+    );
     let measures = read("app/src/Measures.lex.tex");
-    let start = measures
-        .find("\n  name: measuresValidHolds,\n")
-        .expect("measuresValidHolds is declared");
-    let theorem = &measures[start..start + measures[start..].find("\n}").expect("closed")];
-    assert!(
-        theorem.contains("(Foundation.Community.V1.Measurement::mappingValid (project (Chaoss::release) metricCount) (project (Chaoss::release) modelCount) (summary) (items) (needs) (concepts))"),
-        "measuresValidHolds is about every item of the CHAOSS release:\n{theorem}"
-    );
-    assert!(
-        theorem.contains("proof: decide{}"),
-        "measuresValidHolds is proved by decide"
-    );
+    for part in [
+        "((project (MeasurementMapping::release) metricCount) =? (project (Chaoss::release) metricCount))",
+        "((project (MeasurementMapping::release) itemsCount) =? ((project (Chaoss::release) metricCount) + (project (Chaoss::release) modelCount)))",
+        "(conceptsNumbered 0 (needTotal (needs)) (concepts))",
+    ] {
+        assert!(measures.contains(part), "measuresValid still checks {part}");
+    }
     let facet = read("app/src/Foundation/Community/V1/Measurement.lex.tex");
     for part in [
-        "((itemTotal items) =? (metricCount + modelCount))",
-        "(itemsPlanned 0 metricCount items)",
-        "(position =? 7)",
-        "(position =? 6)",
-        "(conceptsNumbered 0 (needTotal needs) concepts)",
+        "(planned (project release metricCount) (project release itemsCount) 0 0 mappings)",
+        "((step + 1) =? 7)",
+        "((step + 1) =? 6)",
+        "((statedTotal mappings) =? (project release statedCount))",
     ] {
-        assert!(facet.contains(part), "mappingValid still checks {part}");
+        assert!(facet.contains(part), "registerValid still checks {part}");
     }
     // Every item is the register's, in its order, and every stated element cites a digest.
     let register = read("chaoss/register.json");
     let mapping = read("chaoss/measurement.json");
+    let catalog = read("app/src/MeasurementMapping.lex.tex");
     let slugs = values(&register, "slug");
     let mapped = values(&mapping, "slug");
     let released = slugs.len() - values(&register, "refusal").len();
@@ -149,7 +162,7 @@ fn chaoss_cc_04() {
     );
     for slug in &mapped {
         assert!(
-            measures.contains(&format!("slug := \"{slug}\"")),
+            catalog.contains(&format!("slug := \"{slug}\"")),
             "{slug} is mapped"
         );
     }
@@ -162,13 +175,13 @@ fn chaoss_cc_04() {
             "{digest} is a sha256"
         );
         assert!(
-            measures.contains(&format!("evidence := \"sha256:{digest}\"")),
+            catalog.contains(&format!("evidence := \"sha256:{digest}\"")),
             "the digest {digest} is declared"
         );
     }
     assert!(
-        measures.contains(&format!("statedCount := {stated}")),
-        "the summary counts every stated element"
+        catalog.contains(&format!("statedCount := {stated}")),
+        "the release counts every stated element"
     );
 }
 
@@ -176,7 +189,7 @@ fn chaoss_cc_04() {
 #[test]
 fn chaoss_cc_05() {
     let mapping = read("chaoss/measurement.json");
-    let measures = read("app/src/Measures.lex.tex");
+    let catalog = read("app/src/MeasurementMapping.lex.tex");
     let reasons = values(&mapping, "reason");
     let open = numbers(&mapping, "open")[0];
     assert_eq!(reasons.len(), open, "every open element names its reason");
@@ -191,14 +204,14 @@ fn chaoss_cc_05() {
             .contains(&reason.as_str()),
             "{reason} is a typed refusal"
         );
+        assert!(
+            catalog.contains(&format!("evidence := \"{reason}\"")),
+            "{reason} is declared"
+        );
     }
     assert_eq!(
-        measures.matches("stated := false").count(),
+        catalog.matches("stated := false").count(),
         open,
         "every open element is a Mapping that is not stated"
-    );
-    assert!(
-        measures.contains(&format!("openCount := {open}")),
-        "the summary counts every open element"
     );
 }

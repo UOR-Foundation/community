@@ -2,7 +2,6 @@
 \useglossary{lexlean.std.bool@1.2.0}
 \useglossary{lexlean.std.nat@1.2.0}
 \useglossary{prism.arch@1.0.0}
-\importmodule{Foundation.Measurement.V1.Model}
 \title{Measurement mapping model}
 \begin{semanticmodule}
 inductive{
@@ -25,14 +24,16 @@ inductive{
 }
 
 structure{
-  name: Mapping,
+  name: Release,
   type_parameters: [],
   parameters: [],
   fields: [
-    {name: element, type: Element},
-    {name: stated, type: Bool},
-    {name: source, type: String},
-    {name: evidence, type: String}
+    {name: itemsCount, type: Nat},
+    {name: mappingsCount, type: Nat},
+    {name: metricCount, type: Nat},
+    {name: statedCount, type: Nat},
+    {name: standard, type: String},
+    {name: register, type: String}
   ]
 }
 
@@ -40,23 +41,57 @@ structure{
   name: Item,
   type_parameters: [],
   parameters: [],
-  fields: [
-    {name: index, type: Nat},
-    {name: slug, type: String},
-    {name: entries, type: (List Mapping)}
-  ]
+  fields: [{name: index, type: Nat}, {name: slug, type: String}]
 }
 
 structure{
-  name: Summary,
+  name: Mapping,
   type_parameters: [],
   parameters: [],
   fields: [
-    {name: standard, type: String},
-    {name: register, type: String},
-    {name: statedCount, type: Nat},
-    {name: openCount, type: Nat}
+    {name: index, type: Nat},
+    {name: item, type: Nat},
+    {name: element, type: Element},
+    {name: stated, type: Bool},
+    {name: source, type: String},
+    {name: evidence, type: String}
   ]
+}
+
+definition{
+  name: itemsValid,
+  parameters: [position : Nat, values : (List Item)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => (((project item index) =? position) && (itemsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: itemsTotal,
+  parameters: [values : (List Item)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons item rest => (1 + (itemsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: mappingsValid,
+  parameters: [position : Nat, itemsCount : Nat, values : (List Mapping)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons mapping rest => (((project mapping index) =? position) && (((project mapping item) <? itemsCount) && (mappingsValid (position + 1) itemsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: mappingsTotal,
+  parameters: [values : (List Mapping)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons mapping rest => (1 + (mappingsTotal rest))),
+  recursive_argument: values
 }
 
 definition{
@@ -96,125 +131,36 @@ definition{
 }
 
 definition{
-  name: metricPlanned,
-  parameters: [position : Nat, entries : (List Mapping)],
+  name: planned,
+  parameters: [
+    metricCount : Nat,
+    itemCount : Nat,
+    item : Nat,
+    step : Nat,
+    mappings : (List Mapping)
+  ],
   result: Bool,
-  body: (match entries
-    | List.nil => (position =? 7)
-    | List.cons entry rest => (((metricRank (project entry element)) =? position) && (metricPlanned (position + 1) rest))),
-  recursive_argument: entries
-}
-
-definition{
-  name: modelPlanned,
-  parameters: [position : Nat, entries : (List Mapping)],
-  result: Bool,
-  body: (match entries
-    | List.nil => (position =? 6)
-    | List.cons entry rest => (((modelRank (project entry element)) =? position) && (modelPlanned (position + 1) rest))),
-  recursive_argument: entries
-}
-
-definition{
-  name: itemsPlanned,
-  parameters: [position : Nat, metricCount : Nat, items : (List Item)],
-  result: Bool,
-  body: (match items
-    | List.nil => true
-    | List.cons item rest => (((project item index) =? position) && ((if (position <? metricCount) then (metricPlanned 0 (project item entries)) else (modelPlanned 0 (project item entries))) && (itemsPlanned (position + 1) metricCount rest)))),
-  recursive_argument: items
-}
-
-definition{
-  name: statedIn,
-  parameters: [entries : (List Mapping)],
-  result: Nat,
-  body: (match entries
-    | List.nil => 0
-    | List.cons entry rest => ((if (project entry stated) then 1 else 0) + (statedIn rest))),
-  recursive_argument: entries
-}
-
-definition{
-  name: entriesIn,
-  parameters: [entries : (List Mapping)],
-  result: Nat,
-  body: (match entries | List.nil => 0 | List.cons entry rest => (1 + (entriesIn rest))),
-  recursive_argument: entries
+  body: (match mappings
+    | List.nil => ((item =? itemCount) && (step =? 0))
+    | List.cons mapping rest => (if ((project mapping item) =? item) then (if (item <? metricCount) then (((metricRank (project mapping element)) =? step) && (if ((step + 1) =? 7) then (planned metricCount itemCount (item + 1) 0 rest) else (planned metricCount itemCount item (step + 1) rest))) else (((modelRank (project mapping element)) =? step) && (if ((step + 1) =? 6) then (planned metricCount itemCount (item + 1) 0 rest) else (planned metricCount itemCount item (step + 1) rest)))) else false)),
+  recursive_argument: mappings
 }
 
 definition{
   name: statedTotal,
-  parameters: [items : (List Item)],
+  parameters: [mappings : (List Mapping)],
   result: Nat,
-  body: (match items
+  body: (match mappings
     | List.nil => 0
-    | List.cons item rest => ((statedIn (project item entries)) + (statedTotal rest))),
-  recursive_argument: items
+    | List.cons mapping rest => ((if (project mapping stated) then 1 else 0) + (statedTotal rest))),
+  recursive_argument: mappings
 }
 
 definition{
-  name: entryTotal,
-  parameters: [items : (List Item)],
-  result: Nat,
-  body: (match items
-    | List.nil => 0
-    | List.cons item rest => ((entriesIn (project item entries)) + (entryTotal rest))),
-  recursive_argument: items
-}
-
-definition{
-  name: itemTotal,
-  parameters: [rows : (List Item)],
-  result: Nat,
-  body: (match rows | List.nil => 0 | List.cons row rest => (1 + (itemTotal rest))),
-  recursive_argument: rows
-}
-
-definition{
-  name: needTotal,
-  parameters: [rows : (List Foundation.Measurement.V1.Model::InformationNeed)],
-  result: Nat,
-  body: (match rows | List.nil => 0 | List.cons row rest => (1 + (needTotal rest))),
-  recursive_argument: rows
-}
-
-definition{
-  name: needsNumbered,
-  parameters: [position : Nat, needs : (List Foundation.Measurement.V1.Model::InformationNeed)],
+  name: registerValid,
+  parameters: [release : Release, items : (List Item), mappings : (List Mapping)],
   result: Bool,
-  body: (match needs
-    | List.nil => true
-    | List.cons need rest => (((project need index) =? position) && (needsNumbered (position + 1) rest))),
-  recursive_argument: needs
-}
-
-definition{
-  name: conceptsNumbered,
-  parameters: [
-    position : Nat,
-    needCount : Nat,
-    concepts : (List Foundation.Measurement.V1.Model::MeasurableConcept)
-  ],
-  result: Bool,
-  body: (match concepts
-    | List.nil => true
-    | List.cons concept rest => (((project concept index) =? position) && (((project concept informationNeedIndex) <? needCount) && (conceptsNumbered (position + 1) needCount rest)))),
-  recursive_argument: concepts
-}
-
-definition{
-  name: mappingValid,
-  parameters: [
-    metricCount : Nat,
-    modelCount : Nat,
-    summary : Summary,
-    items : (List Item),
-    needs : (List Foundation.Measurement.V1.Model::InformationNeed),
-    concepts : (List Foundation.Measurement.V1.Model::MeasurableConcept)
-  ],
-  result: Bool,
-  body: (((itemTotal items) =? (metricCount + modelCount)) && ((itemsPlanned 0 metricCount items) && (((statedTotal items) =? (project summary statedCount)) && (((entryTotal items) =? ((project summary statedCount) + (project summary openCount))) && ((needsNumbered 0 needs) && (conceptsNumbered 0 (needTotal needs) concepts))))))
+  body: (((itemsTotal items) =? (project release itemsCount)) && (((mappingsTotal mappings) =? (project release mappingsCount)) && ((itemsValid 0 items) && ((mappingsValid 0 (itemsTotal items) mappings) && (((project release metricCount) <? ((project release itemsCount) + 1)) && ((planned (project release metricCount) (project release itemsCount) 0 0 mappings) && ((statedTotal mappings) =? (project release statedCount))))))))
 }
 \end{semanticmodule}
 \end{lexlean}
