@@ -1,0 +1,470 @@
+\begin{lexlean}{Ecosystem}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Ecosystem.V1.Model}
+\title{Ecosystem register}
+\begin{semanticmodule}
+definition{
+  name: snapshot,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Snapshot,
+  body: (record Foundation.Ecosystem.V1.Model::Snapshot {query := "org:UOR-Foundation is:public", snapshotDigest := "sha256:6cd8f63813c08d3adaedc151f3c439871134950ceb0b3aa1463a49be109f05c1", norms := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:STANDARDS.md#sha256:87977973277069d38bb3b9851c5f323182e15528184c5e2029dc631b133a4b26 .github@92da114114fc9b76cbf2c5168e29d409b62ddde8:toc/README.md#sha256:9674e625d93cefc9e490b3af5ae449f8770eeadb50c85e68597f741656c2d2a2", app := "prism-devrel@4b8001e8ef28e2c25c0c6a20c4b72f92fc4db17d:examples/uor-repo-standards.prompt.json", appDigest := "sha256:5110ceae4dcad03303e79f678303c4cc0b1c558ce676eed7a8c82f4f09ebf3b0", repositoryCount := 31, conformantCount := 0, openClaimCount := 31})
+}
+
+definition{
+  name: repoDotGithub,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 0, name := ".github", archived := false, language := "", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repo5LevelsOfUor,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 1, name := "5-Levels-of-UOR", archived := true, language := "HTML", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoAtlas12288,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 2, name := "atlas-12288", archived := true, language := "C", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoCalculatorExample,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 3, name := "calculator-example", archived := false, language := "TeX", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoCommunity,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 4, name := "community", archived := false, language := "JavaScript", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoCompression,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 5, name := "compression", archived := false, language := "Rust", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.other), releaseTags := 6, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoF1,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 6, name := "F1", archived := false, language := "Lean", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.semver), releaseTags := 25, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoFoundry,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 7, name := "foundry", archived := false, language := "JavaScript", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoFoundryWeb,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 8, name := "foundry-web", archived := false, language := "JavaScript", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoHoloSearch,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 9, name := "holo-search", archived := false, language := "HTML", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoKappaDistribution,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 10, name := "kappa-distribution", archived := false, language := "Rust", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoKappaRegistry,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 11, name := "kappa-registry", archived := false, language := "Rust", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoLexlean,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 12, name := "LexLean", archived := false, language := "TeX", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.semver), releaseTags := 2, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoLexleanMcp,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 13, name := "lexlean-mcp", archived := false, language := "Rust", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.semver), releaseTags := 2, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoMalachiteUsdc,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 14, name := "malachite-usdc", archived := false, language := "Rust", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoMcp,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 15, name := "MCP", archived := false, language := "Rust", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoMnist,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 16, name := "MNIST", archived := false, language := "TeX", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoNestUor,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 17, name := "nest-uor", archived := false, language := "Python", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoOoo,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 18, name := "OOO", archived := false, language := "TeX", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.other), releaseTags := 3, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoPrism,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 19, name := "prism", archived := false, language := "Rust", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.semver), releaseTags := 11, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoPrismCode,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 20, name := "prism-code", archived := false, language := "TeX", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoPrismpm,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 21, name := "PrismPM", archived := false, language := "TeX", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.other), releaseTags := 16, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoResearch,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 22, name := "research", archived := true, language := "Rust", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoTemplate,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 23, name := "template", archived := false, language := "JavaScript", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoUorAddr,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 24, name := "uor-addr", archived := false, language := "Rust", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.semver), releaseTags := 3, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoUorFoundry,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 25, name := "uor-foundry", archived := false, language := "Rust", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoUorFramework,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 26, name := "UOR-Framework", archived := false, language := "Rust", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.semver), releaseTags := 51, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoUorJcsNfc,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 27, name := "uor-jcs-nfc", archived := false, language := "Python", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoUorMatmul,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 28, name := "uor-matmul", archived := false, language := "Rust", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.semver), releaseTags := 1, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoUorR4,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 29, name := "uor-r4", archived := false, language := "Rust", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.other), releaseTags := 10, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: repoWebsite,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::Repository,
+  body: (record Foundation.Ecosystem.V1.Model::Repository {index := 30, name := "website", archived := false, language := "TypeScript", topics := "", tier := (ctor Foundation.Ecosystem.V1.Model::Tier.unrecorded), status := (ctor Foundation.Ecosystem.V1.Model::Status.unrecorded), tocStage := (ctor Foundation.Ecosystem.V1.Model::TocStage.unrecorded), identityTags := false, tierTags := 0, statusTags := 0, versioning := (ctor Foundation.Ecosystem.V1.Model::Versioning.unreleased), releaseTags := 0, outcome := (ctor Foundation.Ecosystem.V1.Model::StandardsOutcome.untagged)})
+}
+
+definition{
+  name: openClaim0,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 0, repository := 0, name := "untagged", reason := ".github: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim1,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 1, repository := 1, name := "untagged", reason := "5-Levels-of-UOR: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim2,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 2, repository := 2, name := "untagged", reason := "atlas-12288: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim3,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 3, repository := 3, name := "untagged", reason := "calculator-example: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim4,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 4, repository := 4, name := "untagged", reason := "community: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim5,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 5, repository := 5, name := "untagged", reason := "compression: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim6,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 6, repository := 6, name := "untagged", reason := "F1: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim7,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 7, repository := 7, name := "untagged", reason := "foundry: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim8,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 8, repository := 8, name := "untagged", reason := "foundry-web: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim9,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 9, repository := 9, name := "untagged", reason := "holo-search: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim10,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 10, repository := 10, name := "untagged", reason := "kappa-distribution: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim11,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 11, repository := 11, name := "untagged", reason := "kappa-registry: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim12,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 12, repository := 12, name := "untagged", reason := "LexLean: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim13,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 13, repository := 13, name := "untagged", reason := "lexlean-mcp: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim14,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 14, repository := 14, name := "untagged", reason := "malachite-usdc: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim15,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 15, repository := 15, name := "untagged", reason := "MCP: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim16,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 16, repository := 16, name := "untagged", reason := "MNIST: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim17,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 17, repository := 17, name := "untagged", reason := "nest-uor: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim18,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 18, repository := 18, name := "untagged", reason := "OOO: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim19,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 19, repository := 19, name := "untagged", reason := "prism: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim20,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 20, repository := 20, name := "untagged", reason := "prism-code: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim21,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 21, repository := 21, name := "untagged", reason := "PrismPM: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim22,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 22, repository := 22, name := "untagged", reason := "research: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim23,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 23, repository := 23, name := "untagged", reason := "template: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim24,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 24, repository := 24, name := "untagged", reason := "uor-addr: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim25,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 25, repository := 25, name := "untagged", reason := "uor-foundry: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim26,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 26, repository := 26, name := "untagged", reason := "UOR-Framework: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim27,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 27, repository := 27, name := "untagged", reason := "uor-jcs-nfc: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim28,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 28, repository := 28, name := "untagged", reason := "uor-matmul: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim29,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 29, repository := 29, name := "untagged", reason := "uor-r4: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: openClaim30,
+  parameters: [],
+  result: Foundation.Ecosystem.V1.Model::OpenClaim,
+  body: (record Foundation.Ecosystem.V1.Model::OpenClaim {index := 30, repository := 30, name := "untagged", reason := "website: its topic tags do not follow STANDARDS.md (STANDARDS.md: every repository carries uor and uor-foundation)"})
+}
+
+definition{
+  name: repositories,
+  parameters: [],
+  result: (List Foundation.Ecosystem.V1.Model::Repository),
+  body: (cons (repoDotGithub) (cons (repo5LevelsOfUor) (cons (repoAtlas12288) (cons (repoCalculatorExample) (cons (repoCommunity) (cons (repoCompression) (cons (repoF1) (cons (repoFoundry) (cons (repoFoundryWeb) (cons (repoHoloSearch) (cons (repoKappaDistribution) (cons (repoKappaRegistry) (cons (repoLexlean) (cons (repoLexleanMcp) (cons (repoMalachiteUsdc) (cons (repoMcp) (cons (repoMnist) (cons (repoNestUor) (cons (repoOoo) (cons (repoPrism) (cons (repoPrismCode) (cons (repoPrismpm) (cons (repoResearch) (cons (repoTemplate) (cons (repoUorAddr) (cons (repoUorFoundry) (cons (repoUorFramework) (cons (repoUorJcsNfc) (cons (repoUorMatmul) (cons (repoUorR4) (cons (repoWebsite) (nil Foundation.Ecosystem.V1.Model::Repository))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: openClaims,
+  parameters: [],
+  result: (List Foundation.Ecosystem.V1.Model::OpenClaim),
+  body: (cons (openClaim0) (cons (openClaim1) (cons (openClaim2) (cons (openClaim3) (cons (openClaim4) (cons (openClaim5) (cons (openClaim6) (cons (openClaim7) (cons (openClaim8) (cons (openClaim9) (cons (openClaim10) (cons (openClaim11) (cons (openClaim12) (cons (openClaim13) (cons (openClaim14) (cons (openClaim15) (cons (openClaim16) (cons (openClaim17) (cons (openClaim18) (cons (openClaim19) (cons (openClaim20) (cons (openClaim21) (cons (openClaim22) (cons (openClaim23) (cons (openClaim24) (cons (openClaim25) (cons (openClaim26) (cons (openClaim27) (cons (openClaim28) (cons (openClaim29) (cons (openClaim30) (nil Foundation.Ecosystem.V1.Model::OpenClaim))))))))))))))))))))))))))))))))
+}
+
+theorem{
+  name: ecosystemValidHolds,
+  parameters: [],
+  statement: ((Foundation.Ecosystem.V1.Model::registerValid (snapshot) (repositories) (openClaims)) = true),
+  proof: decide{}
+}
+\end{semanticmodule}
+\end{lexlean}
