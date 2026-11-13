@@ -32,6 +32,15 @@ model does not sanction.
 | --- | --- | --- |
 | `FR-01` | `build` | With a working worker, the page loads and verifies the archive only in that worker before using its identities or guest |
 
+## governance
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `GV-01` | `build` | The Foundation governance register is valid: every unit, post, role, vote rule, stage, holding, membership, delegation and reference resolves; every rule that decides something belongs to a body with a quorum rule; every TOC lifecycle decision is a Technical Oversight Committee vote; every Board position the Bylaws create is held by exactly one person; and the Board's size is within the Bylaws' bounds |
+| `GV-02` | `build` | The governance catalog declares every provision of governance/register.json with the content digest of its text at the pinned source commit |
+| `GV-03` | `open` | A post, role or committee no pinned source fills, a reference that resolves to nothing, an agent with no person behind it, and every Bylaws notice is carried as an open claim, never dropped or guessed |
+| `GV-04` | `build` | Agents are Schema.org SoftwareApplication, never Person: every PROV-O actedOnBehalfOf delegation runs from a SoftwareApplication to a Person, and only a Person holds a post or a role |
+
 ## uor_toc_lifecycle
 
 | ID | Level | Statement |
