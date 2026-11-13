@@ -1,0 +1,220 @@
+\begin{lexlean}{Foundation.Community.V1.Measurement}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Measurement.V1.Model}
+\title{Measurement mapping model}
+\begin{semanticmodule}
+inductive{
+  name: Element,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: informationNeed, fields: []},
+    {name: measurableConcept, fields: []},
+    {name: entity, fields: []},
+    {name: attribute, fields: []},
+    {name: measurementMethod, fields: []},
+    {name: scale, fields: []},
+    {name: unit, fields: []},
+    {name: baseMeasures, fields: []},
+    {name: measurementFunction, fields: []},
+    {name: analysisModel, fields: []},
+    {name: decisionCriteria, fields: []}
+  ]
+}
+
+structure{
+  name: Mapping,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: element, type: Element},
+    {name: stated, type: Bool},
+    {name: source, type: String},
+    {name: evidence, type: String}
+  ]
+}
+
+structure{
+  name: Item,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: slug, type: String},
+    {name: entries, type: (List Mapping)}
+  ]
+}
+
+structure{
+  name: Summary,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: standard, type: String},
+    {name: register, type: String},
+    {name: statedCount, type: Nat},
+    {name: openCount, type: Nat}
+  ]
+}
+
+definition{
+  name: metricRank,
+  parameters: [element : Element],
+  result: Nat,
+  body: (match element
+    | Element.informationNeed => 0
+    | Element.measurableConcept => 1
+    | Element.entity => 2
+    | Element.attribute => 3
+    | Element.measurementMethod => 4
+    | Element.scale => 5
+    | Element.unit => 6
+    | Element.baseMeasures => 99
+    | Element.measurementFunction => 99
+    | Element.analysisModel => 99
+    | Element.decisionCriteria => 99)
+}
+
+definition{
+  name: modelRank,
+  parameters: [element : Element],
+  result: Nat,
+  body: (match element
+    | Element.informationNeed => 0
+    | Element.measurableConcept => 1
+    | Element.entity => 99
+    | Element.attribute => 99
+    | Element.measurementMethod => 99
+    | Element.scale => 99
+    | Element.unit => 99
+    | Element.baseMeasures => 2
+    | Element.measurementFunction => 3
+    | Element.analysisModel => 4
+    | Element.decisionCriteria => 5)
+}
+
+definition{
+  name: metricPlanned,
+  parameters: [position : Nat, entries : (List Mapping)],
+  result: Bool,
+  body: (match entries
+    | List.nil => (position =? 7)
+    | List.cons entry rest => (((metricRank (project entry element)) =? position) && (metricPlanned (position + 1) rest))),
+  recursive_argument: entries
+}
+
+definition{
+  name: modelPlanned,
+  parameters: [position : Nat, entries : (List Mapping)],
+  result: Bool,
+  body: (match entries
+    | List.nil => (position =? 6)
+    | List.cons entry rest => (((modelRank (project entry element)) =? position) && (modelPlanned (position + 1) rest))),
+  recursive_argument: entries
+}
+
+definition{
+  name: itemsPlanned,
+  parameters: [position : Nat, metricCount : Nat, items : (List Item)],
+  result: Bool,
+  body: (match items
+    | List.nil => true
+    | List.cons item rest => (((project item index) =? position) && ((if (position <? metricCount) then (metricPlanned 0 (project item entries)) else (modelPlanned 0 (project item entries))) && (itemsPlanned (position + 1) metricCount rest)))),
+  recursive_argument: items
+}
+
+definition{
+  name: statedIn,
+  parameters: [entries : (List Mapping)],
+  result: Nat,
+  body: (match entries
+    | List.nil => 0
+    | List.cons entry rest => ((if (project entry stated) then 1 else 0) + (statedIn rest))),
+  recursive_argument: entries
+}
+
+definition{
+  name: entriesIn,
+  parameters: [entries : (List Mapping)],
+  result: Nat,
+  body: (match entries | List.nil => 0 | List.cons entry rest => (1 + (entriesIn rest))),
+  recursive_argument: entries
+}
+
+definition{
+  name: statedTotal,
+  parameters: [items : (List Item)],
+  result: Nat,
+  body: (match items
+    | List.nil => 0
+    | List.cons item rest => ((statedIn (project item entries)) + (statedTotal rest))),
+  recursive_argument: items
+}
+
+definition{
+  name: entryTotal,
+  parameters: [items : (List Item)],
+  result: Nat,
+  body: (match items
+    | List.nil => 0
+    | List.cons item rest => ((entriesIn (project item entries)) + (entryTotal rest))),
+  recursive_argument: items
+}
+
+definition{
+  name: itemTotal,
+  parameters: [rows : (List Item)],
+  result: Nat,
+  body: (match rows | List.nil => 0 | List.cons row rest => (1 + (itemTotal rest))),
+  recursive_argument: rows
+}
+
+definition{
+  name: needTotal,
+  parameters: [rows : (List Foundation.Measurement.V1.Model::InformationNeed)],
+  result: Nat,
+  body: (match rows | List.nil => 0 | List.cons row rest => (1 + (needTotal rest))),
+  recursive_argument: rows
+}
+
+definition{
+  name: needsNumbered,
+  parameters: [position : Nat, needs : (List Foundation.Measurement.V1.Model::InformationNeed)],
+  result: Bool,
+  body: (match needs
+    | List.nil => true
+    | List.cons need rest => (((project need index) =? position) && (needsNumbered (position + 1) rest))),
+  recursive_argument: needs
+}
+
+definition{
+  name: conceptsNumbered,
+  parameters: [
+    position : Nat,
+    needCount : Nat,
+    concepts : (List Foundation.Measurement.V1.Model::MeasurableConcept)
+  ],
+  result: Bool,
+  body: (match concepts
+    | List.nil => true
+    | List.cons concept rest => (((project concept index) =? position) && (((project concept informationNeedIndex) <? needCount) && (conceptsNumbered (position + 1) needCount rest)))),
+  recursive_argument: concepts
+}
+
+definition{
+  name: mappingValid,
+  parameters: [
+    metricCount : Nat,
+    modelCount : Nat,
+    summary : Summary,
+    items : (List Item),
+    needs : (List Foundation.Measurement.V1.Model::InformationNeed),
+    concepts : (List Foundation.Measurement.V1.Model::MeasurableConcept)
+  ],
+  result: Bool,
+  body: (((itemTotal items) =? (metricCount + modelCount)) && ((itemsPlanned 0 metricCount items) && (((statedTotal items) =? (project summary statedCount)) && (((entryTotal items) =? ((project summary statedCount) + (project summary openCount))) && ((needsNumbered 0 needs) && (conceptsNumbered 0 (needTotal needs) concepts))))))
+}
+\end{semanticmodule}
+\end{lexlean}
