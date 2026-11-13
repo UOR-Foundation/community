@@ -1,0 +1,16 @@
+{
+  "spec": "uor-community/registers/1",
+  "about": "Every projected register, the pinned sources it reads and the commands that re-project it with --check. oracles/reproject.mjs runs one entry; the oracles workflow runs each entry whose inputs changed. `inputs` are the globs the entry's cache key hashes; `tools` are the commands whose output names a tool version the projection depends on. In a command, {sources} is the directory the pinned sources were fetched into.",
+  "registers": [
+    {
+      "area": "chaoss",
+      "sources": { "kind": "git-commits", "file": "chaoss/sources.json", "base": "https://github.com/chaoss/" },
+      "inputs": ["chaoss/**"],
+      "tools": [],
+      "check": [
+        ["node", "chaoss/project.mjs", "{sources}", "--check"],
+        ["node", "chaoss/catalog.mjs", "--check"]
+      ]
+    }
+  ]
+}
