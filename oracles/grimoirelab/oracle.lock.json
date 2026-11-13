@@ -114,6 +114,34 @@
       "source_role": "normative",
       "statement": "The Discord API v10 documentation owns the channel and message objects, snowflake ids, the messages endpoint's after/limit paging and the rate-limit headers the Discord backend reads.",
       "supersession": "explicit-lock-update-only"
+    },
+    {
+      "canonical_id": "chaoss/grimoirelab-chronicler",
+      "edition": "522221d2",
+      "id": "GRIMOIRELAB-CHRONICLER-522221D2",
+      "issuer": "CHAOSS (Linux Foundation)",
+      "name": "GrimoireLab Chronicler at 522221d2 (GrimoireLab 2.0 development)",
+      "oracle_ids": [
+        "grimoirelab-chronicler-522221d2"
+      ],
+      "realized_by": [
+        "GL-02"
+      ],
+      "retrieval_date": "2026-11-13",
+      "schema": "prismpm/authority-binding/1",
+      "signature_trust_root": null,
+      "source": {
+        "license": "GPL-3.0-or-later",
+        "media_type": "application/x-git",
+        "redistribution": "redistributable",
+        "revision": "522221d2f5085dc9929802df684a78ad8c956f60",
+        "sha256": null,
+        "signature": "not-published-or-not-relied-upon",
+        "url": "https://github.com/chaoss/grimoirelab-chronicler/tree/522221d2f5085dc9929802df684a78ad8c956f60"
+      },
+      "source_role": "implementation",
+      "statement": "Chronicler owns how Perceval items become GrimoireLab events: CloudEvents with org.grimoirelab.events types, ids derived from the item uuid, linked_event, and identity events whose uuid SortingHat derives from source, email, name and username.",
+      "supersession": "explicit-lock-update-only"
     }
   ],
   "oracles": [
@@ -169,7 +197,7 @@
         "GL-01",
         "GL-02"
       ],
-      "wrapper_sha256": "8dc5296bf06753ee54762b887656381ed7ee9c38f274a582376281df69ed996a"
+      "wrapper_sha256": "b6601cf737d48b6aa82fc157fea01f795a6a3c307fa17d7e06825563e5fa0f94"
     },
     {
       "id": "grimoirelab-sortinghat-1.16.0",
@@ -219,7 +247,61 @@
       "timeout_ms": 1800000,
       "trusted_root": null,
       "upstream_payload_sha256": "776edc3b27d26b12616be99397b92d2d6b18235f4f98fef82bd7286221eca767",
-      "wrapper_sha256": "8dc5296bf06753ee54762b887656381ed7ee9c38f274a582376281df69ed996a"
+      "wrapper_sha256": "b6601cf737d48b6aa82fc157fea01f795a6a3c307fa17d7e06825563e5fa0f94"
+    },
+    {
+      "id": "grimoirelab-chronicler-522221d2",
+      "authority_ids": [
+        "GRIMOIRELAB-CHRONICLER-522221D2",
+        "DISCORD-API-V10"
+      ],
+      "edition": "522221d2",
+      "executable": "oracles/grimoirelab/verify.sh",
+      "arguments": [
+        "chronicler",
+        "{work}"
+      ],
+      "corpus": {
+        "path": "oracles/grimoirelab/chronicler-discord",
+        "sha256": "815f64a0549d6bd87408b25121e2364c909c434e6e90a2c035e55a4167194e15"
+      },
+      "covers": [
+        "Chronicler's unmodified upstream suite at 522221d2 run by upstream's own tests/run_tests.py under coverage, after upstream CI's ruff check and ruff format --diff, against the exact dependency set upstream's poetry.lock pins, hash-checked, with no network",
+        "the Discord eventizer under upstream contribution: message, edited, reply, reaction and thread-created events, and authored_by and mentioned identity events that keep the Discord bot flag, from items the pinned Perceval Discord backend produced from its own fixtures"
+      ],
+      "does_not_cover": [
+        "a published Chronicler release: no PyPI sdist matches 522221d2 (1.0.0a5 predates upstream's ruff reformat), so the corpus upstream is addressed by commit only",
+        "upstream's requirements_dev.txt, an unpinned Git checkout of grimoirelab-toolkit that --require-hashes cannot admit; the toolkit release poetry.lock pins is used instead",
+        "who reacted and when: Discord message objects carry only a count per emoji, so reaction events are counts observed at fetch time",
+        "edits before the last one, deleted messages, and threads that Perceval did not fetch a starter or THREAD_CREATED message for"
+      ],
+      "expected_exits": [
+        "0=pass",
+        "nonzero=invalid"
+      ],
+      "failure_mapping": {
+        "invalid": "PP5404",
+        "unavailable-or-untrusted": "PP5403"
+      },
+      "input_media_types": [
+        "application/json"
+      ],
+      "network": "deny-at-test",
+      "normalization": "prismpm/oracle-diagnostics/1",
+      "output_schema": "prismpm/validation-result/1",
+      "realized_by": [
+        "GL-02"
+      ],
+      "subject": null,
+      "supported_platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ],
+      "timeout_ms": 900000,
+      "trusted_root": null,
+      "upstream_payload_sha256": null,
+      "upstream_payload_note": "No grimoirelab-chronicler release on PyPI matches 522221d2: the latest, 1.0.0a5 (sdist sha256 1e746a4cd9f64018a5f55262a36f91b232cdfe0a800513c31245a666e9631887), was cut before upstream moved from flake8 to ruff and reformatted the package. The upstream payload is the commit, which git re-derives on fetch.",
+      "wrapper_sha256": "b6601cf737d48b6aa82fc157fea01f795a6a3c307fa17d7e06825563e5fa0f94"
     }
   ]
 }
