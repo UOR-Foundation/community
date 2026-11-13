@@ -24,14 +24,14 @@ const group = (g) => {
   return `(ctor ${M}::WorkingGroup.${GROUPS[g]})`;
 };
 const nats = (xs) => xs.reduceRight((rest, x) => `(cons ${x} ${rest})`, '(nil Nat)');
-const list = (type, names) => names.reduceRight((rest, n) => `(cons ${n} ${rest})`, `(nil ${M}::${type})`);
+const list = (type, names) => names.reduceRight((rest, n) => `(cons (${n}) ${rest})`, `(nil ${M}::${type})`);
 const pascal = (s) => s.split(/[^A-Za-z0-9]+/).filter(Boolean).map((w) => w[0].toUpperCase() + w.slice(1)).join('');
 const def = (name, type, body) => `definition{\n  name: ${name},\n  parameters: [],\n  result: ${type},\n  body: ${body}\n}\n`;
 
 const metricIndex = new Map(r.metrics.map((m, i) => [m.slug, i]));
 const modelIndex = new Map(r.models.map((m, i) => [m.slug, i]));
 const out = [];
-out.push(`\\begin{lexlean}{Chaoss}\n\\useglossary{lexlean.std.bool@1.2.0}\n\\useglossary{lexlean.std.nat@1.2.0}\n\\importmodule{${M}}\n\\title{CHAOSS register, projected from pinned working-group sources}\n\\begin{semanticmodule}`);
+out.push(`\\begin{lexlean}{Chaoss}\n\\useglossary{lexlean.std.bool@1.2.0}\n\\useglossary{lexlean.std.nat@1.2.0}\n\\useglossary{prism.arch@1.0.0}\n\\importmodule{${M}}\n\\title{CHAOSS register}\n\\begin{semanticmodule}`);
 out.push(def('release', `${M}::Release`, `(record ${M}::Release {sitemapDigest := ${str('sha256:' + r.sitemapDigest)}, sources := ${str(r.sources.join(' '))}, metricCount := ${r.metrics.length}, modelCount := ${r.models.length}, openClaimCount := ${r.refusals.length}})`));
 const metricNames = r.metrics.map((m, i) => {
   const name = `metric${pascal(m.slug.replace(/^metric-/, ''))}`;
@@ -52,7 +52,7 @@ const claimNames = r.refusals.map((c, i) => {
 out.push(def('metrics', `(List ${M}::Metric)`, list('Metric', metricNames)));
 out.push(def('models', `(List ${M}::MetricModel)`, list('MetricModel', modelNames)));
 out.push(def('openClaims', `(List ${M}::OpenClaim)`, list('OpenClaim', claimNames)));
-out.push(`theorem{\n  name: registerValidHolds,\n  parameters: [],\n  statement: ((${M}::registerValid (release) (metrics) (models) (openClaims)) = true),\n  proof: decide{}\n}\n`);
+out.push(`theorem{\n  name: registerValidHolds,\n  parameters: [],\n  statement: ((${M}::registerValid (release) (metrics) (models) (openClaims)) = true),\n  proof: decide{}\n}`);
 out.push('\\end{semanticmodule}\n\\end{lexlean}\n');
 const text = out.join('\n');
 const target = join(here, '..', 'app', 'src', 'Chaoss.lex.tex');

@@ -30,18 +30,25 @@ definition{
 }
 
 definition{
+  name: hasEvidence,
+  parameters: [evidence : (List String)],
+  result: Bool,
+  body: match{
+    branches: [
+      {body: false, binders: [], constructor: List.nil},
+      {body: true, binders: [first, others], constructor: List.cons}
+    ],
+    scrutinee: evidence
+  }
+}
+
+definition{
   name: obligationsEvidenced,
   parameters: [position : Nat, items : (List Obligation)],
   result: Bool,
   body: (match items
     | List.nil => true
-    | List.cons item rest => (((project item index) =? position) && (match{
-      branches: [
-        {body: false, binders: [], constructor: List.nil},
-        {body: true, binders: [first, others], constructor: List.cons}
-      ],
-      scrutinee: (project item evidence)
-    } && (obligationsEvidenced (position + 1) rest)))),
+    | List.cons item rest => (((project item index) =? position) && ((hasEvidence (project item evidence)) && (obligationsEvidenced (position + 1) rest)))),
   recursive_argument: items
 }
 
