@@ -297,6 +297,158 @@ structure{
 }
 
 definition{
+  name: actorIsSoftware,
+  parameters: [actorType : ActorType],
+  result: Bool,
+  body: (match actorType | ActorType.person => false | ActorType.softwareApplication => true)
+}
+
+definition{
+  name: ruleIsQuorum,
+  parameters: [act : RuleKind],
+  result: Bool,
+  body: (match act
+    | RuleKind.quorum => true
+    | RuleKind.act => false
+    | RuleKind.removal => false
+    | RuleKind.vacancy => false
+    | RuleKind.writtenAction => false
+    | RuleKind.bylawAmendment => false
+    | RuleKind.officerRemoval => false
+    | RuleKind.stageDecision => false)
+}
+
+definition{
+  name: softwareAt,
+  parameters: [actors : (List Actor), at : Nat],
+  result: Bool,
+  body: (match actors
+    | List.nil => false
+    | List.cons actor rest => (if ((project actor index) =? at) then (actorIsSoftware (project actor actorType)) else (softwareAt rest at))),
+  recursive_argument: actors
+}
+
+definition{
+  name: personAt,
+  parameters: [actors : (List Actor), at : Nat],
+  result: Bool,
+  body: (match actors
+    | List.nil => false
+    | List.cons actor rest => (if ((project actor index) =? at) then (not (actorIsSoftware (project actor actorType))) else (personAt rest at))),
+  recursive_argument: actors
+}
+
+definition{
+  name: delegationsTyped,
+  parameters: [actors : (List Actor), values : (List Delegation)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons delegation rest => ((softwareAt actors (project delegation agent)) && ((personAt actors (project delegation onBehalfOf)) && (delegationsTyped actors rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: membershipsTyped,
+  parameters: [actors : (List Actor), values : (List Membership)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons membership rest => ((personAt actors (project membership person)) && (membershipsTyped actors rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: holdingsTyped,
+  parameters: [actors : (List Actor), values : (List Holding)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons holding rest => ((personAt actors (project holding person)) && (holdingsTyped actors rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: postUnitAt,
+  parameters: [values : (List Post), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons post rest => (if ((project post index) =? at) then (project post unit) else (postUnitAt rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: holdersOf,
+  parameters: [values : (List Holding), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons holding rest => (if ((project holding post) =? at) then (1 + (holdersOf rest at)) else (holdersOf rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: seatsIn,
+  parameters: [allPosts : (List Post), values : (List Holding), body : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons holding rest => (if ((postUnitAt allPosts (project holding post)) =? body) then (1 + (seatsIn allPosts rest body)) else (seatsIn allPosts rest body))),
+  recursive_argument: values
+}
+
+definition{
+  name: positionsHeldOnce,
+  parameters: [values : (List Post), allHoldings : (List Holding), body : Nat],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons post rest => ((if ((project post unit) =? body) then ((holdersOf allHoldings (project post index)) =? 1) else true) && (positionsHeldOnce rest allHoldings body))),
+  recursive_argument: values
+}
+
+definition{
+  name: ruleBodyAt,
+  parameters: [values : (List VoteRule), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons voteRule rest => (if ((project voteRule index) =? at) then (project voteRule body) else (ruleBodyAt rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: stagesDecidedBy,
+  parameters: [allRules : (List VoteRule), values : (List Stage), body : Nat],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons stage rest => (((ruleBodyAt allRules (project stage voteRule)) =? body) && (stagesDecidedBy allRules rest body))),
+  recursive_argument: values
+}
+
+definition{
+  name: quorumFor,
+  parameters: [values : (List VoteRule), body : Nat],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons voteRule rest => ((((project voteRule body) =? body) && (ruleIsQuorum (project voteRule act))) || (quorumFor rest body))),
+  recursive_argument: values
+}
+
+definition{
+  name: rulesHaveQuorum,
+  parameters: [allRules : (List VoteRule), values : (List VoteRule)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons voteRule rest => ((quorumFor allRules (project voteRule body)) && (rulesHaveQuorum allRules rest))),
+  recursive_argument: values
+}
+
+definition{
   name: provisionsValid,
   parameters: [position : Nat, values : (List Provision)],
   result: Bool,
@@ -630,158 +782,6 @@ definition{
   parameters: [values : (List OpenClaim)],
   result: Nat,
   body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
-  recursive_argument: values
-}
-
-definition{
-  name: actorIsSoftware,
-  parameters: [actorType : ActorType],
-  result: Bool,
-  body: (match actorType | ActorType.person => false | ActorType.softwareApplication => true)
-}
-
-definition{
-  name: ruleIsQuorum,
-  parameters: [act : RuleKind],
-  result: Bool,
-  body: (match act
-    | RuleKind.quorum => true
-    | RuleKind.act => false
-    | RuleKind.removal => false
-    | RuleKind.vacancy => false
-    | RuleKind.writtenAction => false
-    | RuleKind.bylawAmendment => false
-    | RuleKind.officerRemoval => false
-    | RuleKind.stageDecision => false)
-}
-
-definition{
-  name: softwareAt,
-  parameters: [actors : (List Actor), at : Nat],
-  result: Bool,
-  body: (match actors
-    | List.nil => false
-    | List.cons actor rest => (if ((project actor index) =? at) then (actorIsSoftware (project actor actorType)) else (softwareAt rest at))),
-  recursive_argument: actors
-}
-
-definition{
-  name: personAt,
-  parameters: [actors : (List Actor), at : Nat],
-  result: Bool,
-  body: (match actors
-    | List.nil => false
-    | List.cons actor rest => (if ((project actor index) =? at) then (not (actorIsSoftware (project actor actorType))) else (personAt rest at))),
-  recursive_argument: actors
-}
-
-definition{
-  name: delegationsTyped,
-  parameters: [actors : (List Actor), values : (List Delegation)],
-  result: Bool,
-  body: (match values
-    | List.nil => true
-    | List.cons delegation rest => ((softwareAt actors (project delegation agent)) && ((personAt actors (project delegation onBehalfOf)) && (delegationsTyped actors rest)))),
-  recursive_argument: values
-}
-
-definition{
-  name: membershipsTyped,
-  parameters: [actors : (List Actor), values : (List Membership)],
-  result: Bool,
-  body: (match values
-    | List.nil => true
-    | List.cons membership rest => ((personAt actors (project membership person)) && (membershipsTyped actors rest))),
-  recursive_argument: values
-}
-
-definition{
-  name: holdingsTyped,
-  parameters: [actors : (List Actor), values : (List Holding)],
-  result: Bool,
-  body: (match values
-    | List.nil => true
-    | List.cons holding rest => ((personAt actors (project holding person)) && (holdingsTyped actors rest))),
-  recursive_argument: values
-}
-
-definition{
-  name: postUnitAt,
-  parameters: [values : (List Post), at : Nat],
-  result: Nat,
-  body: (match values
-    | List.nil => 0
-    | List.cons post rest => (if ((project post index) =? at) then (project post unit) else (postUnitAt rest at))),
-  recursive_argument: values
-}
-
-definition{
-  name: holdersOf,
-  parameters: [values : (List Holding), at : Nat],
-  result: Nat,
-  body: (match values
-    | List.nil => 0
-    | List.cons holding rest => (if ((project holding post) =? at) then (1 + (holdersOf rest at)) else (holdersOf rest at))),
-  recursive_argument: values
-}
-
-definition{
-  name: seatsIn,
-  parameters: [allPosts : (List Post), values : (List Holding), body : Nat],
-  result: Nat,
-  body: (match values
-    | List.nil => 0
-    | List.cons holding rest => (if ((postUnitAt allPosts (project holding post)) =? body) then (1 + (seatsIn allPosts rest body)) else (seatsIn allPosts rest body))),
-  recursive_argument: values
-}
-
-definition{
-  name: positionsHeldOnce,
-  parameters: [values : (List Post), allHoldings : (List Holding), body : Nat],
-  result: Bool,
-  body: (match values
-    | List.nil => true
-    | List.cons post rest => ((if ((project post unit) =? body) then ((holdersOf allHoldings (project post index)) =? 1) else true) && (positionsHeldOnce rest allHoldings body))),
-  recursive_argument: values
-}
-
-definition{
-  name: ruleBodyAt,
-  parameters: [values : (List VoteRule), at : Nat],
-  result: Nat,
-  body: (match values
-    | List.nil => 0
-    | List.cons voteRule rest => (if ((project voteRule index) =? at) then (project voteRule body) else (ruleBodyAt rest at))),
-  recursive_argument: values
-}
-
-definition{
-  name: stagesDecidedBy,
-  parameters: [allRules : (List VoteRule), values : (List Stage), body : Nat],
-  result: Bool,
-  body: (match values
-    | List.nil => true
-    | List.cons stage rest => (((ruleBodyAt allRules (project stage voteRule)) =? body) && (stagesDecidedBy allRules rest body))),
-  recursive_argument: values
-}
-
-definition{
-  name: quorumFor,
-  parameters: [values : (List VoteRule), body : Nat],
-  result: Bool,
-  body: (match values
-    | List.nil => false
-    | List.cons voteRule rest => ((((project voteRule body) =? body) && (ruleIsQuorum (project voteRule act))) || (quorumFor rest body))),
-  recursive_argument: values
-}
-
-definition{
-  name: rulesHaveQuorum,
-  parameters: [allRules : (List VoteRule), values : (List VoteRule)],
-  result: Bool,
-  body: (match values
-    | List.nil => true
-    | List.cons voteRule rest => ((quorumFor allRules (project voteRule body)) && (rulesHaveQuorum allRules rest))),
   recursive_argument: values
 }
 
