@@ -48,6 +48,7 @@ fn grimoirelab_gl_01() {
         "chaoss/grimoirelab-perceval",
         "chaoss/grimoirelab-sortinghat",
         "chaoss/grimoirelab",
+        "chaoss/grimoirelab-chronicler",
         "discord/discord-api-docs",
     ] {
         assert!(
@@ -57,33 +58,53 @@ fn grimoirelab_gl_01() {
     }
     let revisions = values(&lock, "revision");
     assert!(
-        revisions.len() >= 5,
+        revisions.len() >= 6,
         "every authority and upstream corpus names a revision"
     );
     for revision in &revisions {
         assert!(is_hex(revision, 40), "{revision} is a full commit id");
     }
+    let oracles = lock.matches("\"executable\": ").count();
+    assert!(
+        oracles >= 3,
+        "perceval, sortinghat and chronicler are oracles"
+    );
     for digest in values(&lock, "upstream_payload_sha256")
         .iter()
         .chain(values(&lock, "wrapper_sha256").iter())
     {
         assert!(is_hex(digest, 64), "{digest} is a SHA-256");
     }
+    // A payload with no published release is null, and only beside a note
+    // that says why.
+    assert_eq!(
+        lock.matches("\"upstream_payload_sha256\": ").count(),
+        oracles,
+        "every oracle names its upstream payload"
+    );
+    for (at, _) in lock.match_indices("\"upstream_payload_sha256\": null,") {
+        let next = lock[at..].lines().nth(1).unwrap_or_default().trim();
+        assert!(
+            next.starts_with("\"upstream_payload_note\": \"") && next.len() > 30,
+            "a null upstream payload is explained by a note"
+        );
+    }
     let ids = values(&lock, "id");
     for oracle in [
         "grimoirelab-perceval-1.6.2",
         "grimoirelab-sortinghat-1.16.0",
+        "grimoirelab-chronicler-522221d2",
     ] {
         assert!(ids.iter().any(|id| id == oracle), "{oracle} is declared");
     }
     assert_eq!(
         lock.matches("\"covers\": [").count(),
-        2,
+        oracles,
         "each oracle declares covers"
     );
     assert_eq!(
         lock.matches("\"does_not_cover\": [").count(),
-        2,
+        oracles,
         "each oracle declares does_not_cover"
     );
     // The SDK's lock stays the SDK's bytes; this record sits beside it.

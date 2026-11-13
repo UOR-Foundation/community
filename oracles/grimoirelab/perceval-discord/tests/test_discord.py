@@ -58,12 +58,13 @@ def read_file(filename, mode='r'):
 
 
 def setup_http_server(channel_file='data/discord/discord_channel.json',
-                      rate_limit_headers=None):
+                      rate_limit_headers=None, page_filter=None):
     """Setup a mock HTTP server that serves the messages endpoint as Discord does.
 
     The pool of messages is filtered by the `after` snowflake and cut at
     `limit`, taking the oldest messages after the snowflake and returning
-    them newest first.
+    them newest first. `page_filter` replaces that selection, to serve
+    pages that break the paging contract.
     """
     http_requests = []
 
@@ -76,7 +77,10 @@ def setup_http_server(channel_file='data/discord/discord_channel.json',
         params = request.querystring
         after = int(params['after'][0])
         limit = int(params['limit'][0])
-        page = [m for m in pool if int(m['id']) > after][:limit]
+        if page_filter:
+            page = page_filter(pool, after, limit)
+        else:
+            page = [m for m in pool if int(m['id']) > after][:limit]
         page.reverse()
         http_requests.append(request)
         return (200, headers, json.dumps(page))
@@ -268,6 +272,34 @@ class TestDiscordBackend(unittest.TestCase):
 
         with self.assertRaises(BackendError):
             _ = [m for m in discord.fetch()]
+
+    @httpretty.activate
+    def test_fetch_oversized_page(self):
+        """Test whether a page larger than the limit is refused"""
+
+        setup_http_server(page_filter=lambda pool, after, limit: pool)
+
+        discord = Discord(GUILD_ID, CHANNEL_ID, 'aaaa', max_items=2)
+
+        with self.assertRaisesRegex(BackendError, 'page of 3 messages exceeds the limit of 2'):
+            _ = [m for m in discord.fetch()]
+
+    @httpretty.activate
+    def test_fetch_stale_page(self):
+        """Test whether a page not newer than the cursor is refused"""
+
+        # The server ignores `after` and serves the first page again,
+        # which would make the fetch loop forever
+        setup_http_server(page_filter=lambda pool, after, limit: pool[:limit])
+
+        discord = Discord(GUILD_ID, CHANNEL_ID, 'aaaa', max_items=2)
+        messages = []
+
+        with self.assertRaisesRegex(BackendError, 'is not after the cursor ' + MSG_DIGEST):
+            for message in discord.fetch():
+                messages.append(message)
+
+        self.assertEqual([m['data']['id'] for m in messages], [MSG_WELCOME, MSG_DIGEST])
 
     @httpretty.activate
     def test_search_fields(self):

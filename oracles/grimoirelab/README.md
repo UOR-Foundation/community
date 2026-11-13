@@ -7,7 +7,7 @@ unmodified, at the component set GrimoireLab 1.23.0 fixes:
 
 | Component | Commit | Upstream suite |
 | --- | --- | --- |
-| Perceval 1.6.2 | `d60867ab` | `tests/run_tests.py`, 1079 tests including the Discord backend's 26, plus flake8 |
+| Perceval 1.6.2 | `d60867ab` | `tests/run_tests.py`, 1048 tests including the Discord backend's 28, plus flake8, with `upstream.patch` (README and help text) applied |
 | SortingHat 1.16.0 | `538e5369` | flake8, then `manage.py test` under `config_testing` (1079 tests) and `config_testing_tenant` (13 tests), on MariaDB 11.4 |
 
 - `oracle.lock.json` is the record. Its fields follow `prismpm/standards-lock/1`,

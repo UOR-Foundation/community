@@ -180,6 +180,18 @@ class Discord(Backend):
             raw_messages = self.client.messages(self.channel, after=after)
             messages = self.parse_messages(raw_messages)
 
+            # A page larger than the limit, or one holding a message that
+            # is not newer than the cursor, breaks the paging contract;
+            # following it could fetch forever, so it is refused.
+            if len(messages) > self.max_items:
+                msg = "page of {} messages exceeds the limit of {}".format(
+                    len(messages), self.max_items)
+                raise BackendError(cause=msg)
+            if messages and int(messages[0]['id']) <= after:
+                msg = "message {} is not after the cursor {}".format(
+                    messages[0]['id'], after)
+                raise BackendError(cause=msg)
+
             for message in messages:
                 message['channel_data'] = channel_info
                 yield message
