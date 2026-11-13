@@ -6,12 +6,20 @@
 #   oracles/grimoirelab/verify.sh perceval   [work-dir]
 #   oracles/grimoirelab/verify.sh sortinghat [work-dir]
 #   oracles/grimoirelab/verify.sh chronicler [work-dir]
+#   oracles/grimoirelab/verify.sh live       [work-dir]
 #
 # perceval:   overlay the Discord backend (new files only; replacing an
 #             upstream file is refused), install the dependency set upstream's
 #             poetry.lock pins with hashes required, then run flake8 and
 #             upstream's tests/run_tests.py with no proxy, so a test that
 #             reaches the network fails instead of hanging.
+#             It then runs the live harness's own tests (live/tests) against
+#             a local Discord, with the paging model fetched at the commit
+#             live/model.lock.json pins and its digest checked.
+# live:       set Perceval up as for perceval, without its suite, and run one
+#             tick of the live validation (live/tick.py) against the guild
+#             DISCORD_GUILD_ID names, with the token in DISCORD_BOT_TOKEN,
+#             reading the engine state from LIVE_STATE and writing to LIVE_OUT.
 # sortinghat: install the same way and run upstream CI's flake8 and its two
 #             Django test commands; its runner starts the MariaDB image
 #             upstream names (TEST_DATABASE_IMAGE) through testcontainers, so
@@ -30,7 +38,7 @@
 # them. It changes no test and no fixture.
 set -euo pipefail
 
-component="${1:?usage: verify.sh perceval|sortinghat|chronicler [work-dir]}"
+component="${1:?usage: verify.sh perceval|sortinghat|chronicler|live [work-dir]}"
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 lock="$here/oracle.lock.json"
 work="${2:-$(mktemp -d)}/$component"
@@ -47,7 +55,7 @@ PY
 }
 
 case "$component" in
-  perceval) canonical=chaoss/grimoirelab-perceval ;;
+  perceval|live) canonical=chaoss/grimoirelab-perceval ;;
   sortinghat) canonical=chaoss/grimoirelab-sortinghat ;;
   chronicler) canonical=chaoss/grimoirelab-chronicler ;;
   *) echo "unknown component $component" >&2; exit 64 ;;
@@ -66,7 +74,7 @@ fi
 
 overlay_dirs=()
 case "$component" in
-  perceval) overlay="$here/perceval-discord" overlay_dirs=(perceval tests releases) ;;
+  perceval|live) overlay="$here/perceval-discord" overlay_dirs=(perceval tests releases) ;;
   chronicler) overlay="$here/chronicler-discord" overlay_dirs=(chronicler tests releases) ;;
 esac
 if [ "${#overlay_dirs[@]}" -gt 0 ]; then
@@ -105,8 +113,13 @@ offline=(env -u HTTPS_PROXY -u HTTP_PROXY -u https_proxy -u http_proxy -u ALL_PR
 cd "$src"
 if [ "$component" = perceval ]; then
   "$venv/bin/flake8" perceval/backends/core/discord.py tests/test_discord.py
-  cd tests
-  "${offline[@]}" "$venv/bin/python" run_tests.py
+  (cd tests && "${offline[@]}" "$venv/bin/python" run_tests.py)
+  "$venv/bin/flake8" --max-line-length 120 "$here/live"
+  "$venv/bin/python" "$here/live/live.py" fetch "$work/model.json"
+  "${offline[@]}" LIVE_MODEL="$work/model.json" "$venv/bin/python" -m unittest discover -s "$here/live/tests"
+elif [ "$component" = live ]; then
+  "$venv/bin/python" "$here/live/tick.py" "${DISCORD_GUILD_ID:?the guild to probe}" \
+    --state "${LIVE_STATE:?the engine state to read}" --out "${LIVE_OUT:?where to write the tick}"
 elif [ "$component" = chronicler ]; then
   "${offline[@]}" "$venv/bin/ruff" check
   "${offline[@]}" "$venv/bin/ruff" format --diff

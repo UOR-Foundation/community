@@ -192,3 +192,54 @@ fn grimoirelab_gl_03() {
         }
     }
 }
+
+/// `GL-04`: live probes are traces checked against the pinned model
+#[test]
+fn grimoirelab_gl_04() {
+    let lock = read("oracles/grimoirelab/live/model.lock.json");
+    assert!(
+        lock.contains("\"repository\": \"UOR-Foundation/grimoirelab-discord\""),
+        "the model is the contribution Prism"
+    );
+    let commits = values(&lock, "commit");
+    assert!(
+        commits.len() == 1 && is_hex(&commits[0], 40),
+        "the model is pinned by a full commit"
+    );
+    let digests = values(&lock, "sha256");
+    assert!(
+        digests.len() == 1 && is_hex(&digests[0], 64),
+        "the model is pinned by its SHA-256"
+    );
+    let live = read("oracles/grimoirelab/live/live.py");
+    for part in [
+        "raise ValueError(\"{path} at {commit} is {got}, the lock pins {sha256}",
+        "def conform(app, otlp)",
+        "max(W_MIN, min(W_MAX, w))",
+        "discord.archive.token_free",
+        "discord.content.intent",
+    ] {
+        assert!(live.contains(part), "live.py keeps {part}");
+    }
+    let tick = read("oracles/grimoirelab/live/tick.py");
+    assert!(
+        tick.contains("return 1 if divergences else 0"),
+        "a divergence fails the tick"
+    );
+    let verify = read("oracles/grimoirelab/verify.sh");
+    assert!(
+        verify.contains("unittest discover -s \"$here/live/tests\"")
+            && verify.contains("live/tick.py"),
+        "verify.sh runs the harness's tests and the tick"
+    );
+    let workflow = read(".github/workflows/discord-live.yml");
+    assert!(
+        workflow.contains("schedule:") && workflow.contains("verify.sh live"),
+        "a scheduled workflow runs the tick"
+    );
+    assert_eq!(
+        workflow.matches("secrets.DISCORD_BOT_TOKEN").count(),
+        1,
+        "the token reaches one step only"
+    );
+}

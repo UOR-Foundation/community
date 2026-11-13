@@ -313,6 +313,7 @@ class DiscordClient(HttpClient, RateLimitHandler):
 
     # API headers
     HAUTHORIZATION = 'Authorization'
+    RATE_LIMIT_RESET_AFTER_HEADER = 'X-RateLimit-Reset-After'
 
     # Resource parameters
     PAFTER = 'after'
@@ -332,6 +333,13 @@ class DiscordClient(HttpClient, RateLimitHandler):
                          ssl_verify=ssl_verify)
         super().setup_rate_limit_handler(sleep_for_rate=sleep_for_rate,
                                          min_rate_to_sleep=min_rate_to_sleep)
+
+        # The archive pickles the whole response, and a response keeps the
+        # request that was sent, with the session's Authorization header.
+        # sanitize_for_archive only sees the per-request headers, so the
+        # token is removed from the response before it is archived.
+        if archive and not from_archive:
+            self.session.hooks['response'].append(self._remove_token)
 
     def channel(self, channel):
         """Fetch the channel information"""
@@ -379,7 +387,8 @@ class DiscordClient(HttpClient, RateLimitHandler):
         """Update the rate limit and the time to reset.
 
         Discord sends `X-RateLimit-Reset` as epoch seconds with a
-        fractional part, which the generic handler cannot parse.
+        fractional part, which the generic handler cannot parse, and
+        `X-RateLimit-Reset-After` as the seconds left until the reset.
         """
         if self.rate_limit_header in response.headers:
             self.rate_limit = int(response.headers[self.rate_limit_header])
@@ -387,7 +396,13 @@ class DiscordClient(HttpClient, RateLimitHandler):
         else:
             self.rate_limit = None
 
-        if self.rate_limit_reset_header in response.headers:
+        # The relative header does not depend on the local clock agreeing
+        # with Discord's, so it is preferred when both are sent.
+        if self.RATE_LIMIT_RESET_AFTER_HEADER in response.headers:
+            reset_after = float(response.headers[self.RATE_LIMIT_RESET_AFTER_HEADER])
+            self.rate_limit_reset_ts = datetime_utcnow().timestamp() + reset_after
+            logger.debug("Rate limit reset: %s", self.calculate_time_to_reset())
+        elif self.rate_limit_reset_header in response.headers:
             self.rate_limit_reset_ts = float(response.headers[self.rate_limit_reset_header])
             logger.debug("Rate limit reset: %s", self.calculate_time_to_reset())
         else:
@@ -403,6 +418,13 @@ class DiscordClient(HttpClient, RateLimitHandler):
             time_to_reset = 0
 
         return time_to_reset
+
+    @classmethod
+    def _remove_token(cls, response, *args, **kwargs):
+        """Remove the token from the request a response keeps."""
+
+        response.request.headers.pop(cls.HAUTHORIZATION, None)
+        return response
 
     def _set_extra_headers(self):
         """Set authentication tokens."""

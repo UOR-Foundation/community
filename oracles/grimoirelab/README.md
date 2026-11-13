@@ -7,7 +7,7 @@ unmodified, at the component set GrimoireLab 1.23.0 fixes:
 
 | Component | Commit | Upstream suite |
 | --- | --- | --- |
-| Perceval 1.6.2 | `d60867ab` | `tests/run_tests.py`, 1048 tests including the Discord backend's 28, plus flake8, with `upstream.patch` (README and help text) applied |
+| Perceval 1.6.2 | `d60867ab` | `tests/run_tests.py`, 1050 tests including the Discord backend's 30, plus flake8, with `upstream.patch` (README and help text) applied |
 | SortingHat 1.16.0 | `538e5369` | flake8, then `manage.py test` under `config_testing` (1079 tests) and `config_testing_tenant` (13 tests), on MariaDB 11.4 |
 
 - `oracle.lock.json` is the record. Its fields follow `prismpm/standards-lock/1`,
@@ -41,6 +41,48 @@ perceval discord <guild-id> <channel-id> -t "$DISCORD_BOT_TOKEN" --from-date 202
 The upstream pull request to chaoss/grimoirelab-perceval waits for approval.
 It contains `perceval-discord/` as is, plus a README section.
 
+## Live validation
+
+`live/` validates the backend against the Foundation's guild. It keeps the
+telemetry it records and uses that telemetry to choose the next probes
+(GL-04). The pattern is the engine of afflom/rule30 and casey-allard/lexlean-r4.
+
+- `probe.py` runs the unmodified backend. A response hook on its HTTP session
+  records each request as an OpenTelemetry span (OTLP/JSON, HTTP client
+  semantic conventions plus `discord.*` attributes: cursor, page size,
+  rate-limit headers, and the number of messages with empty content). It
+  records no content, no author and no token.
+- `live.py` reads the paging state machine of the contribution Prism. That is
+  `app/prompt.json` of UOR-Foundation/grimoirelab-discord at the commit and
+  SHA-256 that `model.lock.json` pins. Every step of every trace must be a
+  transition of that model.
+- `live.py` also runs three checks of its own:
+  - an archive must replay to the same items;
+  - an archive must not hold the token;
+  - most text messages coming back empty means the Message Content intent is off.
+- The engine keeps an integer weight for each pair of channel family and
+  probe strategy, bounded to [1, 16]. A probe that diverged from the model, or
+  that reached a rule its family had not reached before, gains 2; any other
+  probe loses 1. Each family runs its three heaviest strategies, with ties
+  broken in portfolio order.
+  - Portfolio: full, recent, small pages, archive replay, foreign guild,
+    unknown channel, rate floor.
+  - `report.json` lists the rules no probe has reached yet.
+- `tick.py` runs one tick. The `discord-live` workflow runs it every six hours
+  with the bot's token and commits the state, traces and report to the
+  `telemetry/discord` branch. A divergence fails the run.
+- `verify.sh perceval` also runs `live/tests` against a local Discord that
+  speaks the API subset the backend uses.
+
+The harness's first run found a defect. Perceval archives the whole response
+object, and that object keeps the request that was sent, with the session's
+`Authorization` header. `sanitize_for_archive` sees only the per-request
+headers, so the bot token reached the archive. The backend now removes the
+token from the response before it is archived, and `test_archive_holds_no_token`
+fails without that fix. Upstream's other backends that pass a token as an
+extra header (GitHub, GitLab, Slack and others) put it on the session the same
+way. They are likely affected too, but this has not been tested.
+
 ## Gate evidence
 
 | Planted defect | Gate | Diagnostic | Restored |
@@ -49,3 +91,5 @@ It contains `perceval-discord/` as is, plus a README section.
 | A bot-token-shaped string in `oracles/planted.txt` | `cargo test --test grimoirelab grimoirelab_gl_03` | `holds what looks like a Discord token` | passes |
 | A byte changed in `chaoss/register.json` | `node oracles/reproject.mjs chaoss <dir>` | `register.json is not the projection of the pinned sources` | passes |
 | Upstream's git fixtures extracted as root | `verify.sh perceval` | 2 errors in `test_git` setUpClass (`dubious ownership`) | 1079 pass with a run-scoped `safe.directory` |
+| The token-removing response hook disabled in `discord.py` | `verify.sh perceval` (`test_archive_holds_no_token`) | `the token is in the archive` | 1050 pass |
+| A full page followed by no request, reported as done | `live/tests` (`test_a_fetch_that_stops_early_diverges`) | one divergence: expected `paging`, observed `done` | 18 pass |

@@ -357,6 +357,20 @@ class TestDiscordBackendArchive(TestCaseBackendArchive):
         self._test_fetch_from_archive(from_date=None)
 
     @httpretty.activate
+    def test_archive_holds_no_token(self):
+        """Test whether the token is kept out of every archived entry"""
+
+        setup_http_server()
+        token = 'discord-archive-test-token'
+        backend = Discord(GUILD_ID, CHANNEL_ID, token, max_items=2, archive=self.archive)
+        items = [item['uuid'] for item in backend.fetch()]
+
+        with open(self.archive.archive_path, 'rb') as f:
+            leaked = token.encode() in f.read()
+        self.assertFalse(leaked, "the token is in the archive")
+        self.assertEqual(len(items), 3)
+
+    @httpretty.activate
     def test_fetch_from_date_from_archive(self):
         """Test whether it replays the messages since a date"""
 
@@ -414,6 +428,20 @@ class TestDiscordClient(unittest.TestCase):
 
         self.assertEqual(client.rate_limit, 4)
         self.assertAlmostEqual(client.rate_limit_reset_ts, reset, places=2)
+        self.assertIn(client.calculate_time_to_reset(), (2, 3))
+
+    @httpretty.activate
+    def test_rate_limit_reset_after(self):
+        """Test whether the relative reset header wins over the absolute one"""
+
+        skewed = datetime_utcnow().timestamp() + 3600
+        setup_http_server(rate_limit_headers={'X-RateLimit-Remaining': '4',
+                                              'X-RateLimit-Reset': '%.3f' % skewed,
+                                              'X-RateLimit-Reset-After': '2.5'})
+
+        client = DiscordClient('aaaa')
+        client.channel(CHANNEL_ID)
+
         self.assertIn(client.calculate_time_to_reset(), (2, 3))
 
     @httpretty.activate
