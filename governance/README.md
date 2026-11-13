@@ -48,4 +48,4 @@ Anything a source leaves unfilled becomes an open claim (GV-03), not a guess:
 
 > LLV7002: Tactic `decide` proved that the proposition `Foundation.Governance.V1.Model.registerValid release provisions … = true` is false (PP5001)
 
-After `register.json` was restored, both `--check` runs passed again, and `just vv` passed with attestation `57cdf6e2…`.
+After `register.json` was restored, both `--check` runs passed again, and `just vv` passed with attestation `c3dcf3a4…`.
