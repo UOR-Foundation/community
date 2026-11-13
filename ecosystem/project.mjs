@@ -141,20 +141,24 @@ const repositories = snapshot.repositories.map((r, index) => {
     tags: r.tags.length,
   };
 });
-for (const a of snapshot.tocApplications) {
-  const stage = tocStages.find((s) => a.title.toLowerCase().startsWith(`[${s.toLowerCase()}]`));
-  // toc/README.md names where an application is filed but not how its decision is recorded, so no stage is read from one.
-  refusals.push({ repository: repositories.length, refusal: 'toc-decision-unrecorded', detail: `.github#${a.number} ${stage ? `applies for ${stage}` : 'is not a stage application'}: ${a.title}` });
-}
+// toc/README.md names where an application is filed but not how its decision is recorded, so no stage is
+// read from one: each application is carried as an open claim of its own.
+const tocApplications = snapshot.tocApplications.map((a) => ({
+  number: a.number,
+  title: a.title,
+  stage: tocStages.find((s) => a.title.toLowerCase().startsWith(`[${s.toLowerCase()}]`)) ?? '',
+  refusal: 'toc-decision-unrecorded',
+}));
 
 const register = {
   spec: 'uor-community/ecosystem-register/1',
   snapshot: { query: snapshot.query, sha256: sha256(snapshotBytes) },
   norms: [standards, toc].map(({ path, sha256: digest }) => ({ path, sha256: digest })),
-  app: { name: app.name, path: promptFile.path, sha256: promptFile.sha256, outcomes: app.outcomes, conformant: app.otherwise },
+  app: { name: app.name, path: promptFile.path, sha256: promptFile.sha256, tiers: tierField.values, outcomes: app.outcomes, conformant: app.otherwise },
   vocabulary: { ...Object.fromEntries(Object.entries(vocabulary).map(([k, v]) => [k, v.tags])), tocStages },
   repositories,
   refusals,
+  tocApplications,
 };
 const text = `${JSON.stringify(register, null, 2)}\n`;
 const target = join(here, 'register.json');
@@ -165,4 +169,4 @@ if (flag === '--check') {
   }
 } else writeFileSync(target, text);
 const conformant = repositories.filter((r) => r.outcome === app.otherwise).length;
-process.stdout.write(`${repositories.length} repositories, ${conformant} conformant, ${refusals.length} open claims\n`);
+process.stdout.write(`${repositories.length} repositories, ${conformant} conformant, ${refusals.length + tocApplications.length} open claims\n`);
