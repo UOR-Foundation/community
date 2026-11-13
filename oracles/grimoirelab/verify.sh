@@ -78,6 +78,16 @@ if [ "${#overlay_dirs[@]}" -gt 0 ]; then
     mkdir -p "$src/$(dirname "$f")"
     cp "$overlay/$f" "$src/$f"
   done
+  # Edits to existing upstream files (documentation, the help text) travel as
+  # one patch, so the change to upstream code stays visible and reviewable
+  # and a patch that no longer applies to the pinned commit is refused.
+  if [ -f "$overlay/upstream.patch" ]; then
+    if ! git -C "$src" apply --check "$overlay/upstream.patch"; then
+      echo "upstream.patch does not apply to $commit" >&2
+      exit 5
+    fi
+    git -C "$src" apply "$overlay/upstream.patch"
+  fi
 fi
 
 venv="$work/venv"

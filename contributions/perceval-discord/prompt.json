@@ -1,0 +1,758 @@
+{
+  "schema": "prism/prompt/1",
+  "goal": "Find the next step of a Perceval fetch from a Discord channel, so a GrimoireLab operator gets every message of the channel they named, and nothing else, without the bot being rate-limited off the guild.",
+  "pattern": "stateMachine",
+  "machine": {
+    "state": "state",
+    "initial": "start",
+    "final": [
+      "done",
+      "refused",
+      "failed"
+    ]
+  },
+  "repository": "UOR-Foundation/community",
+  "license": "GPL-3.0-or-later",
+  "app": {
+    "name": "perceval-discord",
+    "title": "Perceval Discord backend",
+    "purpose": "Decide the next state of the Discord backend's fetch from the state it is in and the last API response: request the channel, page through its messages, finish, refuse a response that breaks the contract, or fail.",
+    "fields": [
+      {
+        "name": "state",
+        "kind": "choice",
+        "values": [
+          "start",
+          "channel",
+          "paging",
+          "done",
+          "refused",
+          "failed"
+        ],
+        "means": "where the fetch is: start (nothing requested), channel (the channel object arrived), paging (a page of messages arrived), or a final state"
+      },
+      {
+        "name": "response",
+        "kind": "choice",
+        "values": [
+          "ok",
+          "foreign",
+          "stale",
+          "denied",
+          "missing",
+          "exhausted"
+        ],
+        "means": "the last Discord API v10 response: ok, foreign (the channel's guild_id is not the guild named), stale (a message not after the cursor), denied (401 or 403), missing (404), exhausted (429 or 5xx after the client's retries)"
+      },
+      {
+        "name": "returned",
+        "kind": "number",
+        "min": 0,
+        "means": "messages in the last page; 0 for the channel response"
+      },
+      {
+        "name": "limit",
+        "kind": "number",
+        "min": 1,
+        "max": 100,
+        "means": "messages asked for per page, --max-items (Discord's maximum is 100)"
+      },
+      {
+        "name": "remaining",
+        "kind": "number",
+        "min": 0,
+        "means": "requests left in the rate-limit bucket, the X-RateLimit-Remaining header"
+      },
+      {
+        "name": "floor",
+        "kind": "number",
+        "min": 0,
+        "means": "remaining requests at which the client stops or sleeps, --min-rate-to-sleep"
+      },
+      {
+        "name": "sleep",
+        "kind": "choice",
+        "values": [
+          "yes",
+          "no"
+        ],
+        "means": "whether --sleep-for-rate is given, so an exhausted bucket waits for its reset instead of failing"
+      }
+    ],
+    "outcomes": [
+      "start",
+      "channel",
+      "paging",
+      "done",
+      "refused",
+      "failed"
+    ],
+    "meanings": {
+      "start": "nothing has been requested",
+      "channel": "request the channel object, GET /channels/{channel}",
+      "paging": "request the next page, GET /channels/{channel}/messages?after={cursor}&limit={limit}",
+      "done": "every message since from_date was yielded, oldest first",
+      "refused": "BackendError: a response broke the API contract or named another guild",
+      "failed": "HTTPError or RateLimitError: the token, the channel or the rate limit stopped the fetch"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "state",
+            "op": "is",
+            "value": "done"
+          }
+        ],
+        "then": "done",
+        "why": "perceval/backends/core/discord.py: fetch_items returns once the last page is read; a finished fetch is never resumed by the same generator"
+      },
+      {
+        "when": [
+          {
+            "field": "state",
+            "op": "is",
+            "value": "refused"
+          }
+        ],
+        "then": "refused",
+        "why": "perceval/backends/core/discord.py: BackendError ends the fetch"
+      },
+      {
+        "when": [
+          {
+            "field": "state",
+            "op": "is",
+            "value": "failed"
+          }
+        ],
+        "then": "failed",
+        "why": "perceval/client.py: HTTPError and RateLimitError end the fetch"
+      },
+      {
+        "when": [
+          {
+            "field": "state",
+            "op": "is",
+            "value": "start"
+          }
+        ],
+        "then": "channel",
+        "why": "perceval/backends/core/discord.py fetch_items: the channel is requested before any message"
+      },
+      {
+        "when": [
+          {
+            "field": "response",
+            "op": "is",
+            "value": "foreign"
+          }
+        ],
+        "then": "refused",
+        "why": "perceval/backends/core/discord.py fetch_items: a channel of another guild raises BackendError"
+      },
+      {
+        "when": [
+          {
+            "field": "response",
+            "op": "is",
+            "value": "stale"
+          }
+        ],
+        "then": "refused",
+        "why": "perceval/backends/core/discord.py fetch_items: a page holding a message not after the cursor raises BackendError, so paging cannot loop"
+      },
+      {
+        "when": [
+          {
+            "field": "response",
+            "op": "is",
+            "value": "denied"
+          }
+        ],
+        "then": "failed",
+        "why": "perceval/client.py fetch: 401 and 403 raise HTTPError; the token or the bot's permissions are wrong"
+      },
+      {
+        "when": [
+          {
+            "field": "response",
+            "op": "is",
+            "value": "missing"
+          }
+        ],
+        "then": "failed",
+        "why": "perceval/client.py fetch: 404 raises HTTPError; the channel does not exist or is hidden from the bot"
+      },
+      {
+        "when": [
+          {
+            "field": "response",
+            "op": "is",
+            "value": "exhausted"
+          }
+        ],
+        "then": "failed",
+        "why": "perceval/client.py HttpClient: 429 and 5xx are retried with Retry-After up to MAX_RETRIES (5), then raise"
+      },
+      {
+        "when": [
+          {
+            "field": "returned",
+            "op": ">",
+            "value": {
+              "field": "limit"
+            }
+          }
+        ],
+        "then": "refused",
+        "why": "perceval/backends/core/discord.py fetch_items: a page larger than the limit raises BackendError"
+      },
+      {
+        "when": [
+          {
+            "field": "state",
+            "op": "is",
+            "value": "paging"
+          },
+          {
+            "field": "returned",
+            "op": "<",
+            "value": {
+              "field": "limit"
+            }
+          }
+        ],
+        "then": "done",
+        "why": "perceval/backends/core/discord.py fetch_items: a short page is the last one (Discord API v10, Get Channel Messages)"
+      },
+      {
+        "when": [
+          {
+            "field": "remaining",
+            "op": "<=",
+            "value": {
+              "field": "floor"
+            }
+          },
+          {
+            "field": "sleep",
+            "op": "is",
+            "value": "no"
+          }
+        ],
+        "then": "failed",
+        "why": "perceval/client.py sleep_for_rate_limit: without --sleep-for-rate, an exhausted bucket raises RateLimitError before the next request"
+      }
+    ],
+    "otherwise": "paging",
+    "otherwiseWhy": "perceval/backends/core/discord.py fetch_items: a full page moves the cursor to its newest message and asks for the next page",
+    "properties": [
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "response",
+            "op": "is",
+            "value": "foreign"
+          }
+        ],
+        "then": "paging",
+        "why": "no message is read from a channel of a guild the operator did not name"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "response",
+            "op": "is",
+            "value": "stale"
+          }
+        ],
+        "then": "paging",
+        "why": "a server that ignores the cursor cannot make the fetch run forever"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "returned",
+            "op": ">",
+            "value": {
+              "field": "limit"
+            }
+          }
+        ],
+        "then": "paging",
+        "why": "a page larger than asked for is not trusted"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "remaining",
+            "op": "<=",
+            "value": {
+              "field": "floor"
+            }
+          },
+          {
+            "field": "sleep",
+            "op": "is",
+            "value": "no"
+          }
+        ],
+        "then": "paging",
+        "why": "the bot never spends the last of its rate-limit bucket, which risks a Discord ban of the guild's bot"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "state",
+            "op": "is",
+            "value": "start"
+          }
+        ],
+        "then": "done",
+        "why": "no fetch completes without checking the channel's guild"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "response",
+            "op": "is",
+            "value": "denied"
+          },
+          {
+            "field": "state",
+            "op": "is not",
+            "value": "start"
+          },
+          {
+            "field": "state",
+            "op": "is not",
+            "value": "done"
+          },
+          {
+            "field": "state",
+            "op": "is not",
+            "value": "refused"
+          }
+        ],
+        "then": "failed",
+        "why": "a revoked or under-privileged token stops the fetch instead of returning a partial channel as complete"
+      }
+    ],
+    "limits": [
+      "It does not model a response without rate-limit headers: Perceval then never sleeps, as remaining is unknown; give a remaining above floor for it.",
+      "It does not model the client's retries: a 429 or 5xx it recovers from is an ok response here.",
+      "It does not decide what a message holds: content, author, attachments and the bot flag pass through unchanged as the item's data.",
+      "Edits and deletions after a message was fetched are not refetched: an incremental fetch asks only for messages after the newest one seen."
+    ],
+    "examples": [
+      {
+        "request": "start ok 0 100 5 1 no",
+        "response": "channel"
+      },
+      {
+        "request": "channel ok 0 100 5 1 no",
+        "response": "paging"
+      },
+      {
+        "request": "channel foreign 0 100 5 1 no",
+        "response": "refused"
+      },
+      {
+        "request": "channel denied 0 100 5 1 no",
+        "response": "failed"
+      },
+      {
+        "request": "channel missing 0 100 5 1 no",
+        "response": "failed"
+      },
+      {
+        "request": "paging ok 100 100 5 1 no",
+        "response": "paging"
+      },
+      {
+        "request": "paging ok 42 100 5 1 no",
+        "response": "done"
+      },
+      {
+        "request": "paging ok 0 100 5 1 no",
+        "response": "done"
+      },
+      {
+        "request": "paging ok 100 100 1 1 no",
+        "response": "failed"
+      },
+      {
+        "request": "paging ok 100 100 1 1 yes",
+        "response": "paging"
+      },
+      {
+        "request": "paging ok 42 100 0 1 no",
+        "response": "done"
+      },
+      {
+        "request": "paging ok 101 100 5 1 no",
+        "response": "refused"
+      },
+      {
+        "request": "paging stale 2 2 5 1 no",
+        "response": "refused"
+      },
+      {
+        "request": "paging exhausted 0 100 0 1 yes",
+        "response": "failed"
+      },
+      {
+        "request": "done ok 0 100 5 1 no",
+        "response": "done"
+      },
+      {
+        "request": "refused ok 100 100 5 1 yes",
+        "response": "refused"
+      },
+      {
+        "request": "failed ok 100 100 5 1 yes",
+        "response": "failed"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Perceval maintainer",
+      "text": "Reviews and maintains Perceval's backends for CHAOSS GrimoireLab and needs a new backend that follows the existing ones, adds no dependency, and is tested offline by the suite upstream already runs.",
+      "concerns": [
+        "Follows upstream norms",
+        "Correct answers",
+        "Proved guarantees"
+      ]
+    },
+    {
+      "name": "GrimoireLab operator",
+      "text": "Runs Perceval and GrimoireLab for a community and needs every message of the channels they name, resumable from a date and replayable from an archive.",
+      "concerns": [
+        "Complete channel history",
+        "Correct answers"
+      ]
+    },
+    {
+      "name": "Community health analyst",
+      "text": "Measures CHAOSS metrics such as Chat Platform Inclusivity and needs Discord data in the same item shape as Slack, Mattermost and Rocket.Chat.",
+      "concerns": [
+        "Complete channel history"
+      ]
+    },
+    {
+      "name": "Discord server admin",
+      "text": "Adds the read-only bot to the guild and needs it to read only the channels it is granted, with the least permissions, without exhausting the guild's rate limits.",
+      "concerns": [
+        "Least privilege",
+        "Rate limits respected"
+      ]
+    },
+    {
+      "name": "Discord member",
+      "text": "Writes the messages that are collected and needs their content to stay inside the guild's analytics, with bots told apart from people.",
+      "concerns": [
+        "Least privilege",
+        "Token never disclosed"
+      ]
+    },
+    {
+      "name": "GrimoireLab security reviewer",
+      "text": "Triages reports under GrimoireLab's SECURITY.md and needs the bot token never written to an archive or log, and malformed responses refused.",
+      "concerns": [
+        "Token never disclosed",
+        "Refused malformed responses"
+      ]
+    }
+  ],
+  "concerns": [
+    {
+      "name": "Follows upstream norms",
+      "text": "New files only, flake8 clean, a releases/unreleased changelog entry, DCO sign-off, and tests run by tests/run_tests.py with httpretty, as CONTRIBUTING_WITH_CODE.md asks.",
+      "model": "component"
+    },
+    {
+      "name": "Complete channel history",
+      "text": "Every message sent at or after from_date is yielded exactly once, oldest first, by paging on the after snowflake.",
+      "model": "quality"
+    },
+    {
+      "name": "Least privilege",
+      "text": "The bot needs only View Channel, Read Message History and the Message Content intent, and a channel of another guild is refused.",
+      "model": "security"
+    },
+    {
+      "name": "Rate limits respected",
+      "text": "The client stops or sleeps at --min-rate-to-sleep and parses Discord's fractional X-RateLimit-Reset.",
+      "model": "quality"
+    },
+    {
+      "name": "Token never disclosed",
+      "text": "The Authorization header is removed before a request is archived, and the token is never logged.",
+      "model": "security"
+    },
+    {
+      "name": "Refused malformed responses",
+      "text": "A page larger than the limit or holding a message not after the cursor raises BackendError instead of looping.",
+      "model": "security"
+    }
+  ],
+  "components": [
+    {
+      "name": "Discord API v10",
+      "kind": "externalSystem",
+      "text": "https://discord.com/api/v10: GET /channels/{id} and GET /channels/{id}/messages, authenticated with Authorization: Bot <token>."
+    },
+    {
+      "name": "perceval discord",
+      "kind": "cliAdapter",
+      "text": "perceval discord <guild> <channel> -t <token> [--from-date] [--max-items] [--sleep-for-rate] [--min-rate-to-sleep] [--archive-path]: the command DiscordCommand declares."
+    },
+    {
+      "name": "Perceval archive",
+      "kind": "database",
+      "text": "The SQLite archive Perceval writes with --archive-path and replays with --fetch-archive; requests are stored after sanitize_for_archive."
+    },
+    {
+      "name": "GrimoireLab Chronicler",
+      "kind": "service",
+      "text": "Turns the backend's items into GrimoireLab CloudEvents (grimoirelab-chronicler, GrimoireLab 2.0)."
+    }
+  ],
+  "threats": [
+    {
+      "name": "Token written to an archive",
+      "text": "The bot token in the Authorization header is stored with the archived request and shared with the archive.",
+      "stride": "informationDisclosure",
+      "asset": "source",
+      "likelihood": "medium",
+      "impact": "critical",
+      "control": {
+        "name": "Token removed before archiving",
+        "text": "DiscordClient.sanitize_for_archive drops the Authorization header from every archived request; replay works with any token.",
+        "evidence": [
+          {
+            "kind": "gate",
+            "reference": "tests/test_discord.py TestDiscordClient.test_sanitize_for_archive"
+          },
+          {
+            "kind": "gate",
+            "reference": "tests/test_discord.py TestDiscordBackendArchive (replayed with a different token)"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Channel of another guild read",
+      "text": "A channel id of a guild the operator did not name is fetched, so data the operator was not asked to analyse is collected.",
+      "stride": "elevationOfPrivilege",
+      "asset": "answer",
+      "likelihood": "low",
+      "impact": "major",
+      "control": {
+        "name": "Guild checked before paging",
+        "text": "The channel's guild_id must equal the guild named; otherwise BackendError, proved for every request.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-001"
+          },
+          {
+            "kind": "gate",
+            "reference": "tests/test_discord.py test_fetch_wrong_guild"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Endless paging",
+      "text": "A server or proxy that ignores the after cursor serves the same page forever, so the fetch never ends.",
+      "stride": "denialOfService",
+      "asset": "request",
+      "likelihood": "low",
+      "impact": "major",
+      "control": {
+        "name": "Cursor must advance",
+        "text": "A page holding a message not after the cursor raises BackendError, proved for every request.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-002"
+          },
+          {
+            "kind": "gate",
+            "reference": "tests/test_discord.py test_fetch_stale_page"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Oversized page",
+      "text": "A response larger than the limit asked for is trusted and processed.",
+      "stride": "tampering",
+      "asset": "answer",
+      "likelihood": "low",
+      "impact": "minor",
+      "control": {
+        "name": "Page bounded by the limit",
+        "text": "A page larger than --max-items raises BackendError, proved for every request.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-003"
+          },
+          {
+            "kind": "gate",
+            "reference": "tests/test_discord.py test_fetch_oversized_page"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Bot rate-limited off the guild",
+      "text": "The fetch keeps requesting with an exhausted bucket and Discord limits or bans the bot for the whole guild.",
+      "stride": "denialOfService",
+      "asset": "request",
+      "likelihood": "medium",
+      "impact": "major",
+      "control": {
+        "name": "Rate gate",
+        "text": "At --min-rate-to-sleep the client sleeps until the fractional X-RateLimit-Reset or raises RateLimitError, proved for every request; 429 honors Retry-After.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-004"
+          },
+          {
+            "kind": "gate",
+            "reference": "tests/test_discord.py test_rate_limit_error, test_sleep_for_rate, test_rate_limit_headers"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Over-privileged bot",
+      "text": "The bot is granted more than it reads, so a leaked token can post, moderate or read private channels.",
+      "stride": "elevationOfPrivilege",
+      "asset": "source",
+      "likelihood": "medium",
+      "impact": "critical",
+      "control": {
+        "name": "Read-only permissions documented",
+        "text": "The backend only issues GET requests; the documentation asks for View Channel, Read Message History and the Message Content intent and nothing else.",
+        "evidence": [
+          {
+            "kind": "review",
+            "reference": "README.md, Discord section: required bot permissions"
+          },
+          {
+            "kind": "gate",
+            "reference": "perceval/backends/core/discord.py: DiscordClient issues GET only"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Deleted messages kept",
+      "text": "A member deletes a message after it was fetched, and it stays in the operator's archive and indexes.",
+      "stride": "repudiation",
+      "asset": "answer",
+      "accepted": "Perceval keeps what it fetched for every chat backend; honoring deletions is the operator's duty under Discord's Developer Policy, and the documentation says so."
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Functional suitability",
+      "subcharacteristic": "Functional completeness",
+      "requirement": "Every message fetched",
+      "text": "Every message of the fixture channel is yielded exactly once, oldest first, at every page size from 1 to 100.",
+      "measure": "Messages missed or repeated",
+      "measureText": "Fixture messages not yielded, or yielded twice, by tests/test_discord.py.",
+      "threshold": 0
+    },
+    {
+      "characteristic": "Security",
+      "subcharacteristic": "Confidentiality",
+      "requirement": "No token in archives",
+      "text": "No archived request holds the Authorization header.",
+      "measure": "Archived requests with a token",
+      "measureText": "Archived requests that keep the Authorization header after sanitize_for_archive.",
+      "threshold": 0
+    },
+    {
+      "characteristic": "Reliability",
+      "subcharacteristic": "Fault tolerance",
+      "requirement": "Malformed pages refused",
+      "text": "Every page that breaks the paging contract ends the fetch with BackendError.",
+      "measure": "Malformed pages followed",
+      "measureText": "Oversized or stale pages the fetch continues after.",
+      "threshold": 0
+    },
+    {
+      "characteristic": "Maintainability",
+      "subcharacteristic": "Testability",
+      "requirement": "Offline suite",
+      "text": "The backend's tests run with no network, inside upstream's tests/run_tests.py.",
+      "measure": "Tests reaching the network",
+      "measureText": "Discord tests that fail when every proxy variable is unset.",
+      "threshold": 0
+    },
+    {
+      "characteristic": "Compatibility",
+      "subcharacteristic": "Interoperability",
+      "requirement": "Chat item shape",
+      "text": "Items carry origin, uuid, updated_on, category and search_fields as Perceval's other chat backends do.",
+      "measure": "Missing item fields",
+      "measureText": "Item fields of Perceval's Backend contract a Discord item lacks.",
+      "threshold": 0
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "GrimoireLab operator",
+      "steps": [
+        "REQ-004",
+        "otherwise",
+        "REQ-011",
+        "INV-005"
+      ]
+    },
+    {
+      "stakeholder": "Discord server admin",
+      "steps": [
+        "REQ-005",
+        "INV-001",
+        "REQ-012",
+        "INV-004"
+      ]
+    },
+    {
+      "stakeholder": "GrimoireLab security reviewer",
+      "steps": [
+        "REQ-006",
+        "INV-002",
+        "REQ-010",
+        "INV-003",
+        "REQ-007",
+        "INV-006"
+      ]
+    },
+    {
+      "stakeholder": "Perceval maintainer",
+      "steps": [
+        "REQ-001",
+        "REQ-002",
+        "REQ-003",
+        "REQ-008",
+        "REQ-009"
+      ]
+    }
+  ]
+}
