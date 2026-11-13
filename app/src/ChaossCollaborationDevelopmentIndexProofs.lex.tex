@@ -1,0 +1,132 @@
+\begin{lexlean}{ChaossCollaborationDevelopmentIndexProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{ChaossCollaborationDevelopmentIndex}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [
+    request : ChaossCollaborationDevelopmentIndex::ChaossCollaborationDevelopmentIndexRequest
+  ],
+  result: Bool,
+  body: (((((project request admitted) <=? 5) && ((project request refused) <=? 5)) && (1 <=? (project request refused))) && ((ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexJudge request) =? (ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerComplete)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [
+    request : ChaossCollaborationDevelopmentIndex::ChaossCollaborationDevelopmentIndexRequest
+  ],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerComplete,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerOpen,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerPartial,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerUnmeasured,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexJudge,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexRule1,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexRule2,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexRule3,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [
+    request : ChaossCollaborationDevelopmentIndex::ChaossCollaborationDevelopmentIndexRequest
+  ],
+  result: Bool,
+  body: (((((project request admitted) <=? 5) && ((project request refused) <=? 5)) && ((project request admitted) <? 5)) && ((ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexJudge request) =? (ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerComplete)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [
+    request : ChaossCollaborationDevelopmentIndex::ChaossCollaborationDevelopmentIndexRequest
+  ],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerComplete,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerOpen,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerPartial,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerUnmeasured,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexJudge,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexRule1,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexRule2,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexRule3,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [
+    request : ChaossCollaborationDevelopmentIndex::ChaossCollaborationDevelopmentIndexRequest
+  ],
+  result: Bool,
+  body: ((((((project request admitted) <=? 5) && ((project request refused) <=? 5)) && ((project request refused) =? 0)) && (5 <=? (project request admitted))) && (not ((ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexJudge request) =? (ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerComplete))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [
+    request : ChaossCollaborationDevelopmentIndex::ChaossCollaborationDevelopmentIndexRequest
+  ],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerComplete,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerOpen,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerPartial,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerUnmeasured,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexJudge,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexRule1,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexRule2,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexRule3,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [
+    request : ChaossCollaborationDevelopmentIndex::ChaossCollaborationDevelopmentIndexRequest
+  ],
+  result: Bool,
+  body: ((((((project request admitted) <=? 5) && ((project request refused) <=? 5)) && (1 <=? (project request admitted))) && ((project request refused) =? 0)) && ((ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexJudge request) =? (ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerUnmeasured)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [
+    request : ChaossCollaborationDevelopmentIndex::ChaossCollaborationDevelopmentIndexRequest
+  ],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerComplete,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerOpen,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerPartial,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexAnswerUnmeasured,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexJudge,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexRule1,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexRule2,
+      ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexRule3,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

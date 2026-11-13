@@ -1,0 +1,116 @@
+\begin{lexlean}{ChaossDevelopmentResponsivenessProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{ChaossDevelopmentResponsiveness}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : ChaossDevelopmentResponsiveness::ChaossDevelopmentResponsivenessRequest],
+  result: Bool,
+  body: (((((project request admitted) <=? 4) && ((project request refused) <=? 4)) && (1 <=? (project request refused))) && ((ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessJudge request) =? (ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerComplete)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : ChaossDevelopmentResponsiveness::ChaossDevelopmentResponsivenessRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerComplete,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerOpen,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerPartial,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerUnmeasured,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessJudge,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessRule1,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessRule2,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessRule3,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : ChaossDevelopmentResponsiveness::ChaossDevelopmentResponsivenessRequest],
+  result: Bool,
+  body: (((((project request admitted) <=? 4) && ((project request refused) <=? 4)) && ((project request admitted) <? 4)) && ((ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessJudge request) =? (ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerComplete)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : ChaossDevelopmentResponsiveness::ChaossDevelopmentResponsivenessRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerComplete,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerOpen,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerPartial,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerUnmeasured,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessJudge,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessRule1,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessRule2,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessRule3,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : ChaossDevelopmentResponsiveness::ChaossDevelopmentResponsivenessRequest],
+  result: Bool,
+  body: ((((((project request admitted) <=? 4) && ((project request refused) <=? 4)) && ((project request refused) =? 0)) && (4 <=? (project request admitted))) && (not ((ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessJudge request) =? (ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerComplete))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : ChaossDevelopmentResponsiveness::ChaossDevelopmentResponsivenessRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerComplete,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerOpen,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerPartial,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerUnmeasured,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessJudge,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessRule1,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessRule2,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessRule3,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : ChaossDevelopmentResponsiveness::ChaossDevelopmentResponsivenessRequest],
+  result: Bool,
+  body: ((((((project request admitted) <=? 4) && ((project request refused) <=? 4)) && (1 <=? (project request admitted))) && ((project request refused) =? 0)) && ((ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessJudge request) =? (ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerUnmeasured)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : ChaossDevelopmentResponsiveness::ChaossDevelopmentResponsivenessRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerComplete,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerOpen,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerPartial,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessAnswerUnmeasured,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessJudge,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessRule1,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessRule2,
+      ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessRule3,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

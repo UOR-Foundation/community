@@ -1,0 +1,116 @@
+\begin{lexlean}{ChaossProjectAwarenessProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{ChaossProjectAwareness}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : ChaossProjectAwareness::ChaossProjectAwarenessRequest],
+  result: Bool,
+  body: (((((project request admitted) <=? 5) && ((project request refused) <=? 5)) && (1 <=? (project request refused))) && ((ChaossProjectAwareness::chaossProjectAwarenessJudge request) =? (ChaossProjectAwareness::chaossProjectAwarenessAnswerComplete)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : ChaossProjectAwareness::ChaossProjectAwarenessRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerComplete,
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerOpen,
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerPartial,
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerUnmeasured,
+      ChaossProjectAwareness::chaossProjectAwarenessJudge,
+      ChaossProjectAwareness::chaossProjectAwarenessRule1,
+      ChaossProjectAwareness::chaossProjectAwarenessRule2,
+      ChaossProjectAwareness::chaossProjectAwarenessRule3,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : ChaossProjectAwareness::ChaossProjectAwarenessRequest],
+  result: Bool,
+  body: (((((project request admitted) <=? 5) && ((project request refused) <=? 5)) && ((project request admitted) <? 5)) && ((ChaossProjectAwareness::chaossProjectAwarenessJudge request) =? (ChaossProjectAwareness::chaossProjectAwarenessAnswerComplete)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : ChaossProjectAwareness::ChaossProjectAwarenessRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerComplete,
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerOpen,
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerPartial,
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerUnmeasured,
+      ChaossProjectAwareness::chaossProjectAwarenessJudge,
+      ChaossProjectAwareness::chaossProjectAwarenessRule1,
+      ChaossProjectAwareness::chaossProjectAwarenessRule2,
+      ChaossProjectAwareness::chaossProjectAwarenessRule3,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : ChaossProjectAwareness::ChaossProjectAwarenessRequest],
+  result: Bool,
+  body: ((((((project request admitted) <=? 5) && ((project request refused) <=? 5)) && ((project request refused) =? 0)) && (5 <=? (project request admitted))) && (not ((ChaossProjectAwareness::chaossProjectAwarenessJudge request) =? (ChaossProjectAwareness::chaossProjectAwarenessAnswerComplete))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : ChaossProjectAwareness::ChaossProjectAwarenessRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerComplete,
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerOpen,
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerPartial,
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerUnmeasured,
+      ChaossProjectAwareness::chaossProjectAwarenessJudge,
+      ChaossProjectAwareness::chaossProjectAwarenessRule1,
+      ChaossProjectAwareness::chaossProjectAwarenessRule2,
+      ChaossProjectAwareness::chaossProjectAwarenessRule3,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : ChaossProjectAwareness::ChaossProjectAwarenessRequest],
+  result: Bool,
+  body: ((((((project request admitted) <=? 5) && ((project request refused) <=? 5)) && (1 <=? (project request admitted))) && ((project request refused) =? 0)) && ((ChaossProjectAwareness::chaossProjectAwarenessJudge request) =? (ChaossProjectAwareness::chaossProjectAwarenessAnswerUnmeasured)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : ChaossProjectAwareness::ChaossProjectAwarenessRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerComplete,
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerOpen,
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerPartial,
+      ChaossProjectAwareness::chaossProjectAwarenessAnswerUnmeasured,
+      ChaossProjectAwareness::chaossProjectAwarenessJudge,
+      ChaossProjectAwareness::chaossProjectAwarenessRule1,
+      ChaossProjectAwareness::chaossProjectAwarenessRule2,
+      ChaossProjectAwareness::chaossProjectAwarenessRule3,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

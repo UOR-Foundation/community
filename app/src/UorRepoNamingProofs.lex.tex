@@ -1,0 +1,272 @@
+\begin{lexlean}{UorRepoNamingProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{UorRepoNaming}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : UorRepoNaming::UorRepoNamingRequest],
+  result: Bool,
+  body: ((((((((((project request case) <? 2) && ((project request version) <? 2)) && ((project request pattern) <? 2)) && ((project request branches) <? 2)) && ((project request commits) <? 2)) && ((project request domain) <? 2)) && ((project request technology) <? 2)) && ((project request case) =? (UorRepoNaming::uorRepoNamingCaseOther))) && ((UorRepoNaming::uorRepoNamingJudge request) =? (UorRepoNaming::uorRepoNamingAnswerConformant)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : UorRepoNaming::UorRepoNamingRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoNaming::uorRepoNamingAnswerAdvisory,
+      UorRepoNaming::uorRepoNamingAnswerConformant,
+      UorRepoNaming::uorRepoNamingAnswerNonconforming,
+      UorRepoNaming::uorRepoNamingBranchesConforming,
+      UorRepoNaming::uorRepoNamingBranchesOther,
+      UorRepoNaming::uorRepoNamingCaseLowercase,
+      UorRepoNaming::uorRepoNamingCaseOther,
+      UorRepoNaming::uorRepoNamingCommitsConventional,
+      UorRepoNaming::uorRepoNamingCommitsOther,
+      UorRepoNaming::uorRepoNamingDomainComplete,
+      UorRepoNaming::uorRepoNamingDomainIncomplete,
+      UorRepoNaming::uorRepoNamingJudge,
+      UorRepoNaming::uorRepoNamingPatternOther,
+      UorRepoNaming::uorRepoNamingPatternPreferred,
+      UorRepoNaming::uorRepoNamingRule1,
+      UorRepoNaming::uorRepoNamingRule2,
+      UorRepoNaming::uorRepoNamingRule3,
+      UorRepoNaming::uorRepoNamingRule4,
+      UorRepoNaming::uorRepoNamingRule5,
+      UorRepoNaming::uorRepoNamingRule6,
+      UorRepoNaming::uorRepoNamingRule7,
+      UorRepoNaming::uorRepoNamingTechnologyComplete,
+      UorRepoNaming::uorRepoNamingTechnologyIncomplete,
+      UorRepoNaming::uorRepoNamingVersionAbsent,
+      UorRepoNaming::uorRepoNamingVersionPresent,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : UorRepoNaming::UorRepoNamingRequest],
+  result: Bool,
+  body: ((((((((((project request case) <? 2) && ((project request version) <? 2)) && ((project request pattern) <? 2)) && ((project request branches) <? 2)) && ((project request commits) <? 2)) && ((project request domain) <? 2)) && ((project request technology) <? 2)) && ((project request version) =? (UorRepoNaming::uorRepoNamingVersionPresent))) && ((UorRepoNaming::uorRepoNamingJudge request) =? (UorRepoNaming::uorRepoNamingAnswerConformant)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : UorRepoNaming::UorRepoNamingRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoNaming::uorRepoNamingAnswerAdvisory,
+      UorRepoNaming::uorRepoNamingAnswerConformant,
+      UorRepoNaming::uorRepoNamingAnswerNonconforming,
+      UorRepoNaming::uorRepoNamingBranchesConforming,
+      UorRepoNaming::uorRepoNamingBranchesOther,
+      UorRepoNaming::uorRepoNamingCaseLowercase,
+      UorRepoNaming::uorRepoNamingCaseOther,
+      UorRepoNaming::uorRepoNamingCommitsConventional,
+      UorRepoNaming::uorRepoNamingCommitsOther,
+      UorRepoNaming::uorRepoNamingDomainComplete,
+      UorRepoNaming::uorRepoNamingDomainIncomplete,
+      UorRepoNaming::uorRepoNamingJudge,
+      UorRepoNaming::uorRepoNamingPatternOther,
+      UorRepoNaming::uorRepoNamingPatternPreferred,
+      UorRepoNaming::uorRepoNamingRule1,
+      UorRepoNaming::uorRepoNamingRule2,
+      UorRepoNaming::uorRepoNamingRule3,
+      UorRepoNaming::uorRepoNamingRule4,
+      UorRepoNaming::uorRepoNamingRule5,
+      UorRepoNaming::uorRepoNamingRule6,
+      UorRepoNaming::uorRepoNamingRule7,
+      UorRepoNaming::uorRepoNamingTechnologyComplete,
+      UorRepoNaming::uorRepoNamingTechnologyIncomplete,
+      UorRepoNaming::uorRepoNamingVersionAbsent,
+      UorRepoNaming::uorRepoNamingVersionPresent,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : UorRepoNaming::UorRepoNamingRequest],
+  result: Bool,
+  body: ((((((((((project request case) <? 2) && ((project request version) <? 2)) && ((project request pattern) <? 2)) && ((project request branches) <? 2)) && ((project request commits) <? 2)) && ((project request domain) <? 2)) && ((project request technology) <? 2)) && ((project request commits) =? (UorRepoNaming::uorRepoNamingCommitsOther))) && ((UorRepoNaming::uorRepoNamingJudge request) =? (UorRepoNaming::uorRepoNamingAnswerConformant)))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : UorRepoNaming::UorRepoNamingRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoNaming::uorRepoNamingAnswerAdvisory,
+      UorRepoNaming::uorRepoNamingAnswerConformant,
+      UorRepoNaming::uorRepoNamingAnswerNonconforming,
+      UorRepoNaming::uorRepoNamingBranchesConforming,
+      UorRepoNaming::uorRepoNamingBranchesOther,
+      UorRepoNaming::uorRepoNamingCaseLowercase,
+      UorRepoNaming::uorRepoNamingCaseOther,
+      UorRepoNaming::uorRepoNamingCommitsConventional,
+      UorRepoNaming::uorRepoNamingCommitsOther,
+      UorRepoNaming::uorRepoNamingDomainComplete,
+      UorRepoNaming::uorRepoNamingDomainIncomplete,
+      UorRepoNaming::uorRepoNamingJudge,
+      UorRepoNaming::uorRepoNamingPatternOther,
+      UorRepoNaming::uorRepoNamingPatternPreferred,
+      UorRepoNaming::uorRepoNamingRule1,
+      UorRepoNaming::uorRepoNamingRule2,
+      UorRepoNaming::uorRepoNamingRule3,
+      UorRepoNaming::uorRepoNamingRule4,
+      UorRepoNaming::uorRepoNamingRule5,
+      UorRepoNaming::uorRepoNamingRule6,
+      UorRepoNaming::uorRepoNamingRule7,
+      UorRepoNaming::uorRepoNamingTechnologyComplete,
+      UorRepoNaming::uorRepoNamingTechnologyIncomplete,
+      UorRepoNaming::uorRepoNamingVersionAbsent,
+      UorRepoNaming::uorRepoNamingVersionPresent,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : UorRepoNaming::UorRepoNamingRequest],
+  result: Bool,
+  body: ((((((((((project request case) <? 2) && ((project request version) <? 2)) && ((project request pattern) <? 2)) && ((project request branches) <? 2)) && ((project request commits) <? 2)) && ((project request domain) <? 2)) && ((project request technology) <? 2)) && ((project request domain) =? (UorRepoNaming::uorRepoNamingDomainIncomplete))) && ((UorRepoNaming::uorRepoNamingJudge request) =? (UorRepoNaming::uorRepoNamingAnswerConformant)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : UorRepoNaming::UorRepoNamingRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoNaming::uorRepoNamingAnswerAdvisory,
+      UorRepoNaming::uorRepoNamingAnswerConformant,
+      UorRepoNaming::uorRepoNamingAnswerNonconforming,
+      UorRepoNaming::uorRepoNamingBranchesConforming,
+      UorRepoNaming::uorRepoNamingBranchesOther,
+      UorRepoNaming::uorRepoNamingCaseLowercase,
+      UorRepoNaming::uorRepoNamingCaseOther,
+      UorRepoNaming::uorRepoNamingCommitsConventional,
+      UorRepoNaming::uorRepoNamingCommitsOther,
+      UorRepoNaming::uorRepoNamingDomainComplete,
+      UorRepoNaming::uorRepoNamingDomainIncomplete,
+      UorRepoNaming::uorRepoNamingJudge,
+      UorRepoNaming::uorRepoNamingPatternOther,
+      UorRepoNaming::uorRepoNamingPatternPreferred,
+      UorRepoNaming::uorRepoNamingRule1,
+      UorRepoNaming::uorRepoNamingRule2,
+      UorRepoNaming::uorRepoNamingRule3,
+      UorRepoNaming::uorRepoNamingRule4,
+      UorRepoNaming::uorRepoNamingRule5,
+      UorRepoNaming::uorRepoNamingRule6,
+      UorRepoNaming::uorRepoNamingRule7,
+      UorRepoNaming::uorRepoNamingTechnologyComplete,
+      UorRepoNaming::uorRepoNamingTechnologyIncomplete,
+      UorRepoNaming::uorRepoNamingVersionAbsent,
+      UorRepoNaming::uorRepoNamingVersionPresent,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv005,
+  parameters: [request : UorRepoNaming::UorRepoNamingRequest],
+  result: Bool,
+  body: ((((((((((project request case) <? 2) && ((project request version) <? 2)) && ((project request pattern) <? 2)) && ((project request branches) <? 2)) && ((project request commits) <? 2)) && ((project request domain) <? 2)) && ((project request technology) <? 2)) && ((project request pattern) =? (UorRepoNaming::uorRepoNamingPatternOther))) && ((UorRepoNaming::uorRepoNamingJudge request) =? (UorRepoNaming::uorRepoNamingAnswerConformant)))
+}
+
+theorem{
+  name: inv005Holds,
+  parameters: [request : UorRepoNaming::UorRepoNamingRequest],
+  statement: ((breaksInv005 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoNaming::uorRepoNamingAnswerAdvisory,
+      UorRepoNaming::uorRepoNamingAnswerConformant,
+      UorRepoNaming::uorRepoNamingAnswerNonconforming,
+      UorRepoNaming::uorRepoNamingBranchesConforming,
+      UorRepoNaming::uorRepoNamingBranchesOther,
+      UorRepoNaming::uorRepoNamingCaseLowercase,
+      UorRepoNaming::uorRepoNamingCaseOther,
+      UorRepoNaming::uorRepoNamingCommitsConventional,
+      UorRepoNaming::uorRepoNamingCommitsOther,
+      UorRepoNaming::uorRepoNamingDomainComplete,
+      UorRepoNaming::uorRepoNamingDomainIncomplete,
+      UorRepoNaming::uorRepoNamingJudge,
+      UorRepoNaming::uorRepoNamingPatternOther,
+      UorRepoNaming::uorRepoNamingPatternPreferred,
+      UorRepoNaming::uorRepoNamingRule1,
+      UorRepoNaming::uorRepoNamingRule2,
+      UorRepoNaming::uorRepoNamingRule3,
+      UorRepoNaming::uorRepoNamingRule4,
+      UorRepoNaming::uorRepoNamingRule5,
+      UorRepoNaming::uorRepoNamingRule6,
+      UorRepoNaming::uorRepoNamingRule7,
+      UorRepoNaming::uorRepoNamingTechnologyComplete,
+      UorRepoNaming::uorRepoNamingTechnologyIncomplete,
+      UorRepoNaming::uorRepoNamingVersionAbsent,
+      UorRepoNaming::uorRepoNamingVersionPresent,
+      breaksInv005
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv006,
+  parameters: [request : UorRepoNaming::UorRepoNamingRequest],
+  result: Bool,
+  body: ((((((((((((((((project request case) <? 2) && ((project request version) <? 2)) && ((project request pattern) <? 2)) && ((project request branches) <? 2)) && ((project request commits) <? 2)) && ((project request domain) <? 2)) && ((project request technology) <? 2)) && ((project request case) =? (UorRepoNaming::uorRepoNamingCaseLowercase))) && ((project request version) =? (UorRepoNaming::uorRepoNamingVersionAbsent))) && ((project request branches) =? (UorRepoNaming::uorRepoNamingBranchesConforming))) && ((project request commits) =? (UorRepoNaming::uorRepoNamingCommitsConventional))) && ((project request domain) =? (UorRepoNaming::uorRepoNamingDomainComplete))) && ((project request technology) =? (UorRepoNaming::uorRepoNamingTechnologyComplete))) && ((project request pattern) =? (UorRepoNaming::uorRepoNamingPatternOther))) && (not ((UorRepoNaming::uorRepoNamingJudge request) =? (UorRepoNaming::uorRepoNamingAnswerAdvisory))))
+}
+
+theorem{
+  name: inv006Holds,
+  parameters: [request : UorRepoNaming::UorRepoNamingRequest],
+  statement: ((breaksInv006 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoNaming::uorRepoNamingAnswerAdvisory,
+      UorRepoNaming::uorRepoNamingAnswerConformant,
+      UorRepoNaming::uorRepoNamingAnswerNonconforming,
+      UorRepoNaming::uorRepoNamingBranchesConforming,
+      UorRepoNaming::uorRepoNamingBranchesOther,
+      UorRepoNaming::uorRepoNamingCaseLowercase,
+      UorRepoNaming::uorRepoNamingCaseOther,
+      UorRepoNaming::uorRepoNamingCommitsConventional,
+      UorRepoNaming::uorRepoNamingCommitsOther,
+      UorRepoNaming::uorRepoNamingDomainComplete,
+      UorRepoNaming::uorRepoNamingDomainIncomplete,
+      UorRepoNaming::uorRepoNamingJudge,
+      UorRepoNaming::uorRepoNamingPatternOther,
+      UorRepoNaming::uorRepoNamingPatternPreferred,
+      UorRepoNaming::uorRepoNamingRule1,
+      UorRepoNaming::uorRepoNamingRule2,
+      UorRepoNaming::uorRepoNamingRule3,
+      UorRepoNaming::uorRepoNamingRule4,
+      UorRepoNaming::uorRepoNamingRule5,
+      UorRepoNaming::uorRepoNamingRule6,
+      UorRepoNaming::uorRepoNamingRule7,
+      UorRepoNaming::uorRepoNamingTechnologyComplete,
+      UorRepoNaming::uorRepoNamingTechnologyIncomplete,
+      UorRepoNaming::uorRepoNamingVersionAbsent,
+      UorRepoNaming::uorRepoNamingVersionPresent,
+      breaksInv006
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}
