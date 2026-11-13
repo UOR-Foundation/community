@@ -85,10 +85,16 @@ statement = "The architecture description declares every stakeholder, concern, c
 id = "UT-10"
 level = "build"
 suite = "uor_toc_lifecycle"
-statement = "The ISO/IEC 25010 quality model numbers every characteristic, subcharacteristic, requirement and measure, and every parent it names is declared"
+statement = "The ISO/IEC 25010:2023 quality model declares all 9 characteristics and 40 subcharacteristics, states each subcharacteristic by a requirement or lists it open, and every parent it names is declared"
 
 [[id]]
 id = "UT-11"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "Every STRIDE category each component and data flow is open to is answered by a threat or stated open, and no other pair is stated open"
+
+[[id]]
+id = "UT-12"
 level = "build"
 suite = "uor_toc_lifecycle"
 statement = "Every compliance obligation is numbered in order and names its evidence"
@@ -110,3 +116,9 @@ id = "CC-03"
 level = "open"
 suite = "chaoss"
 statement = "A released CHAOSS item the projector cannot match to a definition is carried as an open claim, never dropped or guessed"
+
+[[id]]
+id = "CP-01"
+level = "build"
+suite = "compliance"
+statement = "The control set the verified build emits as an OSCAL 1.1.0 component definition is accepted by the locked oscal-1.1.0-structural oracle"
