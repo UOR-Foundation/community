@@ -5,6 +5,7 @@
 #
 #   oracles/grimoirelab/verify.sh perceval   [work-dir]
 #   oracles/grimoirelab/verify.sh sortinghat [work-dir]
+#   oracles/grimoirelab/verify.sh chronicler [work-dir]
 #
 # perceval:   overlay the Discord backend (new files only; replacing an
 #             upstream file is refused), install the dependency set upstream's
@@ -15,6 +16,13 @@
 #             Django test commands; its runner starts the MariaDB image
 #             upstream names (TEST_DATABASE_IMAGE) through testcontainers, so
 #             Docker is needed.
+# chronicler: overlay the Discord eventizer the same way as perceval (new
+#             files only), install the same way, then run the commands
+#             upstream's tests.yml runs: ruff check, ruff format --diff, and
+#             tests/run_tests.py under coverage. requirements_dev.txt is not
+#             installed: it is an unpinned Git checkout of grimoirelab-toolkit
+#             that --require-hashes cannot admit, and the toolkit release
+#             poetry.lock pins is installed instead.
 #
 # safe.directory is set for the run only, in a global config file of its own
 # (git honors it only from global or system scope): upstream's git fixtures are tarballs
@@ -22,7 +30,7 @@
 # them. It changes no test and no fixture.
 set -euo pipefail
 
-component="${1:?usage: verify.sh perceval|sortinghat [work-dir]}"
+component="${1:?usage: verify.sh perceval|sortinghat|chronicler [work-dir]}"
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 lock="$here/oracle.lock.json"
 work="${2:-$(mktemp -d)}/$component"
@@ -41,6 +49,7 @@ PY
 case "$component" in
   perceval) canonical=chaoss/grimoirelab-perceval ;;
   sortinghat) canonical=chaoss/grimoirelab-sortinghat ;;
+  chronicler) canonical=chaoss/grimoirelab-chronicler ;;
   *) echo "unknown component $component" >&2; exit 64 ;;
 esac
 commit="$(authority "$canonical" revision)"
@@ -55,9 +64,13 @@ if [ "$got" != "$commit" ]; then
   exit 3
 fi
 
-if [ "$component" = perceval ]; then
-  overlay="$here/perceval-discord"
-  (cd "$overlay" && find perceval tests releases -type f | sort) | while read -r f; do
+overlay_dirs=()
+case "$component" in
+  perceval) overlay="$here/perceval-discord" overlay_dirs=(perceval tests releases) ;;
+  chronicler) overlay="$here/chronicler-discord" overlay_dirs=(chronicler tests releases) ;;
+esac
+if [ "${#overlay_dirs[@]}" -gt 0 ]; then
+  (cd "$overlay" && find "${overlay_dirs[@]}" -type f | sort) | while read -r f; do
     if [ -e "$src/$f" ]; then
       echo "overlay would replace upstream $f" >&2
       exit 4
@@ -84,6 +97,11 @@ if [ "$component" = perceval ]; then
   "$venv/bin/flake8" perceval/backends/core/discord.py tests/test_discord.py
   cd tests
   "${offline[@]}" "$venv/bin/python" run_tests.py
+elif [ "$component" = chronicler ]; then
+  "${offline[@]}" "$venv/bin/ruff" check
+  "${offline[@]}" "$venv/bin/ruff" format --diff
+  cd tests
+  "${offline[@]}" "$venv/bin/coverage" run --source=chronicler run_tests.py
 else
   "$venv/bin/flake8"
   "${offline[@]}" "$venv/bin/python" manage.py test --settings=config.settings.config_testing
