@@ -94,6 +94,25 @@ fn workspace_paths(lexlean: &Value) -> Result<Vec<String>, String> {
         .collect()
 }
 
+/// The address `prismpm verify` gives an acceptance document: the SHA-256 of
+/// its canonical JSON without `browser_timing`, a per-run measurement and not a
+/// modeled fact (PrismPM release_verification.rs, UOR-Foundation/PrismPM#615).
+/// The kept bytes must themselves be that canonical JSON, so nothing outside the
+/// address can vary but the timing.
+fn acceptance_digest(bytes: &[u8], acceptance: &Value) -> Result<String, String> {
+    let canonical = serde_json::to_vec(acceptance).map_err(|error| error.to_string())?;
+    if canonical != bytes {
+        return Err("the application acceptance is not canonical JSON".into());
+    }
+    let mut comparable = acceptance.clone();
+    if let Some(object) = comparable.as_object_mut() {
+        object.remove("browser_timing");
+    }
+    Ok(hex(
+        &serde_json::to_vec(&comparable).map_err(|error| error.to_string())?
+    ))
+}
+
 /// The whole read-time check. Pure, so each planted defect is a unit test.
 fn binds(kept: &Kept, observed: &Observed) -> Result<(), String> {
     if !is_id(&kept.attestation) {
@@ -126,7 +145,7 @@ fn binds(kept: &Kept, observed: &Observed) -> Result<(), String> {
     same(
         "the application acceptance",
         text(&manifest, "/acceptance_sha256")?,
-        &hex(&kept.acceptance),
+        &acceptance_digest(&kept.acceptance, &acceptance)?,
     )?;
     same("the LexLean status", text(&lexlean, "/status")?, "verified")?;
     same(
@@ -381,7 +400,7 @@ mod tests {
         let lexlean = serde_json::to_vec(&proof.lexlean).unwrap();
         let acceptance = serde_json::to_vec(&proof.acceptance).unwrap();
         let manifest = serde_json::to_vec(&json!({
-            "acceptance_sha256": hex(&acceptance),
+            "acceptance_sha256": super::acceptance_digest(&acceptance, &proof.acceptance).unwrap(),
             "build_id": "2".repeat(64),
             "lexlean_attestation_sha256": hex(&lexlean),
             "schema": "prismpm/application-verification-manifest/2"
@@ -412,6 +431,19 @@ mod tests {
     #[test]
     fn a_proof_of_these_exact_inputs_is_reused() {
         assert_eq!(binds(&seal(&proof()), &observed()), Ok(()));
+    }
+
+    #[test]
+    fn a_run_whose_browser_timing_differs_still_binds() {
+        let mut timed = proof();
+        timed.acceptance["browser_timing"] = json!([{"median_microseconds": 1}]);
+        let mut kept = seal(&proof());
+        kept.acceptance = serde_json::to_vec(&timed.acceptance).unwrap();
+        assert_eq!(binds(&kept, &observed()), Ok(()));
+        let mut forged = timed;
+        forged.acceptance["status"] = json!("failed");
+        kept.acceptance = serde_json::to_vec(&forged.acceptance).unwrap();
+        assert!(binds(&kept, &observed()).is_err());
     }
 
     #[test]
