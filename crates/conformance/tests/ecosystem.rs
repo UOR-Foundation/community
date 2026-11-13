@@ -56,6 +56,7 @@ fn ecosystem_ec_01() {
         "((openClaimsTotal openClaims) =? (project release openClaimsCount))",
         "((tocApplicationsTotal tocApplications) =? (project release tocApplicationsCount))",
         "(repositoriesValid 0 repositories)",
+        "((tagsRead repository) && (repositoriesValid (position + 1) rest))",
         "(openClaimsValid 0 (repositoriesTotal repositories) openClaims)",
         "((conformantTotal repositories) =? (project release conformantCount))",
         "(repositoriesAccounted openClaims repositories)",

@@ -56,6 +56,7 @@ const decl = {
         ['identityTags', 'Bool'], ['tierTags', 'Nat'], ['statusTags', 'Nat'],
         ['versioning', { enum: 'Versioning' }], ['releaseTags', 'Nat'], ['outcome', { enum: 'StandardsOutcome' }],
       ],
+      checks: ['(tagsRead $)'],
     },
     { name: 'OpenClaim', list: 'openClaims', fields: [['repository', { ref: 'Repository' }], ['name', 'String'], ['reason', 'String']] },
     { name: 'TocApplication', list: 'tocApplications', fields: [['number', 'Nat'], ['title', 'String'], ['stage', { enum: 'TocStage' }], ['reason', 'String']] },
@@ -77,7 +78,7 @@ const decl = {
     def('claimed', ['position : Nat', 'claims : (List OpenClaim)'], 'Bool',
       match('claims', [['List.nil', 'false'], ['List.cons claim rest', '(((project claim repository) =? position) || (claimed position rest))']]), 'claims'),
     def('repositoriesAccounted', ['claims : (List OpenClaim)', 'values : (List Repository)'], 'Bool',
-      match('values', [['List.nil', 'true'], ['List.cons repository rest', '(((tagsRead repository) && ((isConformant (project repository outcome)) || (claimed (project repository index) claims))) && (repositoriesAccounted claims rest))']]), 'values'),
+      match('values', [['List.nil', 'true'], ['List.cons repository rest', '(((isConformant (project repository outcome)) || (claimed (project repository index) claims)) && (repositoriesAccounted claims rest))']]), 'values'),
   ],
   checks: [
     '((conformantTotal repositories) =? (project release conformantCount))',
