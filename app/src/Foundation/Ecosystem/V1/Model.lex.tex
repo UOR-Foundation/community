@@ -1,0 +1,243 @@
+\begin{lexlean}{Foundation.Ecosystem.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Ecosystem model}
+\begin{semanticmodule}
+inductive{
+  name: Tier,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: tier1Core, fields: []},
+    {name: tier2Impl, fields: []},
+    {name: tier3Presentation, fields: []},
+    {name: tier4Experimental, fields: []},
+    {name: unrecorded, fields: []}
+  ]
+}
+
+inductive{
+  name: Status,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: active, fields: []},
+    {name: maintenance, fields: []},
+    {name: deprecated, fields: []},
+    {name: archived, fields: []},
+    {name: unrecorded, fields: []}
+  ]
+}
+
+inductive{
+  name: TocStage,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: sandbox, fields: []},
+    {name: incubation, fields: []},
+    {name: graduated, fields: []},
+    {name: archived, fields: []},
+    {name: unrecorded, fields: []}
+  ]
+}
+
+inductive{
+  name: Versioning,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: semver, fields: []},
+    {name: other, fields: []},
+    {name: unreleased, fields: []}
+  ]
+}
+
+inductive{
+  name: StandardsOutcome,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: untagged, fields: []},
+    {name: unversioned, fields: []},
+    {name: conformant, fields: []},
+    {name: undecided, fields: []}
+  ]
+}
+
+definition{
+  name: tierRecorded,
+  parameters: [value : Tier],
+  result: Bool,
+  body: (match value
+    | Tier.tier1Core => true
+    | Tier.tier2Impl => true
+    | Tier.tier3Presentation => true
+    | Tier.tier4Experimental => true
+    | Tier.unrecorded => false)
+}
+
+definition{
+  name: statusRecorded,
+  parameters: [value : Status],
+  result: Bool,
+  body: (match value
+    | Status.active => true
+    | Status.maintenance => true
+    | Status.deprecated => true
+    | Status.archived => true
+    | Status.unrecorded => false)
+}
+
+definition{
+  name: isConformant,
+  parameters: [value : StandardsOutcome],
+  result: Bool,
+  body: (match value
+    | StandardsOutcome.untagged => false
+    | StandardsOutcome.unversioned => false
+    | StandardsOutcome.conformant => true
+    | StandardsOutcome.undecided => false)
+}
+
+structure{
+  name: Snapshot,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: query, type: String},
+    {name: snapshotDigest, type: String},
+    {name: norms, type: String},
+    {name: app, type: String},
+    {name: appDigest, type: String},
+    {name: repositoryCount, type: Nat},
+    {name: conformantCount, type: Nat},
+    {name: openClaimCount, type: Nat}
+  ]
+}
+
+structure{
+  name: Repository,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: archived, type: Bool},
+    {name: language, type: String},
+    {name: topics, type: String},
+    {name: tier, type: Tier},
+    {name: status, type: Status},
+    {name: tocStage, type: TocStage},
+    {name: identityTags, type: Bool},
+    {name: tierTags, type: Nat},
+    {name: statusTags, type: Nat},
+    {name: versioning, type: Versioning},
+    {name: releaseTags, type: Nat},
+    {name: outcome, type: StandardsOutcome}
+  ]
+}
+
+structure{
+  name: OpenClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: name, type: String},
+    {name: reason, type: String}
+  ]
+}
+
+definition{
+  name: repositoriesNumbered,
+  parameters: [position : Nat, repositories : (List Repository)],
+  result: Bool,
+  body: (match repositories
+    | List.nil => true
+    | List.cons repository rest => (((project repository index) =? position) && (repositoriesNumbered (position + 1) rest))),
+  recursive_argument: repositories
+}
+
+definition{
+  name: repositoryTotal,
+  parameters: [repositories : (List Repository)],
+  result: Nat,
+  body: (match repositories
+    | List.nil => 0
+    | List.cons repository rest => (1 + (repositoryTotal rest))),
+  recursive_argument: repositories
+}
+
+definition{
+  name: conformantTotal,
+  parameters: [repositories : (List Repository)],
+  result: Nat,
+  body: (match repositories
+    | List.nil => 0
+    | List.cons repository rest => ((if (isConformant (project repository outcome)) then 1 else 0) + (conformantTotal rest))),
+  recursive_argument: repositories
+}
+
+definition{
+  name: agree,
+  parameters: [left : Bool, right : Bool],
+  result: Bool,
+  body: (if left then right else (not right))
+}
+
+definition{
+  name: tagsRead,
+  parameters: [repository : Repository],
+  result: Bool,
+  body: ((agree (tierRecorded (project repository tier)) ((project repository tierTags) =? 1)) && (agree (statusRecorded (project repository status)) ((project repository statusTags) =? 1)))
+}
+
+definition{
+  name: claimed,
+  parameters: [position : Nat, claims : (List OpenClaim)],
+  result: Bool,
+  body: (match claims
+    | List.nil => false
+    | List.cons claim rest => (((project claim repository) =? position) || (claimed position rest))),
+  recursive_argument: claims
+}
+
+definition{
+  name: repositoriesAccounted,
+  parameters: [claims : (List OpenClaim), repositories : (List Repository)],
+  result: Bool,
+  body: (match repositories
+    | List.nil => true
+    | List.cons repository rest => (((tagsRead repository) && ((isConformant (project repository outcome)) || (claimed (project repository index) claims))) && (repositoriesAccounted claims rest))),
+  recursive_argument: repositories
+}
+
+definition{
+  name: claimsNumbered,
+  parameters: [position : Nat, bound : Nat, claims : (List OpenClaim)],
+  result: Bool,
+  body: (match claims
+    | List.nil => true
+    | List.cons claim rest => (((project claim index) =? position) && (((project claim repository) <=? bound) && (claimsNumbered (position + 1) bound rest)))),
+  recursive_argument: claims
+}
+
+definition{
+  name: claimTotal,
+  parameters: [claims : (List OpenClaim)],
+  result: Nat,
+  body: (match claims | List.nil => 0 | List.cons claim rest => (1 + (claimTotal rest))),
+  recursive_argument: claims
+}
+
+definition{
+  name: registerValid,
+  parameters: [snapshot : Snapshot, repositories : (List Repository), claims : (List OpenClaim)],
+  result: Bool,
+  body: (((repositoryTotal repositories) =? (project snapshot repositoryCount)) && (((conformantTotal repositories) =? (project snapshot conformantCount)) && (((claimTotal claims) =? (project snapshot openClaimCount)) && ((repositoriesNumbered 0 repositories) && ((repositoriesAccounted claims repositories) && (claimsNumbered 0 (repositoryTotal repositories) claims))))))
+}
+\end{semanticmodule}
+\end{lexlean}

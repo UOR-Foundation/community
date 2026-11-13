@@ -26,6 +26,14 @@ model does not sanction.
 | `CC-02` | `build` | The CHAOSS catalog declares every metric and metrics model of chaoss/register.json with the content digest of its pinned working-group source |
 | `CC-03` | `open` | A released CHAOSS item the projector cannot match to a definition is carried as an open claim, never dropped or guessed |
 
+## ecosystem
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `EC-01` | `build` | The ecosystem register is valid: every public UOR Foundation repository is numbered and counted against the snapshot, its tier and status are recorded exactly when it carries one tag of that kind, and every repository the repo-standards app does not find conformant is named by an open claim |
+| `EC-02` | `build` | The ecosystem catalog declares every repository of ecosystem/register.json, the snapshot digest, and the digests of the pinned norms and decision app it was projected from |
+| `EC-03` | `open` | A repository that fails a STANDARDS.md norm the repo-standards app decides, or that the app cannot decide without a tier, is carried as an open claim, never dropped or defaulted |
+
 ## frame
 
 | ID | Level | Statement |
