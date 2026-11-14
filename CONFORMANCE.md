@@ -197,6 +197,12 @@ model does not sanction.
 | `CSPH-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 4 |
 | `CSPH-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
 
+## compliance
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CP-01` | `build` | The control set the verified build emits as an OSCAL 1.1.0 component definition is accepted by the locked oscal-1.1.0-structural oracle |
+
 ## frame
 
 | ID | Level | Statement |
