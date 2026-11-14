@@ -135,8 +135,11 @@ fn views_sv_03() {
     }
     for entry in std::fs::read_dir(root().join("apps")).expect("apps") {
         let path = entry.expect("an entry").path();
-        std::fs::copy(&path, scratch.join("apps").join(path.file_name().expect("a name")))
-            .expect("a copied prompt");
+        std::fs::copy(
+            &path,
+            scratch.join("apps").join(path.file_name().expect("a name")),
+        )
+        .expect("a copied prompt");
     }
     for entry in std::fs::read_dir(root().join("site/views")).expect("site/views") {
         let path = entry.expect("an entry").path();
