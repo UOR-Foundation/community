@@ -10,7 +10,7 @@ Schema.org Organization. Named in https://github.com/UOR-Foundation/.github/blob
 
 ### TOC project lifecycle
 
-UML 2.5.1 state machine, https://github.com/UOR-Foundation/community/blob/main/app/prompt.json
+UML 2.5.1 state machine, https://github.com/UOR-Foundation/community/blob/main/apps/uor-toc-lifecycle.prompt.json
 
 - Votes on applications and needs no transition to happen without a quorum, the required majority and complete evidence.
 

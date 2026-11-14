@@ -25,6 +25,8 @@ model does not sanction.
 | `CC-01` | `build` | The CHAOSS register is valid: every released metric and metrics model is numbered and counted against the release, every model names only declared metrics or its own measures, and every open claim names a declared model |
 | `CC-02` | `build` | The CHAOSS catalog declares every metric and metrics model of chaoss/register.json with the content digest of its pinned working-group source |
 | `CC-03` | `open` | A released CHAOSS item the projector cannot match to a definition is carried as an open claim, never dropped or guessed |
+| `CC-04` | `build` | Every CHAOSS metric and metrics model has a complete ISO/IEC 15939 mapping: each element of its measurement information model is either stated from a CHAOSS template section cited by digest or carried as a typed open claim |
+| `CC-05` | `open` | An ISO/IEC 15939 element the CHAOSS templates do not carry, or a definition omits, is an open claim with its reason, never inferred from prose |
 
 ## chaoss_ai_alignment_community_aligned_training_feedback
 
@@ -203,11 +205,37 @@ model does not sanction.
 | --- | --- | --- |
 | `CP-01` | `build` | The control set the verified build emits as an OSCAL 1.1.0 component definition is accepted by the locked oscal-1.1.0-structural oracle |
 
+## ecosystem
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `EC-01` | `build` | The ecosystem register is valid: every public UOR Foundation repository is numbered and counted against the snapshot, its tier and status are recorded exactly when it carries one tag of that kind, and every repository the repo-standards app does not find conformant is named by an open claim |
+| `EC-02` | `build` | The ecosystem catalog declares every repository of ecosystem/register.json, the snapshot digest, and the digests of the pinned norms and decision app it was projected from |
+| `EC-03` | `open` | A repository that fails a STANDARDS.md norm the repo-standards app decides, or that the app cannot decide without a tier, is carried as an open claim, never dropped or defaulted |
+
 ## frame
 
 | ID | Level | Statement |
 | --- | --- | --- |
 | `FR-01` | `build` | With a working worker, the page loads and verifies the archive only in that worker before using its identities or guest |
+
+## governance
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `GV-01` | `build` | The Foundation governance register is valid: every unit, post, role, vote rule, stage, holding, membership, delegation and reference resolves; every rule that decides something belongs to a body with a quorum rule; every TOC lifecycle decision is a Technical Oversight Committee vote; every Board position the Bylaws create is held by exactly one person; and the Board's size is within the Bylaws' bounds |
+| `GV-02` | `build` | The governance catalog declares every provision of governance/register.json with the content digest of its text at the pinned source commit |
+| `GV-03` | `open` | A post, role or committee no pinned source fills, a reference that resolves to nothing, an agent with no person behind it, and every Bylaws notice is carried as an open claim, never dropped or guessed |
+| `GV-04` | `build` | Agents are Schema.org SoftwareApplication, never Person: every PROV-O actedOnBehalfOf delegation runs from a SoftwareApplication to a Person, and only a Person holds a post or a role |
+
+## grimoirelab
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `GL-01` | `build` | The GrimoireLab oracle record pins Perceval, SortingHat and the GrimoireLab release by commit and PyPI digest, binds its wrapper and corpus by digest, and declares what each oracle covers and does not cover |
+| `GL-02` | `build` | The Perceval Discord backend is added to the pinned Perceval as new files only, with unit tests and offline archive replay run by upstream's own test runner |
+| `GL-03` | `open` | Live retrieval of the Foundation's Discord waits on a read-only bot in the guild, and its token stays out of the repository |
+| `GL-04` | `build` | Each live Discord probe is an OpenTelemetry trace holding no message content or token, every trace is checked against the paging model the contribution Prism pins, and the next probes are scheduled by bounded Hebbian weights |
 
 ## uor_coc_enforcement
 
@@ -313,6 +341,15 @@ model does not sanction.
 | `UTL-06` | `build` | The app never answers sandbox when evidence is partial and stage is proposed |
 | `UTL-07` | `build` | The app always answers graduated when stage is graduated and application is not archival |
 | `UTL-08` | `build` | The app always answers archived when stage is archived |
+
+## views
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `SV-01` | `build` | The stakeholder views are a valid ISO/IEC/IEEE 42010 architecture description: each stakeholder has one viewpoint governing one view, every concern is held by a declared stakeholder, framed by its viewpoint and addressed in its view, and every metrics model, decision and stakeholder is addressed or carried as an open claim |
+| `SV-02` | `build` | Every stakeholder is a role its pinned source names, declared with the quote, the source commit and its digest, and an agent acts on behalf of a declared stakeholder (PROV-O actedOnBehalfOf) |
+| `SV-03` | `build` | The Pages views, their Markdown twins, llms.txt and the Discord digest are generated from the stakeholder register, and a surface that differs from the register's catalog fails the gate |
+| `SV-04` | `open` | A user-story role no Foundation stakeholder holds, a metrics model that states no user story, and a stakeholder no model or decision addresses are carried as open claims, never guessed |
 
 ## Cited authorities
 

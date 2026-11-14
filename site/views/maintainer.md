@@ -55,11 +55,35 @@ https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e
 
 - As a community manager/maintainer, I want to regularly challenge our project and community around safety and track our progress over time.
 
-## Decisions (1)
+## Decisions (5)
+
+### Required repository files by tier
+
+DMN 1.5 decision table, https://github.com/UOR-Foundation/community/blob/main/apps/uor-repo-files.prompt.json
+
+- Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close.
+
+### Repository naming and topic coverage
+
+DMN 1.5 decision table, https://github.com/UOR-Foundation/community/blob/main/apps/uor-repo-naming.prompt.json
+
+- Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close.
+
+### Branch protection by tier
+
+DMN 1.5 decision table, https://github.com/UOR-Foundation/community/blob/main/apps/uor-repo-protection.prompt.json
+
+- Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close.
+
+### Repository tags and versioning
+
+DMN 1.5 decision table, https://github.com/UOR-Foundation/community/blob/main/apps/uor-repo-standards.prompt.json
+
+- Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close.
 
 ### TOC project lifecycle
 
-UML 2.5.1 state machine, https://github.com/UOR-Foundation/community/blob/main/app/prompt.json
+UML 2.5.1 state machine, https://github.com/UOR-Foundation/community/blob/main/apps/uor-toc-lifecycle.prompt.json
 
 - Opens a Sandbox, Incubation or Graduation issue in UOR-Foundation/.github and needs to know which evidence and which vote move the project.
 
