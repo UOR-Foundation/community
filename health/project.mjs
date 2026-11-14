@@ -185,7 +185,11 @@ const register = {
   inputs: {
     chaoss: pinned('chaoss/register.json'),
     ecosystem: pinned('ecosystem/register.json'),
-    observations: { ...pinned('observations/register.json'), register: observations.sha256, corpus: observations.corpus },
+    observations: {
+      ...pinned('observations/register.json'),
+      register: observations.sha256,
+      corpus: typeof observations.corpus === 'object' ? `${observations.corpus.path}#sha256:${observations.corpus.sha256}` : observations.corpus,
+    },
   },
   outcomes: OUTCOMES,
   counts: { subjects: subjects.length, periods: periods.length, models: models.length, assessments: assessments.length, evidence: evidence.length, unmodelledObservations: unmodelled, ...counts },
