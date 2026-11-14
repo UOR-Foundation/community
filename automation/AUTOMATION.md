@@ -53,7 +53,9 @@ never required, and a repository with no merged pull request requires none. In
 a repository listed in `repos.json` no human approval count is set, because the
 controller's gate is the requirement there; elsewhere the count is at most one.
 Every ruleset lets an Organization Owner bypass it (GitHub `bypass_actors`,
-`OrganizationAdmin`, `always`). The dry run prints the exact checks each
+`OrganizationAdmin`, `always`). Where GitHub Actions committed to the default
+branch in the last 90 days (a pin bump, a docs sync), the GitHub Actions app
+may bypass it too, so that automation is not refused. The dry run prints the exact checks each
 ruleset would require. `apply-settings` with `enforcement` set to `disabled`
 or `active` switches the existing rulesets off or on and changes nothing else.
 
