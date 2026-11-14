@@ -1,4 +1,6 @@
-# Records the GitHub half of the observation corpus (claim OB-05): Perceval's
+# Records the GitHub and Discord halves of the observation corpus (claim OB-05).
+#
+# GitHub: Perceval's
 # github backend, category issue, over every repository observations/sources.json
 # pins, up to its cut. The API answers with today's state, not the cut's, so the
 # first recording for a set of inputs is the frozen record: it is kept under the
@@ -8,6 +10,14 @@
 # type from a user's profile, so the artifact holds no token and no personal
 # detail. The corpus is then rebuilt from the record with no network
 # (collect.py run, which replays it to the unmodified backend) and committed.
+#
+# Discord: collect.py discord, as the read-only bot, decides every channel of
+# the Foundation's guild with the uor-discord-read app and records the
+# responses Perceval's discord backend receives for the channels it permits.
+# The record holds no message text, no member's name and no token; a member is
+# the sha256 of their Discord user id. It is kept under the content address of
+# the same inputs plus the app, governance/discord.json, the two Discord
+# overlays and the guild id.
 # Project content, not universal policy.
 name: observations
 
@@ -19,6 +29,10 @@ on:
       - 'observations/collect.py'
       - 'observations/oracle.sh'
       - 'oracles/grimoirelab/oracle.lock.json'
+      - 'oracles/grimoirelab/perceval-discord/**'
+      - 'oracles/grimoirelab/chronicler-discord/**'
+      - 'governance/discord.json'
+      - 'apps/uor-discord-read.prompt.json'
       - '.github/workflows/observations.yml'
   pull_request:
     paths:
@@ -26,6 +40,10 @@ on:
       - 'observations/collect.py'
       - 'observations/oracle.sh'
       - 'oracles/grimoirelab/oracle.lock.json'
+      - 'oracles/grimoirelab/perceval-discord/**'
+      - 'oracles/grimoirelab/chronicler-discord/**'
+      - 'governance/discord.json'
+      - 'apps/uor-discord-read.prompt.json'
       - '.github/workflows/observations.yml'
   workflow_dispatch:
 
@@ -93,4 +111,67 @@ jobs:
           if-no-files-found: error
           # The .github repository's record is .github.jsonl.gz, a dotfile the action skips by default.
           include-hidden-files: true
+          retention-days: 30
+
+  discord:
+    name: Record the Discord guild
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        id: python
+        with:
+          python-version: '3.13'
+      - name: Address the inputs
+        id: address
+        # The GitHub job's inputs, plus what decides and reads the guild: the
+        # read app, the Foundation's labels and install record, the Discord
+        # backend and eventizer overlays, and the guild itself.
+        env:
+          GUILD: ${{ vars.DISCORD_GUILD_ID }}
+        run: |
+          printf 'key=observations-discord-%s-%s-py%s-%s-%s\n' "$ImageOS" "$ImageVersion" "${{ steps.python.outputs.python-version }}" "$GUILD" \
+            "${{ hashFiles('observations/sources.json', 'observations/collect.py', 'observations/oracle.sh', 'oracles/grimoirelab/oracle.lock.json', 'oracles/grimoirelab/perceval-discord/**', 'oracles/grimoirelab/chronicler-discord/**', 'governance/discord.json', 'apps/uor-discord-read.prompt.json') }}" >>"$GITHUB_OUTPUT"
+      - name: The record of these exact inputs, kept by an earlier run
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        with:
+          path: _observations-discord
+          key: ${{ steps.address.outputs.key }}
+      - name: Check the kept record's address
+        id: reuse
+        env:
+          KEY: ${{ steps.address.outputs.key }}
+        run: |
+          if [ -f _observations-discord/address ] && [ "$(cat _observations-discord/address)" = "$KEY" ]; then
+            echo "reuse=true" >>"$GITHUB_OUTPUT"
+            echo "Restoring the record kept for $KEY"
+          else
+            rm -rf _observations-discord
+            echo "reuse=false" >>"$GITHUB_OUTPUT"
+          fi
+      - name: Decide every channel and record the permitted ones
+        if: steps.reuse.outputs.reuse != 'true'
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_GUILD_ID: ${{ vars.DISCORD_GUILD_ID }}
+          KEY: ${{ steps.address.outputs.key }}
+        run: |
+          if [ -z "$DISCORD_BOT_TOKEN" ] || [ -z "$DISCORD_GUILD_ID" ]; then
+            echo "Set the DISCORD_BOT_TOKEN secret and the DISCORD_GUILD_ID variable to record the guild" >&2
+            exit 1
+          fi
+          sudo apt-get install -y -q libmysqlclient-dev pkg-config >/dev/null
+          python="$(observations/oracle.sh "$RUNNER_TEMP/oracle")"
+          "$python" observations/collect.py discord observations/sources.json _observations-discord/responses
+          printf '%s' "$KEY" >_observations-discord/address
+      - name: Keep the record for review and commit
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: discord-responses
+          path: _observations-discord/responses
+          if-no-files-found: error
           retention-days: 30

@@ -77,11 +77,12 @@ for (const f of corpus.json.files) {
   for (const row of rows) items.push({ ...row, subject: f.subject, source: f.source, index: f.index, file: f.path, replay: outcome, covered: f.covered });
 }
 
-// ---- PROV-O agents. GitHub's rule: a login ending in [bot] is a GitHub App. Otherwise governance/agents.json
+// ---- PROV-O agents. GitHub's rule: a login ending in [bot] is a GitHub App; Discord's: the user object's bot flag.
+// Otherwise governance/agents.json
 // lists the identities vendors declare as their agents; every other identity is a prov:Person.
 const agents = pinned('governance/agents.json');
 const agentEmails = new Set(agents.json.agents.map((a) => sha256(a.email.toLowerCase())));
-const agentClass = (id) => (id.githubApp || agentEmails.has(id.email) ? 'software' : 'person');
+const agentClass = (id) => (id.githubApp || id.discordBot || agentEmails.has(id.email) ? 'software' : 'person');
 
 /**
  * The attribution request for one commit (a prov:Activity) and the individual it credits.
@@ -116,7 +117,7 @@ const subjects = [...new Set(corpus.json.files.map((f) => f.subject))];
 const periods = [];
 for (const s of subjects) {
   const dates = items.filter((i) => i.subject === s).map((i) => utcMonth(i.rich.grimoire_creation_date)).sort();
-  if (!dates.length) { refuse('subject', s, 'no-corpus-item', 'the pinned refs hold no commit up to the cut'); continue; }
+  if (!dates.length) { refuse('subject', s, 'no-corpus-item', 'the corpus holds no item of this subject up to the cut'); continue; }
   for (let m = month(dates[0]); m <= month(cut); m = nextMonth(m)) periods.push({ subject: s, period: interval(m), month: m });
 }
 
