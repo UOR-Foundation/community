@@ -1,0 +1,187 @@
+\begin{lexlean}{ChaossOssProjectViabilityStrategy}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: chaossOssProjectViabilityStrategyAnswerOpen, parameters: [], result: Nat, body: 0}
+
+definition{
+  name: chaossOssProjectViabilityStrategyAnswerComplete,
+  parameters: [],
+  result: Nat,
+  body: 1
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyAnswerUnmeasured,
+  parameters: [],
+  result: Nat,
+  body: 2
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyAnswerPartial,
+  parameters: [],
+  result: Nat,
+  body: 3
+}
+
+structure{
+  name: ChaossOssProjectViabilityStrategyRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: admitted, type: Nat}, {name: refused, type: Nat}]
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (chaossOssProjectViabilityStrategyByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (chaossOssProjectViabilityStrategyDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (chaossOssProjectViabilityStrategyByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (chaossOssProjectViabilityStrategyDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (chaossOssProjectViabilityStrategyParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyParseAdmitted,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (chaossOssProjectViabilityStrategyParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (5 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyParseRefused,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (chaossOssProjectViabilityStrategyParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (5 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategySliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (chaossOssProjectViabilityStrategyByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (chaossOssProjectViabilityStrategyFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option ChaossOssProjectViabilityStrategyRequest),
+  body: (let e : Nat := (chaossOssProjectViabilityStrategyFieldEnd s start (Foundation.Bytes::byteLength s)); (match (chaossOssProjectViabilityStrategyParseRefused (chaossOssProjectViabilityStrategySliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [ChaossOssProjectViabilityStrategyRequest])
+    | Option.some v2 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [ChaossOssProjectViabilityStrategyRequest] (record ChaossOssProjectViabilityStrategyRequest {admitted := v1, refused := v2})) else (ctor Option.none [ChaossOssProjectViabilityStrategyRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option ChaossOssProjectViabilityStrategyRequest),
+  body: (let e : Nat := (chaossOssProjectViabilityStrategyFieldEnd s start (Foundation.Bytes::byteLength s)); (match (chaossOssProjectViabilityStrategyParseAdmitted (chaossOssProjectViabilityStrategySliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [ChaossOssProjectViabilityStrategyRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (chaossOssProjectViabilityStrategyDecodeField2 s (e + 1) v1) else (ctor Option.none [ChaossOssProjectViabilityStrategyRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyRule1,
+  parameters: [request : ChaossOssProjectViabilityStrategyRequest],
+  result: Bool,
+  body: (1 <=? (project request refused))
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyRule2,
+  parameters: [request : ChaossOssProjectViabilityStrategyRequest],
+  result: Bool,
+  body: (5 <=? (project request admitted))
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyRule3,
+  parameters: [request : ChaossOssProjectViabilityStrategyRequest],
+  result: Bool,
+  body: ((project request admitted) =? 0)
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyJudge,
+  parameters: [request : ChaossOssProjectViabilityStrategyRequest],
+  result: Nat,
+  body: (if (chaossOssProjectViabilityStrategyRule1 request) then (chaossOssProjectViabilityStrategyAnswerOpen) else (if (chaossOssProjectViabilityStrategyRule2 request) then (chaossOssProjectViabilityStrategyAnswerComplete) else (if (chaossOssProjectViabilityStrategyRule3 request) then (chaossOssProjectViabilityStrategyAnswerUnmeasured) else (chaossOssProjectViabilityStrategyAnswerPartial))))
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (chaossOssProjectViabilityStrategyAnswerOpen)) then 0x6f70656e else (if (code =? (chaossOssProjectViabilityStrategyAnswerComplete)) then 0x636f6d706c657465 else (if (code =? (chaossOssProjectViabilityStrategyAnswerUnmeasured)) then 0x756e6d65617375726564 else (if (code =? (chaossOssProjectViabilityStrategyAnswerPartial)) then 0x7061727469616c else 0x696e76616c6964))))
+}
+
+definition{
+  name: chaossOssProjectViabilityStrategyDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (64 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (chaossOssProjectViabilityStrategyDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (chaossOssProjectViabilityStrategyEncodeAnswer (chaossOssProjectViabilityStrategyJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

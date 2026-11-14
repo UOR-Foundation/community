@@ -1,0 +1,352 @@
+\begin{lexlean}{UorObservationAdmission}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: uorObservationAdmissionMetricReleased, parameters: [], result: Nat, body: 0}
+
+definition{name: uorObservationAdmissionMetricUnreleased, parameters: [], result: Nat, body: 1}
+
+definition{name: uorObservationAdmissionOracleCovers, parameters: [], result: Nat, body: 0}
+
+definition{name: uorObservationAdmissionOracleExcludes, parameters: [], result: Nat, body: 1}
+
+definition{name: uorObservationAdmissionOracleUnlisted, parameters: [], result: Nat, body: 2}
+
+definition{name: uorObservationAdmissionSourcePinned, parameters: [], result: Nat, body: 0}
+
+definition{name: uorObservationAdmissionSourceUnpinned, parameters: [], result: Nat, body: 1}
+
+definition{name: uorObservationAdmissionReplayReproduced, parameters: [], result: Nat, body: 0}
+
+definition{name: uorObservationAdmissionReplayDiffers, parameters: [], result: Nat, body: 1}
+
+definition{name: uorObservationAdmissionReplayAbsent, parameters: [], result: Nat, body: 2}
+
+definition{name: uorObservationAdmissionCollectionPermit, parameters: [], result: Nat, body: 0}
+
+definition{name: uorObservationAdmissionCollectionDeny, parameters: [], result: Nat, body: 1}
+
+definition{name: uorObservationAdmissionCollectionOutside, parameters: [], result: Nat, body: 2}
+
+definition{
+  name: uorObservationAdmissionCollectionIndeterminate,
+  parameters: [],
+  result: Nat,
+  body: 3
+}
+
+definition{name: uorObservationAdmissionCollectionUngoverned, parameters: [], result: Nat, body: 4}
+
+definition{name: uorObservationAdmissionAttributionPermit, parameters: [], result: Nat, body: 0}
+
+definition{name: uorObservationAdmissionAttributionDeny, parameters: [], result: Nat, body: 1}
+
+definition{
+  name: uorObservationAdmissionAttributionOrganization,
+  parameters: [],
+  result: Nat,
+  body: 2
+}
+
+definition{
+  name: uorObservationAdmissionAttributionIndeterminate,
+  parameters: [],
+  result: Nat,
+  body: 3
+}
+
+definition{name: uorObservationAdmissionAttributionAggregate, parameters: [], result: Nat, body: 4}
+
+definition{name: uorObservationAdmissionAnswerPermit, parameters: [], result: Nat, body: 0}
+
+definition{name: uorObservationAdmissionAnswerDeny, parameters: [], result: Nat, body: 1}
+
+definition{name: uorObservationAdmissionAnswerNotApplicable, parameters: [], result: Nat, body: 2}
+
+definition{name: uorObservationAdmissionAnswerIndeterminate, parameters: [], result: Nat, body: 3}
+
+structure{
+  name: UorObservationAdmissionRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: metric, type: Nat},
+    {name: oracle, type: Nat},
+    {name: source, type: Nat},
+    {name: replay, type: Nat},
+    {name: collection, type: Nat},
+    {name: attribution, type: Nat}
+  ]
+}
+
+definition{
+  name: uorObservationAdmissionByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorObservationAdmissionDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (uorObservationAdmissionByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (uorObservationAdmissionDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorObservationAdmissionParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (uorObservationAdmissionByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (uorObservationAdmissionDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorObservationAdmissionParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (uorObservationAdmissionParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorObservationAdmissionParseMetric,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x72656c6561736564 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionMetricReleased)) else (if (prim equal value 0x756e72656c6561736564 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionMetricUnreleased)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorObservationAdmissionParseOracle,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x636f76657273 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionOracleCovers)) else (if (prim equal value 0x6578636c75646573 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionOracleExcludes)) else (if (prim equal value 0x756e6c6973746564 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionOracleUnlisted)) else (ctor Option.none [Nat]))))
+}
+
+definition{
+  name: uorObservationAdmissionParseSource,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x70696e6e6564 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionSourcePinned)) else (if (prim equal value 0x756e70696e6e6564 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionSourceUnpinned)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorObservationAdmissionParseReplay,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x726570726f6475636564 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionReplayReproduced)) else (if (prim equal value 0x64696666657273 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionReplayDiffers)) else (if (prim equal value 0x616273656e74 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionReplayAbsent)) else (ctor Option.none [Nat]))))
+}
+
+definition{
+  name: uorObservationAdmissionParseCollection,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x7065726d6974 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionCollectionPermit)) else (if (prim equal value 0x64656e79 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionCollectionDeny)) else (if (prim equal value 0x6f757473696465 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionCollectionOutside)) else (if (prim equal value 0x696e64657465726d696e617465 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionCollectionIndeterminate)) else (if (prim equal value 0x756e676f7665726e6564 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionCollectionUngoverned)) else (ctor Option.none [Nat]))))))
+}
+
+definition{
+  name: uorObservationAdmissionParseAttribution,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x7065726d6974 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionAttributionPermit)) else (if (prim equal value 0x64656e79 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionAttributionDeny)) else (if (prim equal value 0x6f7267616e697a6174696f6e : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionAttributionOrganization)) else (if (prim equal value 0x696e64657465726d696e617465 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionAttributionIndeterminate)) else (if (prim equal value 0x616767726567617465 : Bool) then (ctor Option.some [Nat] (uorObservationAdmissionAttributionAggregate)) else (ctor Option.none [Nat]))))))
+}
+
+definition{
+  name: uorObservationAdmissionSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: uorObservationAdmissionFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (uorObservationAdmissionByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (uorObservationAdmissionFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorObservationAdmissionDecodeField6,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat, v5 : Nat],
+  result: (Option UorObservationAdmissionRequest),
+  body: (let e : Nat := (uorObservationAdmissionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorObservationAdmissionParseAttribution (uorObservationAdmissionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorObservationAdmissionRequest])
+    | Option.some v6 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [UorObservationAdmissionRequest] (record UorObservationAdmissionRequest {metric := v1, oracle := v2, source := v3, replay := v4, collection := v5, attribution := v6})) else (ctor Option.none [UorObservationAdmissionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorObservationAdmissionDecodeField5,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat],
+  result: (Option UorObservationAdmissionRequest),
+  body: (let e : Nat := (uorObservationAdmissionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorObservationAdmissionParseCollection (uorObservationAdmissionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorObservationAdmissionRequest])
+    | Option.some v5 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorObservationAdmissionDecodeField6 s (e + 1) v1 v2 v3 v4 v5) else (ctor Option.none [UorObservationAdmissionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorObservationAdmissionDecodeField4,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat],
+  result: (Option UorObservationAdmissionRequest),
+  body: (let e : Nat := (uorObservationAdmissionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorObservationAdmissionParseReplay (uorObservationAdmissionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorObservationAdmissionRequest])
+    | Option.some v4 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorObservationAdmissionDecodeField5 s (e + 1) v1 v2 v3 v4) else (ctor Option.none [UorObservationAdmissionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorObservationAdmissionDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option UorObservationAdmissionRequest),
+  body: (let e : Nat := (uorObservationAdmissionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorObservationAdmissionParseSource (uorObservationAdmissionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorObservationAdmissionRequest])
+    | Option.some v3 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorObservationAdmissionDecodeField4 s (e + 1) v1 v2 v3) else (ctor Option.none [UorObservationAdmissionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorObservationAdmissionDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option UorObservationAdmissionRequest),
+  body: (let e : Nat := (uorObservationAdmissionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorObservationAdmissionParseOracle (uorObservationAdmissionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorObservationAdmissionRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorObservationAdmissionDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [UorObservationAdmissionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorObservationAdmissionDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option UorObservationAdmissionRequest),
+  body: (let e : Nat := (uorObservationAdmissionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorObservationAdmissionParseMetric (uorObservationAdmissionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorObservationAdmissionRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorObservationAdmissionDecodeField2 s (e + 1) v1) else (ctor Option.none [UorObservationAdmissionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorObservationAdmissionRule1,
+  parameters: [request : UorObservationAdmissionRequest],
+  result: Bool,
+  body: ((project request metric) =? (uorObservationAdmissionMetricUnreleased))
+}
+
+definition{
+  name: uorObservationAdmissionRule2,
+  parameters: [request : UorObservationAdmissionRequest],
+  result: Bool,
+  body: ((project request collection) =? (uorObservationAdmissionCollectionDeny))
+}
+
+definition{
+  name: uorObservationAdmissionRule3,
+  parameters: [request : UorObservationAdmissionRequest],
+  result: Bool,
+  body: ((project request collection) =? (uorObservationAdmissionCollectionOutside))
+}
+
+definition{
+  name: uorObservationAdmissionRule4,
+  parameters: [request : UorObservationAdmissionRequest],
+  result: Bool,
+  body: ((project request attribution) =? (uorObservationAdmissionAttributionDeny))
+}
+
+definition{
+  name: uorObservationAdmissionRule5,
+  parameters: [request : UorObservationAdmissionRequest],
+  result: Bool,
+  body: ((project request oracle) =? (uorObservationAdmissionOracleExcludes))
+}
+
+definition{
+  name: uorObservationAdmissionRule6,
+  parameters: [request : UorObservationAdmissionRequest],
+  result: Bool,
+  body: ((project request source) =? (uorObservationAdmissionSourceUnpinned))
+}
+
+definition{
+  name: uorObservationAdmissionRule7,
+  parameters: [request : UorObservationAdmissionRequest],
+  result: Bool,
+  body: ((project request replay) =? (uorObservationAdmissionReplayDiffers))
+}
+
+definition{
+  name: uorObservationAdmissionRule8,
+  parameters: [request : UorObservationAdmissionRequest],
+  result: Bool,
+  body: ((project request oracle) =? (uorObservationAdmissionOracleUnlisted))
+}
+
+definition{
+  name: uorObservationAdmissionRule9,
+  parameters: [request : UorObservationAdmissionRequest],
+  result: Bool,
+  body: ((project request replay) =? (uorObservationAdmissionReplayAbsent))
+}
+
+definition{
+  name: uorObservationAdmissionRule10,
+  parameters: [request : UorObservationAdmissionRequest],
+  result: Bool,
+  body: ((project request collection) =? (uorObservationAdmissionCollectionIndeterminate))
+}
+
+definition{
+  name: uorObservationAdmissionRule11,
+  parameters: [request : UorObservationAdmissionRequest],
+  result: Bool,
+  body: ((project request attribution) =? (uorObservationAdmissionAttributionIndeterminate))
+}
+
+definition{
+  name: uorObservationAdmissionJudge,
+  parameters: [request : UorObservationAdmissionRequest],
+  result: Nat,
+  body: (if (uorObservationAdmissionRule1 request) then (uorObservationAdmissionAnswerNotApplicable) else (if (uorObservationAdmissionRule2 request) then (uorObservationAdmissionAnswerDeny) else (if (uorObservationAdmissionRule3 request) then (uorObservationAdmissionAnswerDeny) else (if (uorObservationAdmissionRule4 request) then (uorObservationAdmissionAnswerDeny) else (if (uorObservationAdmissionRule5 request) then (uorObservationAdmissionAnswerDeny) else (if (uorObservationAdmissionRule6 request) then (uorObservationAdmissionAnswerDeny) else (if (uorObservationAdmissionRule7 request) then (uorObservationAdmissionAnswerDeny) else (if (uorObservationAdmissionRule8 request) then (uorObservationAdmissionAnswerIndeterminate) else (if (uorObservationAdmissionRule9 request) then (uorObservationAdmissionAnswerIndeterminate) else (if (uorObservationAdmissionRule10 request) then (uorObservationAdmissionAnswerIndeterminate) else (if (uorObservationAdmissionRule11 request) then (uorObservationAdmissionAnswerIndeterminate) else (uorObservationAdmissionAnswerPermit))))))))))))
+}
+
+definition{
+  name: uorObservationAdmissionEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (uorObservationAdmissionAnswerPermit)) then 0x7065726d6974 else (if (code =? (uorObservationAdmissionAnswerDeny)) then 0x64656e79 else (if (code =? (uorObservationAdmissionAnswerNotApplicable)) then 0x6e6f742d6170706c696361626c65 else (if (code =? (uorObservationAdmissionAnswerIndeterminate)) then 0x696e64657465726d696e617465 else 0x696e76616c6964))))
+}
+
+definition{
+  name: uorObservationAdmissionDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (160 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (uorObservationAdmissionDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (uorObservationAdmissionEncodeAnswer (uorObservationAdmissionJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

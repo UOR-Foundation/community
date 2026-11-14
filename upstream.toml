@@ -1,0 +1,14 @@
+# Every upstream fix this repository carries as a local patch, and how to tell
+# that a release ships it. Policy: patch the upstream, pin to the patch, and
+# re-pin to the release once it ships. Delete a row when its re-pin lands.
+# The schema is Prism-DevRel's (github.com/afflom/prism-devrel/upstream.toml).
+
+[[patch]]
+id = "prismpm-sdk-view-closure"
+what = "The SDK is ghcr.io/afflom/prismpm-sdk-patched: the candidate plus prismpm with the regeneration closure fix. Without it, verify drops design/ from the regenerated closure and fails with PP5004."
+pinned = "prismpm.lock, standards.lock, template.lock, .devcontainer/devcontainer.json"
+repository = "UOR-Foundation/PrismPM"
+pull = 615
+fix = "359d7f5bfa8e01272ba6028c30c94459420ebb6a"
+release = { kind = "ghcr", image = "ghcr.io/uor-foundation/prismpm-sdk-candidate" }
+repin = "template-update"

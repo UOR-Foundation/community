@@ -1,0 +1,188 @@
+\begin{lexlean}{Foundation.Community.V1.Measurement}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Measurement mapping model}
+\begin{semanticmodule}
+inductive{
+  name: Element,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: informationNeed, fields: []},
+    {name: measurableConcept, fields: []},
+    {name: entity, fields: []},
+    {name: attribute, fields: []},
+    {name: measurementMethod, fields: []},
+    {name: scale, fields: []},
+    {name: unit, fields: []},
+    {name: baseMeasures, fields: []},
+    {name: measurementFunction, fields: []},
+    {name: analysisModel, fields: []},
+    {name: decisionCriteria, fields: []}
+  ]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: itemsCount, type: Nat},
+    {name: mappingsCount, type: Nat},
+    {name: metricCount, type: Nat},
+    {name: statedCount, type: Nat},
+    {name: oracleCount, type: Nat},
+    {name: standard, type: String},
+    {name: register, type: String}
+  ]
+}
+
+structure{
+  name: Item,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: slug, type: String}]
+}
+
+structure{
+  name: Mapping,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: item, type: Nat},
+    {name: element, type: Element},
+    {name: stated, type: Bool},
+    {name: byOracle, type: Bool},
+    {name: source, type: String},
+    {name: evidence, type: String}
+  ]
+}
+
+definition{
+  name: metricRank,
+  parameters: [element : Element],
+  result: Nat,
+  body: (match element
+    | Element.informationNeed => 0
+    | Element.measurableConcept => 1
+    | Element.entity => 2
+    | Element.attribute => 3
+    | Element.measurementMethod => 4
+    | Element.scale => 5
+    | Element.unit => 6
+    | Element.baseMeasures => 99
+    | Element.measurementFunction => 99
+    | Element.analysisModel => 99
+    | Element.decisionCriteria => 99)
+}
+
+definition{
+  name: modelRank,
+  parameters: [element : Element],
+  result: Nat,
+  body: (match element
+    | Element.informationNeed => 0
+    | Element.measurableConcept => 1
+    | Element.entity => 99
+    | Element.attribute => 99
+    | Element.measurementMethod => 99
+    | Element.scale => 99
+    | Element.unit => 99
+    | Element.baseMeasures => 2
+    | Element.measurementFunction => 3
+    | Element.analysisModel => 4
+    | Element.decisionCriteria => 5)
+}
+
+definition{
+  name: planned,
+  parameters: [
+    metricCount : Nat,
+    itemCount : Nat,
+    item : Nat,
+    step : Nat,
+    mappings : (List Mapping)
+  ],
+  result: Bool,
+  body: (match mappings
+    | List.nil => ((item =? itemCount) && (step =? 0))
+    | List.cons mapping rest => (if ((project mapping item) =? item) then (if (item <? metricCount) then (((metricRank (project mapping element)) =? step) && (if ((step + 1) =? 7) then (planned metricCount itemCount (item + 1) 0 rest) else (planned metricCount itemCount item (step + 1) rest))) else (((modelRank (project mapping element)) =? step) && (if ((step + 1) =? 6) then (planned metricCount itemCount (item + 1) 0 rest) else (planned metricCount itemCount item (step + 1) rest)))) else false)),
+  recursive_argument: mappings
+}
+
+definition{
+  name: statedTotal,
+  parameters: [mappings : (List Mapping)],
+  result: Nat,
+  body: (match mappings
+    | List.nil => 0
+    | List.cons mapping rest => ((if (project mapping stated) then 1 else 0) + (statedTotal rest))),
+  recursive_argument: mappings
+}
+
+definition{
+  name: oracleTotal,
+  parameters: [mappings : (List Mapping)],
+  result: Nat,
+  body: (match mappings
+    | List.nil => 0
+    | List.cons mapping rest => ((if (project mapping byOracle) then 1 else 0) + (oracleTotal rest))),
+  recursive_argument: mappings
+}
+
+definition{
+  name: oracleSound,
+  parameters: [metricCount : Nat, mappings : (List Mapping)],
+  result: Bool,
+  body: (match mappings
+    | List.nil => true
+    | List.cons mapping rest => ((if (project mapping byOracle) then ((project mapping stated) && ((project mapping item) <? metricCount)) else true) && (oracleSound metricCount rest))),
+  recursive_argument: mappings
+}
+
+definition{
+  name: itemsValid,
+  parameters: [position : Nat, values : (List Item)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => (((project item index) =? position) && (itemsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: itemsTotal,
+  parameters: [values : (List Item)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons item rest => (1 + (itemsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: mappingsValid,
+  parameters: [position : Nat, itemsCount : Nat, values : (List Mapping)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons mapping rest => (((project mapping index) =? position) && (((project mapping item) <? itemsCount) && (mappingsValid (position + 1) itemsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: mappingsTotal,
+  parameters: [values : (List Mapping)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons mapping rest => (1 + (mappingsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [release : Release, items : (List Item), mappings : (List Mapping)],
+  result: Bool,
+  body: (((itemsTotal items) =? (project release itemsCount)) && (((mappingsTotal mappings) =? (project release mappingsCount)) && ((itemsValid 0 items) && ((mappingsValid 0 (itemsTotal items) mappings) && (((project release metricCount) <? ((project release itemsCount) + 1)) && ((planned (project release metricCount) (project release itemsCount) 0 0 mappings) && (((statedTotal mappings) =? (project release statedCount)) && (((oracleTotal mappings) =? (project release oracleCount)) && (oracleSound (project release metricCount) mappings)))))))))
+}
+\end{semanticmodule}
+\end{lexlean}

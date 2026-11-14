@@ -1,16 +1,16 @@
 spec = "lexlean/lock/2"
 language = "1.2"
-compiler_semantics = "5262e5b4c8b5668ae7066ad686757a6bb7f80c941d515fb9d586894fbc7de69a"
-project_config_sha256 = "44475e174dc4699998fcc1b2e75f64a1ed9f36793a54c6c48b3b2dd23e639b07"
+compiler_semantics = "1427f8b629013648a480454d67202788f2303f5396f1d7c70a7c350ddab6f694"
+project_config_sha256 = "b72759c69f6a2e15744f4f6fecb728ec67fa9fc93ee6ddb149061baea018ec40"
 lean_toolchain = "leanprover/lean4:v4.32.1"
 
 [[workspace_file]]
 path = "lake-manifest.json"
-sha256 = "844ae8a35919b438d5c89942af185bba00feddfc344964847a315a11fe332010"
+sha256 = "546eaa4667aba30c48fbb86394d6845160073377b10027f14a49373950d24d53"
 
 [[workspace_file]]
 path = "lakefile.toml"
-sha256 = "0e0f9d7e4709abbc21eac20b5f9c476c2916ff041f87535bda594b02a9bacf9f"
+sha256 = "e2ce41dfe8fe18abf6e5cfe9c17003b93e2c4619aca760725d10b5cd6bd06eda"
 
 [[workspace_file]]
 path = "lean-toolchain"
@@ -52,6 +52,26 @@ version = "1.0.0"
 kind = "path"
 source = "language/prism.arch"
 revision = "none"
-tree_sha256 = "a5b1aa879a00c8f86100410c1ec1af4e2e983838f30e6dc82b3e989b0df65e2c"
+tree_sha256 = "8f6ca3032f451f4f8ffbe30b6a6d24fa60f7f31adc3e09b19e7c3ff800f71ff0"
 manifest_sha256 = "14c95df8b512edacacdb1788b58ae90cf573b4e3f1dca0e41074bfde5a380c9f"
 imports = ["lexlean.core@1.2.0", "lexlean.std.bool@1.2.0", "lexlean.std.nat@1.2.0"]
+
+[[package]]
+id = "prism.qual"
+version = "1.0.0"
+kind = "path"
+source = "language/prism.qual"
+revision = "none"
+tree_sha256 = "88748e3b24fa79693aed461bbce0fa626ec83356cd7ef980adaa22722a907602"
+manifest_sha256 = "a79fae9a81e748c01f19a48dd066b0dedd356c05b791bd8bc8e7ce20d44cb335"
+imports = ["lexlean.core@1.2.0", "lexlean.std.nat@1.2.0", "prism.arch@1.0.0"]
+
+[[package]]
+id = "prism.sec"
+version = "1.0.0"
+kind = "path"
+source = "language/prism.sec"
+revision = "none"
+tree_sha256 = "55bd2bc254d4170f6e76adc558955f1d1a31aa8a22ac88a3e3d6fe9307f76466"
+manifest_sha256 = "d9b9663715d38c6d181becc8d433e3c3636b55d7ef97bd1f3d39688222925f7c"
+imports = ["lexlean.core@1.2.0", "lexlean.std.bool@1.2.0", "lexlean.std.nat@1.2.0", "prism.arch@1.0.0"]
