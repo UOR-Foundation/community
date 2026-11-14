@@ -59,7 +59,10 @@ fn health_hl_01() {
         )),
         "registerValidHolds is about the whole register:\n{theorem}"
     );
-    assert!(theorem.contains("proof: decide{}"), "it is proved by decide");
+    assert!(
+        theorem.contains("proof: decide{}"),
+        "it is proved by decide"
+    );
     let model = read("app/src/Foundation/Health/V1/Model.lex.tex");
     assert!(
         model.contains("((answerCode (project assessment outcome)) =? (verdict (project assessment model) (project assessment admitted) (project assessment refused)))"),
@@ -71,7 +74,7 @@ fn health_hl_01() {
             .split('-')
             .map(|w| w[..1].to_uppercase() + &w[1..])
             .collect();
-        let judge = format!("{}{}Judge", &module[..1].to_lowercase(), &module[1..]);
+        let judge = format!("{}{}Judge", module[..1].to_lowercase(), &module[1..]);
         assert!(
             model.contains(&format!("\\importmodule{{{module}}}")),
             "the health model imports {module}"
@@ -104,8 +107,14 @@ fn health_hl_02() {
         "(tallied indicators assessments evidence 0 0 0 {})",
         assessments + register.matches("\"position\":").count() + 1
     );
-    assert!(model.contains(&fuel), "the walk's fuel covers every assessment and row: {fuel}");
-    assert!(catalog.contains(&format!("assessmentsCount := {assessments}")), "every assessment is declared");
+    assert!(
+        model.contains(&fuel),
+        "the walk's fuel covers every assessment and row: {fuel}"
+    );
+    assert!(
+        catalog.contains(&format!("assessmentsCount := {assessments}")),
+        "every assessment is declared"
+    );
 }
 
 /// `HL-03`: The register and catalog are generated, and a hand-edited outcome is refused
@@ -113,7 +122,11 @@ fn health_hl_02() {
 fn health_hl_03() {
     for script in ["health/project.mjs", "health/catalog.mjs"] {
         let ok = node(&root(), script);
-        assert!(ok.status.success(), "{script}: {}", String::from_utf8_lossy(&ok.stderr));
+        assert!(
+            ok.status.success(),
+            "{script}: {}",
+            String::from_utf8_lossy(&ok.stderr)
+        );
     }
 
     // The planted defect: a copy of the inputs whose register says one assessment answered otherwise.
@@ -132,16 +145,29 @@ fn health_hl_03() {
     }
     for entry in std::fs::read_dir(root().join("apps")).expect("apps") {
         let path = entry.expect("an entry").path();
-        std::fs::copy(&path, scratch.join("apps").join(path.file_name().expect("a name")))
-            .expect("a copied prompt");
+        std::fs::copy(
+            &path,
+            scratch.join("apps").join(path.file_name().expect("a name")),
+        )
+        .expect("a copied prompt");
     }
     let register = read("health/register.json");
-    let edited = register.replacen("\"outcome\": \"unmeasured\"", "\"outcome\": \"complete\"", 1);
-    assert_ne!(edited, register, "the register has an unmeasured assessment to edit");
+    let edited = register.replacen(
+        "\"outcome\": \"unmeasured\"",
+        "\"outcome\": \"complete\"",
+        1,
+    );
+    assert_ne!(
+        edited, register,
+        "the register has an unmeasured assessment to edit"
+    );
     std::fs::write(scratch.join("health/register.json"), edited).expect("the edit");
     let refused = node(&scratch, "health/project.mjs");
     let _ = std::fs::remove_dir_all(&scratch);
-    assert!(!refused.status.success(), "a hand-edited outcome is refused");
+    assert!(
+        !refused.status.success(),
+        "a hand-edited outcome is refused"
+    );
     assert!(
         String::from_utf8_lossy(&refused.stderr).contains("health/register.json"),
         "the refusal names the register: {}",
@@ -153,22 +179,42 @@ fn health_hl_03() {
 #[test]
 fn health_hl_04() {
     let ok = node(&root(), "views/catalog.mjs");
-    assert!(ok.status.success(), "HL-04: {}", String::from_utf8_lossy(&ok.stderr));
+    assert!(
+        ok.status.success(),
+        "HL-04: {}",
+        String::from_utf8_lossy(&ok.stderr)
+    );
     let register = read("health/register.json");
     let page = read("site/views/health.html");
     let twin = read("site/views/health.md");
     let digest = read("views/discord.json");
     for slug in values(&register, "slug") {
         let anchor = slug.trim_start_matches("metrics-model-");
-        assert!(page.contains(&format!("id=\"{anchor}\"")), "the health page holds {slug}");
+        assert!(
+            page.contains(&format!("id=\"{anchor}\"")),
+            "the health page holds {slug}"
+        );
     }
-    assert!(twin.starts_with("# Community health\n"), "the twin is generated");
-    assert!(digest.contains("\"title\": \"Community health\""), "the Discord digest carries health");
+    assert!(
+        twin.starts_with("# Community health\n"),
+        "the twin is generated"
+    );
+    assert!(
+        digest.contains("\"title\": \"Community health\""),
+        "the Discord digest carries health"
+    );
     for entry in std::fs::read_dir(root().join("site/views")).expect("site/views") {
         let path = entry.expect("an entry").path();
         let text = std::fs::read_to_string(&path).expect("a page");
-        if path.extension().is_some_and(|e| e == "html") && text.contains("<h2>Metrics models <span class=\"n\">") && !text.contains("<span class=\"n\">0</span></h2>\n<p class=\"none\">No CHAOSS") {
-            assert!(text.contains("Health now: <a href=\"health.html#"), "{} shows its models' health", path.display());
+        if path.extension().is_some_and(|e| e == "html")
+            && text.contains("<h2>Metrics models <span class=\"n\">")
+            && !text.contains("<span class=\"n\">0</span></h2>\n<p class=\"none\">No CHAOSS")
+        {
+            assert!(
+                text.contains("Health now: <a href=\"health.html#"),
+                "{} shows its models' health",
+                path.display()
+            );
         }
     }
 }
