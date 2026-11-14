@@ -67,7 +67,19 @@ Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation
 
 - As a community manager/maintainer, I want to regularly challenge our project and community around safety and track our progress over time.
 
-## Decisions (5)
+## Decisions (8)
+
+### Remediation lifecycle
+
+UML 2.5.1 state machine, https://github.com/UOR-Foundation/community/blob/main/apps/uor-remediation-lifecycle.prompt.json
+
+- Reviews and merges or declines the remediation pull request, and needs a declined remediation to end rather than be reopened.
+
+### Remediation write policy
+
+XACML 3.0 policy, https://github.com/UOR-Foundation/community/blob/main/apps/uor-remediation-write.prompt.json
+
+- Reviews each remediation pull request and needs every change to arrive through review, never as a direct push.
 
 ### Required repository files by tier
 
@@ -92,6 +104,12 @@ DMN 1.5 decision table, https://github.com/UOR-Foundation/community/blob/main/ap
 DMN 1.5 decision table, https://github.com/UOR-Foundation/community/blob/main/apps/uor-repo-standards.prompt.json
 
 - Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close.
+
+### Repository tier by use case
+
+DMN 1.5 decision table, https://github.com/UOR-Foundation/community/blob/main/apps/uor-repo-tier.prompt.json
+
+- Records the tier of a repository and needs the proposed tier to follow GOVERNANCE.md 5 and to yield to the tier already recorded.
 
 ### TOC project lifecycle
 

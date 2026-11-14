@@ -13,6 +13,16 @@
       ]
     },
     {
+      "area": "remediation",
+      "sources": { "kind": "git-urls", "file": "remediation/sources.json" },
+      "inputs": ["remediation/**", "automation/repos.json", "ecosystem/register.json", "ecosystem/snapshot.json"],
+      "tools": [],
+      "check": [
+        ["node", "remediation/project.mjs", "{sources}", "--check"],
+        ["node", "remediation/catalog.mjs", "--check"]
+      ]
+    },
+    {
       "area": "observations",
       "sources": { "kind": "committed", "file": "observations/corpus.json" },
       "inputs": ["observations/**", "chaoss/register.json", "chaoss/oracle-methods.json", "apps/uor-observation-admission.prompt.json", "apps/uor-contribution-attribution.prompt.json", "governance/agents.json"],

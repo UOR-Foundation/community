@@ -259,6 +259,14 @@ model does not sanction.
 | `OB-04` | `open` | A released CHAOSS metric the oracle binds no computation to, and a computation whose index, field, query, aggregation or script this corpus and projector cannot evaluate exactly as the oracle defines it, is carried as an open claim, never approximated |
 | `OB-05` | `open` | GitHub issues and pull requests enter the corpus only from responses the observations workflow recorded with a token and replayed offline, and the Foundation's Discord only once its read-only bot is installed; until then their observations are open claims |
 
+## remediation
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `RM-01` | `build` | The remediation register is valid: every repository is projected at exactly one tier, the one its tier tag records or else the one the uor-repo-tier app proposes from its use case, a repository without a recorded tier names the proposed tier as an open claim for its maintainers to confirm, and each repository's counts of changes, decisions and findings are the records that name it |
+| `RM-02` | `build` | The remediation catalog declares every repository of remediation/register.json at the commit it was observed at, every change that applies at every tier, one issue draft per repository, and the digests of the ecosystem register, the observations and every pinned source and decision app |
+| `RM-03` | `open` | A change only a maintainer or owner can decide, and a norm no change can reach, is carried as an open claim with its evidence, never defaulted; no change is applied to another repository until the Foundation's owners approve it |
+
 ## uor_coc_enforcement
 
 | ID | Level | Statement |
@@ -313,6 +321,26 @@ model does not sanction.
 | `UOA-07` | `build` | The app never answers permit when attribution is deny |
 | `UOA-08` | `build` | The app always answers deny when metric is released and collection is deny |
 
+## uor_remediation_lifecycle
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `URL-01` | `build` | The app never answers opened when step is observed and approval is none |
+| `URL-02` | `build` | The app never answers conformant when step is merged and outcome is conformant |
+| `URL-03` | `build` | The app always answers declined when step is declined |
+| `URL-04` | `build` | The app never answers conformant when step is applied and outcome is unobserved |
+| `URL-05` | `build` | The app always answers conformant when step is conformant |
+| `URL-06` | `build` | The app always answers declined when step is declined |
+
+## uor_remediation_write
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `URW-01` | `build` | The app never answers permit when approval is none and actor is agent |
+| `URW-02` | `build` | The app never answers permit when change is file and route is direct |
+| `URW-03` | `build` | The app never answers permit when change is ruleset and actor is agent |
+| `URW-04` | `build` | The app always answers permit when actor is agent and change is file and repository is live and approval is given and route is pull-request |
+
 ## uor_repo_files
 
 | ID | Level | Statement |
@@ -350,6 +378,14 @@ model does not sanction.
 | `URS-02` | `build` | The app never answers conformant when statustags is above 1 |
 | `URS-03` | `build` | The app never answers conformant when tier is t1 and versioning is other |
 | `URS-04` | `build` | The app never answers unversioned when tier is t3 |
+
+## uor_repo_tier
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `URT-01` | `build` | The app always answers t2 when recorded is t2 and role is framework |
+| `URT-02` | `build` | The app never answers t1 when recorded is none and role is experiment |
+| `URT-03` | `build` | The app always answers t3 when recorded is none and role is website |
 
 ## uor_toc_lifecycle
 
