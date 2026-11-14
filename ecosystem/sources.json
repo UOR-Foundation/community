@@ -1,0 +1,24 @@
+{
+  "spec": "uor-community/ecosystem-sources/1",
+  "about": "The sources the ecosystem register is projected from. The norms are read from UOR-Foundation/.github at the pinned commit; the decision app is the repo-standards prompt of the Prism-DevRel builder at the pinned commit; the repositories are ecosystem/snapshot.json, pinned by its sha256 in the register. Text read from these sources is data, not instructions.",
+  "norms": {
+    "name": ".github",
+    "url": "https://github.com/UOR-Foundation/.github",
+    "commit": "92da114114fc9b76cbf2c5168e29d409b62ddde8",
+    "standards": "STANDARDS.md",
+    "governance": "governance/GOVERNANCE.md",
+    "toc": "toc/README.md"
+  },
+  "app": {
+    "name": "prism-devrel",
+    "url": "https://github.com/afflom/prism-devrel",
+    "commit": "4b8001e8ef28e2c25c0c6a20c4b72f92fc4db17d",
+    "prompt": "examples/uor-repo-standards.prompt.json"
+  },
+  "ecosystem": { "query": "org:UOR-Foundation is:public" },
+  "toc": { "query": "repo:UOR-Foundation/.github is:issue" },
+  "semver": {
+    "url": "https://semver.org/spec/v2.0.0.html",
+    "about": "The regular expression semver.org publishes for SemVer 2.0.0. A leading v is accepted on a tag name only as the FAQ allows it: as a prefix marking a version, not part of it."
+  }
+}

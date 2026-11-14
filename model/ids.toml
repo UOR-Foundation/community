@@ -836,3 +836,177 @@ id = "UCD-04"
 level = "build"
 suite = "uor_community_decisions"
 statement = "Every compliance obligation is numbered in order and names its evidence"
+
+[[id]]
+id = "UT-01"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when quorum is unmet and stage is incubation"
+
+[[id]]
+id = "UT-02"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when vote is majority and stage is incubation"
+
+[[id]]
+id = "UT-03"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when comment is below 14 and stage is incubation"
+
+[[id]]
+id = "UT-04"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers incubation when stage is proposed"
+
+[[id]]
+id = "UT-05"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when stage is sandbox"
+
+[[id]]
+id = "UT-06"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers sandbox when evidence is partial and stage is proposed"
+
+[[id]]
+id = "UT-07"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app always answers graduated when stage is graduated and application is not archival"
+
+[[id]]
+id = "UT-08"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app always answers archived when stage is archived"
+
+[[id]]
+id = "UT-09"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The architecture description declares every stakeholder, concern, component, edge, viewpoint and view it references"
+
+[[id]]
+id = "UT-10"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The ISO/IEC 25010:2023 quality model declares all 9 characteristics and 40 subcharacteristics, states each subcharacteristic by a requirement or lists it open, and every parent it names is declared"
+
+[[id]]
+id = "UT-11"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "Every STRIDE category each component and data flow is open to is answered by a threat or stated open, and no other pair is stated open"
+
+[[id]]
+id = "GV-01"
+level = "build"
+suite = "governance"
+statement = "The Foundation governance register is valid: every unit, post, role, vote rule, stage, holding, membership, delegation and reference resolves; every rule that decides something belongs to a body with a quorum rule; every TOC lifecycle decision is a Technical Oversight Committee vote; every Board position the Bylaws create is held by exactly one person; and the Board's size is within the Bylaws' bounds"
+
+[[id]]
+id = "GV-02"
+level = "build"
+suite = "governance"
+statement = "The governance catalog declares every provision of governance/register.json with the content digest of its text at the pinned source commit"
+
+[[id]]
+id = "GV-03"
+level = "open"
+suite = "governance"
+statement = "A post, role or committee no pinned source fills, a reference that resolves to nothing, an agent with no person behind it, and every Bylaws notice is carried as an open claim, never dropped or guessed"
+
+[[id]]
+id = "GV-04"
+level = "build"
+suite = "governance"
+statement = "Agents are Schema.org SoftwareApplication, never Person: every PROV-O actedOnBehalfOf delegation runs from a SoftwareApplication to a Person, and only a Person holds a post or a role"
+
+[[id]]
+id = "CC-04"
+level = "build"
+suite = "chaoss"
+statement = "Every CHAOSS metric and metrics model has a complete ISO/IEC 15939 mapping: each element of its measurement information model is either stated from a CHAOSS template section cited by digest or carried as a typed open claim"
+
+[[id]]
+id = "CC-05"
+level = "open"
+suite = "chaoss"
+statement = "An ISO/IEC 15939 element the CHAOSS templates do not carry, or a definition omits, is an open claim with its reason, never inferred from prose"
+
+[[id]]
+id = "EC-01"
+level = "build"
+suite = "ecosystem"
+statement = "The ecosystem register is valid: every public UOR Foundation repository is numbered and counted against the snapshot, its tier and status are recorded exactly when it carries one tag of that kind, and every repository the repo-standards app does not find conformant is named by an open claim"
+
+[[id]]
+id = "EC-02"
+level = "build"
+suite = "ecosystem"
+statement = "The ecosystem catalog declares every repository of ecosystem/register.json, the snapshot digest, and the digests of the pinned norms and decision app it was projected from"
+
+[[id]]
+id = "EC-03"
+level = "open"
+suite = "ecosystem"
+statement = "A repository that fails a STANDARDS.md norm the repo-standards app decides, or that the app cannot decide without a tier, is carried as an open claim, never dropped or defaulted"
+
+[[id]]
+id = "SV-01"
+level = "build"
+suite = "views"
+statement = "The stakeholder views are a valid ISO/IEC/IEEE 42010 architecture description: each stakeholder has one viewpoint governing one view, every concern is held by a declared stakeholder, framed by its viewpoint and addressed in its view, and every metrics model, decision and stakeholder is addressed or carried as an open claim"
+
+[[id]]
+id = "SV-02"
+level = "build"
+suite = "views"
+statement = "Every stakeholder is a role its pinned source names, declared with the quote, the source commit and its digest, and an agent acts on behalf of a declared stakeholder (PROV-O actedOnBehalfOf)"
+
+[[id]]
+id = "SV-03"
+level = "build"
+suite = "views"
+statement = "The Pages views, their Markdown twins, llms.txt and the Discord digest are generated from the stakeholder register, and a surface that differs from the register's catalog fails the gate"
+
+[[id]]
+id = "SV-04"
+level = "open"
+suite = "views"
+statement = "A user-story role no Foundation stakeholder holds, a metrics model that states no user story, and a stakeholder no model or decision addresses are carried as open claims, never guessed"
+
+[[id]]
+id = "UT-12"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "Every compliance obligation is numbered in order and names its evidence"
+
+[[id]]
+id = "GL-01"
+level = "build"
+suite = "grimoirelab"
+statement = "The GrimoireLab oracle record pins Perceval, SortingHat and the GrimoireLab release by commit and PyPI digest, binds its wrapper and corpus by digest, and declares what each oracle covers and does not cover"
+
+[[id]]
+id = "GL-02"
+level = "build"
+suite = "grimoirelab"
+statement = "The Perceval Discord backend is added to the pinned Perceval as new files only, with unit tests and offline archive replay run by upstream's own test runner"
+
+[[id]]
+id = "GL-03"
+level = "open"
+suite = "grimoirelab"
+statement = "Live retrieval of the Foundation's Discord waits on a read-only bot in the guild, and its token stays out of the repository"
+
+[[id]]
+id = "GL-04"
+level = "build"
+suite = "grimoirelab"
+statement = "Each live Discord probe is an OpenTelemetry trace holding no message content or token, every trace is checked against the paging model the contribution Prism pins, and the next probes are scheduled by bounded Hebbian weights"

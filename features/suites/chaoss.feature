@@ -21,3 +21,15 @@ Feature: chaoss
     Given the refusals in chaoss/register.json
     When the catalog is read
     Then each refusal is an OpenClaim and the release counts it
+
+  @CC-04 @build
+  Scenario: Every CHAOSS metric and metrics model has a complete ISO/IEC 15939 mapping: each element of its measurement information model is either stated from a CHAOSS template section cited by digest or carried as a typed open claim
+    Given chaoss/measurement.json projected by chaoss/measurement.mjs from the pinned sources
+    When the Lean kernel checks measuresValidHolds during prismpm verify
+    Then every item maps every element of its plan once, in order, and the stated and open counts add up
+
+  @CC-05 @open
+  Scenario: An ISO/IEC 15939 element the CHAOSS templates do not carry, or a definition omits, is an open claim with its reason, never inferred from prose
+    Given the open entries in chaoss/measurement.json
+    When the measures are read
+    Then each open entry is a Mapping that is not stated and names its reason
