@@ -1,0 +1,248 @@
+\begin{lexlean}{UorRepoTier}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: uorRepoTierRecordedT1, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoTierRecordedT2, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoTierRecordedT3, parameters: [], result: Nat, body: 2}
+
+definition{name: uorRepoTierRecordedT4, parameters: [], result: Nat, body: 3}
+
+definition{name: uorRepoTierRecordedNone, parameters: [], result: Nat, body: 4}
+
+definition{name: uorRepoTierRoleFramework, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoTierRoleSpec, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoTierRoleImplementation, parameters: [], result: Nat, body: 2}
+
+definition{name: uorRepoTierRoleIntegration, parameters: [], result: Nat, body: 3}
+
+definition{name: uorRepoTierRoleDocs, parameters: [], result: Nat, body: 4}
+
+definition{name: uorRepoTierRoleWebsite, parameters: [], result: Nat, body: 5}
+
+definition{name: uorRepoTierRolePresentation, parameters: [], result: Nat, body: 6}
+
+definition{name: uorRepoTierRoleExperiment, parameters: [], result: Nat, body: 7}
+
+definition{name: uorRepoTierAnswerT1, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoTierAnswerT2, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoTierAnswerT3, parameters: [], result: Nat, body: 2}
+
+definition{name: uorRepoTierAnswerT4, parameters: [], result: Nat, body: 3}
+
+structure{
+  name: UorRepoTierRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: recorded, type: Nat}, {name: role, type: Nat}]
+}
+
+definition{
+  name: uorRepoTierByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoTierDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (uorRepoTierByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (uorRepoTierDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorRepoTierParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (uorRepoTierByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (uorRepoTierDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoTierParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (uorRepoTierParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoTierParseRecorded,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x7431 : Bool) then (ctor Option.some [Nat] (uorRepoTierRecordedT1)) else (if (prim equal value 0x7432 : Bool) then (ctor Option.some [Nat] (uorRepoTierRecordedT2)) else (if (prim equal value 0x7433 : Bool) then (ctor Option.some [Nat] (uorRepoTierRecordedT3)) else (if (prim equal value 0x7434 : Bool) then (ctor Option.some [Nat] (uorRepoTierRecordedT4)) else (if (prim equal value 0x6e6f6e65 : Bool) then (ctor Option.some [Nat] (uorRepoTierRecordedNone)) else (ctor Option.none [Nat]))))))
+}
+
+definition{
+  name: uorRepoTierParseRole,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6672616d65776f726b : Bool) then (ctor Option.some [Nat] (uorRepoTierRoleFramework)) else (if (prim equal value 0x73706563 : Bool) then (ctor Option.some [Nat] (uorRepoTierRoleSpec)) else (if (prim equal value 0x696d706c656d656e746174696f6e : Bool) then (ctor Option.some [Nat] (uorRepoTierRoleImplementation)) else (if (prim equal value 0x696e746567726174696f6e : Bool) then (ctor Option.some [Nat] (uorRepoTierRoleIntegration)) else (if (prim equal value 0x646f6373 : Bool) then (ctor Option.some [Nat] (uorRepoTierRoleDocs)) else (if (prim equal value 0x77656273697465 : Bool) then (ctor Option.some [Nat] (uorRepoTierRoleWebsite)) else (if (prim equal value 0x70726573656e746174696f6e : Bool) then (ctor Option.some [Nat] (uorRepoTierRolePresentation)) else (if (prim equal value 0x6578706572696d656e74 : Bool) then (ctor Option.some [Nat] (uorRepoTierRoleExperiment)) else (ctor Option.none [Nat])))))))))
+}
+
+definition{
+  name: uorRepoTierSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: uorRepoTierFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (uorRepoTierByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (uorRepoTierFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorRepoTierDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option UorRepoTierRequest),
+  body: (let e : Nat := (uorRepoTierFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoTierParseRole (uorRepoTierSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoTierRequest])
+    | Option.some v2 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [UorRepoTierRequest] (record UorRepoTierRequest {recorded := v1, role := v2})) else (ctor Option.none [UorRepoTierRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoTierDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option UorRepoTierRequest),
+  body: (let e : Nat := (uorRepoTierFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoTierParseRecorded (uorRepoTierSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoTierRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoTierDecodeField2 s (e + 1) v1) else (ctor Option.none [UorRepoTierRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoTierRule1,
+  parameters: [request : UorRepoTierRequest],
+  result: Bool,
+  body: ((project request recorded) =? (uorRepoTierRecordedT1))
+}
+
+definition{
+  name: uorRepoTierRule2,
+  parameters: [request : UorRepoTierRequest],
+  result: Bool,
+  body: ((project request recorded) =? (uorRepoTierRecordedT2))
+}
+
+definition{
+  name: uorRepoTierRule3,
+  parameters: [request : UorRepoTierRequest],
+  result: Bool,
+  body: ((project request recorded) =? (uorRepoTierRecordedT3))
+}
+
+definition{
+  name: uorRepoTierRule4,
+  parameters: [request : UorRepoTierRequest],
+  result: Bool,
+  body: ((project request recorded) =? (uorRepoTierRecordedT4))
+}
+
+definition{
+  name: uorRepoTierRule5,
+  parameters: [request : UorRepoTierRequest],
+  result: Bool,
+  body: ((project request role) =? (uorRepoTierRoleFramework))
+}
+
+definition{
+  name: uorRepoTierRule6,
+  parameters: [request : UorRepoTierRequest],
+  result: Bool,
+  body: ((project request role) =? (uorRepoTierRoleSpec))
+}
+
+definition{
+  name: uorRepoTierRule7,
+  parameters: [request : UorRepoTierRequest],
+  result: Bool,
+  body: ((project request role) =? (uorRepoTierRoleImplementation))
+}
+
+definition{
+  name: uorRepoTierRule8,
+  parameters: [request : UorRepoTierRequest],
+  result: Bool,
+  body: ((project request role) =? (uorRepoTierRoleIntegration))
+}
+
+definition{
+  name: uorRepoTierRule9,
+  parameters: [request : UorRepoTierRequest],
+  result: Bool,
+  body: ((project request role) =? (uorRepoTierRoleDocs))
+}
+
+definition{
+  name: uorRepoTierRule10,
+  parameters: [request : UorRepoTierRequest],
+  result: Bool,
+  body: ((project request role) =? (uorRepoTierRoleWebsite))
+}
+
+definition{
+  name: uorRepoTierRule11,
+  parameters: [request : UorRepoTierRequest],
+  result: Bool,
+  body: ((project request role) =? (uorRepoTierRolePresentation))
+}
+
+definition{
+  name: uorRepoTierJudge,
+  parameters: [request : UorRepoTierRequest],
+  result: Nat,
+  body: (if (uorRepoTierRule1 request) then (uorRepoTierAnswerT1) else (if (uorRepoTierRule2 request) then (uorRepoTierAnswerT2) else (if (uorRepoTierRule3 request) then (uorRepoTierAnswerT3) else (if (uorRepoTierRule4 request) then (uorRepoTierAnswerT4) else (if (uorRepoTierRule5 request) then (uorRepoTierAnswerT1) else (if (uorRepoTierRule6 request) then (uorRepoTierAnswerT1) else (if (uorRepoTierRule7 request) then (uorRepoTierAnswerT2) else (if (uorRepoTierRule8 request) then (uorRepoTierAnswerT2) else (if (uorRepoTierRule9 request) then (uorRepoTierAnswerT3) else (if (uorRepoTierRule10 request) then (uorRepoTierAnswerT3) else (if (uorRepoTierRule11 request) then (uorRepoTierAnswerT3) else (uorRepoTierAnswerT4))))))))))))
+}
+
+definition{
+  name: uorRepoTierEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (uorRepoTierAnswerT1)) then 0x7431 else (if (code =? (uorRepoTierAnswerT2)) then 0x7432 else (if (code =? (uorRepoTierAnswerT3)) then 0x7433 else (if (code =? (uorRepoTierAnswerT4)) then 0x7434 else 0x696e76616c6964))))
+}
+
+definition{
+  name: uorRepoTierDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (64 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (uorRepoTierDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (uorRepoTierEncodeAnswer (uorRepoTierJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

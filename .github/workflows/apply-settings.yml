@@ -1,0 +1,116 @@
+# Applies the repository settings that only an Organization Owner may apply:
+# topics, the GOVERNANCE.md 6.2 rulesets and the lowercase renames of
+# remediation/apply-settings.sh. It also opens the .github LICENSE pull
+# request and its tracking issue, since agent sessions cannot reach a
+# repository whose name begins with a dot.
+#
+# reuse-exempt: it writes live organization settings; the state it changes is
+# on GitHub, not in any file a cache key could name, so no earlier run stands for it.
+#
+# A dry run prints every call in the job summary and needs no token. It runs on
+# each pull request that changes remediation/ and on a manual run.
+# Applying needs the ORG_ADMIN_TOKEN secret, a fine-grained token owned by
+# UOR-Foundation with access to all repositories and these permissions:
+#   Administration: write   topics, rulesets, renames, archive state
+#   Contents: write         push the .github LICENSE branch
+#   Issues: write           the .github tracking issue
+#   Pull requests: write    the .github LICENSE pull request
+# The dry run reads the public check runs that become required status checks
+# with this workflow's own token (CHECKS_TOKEN). Applying reads them with the
+# owner's token, whose higher rate limit covers every repository in one run; a
+# read that fails stops the run before anything more is written.
+# Settings are applied when an admin of this repository adds the
+# apply-settings label to a pull request, or runs the workflow with apply
+# ticked. Every call is idempotent, so running it again changes nothing.
+# Project content, not universal policy.
+name: apply-settings
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+    paths:
+      - 'remediation/**'
+      - '.github/workflows/apply-settings.yml'
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: Apply the settings (unticked, it only prints them)
+        type: boolean
+        default: false
+      repositories:
+        description: Space-separated repository names (empty for all)
+        type: string
+        default: ''
+      enforcement:
+        description: Only set the enforcement of the existing governance-6.2 rulesets, and change nothing else
+        type: choice
+        options: ['', disabled, active]
+        default: ''
+
+permissions:
+  contents: read
+  checks: read
+
+# Only runs that apply share a group, so they run one at a time; each dry run
+# has its own group and never holds up a run that applies.
+concurrency:
+  group: ${{ (github.event.label.name == 'apply-settings' || inputs.apply) && 'apply-settings' || format('apply-settings-dry-{0}', github.run_id) }}
+  cancel-in-progress: false
+
+jobs:
+  settings:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Decide whether to apply
+        id: mode
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
+          LABEL: ${{ github.event.label.name }}
+          LABELS: ${{ toJSON(github.event.pull_request.labels.*.name) }}
+          INPUT_APPLY: ${{ inputs.apply }}
+          SENDER: ${{ github.event.sender.login }}
+          HAS_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN != '' }}
+        run: |
+          apply=false
+          if [ "$EVENT" = workflow_dispatch ] && [ "$INPUT_APPLY" = true ]; then apply=true; fi
+          if [ "$EVENT" = pull_request ] && [ "$LABEL" = apply-settings ]; then apply=true; fi
+          if [ "$apply" = true ]; then
+            role=$(gh api "repos/$GITHUB_REPOSITORY/collaborators/$SENDER/permission" --jq .permission)
+            if [ "$role" != admin ]; then echo "::error::$SENDER is not an admin of $GITHUB_REPOSITORY, so the settings are not applied"; exit 1; fi
+            if [ "$HAS_TOKEN" != true ]; then echo "::error::Add the ORG_ADMIN_TOKEN secret (see the header of this workflow), then run it again"; exit 1; fi
+          fi
+          echo "apply=$apply" >> "$GITHUB_OUTPUT"
+      - name: Dry run
+        env:
+          REPOS: ${{ inputs.repositories }}
+          ENFORCEMENT: ${{ inputs.enforcement }}
+          # Public reads: the dry run shows the exact required checks each ruleset would get.
+          CHECKS_TOKEN: ${{ github.token }}
+        run: |
+          # The calls go to the log as well as the summary, so the log alone shows each ruleset's required checks.
+          # shellcheck disable=SC2086
+          status=0
+          BASH_XTRACEFD=9 bash -x remediation/apply-settings.sh ${ENFORCEMENT:+--enforcement "$ENFORCEMENT"} $REPOS 9> dry-run.trace > dry-run.txt 2>&1 || status=$?
+          cat dry-run.txt
+          [ "$status" = 0 ] || { tail -40 dry-run.trace; exit "$status"; }
+          { echo '## Repository settings (dry run)'; echo '```'; cat dry-run.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      - name: Apply
+        if: steps.mode.outputs.apply == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          REPOS: ${{ inputs.repositories }}
+          ENFORCEMENT: ${{ inputs.enforcement }}
+        run: |
+          # shellcheck disable=SC2086
+          bash remediation/apply-settings.sh --apply ${ENFORCEMENT:+--enforcement "$ENFORCEMENT"} $REPOS
+          echo 'Settings applied.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Open the .github LICENSE pull request
+        if: steps.mode.outputs.apply == 'true' && inputs.enforcement == '' && (inputs.repositories == '' || contains(format(' {0} ', inputs.repositories), ' .github '))
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+        run: bash remediation/open-dotgithub-pr.sh

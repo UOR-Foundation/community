@@ -1,0 +1,287 @@
+\begin{lexlean}{Foundation.Remediation.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Remediation model}
+\begin{semanticmodule}
+inductive{
+  name: App,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: uorRepoFiles, fields: []},
+    {name: uorRepoProtection, fields: []},
+    {name: uorRepoStandards, fields: []},
+    {name: uorRepoNaming, fields: []}
+  ]
+}
+
+inductive{
+  name: ChangeKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: topic, fields: []},
+    {name: file, fields: []},
+    {name: ruleset, fields: []},
+    {name: rename, fields: []},
+    {name: decision, fields: []}
+  ]
+}
+
+inductive{
+  name: Refusal,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: blockedCase, fields: []},
+    {name: blockedCommits, fields: []},
+    {name: blockedPattern, fields: []},
+    {name: decisionBranches, fields: []},
+    {name: decisionCheckContexts, fields: []},
+    {name: decisionCi, fields: []},
+    {name: decisionCodeowners, fields: []},
+    {name: decisionCopyrightHolder, fields: []},
+    {name: decisionDomain, fields: []},
+    {name: decisionStatus, fields: []},
+    {name: decisionTier, fields: []}
+  ]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: repositoriesCount, type: Nat},
+    {name: changesCount, type: Nat},
+    {name: openClaimsCount, type: Nat},
+    {name: ecosystemDigest, type: String},
+    {name: observationsDigest, type: String},
+    {name: rolesDigest, type: String},
+    {name: sources, type: String}
+  ]
+}
+
+structure{
+  name: Repository,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: commit, type: String},
+    {name: archived, type: Bool},
+    {name: tierRecorded, type: Bool},
+    {name: tiersProjected, type: Nat},
+    {name: changesNow, type: Nat},
+    {name: decisions, type: Nat},
+    {name: findings, type: Nat}
+  ]
+}
+
+structure{
+  name: Change,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: app, type: App},
+    {name: kind, type: ChangeKind},
+    {name: detail, type: String}
+  ]
+}
+
+structure{
+  name: OpenClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: name, type: Refusal},
+    {name: reason, type: String}
+  ]
+}
+
+definition{
+  name: isTierDecision,
+  parameters: [value : Refusal],
+  result: Bool,
+  body: (match value
+    | Refusal.blockedCase => false
+    | Refusal.blockedCommits => false
+    | Refusal.blockedPattern => false
+    | Refusal.decisionBranches => false
+    | Refusal.decisionCheckContexts => false
+    | Refusal.decisionCi => false
+    | Refusal.decisionCodeowners => false
+    | Refusal.decisionCopyrightHolder => false
+    | Refusal.decisionDomain => false
+    | Refusal.decisionStatus => false
+    | Refusal.decisionTier => true)
+}
+
+definition{
+  name: isDecision,
+  parameters: [value : Refusal],
+  result: Bool,
+  body: (match value
+    | Refusal.blockedCase => false
+    | Refusal.blockedCommits => false
+    | Refusal.blockedPattern => false
+    | Refusal.decisionBranches => true
+    | Refusal.decisionCheckContexts => true
+    | Refusal.decisionCi => true
+    | Refusal.decisionCodeowners => true
+    | Refusal.decisionCopyrightHolder => true
+    | Refusal.decisionDomain => true
+    | Refusal.decisionStatus => true
+    | Refusal.decisionTier => true)
+}
+
+definition{
+  name: isFinding,
+  parameters: [value : Refusal],
+  result: Bool,
+  body: (match value
+    | Refusal.blockedCase => true
+    | Refusal.blockedCommits => true
+    | Refusal.blockedPattern => true
+    | Refusal.decisionBranches => false
+    | Refusal.decisionCheckContexts => false
+    | Refusal.decisionCi => false
+    | Refusal.decisionCodeowners => false
+    | Refusal.decisionCopyrightHolder => false
+    | Refusal.decisionDomain => false
+    | Refusal.decisionStatus => false
+    | Refusal.decisionTier => false)
+}
+
+definition{
+  name: tiersRead,
+  parameters: [repository : Repository],
+  result: Bool,
+  body: ((project repository tiersProjected) =? 1)
+}
+
+definition{
+  name: changesOf,
+  parameters: [position : Nat, values : (List Change)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons change rest => ((if (((project change repository) =? position) && true) then 1 else 0) + (changesOf position rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: decisionsOf,
+  parameters: [position : Nat, values : (List OpenClaim)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons claim rest => ((if (((project claim repository) =? position) && (isDecision (project claim name))) then 1 else 0) + (decisionsOf position rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: findingsOf,
+  parameters: [position : Nat, values : (List OpenClaim)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons claim rest => ((if (((project claim repository) =? position) && (isFinding (project claim name))) then 1 else 0) + (findingsOf position rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: tierDecisionsOf,
+  parameters: [position : Nat, values : (List OpenClaim)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons claim rest => ((if (((project claim repository) =? position) && (isTierDecision (project claim name))) then 1 else 0) + (tierDecisionsOf position rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: accounted,
+  parameters: [changes : (List Change), claims : (List OpenClaim), values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => (((project repository tierRecorded) || ((tierDecisionsOf (project repository index) claims) =? 1)) && (((changesOf (project repository index) changes) =? (project repository changesNow)) && (((decisionsOf (project repository index) claims) =? (project repository decisions)) && (((findingsOf (project repository index) claims) =? (project repository findings)) && (accounted changes claims rest)))))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesValid,
+  parameters: [position : Nat, values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => (((project repository index) =? position) && ((tiersRead repository) && (repositoriesValid (position + 1) rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => (1 + (repositoriesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: changesValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List Change)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons change rest => (((project change index) =? position) && (((project change repository) <? repositoriesCount) && (changesValid (position + 1) repositoriesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: changesTotal,
+  parameters: [values : (List Change)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons change rest => (1 + (changesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons openClaim rest => (((project openClaim index) =? position) && (((project openClaim repository) <? repositoriesCount) && (openClaimsValid (position + 1) repositoriesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsTotal,
+  parameters: [values : (List OpenClaim)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    repositories : (List Repository),
+    changes : (List Change),
+    openClaims : (List OpenClaim)
+  ],
+  result: Bool,
+  body: (((repositoriesTotal repositories) =? (project release repositoriesCount)) && (((changesTotal changes) =? (project release changesCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && ((repositoriesValid 0 repositories) && ((changesValid 0 (repositoriesTotal repositories) changes) && ((openClaimsValid 0 (repositoriesTotal repositories) openClaims) && (accounted changes openClaims repositories)))))))
+}
+\end{semanticmodule}
+\end{lexlean}
