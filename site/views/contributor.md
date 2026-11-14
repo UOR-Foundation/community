@@ -40,8 +40,21 @@ https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e
 
 - As a contributor, I want to know where I can focus my efforts to help make the
 
-## Decisions (0)
+## Decisions (2)
 
-## Open claims (1)
+### Contribution attribution
+
+XACML 3.0 policy, https://github.com/UOR-Foundation/community/blob/main/apps/uor-contribution-attribution.prompt.json
+
+- Directs work, often through an agent, and needs it credited to them.
+
+### CHAOSS observation admission
+
+XACML 3.0 policy, https://github.com/UOR-Foundation/community/blob/main/apps/uor-observation-admission.prompt.json
+
+- Is counted by contributor metrics and needs to be credited only as PROV-O delegation records.
+
+## Open claims (2)
 
 - Metrics Model: Community Governed AI Use in Open Communities: model builder: names a role no Foundation stakeholder holds
+- CHAOSS observation admission: Verifier: names a role no Foundation stakeholder holds

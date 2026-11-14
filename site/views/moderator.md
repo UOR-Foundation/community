@@ -12,7 +12,13 @@ https://github.com/chaoss/wg-ai-alignment/blob/0d0f78655aab6417293aaefd85e08ecc7
 
 - As a content moderator, I want to mitigate against new forms of social engineering attacks and toxic behavior facilitated by AI usage so that I can better protect the psychological safety of my community.
 
-## Decisions (0)
+## Decisions (1)
+
+### Code of Conduct enforcement ladder
+
+UML 2.5.1 state machine, https://github.com/UOR-Foundation/community/blob/main/apps/uor-coc-enforcement.prompt.json
+
+- Investigates reports from email and Discord and needs the ladder's rung for each finding.
 
 ## Open claims (1)
 
