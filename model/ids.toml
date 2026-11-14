@@ -968,3 +968,105 @@ id = "HL-05"
 level = "open"
 suite = "health"
 statement = "A registered repository the observation corpus never reached, a metrics model with no indicator app, and an observation of a subject outside the ecosystem register are carried as open claims, never assessed by default"
+
+[[id]]
+id = "UT-01"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when quorum is unmet and stage is incubation"
+
+[[id]]
+id = "UT-02"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when vote is majority and stage is incubation"
+
+[[id]]
+id = "UT-03"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when comment is below 14 and stage is incubation"
+
+[[id]]
+id = "UT-04"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers incubation when stage is proposed"
+
+[[id]]
+id = "UT-05"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when stage is sandbox"
+
+[[id]]
+id = "UT-06"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers sandbox when evidence is partial and stage is proposed"
+
+[[id]]
+id = "UT-07"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app always answers graduated when stage is graduated and application is not archival"
+
+[[id]]
+id = "UT-08"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app always answers archived when stage is archived"
+
+[[id]]
+id = "UT-09"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The architecture description declares every stakeholder, concern, component, edge, viewpoint and view it references"
+
+[[id]]
+id = "UT-10"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The ISO/IEC 25010:2023 quality model declares all 9 characteristics and 40 subcharacteristics, states each subcharacteristic by a requirement or lists it open, and every parent it names is declared"
+
+[[id]]
+id = "UT-11"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "Every STRIDE category each component and data flow is open to is answered by a threat or stated open, and no other pair is stated open"
+
+[[id]]
+id = "UT-12"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "Every compliance obligation is numbered in order and names its evidence"
+
+[[id]]
+id = "OB-01"
+level = "build"
+suite = "observations"
+statement = "The observation register is valid: every observation's admission is what the uor-observation-admission app's first-applicable rules decide on its recorded fields, and every metric value refers to a permitted observation of its own metric, so every value is a function of admitted observations"
+
+[[id]]
+id = "OB-02"
+level = "build"
+suite = "observations"
+statement = "The observation corpus is frozen and replayable: every subject is pinned by the commits of its refs, every corpus file is pinned by the sha256 of its bytes, an independent run from the same pins reproduces each file, and the register and its catalog declare the corpus digest"
+
+[[id]]
+id = "OB-03"
+level = "build"
+suite = "observations"
+statement = "Every contribution is credited through the uor-contribution-attribution app as W3C PROV-O: a person is credited for their own work, a software agent's work is credited to a person only through a Co-authored-by delegation naming exactly one person, and no name or email enters the corpus"
+
+[[id]]
+id = "OB-04"
+level = "open"
+suite = "observations"
+statement = "A released CHAOSS metric the oracle binds no computation to, and a computation whose index, field, query, aggregation or script this corpus and projector cannot evaluate exactly as the oracle defines it, is carried as an open claim, never approximated"
+
+[[id]]
+id = "OB-05"
+level = "open"
+suite = "observations"
+statement = "GitHub issues and pull requests enter the corpus only from responses the observations workflow recorded with a token and replayed offline, and the Foundation's Discord only once its read-only bot is installed; until then their observations are open claims"
