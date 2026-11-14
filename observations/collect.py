@@ -142,11 +142,20 @@ def github(sources_path, out):
     os.makedirs(out, exist_ok=True)
     for repo in sources['repositories']:
         record.clear()
+        fresh_user_cache()
         backend = GitHub(owner='UOR-Foundation', repository=repo['name'], api_token=[token], sleep_for_rate=True)
         n = sum(1 for _ in backend.fetch(category='issue', to_date=cut))
         with open(_responses_path(out, repo['name']), 'wb') as f:
             f.write(gzip.compress(('\n'.join(record) + '\n').encode(), mtime=0))
         print(f"{repo['name']}: {n} issues and pull requests, {len(record)} responses", file=sys.stderr)
+
+
+def fresh_user_cache():
+    """GitHubClient caches user lookups in class attributes, shared by every client in the process. Each repository
+    starts with them empty, so its record holds every /users response its own replay asks for."""
+    from perceval.backends.core.github import GitHubClient
+    GitHubClient._users.clear()
+    GitHubClient._users_orgs.clear()
 
 
 def github_replay(repo, cut, responses):
@@ -173,6 +182,7 @@ def github_replay(repo, cut, responses):
         return resp
 
     requests.Session.send = serve
+    fresh_user_cache()
     try:
         backend = GitHub(owner='UOR-Foundation', repository=repo, api_token=['replay'], sleep_for_rate=True)
         return list(backend.fetch(category='issue', to_date=cut)), GitHub
