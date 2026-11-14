@@ -10,7 +10,7 @@ Schema.org Person. Named in https://github.com/UOR-Foundation/.github/blob/92da1
 
 https://github.com/chaoss/wg-ai-alignment/blob/0d0f78655aab6417293aaefd85e08ecc72ddabfa/metrics/ai-alignment-community-governed-use/metric-model-ai-alignment-community-governed-use.md
 
-Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
+Health now: 0 open, 0 complete, 32 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a content moderator, I want to mitigate against new forms of social engineering attacks and toxic behavior facilitated by AI usage so that I can better protect the psychological safety of my community.
 

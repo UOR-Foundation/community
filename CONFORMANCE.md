@@ -29,6 +29,7 @@ model does not sanction.
 | `CC-05` | `open` | An ISO/IEC 15939 element the CHAOSS templates do not carry, or a definition omits, is an open claim with its reason, never inferred from prose |
 | `CC-06` | `build` | An ISO/IEC 15939 element the CHAOSS templates leave open is stated only from what the CHAOSS oracle computes: a GrimoireLab panel the definition cites, a computation the implementation names, and the alias, enricher and backend lines it reads, each pinned to the GrimoireLab 1.23.0 release and cited by sha256 |
 | `CC-07` | `build` | Every 15939 element neither CHAOSS nor its oracle states has one drafted upstream contribution, decided by a DMN decision table and marked as not submitted |
+| `CC-08` | `build` | A binding proposed to a CHAOSS working group pairs a quantity the definition names with the computation GrimoireLab's panels label by the same word; it is evaluable but states no ISO/IEC 15939 element until the working group adopts it |
 
 ## chaoss_ai_alignment_community_aligned_training_feedback
 

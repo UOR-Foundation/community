@@ -45,3 +45,9 @@ Feature: chaoss
     Given upstream/chaoss-15939 written by chaoss/upstream.mjs
     When the drafts are read
     Then each open element has one contribution the decision table answers, and none is submitted
+
+  @CC-08 @build
+  Scenario: A binding proposed to a CHAOSS working group pairs a quantity the definition names with the computation GrimoireLab's panels label by the same word; it is evaluable but states no ISO/IEC 15939 element until the working group adopts it
+    Given chaoss/proposals.json checked by chaoss/oracle.mjs against the pinned GrimoireLab panels
+    When the oracle methods are read
+    Then each proposed metric carries evaluable bindings, no resolved element, and a drafted revision for its working group
