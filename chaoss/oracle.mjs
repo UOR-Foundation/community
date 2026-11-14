@@ -362,6 +362,51 @@ for (const x of m.items) {
   }).map((e, k) => ({ element: open[k], ...e }));
   items.push({ index: x.index, slug: x.slug, kind: x.kind, candidates: named.length ? 'named' : 'panel', links: resolved.map(({ named: n, all: a, ...r }) => ({ ...r, named: (n ?? []).length })), bindings, elements });
 }
+
+// ---- Proposed bindings: a quantity a definition names, paired with the computation GrimoireLab's panels label
+// by the same word. Checked here at the pinned commits; evaluable, but they state no 15939 element.
+const proposals = JSON.parse(readFileSync(join(here, 'proposals.json'), 'utf8'));
+const repoRoot = join(here, '..');
+for (const pr of proposals.proposals) {
+  const x = items.find((i) => i.slug === pr.metric);
+  if (!x) throw new Error(`proposals.json: ${pr.metric} has no open element`);
+  const def = register.metrics.find((r) => r.slug === pr.metric);
+  const [, wg, , path] = def.source.match(/^([^@]+)@([0-9a-f]{40}):(.+)$/);
+  const lines = readFileSync(join(root, wg, path), 'utf8').replace(/\r\n/g, '\n').split('\n');
+  // The index is the Perceval discord backend's, in oracles/grimoirelab; its one category is the counted item.
+  const be = readFileSync(join(repoRoot, 'oracles/grimoirelab/perceval-discord/perceval/backends/core/discord.py'), 'utf8').split('\n');
+  const catLine = be.findIndex((l) => /^CATEGORY_MESSAGE = ['"]message['"]$/.test(l.trim()));
+  if (catLine < 0) throw new Error('the Perceval discord backend declares no message category');
+  const category = { value: 'message', cite: { source: `oracles/grimoirelab/perceval-discord/perceval/backends/core/discord.py#L${catLine + 1}`, digest: sha256(be[catLine].trim()) } };
+  const bindings = pr.quantities.map((q) => {
+    const hits = lines.flatMap((l, i) => (l.trim() === `* ${q.filter}` ? [i + 1] : []));
+    if (hits.length !== 1) throw new Error(`${pr.metric}: the filter "${q.filter}" is not one line of ${def.source}`);
+    const found = q.panels.map((ref) => {
+      const [f, title] = ref.split('#');
+      const d = JSON.parse(file(SIG, f).text);
+      const v = (d.visualizations ?? []).filter((y) => JSON.parse(y.value.visState).title === title);
+      if (v.length !== 1) throw new Error(`${ref}: no single visualization of that title`);
+      const vs = JSON.parse(v[0].value.visState);
+      const aggs = (vs.aggs ?? []).filter((a) => a.schema === 'metric' && String(a.params?.customLabel ?? '').replace(/^#\s*/, '') === q.label);
+      if (aggs.length !== 1) throw new Error(`${ref}: no single computation labelled ${q.label}`);
+      return { aggregation: aggs[0].type, field: aggs[0].params?.field ?? '', at: citeObject(SIG, f, v[0].id, v[0].value.visState) };
+    });
+    const kinds = [...new Set(found.map((c) => `${c.aggregation}(${c.field})`))];
+    if (kinds.length !== 1) throw new Error(`${pr.metric} ${q.label}: the panels disagree: ${kinds.join(', ')}`);
+    const { aggregation, field } = found[0];
+    return {
+      index: [pr.index], function: null,
+      series: [{ aggregation, field, index: pr.index, collection: null, pullRequest: null, query: '', dateField: '' }],
+      entity: null, unit: aggregation === 'count' ? `{${category.value}}` : `{${field}}`, label: q.label,
+      at: found[0].at,
+      proposal: { filterText: q.filter, filter: { source: `${def.source}#L${hits[0]}`, digest: sha256(lines[hits[0] - 1].trim()) }, panels: found.map((c) => c.at), category: category.cite },
+    };
+  });
+  x.candidates = 'proposed';
+  x.bindings = bindings;
+  x.proposal = { why: pr.why, unmatched: pr.unmatched };
+  for (const e of x.elements) if (e.status === 'open' && e.reason === 'definition-cites-no-oracle-panel') e.reason = 'proposed-binding-awaits-working-group';
+}
 const all = items.flatMap((x) => x.elements);
 const out = {
   spec: 'uor-community/chaoss-oracle-methods/1',
