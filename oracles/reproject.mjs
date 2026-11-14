@@ -53,15 +53,34 @@ const register = entry(first);
 const sources = second;
 mkdirSync(sources, { recursive: true });
 
-if (register.sources.kind === 'git-commits') {
-  const pins = JSON.parse(readFileSync(join(root, register.sources.file), 'utf8')).repositories;
-  for (const { name, commit } of pins) {
+// git-commits: a `repositories` list of {name, commit} under one base URL.
+// git-urls: every {name, url, commit} object anywhere in the file, each fetched from its own URL.
+const pinsOf = (kind, file) => {
+  const json = JSON.parse(readFileSync(join(root, file), 'utf8'));
+  if (kind === 'git-commits') return json.repositories.map(({ name, commit }) => ({ name, commit, url: register.sources.base + name }));
+  const found = new Map();
+  const walk = (v) => {
+    if (Array.isArray(v)) v.forEach(walk);
+    else if (v && typeof v === 'object') {
+      if (typeof v.name === 'string' && typeof v.url === 'string' && typeof v.commit === 'string') {
+        const seen = found.get(v.name);
+        if (seen && (seen.url !== v.url || seen.commit !== v.commit)) throw new Error(`${file} pins ${v.name} twice`);
+        found.set(v.name, { name: v.name, url: v.url, commit: v.commit });
+      }
+      Object.values(v).forEach(walk);
+    }
+  };
+  walk(json);
+  return [...found.values()];
+};
+if (register.sources.kind === 'git-commits' || register.sources.kind === 'git-urls') {
+  for (const { name, commit, url } of pinsOf(register.sources.kind, register.sources.file)) {
     const dir = join(sources, name);
     const at = () => run('git', ['-C', dir, 'rev-parse', 'HEAD']).trim();
     if (existsSync(join(dir, '.git')) && at() === commit) continue;
     rmSync(dir, { recursive: true, force: true });
     run('git', ['init', '-q', dir]);
-    run('git', ['-C', dir, 'fetch', '-q', '--depth', '1', register.sources.base + name, commit]);
+    run('git', ['-C', dir, 'fetch', '-q', '--depth', '1', url, commit]);
     run('git', ['-C', dir, 'checkout', '-q', '--detach', 'FETCH_HEAD']);
     if (at() !== commit) throw new Error(`${name} is at ${at()}, not the pinned ${commit}`);
   }

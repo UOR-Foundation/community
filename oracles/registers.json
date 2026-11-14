@@ -11,6 +11,16 @@
         ["node", "chaoss/project.mjs", "{sources}", "--check"],
         ["node", "chaoss/catalog.mjs", "--check"]
       ]
+    },
+    {
+      "area": "remediation",
+      "sources": { "kind": "git-urls", "file": "remediation/sources.json" },
+      "inputs": ["remediation/**", "ecosystem/register.json", "ecosystem/snapshot.json"],
+      "tools": [],
+      "check": [
+        ["node", "remediation/project.mjs", "{sources}", "--check"],
+        ["node", "remediation/catalog.mjs", "--check"]
+      ]
     }
   ]
 }
