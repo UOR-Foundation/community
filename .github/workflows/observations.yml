@@ -91,4 +91,6 @@ jobs:
           name: github-responses
           path: _observations-github/responses
           if-no-files-found: error
+          # The .github repository's record is .github.jsonl.gz, a dotfile the action skips by default.
+          include-hidden-files: true
           retention-days: 30
