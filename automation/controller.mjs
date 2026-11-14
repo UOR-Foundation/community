@@ -12,7 +12,7 @@
  *
  * This file only observes facts and turns them into requests:
  *   repository  automation/repos.json lists this repository as owned
- *   reach       reachOf: the diff's paths and its secrets references, and the speaks-outside label
+ *   reach       reachOf: the speaks-outside label, the diff's secrets references, its gate and trust-root paths
  *   checks      every check run and status on the head
  *   human       humanOf: an approving human review of the head, or human-approved added after it
  *   draft       the pull request's draft flag
@@ -85,11 +85,14 @@ const defaultBranch = get(`repos/${repo}`).default_branch;
 /** What the diff reaches (AUTOMATION.md: the human gates H1 to H3). */
 function reachOf(pr, files) {
   if (pr.labels.some((l) => l.name === 'speaks-outside')) return 'outside';
-  const trust = registry.trustRoot.map((p) => new RegExp(`^${p.replace(/[.]/g, '\\.').replace(/\*\*/g, '.*')}$`));
-  if (files.some((f) => trust.some((t) => t.test(f.filename) || (f.previous_filename && t.test(f.previous_filename))))) return 'trust-root';
+  const glob = (p) => new RegExp(`^${p.replace(/[.]/g, '\\.').replace(/\*\*/g, '.*')}$`);
+  const touches = (globs) => files.some((f) => globs.map(glob).some((t) => t.test(f.filename) || (f.previous_filename && t.test(f.previous_filename))));
+  // Most guarded first: a diff that reaches a secret or a gate is decided as that, whatever else it reaches.
   const secret = /\$\{\{[^}]*\bsecrets\.|ORG_ADMIN_TOKEN/;
   if (files.some((f) => (f.patch ?? '').split('\n').some((l) => /^[+-]/.test(l) && secret.test(l)))) return 'secrets';
   if (files.some((f) => registry.secretsPaths.some((p) => f.filename.startsWith(p)))) return 'secrets';
+  if (touches(registry.gates)) return 'gate';
+  if (touches(registry.trustRoot)) return 'trust-root';
   return 'inside';
 }
 

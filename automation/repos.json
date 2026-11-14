@@ -1,32 +1,56 @@
 {
   "spec": "uor-community/automation-repos/1",
-  "about": "The repositories whose merges Alex alone decides, which the merge controller may merge (uor-merge-admission: repository is owned), and the paths each pull request is read against. Every other repository is shared, and the controller never merges there. Adding a repository here changes the trust root, so it needs a human (AUTOMATION.md H3).",
+  "about": "The repositories whose merges Alex alone decides, which the merge controller may merge (uor-merge-admission: repository is owned), and the paths each pull request is read against. Every other repository is shared, and the controller never merges there. This file is a gate: adding a repository here needs a human (AUTOMATION.md H3).",
   "owned": [
     {
       "repository": "UOR-Foundation/community",
       "why": "Created by Alex for the community model (2026-11-13); every pull request is an agent's, acting for Alex. Alex asked for its development to be automated on 2026-11-14.",
-      "dispatchAfterMerge": ["bootstrap.yml", "pages.yml", "oracles.yml"]
+      "dispatchAfterMerge": [
+        "bootstrap.yml",
+        "pages.yml",
+        "oracles.yml"
+      ]
     },
     {
       "repository": "UOR-Foundation/grimoirelab-discord",
       "why": "Created by Alex for the GrimoireLab Discord contribution Prism (2026-11-13). Its upstream PR to CHAOSS stays a human act (H1).",
-      "dispatchAfterMerge": ["bootstrap.yml", "pages.yml"]
+      "dispatchAfterMerge": [
+        "bootstrap.yml",
+        "pages.yml"
+      ]
     },
     {
       "repository": "afflom/prism-devrel",
       "why": "Alex's own repository; Alex is its only maintainer.",
-      "dispatchAfterMerge": ["bootstrap.yml", "pages.yml"]
+      "dispatchAfterMerge": [
+        "bootstrap.yml",
+        "pages.yml"
+      ]
     }
   ],
   "gate": "^acceptance / ",
   "trustRoot": [
     ".github/workflows/bootstrap.yml",
     ".github/workflows/automerge.yml",
+    ".github/workflows/interventions.yml",
     "automation/**",
     ".github/CODEOWNERS"
   ],
   "secretsPaths": [
     "remediation/apply-settings.sh",
     "remediation/open-dotgithub-pr.sh"
-  ]
+  ],
+  "gates": [
+    "automation/repos.json",
+    "automation/merge-admission.prompt.json",
+    "automation/intervention-admission.prompt.json",
+    "automation/intervention-approvals.json",
+    "automation/controller.mjs",
+    "automation/interventions.mjs",
+    "automation/builder.mjs",
+    ".github/workflows/bootstrap.yml",
+    ".github/workflows/automerge.yml",
+    ".github/CODEOWNERS"
+  ],
+  "gatesWhy": "The files that hold or enforce a human gate: H1 (outside), H2 (secrets), H3 (these gates) and the intervention people gate. A change to one needs a human, so no agent can remove a gate; every other trust-root change merges on green gates (Alex, 2026-11-14T21:36Z)."
 }

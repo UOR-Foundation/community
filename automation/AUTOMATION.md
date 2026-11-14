@@ -22,7 +22,7 @@ call the same workflow.
 
 - **A1, merge.** An owned repository's ready pull request whose check runs
   are all green (the acceptance gate `just vv` and every oracle among them)
-  and that reaches nothing in H1 to H3 is approved by the controller and
+  and that reaches nothing H1 to H3 hold is approved by the controller and
   merged with a merge commit. The review that GOVERNANCE.md 6.2 requires is
   given by the controller, as an agent acting for the Organization Owner
   (W3C PROV-O `actedOnBehalfOf`). Its review body names the request and the
@@ -43,7 +43,7 @@ call the same workflow.
 ## Interventions (I)
 
 CHAOSS values drive the community's development through three more apps, all
-in this trust root, so a change to any of them needs a human (H3).
+in the trust root. The admission policy, the runner and the approvals file are gates, so a change to them needs a human (H3); the signal and effect apps and the catalog merge on green gates.
 
 | App | Pattern | Prompt | Decides |
 | --- | --- | --- | --- |
@@ -106,9 +106,18 @@ or `active` switches the existing rulesets off or on and changes nothing else.
   reference or the `ORG_ADMIN_TOKEN`, or changes the scripts that apply
   organization settings with it, needs a human's approval of its exact head.
   Creating or changing a secret's value is only ever done by a human.
-- **H3, trust root.** `bootstrap.yml` (the template's human-reviewed trust
-  root), `automerge.yml`, `automation/**` and `CODEOWNERS` need a human's
-  approval. The policy never admits a change to itself.
+- **H3, gates.** A change to a file that holds or enforces a human gate
+  needs a human's approval: `repos.json` lists them under `gates` (the two
+  admission policies, the controller, runner and builder code that reads reach
+  and approvals, `intervention-approvals.json`, `bootstrap.yml`,
+  `automerge.yml` and `CODEOWNERS`). The policy never admits a change to its
+  own gates, so no agent can remove H1, H2, H3 or the intervention people
+  gate. Every other trust-root change (the rest of `automation/**` and the
+  workflows the agent loop runs) merges on green gates like any other change
+  in an owned repository (Alex, 2026-11-14T21:36Z: merge trust-root changes in
+  owned repos on green checks, keeping the people, upstream and secrets
+  gates). A diff that reaches a secret or a gate is decided as that, whatever
+  else it reaches.
 - **H4, shared repositories.** A repository not in `repos.json` keeps the
   review its own maintainers give. The controller answers not-applicable
   there and changes nothing. This includes the 23 per-repository standards
@@ -127,7 +136,7 @@ Giving agents their own GitHub identity would close this gap.
 | Field | Read from |
 | --- | --- |
 | repository | `repos.json` `owned` |
-| reach | the diff's paths against `trustRoot` and `secretsPaths`, its `+`/`-` lines against `secrets.`, and the `speaks-outside` label |
+| reach | the `speaks-outside` label, the diff's `+`/`-` lines against `secrets.` and its paths against `secretsPaths`, then `gates`, then `trustRoot` |
 | checks | every check run and commit status on the head, except the controller's own; with no `acceptance / ` run yet, the checks count as running |
 | human | the reviews and the `human-approved` label event, compared with the head commit |
 | draft | the pull request's draft flag |

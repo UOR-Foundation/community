@@ -9,7 +9,7 @@
     "purpose": "Decide whether the merge controller approves and merges one pull request at its head commit, from who maintains the repository, what the change reaches, the state of every check run on the head, whether a human approved that head, and whether it is a draft.",
     "fields": [
       { "name": "repository", "kind": "choice", "values": ["owned", "shared"], "means": "owned: automation/repos.json lists the repository as one whose merges Alex alone decides; shared: any other repository" },
-      { "name": "reach", "kind": "choice", "values": ["inside", "secrets", "trust-root", "outside"], "means": "what the diff reaches: inside the model only; a secrets reference or a settings write; the trust root (bootstrap.yml, automation/ or the controller workflow); or something said outside the organization" },
+      { "name": "reach", "kind": "choice", "values": ["inside", "secrets", "gate", "trust-root", "outside"], "means": "what the diff reaches: inside the model only; a secrets reference or a settings write; a file that holds a human gate (automation/repos.json gates: the admission policies, the code that reads reach and approvals, the approvals file, bootstrap.yml, automerge.yml, CODEOWNERS); the rest of the trust root (automation/** and the workflows the agent loop runs); or something said outside the organization" },
       { "name": "checks", "kind": "choice", "values": ["green", "red", "running"], "means": "every check run on the head commit, the acceptance gate (just vv) and the oracles among them: all passed or skipped, any failed, or any not finished" },
       { "name": "human", "kind": "choice", "values": ["approved", "none"], "means": "whether a human approved this exact head: an approving review by a human other than the author, or the human-approved label added after the head commit" },
       { "name": "draft", "kind": "choice", "values": ["ready", "draft"], "means": "whether the pull request is marked ready for review" }
@@ -28,7 +28,7 @@
       { "when": [{ "field": "checks", "op": "is", "value": "red" }], "then": "deny", "why": "GOVERNANCE.md 6.2 and 7.1 step 5: status checks are required and a change passes CI before it merges" },
       { "when": [{ "field": "checks", "op": "is", "value": "running" }], "then": "indeterminate", "why": "GitHub Docs, About status checks: a pending check has no conclusion yet" },
       { "when": [{ "field": "reach", "op": "is", "value": "secrets" }, { "field": "human", "op": "is", "value": "none" }], "then": "deny", "why": "AUTOMATION.md H2: a change that reads, writes or newly exposes a secret needs a human's approval of its exact head" },
-      { "when": [{ "field": "reach", "op": "is", "value": "trust-root" }, { "field": "human", "op": "is", "value": "none" }], "then": "deny", "why": "bootstrap.yml: the minimal human-reviewed trust root; AUTOMATION.md H3: the policy never admits a change to itself" }
+      { "when": [{ "field": "reach", "op": "is", "value": "gate" }, { "field": "human", "op": "is", "value": "none" }], "then": "deny", "why": "AUTOMATION.md H3: the policy never admits a change to its own human gates (H1 outside, H2 secrets, people), so no agent can remove one; bootstrap.yml is the human-reviewed trust root" }
     ],
     "otherwise": "permit",
     "otherwiseWhy": "an owned repository, a ready pull request, every check green, and nothing a human must decide: GOVERNANCE.md 6.2 review is given by the controller as an agent acting for Alex (PROV-O actedOnBehalfOf)",
@@ -38,7 +38,8 @@
       { "kind": "never", "when": [{ "field": "checks", "op": "is", "value": "red" }], "then": "permit", "why": "a failing gate or oracle never merges" },
       { "kind": "never", "when": [{ "field": "checks", "op": "is", "value": "running" }], "then": "permit", "why": "an unfinished gate never merges" },
       { "kind": "never", "when": [{ "field": "reach", "op": "is", "value": "secrets" }, { "field": "human", "op": "is", "value": "none" }], "then": "permit", "why": "no secret is touched without a human" },
-      { "kind": "never", "when": [{ "field": "reach", "op": "is", "value": "trust-root" }, { "field": "human", "op": "is", "value": "none" }], "then": "permit", "why": "the trust root and the policy never change without a human" },
+      { "kind": "never", "when": [{ "field": "reach", "op": "is", "value": "gate" }, { "field": "human", "op": "is", "value": "none" }], "then": "permit", "why": "a human gate never changes without a human" },
+      { "kind": "always", "when": [{ "field": "repository", "op": "is", "value": "owned" }, { "field": "reach", "op": "is", "value": "trust-root" }, { "field": "checks", "op": "is", "value": "green" }, { "field": "draft", "op": "is", "value": "ready" }], "then": "permit", "why": "Alex, 2026-11-14: automation changes in owned repositories merge on green gates, without waiting on a human" },
       { "kind": "never", "when": [{ "field": "draft", "op": "is", "value": "draft" }], "then": "permit", "why": "a draft never merges" }
     ],
     "examples": [
@@ -49,7 +50,9 @@
       { "request": "owned inside running none ready", "response": "indeterminate" },
       { "request": "owned secrets green none ready", "response": "deny" },
       { "request": "owned secrets green approved ready", "response": "permit" },
-      { "request": "owned trust-root green none ready", "response": "deny" },
+      { "request": "owned trust-root green none ready", "response": "permit" },
+      { "request": "owned gate green none ready", "response": "deny" },
+      { "request": "owned gate green approved ready", "response": "permit" },
       { "request": "owned inside green none draft", "response": "not-applicable" }
     ]
   },
@@ -66,8 +69,8 @@
     { "name": "GitHub", "kind": "externalSystem", "text": "The pull requests, check runs, reviews and rulesets the controller reads and the merges it requests." }
   ],
   "threats": [
-    { "name": "Self-approved policy change", "text": "An agent changes the policy or the controller in a pull request and the controller admits its own change.", "stride": "elevationOfPrivilege", "asset": "source", "likelihood": "medium", "impact": "critical",
-      "control": { "name": "Trust root needs a human", "text": "A diff under automation/, the automerge workflow or bootstrap.yml reaches the trust root, and the trust root without a human is denied for every request.", "evidence": [{ "kind": "proof", "reference": "UorMergeAdmissionProofs::inv006Holds" }, { "kind": "gate", "reference": "automation/controller.mjs reachOf" }] } },
+    { "name": "Self-approved policy change", "text": "An agent changes a human gate of the policy or the controller in a pull request and the controller admits its own change.", "stride": "elevationOfPrivilege", "asset": "source", "likelihood": "medium", "impact": "critical",
+      "control": { "name": "Gates need a human", "text": "A diff to a file automation/repos.json lists under gates (the admission policies, the controller and runner code that reads reach and approvals, the approvals file, bootstrap.yml, automerge.yml, CODEOWNERS) reaches a gate, and a gate without a human is denied for every request; the rest of the trust root merges on green gates.", "evidence": [{ "kind": "gate", "reference": "automation/merge-admission.prompt.json property: gate without a human never permits" }, { "kind": "gate", "reference": "automation/controller.mjs reachOf" }] } },
     { "name": "Secret exposed by a merge", "text": "A merged workflow sends a secret to a new step or place without anyone deciding it should.", "stride": "informationDisclosure", "asset": "source", "likelihood": "medium", "impact": "critical",
       "control": { "name": "Secrets need a human", "text": "A diff that adds or changes a secrets reference reaches secrets, and secrets without a human is denied for every request.", "evidence": [{ "kind": "proof", "reference": "UorMergeAdmissionProofs::inv005Holds" }] } },
     { "name": "Stale approval", "text": "A human approves one head, an agent pushes another, and the approval is carried to the new head.", "stride": "tampering", "asset": "request", "likelihood": "medium", "impact": "major",
