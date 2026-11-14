@@ -43,12 +43,17 @@ call the same workflow.
 ## Rulesets
 
 `remediation/apply-settings.sh` writes each repository's GOVERNANCE.md 6.2
-ruleset. In a repository listed in `repos.json` it requires a pull request and
-the checks that pull requests report, with no human approval count, because
-the controller's gate is the requirement there. Every ruleset lets an
-Organization Owner bypass it (GitHub `bypass_actors`, `OrganizationAdmin`,
-`always`). Repositories with other maintainers keep the review count their
-tier sets.
+ruleset. A ruleset requires only checks that normal pull requests are shown to
+pass: the jobs that succeeded on each of the three pull requests merged most
+recently into the default branch, from unfiltered workflows that exist on that
+branch. A job that only an unmerged pull request adds, or only a push runs, is
+never required, and a repository with no merged pull request requires none. In
+a repository listed in `repos.json` no human approval count is set, because the
+controller's gate is the requirement there; elsewhere the count is at most one.
+Every ruleset lets an Organization Owner bypass it (GitHub `bypass_actors`,
+`OrganizationAdmin`, `always`). The dry run prints the exact checks each
+ruleset would require. `apply-settings` with `enforcement` set to `disabled`
+or `active` switches the existing rulesets off or on and changes nothing else.
 
 ## Human gates (H)
 
