@@ -43,7 +43,6 @@ inductive{
     {name: decisionCodeowners, fields: []},
     {name: decisionCopyrightHolder, fields: []},
     {name: decisionDomain, fields: []},
-    {name: decisionLicenseFile, fields: []},
     {name: decisionStatus, fields: []},
     {name: decisionTier, fields: []}
   ]
@@ -59,8 +58,8 @@ structure{
     {name: openClaimsCount, type: Nat},
     {name: ecosystemDigest, type: String},
     {name: observationsDigest, type: String},
-    {name: sources, type: String},
-    {name: tierCount, type: Nat}
+    {name: rolesDigest, type: String},
+    {name: sources, type: String}
   ]
 }
 
@@ -120,7 +119,6 @@ definition{
     | Refusal.decisionCodeowners => false
     | Refusal.decisionCopyrightHolder => false
     | Refusal.decisionDomain => false
-    | Refusal.decisionLicenseFile => false
     | Refusal.decisionStatus => false
     | Refusal.decisionTier => true)
 }
@@ -139,7 +137,6 @@ definition{
     | Refusal.decisionCodeowners => true
     | Refusal.decisionCopyrightHolder => true
     | Refusal.decisionDomain => true
-    | Refusal.decisionLicenseFile => true
     | Refusal.decisionStatus => true
     | Refusal.decisionTier => true)
 }
@@ -158,23 +155,15 @@ definition{
     | Refusal.decisionCodeowners => false
     | Refusal.decisionCopyrightHolder => false
     | Refusal.decisionDomain => false
-    | Refusal.decisionLicenseFile => false
     | Refusal.decisionStatus => false
     | Refusal.decisionTier => false)
-}
-
-definition{
-  name: agree,
-  parameters: [left : Bool, right : Bool],
-  result: Bool,
-  body: (if left then right else (not right))
 }
 
 definition{
   name: tiersRead,
   parameters: [repository : Repository],
   result: Bool,
-  body: (agree (project repository tierRecorded) ((project repository tiersProjected) =? 1))
+  body: ((project repository tiersProjected) =? 1)
 }
 
 definition{
@@ -219,16 +208,11 @@ definition{
 
 definition{
   name: accounted,
-  parameters: [
-    tiers : Nat,
-    changes : (List Change),
-    claims : (List OpenClaim),
-    values : (List Repository)
-  ],
+  parameters: [changes : (List Change), claims : (List OpenClaim), values : (List Repository)],
   result: Bool,
   body: (match values
     | List.nil => true
-    | List.cons repository rest => (((project repository tierRecorded) || (((project repository tiersProjected) =? tiers) && ((tierDecisionsOf (project repository index) claims) =? 1))) && (((changesOf (project repository index) changes) =? (project repository changesNow)) && (((decisionsOf (project repository index) claims) =? (project repository decisions)) && (((findingsOf (project repository index) claims) =? (project repository findings)) && (accounted tiers changes claims rest)))))),
+    | List.cons repository rest => (((project repository tierRecorded) || ((tierDecisionsOf (project repository index) claims) =? 1)) && (((changesOf (project repository index) changes) =? (project repository changesNow)) && (((decisionsOf (project repository index) claims) =? (project repository decisions)) && (((findingsOf (project repository index) claims) =? (project repository findings)) && (accounted changes claims rest)))))),
   recursive_argument: values
 }
 
@@ -297,7 +281,7 @@ definition{
     openClaims : (List OpenClaim)
   ],
   result: Bool,
-  body: (((repositoriesTotal repositories) =? (project release repositoriesCount)) && (((changesTotal changes) =? (project release changesCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && ((repositoriesValid 0 repositories) && ((changesValid 0 (repositoriesTotal repositories) changes) && ((openClaimsValid 0 (repositoriesTotal repositories) openClaims) && (accounted (project release tierCount) changes openClaims repositories)))))))
+  body: (((repositoriesTotal repositories) =? (project release repositoriesCount)) && (((changesTotal changes) =? (project release changesCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && ((repositoriesValid 0 repositories) && ((changesValid 0 (repositoriesTotal repositories) changes) && ((openClaimsValid 0 (repositoriesTotal repositories) openClaims) && (accounted changes openClaims repositories)))))))
 }
 \end{semanticmodule}
 \end{lexlean}

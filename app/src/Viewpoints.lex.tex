@@ -237,38 +237,59 @@ definition{
 }
 
 definition{
+  name: decisionUorRemediationLifecycle,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 23, app := "uor-remediation-lifecycle", pattern := "stateMachine", source := "apps/uor-remediation-lifecycle.prompt.json", sourceDigest := "sha256:a80162ae380b73f91e324dbef84b845d279486ced915130acacce47c84e67838"})
+}
+
+definition{
+  name: decisionUorRemediationWrite,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 24, app := "uor-remediation-write", pattern := "policyDecision", source := "apps/uor-remediation-write.prompt.json", sourceDigest := "sha256:6dbad73cfd70454fadb625869cece91cb43c15d33f8c6abe27d3ff10d7cafd1e"})
+}
+
+definition{
   name: decisionUorRepoFiles,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Decision,
-  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 23, app := "uor-repo-files", pattern := "decisionTable", source := "apps/uor-repo-files.prompt.json", sourceDigest := "sha256:f6906101daef7a123fd9b8d5ce8a25599f2b441a8e8f16ae38e653b4aa21f91a"})
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 25, app := "uor-repo-files", pattern := "decisionTable", source := "apps/uor-repo-files.prompt.json", sourceDigest := "sha256:f6906101daef7a123fd9b8d5ce8a25599f2b441a8e8f16ae38e653b4aa21f91a"})
 }
 
 definition{
   name: decisionUorRepoNaming,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Decision,
-  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 24, app := "uor-repo-naming", pattern := "decisionTable", source := "apps/uor-repo-naming.prompt.json", sourceDigest := "sha256:01e8b625728aadd2e788e593038dab6085d38b130cfc11202a2eb67a0984f910"})
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 26, app := "uor-repo-naming", pattern := "decisionTable", source := "apps/uor-repo-naming.prompt.json", sourceDigest := "sha256:01e8b625728aadd2e788e593038dab6085d38b130cfc11202a2eb67a0984f910"})
 }
 
 definition{
   name: decisionUorRepoProtection,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Decision,
-  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 25, app := "uor-repo-protection", pattern := "decisionTable", source := "apps/uor-repo-protection.prompt.json", sourceDigest := "sha256:589c79fc95ddf9219bec0a64d8243677045d3004e4c179f0b5aaca74d3eb81ce"})
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 27, app := "uor-repo-protection", pattern := "decisionTable", source := "apps/uor-repo-protection.prompt.json", sourceDigest := "sha256:589c79fc95ddf9219bec0a64d8243677045d3004e4c179f0b5aaca74d3eb81ce"})
 }
 
 definition{
   name: decisionUorRepoStandards,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Decision,
-  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 26, app := "uor-repo-standards", pattern := "decisionTable", source := "apps/uor-repo-standards.prompt.json", sourceDigest := "sha256:5110ceae4dcad03303e79f678303c4cc0b1c558ce676eed7a8c82f4f09ebf3b0"})
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 28, app := "uor-repo-standards", pattern := "decisionTable", source := "apps/uor-repo-standards.prompt.json", sourceDigest := "sha256:5110ceae4dcad03303e79f678303c4cc0b1c558ce676eed7a8c82f4f09ebf3b0"})
+}
+
+definition{
+  name: decisionUorRepoTier,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 29, app := "uor-repo-tier", pattern := "decisionTable", source := "apps/uor-repo-tier.prompt.json", sourceDigest := "sha256:549a37d3e5912b33a5dcb3eb3d190492e4a2125d00315469ab7c7ca1b6c1e6c2"})
 }
 
 definition{
   name: decisionUorTocLifecycle,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Decision,
-  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 27, app := "uor-toc-lifecycle", pattern := "stateMachine", source := "apps/uor-toc-lifecycle.prompt.json", sourceDigest := "sha256:17b433b1465cfa5cc102c8da2104a5f3cb7f7dc0f471f67005f71e7ab0931648"})
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 30, app := "uor-toc-lifecycle", pattern := "stateMachine", source := "apps/uor-toc-lifecycle.prompt.json", sourceDigest := "sha256:17b433b1465cfa5cc102c8da2104a5f3cb7f7dc0f471f67005f71e7ab0931648"})
 }
 
 definition{
@@ -1066,77 +1087,147 @@ definition{
   name: concern113,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Concern,
-  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 113, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 23, text := "Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close."})
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 113, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 23, text := "Approves each remediation and applies its settings, and needs to see which step every repository is at."})
 }
 
 definition{
   name: concern114,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Concern,
-  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 114, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 23, text := "Holds final governance authority and needs every repository measured against the same published norms."})
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 114, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 23, text := "Reviews and merges or declines the remediation pull request, and needs a declined remediation to end rather than be reopened."})
 }
 
 definition{
   name: concern115,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Concern,
-  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 115, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 24, text := "Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close."})
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 115, stakeholder := 6, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 23, text := "Opens the pull requests and re-observes the repositories, and needs each step to name the act that moves it."})
 }
 
 definition{
   name: concern116,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Concern,
-  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 116, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 24, text := "Holds final governance authority and needs every repository measured against the same published norms."})
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 116, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 23, text := "Reports the ecosystem's standards health and needs a repository counted conformant only on a fresh observation."})
 }
 
 definition{
   name: concern117,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Concern,
-  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 117, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 25, text := "Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close."})
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 117, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 24, text := "Approves the remediation and applies the settings only an admin can change, and needs no write to happen without that approval."})
 }
 
 definition{
   name: concern118,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Concern,
-  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 118, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 25, text := "Holds final governance authority and needs every repository measured against the same published norms."})
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 118, stakeholder := 6, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 24, text := "Opens the remediation pull requests on behalf of the Organization Owner and needs to know exactly which changes it may make and how."})
 }
 
 definition{
   name: concern119,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Concern,
-  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 119, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 26, text := "Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close."})
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 119, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 24, text := "Reviews each remediation pull request and needs every change to arrive through review, never as a direct push."})
 }
 
 definition{
   name: concern120,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Concern,
-  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 120, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 26, text := "Holds final governance authority and needs every repository measured against the same published norms."})
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 120, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 25, text := "Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close."})
 }
 
 definition{
   name: concern121,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Concern,
-  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 121, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 27, text := "Opens a Sandbox, Incubation or Graduation issue in UOR-Foundation/.github and needs to know which evidence and which vote move the project."})
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 121, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 25, text := "Holds final governance authority and needs every repository measured against the same published norms."})
 }
 
 definition{
   name: concern122,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Concern,
-  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 122, stakeholder := 2, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 27, text := "Votes on applications and needs no transition to happen without a quorum, the required majority and complete evidence."})
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 122, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 26, text := "Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close."})
 }
 
 definition{
   name: concern123,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Concern,
-  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 123, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 27, text := "Publishes each project's stage to the community and needs the published stage to be the one the TOC's acts determine."})
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 123, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 26, text := "Holds final governance authority and needs every repository measured against the same published norms."})
+}
+
+definition{
+  name: concern124,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 124, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 27, text := "Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close."})
+}
+
+definition{
+  name: concern125,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 125, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 27, text := "Holds final governance authority and needs every repository measured against the same published norms."})
+}
+
+definition{
+  name: concern126,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 126, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 28, text := "Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close."})
+}
+
+definition{
+  name: concern127,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 127, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 28, text := "Holds final governance authority and needs every repository measured against the same published norms."})
+}
+
+definition{
+  name: concern128,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 128, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 29, text := "Records the tier of a repository and needs the proposed tier to follow GOVERNANCE.md 5 and to yield to the tier already recorded."})
+}
+
+definition{
+  name: concern129,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 129, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 29, text := "Holds final governance authority and needs every repository classified by the same published rule."})
+}
+
+definition{
+  name: concern130,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 130, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 29, text := "Chooses which UOR Foundation repositories to depend on and reads the tier as the controls a repository promises."})
+}
+
+definition{
+  name: concern131,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 131, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 30, text := "Opens a Sandbox, Incubation or Graduation issue in UOR-Foundation/.github and needs to know which evidence and which vote move the project."})
+}
+
+definition{
+  name: concern132,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 132, stakeholder := 2, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 30, text := "Votes on applications and needs no transition to happen without a quorum, the required majority and complete evidence."})
+}
+
+definition{
+  name: concern133,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 133, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 30, text := "Publishes each project's stage to the community and needs the published stage to be the one the TOC's acts determine."})
 }
 
 definition{
@@ -1150,28 +1241,28 @@ definition{
   name: viewpointOrganizationOwner,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Viewpoint,
-  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 1, stakeholder := 1, concerns := (cons 109 (cons 114 (cons 116 (cons 118 (cons 120 (nil Nat))))))})
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 1, stakeholder := 1, concerns := (cons 109 (cons 113 (cons 117 (cons 121 (cons 123 (cons 125 (cons 127 (cons 129 (nil Nat)))))))))})
 }
 
 definition{
   name: viewpointToc,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Viewpoint,
-  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 2, stakeholder := 2, concerns := (cons 122 (nil Nat))})
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 2, stakeholder := 2, concerns := (cons 132 (nil Nat))})
 }
 
 definition{
   name: viewpointCommunityOutreach,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Viewpoint,
-  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 3, stakeholder := 3, concerns := (cons 9 (cons 10 (cons 11 (cons 30 (cons 31 (cons 40 (cons 51 (cons 78 (cons 83 (cons 84 (cons 85 (cons 86 (cons 87 (cons 88 (cons 89 (cons 90 (cons 91 (cons 92 (cons 93 (cons 94 (cons 95 (cons 96 (cons 97 (cons 98 (cons 99 (cons 100 (cons 101 (cons 107 (cons 110 (cons 111 (cons 123 (nil Nat))))))))))))))))))))))))))))))))})
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 3, stakeholder := 3, concerns := (cons 9 (cons 10 (cons 11 (cons 30 (cons 31 (cons 40 (cons 51 (cons 78 (cons 83 (cons 84 (cons 85 (cons 86 (cons 87 (cons 88 (cons 89 (cons 90 (cons 91 (cons 92 (cons 93 (cons 94 (cons 95 (cons 96 (cons 97 (cons 98 (cons 99 (cons 100 (cons 101 (cons 107 (cons 110 (cons 111 (cons 116 (cons 133 (nil Nat)))))))))))))))))))))))))))))))))})
 }
 
 definition{
   name: viewpointMaintainer,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Viewpoint,
-  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 4, stakeholder := 4, concerns := (cons 0 (cons 1 (cons 2 (cons 14 (cons 15 (cons 16 (cons 17 (cons 18 (cons 19 (cons 20 (cons 21 (cons 22 (cons 23 (cons 24 (cons 25 (cons 47 (cons 52 (cons 57 (cons 79 (cons 113 (cons 115 (cons 117 (cons 119 (cons 121 (nil Nat)))))))))))))))))))))))))})
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 4, stakeholder := 4, concerns := (cons 0 (cons 1 (cons 2 (cons 14 (cons 15 (cons 16 (cons 17 (cons 18 (cons 19 (cons 20 (cons 21 (cons 22 (cons 23 (cons 24 (cons 25 (cons 47 (cons 52 (cons 57 (cons 79 (cons 114 (cons 119 (cons 120 (cons 122 (cons 124 (cons 126 (cons 128 (cons 131 (nil Nat))))))))))))))))))))))))))))})
 }
 
 definition{
@@ -1185,7 +1276,7 @@ definition{
   name: viewpointAgentContributor,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Viewpoint,
-  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 6, stakeholder := 6, concerns := (cons 106 (nil Nat))})
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 6, stakeholder := 6, concerns := (cons 106 (cons 115 (cons 118 (nil Nat))))})
 }
 
 definition{
@@ -1206,7 +1297,7 @@ definition{
   name: viewpointAdopter,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Viewpoint,
-  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 9, stakeholder := 9, concerns := (cons 8 (cons 12 (cons 42 (cons 43 (cons 46 (cons 49 (cons 53 (cons 54 (cons 55 (cons 56 (cons 58 (cons 59 (cons 60 (cons 61 (cons 62 (cons 63 (cons 64 (cons 65 (cons 66 (cons 67 (cons 68 (cons 69 (cons 70 (cons 71 (cons 72 (cons 73 (cons 74 (cons 75 (cons 76 (cons 80 (cons 81 (nil Nat))))))))))))))))))))))))))))))))})
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 9, stakeholder := 9, concerns := (cons 8 (cons 12 (cons 42 (cons 43 (cons 46 (cons 49 (cons 53 (cons 54 (cons 55 (cons 56 (cons 58 (cons 59 (cons 60 (cons 61 (cons 62 (cons 63 (cons 64 (cons 65 (cons 66 (cons 67 (cons 68 (cons 69 (cons 70 (cons 71 (cons 72 (cons 73 (cons 74 (cons 75 (cons 76 (cons 80 (cons 81 (cons 130 (nil Nat)))))))))))))))))))))))))))))))))})
 }
 
 definition{
@@ -1220,28 +1311,28 @@ definition{
   name: viewOrganizationOwner,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::View,
-  body: (record Foundation.Viewpoint.V1.Model::View {index := 1, viewpoint := 1, models := (nil Nat), decisions := (cons 21 (cons 23 (cons 24 (cons 25 (cons 26 (nil Nat)))))), registerClaims := (nil Nat), claims := (nil Nat)})
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 1, viewpoint := 1, models := (nil Nat), decisions := (cons 21 (cons 23 (cons 24 (cons 25 (cons 26 (cons 27 (cons 28 (cons 29 (nil Nat))))))))), registerClaims := (nil Nat), claims := (nil Nat)})
 }
 
 definition{
   name: viewToc,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::View,
-  body: (record Foundation.Viewpoint.V1.Model::View {index := 2, viewpoint := 2, models := (nil Nat), decisions := (cons 27 (nil Nat)), registerClaims := (nil Nat), claims := (nil Nat)})
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 2, viewpoint := 2, models := (nil Nat), decisions := (cons 30 (nil Nat)), registerClaims := (nil Nat), claims := (nil Nat)})
 }
 
 definition{
   name: viewCommunityOutreach,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::View,
-  body: (record Foundation.Viewpoint.V1.Model::View {index := 3, viewpoint := 3, models := (cons 3 (cons 4 (cons 5 (cons 8 (cons 17 (nil Nat)))))), decisions := (cons 0 (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 (cons 6 (cons 7 (cons 8 (cons 9 (cons 10 (cons 11 (cons 12 (cons 13 (cons 14 (cons 15 (cons 16 (cons 17 (cons 18 (cons 20 (cons 21 (cons 22 (cons 27 (nil Nat)))))))))))))))))))))))), registerClaims := (nil Nat), claims := (cons 4 (cons 7 (nil Nat)))})
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 3, viewpoint := 3, models := (cons 3 (cons 4 (cons 5 (cons 8 (cons 17 (nil Nat)))))), decisions := (cons 0 (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 (cons 6 (cons 7 (cons 8 (cons 9 (cons 10 (cons 11 (cons 12 (cons 13 (cons 14 (cons 15 (cons 16 (cons 17 (cons 18 (cons 20 (cons 21 (cons 22 (cons 23 (cons 30 (nil Nat))))))))))))))))))))))))), registerClaims := (nil Nat), claims := (cons 4 (cons 7 (nil Nat)))})
 }
 
 definition{
   name: viewMaintainer,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::View,
-  body: (record Foundation.Viewpoint.V1.Model::View {index := 4, viewpoint := 4, models := (cons 0 (cons 4 (cons 6 (cons 8 (cons 9 (cons 17 (nil Nat))))))), decisions := (cons 23 (cons 24 (cons 25 (cons 26 (cons 27 (nil Nat)))))), registerClaims := (nil Nat), claims := (cons 0 (cons 1 (cons 4 (nil Nat))))})
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 4, viewpoint := 4, models := (cons 0 (cons 4 (cons 6 (cons 8 (cons 9 (cons 17 (nil Nat))))))), decisions := (cons 23 (cons 24 (cons 25 (cons 26 (cons 27 (cons 28 (cons 29 (cons 30 (nil Nat))))))))), registerClaims := (nil Nat), claims := (cons 0 (cons 1 (cons 4 (nil Nat))))})
 }
 
 definition{
@@ -1255,7 +1346,7 @@ definition{
   name: viewAgentContributor,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::View,
-  body: (record Foundation.Viewpoint.V1.Model::View {index := 6, viewpoint := 6, models := (nil Nat), decisions := (cons 20 (cons 22 (nil Nat))), registerClaims := (nil Nat), claims := (cons 7 (nil Nat))})
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 6, viewpoint := 6, models := (nil Nat), decisions := (cons 20 (cons 22 (cons 23 (cons 24 (nil Nat))))), registerClaims := (nil Nat), claims := (cons 7 (nil Nat))})
 }
 
 definition{
@@ -1276,7 +1367,7 @@ definition{
   name: viewAdopter,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::View,
-  body: (record Foundation.Viewpoint.V1.Model::View {index := 9, viewpoint := 9, models := (cons 0 (cons 3 (cons 5 (cons 6 (cons 8 (cons 9 (cons 10 (cons 11 (cons 12 (cons 13 (cons 14 (cons 16 (cons 17 (cons 18 (nil Nat))))))))))))))), decisions := (nil Nat), registerClaims := (cons 0 (nil Nat)), claims := (cons 0 (cons 1 (nil Nat)))})
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 9, viewpoint := 9, models := (cons 0 (cons 3 (cons 5 (cons 6 (cons 8 (cons 9 (cons 10 (cons 11 (cons 12 (cons 13 (cons 14 (cons 16 (cons 17 (cons 18 (nil Nat))))))))))))))), decisions := (cons 29 (nil Nat)), registerClaims := (cons 0 (nil Nat)), claims := (cons 0 (cons 1 (nil Nat)))})
 }
 
 definition{
@@ -1339,7 +1430,7 @@ definition{
   name: bounds,
   parameters: [],
   result: Foundation.Viewpoint.V1.Model::Bounds,
-  body: (record Foundation.Viewpoint.V1.Model::Bounds {stakeholders := 10, models := 19, decisions := 28, concerns := 124, registerClaims := 1, claims := 8})
+  body: (record Foundation.Viewpoint.V1.Model::Bounds {stakeholders := 10, models := 19, decisions := 31, concerns := 134, registerClaims := 1, claims := 8})
 }
 
 definition{
@@ -1353,14 +1444,14 @@ definition{
   name: decisions,
   parameters: [],
   result: (List Foundation.Viewpoint.V1.Model::Decision),
-  body: (cons (decisionChaossAiAlignmentCommunityAlignedTrainingFeedback) (cons (decisionChaossBusinessReadinessOfAnOpenSourceProject) (cons (decisionChaossCollaborationDevelopmentIndex) (cons (decisionChaossCommunityActivity) (cons (decisionChaossCommunityGovernedAiUseInOpenCommunities) (cons (decisionChaossCommunityServiceAndSupport) (cons (decisionChaossCommunityWelcomingness) (cons (decisionChaossDeiEventBadging) (cons (decisionChaossDevelopmentResponsiveness) (cons (decisionChaossFunding) (cons (decisionChaossOssProjectViabilityCommunity) (cons (decisionChaossOssProjectViabilityComplianceSecurity) (cons (decisionChaossOssProjectViabilityGovernance) (cons (decisionChaossOssProjectViabilityStrategy) (cons (decisionChaossProjectAwareness) (cons (decisionChaossProjectEngagement) (cons (decisionChaossProjectViabilityStarter) (cons (decisionChaossSafety) (cons (decisionChaossStarterProjectHealth) (cons (decisionUorCocEnforcement) (cons (decisionUorContributionAttribution) (cons (decisionUorDiscordRead) (cons (decisionUorObservationAdmission) (cons (decisionUorRepoFiles) (cons (decisionUorRepoNaming) (cons (decisionUorRepoProtection) (cons (decisionUorRepoStandards) (cons (decisionUorTocLifecycle) (nil Foundation.Viewpoint.V1.Model::Decision)))))))))))))))))))))))))))))
+  body: (cons (decisionChaossAiAlignmentCommunityAlignedTrainingFeedback) (cons (decisionChaossBusinessReadinessOfAnOpenSourceProject) (cons (decisionChaossCollaborationDevelopmentIndex) (cons (decisionChaossCommunityActivity) (cons (decisionChaossCommunityGovernedAiUseInOpenCommunities) (cons (decisionChaossCommunityServiceAndSupport) (cons (decisionChaossCommunityWelcomingness) (cons (decisionChaossDeiEventBadging) (cons (decisionChaossDevelopmentResponsiveness) (cons (decisionChaossFunding) (cons (decisionChaossOssProjectViabilityCommunity) (cons (decisionChaossOssProjectViabilityComplianceSecurity) (cons (decisionChaossOssProjectViabilityGovernance) (cons (decisionChaossOssProjectViabilityStrategy) (cons (decisionChaossProjectAwareness) (cons (decisionChaossProjectEngagement) (cons (decisionChaossProjectViabilityStarter) (cons (decisionChaossSafety) (cons (decisionChaossStarterProjectHealth) (cons (decisionUorCocEnforcement) (cons (decisionUorContributionAttribution) (cons (decisionUorDiscordRead) (cons (decisionUorObservationAdmission) (cons (decisionUorRemediationLifecycle) (cons (decisionUorRemediationWrite) (cons (decisionUorRepoFiles) (cons (decisionUorRepoNaming) (cons (decisionUorRepoProtection) (cons (decisionUorRepoStandards) (cons (decisionUorRepoTier) (cons (decisionUorTocLifecycle) (nil Foundation.Viewpoint.V1.Model::Decision))))))))))))))))))))))))))))))))
 }
 
 definition{
   name: concerns2,
   parameters: [],
   result: (List Foundation.Viewpoint.V1.Model::Concern),
-  body: (cons (concern96) (cons (concern97) (cons (concern98) (cons (concern99) (cons (concern100) (cons (concern101) (cons (concern102) (cons (concern103) (cons (concern104) (cons (concern105) (cons (concern106) (cons (concern107) (cons (concern108) (cons (concern109) (cons (concern110) (cons (concern111) (cons (concern112) (cons (concern113) (cons (concern114) (cons (concern115) (cons (concern116) (cons (concern117) (cons (concern118) (cons (concern119) (cons (concern120) (cons (concern121) (cons (concern122) (cons (concern123) (nil Foundation.Viewpoint.V1.Model::Concern)))))))))))))))))))))))))))))
+  body: (cons (concern96) (cons (concern97) (cons (concern98) (cons (concern99) (cons (concern100) (cons (concern101) (cons (concern102) (cons (concern103) (cons (concern104) (cons (concern105) (cons (concern106) (cons (concern107) (cons (concern108) (cons (concern109) (cons (concern110) (cons (concern111) (cons (concern112) (cons (concern113) (cons (concern114) (cons (concern115) (cons (concern116) (cons (concern117) (cons (concern118) (cons (concern119) (cons (concern120) (cons (concern121) (cons (concern122) (cons (concern123) (cons (concern124) (cons (concern125) (cons (concern126) (cons (concern127) (cons (concern128) (cons (concern129) (cons (concern130) (cons (concern131) (cons (concern132) (cons (concern133) (nil Foundation.Viewpoint.V1.Model::Concern)))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
@@ -1409,7 +1500,7 @@ definition{
   name: decisionIndices,
   parameters: [],
   result: (List Nat),
-  body: (cons 0 (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 (cons 6 (cons 7 (cons 8 (cons 9 (cons 10 (cons 11 (cons 12 (cons 13 (cons 14 (cons 15 (cons 16 (cons 17 (cons 18 (cons 19 (cons 20 (cons 21 (cons 22 (cons 23 (cons 24 (cons 25 (cons 26 (cons 27 (nil Nat)))))))))))))))))))))))))))))
+  body: (cons 0 (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 (cons 6 (cons 7 (cons 8 (cons 9 (cons 10 (cons 11 (cons 12 (cons 13 (cons 14 (cons 15 (cons 16 (cons 17 (cons 18 (cons 19 (cons 20 (cons 21 (cons 22 (cons 23 (cons 24 (cons 25 (cons 26 (cons 27 (cons 28 (cons 29 (cons 30 (nil Nat))))))))))))))))))))))))))))))))
 }
 
 definition{

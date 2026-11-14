@@ -39,7 +39,7 @@ https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e
 
 - As a community manager/maintainer, I want to regularly challenge our project and community around safety and track our progress over time.
 
-## Decisions (23)
+## Decisions (24)
 
 ### AI Alignment - Community Aligned Training (Feedback) indicator
 
@@ -172,6 +172,12 @@ XACML 3.0 policy, https://github.com/UOR-Foundation/community/blob/main/apps/uor
 XACML 3.0 policy, https://github.com/UOR-Foundation/community/blob/main/apps/uor-observation-admission.prompt.json
 
 - Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated.
+
+### Remediation lifecycle
+
+UML 2.5.1 state machine, https://github.com/UOR-Foundation/community/blob/main/apps/uor-remediation-lifecycle.prompt.json
+
+- Reports the ecosystem's standards health and needs a repository counted conformant only on a fresh observation.
 
 ### TOC project lifecycle
 

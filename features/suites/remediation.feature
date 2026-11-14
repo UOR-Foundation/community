@@ -8,7 +8,7 @@ Feature: remediation
   Foundation.Remediation.V1 records in app/src/Remediation.lex.tex.
 
   @RM-01 @build
-  Scenario: The remediation register is valid: every repository is projected at one tier exactly when its tier is recorded and at every tier otherwise, a repository without a recorded tier names its tier as an open decision, and each repository's counts of changes, decisions and findings are the records that name it
+  Scenario: The remediation register is valid: every repository is projected at exactly one tier, the one its tier tag records or else the one the uor-repo-tier app proposes from its use case, a repository without a recorded tier names the proposed tier as an open claim for its maintainers to confirm, and each repository's counts of changes, decisions and findings are the records that name it
     Given the catalog in app/src/Remediation.lex.tex
     When the Lean kernel checks registerValidHolds in the Remediation catalog during prismpm verify
     Then registerValid holds of the release, its repositories, its changes and its open claims

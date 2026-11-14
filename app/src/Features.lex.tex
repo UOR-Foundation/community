@@ -25,10 +25,13 @@
 \importmodule{UorContributionAttribution}
 \importmodule{UorDiscordRead}
 \importmodule{UorObservationAdmission}
+\importmodule{UorRemediationLifecycle}
+\importmodule{UorRemediationWrite}
 \importmodule{UorRepoFiles}
 \importmodule{UorRepoNaming}
 \importmodule{UorRepoProtection}
 \importmodule{UorRepoStandards}
+\importmodule{UorRepoTier}
 \importmodule{UorTocLifecycle}
 \importmodule{Architecture}
 \importmodule{Foundation.Arch}
@@ -742,6 +745,76 @@ definition{
 }
 
 definition{
+  name: acceptUorRemediationLifecycleINV001,
+  parameters: [],
+  result: String,
+  body: "UorRemediationLifecycleProofs::inv001Holds"
+}
+
+definition{
+  name: acceptUorRemediationLifecycleINV002,
+  parameters: [],
+  result: String,
+  body: "UorRemediationLifecycleProofs::inv002Holds"
+}
+
+definition{
+  name: acceptUorRemediationLifecycleINV003,
+  parameters: [],
+  result: String,
+  body: "UorRemediationLifecycleProofs::inv003Holds"
+}
+
+definition{
+  name: acceptUorRemediationLifecycleINV004,
+  parameters: [],
+  result: String,
+  body: "UorRemediationLifecycleProofs::inv004Holds"
+}
+
+definition{
+  name: acceptUorRemediationLifecycleINV005,
+  parameters: [],
+  result: String,
+  body: "UorRemediationLifecycleProofs::inv005Holds"
+}
+
+definition{
+  name: acceptUorRemediationLifecycleINV006,
+  parameters: [],
+  result: String,
+  body: "UorRemediationLifecycleProofs::inv006Holds"
+}
+
+definition{
+  name: acceptUorRemediationWriteINV001,
+  parameters: [],
+  result: String,
+  body: "UorRemediationWriteProofs::inv001Holds"
+}
+
+definition{
+  name: acceptUorRemediationWriteINV002,
+  parameters: [],
+  result: String,
+  body: "UorRemediationWriteProofs::inv002Holds"
+}
+
+definition{
+  name: acceptUorRemediationWriteINV003,
+  parameters: [],
+  result: String,
+  body: "UorRemediationWriteProofs::inv003Holds"
+}
+
+definition{
+  name: acceptUorRemediationWriteINV004,
+  parameters: [],
+  result: String,
+  body: "UorRemediationWriteProofs::inv004Holds"
+}
+
+definition{
   name: acceptUorRepoFilesINV001,
   parameters: [],
   result: String,
@@ -865,6 +938,27 @@ definition{
   parameters: [],
   result: String,
   body: "UorRepoStandardsProofs::inv004Holds"
+}
+
+definition{
+  name: acceptUorRepoTierINV001,
+  parameters: [],
+  result: String,
+  body: "UorRepoTierProofs::inv001Holds"
+}
+
+definition{
+  name: acceptUorRepoTierINV002,
+  parameters: [],
+  result: String,
+  body: "UorRepoTierProofs::inv002Holds"
+}
+
+definition{
+  name: acceptUorRepoTierINV003,
+  parameters: [],
+  result: String,
+  body: "UorRepoTierProofs::inv003Holds"
 }
 
 definition{
@@ -2590,6 +2684,244 @@ definition{
 }
 
 definition{
+  name: featureUorRemediationLifecycleRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When step is declined, the answer is declined.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleRule1" (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When step is conformant, the answer is conformant.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleRule2" (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When step is observed and approval is given, the answer is approved.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleRule3" (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When step is approved and pr is open, the answer is opened.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleRule4" (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleRule5,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When step is opened and pr is merged, the answer is merged.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleRule5" (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleRule6,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When step is opened and pr is closed, the answer is declined.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleRule6" (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleRule7,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When step is merged and settings is applied, the answer is applied.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleRule7" (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleRule8,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When step is applied and outcome is conformant, the answer is conformant.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleRule8" (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleRule9,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When step is applied and outcome is blocked, the answer is observed.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleRule9" (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleRule10,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When step is approved, the answer is approved.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleRule10" (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleRule11,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When step is opened, the answer is opened.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleRule11" (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleRule12,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When step is merged, the answer is merged.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleRule12" (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleRule13,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When step is applied, the answer is applied.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleRule13" (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is observed.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String)), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not step, approval, pr, settings, outcome in order, separated by single spaces, or is over 136 bytes, is answered invalid.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleDispatch" (cons "UorRemediationLifecycle::uorRemediationLifecycleDecodeField1" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers opened when step is observed and approval is none.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String)), acceptance := (cons "Features::acceptUorRemediationLifecycleINV001" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers conformant when step is merged and outcome is conformant.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String)), acceptance := (cons "Features::acceptUorRemediationLifecycleINV002" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers declined when step is declined.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String)), acceptance := (cons "Features::acceptUorRemediationLifecycleINV003" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleINV004,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers conformant when step is applied and outcome is unobserved.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String)), acceptance := (cons "Features::acceptUorRemediationLifecycleINV004" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleINV005,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers conformant when step is conformant.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String)), acceptance := (cons "Features::acceptUorRemediationLifecycleINV005" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationLifecycleINV006,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers declined when step is declined.", calls := (cons "UorRemediationLifecycle::uorRemediationLifecycleJudge" (nil String)), acceptance := (cons "Features::acceptUorRemediationLifecycleINV006" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationWriteRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When actor is unverified, the answer is indeterminate.", calls := (cons "UorRemediationWrite::uorRemediationWriteRule1" (cons "UorRemediationWrite::uorRemediationWriteJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationWriteRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When actor is other, the answer is not-applicable.", calls := (cons "UorRemediationWrite::uorRemediationWriteRule2" (cons "UorRemediationWrite::uorRemediationWriteJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationWriteRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When repository is archived and route is pull-request, the answer is deny.", calls := (cons "UorRemediationWrite::uorRemediationWriteRule3" (cons "UorRemediationWrite::uorRemediationWriteJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationWriteRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When approval is none and actor is not owner, the answer is deny.", calls := (cons "UorRemediationWrite::uorRemediationWriteRule4" (cons "UorRemediationWrite::uorRemediationWriteJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationWriteRule5,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When change is file and route is direct, the answer is deny.", calls := (cons "UorRemediationWrite::uorRemediationWriteRule5" (cons "UorRemediationWrite::uorRemediationWriteJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationWriteRule6,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When change is not file and actor is not owner, the answer is deny.", calls := (cons "UorRemediationWrite::uorRemediationWriteRule6" (cons "UorRemediationWrite::uorRemediationWriteJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationWriteRule7,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When change is not file and route is pull-request, the answer is deny.", calls := (cons "UorRemediationWrite::uorRemediationWriteRule7" (cons "UorRemediationWrite::uorRemediationWriteJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationWriteOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is permit.", calls := (cons "UorRemediationWrite::uorRemediationWriteJudge" (nil String)), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationWriteRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not actor, change, repository, approval, route in order, separated by single spaces, or is over 136 bytes, is answered invalid.", calls := (cons "UorRemediationWrite::uorRemediationWriteDispatch" (cons "UorRemediationWrite::uorRemediationWriteDecodeField1" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationWriteINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers permit when approval is none and actor is agent.", calls := (cons "UorRemediationWrite::uorRemediationWriteJudge" (nil String)), acceptance := (cons "Features::acceptUorRemediationWriteINV001" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationWriteINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers permit when change is file and route is direct.", calls := (cons "UorRemediationWrite::uorRemediationWriteJudge" (nil String)), acceptance := (cons "Features::acceptUorRemediationWriteINV002" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationWriteINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers permit when change is ruleset and actor is agent.", calls := (cons "UorRemediationWrite::uorRemediationWriteJudge" (nil String)), acceptance := (cons "Features::acceptUorRemediationWriteINV003" (nil String))})
+}
+
+definition{
+  name: featureUorRemediationWriteINV004,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers permit when actor is agent and change is file and repository is live and approval is given and route is pull-request.", calls := (cons "UorRemediationWrite::uorRemediationWriteJudge" (nil String)), acceptance := (cons "Features::acceptUorRemediationWriteINV004" (nil String))})
+}
+
+definition{
   name: featureUorRepoFilesRule1,
   parameters: [],
   result: Foundation.Arch::Feature,
@@ -2951,6 +3283,118 @@ definition{
   parameters: [],
   result: Foundation.Arch::Feature,
   body: (record Foundation.Arch::Feature {statement := "It never answers unversioned when tier is t3.", calls := (cons "UorRepoStandards::uorRepoStandardsJudge" (nil String)), acceptance := (cons "Features::acceptUorRepoStandardsINV004" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When recorded is t1, the answer is t1.", calls := (cons "UorRepoTier::uorRepoTierRule1" (cons "UorRepoTier::uorRepoTierJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When recorded is t2, the answer is t2.", calls := (cons "UorRepoTier::uorRepoTierRule2" (cons "UorRepoTier::uorRepoTierJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When recorded is t3, the answer is t3.", calls := (cons "UorRepoTier::uorRepoTierRule3" (cons "UorRepoTier::uorRepoTierJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When recorded is t4, the answer is t4.", calls := (cons "UorRepoTier::uorRepoTierRule4" (cons "UorRepoTier::uorRepoTierJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierRule5,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When role is framework, the answer is t1.", calls := (cons "UorRepoTier::uorRepoTierRule5" (cons "UorRepoTier::uorRepoTierJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierRule6,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When role is spec, the answer is t1.", calls := (cons "UorRepoTier::uorRepoTierRule6" (cons "UorRepoTier::uorRepoTierJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierRule7,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When role is implementation, the answer is t2.", calls := (cons "UorRepoTier::uorRepoTierRule7" (cons "UorRepoTier::uorRepoTierJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierRule8,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When role is integration, the answer is t2.", calls := (cons "UorRepoTier::uorRepoTierRule8" (cons "UorRepoTier::uorRepoTierJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierRule9,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When role is docs, the answer is t3.", calls := (cons "UorRepoTier::uorRepoTierRule9" (cons "UorRepoTier::uorRepoTierJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierRule10,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When role is website, the answer is t3.", calls := (cons "UorRepoTier::uorRepoTierRule10" (cons "UorRepoTier::uorRepoTierJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierRule11,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When role is presentation, the answer is t3.", calls := (cons "UorRepoTier::uorRepoTierRule11" (cons "UorRepoTier::uorRepoTierJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is t4.", calls := (cons "UorRepoTier::uorRepoTierJudge" (nil String)), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not recorded, role in order, separated by single spaces, or is over 64 bytes, is answered invalid.", calls := (cons "UorRepoTier::uorRepoTierDispatch" (cons "UorRepoTier::uorRepoTierDecodeField1" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers t2 when recorded is t2 and role is framework.", calls := (cons "UorRepoTier::uorRepoTierJudge" (nil String)), acceptance := (cons "Features::acceptUorRepoTierINV001" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers t1 when recorded is none and role is experiment.", calls := (cons "UorRepoTier::uorRepoTierJudge" (nil String)), acceptance := (cons "Features::acceptUorRepoTierINV002" (nil String))})
+}
+
+definition{
+  name: featureUorRepoTierINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers t3 when recorded is none and role is website.", calls := (cons "UorRepoTier::uorRepoTierJudge" (nil String)), acceptance := (cons "Features::acceptUorRepoTierINV003" (nil String))})
 }
 
 definition{
@@ -3458,6 +3902,69 @@ definition{
 }
 
 definition{
+  name: journeyUorRemediationLifecycleAgentContributor,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderAgentContributor", steps := (cons "Features::featureUorRemediationLifecycleRule4" (cons "Features::featureUorRemediationLifecycleRule8" (cons "Features::featureUorRemediationLifecycleRule9" (nil String))))})
+}
+
+definition{
+  name: journeyUorRemediationLifecycleCommunityAndOutreachCommittee,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderCommunityAndOutreachCommittee", steps := (cons "Features::featureUorRemediationLifecycleRule1" (cons "Features::featureUorRemediationLifecycleRule2" (cons "Features::featureUorRemediationLifecycleRule3" (cons "Features::featureUorRemediationLifecycleRule4" (cons "Features::featureUorRemediationLifecycleRule5" (cons "Features::featureUorRemediationLifecycleRule6" (cons "Features::featureUorRemediationLifecycleRule7" (cons "Features::featureUorRemediationLifecycleRule8" (cons "Features::featureUorRemediationLifecycleRule9" (cons "Features::featureUorRemediationLifecycleRule10" (cons "Features::featureUorRemediationLifecycleRule11" (cons "Features::featureUorRemediationLifecycleRule12" (cons "Features::featureUorRemediationLifecycleRule13" (cons "Features::featureUorRemediationLifecycleOtherwise" (nil String)))))))))))))))})
+}
+
+definition{
+  name: journeyUorRemediationLifecycleOrganizationOwner,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderOrganizationOwner", steps := (cons "Features::featureUorRemediationLifecycleRule3" (cons "Features::featureUorRemediationLifecycleRule7" (cons "Features::featureUorRemediationLifecycleINV001" (nil String))))})
+}
+
+definition{
+  name: journeyUorRemediationLifecycleRepositoryMaintainer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRepositoryMaintainer", steps := (cons "Features::featureUorRemediationLifecycleRule5" (cons "Features::featureUorRemediationLifecycleRule6" (cons "Features::featureUorRemediationLifecycleINV003" (nil String))))})
+}
+
+definition{
+  name: journeyUorRemediationLifecycleVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureUorRemediationLifecycleRefuseMalformed" (cons "Features::featureUorRemediationLifecycleINV001" (cons "Features::featureUorRemediationLifecycleINV002" (cons "Features::featureUorRemediationLifecycleINV003" (cons "Features::featureUorRemediationLifecycleINV004" (cons "Features::featureUorRemediationLifecycleINV005" (cons "Features::featureUorRemediationLifecycleINV006" (nil String))))))))})
+}
+
+definition{
+  name: journeyUorRemediationWriteAgentContributor,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderAgentContributor", steps := (cons "Features::featureUorRemediationWriteRule4" (cons "Features::featureUorRemediationWriteRule5" (cons "Features::featureUorRemediationWriteOtherwise" (nil String))))})
+}
+
+definition{
+  name: journeyUorRemediationWriteOrganizationOwner,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderOrganizationOwner", steps := (cons "Features::featureUorRemediationWriteINV001" (cons "Features::featureUorRemediationWriteINV003" (cons "Features::featureUorRemediationWriteRefuseMalformed" (nil String))))})
+}
+
+definition{
+  name: journeyUorRemediationWriteRepositoryMaintainer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRepositoryMaintainer", steps := (cons "Features::featureUorRemediationWriteRule3" (cons "Features::featureUorRemediationWriteINV002" (nil String)))})
+}
+
+definition{
+  name: journeyUorRemediationWriteVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureUorRemediationWriteRefuseMalformed" (cons "Features::featureUorRemediationWriteINV001" (cons "Features::featureUorRemediationWriteINV002" (cons "Features::featureUorRemediationWriteINV003" (cons "Features::featureUorRemediationWriteINV004" (nil String))))))})
+}
+
+definition{
   name: journeyUorRepoFilesOrganizationOwner,
   parameters: [],
   result: Foundation.Arch::Journey,
@@ -3539,6 +4046,34 @@ definition{
   parameters: [],
   result: Foundation.Arch::Journey,
   body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureUorRepoStandardsRefuseMalformed" (cons "Features::featureUorRepoStandardsINV001" (cons "Features::featureUorRepoStandardsINV002" (cons "Features::featureUorRepoStandardsINV003" (cons "Features::featureUorRepoStandardsINV004" (nil String))))))})
+}
+
+definition{
+  name: journeyUorRepoTierAdopter,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderAdopter", steps := (cons "Features::featureUorRepoTierRule1" (cons "Features::featureUorRepoTierRule2" (cons "Features::featureUorRepoTierRule3" (cons "Features::featureUorRepoTierRule4" (cons "Features::featureUorRepoTierRule5" (cons "Features::featureUorRepoTierRule6" (cons "Features::featureUorRepoTierRule7" (cons "Features::featureUorRepoTierRule8" (cons "Features::featureUorRepoTierRule9" (cons "Features::featureUorRepoTierRule10" (cons "Features::featureUorRepoTierRule11" (cons "Features::featureUorRepoTierOtherwise" (nil String)))))))))))))})
+}
+
+definition{
+  name: journeyUorRepoTierOrganizationOwner,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderOrganizationOwner", steps := (cons "Features::featureUorRepoTierINV001" (cons "Features::featureUorRepoTierINV002" (cons "Features::featureUorRepoTierRefuseMalformed" (nil String))))})
+}
+
+definition{
+  name: journeyUorRepoTierRepositoryMaintainer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRepositoryMaintainer", steps := (cons "Features::featureUorRepoTierRule1" (cons "Features::featureUorRepoTierRule5" (cons "Features::featureUorRepoTierOtherwise" (nil String))))})
+}
+
+definition{
+  name: journeyUorRepoTierVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureUorRepoTierRefuseMalformed" (cons "Features::featureUorRepoTierINV001" (cons "Features::featureUorRepoTierINV002" (cons "Features::featureUorRepoTierINV003" (nil String)))))})
 }
 
 definition{

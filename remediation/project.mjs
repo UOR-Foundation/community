@@ -82,10 +82,15 @@ function decide(app, request) {
   return { outcome: app.otherwise, why: app.otherwiseWhy };
 }
 const domainOf = (f) => (f.kind === 'number' ? Array.from({ length: f.max - f.min + 1 }, (_, i) => f.min + i) : f.values);
-const apps = sources.apps.map((s) => {
-  const file = pinned(s)(s.prompt);
+// The decision apps are this repository's own prompts, addressed by their bytes.
+const local = (path) => {
+  const bytes = readFileSync(join(here, '..', path));
+  return { path, sha256: sha256(bytes), text: bytes.toString('utf8') };
+};
+const load = (path, pattern) => {
+  const file = local(path);
   const prompt = JSON.parse(file.text);
-  if (prompt.pattern !== 'decisionTable') throw new Error(`${s.prompt} is a ${prompt.pattern}, not a decisionTable`);
+  if (prompt.pattern !== pattern) throw new Error(`${path} is a ${prompt.pattern}, not a ${pattern}`);
   const app = prompt.app;
   for (const ex of app.examples) {
     const words = ex.request.split(/\s+/);
@@ -94,12 +99,26 @@ const apps = sources.apps.map((s) => {
     if (got !== ex.response) throw new Error(`${app.name} example "${ex.request}" gives ${got}, not ${ex.response}`);
   }
   return { app, file };
-});
-const appNamed = (n) => {
-  const a = apps.find((x) => x.app.name === n);
-  if (!a) throw new Error(`sources.json pins no ${n} prompt`);
-  return a.app;
 };
+const apps = sources.apps.map((a) => load(a.path, 'decisionTable'));
+const tierApp = load(sources.tierApp.path, 'decisionTable');
+const writeApp = load(sources.writeApp.path, 'policyDecision');
+const rolesBytes = readFileSync(join(here, 'roles.json'));
+const roles = JSON.parse(rolesBytes.toString('utf8'));
+const roleOf = (name) => {
+  const r = roles.repositories.find((x) => x.name === name);
+  if (!r) throw new Error(`remediation/roles.json has no judgment for ${name}`);
+  return { ...roles.defaults, ...r };
+};
+// Who applies a change, and how: the write policy is asked for an agent's pull request first, then for the owner.
+const KIND = { file: 'file', topic: 'topic', ruleset: 'ruleset', rename: 'rename' };
+function route(change, archived) {
+  if (!KIND[change.kind]) return '';
+  const ask = (actor, how) => decide(writeApp.app, { actor, change: KIND[change.kind], repository: archived ? 'archived' : 'live', approval: 'given', route: how }).outcome;
+  if (ask('agent', 'pull-request') === 'permit') return 'pull-request';
+  if (ask('owner', 'direct') === 'permit') return 'owner';
+  return 'denied';
+}
 
 // ---- Vocabulary: STANDARDS.md as the ecosystem register read it, and Linguist ---------------------------------
 const vocabulary = ecosystem.vocabulary;
@@ -170,7 +189,7 @@ function requests(s, o) {
         pattern: PREFERRED.test(s.name) ? 'preferred' : 'other',
         branches: o.branches.every((b) => b.conforming) ? 'conforming' : 'other',
         commits: o.commits.conventional === o.commits.total ? 'conventional' : 'other',
-        domain: null,
+        domain: 'incomplete',
         technology: tech.every((t) => s.topics.includes(t)) ? 'complete' : 'incomplete',
       },
     },
@@ -223,16 +242,57 @@ function remedy(app, tier, observed, fixed) {
 
 // ---- Changes: a field's target, as the action that reaches it ------------------------------------------------
 const mitText = licenseFile.text;
+const dualLicense = (pair) => `This repository is licensed under either of\n\n${pair.map((p) => `- ${/APACHE/i.test(p) ? 'Apache License, Version 2.0' : /MIT/i.test(p) ? 'MIT License' : p} (${p})`).join('\n')}\n\nat your option. SPDX-License-Identifier: ${pair.map((p) => (/APACHE/i.test(p) ? 'Apache-2.0' : 'MIT')).sort().reverse().join(' OR ')}\n\nGOVERNANCE.md 13 makes MIT the default across Foundation repositories; offering Apache-2.0 beside it is the exception this file documents.\n`;
+// A CI workflow is drafted only from a test command the repository itself states.
+function workflowFor(s, o) {
+  const tree = o.evidence;
+  if (s.name === 'uor-jcs-nfc') {
+    return { path: '.github/workflows/conformance.yml', about: 'the conformance run README.md states, under CPython 3.12 (Unicode 15.0.0, SPEC.md 1.3)', content: pyWorkflow('conformance', '3.12', ['cd conformance', 'PYTHONPATH=.. python run_mutants.py uor-jcs-nfc-vectors-v0.1-rc5.json']) };
+  }
+  if (s.name === 'nest-uor') {
+    return { path: '.github/workflows/test.yml', about: 'pytest over tests/ with the dev extra pyproject.toml declares', content: pyWorkflow('test', '3.12', ['python -m pip install -e ".[dev]"', 'python -m pytest -q']) };
+  }
+  return tree && null;
+}
+const pyWorkflow = (job, version, run) => `# GOVERNANCE.md 6.1 and 9: CI runs on every pull request to the default branch.
+name: ${job}
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  ${job}:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: ${sources.actions.checkout}
+        with:
+          persist-credentials: false
+      - uses: ${sources.actions.setupPython}
+        with:
+          python-version: "${version}"
+      - run: |
+${run.map((l) => `          ${l}`).join('\n')}
+`;
 function changes(appName, field, from, to, ctx) {
   const { s, o, tier } = ctx;
   const one = (kind, detail, extra = {}) => [{ app: appName, field, from: from ?? 'unobserved', to: typeof to === 'object' ? JSON.stringify(to) : to, kind, detail, ...extra }];
   switch (`${appName}.${field}`) {
     case 'uor-repo-files.readme': return one('decision', 'Add README.md describing the repository (GOVERNANCE.md 6.1)', { decision: 'readme' });
-    case 'uor-repo-files.license': return o.evidence.some((p) => /^LICENSE[.-]/i.test(p))
-      ? one('decision', `Add LICENSE; the repository carries ${o.evidence.filter((p) => /^LICENSE[.-]/i.test(p)).join(' and ')}, which GOVERNANCE.md 6.1 does not name`, { decision: 'license-file' })
-      : one('file', `Add LICENSE with the SPDX MIT text (GOVERNANCE.md 13), copyright year ${o.firstCommit.slice(0, 4)}`, { path: 'LICENSE', decision: 'copyright-holder' });
-    case 'uor-repo-files.codeowners': return one('decision', 'Add .github/CODEOWNERS naming the repository\'s maintainers (GOVERNANCE.md 6.1)', { path: '.github/CODEOWNERS', decision: 'codeowners' });
-    case 'uor-repo-files.ci': return one('decision', 'Add a CI workflow under .github/workflows (GOVERNANCE.md 6.1)', { path: '.github/workflows/', decision: 'ci' });
+    case 'uor-repo-files.license': {
+      const pair = o.evidence.filter((p) => /^LICENSE[.-]/i.test(p));
+      return pair.length
+        ? one('file', `Add LICENSE naming the ${pair.join(' and ')} the repository already carries, so the file GOVERNANCE.md 6.1 names states its license and documents the exception GOVERNANCE.md 13 asks for`, { path: 'LICENSE', content: dualLicense(pair) })
+        : one('file', `Add LICENSE with the SPDX MIT text (GOVERNANCE.md 13: MIT is the default), copyright ${o.firstCommit.slice(0, 4)} ${ctx.role.holder}`, { path: 'LICENSE', content: mitText.replace('<year>', o.firstCommit.slice(0, 4)).replace('<copyright holders>', ctx.role.holder), proposed: 'copyright-holder' });
+    }
+    case 'uor-repo-files.codeowners': return one('file', `Add .github/CODEOWNERS naming ${ctx.role.owners.join(' ')} (GOVERNANCE.md 6.1)`, { path: '.github/CODEOWNERS', content: `# GOVERNANCE.md 6.1: every Tier 1 and 2 repository names its owners.\n* ${ctx.role.owners.join(' ')}\n`, proposed: 'codeowners' });
+    case 'uor-repo-files.ci': {
+      const ci = workflowFor(s, o);
+      return ci ? one('file', `Add the CI workflow ${ci.path}: ${ci.about} (GOVERNANCE.md 6.1)`, { path: ci.path, content: ci.content })
+        : one('decision', 'Add a CI workflow under .github/workflows (GOVERNANCE.md 6.1); the repository states no test command the remediation can run', { path: '.github/workflows/', decision: 'ci' });
+    }
     case 'uor-repo-files.contributing': case 'uor-repo-files.conduct': case 'uor-repo-files.security':
       return one('file', `Add ${field} file`, {});
     case 'uor-repo-protection.pr': return one('ruleset', 'Require a pull request before merging to the default branch', { rule: 'pull_request' });
@@ -241,13 +301,17 @@ function changes(appName, field, from, to, ctx) {
     case 'uor-repo-protection.forcepush': return one('ruleset', 'Block force pushes to the default branch', { rule: 'non_fast_forward' });
     case 'uor-repo-standards.identity': return vocabulary.identity.filter((t) => !s.topics.includes(t)).map((t) => ({ ...one('topic', `Add topic ${t}`)[0], topic: t }));
     case 'uor-repo-standards.tiertags': return to === 1 && from === 0 ? [{ ...one('topic', `Add topic ${tierTag[tier]}`)[0], topic: tierTag[tier] }] : one('decision', `Carry exactly one tier tag (now ${from})`, { decision: 'tier' });
-    case 'uor-repo-standards.statustags': return to === 1 && from === 0 && s.archived
-      ? [{ ...one('topic', 'Add topic archived: the repository is archived on GitHub, read-only as GOVERNANCE.md 11 defines Archived')[0], topic: 'archived' }]
-      : one('decision', `Carry exactly one status tag (now ${from})`, { decision: 'status' });
+    case 'uor-repo-standards.statustags': if (to !== 1 || from !== 0) return one('decision', `Carry exactly one status tag (now ${from})`, { decision: 'status' });
+      return s.archived
+        ? [{ ...one('topic', 'Add topic archived: the repository is archived on GitHub, read-only as GOVERNANCE.md 11 defines Archived')[0], topic: 'archived' }]
+        : [{ ...one('topic', `Add topic ${ctx.role.status}: it is in normal development, its last commit ${o.lastCommit} (GOVERNANCE.md 11)`)[0], topic: ctx.role.status, proposed: 'status' }];
     case 'uor-repo-standards.versioning': return one('decision', `Release under Semantic Versioning 2.0.0; these tags are not SemVer: ${s.tags.filter((t) => !SEMVER.test(t.name.replace(/^v/, ''))).map((t) => t.name).join(', ')}`, { decision: 'versioning' });
     case 'uor-repo-naming.case': return [{ ...one('rename', `Rename the repository to ${s.name.toLowerCase()}`)[0], name: s.name.toLowerCase() }];
-    case 'uor-repo-naming.branches': return one('decision', `Rename or delete the branches not named {type}/{issue#}-{short-description}: ${o.branches.filter((b) => !b.conforming).length} of ${o.branches.length}`, { decision: 'branches' });
-    case 'uor-repo-naming.domain': return one('decision', `Add every Domain topic that applies, from: ${vocabulary.domain.join(', ')}`, { decision: 'domain' });
+    case 'uor-repo-naming.branches': return one('finding', `Rename or delete the branches not named {type}/{issue#}-{short-description}: ${o.branches.filter((b) => !b.conforming).length} of ${o.branches.length}`, { decision: 'branches' });
+    case 'uor-repo-naming.domain': return ctx.role.domains.filter((t) => !s.topics.includes(t)).map((t) => {
+      if (!vocabulary.domain.includes(t)) throw new Error(`${s.name}: ${t} is not a STANDARDS.md Domain tag`);
+      return { ...one('topic', `Add topic ${t}: ${ctx.role.evidence}`)[0], topic: t, proposed: 'domain' };
+    });
     case 'uor-repo-naming.technology': return technologyOf(s.language).filter((t) => !s.topics.includes(t)).map((t) => ({ ...one('topic', `Add topic ${t}: GitHub's primary language is ${s.language}, which Linguist names ${t}`)[0], topic: t }));
     default: throw new Error(`no action reaches ${appName}.${field}`);
   }
@@ -270,7 +334,9 @@ const repositories = ecosystem.repositories.map((e) => {
     return { index: e.index, name: e.name, empty: true };
   }
   const asked = requests(s, o);
-  const candidates = e.tier ? [e.tier] : tiers;
+  const role = roleOf(e.name);
+  const proposed = decide(tierApp.app, { recorded: e.tier || 'none', role: role.role });
+  const candidates = [proposed.outcome];
   const byTier = candidates.map((tier) => {
     const sets = [];
     const findings = [];
@@ -300,7 +366,7 @@ const repositories = ecosystem.repositories.map((e) => {
         if (to?.any) continue;
         if (to?.atLeast === 0) continue;
         if (was !== null && was === to) continue;
-        list.push(...changes(app.name, f.name, was, to, { s, o, tier }));
+        list.push(...changes(app.name, f.name, was, to, { s, o, tier, role }).map((c) => ({ ...c, by: route(c, s.archived) })));
       }
       sets.push({ app: app.name, observed: observedOutcome, after: blockedBy.length ? 'blocked' : app.otherwise, changes: list });
     }
@@ -308,10 +374,11 @@ const repositories = ecosystem.repositories.map((e) => {
   });
   const key = (c) => `${c.app}|${c.field}|${c.kind}|${c.detail}`;
   const everywhere = byTier[0].apps.flatMap((a) => a.changes).filter((c) => byTier.every((t) => t.apps.some((a) => a.changes.some((d) => key(d) === key(c)))));
-  const now = everywhere.filter((c) => !c.decision || c.kind !== 'decision');
+  const now = everywhere.filter((c) => c.kind !== 'decision' && c.kind !== 'finding');
   const decisions = [...new Set([
     ...(e.tier ? [] : ['tier']),
-    ...byTier.flatMap((t) => t.apps.flatMap((a) => a.changes.map((c) => c.decision).filter(Boolean))),
+    ...byTier.flatMap((t) => t.apps.flatMap((a) => a.changes.flatMap((c) => [c.decision, c.proposed]).filter(Boolean))),
+    ...(byTier[0].apps.some((a) => a.changes.some((c) => c.kind === 'finding')) ? ['branches'] : []),
   ])].sort();
   const findings = [...new Map(byTier.flatMap((t) => t.findings).map((f) => [`${f.app}|${f.field}`, f])).values()];
   const ruleset = (t) => {
@@ -338,6 +405,10 @@ const repositories = ecosystem.repositories.map((e) => {
     commit: o.commit,
     defaultBranch: o.defaultBranch,
     tier: e.tier,
+    proposedTier: e.tier ? '' : proposed.outcome,
+    role: role.role,
+    roleEvidence: role.evidence,
+    tierWhy: proposed.why,
     language: s.language,
     lastCommit: o.lastCommit,
     now,
@@ -351,74 +422,118 @@ const register = {
   spec: 'uor-community/remediation-register/1',
   ecosystem: { sha256: sha256(ecosystemBytes), snapshot: ecosystem.snapshot.sha256 },
   observations: { sha256: sha256(observationsBytes) },
-  sources: [standards, governance, ...inherited, languagesFile, licenseFile, ...apps.map((a) => a.file)].map(({ path, sha256: d }) => ({ path, sha256: d })),
+  roles: { sha256: sha256(rolesBytes) },
+  sources: [standards, governance, ...inherited, languagesFile, licenseFile, ...[...apps, tierApp, writeApp].map((a) => a.file)].map(({ path, sha256: d }) => ({ path, sha256: d })),
   apps: apps.map(({ app }) => ({ app: app.name, conformant: app.otherwise, fields: app.fields.map((f) => f.name) })),
   repositories,
   refusals,
 };
 
-// ---- Drafts: one issue per repository, in the shape of UOR-Foundation/.github's feature request template ------
+// ---- Drafts: an issue and a pull request per repository, in UOR-Foundation/.github's templates ---------------
+// The issue follows .github/ISSUE_TEMPLATE/feature_request.md and the pull request .github/pull_request_template.md
+// (both at the pinned .github commit), so each repository receives the change set in the shape its norms ask for.
+const TIERNAME = { t1: 'Tier 1 (core framework and critical specs)', t2: 'Tier 2 (implementations and integrations)', t3: 'Tier 3 (docs, websites and presentation)', t4: 'Tier 4 (early experiments)' };
 const QUESTIONS = {
-  tier: 'Which tier is it? GOVERNANCE.md 5: Tier 1 core framework and critical specs; Tier 2 implementations and integrations; Tier 3 docs, websites and presentation; Tier 4 early experiments.',
-  status: 'Which status is it: active, maintenance or deprecated? (GOVERNANCE.md 11, STANDARDS.md Status)',
-  domain: `Which Domain topics apply? (${vocabulary.domain.join(', ')}; all that apply)`,
-  'copyright-holder': 'Who holds the copyright the LICENSE names?',
-  'license-file': 'GOVERNANCE.md 6.1 names LICENSE. Add a LICENSE file, or amend 6.1 to accept the LICENSE-MIT and LICENSE-APACHE pair the template ships?',
-  codeowners: 'Who are its maintainers, for .github/CODEOWNERS?',
-  ci: 'Which CI workflow should it run?',
-  'check-contexts': 'Which status checks must pass? The draft ruleset lists the jobs its pull-request workflows run.',
+  tier: 'Is the proposed tier right?',
+  status: 'Is the proposed status right (active, maintenance or deprecated)?',
+  domain: 'Are the proposed Domain topics all that apply?',
+  'copyright-holder': 'Is the copyright holder the drafted LICENSE names right?',
+  codeowners: 'Should CODEOWNERS name the repository\'s maintainers instead of the Organization Owner?',
+  ci: 'Which CI workflow should it run? The repository states no test command the remediation can run.',
+  'check-contexts': 'Which status checks must pass? The owner\'s settings script requires the check runs reported on the default branch.',
   versioning: 'How should its non-SemVer tags be superseded?',
   branches: 'Which of its non-conforming branches are renamed and which deleted?',
   readme: 'What should its README say?',
 };
-const md = (r) => {
-  if (r.empty) return `# ${r.name}\n\nThe repository has no default branch, so nothing was observed.\n`;
-  const line = (c) => `- ${c.detail}${c.decision && c.kind !== 'decision' ? ` (needs: ${c.decision})` : ''}`;
-  const blocks = [
-    '---\nname: Feature Request\nabout: Propose a new feature or enhancement\nlabels: enhancement\n---',
-    '## Problem',
-    `UOR-Foundation/${r.name} does not yet meet the repository standards of UOR-Foundation/.github (STANDARDS.md, GOVERNANCE.md 6.1, 6.2, 8 and 11) at commit \`${r.commit.slice(0, 12)}\` of \`${r.defaultBranch}\`.${r.archived ? ' It is archived, so each change below is applied by unarchiving it, applying the change, and archiving it again.' : ''}`,
-    `Its outcome from each decision app${r.tier ? ` at ${r.tier}` : ', at every tier, because it carries no tier tag'} (unobserved: the outcome depends on state that could not be read):`,
-    [`| Tier | ${register.apps.map((a) => a.app).join(' | ')} |`, `|---|${register.apps.map(() => '---').join('|')}|`,
-      ...r.tiers.map((t) => `| ${t.tier} | ${t.apps.map((a) => a.observed).join(' | ')} |`)].join('\n'),
-    '## Proposed Solution',
-    '### Every tier',
-    (r.now.length ? r.now.map(line) : ['- Nothing applies at every tier.']).join('\n'),
-    ...(r.decisions.length ? ['### Decisions', r.decisions.map((d) => `- **${d}**: ${QUESTIONS[d]}`).join('\n')] : []),
-    '### By tier',
-    ...r.tiers.map((t) => {
-      const own = t.apps.flatMap((a) => a.changes.filter((c) => !r.now.some((n) => n.detail === c.detail && n.app === c.app)).map(line));
-      return [
-        `<details><summary>${t.tier} (${tierTag[t.tier]})</summary>`,
-        '',
-        ...(own.length ? own : ['- Nothing beyond every tier.']),
-        '',
-        'Topics (`PUT /repos/UOR-Foundation/' + r.name + '/topics`):',
-        '',
-        '```json',
-        JSON.stringify({ names: t.topics }),
-        '```',
-        '',
-        'Ruleset (`POST /repos/UOR-Foundation/' + r.name + '/rulesets`):',
-        '',
-        '```json',
-        JSON.stringify(t.ruleset, null, 2),
-        '```',
-        '',
-        '</details>',
-      ].join('\n');
-    }),
-    '## Alternatives Considered',
-    r.findings.length ? r.findings.map((f) => `- ${f.reason}`).join('\n') : 'None: every app can find the repository conformant after these changes.',
-    '## Additional Context',
-    'Generated by UOR-Foundation/community `remediation/project.mjs` from `remediation/register.json`. Each change is the nearest request the decision app finds conformant, and is decided again by the app before it is written. Branch protection was not readable without admin rights, so the ruleset is the state the tier requires, not a difference from the current one.',
-  ];
-  return `${blocks.join('\n\n')}\n`;
-};
+const tierOf = (r) => r.tier || r.proposedTier;
+const pullRequest = (r) => r.now.filter((c) => c.by === 'pull-request');
+const byOwner = (r) => r.tiers[0].apps.flatMap((a) => a.changes).filter((c) => c.by === 'owner');
+const tierLine = (r) => (r.tier
+  ? `It carries the ${tierTag[r.tier]} tag, so it is held to ${TIERNAME[r.tier]}.`
+  : `It carries no tier tag. The uor-repo-tier app proposes ${TIERNAME[r.proposedTier]} from its use case, ${r.role}: ${r.roleEvidence}. Maintainers who record another tier tag change every requirement below; the change set is re-projected from it.`);
+const issue = (r) => [
+  '---\nname: Feature Request\nabout: Propose a new feature or enhancement\nlabels: enhancement\n---',
+  '## Problem',
+  `UOR-Foundation/${r.name} does not yet meet the repository standards of UOR-Foundation/.github (STANDARDS.md and GOVERNANCE.md 6.1, 6.2 and 11), observed at \`${r.commit.slice(0, 12)}\` of \`${r.defaultBranch}\`. ${tierLine(r)}`,
+  [`| Decision app | Observed | After the change set |`, '|---|---|---|', ...r.tiers[0].apps.map((a) => `| ${a.app} | ${a.observed} | ${a.after} |`)].join('\n'),
+  '## Proposed Solution',
+  ...(pullRequest(r).length ? ['### In a pull request', pullRequest(r).map((c) => `- ${c.detail}`).join('\n')] : []),
+  ...(byOwner(r).length ? ['### Repository settings an Organization Owner applies', byOwner(r).map((c) => `- ${c.detail}`).join('\n'),
+    `Topics: \`${r.tiers[0].topics.join(' ')}\`. The ruleset is \`governance-6.2-${tierOf(r)}\` in \`remediation/apply-settings.sh\` of UOR-Foundation/community.`] : []),
+  ...(r.decisions.length ? ['### For the maintainers to confirm', r.decisions.map((d) => `- **${d}**: ${QUESTIONS[d]}`).join('\n')] : []),
+  '## Alternatives Considered',
+  r.findings.length ? r.findings.map((f) => `- ${f.reason}`).join('\n') : 'None: every decision app finds the repository conformant after the change set.',
+  '## Additional Context',
+  `Generated by UOR-Foundation/community \`remediation/project.mjs\` (\`remediation/register.json\`). Each change is the nearest request the decision app finds conformant, decided again by the app before it is written; who applies it is decided by the \`uor-remediation-write\` app (XACML 3.0), and its progress by \`uor-remediation-lifecycle\` (UML 2.5.1). The change set was approved by the Organization Owner on 2026-11-14.`,
+].join('\n\n') + '\n';
+const pr = (r) => [
+  '## Description',
+  `Brings UOR-Foundation/${r.name} up to the repository standards of UOR-Foundation/.github. ${tierLine(r)}`,
+  pullRequest(r).map((c) => `- ${c.detail}`).join('\n'),
+  'The repository settings in the linked issue (topics, the branch ruleset and any rename) need admin rights, so an Organization Owner applies them outside this pull request.',
+  'Closes #{issue}',
+  '## Review Checklist',
+  ['- [x] **Linked Issue** — This PR references an Issue (`Closes #{issue}`)',
+    '- [x] **Description** — PR description explains what changed and why',
+    `- [${pullRequest(r).some((c) => c.path?.startsWith('.github/workflows/')) ? 'x' : ' '}] **Tests** — New/updated tests cover changes; all tests pass`,
+    '- [ ] **CI Passing** — All automated checks green',
+    '- [x] **Documentation** — Public API changes documented; README updated if needed',
+    `- [${['t1', 't2'].includes(tierOf(r)) ? ' ' : 'x'}] **CHANGELOG** — Entry added for this change (Tier 1–2)`,
+    '- [x] **Compatibility** — No breaking changes, or `BREAKING CHANGE` documented',
+    '- [x] **Security** — No new secrets committed; dependencies audited',
+    '- [x] **Proof Verification** — Lean 4 / Coq compiles with zero sorrys (Tier 1 proofs only)',
+    '- [x] **Commit History** — Conventional Commits followed; history clean'].join('\n'),
+].join('\n\n') + '\n';
 
-const outputs = new Map([['register.json', `${JSON.stringify(register, null, 2)}\n`]]);
-for (const r of repositories) outputs.set(`drafts/${r.name}.md`, md(r));
-outputs.set('drafts/LICENSE-MIT.txt', mitText);
+// ---- The owner's settings: one script, a dry run unless --apply is given ------------------------------------
+const q = (v) => `'${String(v).replace(/'/g, `'\\''`)}'`;
+const settings = [
+  '#!/usr/bin/env bash',
+  '# Generated by remediation/project.mjs from remediation/register.json. Do not edit.',
+  '#',
+  '# Applies the repository settings of each change set that only an Organization Owner',
+  '# may apply (the uor-remediation-write app): topics, the GOVERNANCE.md 6.2 ruleset and',
+  '# lowercase renames. It prints every call and writes nothing unless --apply is given.',
+  '# Required status checks are the check runs GitHub reports on the default branch when',
+  '# it runs; a repository that reports none keeps its other rules and is named on stderr.',
+  '#',
+  '#   remediation/apply-settings.sh [--apply] [repository...]',
+  'set -euo pipefail',
+  'apply=0; [ "${1:-}" = --apply ] && { apply=1; shift; }',
+  'only=" $* "',
+  'call() { if [ "$apply" = 1 ]; then gh api "$@" >/dev/null; else printf "gh api %s\\n" "$*"; fi; }',
+  'want() { [ "$only" = "  " ] || [[ "$only" == *" $1 "* ]]; }',
+  'checks() { gh api "repos/UOR-Foundation/$1/commits/$2/check-runs" --paginate --jq \'.check_runs[].name\' | sort -u | jq -R . | jq -sc \'map({context: .})\'; }',
+  ...repositories.flatMap((r) => {
+    const own = byOwner(r);
+    if (!own.length) return [];
+    const t = r.tiers[0];
+    const rename = own.find((c) => c.kind === 'rename');
+    const rules = t.ruleset.rules.filter((x) => x.type !== 'required_status_checks');
+    const needsChecks = t.ruleset.rules.some((x) => x.type === 'required_status_checks');
+    const body = { ...t.ruleset, rules };
+    const lines = [`if want ${q(r.name)}; then`, `  echo "== UOR-Foundation/${r.name} (${tierOf(r)})" >&2`];
+    if (r.archived) lines.push(`  call -X PATCH repos/UOR-Foundation/${r.name} -F archived=false`);
+    lines.push(`  call -X PUT repos/UOR-Foundation/${r.name}/topics ${t.topics.map((x) => `-f 'names[]=${x}'`).join(' ')}`);
+    if (needsChecks) {
+      lines.push(`  if [ "$apply" = 1 ]; then contexts=$(checks ${q(r.name)} ${q(r.defaultBranch)}); else contexts='[{"context":"<each check run on ${r.defaultBranch}, read when applied>"}]'; fi`);
+      lines.push(`  if [ "$contexts" = "[]" ]; then echo "UOR-Foundation/${r.name}: no check runs on ${r.defaultBranch}; required status checks not set" >&2; rules=${q(JSON.stringify(rules))};`);
+      lines.push(`  else rules=$(jq -c --argjson c "$contexts" '. + [{type: "required_status_checks", parameters: {strict_required_status_checks_policy: false, required_status_checks: $c}}]' <<<${q(JSON.stringify(rules))}); fi`);
+    } else lines.push(`  rules=${q(JSON.stringify(rules))}`);
+    lines.push(`  jq -c --argjson r "$rules" '.rules = $r' <<<${q(JSON.stringify(body))} | if [ "$apply" = 1 ]; then gh api -X POST repos/UOR-Foundation/${r.name}/rulesets --input - >/dev/null; else printf "gh api -X POST repos/UOR-Foundation/${r.name}/rulesets --input %s\\n" "$(cat)"; fi`);
+    if (rename) lines.push(`  call -X PATCH repos/UOR-Foundation/${r.name} -f name=${q(rename.name)}`);
+    if (r.archived) lines.push(`  call -X PATCH repos/UOR-Foundation/${rename ? rename.name : r.name} -F archived=true`);
+    lines.push('fi');
+    return lines;
+  }),
+  '',
+].join('\n');
+
+const outputs = new Map([['register.json', `${JSON.stringify(register, null, 2)}\n`], ['apply-settings.sh', settings]]);
+for (const r of repositories) {
+  outputs.set(`drafts/${r.name}.issue.md`, issue(r));
+  if (!r.archived && pullRequest(r).length) outputs.set(`drafts/${r.name}.pr.md`, pr(r));
+}
 if (flag === '--check') {
   const stale = [...outputs].filter(([p, t]) => !existsSync(join(here, p)) || readFileSync(join(here, p), 'utf8') !== t).map(([p]) => p);
   const extra = existsSync(join(here, 'drafts')) ? readdirSync(join(here, 'drafts')).filter((f) => !outputs.has(`drafts/${f}`)) : [];
@@ -429,7 +544,7 @@ if (flag === '--check') {
 } else {
   rmSync(join(here, 'drafts'), { recursive: true, force: true });
   mkdirSync(join(here, 'drafts'), { recursive: true });
-  for (const [p, t] of outputs) writeFileSync(join(here, p), t);
+  for (const [p, t] of outputs) writeFileSync(join(here, p), t, { mode: p.endsWith('.sh') ? 0o755 : 0o644 });
 }
 const n = (k) => repositories.reduce((a, r) => a + (r.now?.filter((c) => c.kind === k).length ?? 0), 0);
 process.stdout.write(`${repositories.length} repositories: ${n('topic')} topics, ${n('file')} files, ${n('ruleset')} ruleset rules, ${n('rename')} renames at every tier; ${refusals.length} open claims\n`);
