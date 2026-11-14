@@ -66,6 +66,16 @@ model does not sanction.
 | `GL-03` | `open` | Live retrieval of the Foundation's Discord waits on a read-only bot in the guild, and its token stays out of the repository |
 | `GL-04` | `build` | Each live Discord probe is an OpenTelemetry trace holding no message content or token, every trace is checked against the paging model the contribution Prism pins, and the next probes are scheduled by bounded Hebbian weights |
 
+## observations
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `OB-01` | `build` | The observation register is valid: every observation's admission is what the uor-observation-admission app's first-applicable rules decide on its recorded fields, and every metric value refers to a permitted observation of its own metric, so every value is a function of admitted observations |
+| `OB-02` | `build` | The observation corpus is frozen and replayable: every subject is pinned by the commits of its refs, every corpus file is pinned by the sha256 of its bytes, an independent run from the same pins reproduces each file, and the register and its catalog declare the corpus digest |
+| `OB-03` | `build` | Every contribution is credited through the uor-contribution-attribution app as W3C PROV-O: a person is credited for their own work, a software agent's work is credited to a person only through a Co-authored-by delegation naming exactly one person, and no name or email enters the corpus |
+| `OB-04` | `open` | A released CHAOSS metric the oracle binds no computation to, and a computation whose index, field, query, aggregation or script this corpus and projector cannot evaluate exactly as the oracle defines it, is carried as an open claim, never approximated |
+| `OB-05` | `open` | GitHub issues and pull requests enter the corpus only from responses the observations workflow recorded with a token and replayed offline, and the Foundation's Discord only once its read-only bot is installed; until then their observations are open claims |
+
 ## uor_toc_lifecycle
 
 | ID | Level | Statement |
