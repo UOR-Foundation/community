@@ -500,11 +500,14 @@ const settings = [
   '# Required status checks are the jobs a pull request reports, from workflows that run on every',
   '# pull request; a repository that reports none keeps its other rules and is named on stderr.',
   '#',
-  '#   remediation/apply-settings.sh [--apply] [repository...]',
+  '#   remediation/apply-settings.sh [--apply] [--enforcement active|disabled] [repository...]',
+  '# With --enforcement, it only sets the enforcement of each existing governance-6.2 ruleset and changes nothing',
+  '# else (GitHub REST, rulesets: enforcement is active, evaluate or disabled; evaluate needs GitHub Enterprise).',
   'set -euo pipefail',
   'apply=0; [ "${1:-}" = --apply ] && { apply=1; shift; }',
+  'enforce=""; [ "${1:-}" = --enforcement ] && { enforce=$2; shift 2; }',
   'only=" $* "',
-  'call() { if [ "$apply" = 1 ]; then gh api "$@" >/dev/null; else printf "gh api %s\\n" "$*"; fi; }',
+  'call() { [ -z "$enforce" ] || return 0; if [ "$apply" = 1 ]; then gh api "$@" >/dev/null; else printf "gh api %s\\n" "$*"; fi; }',
   'want() { [ "$only" = "  " ] || [[ "$only" == *" $1 "* ]]; }',
   '# Required status checks are the jobs a pull request reports (GitHub Docs, "About protected branches: Require status',
   '# checks before merging": a required check must run on the pull request). They are read from the pull_request',
@@ -513,9 +516,9 @@ const settings = [
   '# the others pending forever. Jobs that only run on a push to the default branch are never required.',
   '# Runs and workflow files are public, so they are read with CHECKS_TOKEN when it is set (the workflow passes its own token).',
   'unfiltered() { GH_TOKEN="${CHECKS_TOKEN:-${GH_TOKEN:-}}" gh api "repos/UOR-Foundation/$1/contents/$2?ref=$3" --jq .content | base64 -d | awk \'/^on:/{o=1;next} o&&/^[^ #]/{o=0} o&&/^  pull_request:/{p=1;next} p&&/^  [^ ]/{p=0} p&&/^    paths(-ignore)?:/{f=1} p&&/^    types:/&&!/synchronize/{f=1} END{exit f}\'; }',
-  'checks() { export GH_TOKEN="${CHECKS_TOKEN:-${GH_TOKEN:-}}"; sha=$(gh api "repos/UOR-Foundation/$1/pulls?state=all&sort=updated&direction=desc&per_page=1" --jq \'.[0].head.sha // empty\'); [ -n "$sha" ] || { echo "[]"; return; }; gh api "repos/UOR-Foundation/$1/actions/runs?head_sha=$sha&event=pull_request&per_page=100" --jq \'.workflow_runs[] | "\\(.id) \\(.path)"\' | sort -u -k2,2 | while read -r id path; do if unfiltered "$1" "$path" "$sha"; then gh api "repos/UOR-Foundation/$1/actions/runs/$id/jobs" --paginate --jq \'.jobs[].name\'; fi; done | sort -u | jq -R . | jq -sc \'map({context: .})\'; }',
+  'checks() { [ -z "$enforce" ] || { echo "[]"; return; }; export GH_TOKEN="${CHECKS_TOKEN:-${GH_TOKEN:-}}"; sha=$(gh api "repos/UOR-Foundation/$1/pulls?state=all&sort=updated&direction=desc&per_page=1" --jq \'.[0].head.sha // empty\'); [ -n "$sha" ] || { echo "[]"; return; }; gh api "repos/UOR-Foundation/$1/actions/runs?head_sha=$sha&event=pull_request&per_page=100" --jq \'.workflow_runs[] | "\\(.id) \\(.path)"\' | sort -u -k2,2 | while read -r id path; do if unfiltered "$1" "$path" "$sha"; then gh api "repos/UOR-Foundation/$1/actions/runs/$id/jobs" --paginate --jq \'.jobs[].name\'; fi; done | sort -u | jq -R . | jq -sc \'map({context: .})\'; }',
   '# A ruleset with the same name is updated in place, so running the script again changes nothing.',
-  'ruleset() { if [ "$apply" = 1 ]; then id=$(gh api "repos/UOR-Foundation/$1/rulesets" --jq ".[] | select(.name == \\"$2\\") | .id"); if [ -n "$id" ]; then gh api -X PUT "repos/UOR-Foundation/$1/rulesets/$id" --input - >/dev/null; else gh api -X POST "repos/UOR-Foundation/$1/rulesets" --input - >/dev/null; fi; else printf "gh api -X POST repos/UOR-Foundation/%s/rulesets --input %s\\n" "$1" "$(cat)"; fi; }',
+  'ruleset() { if [ -n "$enforce" ]; then cat >/dev/null; id=$(gh api "repos/UOR-Foundation/$1/rulesets" --jq ".[] | select(.name == \\"$2\\") | .id"); [ -n "$id" ] || return 0; if [ "$apply" = 1 ]; then gh api -X PUT "repos/UOR-Foundation/$1/rulesets/$id" -f enforcement="$enforce" >/dev/null; fi; echo "UOR-Foundation/$1 $2: enforcement $enforce" >&2; return 0; fi; if [ "$apply" = 1 ]; then id=$(gh api "repos/UOR-Foundation/$1/rulesets" --jq ".[] | select(.name == \\"$2\\") | .id"); if [ -n "$id" ]; then gh api -X PUT "repos/UOR-Foundation/$1/rulesets/$id" --input - >/dev/null; else gh api -X POST "repos/UOR-Foundation/$1/rulesets" --input - >/dev/null; fi; else printf "gh api -X POST repos/UOR-Foundation/%s/rulesets --input %s\\n" "$1" "$(cat)"; fi; }',
   ...repositories.flatMap((r) => {
     const own = byOwner(r);
     if (!own.length) return [];

@@ -39,6 +39,11 @@ on:
         description: Space-separated repository names (empty for all)
         type: string
         default: ''
+      enforcement:
+        description: Only set the enforcement of the existing governance-6.2 rulesets, and change nothing else
+        type: choice
+        options: ['', disabled, active]
+        default: ''
 
 permissions:
   contents: read
@@ -81,12 +86,13 @@ jobs:
       - name: Dry run
         env:
           REPOS: ${{ inputs.repositories }}
+          ENFORCEMENT: ${{ inputs.enforcement }}
         run: |
           {
             echo '## Repository settings (dry run)'
             echo '```'
             # shellcheck disable=SC2086
-            bash remediation/apply-settings.sh $REPOS 2>&1
+            bash remediation/apply-settings.sh ${ENFORCEMENT:+--enforcement "$ENFORCEMENT"} $REPOS 2>&1
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
       - name: Apply
@@ -95,12 +101,13 @@ jobs:
           GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
           CHECKS_TOKEN: ${{ github.token }}
           REPOS: ${{ inputs.repositories }}
+          ENFORCEMENT: ${{ inputs.enforcement }}
         run: |
           # shellcheck disable=SC2086
-          bash remediation/apply-settings.sh --apply $REPOS
+          bash remediation/apply-settings.sh --apply ${ENFORCEMENT:+--enforcement "$ENFORCEMENT"} $REPOS
           echo 'Settings applied.' >> "$GITHUB_STEP_SUMMARY"
       - name: Open the .github LICENSE pull request
-        if: steps.mode.outputs.apply == 'true' && (inputs.repositories == '' || contains(format(' {0} ', inputs.repositories), ' .github '))
+        if: steps.mode.outputs.apply == 'true' && inputs.enforcement == '' && (inputs.repositories == '' || contains(format(' {0} ', inputs.repositories), ' .github '))
         env:
           GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
         run: bash remediation/open-dotgithub-pr.sh
