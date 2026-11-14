@@ -75,6 +75,13 @@ app:
     attestation=$(sed -n 's/^verified attestation: \([0-9a-f]\{64\}\)$/\1/p' .prism-proof.log)
     rm -f .prism-proof.log
     cargo run -q --locked -p xtask -- proof-keep "$attestation"
+    # CP-01: the build this attestation verified emits its control set as an
+    # OSCAL 1.1.0 component definition; the locked oscal-1.1.0-structural
+    # oracle must accept that exact file. It runs before the job can succeed,
+    # so a proof kept from a run whose document was refused is never reused.
+    build=$(sed -n 's/.*"build_id":"\([0-9a-f]\{64\}\)".*/\1/p' "app/.prism/verified/$attestation/manifest.json")
+    test -n "$build"
+    oscal-validator "app/.prism/build/$build/oscal/component-definition.json"
 
 # Only the meta-gate, while iterating on a scenario. `test` already runs it.
 bdd:
