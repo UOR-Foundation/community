@@ -26,20 +26,14 @@ definition{
   name: obligations,
   parameters: [],
   result: (List Obligation),
-  body: (cons (record Obligation {index := 0, standard := "ISO/IEC/IEEE 42010:2022", subject := "Architecture description", text := "Stakeholders, concerns, viewpoints and views are declared and their references resolve.", evidence := (cons "Architecture::architectureDescriptionHolds" (nil String))}) (cons (record Obligation {index := 1, standard := "ISO/PAS 19450:2015 and OMG UML 2.5.1", subject := "Design views", text := "Every design view is checked by the SDK against the system model before it is rendered.", evidence := (cons "Design::viewOpmDecide" (cons "Design::viewUmlComponents" (cons "Design::viewUmlRequest" (cons "Design::viewUmlStates" (cons "Design::viewUmlMachine" (nil String))))))}) (cons (record Obligation {index := 2, standard := "ISO/IEC 25010:2023", subject := "Product quality", text := "Characteristics, subcharacteristics, requirements and measures are numbered and their parents resolve.", evidence := (cons "Quality::qualityModelHolds" (nil String))}) (cons (record Obligation {index := 3, standard := "ISO/IEC 27034-1:2011 and ISO/IEC 27005:2022", subject := "Application security and risk", text := "Every threat has a STRIDE category and a mapped control with evidence, or an accepted risk with its rationale.", evidence := (cons "Security::controlSet" (nil String))}) (cons (record Obligation {index := 4, standard := "OMG UML 2.5.1 behavioral state machine", subject := "State machine", text := "The answer to a state and an event is the next state, one of proposed, sandbox, incubation, graduated, archived; every run starts in proposed. The final state archived is never left.", evidence := (cons "UorTocLifecycle::judge" (cons "UorTocLifecycleProofs::inv008Holds" (nil String)))}) (cons (record Obligation {index := 5, standard := "OpenSpec", subject := "Requirements", text := "Every rule and property of the spec is a requirement with a scenario in openspec/specs.", evidence := (cons "UorTocLifecycle::application" (nil String))}) (cons (record Obligation {index := 6, standard := "SPDX MIT OR Apache-2.0", subject := "Licensing", text := "The application and its model are offered under MIT OR Apache-2.0.", evidence := (cons "UorTocLifecycle::application" (nil String))}) (nil Obligation))))))))
+  body: (cons (record Obligation {index := 0, standard := "ISO/IEC/IEEE 42010:2022", subject := "Architecture description", text := "Stakeholders, concerns, viewpoints and views are declared and their references resolve.", evidence := (cons "Architecture::architectureDescriptionHolds" (cons "Compliance::holdsArchitectureDescription" (nil String)))}) (cons (record Obligation {index := 1, standard := "ISO/PAS 19450:2015 and OMG UML 2.5.1", subject := "Design views", text := "Every design view is checked by the SDK against the system model before it is rendered.", evidence := (cons "Design::viewOpmDecide" (cons "Design::viewUmlComponents" (cons "Design::viewUmlRequest" (cons "Design::viewUmlStates" (cons "Design::viewUmlMachine" (nil String))))))}) (cons (record Obligation {index := 2, standard := "ISO/IEC 25010:2023", subject := "Product quality", text := "All 9 characteristics and 40 subcharacteristics are declared; each subcharacteristic is stated by a requirement with a measure or listed open (33 open); every parent resolves.", evidence := (cons "Quality::qualityModelHolds" (cons "Quality::openSubcharacteristicCount" (cons "Compliance::holdsProductQuality" (nil String))))}) (cons (record Obligation {index := 3, standard := "ISO/IEC 27034-1:2011, ISO/IEC 27005:2022 and STRIDE per element", subject := "Application security and risk", text := "Every threat has a STRIDE category and a mapped control with evidence, or an accepted risk with its rationale; every category STRIDE per element opens on the 19 components and data flows is answered by a threat or stated open (40 open).", evidence := (cons "Security::strideEnumerated" (cons "Security::strideOpenCount" (cons "Security::controlSet" (cons "Compliance::holdsApplicationSecurityAndRisk" (nil String)))))}) (cons (record Obligation {index := 4, standard := "NIST OSCAL 1.1.0", subject := "Control set", text := "The controls, their evidence and the threats each answers are emitted by the build as an OSCAL 1.1.0 component definition, oscal/component-definition.json, which the oscal-1.1.0-structural oracle accepts; accepted risks are stated beside them.", evidence := (cons "Security::strideEnumerated" (cons "Security::controlSet" (cons "oscal-validator oscal/component-definition.json" (cons "Compliance::holdsControlSet" (nil String)))))}) (cons (record Obligation {index := 5, standard := "OMG UML 2.5.1 behavioral state machine", subject := "State machine", text := "The answer to a state and an event is the next state, one of proposed, sandbox, incubation, graduated, archived; every run starts in proposed. The final state archived is never left.", evidence := (cons "UorTocLifecycle::judge" (cons "UorTocLifecycleProofs::inv008Holds" (nil String)))}) (cons (record Obligation {index := 6, standard := "OpenSpec", subject := "Requirements", text := "Every rule and property of the spec is a requirement with a scenario in openspec/specs.", evidence := (cons "UorTocLifecycle::application" (nil String))}) (cons (record Obligation {index := 7, standard := "SPDX MIT OR Apache-2.0", subject := "Licensing", text := "The application and its model are offered under MIT OR Apache-2.0.", evidence := (cons "UorTocLifecycle::application" (nil String))}) (nil Obligation)))))))))
 }
 
 definition{
   name: hasEvidence,
   parameters: [evidence : (List String)],
   result: Bool,
-  body: match{
-    branches: [
-      {body: false, binders: [], constructor: List.nil},
-      {body: true, binders: [first, others], constructor: List.cons}
-    ],
-    scrutinee: evidence
-  }
+  body: (match evidence | List.nil => false | List.cons item others => true)
 }
 
 definition{
@@ -56,6 +50,34 @@ theorem{
   name: everyObligationEvidenced,
   parameters: [],
   statement: ((obligationsEvidenced 0 (obligations)) = true),
+  proof: decide{}
+}
+
+theorem{
+  name: holdsArchitectureDescription,
+  parameters: [],
+  statement: ((Architecture::architectureValid) = true),
+  proof: decide{}
+}
+
+theorem{
+  name: holdsProductQuality,
+  parameters: [],
+  statement: ((Quality::qualityValid) = true),
+  proof: decide{}
+}
+
+theorem{
+  name: holdsApplicationSecurityAndRisk,
+  parameters: [],
+  statement: ((Security::securityValid) = true),
+  proof: decide{}
+}
+
+theorem{
+  name: holdsControlSet,
+  parameters: [],
+  statement: ((Security::securityValid) = true),
   proof: decide{}
 }
 \end{semanticmodule}

@@ -150,7 +150,7 @@ fn uor_toc_lifecycle_ut_09() {
     );
 }
 
-/// `UT-10`: The ISO/IEC 25010 quality model numbers every characteristic, subcharacteristic, requirement and measure, and every parent it names is declared
+/// `UT-10`: The ISO/IEC 25010:2023 quality model declares all 9 characteristics and 40 subcharacteristics, states each subcharacteristic by a requirement or lists it open, and every parent it names is declared
 #[test]
 fn uor_toc_lifecycle_ut_10() {
     holds(
@@ -160,9 +160,19 @@ fn uor_toc_lifecycle_ut_10() {
     );
 }
 
-/// `UT-11`: Every compliance obligation is numbered in order and names its evidence
+/// `UT-11`: Every STRIDE category each component and data flow is open to is answered by a threat or stated open, and no other pair is stated open
 #[test]
 fn uor_toc_lifecycle_ut_11() {
+    holds(
+        "app/src/Security.lex.tex",
+        "strideEnumerated",
+        "((securityValid) = true)",
+    );
+}
+
+/// `UT-12`: Every compliance obligation is numbered in order and names its evidence
+#[test]
+fn uor_toc_lifecycle_ut_12() {
     holds(
         "app/src/Compliance.lex.tex",
         "everyObligationEvidenced",
