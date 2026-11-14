@@ -11,6 +11,16 @@
         ["node", "chaoss/project.mjs", "{sources}", "--check"],
         ["node", "chaoss/catalog.mjs", "--check"]
       ]
+    },
+    {
+      "area": "observations",
+      "sources": { "kind": "committed", "file": "observations/corpus.json" },
+      "inputs": ["observations/**", "chaoss/register.json", "chaoss/oracle-methods.json", "apps/uor-observation-admission.prompt.json", "apps/uor-contribution-attribution.prompt.json", "governance/agents.json"],
+      "tools": [],
+      "check": [
+        ["node", "observations/project.mjs", "--check"],
+        ["node", "observations/catalog.mjs", "--check"]
+      ]
     }
   ]
 }

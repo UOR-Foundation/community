@@ -1,0 +1,543 @@
+\begin{lexlean}{Foundation.Observation.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Observation model}
+\begin{semanticmodule}
+inductive{
+  name: Admission,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: permit, fields: []},
+    {name: deny, fields: []},
+    {name: notApplicable, fields: []},
+    {name: indeterminate, fields: []}
+  ]
+}
+
+inductive{
+  name: MetricStatus,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: released, fields: []}, {name: unreleased, fields: []}]
+}
+
+inductive{
+  name: OracleStatus,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: covers, fields: []},
+    {name: excludes, fields: []},
+    {name: unlisted, fields: []}
+  ]
+}
+
+inductive{
+  name: SourceStatus,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: pinned, fields: []}, {name: unpinned, fields: []}]
+}
+
+inductive{
+  name: ReplayStatus,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: reproduced, fields: []},
+    {name: differs, fields: []},
+    {name: absent, fields: []}
+  ]
+}
+
+inductive{
+  name: CollectionStatus,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: permit, fields: []},
+    {name: deny, fields: []},
+    {name: outside, fields: []},
+    {name: indeterminate, fields: []},
+    {name: ungoverned, fields: []}
+  ]
+}
+
+inductive{
+  name: AttributionStatus,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: permit, fields: []},
+    {name: deny, fields: []},
+    {name: organization, fields: []},
+    {name: indeterminate, fields: []},
+    {name: aggregate, fields: []}
+  ]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: subjectsCount, type: Nat},
+    {name: periodsCount, type: Nat},
+    {name: metricsCount, type: Nat},
+    {name: computationsCount, type: Nat},
+    {name: observationsCount, type: Nat},
+    {name: metricValuesCount, type: Nat},
+    {name: openClaimsCount, type: Nat},
+    {name: corpusDigest, type: String},
+    {name: cut, type: String},
+    {name: registerDigest, type: String},
+    {name: admittedCount, type: Nat}
+  ]
+}
+
+structure{
+  name: Subject,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: name, type: String}]
+}
+
+structure{
+  name: Period,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: subject, type: Nat}, {name: interval, type: String}]
+}
+
+structure{
+  name: Metric,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: slug, type: String},
+    {name: method, type: String},
+    {name: persons, type: Bool}
+  ]
+}
+
+structure{
+  name: Computation,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: label, type: String},
+    {name: unit, type: String},
+    {name: source, type: String},
+    {name: digest, type: String}
+  ]
+}
+
+structure{
+  name: Observation,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: metric, type: Nat},
+    {name: period, type: Nat},
+    {name: items, type: Nat},
+    {name: digest, type: String},
+    {name: metricStatus, type: MetricStatus},
+    {name: oracleStatus, type: OracleStatus},
+    {name: sourceStatus, type: SourceStatus},
+    {name: replayStatus, type: ReplayStatus},
+    {name: collectionStatus, type: CollectionStatus},
+    {name: attributionStatus, type: AttributionStatus},
+    {name: admission, type: Admission}
+  ]
+}
+
+structure{
+  name: MetricValue,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: metric, type: Nat},
+    {name: computation, type: Nat},
+    {name: observation, type: Nat},
+    {name: amount, type: String}
+  ]
+}
+
+structure{
+  name: OpenClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: kind, type: String},
+    {name: subject, type: String},
+    {name: refusal, type: String},
+    {name: detail, type: String}
+  ]
+}
+
+definition{
+  name: admissionIsPermit,
+  parameters: [value : Admission],
+  result: Bool,
+  body: (match value
+    | Admission.permit => true
+    | Admission.deny => false
+    | Admission.notApplicable => false
+    | Admission.indeterminate => false)
+}
+
+definition{
+  name: attributionStatusIsIndeterminate,
+  parameters: [value : AttributionStatus],
+  result: Bool,
+  body: (match value
+    | AttributionStatus.permit => false
+    | AttributionStatus.deny => false
+    | AttributionStatus.organization => false
+    | AttributionStatus.indeterminate => true
+    | AttributionStatus.aggregate => false)
+}
+
+definition{
+  name: admissionIsIndeterminate,
+  parameters: [value : Admission],
+  result: Bool,
+  body: (match value
+    | Admission.permit => false
+    | Admission.deny => false
+    | Admission.notApplicable => false
+    | Admission.indeterminate => true)
+}
+
+definition{
+  name: collectionStatusIsIndeterminate,
+  parameters: [value : CollectionStatus],
+  result: Bool,
+  body: (match value
+    | CollectionStatus.permit => false
+    | CollectionStatus.deny => false
+    | CollectionStatus.outside => false
+    | CollectionStatus.indeterminate => true
+    | CollectionStatus.ungoverned => false)
+}
+
+definition{
+  name: replayStatusIsAbsent,
+  parameters: [value : ReplayStatus],
+  result: Bool,
+  body: (match value
+    | ReplayStatus.reproduced => false
+    | ReplayStatus.differs => false
+    | ReplayStatus.absent => true)
+}
+
+definition{
+  name: oracleStatusIsUnlisted,
+  parameters: [value : OracleStatus],
+  result: Bool,
+  body: (match value
+    | OracleStatus.covers => false
+    | OracleStatus.excludes => false
+    | OracleStatus.unlisted => true)
+}
+
+definition{
+  name: replayStatusIsDiffers,
+  parameters: [value : ReplayStatus],
+  result: Bool,
+  body: (match value
+    | ReplayStatus.reproduced => false
+    | ReplayStatus.differs => true
+    | ReplayStatus.absent => false)
+}
+
+definition{
+  name: admissionIsDeny,
+  parameters: [value : Admission],
+  result: Bool,
+  body: (match value
+    | Admission.permit => false
+    | Admission.deny => true
+    | Admission.notApplicable => false
+    | Admission.indeterminate => false)
+}
+
+definition{
+  name: sourceStatusIsUnpinned,
+  parameters: [value : SourceStatus],
+  result: Bool,
+  body: (match value | SourceStatus.pinned => false | SourceStatus.unpinned => true)
+}
+
+definition{
+  name: oracleStatusIsExcludes,
+  parameters: [value : OracleStatus],
+  result: Bool,
+  body: (match value
+    | OracleStatus.covers => false
+    | OracleStatus.excludes => true
+    | OracleStatus.unlisted => false)
+}
+
+definition{
+  name: attributionStatusIsDeny,
+  parameters: [value : AttributionStatus],
+  result: Bool,
+  body: (match value
+    | AttributionStatus.permit => false
+    | AttributionStatus.deny => true
+    | AttributionStatus.organization => false
+    | AttributionStatus.indeterminate => false
+    | AttributionStatus.aggregate => false)
+}
+
+definition{
+  name: collectionStatusIsOutside,
+  parameters: [value : CollectionStatus],
+  result: Bool,
+  body: (match value
+    | CollectionStatus.permit => false
+    | CollectionStatus.deny => false
+    | CollectionStatus.outside => true
+    | CollectionStatus.indeterminate => false
+    | CollectionStatus.ungoverned => false)
+}
+
+definition{
+  name: collectionStatusIsDeny,
+  parameters: [value : CollectionStatus],
+  result: Bool,
+  body: (match value
+    | CollectionStatus.permit => false
+    | CollectionStatus.deny => true
+    | CollectionStatus.outside => false
+    | CollectionStatus.indeterminate => false
+    | CollectionStatus.ungoverned => false)
+}
+
+definition{
+  name: metricStatusIsUnreleased,
+  parameters: [value : MetricStatus],
+  result: Bool,
+  body: (match value | MetricStatus.released => false | MetricStatus.unreleased => true)
+}
+
+definition{
+  name: admissionIsNotApplicable,
+  parameters: [value : Admission],
+  result: Bool,
+  body: (match value
+    | Admission.permit => false
+    | Admission.deny => false
+    | Admission.notApplicable => true
+    | Admission.indeterminate => false)
+}
+
+definition{
+  name: admissionDecided,
+  parameters: [observation : Observation],
+  result: Bool,
+  body: (if (metricStatusIsUnreleased (project observation metricStatus)) then (admissionIsNotApplicable (project observation admission)) else (if (collectionStatusIsDeny (project observation collectionStatus)) then (admissionIsDeny (project observation admission)) else (if (collectionStatusIsOutside (project observation collectionStatus)) then (admissionIsDeny (project observation admission)) else (if (attributionStatusIsDeny (project observation attributionStatus)) then (admissionIsDeny (project observation admission)) else (if (oracleStatusIsExcludes (project observation oracleStatus)) then (admissionIsDeny (project observation admission)) else (if (sourceStatusIsUnpinned (project observation sourceStatus)) then (admissionIsDeny (project observation admission)) else (if (replayStatusIsDiffers (project observation replayStatus)) then (admissionIsDeny (project observation admission)) else (if (oracleStatusIsUnlisted (project observation oracleStatus)) then (admissionIsIndeterminate (project observation admission)) else (if (replayStatusIsAbsent (project observation replayStatus)) then (admissionIsIndeterminate (project observation admission)) else (if (collectionStatusIsIndeterminate (project observation collectionStatus)) then (admissionIsIndeterminate (project observation admission)) else (if (attributionStatusIsIndeterminate (project observation attributionStatus)) then (admissionIsIndeterminate (project observation admission)) else (admissionIsPermit (project observation admission)))))))))))))
+}
+
+definition{
+  name: admittedTotal,
+  parameters: [values : (List Observation)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons observation rest => ((if (admissionIsPermit (project observation admission)) then 1 else 0) + (admittedTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: skipTo,
+  parameters: [position : Nat, observations : (List Observation)],
+  result: (List Observation),
+  body: (match observations
+    | List.nil => (nil Observation)
+    | List.cons observation rest => (if ((project observation index) <? position) then (skipTo position rest) else (cons observation rest))),
+  recursive_argument: observations
+}
+
+definition{
+  name: admitsValue,
+  parameters: [value : MetricValue, observations : (List Observation)],
+  result: Bool,
+  body: (match observations
+    | List.nil => false
+    | List.cons observation rest => (((project observation index) =? (project value observation)) && ((admissionIsPermit (project observation admission)) && ((project observation metric) =? (project value metric)))))
+}
+
+definition{
+  name: valuesAdmitted,
+  parameters: [observations : (List Observation), values : (List MetricValue)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons value rest => ((admitsValue value (skipTo (project value observation) observations)) && (valuesAdmitted (skipTo (project value observation) observations) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: subjectsValid,
+  parameters: [position : Nat, values : (List Subject)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons subject rest => (((project subject index) =? position) && (subjectsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: subjectsTotal,
+  parameters: [values : (List Subject)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons subject rest => (1 + (subjectsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: periodsValid,
+  parameters: [position : Nat, subjectsCount : Nat, values : (List Period)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons period rest => (((project period index) =? position) && (((project period subject) <? subjectsCount) && (periodsValid (position + 1) subjectsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: periodsTotal,
+  parameters: [values : (List Period)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons period rest => (1 + (periodsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: metricsValid,
+  parameters: [position : Nat, values : (List Metric)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons metric rest => (((project metric index) =? position) && (metricsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: metricsTotal,
+  parameters: [values : (List Metric)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons metric rest => (1 + (metricsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: computationsValid,
+  parameters: [position : Nat, values : (List Computation)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons computation rest => (((project computation index) =? position) && (computationsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: computationsTotal,
+  parameters: [values : (List Computation)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons computation rest => (1 + (computationsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: observationsValid,
+  parameters: [position : Nat, metricsCount : Nat, periodsCount : Nat, values : (List Observation)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons observation rest => (((project observation index) =? position) && (((project observation metric) <? metricsCount) && (((project observation period) <? periodsCount) && ((admissionDecided observation) && ((0 <? (project observation items)) && (observationsValid (position + 1) metricsCount periodsCount rest))))))),
+  recursive_argument: values
+}
+
+definition{
+  name: observationsTotal,
+  parameters: [values : (List Observation)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons observation rest => (1 + (observationsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: metricValuesValid,
+  parameters: [
+    position : Nat,
+    metricsCount : Nat,
+    computationsCount : Nat,
+    observationsCount : Nat,
+    values : (List MetricValue)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons metricValue rest => (((project metricValue index) =? position) && (((project metricValue metric) <? metricsCount) && (((project metricValue computation) <? computationsCount) && (((project metricValue observation) <? observationsCount) && (metricValuesValid (position + 1) metricsCount computationsCount observationsCount rest)))))),
+  recursive_argument: values
+}
+
+definition{
+  name: metricValuesTotal,
+  parameters: [values : (List MetricValue)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons metricValue rest => (1 + (metricValuesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsValid,
+  parameters: [position : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons openClaim rest => (((project openClaim index) =? position) && (openClaimsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsTotal,
+  parameters: [values : (List OpenClaim)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    subjects : (List Subject),
+    periods : (List Period),
+    metrics : (List Metric),
+    computations : (List Computation),
+    observations : (List Observation),
+    metricValues : (List MetricValue),
+    openClaims : (List OpenClaim)
+  ],
+  result: Bool,
+  body: (((subjectsTotal subjects) =? (project release subjectsCount)) && (((periodsTotal periods) =? (project release periodsCount)) && (((metricsTotal metrics) =? (project release metricsCount)) && (((computationsTotal computations) =? (project release computationsCount)) && (((observationsTotal observations) =? (project release observationsCount)) && (((metricValuesTotal metricValues) =? (project release metricValuesCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && ((subjectsValid 0 subjects) && ((periodsValid 0 (subjectsTotal subjects) periods) && ((metricsValid 0 metrics) && ((computationsValid 0 computations) && ((observationsValid 0 (metricsTotal metrics) (periodsTotal periods) observations) && ((metricValuesValid 0 (metricsTotal metrics) (computationsTotal computations) (observationsTotal observations) metricValues) && ((openClaimsValid 0 openClaims) && (((admittedTotal observations) =? (project release admittedCount)) && (valuesAdmitted observations metricValues))))))))))))))))
+}
+\end{semanticmodule}
+\end{lexlean}
