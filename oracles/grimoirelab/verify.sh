@@ -62,40 +62,52 @@ case "$component" in
 esac
 commit="$(authority "$canonical" revision)"
 
-src="$work/src"
-rm -rf "$src" && git init -q "$src"
-git -C "$src" fetch -q --depth 1 "https://github.com/$canonical" "$commit"
-git -C "$src" checkout -q --detach FETCH_HEAD
-got="$(git -C "$src" rev-parse HEAD)"
-if [ "$got" != "$commit" ]; then
-  echo "$canonical is at $got, the lock pins $commit" >&2
-  exit 3
-fi
-
-overlay_dirs=()
-case "$component" in
-  perceval|live) overlay="$here/perceval-discord" overlay_dirs=(perceval tests releases) ;;
-  chronicler) overlay="$here/chronicler-discord" overlay_dirs=(chronicler tests releases) ;;
-esac
-if [ "${#overlay_dirs[@]}" -gt 0 ]; then
-  (cd "$overlay" && find "${overlay_dirs[@]}" -type f | sort) | while read -r f; do
-    if [ -e "$src/$f" ]; then
+# Fetch a pinned commit into a directory, refusing any other commit, then
+# add the overlay's files (never replacing an upstream one) and its patch.
+stage() {
+  local canonical="$1" commit="$2" dir="$3" overlay="$4"
+  shift 4
+  rm -rf "$dir" && git init -q "$dir"
+  git -C "$dir" fetch -q --depth 1 "https://github.com/$canonical" "$commit"
+  git -C "$dir" checkout -q --detach FETCH_HEAD
+  local got
+  got="$(git -C "$dir" rev-parse HEAD)"
+  if [ "$got" != "$commit" ]; then
+    echo "$canonical is at $got, the lock pins $commit" >&2
+    exit 3
+  fi
+  [ -n "$overlay" ] || return 0
+  (cd "$overlay" && find "$@" -type f | sort) | while read -r f; do
+    if [ -e "$dir/$f" ]; then
       echo "overlay would replace upstream $f" >&2
       exit 4
     fi
-    mkdir -p "$src/$(dirname "$f")"
-    cp "$overlay/$f" "$src/$f"
+    mkdir -p "$dir/$(dirname "$f")"
+    cp "$overlay/$f" "$dir/$f"
   done
   # Edits to existing upstream files (documentation, the help text) travel as
   # one patch, so the change to upstream code stays visible and reviewable
   # and a patch that no longer applies to the pinned commit is refused.
   if [ -f "$overlay/upstream.patch" ]; then
-    if ! git -C "$src" apply --check "$overlay/upstream.patch"; then
+    if ! git -C "$dir" apply --check "$overlay/upstream.patch"; then
       echo "upstream.patch does not apply to $commit" >&2
       exit 5
     fi
-    git -C "$src" apply "$overlay/upstream.patch"
+    git -C "$dir" apply "$overlay/upstream.patch"
   fi
+}
+
+src="$work/src"
+case "$component" in
+  perceval|live) stage "$canonical" "$commit" "$src" "$here/perceval-discord" perceval tests releases ;;
+  chronicler) stage "$canonical" "$commit" "$src" "$here/chronicler-discord" chronicler tests releases ;;
+  *) stage "$canonical" "$commit" "$src" "" ;;
+esac
+# The live harness also eventizes what it fetched, so Perceval's set-up
+# carries the pinned Chronicler with the Discord eventizer beside it.
+if [ "$component" = perceval ] || [ "$component" = live ]; then
+  stage chaoss/grimoirelab-chronicler "$(authority chaoss/grimoirelab-chronicler revision)" \
+    "$work/chronicler" "$here/chronicler-discord" chronicler tests releases
 fi
 
 venv="$work/venv"
@@ -105,6 +117,13 @@ pip poetry==2.5.1 poetry-plugin-export==1.10.1
 (cd "$src" && "$venv/bin/poetry" export --with dev -f requirements.txt -o "$work/requirements.txt")
 pip --require-hashes -r "$work/requirements.txt"
 pip --no-deps -e "$src"
+if [ -d "$work/chronicler" ]; then
+  # Chronicler's runtime set, hash-checked; the versions it shares with
+  # Perceval's set (grimoirelab-toolkit, python-dateutil) are the same pins.
+  (cd "$work/chronicler" && "$venv/bin/poetry" export -f requirements.txt -o "$work/chronicler-requirements.txt")
+  pip --require-hashes -r "$work/chronicler-requirements.txt"
+  pip --no-deps -e "$work/chronicler"
+fi
 
 printf '[safe]\n\tdirectory = *\n' >"$work/gitconfig"
 export GIT_CONFIG_GLOBAL="$work/gitconfig"
