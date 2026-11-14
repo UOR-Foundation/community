@@ -494,6 +494,7 @@ const settings = [
   '# Applies the repository settings of each change set that only an Organization Owner',
   '# may apply (the uor-remediation-write app): topics, the GOVERNANCE.md 6.2 ruleset and',
   '# lowercase renames. It prints every call and writes nothing unless --apply is given.',
+  '# Every call is idempotent, so it is safe to run again (.github/workflows/apply-settings.yml).',
   '# Required status checks are the check runs GitHub reports on the default branch when',
   '# it runs; a repository that reports none keeps its other rules and is named on stderr.',
   '#',
@@ -504,6 +505,8 @@ const settings = [
   'call() { if [ "$apply" = 1 ]; then gh api "$@" >/dev/null; else printf "gh api %s\\n" "$*"; fi; }',
   'want() { [ "$only" = "  " ] || [[ "$only" == *" $1 "* ]]; }',
   'checks() { gh api "repos/UOR-Foundation/$1/commits/$2/check-runs" --paginate --jq \'.check_runs[].name\' | sort -u | jq -R . | jq -sc \'map({context: .})\'; }',
+  '# A ruleset with the same name is updated in place, so running the script again changes nothing.',
+  'ruleset() { if [ "$apply" = 1 ]; then id=$(gh api "repos/UOR-Foundation/$1/rulesets" --jq ".[] | select(.name == \\"$2\\") | .id"); if [ -n "$id" ]; then gh api -X PUT "repos/UOR-Foundation/$1/rulesets/$id" --input - >/dev/null; else gh api -X POST "repos/UOR-Foundation/$1/rulesets" --input - >/dev/null; fi; else printf "gh api -X POST repos/UOR-Foundation/%s/rulesets --input %s\\n" "$1" "$(cat)"; fi; }',
   ...repositories.flatMap((r) => {
     const own = byOwner(r);
     if (!own.length) return [];
@@ -520,7 +523,7 @@ const settings = [
       lines.push(`  if [ "$contexts" = "[]" ]; then echo "UOR-Foundation/${r.name}: no check runs on ${r.defaultBranch}; required status checks not set" >&2; rules=${q(JSON.stringify(rules))};`);
       lines.push(`  else rules=$(jq -c --argjson c "$contexts" '. + [{type: "required_status_checks", parameters: {strict_required_status_checks_policy: false, required_status_checks: $c}}]' <<<${q(JSON.stringify(rules))}); fi`);
     } else lines.push(`  rules=${q(JSON.stringify(rules))}`);
-    lines.push(`  jq -c --argjson r "$rules" '.rules = $r' <<<${q(JSON.stringify(body))} | if [ "$apply" = 1 ]; then gh api -X POST repos/UOR-Foundation/${r.name}/rulesets --input - >/dev/null; else printf "gh api -X POST repos/UOR-Foundation/${r.name}/rulesets --input %s\\n" "$(cat)"; fi`);
+    lines.push(`  jq -c --argjson r "$rules" '.rules = $r' <<<${q(JSON.stringify(body))} | ruleset ${q(r.name)} ${q(body.name)}`);
     if (rename) lines.push(`  call -X PATCH repos/UOR-Foundation/${r.name} -f name=${q(rename.name)}`);
     if (r.archived) lines.push(`  call -X PATCH repos/UOR-Foundation/${rename ? rename.name : r.name} -F archived=true`);
     lines.push('fi');
