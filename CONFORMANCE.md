@@ -67,6 +67,15 @@ model does not sanction.
 | `UT-10` | `build` | The ISO/IEC 25010 quality model numbers every characteristic, subcharacteristic, requirement and measure, and every parent it names is declared |
 | `UT-11` | `build` | Every compliance obligation is numbered in order and names its evidence |
 
+## views
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `SV-01` | `build` | The stakeholder views are a valid ISO/IEC/IEEE 42010 architecture description: each stakeholder has one viewpoint governing one view, every concern is held by a declared stakeholder, framed by its viewpoint and addressed in its view, and every metrics model, decision and stakeholder is addressed or carried as an open claim |
+| `SV-02` | `build` | Every stakeholder is a role its pinned source names, declared with the quote, the source commit and its digest, and an agent acts on behalf of a declared stakeholder (PROV-O actedOnBehalfOf) |
+| `SV-03` | `build` | The Pages views, their Markdown twins, llms.txt and the Discord digest are generated from the stakeholder register, and a surface that differs from the register's catalog fails the gate |
+| `SV-04` | `open` | A user-story role no Foundation stakeholder holds, a metrics model that states no user story, and a stakeholder no model or decision addresses are carried as open claims, never guessed |
+
 ## Cited authorities
 
 Never re-derived, vendored, or gated on.

@@ -1,0 +1,778 @@
+{
+ "spec": "uor-community/stakeholder-register/1",
+ "sources": [
+  {
+   "id": "governance",
+   "ref": "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md",
+   "sha256": "96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574"
+  },
+  {
+   "id": "toc",
+   "ref": "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:toc/README.md",
+   "sha256": "9674e625d93cefc9e490b3af5ae449f8770eeadb50c85e68597f741656c2d2a2"
+  },
+  {
+   "id": "coc",
+   "ref": "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:CODE_OF_CONDUCT.md",
+   "sha256": "d01bb370bf46dadc5bd8b1b30113a3434baf079b32815e21cfd05af4fb841705"
+  },
+  {
+   "id": "bylaws",
+   "ref": "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/The_UOR_Foundation_Bylaws.pdf",
+   "sha256": "21dde54a38910f58fb685867a63030f5fd8d0a6d0d2c93baa58e690641a4906c"
+  },
+  {
+   "id": "prov-o",
+   "ref": "https://www.w3.org/TR/2013/REC-prov-o-20130430/",
+   "sha256": "6b96671ab84faf12ce3f041aca12c3f93a6df2ed242348810743179a68e69555"
+  }
+ ],
+ "stakeholders": [
+  {
+   "slug": "board",
+   "name": "Board of Directors",
+   "kind": "organization",
+   "source": "coc",
+   "quote": "Ultimate enforcement authority rests with the Board of Directors"
+  },
+  {
+   "slug": "organization-owner",
+   "name": "Organization Owner",
+   "kind": "person",
+   "source": "governance",
+   "quote": "| Organization Owner | Final governance decisions and escalations |"
+  },
+  {
+   "slug": "toc",
+   "name": "Technical Oversight Committee",
+   "kind": "organization",
+   "source": "bylaws",
+   "quote": "a Technical Oversight Committee responsible for stewarding the UOR Framework specification, open-source repositories, and public API infrastructure"
+  },
+  {
+   "slug": "community-outreach",
+   "name": "Community and Outreach Committee",
+   "kind": "organization",
+   "source": "bylaws",
+   "quote": "Community and Outreach Committee responsible for supporting the open developer, researcher, and practitioner community engaged with the UOR Framework"
+  },
+  {
+   "slug": "maintainer",
+   "name": "Repository Maintainer",
+   "kind": "person",
+   "source": "governance",
+   "quote": "| Repository Maintainer | Day-to-day repo health, review, and release |"
+  },
+  {
+   "slug": "contributor",
+   "name": "Contributor",
+   "kind": "person",
+   "source": "governance",
+   "quote": "| Contributor | Proposes and ships improvements through PRs |"
+  },
+  {
+   "slug": "agent-contributor",
+   "name": "Agent contributor",
+   "kind": "softwareApplication",
+   "source": "prov-o",
+   "quote": "A software agent is running software.",
+   "actedOnBehalfOf": "contributor"
+  },
+  {
+   "slug": "moderator",
+   "name": "Community Moderator",
+   "kind": "person",
+   "source": "coc",
+   "quote": "Community Moderators take reports of violations seriously"
+  },
+  {
+   "slug": "participant",
+   "name": "Community participant",
+   "kind": "person",
+   "source": "coc",
+   "quote": "This Code of Conduct applies to all participants, contributors, and representatives of the UOR Foundation."
+  },
+  {
+   "slug": "adopter",
+   "name": "Adopter",
+   "kind": "organization",
+   "source": "toc",
+   "quote": "At least one adopter or clear integration usage"
+  }
+ ],
+ "decisions": [
+  {
+   "app": "uor-toc-lifecycle",
+   "title": "TOC project lifecycle",
+   "pattern": "stateMachine",
+   "path": "app/prompt.json",
+   "sha256": "17b433b1465cfa5cc102c8da2104a5f3cb7f7dc0f471f67005f71e7ab0931648"
+  }
+ ],
+ "concerns": [
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-ai-alignment-community-aligned-training-feedback",
+   "role": "maintainer",
+   "text": "As a maintainer I want to communicate governance decisions around AI to model builders."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-ai-alignment-community-aligned-training-feedback",
+   "role": "maintainer dealing with AI-generated low-quality PRs",
+   "text": "As a maintainer dealing with AI-generated low-quality PRs, I want to flag the contribution pattern to the provider whose tool produced it, so that I'm not bearing the full cost of triaging output I didn't ask for."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-ai-alignment-community-aligned-training-feedback",
+   "role": "maintainer",
+   "text": "As a maintainer, I want a documented intake SLA from each major model provider, so that I can decide whether filing feedback is worth my time before I start."
+  },
+  {
+   "stakeholder": "board",
+   "kind": "measurementModel",
+   "subject": "metrics-model-ai-alignment-community-aligned-training-feedback",
+   "role": "foundation representative",
+   "text": "As a foundation representative, I want baseline metrics on response times, acknowledgment rates, and attribution rates across major model providers, so that I can negotiate collective intake agreements on behalf of member projects from a position of evidence."
+  },
+  {
+   "stakeholder": "board",
+   "kind": "measurementModel",
+   "subject": "metrics-model-ai-alignment-community-aligned-training-feedback",
+   "role": "foundation",
+   "text": "As a foundation, I want a standard taxonomy for AI-feedback categories (bias, attribution, safety, accessibility, agent behavior, environmental), so that reports from different projects are comparable and aggregable."
+  },
+  {
+   "stakeholder": "participant",
+   "kind": "measurementModel",
+   "subject": "metrics-model-ai-alignment-community-aligned-training-feedback",
+   "role": "community member",
+   "text": "As a community member I want to know what the governance is for raising issues within my community (to gain consensus to report on behalf of that project)."
+  },
+  {
+   "stakeholder": "participant",
+   "kind": "measurementModel",
+   "subject": "metrics-model-ai-alignment-community-aligned-training-feedback",
+   "role": "community member who has experienced harm (misattribution",
+   "text": "As a community member who has experienced harm (misattribution, harassment via AI-generated content, privacy exposure), I want a non-public channel for reporting, so that I'm not forced to disclose identity or details to get a response."
+  },
+  {
+   "stakeholder": "participant",
+   "kind": "measurementModel",
+   "subject": "metrics-model-ai-alignment-community-aligned-training-feedback",
+   "role": "researcher",
+   "text": "As a researcher, I want a public, replicable dataset of AI-feedback events and outcomes across providers and time, so that I can study patterns, identify failure modes, and inform policy."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-ai-alignment-community-aligned-training-feedback",
+   "role": "funder of open source infrastructure",
+   "text": "As a funder of open source infrastructure, I want to see whether the projects I support are receiving proportional value back from the AI ecosystem, so that I can direct grants toward gaps the AI industry is failing to fill."
+  },
+  {
+   "stakeholder": "community-outreach",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-activity",
+   "role": "community manager",
+   "text": "As a community manager, I want to know how active the projects I manage are."
+  },
+  {
+   "stakeholder": "community-outreach",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-activity",
+   "role": "community manager",
+   "text": "As a community manager, I want to investigate increases and decreases of community activity and what the root cause (good or bad reasons) may be in these changes."
+  },
+  {
+   "stakeholder": "community-outreach",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-activity",
+   "role": "community manager",
+   "text": "As a community manager, I hope there are simple ways that would help me quickly identify how active the projects which I manage."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-activity",
+   "role": "OSPO or a program manager from a company",
+   "text": "As an OSPO or a program manager from a company, I want to collaborate with active communities, which may indicate that bug fixes and feature requirements could be solved efficiently. This is especially important, when I have multiple projects to choose from."
+  },
+  {
+   "stakeholder": "contributor",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-activity",
+   "role": "contributor",
+   "text": "As a contributor, I want to join a community which is more active, because I may get more support and the value I create is more visible."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "project leader",
+   "text": "As a project leader, I want to measure the existing use of AI in my community so that I can determine future project policy on the use of AI in the project."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "team leader",
+   "text": "As a team leader, I want to be aware of tools and workflows that people use to participate in my project so that….."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "project leader considering a disclosure-and-ban policy",
+   "text": "As a project leader considering a disclosure-and-ban policy, I want to see how similar projects have fared so I can judge the tradeoffs before adopting it."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "project leader considering a conditional",
+   "text": "As a project leader considering a conditional, human-in-the-loop policy, I want a way to express task-specific rules rather than a blanket yes or no."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "project leader who has decided not to restrict AI use",
+   "text": "As a project leader who has decided not to restrict AI use, I want to state that clearly so contributors who disagree can choose to fork or leave rather than block others."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "project leader considering an outright ban",
+   "text": "As a project leader considering an outright ban, I want to see how that reasoning was received elsewhere before deciding whether it holds for my project."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "project leader who adopted a conditional policy",
+   "text": "As a project leader who adopted a conditional policy, I want to check whether disclosed AI-assisted contributions meet its requirements, so I can tell whether the policy is working or just written down."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "project maintainer",
+   "text": "As a project maintainer, I want to verify or be aware of the ways that my community members and contributors are (or aren't) abiding by the policies the community has consented to, so it can inform my response and maintenance of a healthy community."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "maintainer",
+   "text": "As a maintainer, I want to see an overview of the specific AI tools and models being used in my (or other) communities, so I can compare tool quality and learn about new frontier models as contributors adopt them."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "maintainer",
+   "text": "As a maintainer, I want to distinguish AI-assisted human contribution from autonomous agent activity in my workflows, so I know which policy provisions apply to a given contribution."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "maintainer",
+   "text": "As a maintainer, I want a way to signal that my project has an active human community and pre-LLM history, so a platform's graduated policy places my project correctly rather than flagging it on resource use alone."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "maintainer with a zero-tolerance policy",
+   "text": "As a maintainer with a zero-tolerance policy, I want guidance on responding warmly to AI-assisted submissions I still plan to reject, so the contributor leaves treated like any other well-meaning first-time submitter, not shamed."
+  },
+  {
+   "stakeholder": "participant",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "community member",
+   "text": "As a community member, I want to know who controls the data behind the AI tools I interact with in a community, so I know where my data is and how I can assert my rights (e.g. GDPR)."
+  },
+  {
+   "stakeholder": "participant",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "community member",
+   "text": "As a community member, I want to know what category of tool is being used in a space I'm participating in (assistant, notetaker, autonomous agent), so I can judge what kind of consent applies before I speak or contribute."
+  },
+  {
+   "stakeholder": "participant",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "meeting participant",
+   "text": "As a meeting participant, I want to know whether a notetaker bot is a passive transcription tool or one that shares content onward (e.g. training, third-party analysis), so I can judge whether my consent to be recorded covers what happens to that recording."
+  },
+  {
+   "stakeholder": "moderator",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "content moderator",
+   "text": "As a content moderator, I want to mitigate against new forms of social engineering attacks and toxic behavior facilitated by AI usage so that I can better protect the psychological safety of my community."
+  },
+  {
+   "stakeholder": "community-outreach",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "community manager",
+   "text": "As a community manager, I want to understand how AI usage might impact code of conduct enforcement so that….."
+  },
+  {
+   "stakeholder": "community-outreach",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "community manager",
+   "text": "As a community manager, I want to see which policy provisions actually reduce low-quality AI-driven contribution load, so I can decide what to adopt before we hit the same problem."
+  },
+  {
+   "stakeholder": "contributor",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "potential contributor",
+   "text": "As a potential contributor, I want to know if my preferences for AI use match community policies so that…."
+  },
+  {
+   "stakeholder": "contributor",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "contributor who wants to use AI extensively",
+   "text": "As a contributor who wants to use AI extensively, I want to know where a project sits on the ban-to-permissive spectrum so I don't invest effort building a contribution the project won't accept."
+  },
+  {
+   "stakeholder": "contributor",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "contributor who codes without AI assistance",
+   "text": "As a contributor who codes without AI assistance, I want to be trusted at face value rather than accused of undisclosed LLM use, so suspicion doesn't fall on people doing their own work just because AI use has become harder to rule out."
+  },
+  {
+   "stakeholder": "contributor",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "contributor",
+   "text": "As a contributor I want to understand the rationale behind AI policies to limit use (not just that they do)."
+  },
+  {
+   "stakeholder": "contributor",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "contributor whose employer requires AI tool use as a condition of employment",
+   "text": "As a contributor whose employer requires AI tool use as a condition of employment, I want a way to disclose (attribute) that my use was mandated rather than chosen."
+  },
+  {
+   "stakeholder": "board",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "foundation representative",
+   "text": "As a foundation representative, I want to compare how member projects' AI policies have shifted over time so that I can identify where a shared foundation-level position would help."
+  },
+  {
+   "stakeholder": "board",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "foundation representative",
+   "text": "As a foundation representative, I want the stated rationale behind a policy change broken out as separate, checkable claims, so member projects can evaluate the reasoning on its merits rather than treating the outcome as self-justifying."
+  },
+  {
+   "stakeholder": "board",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "role": "foundation representative",
+   "text": "As a foundation representative, I want licensing-related misuse claims (e.g. license laundering) framed as legally unsettled rather than established fact, so member projects don't overstate a position courts haven't yet resolved."
+  },
+  {
+   "stakeholder": "community-outreach",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-service-and-support",
+   "role": "community manager",
+   "text": "As a community manager, I want to know if my community provides good enough service and support to the contributors, including issue response, infrastructure services and outreach activities."
+  },
+  {
+   "stakeholder": "participant",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-service-and-support",
+   "role": "new community member",
+   "text": "As a new community member, I want to know if I get adequate support from the community."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-service-and-support",
+   "role": "community software user",
+   "text": "As a community software user, I want to know if I can get a quick answer when I have problems."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-service-and-support",
+   "role": "OSPO or a program manager",
+   "text": "As an OSPO or a program manager, I want to work with a community, and understanding community service and support can improve my ability to better understand such an engagement."
+  },
+  {
+   "stakeholder": "participant",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-service-and-support",
+   "role": "existing community member",
+   "text": "As an existing community member, I may want to identify areas where community service and support is lacking in an effort to provide support where needed."
+  },
+  {
+   "stakeholder": "participant",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-welcomingness",
+   "role": "newcomer",
+   "text": "As a newcomer, I am curious as to whether I will be welcome in a new community or not."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-welcomingness",
+   "role": "member from an organization interested in an open source project",
+   "text": "As a member from an organization interested in an open source project, I would like to know if my employees will be able to contribute to the project on behalf of the organization."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-welcomingness",
+   "role": "maintainer",
+   "text": "As a maintainer, I would like to know how many potential new contributors I am losing because my project is not as welcoming as it could be."
+  },
+  {
+   "stakeholder": "board",
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-welcomingness",
+   "role": "organization who runs open source projects",
+   "text": "As an organization who runs open source projects, I want to know if my project is open to including new contributors for the sustainability of my project."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-development-responsiveness",
+   "role": "company or non-profit and individual",
+   "text": "As a company or non-profit and individual I want to evaluate how well an upstream project is set up to respond to priority issues like security."
+  },
+  {
+   "stakeholder": "contributor",
+   "kind": "measurementModel",
+   "subject": "metrics-model-development-responsiveness",
+   "role": "contributor",
+   "text": "As a contributor, I want to evaluate whether or not a project is actively engaging with people."
+  },
+  {
+   "stakeholder": "community-outreach",
+   "kind": "measurementModel",
+   "subject": "metrics-model-development-responsiveness",
+   "role": "community manager/maintainer",
+   "text": "As a community manager/maintainer I want to evaluate how well our project is responding in various capacities (issues, comments etc), and where possible compare to other projects who are similar or direct competitors."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-development-responsiveness",
+   "role": "community manager/maintainer",
+   "text": "As a community manager/maintainer I want to evaluate how well our project is responding in various capacities (issues, comments etc), and where possible compare to other projects who are similar or direct competitors."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-development-responsiveness",
+   "role": "OSPO manager (or someone in charge of OS standards at a company/institution/org)",
+   "text": "As an OSPO manager (or someone in charge of OS standards at a company/institution/org), I want to identify inactive projects for possible archiving, or remedial/supplementary support."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-funding",
+   "role": "OSPO manager",
+   "text": "As an OSPO manager, it may be important to understand if an open source project we rely on has sufficient financial support to ensure long-term sustainability."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-funding",
+   "role": "OSPO manager",
+   "text": "As an OSPO manager, it may be important to understand the financial support our organization provides to specific open source proejcts."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-funding",
+   "role": "OSPO manager",
+   "text": "As an OSPO manager, financial support can imply influence. Knowing organizational financial support in a project may help understand influence."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-funding",
+   "role": "project maintainer",
+   "text": "As a project maintainer, core contributors who are not compensated are less likely to maintain quality contributions."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-oss-project-viability-community",
+   "role": "developer",
+   "text": "As a developer, I want to understand if a project has a thriving open source community, so that I have a higher degree of confidence in its viability. ."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-oss-project-viability-community",
+   "role": "project manager",
+   "text": "As a project manager, I want to use projects well understood and vetted by a developer community, so that I can mitigate the business risk of adopting unsupported dependencies."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-oss-project-viability-compliance-security",
+   "role": "developer",
+   "text": "As a developer, I want to: Understand if a dependency is viable.; Investigate how well the project’s dependencies are kept up to date."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-oss-project-viability-compliance-security",
+   "role": "manager of a project using open source",
+   "text": "As a manager of a project using open source, I want to understand the risk associated with using a project."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-oss-project-viability-compliance-security",
+   "role": "technologist involved with a project leveraging open source",
+   "text": "As a technologist involved with a project leveraging open source, I want to comply with my organization’s policy using specific open source licenses."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-oss-project-viability-governance",
+   "role": "developer",
+   "text": "As a developer, I want to: Understand if a dependency is viable.; Investigate my ability to contribute changes to a project if needed"
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-oss-project-viability-governance",
+   "role": "manager of a project using open source",
+   "text": "As a manager of a project using open source, I want to understand the risk associated with using a project."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-oss-project-viability-strategy",
+   "role": "developer who is evaluating a new open source project to use as a dependency",
+   "text": "As a developer who is evaluating a new open source project to use as a dependency, I want to understand the project's future roadmap, so that I can determine if its goals and direction match my needs."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-oss-project-viability-strategy",
+   "role": "manager of a project using open source",
+   "text": "As a manager of a project using open source, I want to: Understand the risk associated with using a project.; Determine if a project aligns with long term technical goals of myself/my organization."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-oss-project-viability-strategy",
+   "role": "stakeholder of a project",
+   "text": "As a stakeholder of a project, I want to understand my opportunity to contribute to project strategy"
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-project-awareness",
+   "role": "person at an organization",
+   "text": "As a person at an organization, I want to evaluate the popularity of a project I contribute to or maintain so that I can prioritize allocating resources to more popular or important projects."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-project-awareness",
+   "role": "person at an organization",
+   "text": "As a person at an organization, I want to evaluate the importance of my project so that I can prioritize allocating resources to more popular or important projects."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-project-awareness",
+   "role": "person at an organization",
+   "text": "As a person at an organization, I want to assess how much attention is being given to a project, either positively or negatively, and whether or not there have major increases or decreases in attention (e.g., from media coverage, high impact bugs, etc.)"
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-project-viability-starter",
+   "role": "developer who is evaluating a new open source project to use as a dependency",
+   "text": "As a developer who is evaluating a new open source project to use as a dependency, I want to understand the project's future roadmap, so that I can determine if its goals and direction match my needs."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-project-viability-starter",
+   "role": "developer",
+   "text": "As a developer, I want to understand if a project has a thriving open source community, so that I have a higher degree of confidence in its viability."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-project-viability-starter",
+   "role": "developer",
+   "text": "As a developer, I want to: Understand if a dependency is viable.; Investigate how well the project’s dependencies are kept up to date."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-project-viability-starter",
+   "role": "project manager",
+   "text": "As a project manager, I want to use projects well understood and vetted by a developer community, so that I can mitigate the business risk of adopting unsupported dependencies."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-project-viability-starter",
+   "role": "manager of a project using open source",
+   "text": "As a manager of a project using open source, I want to: Understand the risk associated with using a project.; Determine if a project aligns with long term technical goals of myself/my organization."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-project-viability-starter",
+   "role": "stakeholder of a project",
+   "text": "As a stakeholder of a project, I want to understand my opportunity to contribute to project strategy"
+  },
+  {
+   "stakeholder": "contributor",
+   "kind": "measurementModel",
+   "subject": "metrics-model-safety",
+   "role": "contributor from a traditionally marginalized and equity-seeking group",
+   "text": "As a contributor from a traditionally marginalized and equity-seeking group I want to evaluate whether or not a project is invested in my success at all levels of participation including leadership."
+  },
+  {
+   "stakeholder": "community-outreach",
+   "kind": "measurementModel",
+   "subject": "metrics-model-safety",
+   "role": "community manager/maintainer",
+   "text": "As a community manager/maintainer, I want to regularly challenge our project and community around safety and track our progress over time."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "measurementModel",
+   "subject": "metrics-model-safety",
+   "role": "community manager/maintainer",
+   "text": "As a community manager/maintainer, I want to regularly challenge our project and community around safety and track our progress over time."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-safety",
+   "role": "OSPO (or someone in charge of OS standards at a company/institution/org)",
+   "text": "As an OSPO (or someone in charge of OS standards at a company/institution/org) I want to evaluate how well we are set up for inclusive governance."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "measurementModel",
+   "subject": "metrics-model-starter-project-health",
+   "role": "OSPO",
+   "text": "As an OSPO, I want to help our open source contributors improve the health of"
+  },
+  {
+   "stakeholder": "contributor",
+   "kind": "measurementModel",
+   "subject": "metrics-model-starter-project-health",
+   "role": "contributor",
+   "text": "As a contributor, I want to know where I can focus my efforts to help make the"
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "decisionModel",
+   "subject": "uor-toc-lifecycle",
+   "role": "Project applicant",
+   "text": "Opens a Sandbox, Incubation or Graduation issue in UOR-Foundation/.github and needs to know which evidence and which vote move the project."
+  },
+  {
+   "stakeholder": "toc",
+   "kind": "decisionModel",
+   "subject": "uor-toc-lifecycle",
+   "role": "TOC member",
+   "text": "Votes on applications and needs no transition to happen without a quorum, the required majority and complete evidence."
+  },
+  {
+   "stakeholder": "community-outreach",
+   "kind": "decisionModel",
+   "subject": "uor-toc-lifecycle",
+   "role": "Community and Outreach Committee",
+   "text": "Publishes each project's stage to the community and needs the published stage to be the one the TOC's acts determine."
+  }
+ ],
+ "refusals": [
+  {
+   "kind": "measurementModel",
+   "subject": "metrics-model-ai-alignment-community-aligned-training-feedback",
+   "refusal": "role-maps-to-no-stakeholder",
+   "detail": "model provider building feedback intake"
+  },
+  {
+   "kind": "measurementModel",
+   "subject": "metrics-model-ai-alignment-community-aligned-training-feedback",
+   "refusal": "role-maps-to-no-stakeholder",
+   "detail": "model provider"
+  },
+  {
+   "kind": "measurementModel",
+   "subject": "metrics-model-business-readiness-of-an-open-source-project",
+   "refusal": "model-states-no-user-story",
+   "detail": "Business Readiness of an Open Source Project"
+  },
+  {
+   "kind": "measurementModel",
+   "subject": "metrics-model-collaboration-development-index",
+   "refusal": "model-states-no-user-story",
+   "detail": "Collaboration Development Index"
+  },
+  {
+   "kind": "measurementModel",
+   "subject": "metrics-model-community-governed-ai-use-in-open-communities",
+   "refusal": "role-maps-to-no-stakeholder",
+   "detail": "model builder"
+  },
+  {
+   "kind": "measurementModel",
+   "subject": "metrics-model-dei-event-badging",
+   "refusal": "model-states-no-user-story",
+   "detail": "CHAOSS DEI Event Badging"
+  },
+  {
+   "kind": "measurementModel",
+   "subject": "metrics-model-project-engagement",
+   "refusal": "model-states-no-user-story",
+   "detail": "Project Engagement"
+  },
+  {
+   "kind": "stakeholder",
+   "subject": "organization-owner",
+   "refusal": "stakeholder-has-no-concern",
+   "detail": "Organization Owner"
+  },
+  {
+   "kind": "stakeholder",
+   "subject": "agent-contributor",
+   "refusal": "stakeholder-has-no-concern",
+   "detail": "Agent contributor"
+  }
+ ],
+ "counts": {
+  "stakeholders": 10,
+  "decisions": 1,
+  "concerns": 86,
+  "refusals": 9
+ }
+}
