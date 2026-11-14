@@ -87,6 +87,8 @@ jobs:
         env:
           REPOS: ${{ inputs.repositories }}
           ENFORCEMENT: ${{ inputs.enforcement }}
+          # Public reads: the dry run shows the exact required checks each ruleset would get.
+          CHECKS_TOKEN: ${{ github.token }}
         run: |
           {
             echo '## Repository settings (dry run)'

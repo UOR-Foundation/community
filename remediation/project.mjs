@@ -509,16 +509,18 @@ const settings = [
   'only=" $* "',
   'call() { [ -z "$enforce" ] || return 0; if [ "$apply" = 1 ]; then gh api "$@" >/dev/null; else printf "gh api %s\\n" "$*"; fi; }',
   'want() { [ "$only" = "  " ] || [[ "$only" == *" $1 "* ]]; }',
-  '# Required status checks are the jobs a pull request reports (GitHub Docs, "About protected branches: Require status',
-  '# checks before merging": a required check must run on the pull request). They are read from the pull_request',
-  '# workflow runs of the most recently updated pull request (each workflow file read at that head), keeping only workflows with no paths or paths-ignore',
-  '# filter, and no types list without synchronize, on pull_request: a filtered workflow does not report on every pull request, so requiring it would leave',
-  '# the others pending forever. Jobs that only run on a push to the default branch are never required.',
+  '# Required status checks are only jobs that normal pull requests are shown to report and pass (GitHub Docs, "About',
+  '# protected branches: Require status checks before merging": a required check must run on every pull request, or the',
+  '# others wait forever). They are the jobs that succeeded on each of the three pull requests merged most recently into',
+  '# the default branch, from workflows that exist on the default branch with no paths or paths-ignore filter and no',
+  '# types list without synchronize on pull_request. A job only an unmerged pull request adds (such as a standards pull',
+  '# request) or only a push runs is never required. A repository with no merged pull request requires no checks.',
   '# Runs and workflow files are public, so they are read with CHECKS_TOKEN when it is set (the workflow passes its own token).',
-  'unfiltered() { GH_TOKEN="${CHECKS_TOKEN:-${GH_TOKEN:-}}" gh api "repos/UOR-Foundation/$1/contents/$2?ref=$3" --jq .content | base64 -d | awk \'/^on:/{o=1;next} o&&/^[^ #]/{o=0} o&&/^  pull_request:/{p=1;next} p&&/^  [^ ]/{p=0} p&&/^    paths(-ignore)?:/{f=1} p&&/^    types:/&&!/synchronize/{f=1} END{exit f}\'; }',
-  'checks() { [ -z "$enforce" ] || { echo "[]"; return; }; export GH_TOKEN="${CHECKS_TOKEN:-${GH_TOKEN:-}}"; sha=$(gh api "repos/UOR-Foundation/$1/pulls?state=all&sort=updated&direction=desc&per_page=1" --jq \'.[0].head.sha // empty\'); [ -n "$sha" ] || { echo "[]"; return; }; gh api "repos/UOR-Foundation/$1/actions/runs?head_sha=$sha&event=pull_request&per_page=100" --jq \'.workflow_runs[] | "\\(.id) \\(.path)"\' | sort -u -k2,2 | while read -r id path; do if unfiltered "$1" "$path" "$sha"; then gh api "repos/UOR-Foundation/$1/actions/runs/$id/jobs" --paginate --jq \'.jobs[].name\'; fi; done | sort -u | jq -R . | jq -sc \'map({context: .})\'; }',
+  'unfiltered() { GH_TOKEN="${CHECKS_TOKEN:-${GH_TOKEN:-}}" gh api "repos/UOR-Foundation/$1/contents/$2?ref=$3" --jq .content 2>/dev/null | base64 -d | awk \'/^on:/{o=1;next} o&&/^[^ #]/{o=0} o&&/^  pull_request:/{p=1;next} p&&/^  [^ ]/{p=0} p&&/^    paths(-ignore)?:/{f=1} p&&/^    types:/&&!/synchronize/{f=1} END{exit f}\'; }',
+  'passed() { gh api "repos/UOR-Foundation/$1/actions/runs?head_sha=$3&event=pull_request&per_page=100" --jq \'.workflow_runs[] | "\\(.id) \\(.path)"\' | sort -u -k2,2 | while read -r id path; do if unfiltered "$1" "$path" "$2"; then gh api "repos/UOR-Foundation/$1/actions/runs/$id/jobs" --paginate --jq \'.jobs[] | select(.conclusion == "success") | .name\'; fi; done | sort -u; }',
+  'checks() { [ -z "$enforce" ] || { echo "[]"; return; }; export GH_TOKEN="${CHECKS_TOKEN:-${GH_TOKEN:-}}"; n=0; acc=""; for sha in $(gh api "repos/UOR-Foundation/$1/pulls?state=closed&base=$2&sort=updated&direction=desc&per_page=50" --jq \'[.[] | select(.merged_at)] | sort_by(.merged_at) | reverse | .[:3][] | .head.sha\'); do got=$(passed "$1" "$2" "$sha"); if [ "$n" = 0 ]; then acc=$got; else acc=$(comm -12 <(printf "%s\\n" "$acc") <(printf "%s\\n" "$got")); fi; n=$((n + 1)); done; if [ "$n" = 0 ] || [ -z "$acc" ]; then echo "[]"; return; fi; printf "%s\\n" "$acc" | jq -R . | jq -sc \'map({context: .})\'; }',
   '# A ruleset with the same name is updated in place, so running the script again changes nothing.',
-  'ruleset() { if [ -n "$enforce" ]; then cat >/dev/null; id=$(gh api "repos/UOR-Foundation/$1/rulesets" --jq ".[] | select(.name == \\"$2\\") | .id"); [ -n "$id" ] || return 0; if [ "$apply" = 1 ]; then gh api -X PUT "repos/UOR-Foundation/$1/rulesets/$id" -f enforcement="$enforce" >/dev/null; fi; echo "UOR-Foundation/$1 $2: enforcement $enforce" >&2; return 0; fi; if [ "$apply" = 1 ]; then id=$(gh api "repos/UOR-Foundation/$1/rulesets" --jq ".[] | select(.name == \\"$2\\") | .id"); if [ -n "$id" ]; then gh api -X PUT "repos/UOR-Foundation/$1/rulesets/$id" --input - >/dev/null; else gh api -X POST "repos/UOR-Foundation/$1/rulesets" --input - >/dev/null; fi; else printf "gh api -X POST repos/UOR-Foundation/%s/rulesets --input %s\\n" "$1" "$(cat)"; fi; }',
+  'ruleset() { if [ -n "$enforce" ]; then cat >/dev/null; [ "$apply" = 1 ] || { echo "UOR-Foundation/$1 $2: would set enforcement $enforce" >&2; return 0; }; id=$(gh api "repos/UOR-Foundation/$1/rulesets" --jq ".[] | select(.name == \\"$2\\") | .id"); [ -n "$id" ] || return 0; if [ "$apply" = 1 ]; then gh api -X PUT "repos/UOR-Foundation/$1/rulesets/$id" -f enforcement="$enforce" >/dev/null; fi; echo "UOR-Foundation/$1 $2: enforcement $enforce" >&2; return 0; fi; if [ "$apply" = 1 ]; then id=$(gh api "repos/UOR-Foundation/$1/rulesets" --jq ".[] | select(.name == \\"$2\\") | .id"); if [ -n "$id" ]; then gh api -X PUT "repos/UOR-Foundation/$1/rulesets/$id" --input - >/dev/null; else gh api -X POST "repos/UOR-Foundation/$1/rulesets" --input - >/dev/null; fi; else printf "gh api -X POST repos/UOR-Foundation/%s/rulesets --input %s\\n" "$1" "$(cat)"; fi; }',
   ...repositories.flatMap((r) => {
     const own = byOwner(r);
     if (!own.length) return [];
@@ -528,15 +530,15 @@ const settings = [
     // the requirement: a pull request is still required, with no human approval count. Every ruleset lets an
     // Organization Owner bypass it (GitHub REST, rulesets: bypass_actors, OrganizationAdmin, always).
     const solo = OWNED.has(r.name.toLowerCase());
-    const rules = t.ruleset.rules.filter((x) => x.type !== 'required_status_checks').map((x) => (solo && x.type === 'pull_request' ? { ...x, parameters: { ...x.parameters, required_approving_review_count: 0 } } : x));
+    const rules = t.ruleset.rules.filter((x) => x.type !== 'required_status_checks').map((x) => (x.type === 'pull_request' ? { ...x, parameters: { ...x.parameters, required_approving_review_count: solo ? 0 : Math.min(1, x.parameters.required_approving_review_count) } } : x));
     const needsChecks = t.ruleset.rules.some((x) => x.type === 'required_status_checks');
     const body = { ...t.ruleset, bypass_actors: [{ actor_id: 1, actor_type: 'OrganizationAdmin', bypass_mode: 'always' }], rules };
     const lines = [`if want ${q(r.name)}; then`, `  echo "== UOR-Foundation/${r.name} (${tierOf(r)})" >&2`];
     if (r.archived) lines.push(`  call -X PATCH repos/UOR-Foundation/${r.name} -F archived=false`);
     lines.push(`  call -X PUT repos/UOR-Foundation/${r.name}/topics ${t.topics.map((x) => `-f 'names[]=${x}'`).join(' ')}`);
     if (needsChecks) {
-      lines.push(`  if [ "$apply" = 1 ]; then contexts=$(checks ${q(r.name)} ${q(r.defaultBranch)}); else contexts='[{"context":"<each job a pull request reports, read when applied>"}]'; fi`);
-      lines.push(`  if [ "$contexts" = "[]" ]; then echo "UOR-Foundation/${r.name}: no unfiltered pull_request jobs; required status checks not set" >&2; rules=${q(JSON.stringify(rules))};`);
+      lines.push(`  if [ "$apply" = 1 ] || [ -n "\${CHECKS_TOKEN:-}" ]; then contexts=$(checks ${q(r.name)} ${q(r.defaultBranch)}); else contexts='[{"context":"<each job a pull request reports, read when applied>"}]'; fi`);
+      lines.push(`  if [ "$contexts" = "[]" ]; then echo "UOR-Foundation/${r.name}: no job that merged pull requests all passed; required status checks not set" >&2; rules=${q(JSON.stringify(rules))};`);
       lines.push(`  else rules=$(jq -c --argjson c "$contexts" '. + [{type: "required_status_checks", parameters: {strict_required_status_checks_policy: false, required_status_checks: $c}}]' <<<${q(JSON.stringify(rules))}); fi`);
     } else lines.push(`  rules=${q(JSON.stringify(rules))}`);
     lines.push(`  jq -c --argjson r "$rules" '.rules = $r' <<<${q(JSON.stringify(body))} | ruleset ${q(r.name)} ${q(body.name)}`);
