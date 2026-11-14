@@ -1,0 +1,3053 @@
+\begin{lexlean}{Remediation}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Remediation.V1.Model}
+\title{Remediation register}
+\begin{semanticmodule}
+definition{
+  name: release,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Release,
+  body: (record Foundation.Remediation.V1.Model::Release {repositoriesCount := 31, changesCount := 131, openClaimsCount := 258, ecosystemDigest := "sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b", observationsDigest := "sha256:3871e0d5d067245d7c05d089131243335f6b9295655f39900ec76a024e5c9683", sources := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:STANDARDS.md#sha256:87977973277069d38bb3b9851c5f323182e15528184c5e2029dc631b133a4b26 .github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 .github@92da114114fc9b76cbf2c5168e29d409b62ddde8:CONTRIBUTING.md#sha256:c8cbfbd2931392f03420504c1069b5352f4c35cfeb91591a86df6e8f60496ea9 .github@92da114114fc9b76cbf2c5168e29d409b62ddde8:CODE_OF_CONDUCT.md#sha256:d01bb370bf46dadc5bd8b1b30113a3434baf079b32815e21cfd05af4fb841705 .github@92da114114fc9b76cbf2c5168e29d409b62ddde8:SECURITY.md#sha256:5e6f0001a30a154d923c64e515fe60a1ee7c0b232abac9130006269f1c85f202 linguist@d456527fe93355baa28c3c29d542c97282b61bc7:lib/linguist/languages.yml#sha256:09c13db185b6f9b8f64b932dcd79815fef4a67624ab2dade9c194388d1dbe29d spdx@31846481de7ea17d92f2f46fad76abe58b2e9bb0:text/MIT.txt#sha256:b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5 prism-devrel@4b8001e8ef28e2c25c0c6a20c4b72f92fc4db17d:examples/uor-repo-files.prompt.json#sha256:f6906101daef7a123fd9b8d5ce8a25599f2b441a8e8f16ae38e653b4aa21f91a prism-devrel@4b8001e8ef28e2c25c0c6a20c4b72f92fc4db17d:examples/uor-repo-protection.prompt.json#sha256:589c79fc95ddf9219bec0a64d8243677045d3004e4c179f0b5aaca74d3eb81ce prism-devrel@4b8001e8ef28e2c25c0c6a20c4b72f92fc4db17d:examples/uor-repo-standards.prompt.json#sha256:5110ceae4dcad03303e79f678303c4cc0b1c558ce676eed7a8c82f4f09ebf3b0 community-apps@654de16c3d092848160281cf85574b8de50e35fd:apps/uor-repo-naming.prompt.json#sha256:01e8b625728aadd2e788e593038dab6085d38b130cfc11202a2eb67a0984f910", tierCount := 4})
+}
+
+definition{
+  name: repository0,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 0, name := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 4, decisions := 7, findings := 3})
+}
+
+definition{
+  name: repository1,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 1, name := "5-Levels-of-UOR", commit := "86dde40a976d2a7a7be16b31b6a509698e8eb5bb", archived := true, tierRecorded := false, tiersProjected := 4, changesNow := 6, decisions := 6, findings := 2})
+}
+
+definition{
+  name: repository2,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 2, name := "atlas-12288", commit := "aef42a6fd5c323373222b6362050b439690136a1", archived := true, tierRecorded := false, tiersProjected := 4, changesNow := 4, decisions := 5, findings := 2})
+}
+
+definition{
+  name: repository3,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 3, name := "calculator-example", commit := "5051dc6adb18e9ca2b6ae4ca7090e638329831ef", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 4, decisions := 7, findings := 2})
+}
+
+definition{
+  name: repository4,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 4, name := "community", commit := "cdaac5eb0bb09773217360de99cca3437ca1cb51", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 3, decisions := 7, findings := 2})
+}
+
+definition{
+  name: repository5,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 5, name := "compression", commit := "581752d3d59607ac2d9b9685a6d6c9112471c6e3", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 4, decisions := 6, findings := 2})
+}
+
+definition{
+  name: repository6,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 6, name := "F1", commit := "d45fe9f54eafbc86b5060efcaf604681482469c0", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 4, decisions := 5, findings := 2})
+}
+
+definition{
+  name: repository7,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 7, name := "foundry", commit := "850d48dab293377690f1a850193415d5b42486e5", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 3, decisions := 7, findings := 2})
+}
+
+definition{
+  name: repository8,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 8, name := "foundry-web", commit := "e8373c7c953bae6153fba7082c2b6c50f2f77392", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 3, decisions := 7, findings := 2})
+}
+
+definition{
+  name: repository9,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 9, name := "holo-search", commit := "c477b69c0e3f95658aedecaeb2fa9c057d9b58a6", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 3, decisions := 7, findings := 2})
+}
+
+definition{
+  name: repository10,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 10, name := "kappa-distribution", commit := "2475e701f25ed5887aba8b68a39ecc0f87faad6f", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 5, decisions := 8, findings := 1})
+}
+
+definition{
+  name: repository11,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 11, name := "kappa-registry", commit := "bd231d0cc315d56e51369aff299f6741b8d8ce04", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 5, decisions := 7, findings := 2})
+}
+
+definition{
+  name: repository12,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 12, name := "LexLean", commit := "71defb4c663aaec5b9a3aab04cbc6a03e7106227", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 5, decisions := 7, findings := 2})
+}
+
+definition{
+  name: repository13,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 13, name := "lexlean-mcp", commit := "ece9ef390260479edbad69c3a9d9f51edc16c885", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 4, decisions := 7, findings := 2})
+}
+
+definition{
+  name: repository14,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 14, name := "malachite-usdc", commit := "23431008f0ccc2899c3a1ecb9243a2578d5c7156", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 4, decisions := 6, findings := 2})
+}
+
+definition{
+  name: repository15,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 15, name := "MCP", commit := "5b34b2633e2707993221019b81fae2bf9c4103d6", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 5, decisions := 7, findings := 2})
+}
+
+definition{
+  name: repository16,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 16, name := "MNIST", commit := "515f75f9f01470df8cac095cdc22f5aebcc252c7", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 5, decisions := 7, findings := 1})
+}
+
+definition{
+  name: repository17,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 17, name := "nest-uor", commit := "5a469e7d207af7dcca54df0de39e38c54c953569", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 4, decisions := 6, findings := 2})
+}
+
+definition{
+  name: repository18,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 18, name := "OOO", commit := "d0bdb29bdfeba50590bf42b4f9071e0d4bbc2dc6", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 5, decisions := 5, findings := 2})
+}
+
+definition{
+  name: repository19,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 19, name := "prism", commit := "507995bab43c0cb06ec244c96e6fc25b3f502204", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 4, decisions := 5, findings := 2})
+}
+
+definition{
+  name: repository20,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 20, name := "prism-code", commit := "67ab3e8b2092ad5812b0c34fd074cb33762366aa", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 4, decisions := 7, findings := 2})
+}
+
+definition{
+  name: repository21,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 21, name := "PrismPM", commit := "7b48b4d4939a7fa42c623c4a596357384fbe1566", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 5, decisions := 7, findings := 2})
+}
+
+definition{
+  name: repository22,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 22, name := "research", commit := "bfccda396aab1aea5dee649fbe5180499d236cec", archived := true, tierRecorded := false, tiersProjected := 4, changesNow := 5, decisions := 4, findings := 2})
+}
+
+definition{
+  name: repository23,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 23, name := "template", commit := "3587f34cd036ee774a79892fca1d7ae7cc0370e5", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 3, decisions := 7, findings := 2})
+}
+
+definition{
+  name: repository24,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 24, name := "uor-addr", commit := "20a1c5723fc8f5d645972c8d6f5c57459846302e", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 4, decisions := 6, findings := 2})
+}
+
+definition{
+  name: repository25,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 25, name := "uor-foundry", commit := "fdab06c9ab30d594c917040908485068ea6f9c9f", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 4, decisions := 7, findings := 2})
+}
+
+definition{
+  name: repository26,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 26, name := "UOR-Framework", commit := "51c01382200b0179d6640b07e9c8119364ab69a1", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 5, decisions := 5, findings := 2})
+}
+
+definition{
+  name: repository27,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 27, name := "uor-jcs-nfc", commit := "303591128094362857791930fdc12b73875d1ff6", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 4, decisions := 6, findings := 2})
+}
+
+definition{
+  name: repository28,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 28, name := "uor-matmul", commit := "3cc5882f210667f9ac00fd8c02c5b5957b493f5d", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 4, decisions := 6, findings := 2})
+}
+
+definition{
+  name: repository29,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 29, name := "uor-r4", commit := "88b7bd5c7951713f403bf2831c58b4c47c8499cd", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 4, decisions := 6, findings := 2})
+}
+
+definition{
+  name: repository30,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Repository,
+  body: (record Foundation.Remediation.V1.Model::Repository {index := 30, name := "website", commit := "1008c3b0989225f5414a9bd58ed8208a56af5e53", archived := false, tierRecorded := false, tiersProjected := 4, changesNow := 5, decisions := 7, findings := 2})
+}
+
+definition{
+  name: repositoriesFrom0,
+  parameters: [],
+  result: (List Foundation.Remediation.V1.Model::Repository),
+  body: (cons (repository0) (cons (repository1) (cons (repository2) (cons (repository3) (cons (repository4) (cons (repository5) (cons (repository6) (cons (repository7) (cons (repository8) (cons (repository9) (cons (repository10) (cons (repository11) (cons (repository12) (cons (repository13) (cons (repository14) (cons (repository15) (cons (repository16) (cons (repository17) (cons (repository18) (cons (repository19) (cons (repository20) (cons (repository21) (cons (repository22) (cons (repository23) (cons (repository24) (cons (repository25) (cons (repository26) (cons (repository27) (cons (repository28) (cons (repository29) (cons (repository30) (nil Foundation.Remediation.V1.Model::Repository))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: repositories,
+  parameters: [],
+  result: (List Foundation.Remediation.V1.Model::Repository),
+  body: (repositoriesFrom0)
+}
+
+definition{
+  name: change0,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 0, repository := 0, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoFiles), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.file), detail := "Add LICENSE with the SPDX MIT text (GOVERNANCE.md 13), copyright year 2026"})
+}
+
+definition{
+  name: change1,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 1, repository := 0, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change2,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 2, repository := 0, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change3,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 3, repository := 0, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change4,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 4, repository := 1, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoFiles), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.file), detail := "Add LICENSE with the SPDX MIT text (GOVERNANCE.md 13), copyright year 2025"})
+}
+
+definition{
+  name: change5,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 5, repository := 1, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change6,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 6, repository := 1, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change7,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 7, repository := 1, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change8,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 8, repository := 1, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic archived: the repository is archived on GitHub, read-only as GOVERNANCE.md 11 defines Archived"})
+}
+
+definition{
+  name: change9,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 9, repository := 1, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.rename), detail := "Rename the repository to 5-levels-of-uor"})
+}
+
+definition{
+  name: change10,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 10, repository := 2, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change11,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 11, repository := 2, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change12,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 12, repository := 2, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change13,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 13, repository := 2, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic archived: the repository is archived on GitHub, read-only as GOVERNANCE.md 11 defines Archived"})
+}
+
+definition{
+  name: change14,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 14, repository := 3, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change15,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 15, repository := 3, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change16,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 16, repository := 3, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change17,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 17, repository := 3, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic latex: GitHub's primary language is TeX, which Linguist names latex"})
+}
+
+definition{
+  name: change18,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 18, repository := 4, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change19,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 19, repository := 4, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change20,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 20, repository := 4, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change21,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 21, repository := 5, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change22,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 22, repository := 5, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change23,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 23, repository := 5, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change24,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 24, repository := 5, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic rust: GitHub's primary language is Rust, which Linguist names rust"})
+}
+
+definition{
+  name: change25,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 25, repository := 6, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change26,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 26, repository := 6, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change27,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 27, repository := 6, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change28,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 28, repository := 6, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.rename), detail := "Rename the repository to f1"})
+}
+
+definition{
+  name: change29,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 29, repository := 7, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change30,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 30, repository := 7, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change31,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 31, repository := 7, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change32,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 32, repository := 8, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change33,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 33, repository := 8, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change34,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 34, repository := 8, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change35,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 35, repository := 9, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change36,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 36, repository := 9, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change37,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 37, repository := 9, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change38,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 38, repository := 10, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoFiles), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.file), detail := "Add LICENSE with the SPDX MIT text (GOVERNANCE.md 13), copyright year 2026"})
+}
+
+definition{
+  name: change39,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 39, repository := 10, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change40,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 40, repository := 10, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change41,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 41, repository := 10, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change42,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 42, repository := 10, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic rust: GitHub's primary language is Rust, which Linguist names rust"})
+}
+
+definition{
+  name: change43,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 43, repository := 11, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoFiles), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.file), detail := "Add LICENSE with the SPDX MIT text (GOVERNANCE.md 13), copyright year 2026"})
+}
+
+definition{
+  name: change44,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 44, repository := 11, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change45,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 45, repository := 11, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change46,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 46, repository := 11, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change47,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 47, repository := 11, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic rust: GitHub's primary language is Rust, which Linguist names rust"})
+}
+
+definition{
+  name: change48,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 48, repository := 12, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change49,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 49, repository := 12, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change50,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 50, repository := 12, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change51,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 51, repository := 12, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.rename), detail := "Rename the repository to lexlean"})
+}
+
+definition{
+  name: change52,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 52, repository := 12, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic latex: GitHub's primary language is TeX, which Linguist names latex"})
+}
+
+definition{
+  name: change53,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 53, repository := 13, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change54,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 54, repository := 13, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change55,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 55, repository := 13, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change56,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 56, repository := 13, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic rust: GitHub's primary language is Rust, which Linguist names rust"})
+}
+
+definition{
+  name: change57,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 57, repository := 14, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change58,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 58, repository := 14, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change59,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 59, repository := 14, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change60,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 60, repository := 14, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic rust: GitHub's primary language is Rust, which Linguist names rust"})
+}
+
+definition{
+  name: change61,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 61, repository := 15, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change62,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 62, repository := 15, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change63,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 63, repository := 15, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change64,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 64, repository := 15, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.rename), detail := "Rename the repository to mcp"})
+}
+
+definition{
+  name: change65,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 65, repository := 15, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic rust: GitHub's primary language is Rust, which Linguist names rust"})
+}
+
+definition{
+  name: change66,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 66, repository := 16, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change67,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 67, repository := 16, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change68,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 68, repository := 16, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change69,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 69, repository := 16, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.rename), detail := "Rename the repository to mnist"})
+}
+
+definition{
+  name: change70,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 70, repository := 16, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic latex: GitHub's primary language is TeX, which Linguist names latex"})
+}
+
+definition{
+  name: change71,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 71, repository := 17, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change72,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 72, repository := 17, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change73,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 73, repository := 17, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change74,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 74, repository := 17, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic python: GitHub's primary language is Python, which Linguist names python"})
+}
+
+definition{
+  name: change75,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 75, repository := 18, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change76,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 76, repository := 18, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change77,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 77, repository := 18, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change78,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 78, repository := 18, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.rename), detail := "Rename the repository to ooo"})
+}
+
+definition{
+  name: change79,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 79, repository := 18, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic latex: GitHub's primary language is TeX, which Linguist names latex"})
+}
+
+definition{
+  name: change80,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 80, repository := 19, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change81,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 81, repository := 19, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change82,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 82, repository := 19, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change83,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 83, repository := 19, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic rust: GitHub's primary language is Rust, which Linguist names rust"})
+}
+
+definition{
+  name: change84,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 84, repository := 20, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change85,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 85, repository := 20, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change86,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 86, repository := 20, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change87,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 87, repository := 20, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic latex: GitHub's primary language is TeX, which Linguist names latex"})
+}
+
+definition{
+  name: change88,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 88, repository := 21, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change89,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 89, repository := 21, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change90,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 90, repository := 21, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change91,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 91, repository := 21, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.rename), detail := "Rename the repository to prismpm"})
+}
+
+definition{
+  name: change92,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 92, repository := 21, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic latex: GitHub's primary language is TeX, which Linguist names latex"})
+}
+
+definition{
+  name: change93,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 93, repository := 22, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change94,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 94, repository := 22, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change95,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 95, repository := 22, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change96,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 96, repository := 22, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic archived: the repository is archived on GitHub, read-only as GOVERNANCE.md 11 defines Archived"})
+}
+
+definition{
+  name: change97,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 97, repository := 22, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic rust: GitHub's primary language is Rust, which Linguist names rust"})
+}
+
+definition{
+  name: change98,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 98, repository := 23, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change99,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 99, repository := 23, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change100,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 100, repository := 23, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change101,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 101, repository := 24, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change102,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 102, repository := 24, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change103,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 103, repository := 24, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change104,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 104, repository := 24, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic rust: GitHub's primary language is Rust, which Linguist names rust"})
+}
+
+definition{
+  name: change105,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 105, repository := 25, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change106,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 106, repository := 25, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change107,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 107, repository := 25, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change108,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 108, repository := 25, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic rust: GitHub's primary language is Rust, which Linguist names rust"})
+}
+
+definition{
+  name: change109,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 109, repository := 26, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change110,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 110, repository := 26, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change111,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 111, repository := 26, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change112,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 112, repository := 26, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.rename), detail := "Rename the repository to uor-framework"})
+}
+
+definition{
+  name: change113,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 113, repository := 26, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic rust: GitHub's primary language is Rust, which Linguist names rust"})
+}
+
+definition{
+  name: change114,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 114, repository := 27, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change115,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 115, repository := 27, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change116,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 116, repository := 27, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change117,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 117, repository := 27, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic python: GitHub's primary language is Python, which Linguist names python"})
+}
+
+definition{
+  name: change118,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 118, repository := 28, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change119,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 119, repository := 28, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change120,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 120, repository := 28, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change121,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 121, repository := 28, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic rust: GitHub's primary language is Rust, which Linguist names rust"})
+}
+
+definition{
+  name: change122,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 122, repository := 29, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change123,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 123, repository := 29, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change124,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 124, repository := 29, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change125,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 125, repository := 29, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic rust: GitHub's primary language is Rust, which Linguist names rust"})
+}
+
+definition{
+  name: change126,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 126, repository := 30, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoFiles), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.file), detail := "Add LICENSE with the SPDX MIT text (GOVERNANCE.md 13), copyright year 2025"})
+}
+
+definition{
+  name: change127,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 127, repository := 30, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoProtection), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.ruleset), detail := "Block force pushes to the default branch"})
+}
+
+definition{
+  name: change128,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 128, repository := 30, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor"})
+}
+
+definition{
+  name: change129,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 129, repository := 30, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoStandards), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic uor-foundation"})
+}
+
+definition{
+  name: change130,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::Change,
+  body: (record Foundation.Remediation.V1.Model::Change {index := 130, repository := 30, app := (ctor Foundation.Remediation.V1.Model::App.uorRepoNaming), kind := (ctor Foundation.Remediation.V1.Model::ChangeKind.topic), detail := "Add topic typescript: GitHub's primary language is TypeScript, which Linguist names typescript"})
+}
+
+definition{
+  name: changesFrom96,
+  parameters: [],
+  result: (List Foundation.Remediation.V1.Model::Change),
+  body: (cons (change96) (cons (change97) (cons (change98) (cons (change99) (cons (change100) (cons (change101) (cons (change102) (cons (change103) (cons (change104) (cons (change105) (cons (change106) (cons (change107) (cons (change108) (cons (change109) (cons (change110) (cons (change111) (cons (change112) (cons (change113) (cons (change114) (cons (change115) (cons (change116) (cons (change117) (cons (change118) (cons (change119) (cons (change120) (cons (change121) (cons (change122) (cons (change123) (cons (change124) (cons (change125) (cons (change126) (cons (change127) (cons (change128) (cons (change129) (cons (change130) (nil Foundation.Remediation.V1.Model::Change))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: changesFrom48,
+  parameters: [],
+  result: (List Foundation.Remediation.V1.Model::Change),
+  body: (cons (change48) (cons (change49) (cons (change50) (cons (change51) (cons (change52) (cons (change53) (cons (change54) (cons (change55) (cons (change56) (cons (change57) (cons (change58) (cons (change59) (cons (change60) (cons (change61) (cons (change62) (cons (change63) (cons (change64) (cons (change65) (cons (change66) (cons (change67) (cons (change68) (cons (change69) (cons (change70) (cons (change71) (cons (change72) (cons (change73) (cons (change74) (cons (change75) (cons (change76) (cons (change77) (cons (change78) (cons (change79) (cons (change80) (cons (change81) (cons (change82) (cons (change83) (cons (change84) (cons (change85) (cons (change86) (cons (change87) (cons (change88) (cons (change89) (cons (change90) (cons (change91) (cons (change92) (cons (change93) (cons (change94) (cons (change95) (changesFrom96)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: changesFrom0,
+  parameters: [],
+  result: (List Foundation.Remediation.V1.Model::Change),
+  body: (cons (change0) (cons (change1) (cons (change2) (cons (change3) (cons (change4) (cons (change5) (cons (change6) (cons (change7) (cons (change8) (cons (change9) (cons (change10) (cons (change11) (cons (change12) (cons (change13) (cons (change14) (cons (change15) (cons (change16) (cons (change17) (cons (change18) (cons (change19) (cons (change20) (cons (change21) (cons (change22) (cons (change23) (cons (change24) (cons (change25) (cons (change26) (cons (change27) (cons (change28) (cons (change29) (cons (change30) (cons (change31) (cons (change32) (cons (change33) (cons (change34) (cons (change35) (cons (change36) (cons (change37) (cons (change38) (cons (change39) (cons (change40) (cons (change41) (cons (change42) (cons (change43) (cons (change44) (cons (change45) (cons (change46) (cons (change47) (changesFrom48)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: changes,
+  parameters: [],
+  result: (List Foundation.Remediation.V1.Model::Change),
+  body: (changesFrom0)
+}
+
+definition{
+  name: openClaim0,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 0, repository := 0, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := ".github: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim1,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 1, repository := 0, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCi), reason := ".github: ci is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim2,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 2, repository := 0, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := ".github: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim3,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 3, repository := 0, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCopyrightHolder), reason := ".github: copyright-holder is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim4,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 4, repository := 0, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := ".github: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim5,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 5, repository := 0, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := ".github: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim6,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 6, repository := 0, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := ".github: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim7,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 7, repository := 0, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := ".github: .github is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim8,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 8, repository := 0, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := ".github: 27 of 27 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim9,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 9, repository := 0, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCase), reason := ".github: .github is not lowercase and hyphen-separated, and no lowercase rename is (GitHub requires the name .github for organization health files)"})
+}
+
+definition{
+  name: openClaim10,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 10, repository := 1, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "5-Levels-of-UOR: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim11,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 11, repository := 1, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCi), reason := "5-Levels-of-UOR: ci is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim12,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 12, repository := 1, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "5-Levels-of-UOR: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim13,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 13, repository := 1, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCopyrightHolder), reason := "5-Levels-of-UOR: copyright-holder is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim14,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 14, repository := 1, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "5-Levels-of-UOR: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim15,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 15, repository := 1, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "5-Levels-of-UOR: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim16,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 16, repository := 1, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "5-Levels-of-UOR: 5-Levels-of-UOR is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim17,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 17, repository := 1, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "5-Levels-of-UOR: 3 of 3 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim18,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 18, repository := 2, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "atlas-12288: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim19,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 19, repository := 2, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "atlas-12288: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim20,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 20, repository := 2, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "atlas-12288: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim21,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 21, repository := 2, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "atlas-12288: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim22,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 22, repository := 2, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "atlas-12288: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim23,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 23, repository := 2, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "atlas-12288: atlas-12288 is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim24,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 24, repository := 2, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "atlas-12288: 22 of 23 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim25,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 25, repository := 3, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "calculator-example: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim26,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 26, repository := 3, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "calculator-example: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim27,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 27, repository := 3, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "calculator-example: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim28,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 28, repository := 3, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "calculator-example: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim29,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 29, repository := 3, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionLicenseFile), reason := "calculator-example: license-file is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim30,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 30, repository := 3, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "calculator-example: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim31,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 31, repository := 3, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "calculator-example: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim32,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 32, repository := 3, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "calculator-example: calculator-example is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim33,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 33, repository := 3, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "calculator-example: 3 of 9 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim34,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 34, repository := 4, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "community: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim35,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 35, repository := 4, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "community: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim36,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 36, repository := 4, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "community: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim37,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 37, repository := 4, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "community: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim38,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 38, repository := 4, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionLicenseFile), reason := "community: license-file is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim39,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 39, repository := 4, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "community: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim40,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 40, repository := 4, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "community: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim41,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 41, repository := 4, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "community: community is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim42,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 42, repository := 4, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "community: 1 of 1 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim43,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 43, repository := 5, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "compression: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim44,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 44, repository := 5, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "compression: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim45,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 45, repository := 5, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "compression: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim46,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 46, repository := 5, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionLicenseFile), reason := "compression: license-file is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim47,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 47, repository := 5, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "compression: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim48,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 48, repository := 5, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "compression: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim49,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 49, repository := 5, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "compression: compression is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim50,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 50, repository := 5, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "compression: 25 of 58 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim51,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 51, repository := 6, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "F1: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim52,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 52, repository := 6, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "F1: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim53,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 53, repository := 6, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "F1: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim54,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 54, repository := 6, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "F1: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim55,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 55, repository := 6, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "F1: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim56,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 56, repository := 6, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "F1: F1 is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim57,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 57, repository := 6, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "F1: 1555 of 1640 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim58,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 58, repository := 7, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "foundry: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim59,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 59, repository := 7, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "foundry: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim60,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 60, repository := 7, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "foundry: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim61,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 61, repository := 7, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "foundry: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim62,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 62, repository := 7, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionLicenseFile), reason := "foundry: license-file is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim63,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 63, repository := 7, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "foundry: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim64,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 64, repository := 7, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "foundry: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim65,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 65, repository := 7, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "foundry: foundry is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim66,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 66, repository := 7, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "foundry: 608 of 678 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim67,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 67, repository := 8, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "foundry-web: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim68,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 68, repository := 8, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "foundry-web: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim69,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 69, repository := 8, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "foundry-web: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim70,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 70, repository := 8, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "foundry-web: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim71,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 71, repository := 8, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionLicenseFile), reason := "foundry-web: license-file is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim72,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 72, repository := 8, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "foundry-web: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim73,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 73, repository := 8, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "foundry-web: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim74,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 74, repository := 8, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "foundry-web: foundry-web is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim75,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 75, repository := 8, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "foundry-web: 5 of 59 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim76,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 76, repository := 9, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "holo-search: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim77,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 77, repository := 9, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "holo-search: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim78,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 78, repository := 9, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "holo-search: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim79,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 79, repository := 9, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "holo-search: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim80,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 80, repository := 9, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionLicenseFile), reason := "holo-search: license-file is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim81,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 81, repository := 9, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "holo-search: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim82,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 82, repository := 9, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "holo-search: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim83,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 83, repository := 9, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "holo-search: holo-search is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim84,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 84, repository := 9, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "holo-search: 15 of 15 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim85,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 85, repository := 10, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "kappa-distribution: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim86,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 86, repository := 10, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "kappa-distribution: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim87,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 87, repository := 10, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCi), reason := "kappa-distribution: ci is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim88,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 88, repository := 10, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "kappa-distribution: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim89,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 89, repository := 10, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCopyrightHolder), reason := "kappa-distribution: copyright-holder is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim90,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 90, repository := 10, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "kappa-distribution: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim91,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 91, repository := 10, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "kappa-distribution: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim92,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 92, repository := 10, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "kappa-distribution: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim93,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 93, repository := 10, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "kappa-distribution: kappa-distribution is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim94,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 94, repository := 11, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "kappa-registry: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim95,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 95, repository := 11, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "kappa-registry: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim96,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 96, repository := 11, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "kappa-registry: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim97,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 97, repository := 11, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCopyrightHolder), reason := "kappa-registry: copyright-holder is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim98,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 98, repository := 11, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "kappa-registry: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim99,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 99, repository := 11, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "kappa-registry: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim100,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 100, repository := 11, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "kappa-registry: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim101,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 101, repository := 11, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "kappa-registry: kappa-registry is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim102,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 102, repository := 11, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "kappa-registry: 1 of 27 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim103,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 103, repository := 12, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "LexLean: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim104,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 104, repository := 12, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "LexLean: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim105,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 105, repository := 12, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "LexLean: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim106,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 106, repository := 12, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "LexLean: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim107,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 107, repository := 12, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionLicenseFile), reason := "LexLean: license-file is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim108,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 108, repository := 12, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "LexLean: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim109,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 109, repository := 12, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "LexLean: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim110,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 110, repository := 12, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "LexLean: LexLean is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim111,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 111, repository := 12, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "LexLean: 1027 of 1504 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim112,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 112, repository := 13, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "lexlean-mcp: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim113,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 113, repository := 13, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "lexlean-mcp: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim114,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 114, repository := 13, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "lexlean-mcp: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim115,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 115, repository := 13, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "lexlean-mcp: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim116,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 116, repository := 13, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionLicenseFile), reason := "lexlean-mcp: license-file is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim117,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 117, repository := 13, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "lexlean-mcp: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim118,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 118, repository := 13, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "lexlean-mcp: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim119,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 119, repository := 13, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "lexlean-mcp: lexlean-mcp is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim120,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 120, repository := 13, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "lexlean-mcp: 11 of 94 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim121,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 121, repository := 14, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "malachite-usdc: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim122,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 122, repository := 14, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCi), reason := "malachite-usdc: ci is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim123,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 123, repository := 14, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "malachite-usdc: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim124,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 124, repository := 14, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "malachite-usdc: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim125,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 125, repository := 14, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "malachite-usdc: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim126,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 126, repository := 14, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "malachite-usdc: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim127,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 127, repository := 14, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "malachite-usdc: malachite-usdc is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim128,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 128, repository := 14, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "malachite-usdc: 2 of 2 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim129,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 129, repository := 15, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "MCP: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim130,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 130, repository := 15, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "MCP: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim131,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 131, repository := 15, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "MCP: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim132,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 132, repository := 15, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "MCP: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim133,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 133, repository := 15, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionLicenseFile), reason := "MCP: license-file is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim134,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 134, repository := 15, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "MCP: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim135,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 135, repository := 15, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "MCP: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim136,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 136, repository := 15, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "MCP: MCP is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim137,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 137, repository := 15, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "MCP: 6 of 38 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim138,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 138, repository := 16, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "MNIST: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim139,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 139, repository := 16, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "MNIST: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim140,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 140, repository := 16, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "MNIST: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim141,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 141, repository := 16, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "MNIST: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim142,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 142, repository := 16, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionLicenseFile), reason := "MNIST: license-file is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim143,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 143, repository := 16, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "MNIST: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim144,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 144, repository := 16, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "MNIST: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim145,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 145, repository := 16, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "MNIST: MNIST is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim146,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 146, repository := 17, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "nest-uor: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim147,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 147, repository := 17, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCi), reason := "nest-uor: ci is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim148,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 148, repository := 17, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "nest-uor: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim149,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 149, repository := 17, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "nest-uor: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim150,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 150, repository := 17, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "nest-uor: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim151,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 151, repository := 17, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "nest-uor: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim152,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 152, repository := 17, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "nest-uor: nest-uor is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim153,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 153, repository := 17, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "nest-uor: 1 of 1 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim154,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 154, repository := 18, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "OOO: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim155,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 155, repository := 18, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "OOO: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim156,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 156, repository := 18, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "OOO: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim157,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 157, repository := 18, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "OOO: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim158,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 158, repository := 18, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "OOO: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim159,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 159, repository := 18, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "OOO: OOO is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim160,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 160, repository := 18, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "OOO: 6 of 6 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim161,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 161, repository := 19, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "prism: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim162,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 162, repository := 19, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "prism: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim163,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 163, repository := 19, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "prism: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim164,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 164, repository := 19, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "prism: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim165,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 165, repository := 19, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "prism: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim166,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 166, repository := 19, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "prism: prism is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim167,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 167, repository := 19, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "prism: 45 of 57 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim168,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 168, repository := 20, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "prism-code: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim169,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 169, repository := 20, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "prism-code: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim170,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 170, repository := 20, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "prism-code: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim171,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 171, repository := 20, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "prism-code: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim172,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 172, repository := 20, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionLicenseFile), reason := "prism-code: license-file is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim173,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 173, repository := 20, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "prism-code: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim174,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 174, repository := 20, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "prism-code: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim175,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 175, repository := 20, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "prism-code: prism-code is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim176,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 176, repository := 20, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "prism-code: 14 of 64 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim177,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 177, repository := 21, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "PrismPM: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim178,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 178, repository := 21, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "PrismPM: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim179,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 179, repository := 21, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "PrismPM: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim180,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 180, repository := 21, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "PrismPM: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim181,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 181, repository := 21, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionLicenseFile), reason := "PrismPM: license-file is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim182,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 182, repository := 21, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "PrismPM: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim183,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 183, repository := 21, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "PrismPM: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim184,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 184, repository := 21, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "PrismPM: PrismPM is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim185,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 185, repository := 21, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "PrismPM: 320 of 1789 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim186,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 186, repository := 22, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "research: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim187,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 187, repository := 22, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "research: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim188,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 188, repository := 22, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "research: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim189,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 189, repository := 22, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "research: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim190,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 190, repository := 22, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "research: research is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim191,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 191, repository := 22, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "research: 6 of 7 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim192,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 192, repository := 23, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "template: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim193,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 193, repository := 23, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "template: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim194,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 194, repository := 23, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "template: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim195,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 195, repository := 23, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "template: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim196,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 196, repository := 23, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionLicenseFile), reason := "template: license-file is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim197,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 197, repository := 23, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "template: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim198,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 198, repository := 23, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "template: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim199,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 199, repository := 23, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "template: template is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim200,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 200, repository := 23, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "template: 105 of 144 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim201,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 201, repository := 24, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "uor-addr: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim202,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 202, repository := 24, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "uor-addr: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim203,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 203, repository := 24, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "uor-addr: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim204,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 204, repository := 24, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "uor-addr: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim205,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 205, repository := 24, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "uor-addr: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim206,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 206, repository := 24, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "uor-addr: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim207,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 207, repository := 24, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "uor-addr: uor-addr is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim208,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 208, repository := 24, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "uor-addr: 36 of 51 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim209,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 209, repository := 25, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "uor-foundry: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim210,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 210, repository := 25, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "uor-foundry: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim211,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 211, repository := 25, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "uor-foundry: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim212,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 212, repository := 25, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "uor-foundry: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim213,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 213, repository := 25, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionLicenseFile), reason := "uor-foundry: license-file is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim214,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 214, repository := 25, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "uor-foundry: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim215,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 215, repository := 25, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "uor-foundry: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim216,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 216, repository := 25, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "uor-foundry: uor-foundry is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim217,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 217, repository := 25, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "uor-foundry: 25 of 91 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim218,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 218, repository := 26, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "UOR-Framework: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim219,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 219, repository := 26, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "UOR-Framework: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim220,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 220, repository := 26, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "UOR-Framework: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim221,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 221, repository := 26, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "UOR-Framework: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim222,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 222, repository := 26, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "UOR-Framework: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim223,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 223, repository := 26, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "UOR-Framework: UOR-Framework is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim224,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 224, repository := 26, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "UOR-Framework: 187 of 189 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim225,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 225, repository := 27, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "uor-jcs-nfc: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim226,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 226, repository := 27, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCi), reason := "uor-jcs-nfc: ci is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim227,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 227, repository := 27, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "uor-jcs-nfc: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim228,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 228, repository := 27, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "uor-jcs-nfc: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim229,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 229, repository := 27, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "uor-jcs-nfc: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim230,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 230, repository := 27, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "uor-jcs-nfc: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim231,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 231, repository := 27, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "uor-jcs-nfc: uor-jcs-nfc is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim232,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 232, repository := 27, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "uor-jcs-nfc: 1 of 1 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim233,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 233, repository := 28, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "uor-matmul: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim234,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 234, repository := 28, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "uor-matmul: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim235,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 235, repository := 28, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "uor-matmul: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim236,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 236, repository := 28, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "uor-matmul: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim237,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 237, repository := 28, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "uor-matmul: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim238,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 238, repository := 28, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "uor-matmul: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim239,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 239, repository := 28, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "uor-matmul: uor-matmul is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim240,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 240, repository := 28, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "uor-matmul: 187 of 188 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim241,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 241, repository := 29, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "uor-r4: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim242,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 242, repository := 29, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "uor-r4: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim243,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 243, repository := 29, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "uor-r4: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim244,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 244, repository := 29, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "uor-r4: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim245,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 245, repository := 29, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "uor-r4: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim246,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 246, repository := 29, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "uor-r4: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim247,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 247, repository := 29, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "uor-r4: uor-r4 is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim248,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 248, repository := 29, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "uor-r4: 2461 of 3431 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaim249,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 249, repository := 30, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionBranches), reason := "website: branches is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim250,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 250, repository := 30, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCheckContexts), reason := "website: check-contexts is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim251,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 251, repository := 30, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCodeowners), reason := "website: codeowners is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim252,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 252, repository := 30, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionCopyrightHolder), reason := "website: copyright-holder is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim253,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 253, repository := 30, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionDomain), reason := "website: domain is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim254,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 254, repository := 30, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionStatus), reason := "website: status is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim255,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 255, repository := 30, name := (ctor Foundation.Remediation.V1.Model::Refusal.decisionTier), reason := "website: tier is a decision for its maintainers or the organization's owners"})
+}
+
+definition{
+  name: openClaim256,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 256, repository := 30, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedPattern), reason := "website: website is not in the preferred uor-{domain}-{function} form; a new name is a maintainer decision"})
+}
+
+definition{
+  name: openClaim257,
+  parameters: [],
+  result: Foundation.Remediation.V1.Model::OpenClaim,
+  body: (record Foundation.Remediation.V1.Model::OpenClaim {index := 257, repository := 30, name := (ctor Foundation.Remediation.V1.Model::Refusal.blockedCommits), reason := "website: 9510 of 9525 default-branch commits are not Conventional Commits; history is not rewritten, so the naming app cannot find the repository conformant"})
+}
+
+definition{
+  name: openClaimsFrom240,
+  parameters: [],
+  result: (List Foundation.Remediation.V1.Model::OpenClaim),
+  body: (cons (openClaim240) (cons (openClaim241) (cons (openClaim242) (cons (openClaim243) (cons (openClaim244) (cons (openClaim245) (cons (openClaim246) (cons (openClaim247) (cons (openClaim248) (cons (openClaim249) (cons (openClaim250) (cons (openClaim251) (cons (openClaim252) (cons (openClaim253) (cons (openClaim254) (cons (openClaim255) (cons (openClaim256) (cons (openClaim257) (nil Foundation.Remediation.V1.Model::OpenClaim)))))))))))))))))))
+}
+
+definition{
+  name: openClaimsFrom192,
+  parameters: [],
+  result: (List Foundation.Remediation.V1.Model::OpenClaim),
+  body: (cons (openClaim192) (cons (openClaim193) (cons (openClaim194) (cons (openClaim195) (cons (openClaim196) (cons (openClaim197) (cons (openClaim198) (cons (openClaim199) (cons (openClaim200) (cons (openClaim201) (cons (openClaim202) (cons (openClaim203) (cons (openClaim204) (cons (openClaim205) (cons (openClaim206) (cons (openClaim207) (cons (openClaim208) (cons (openClaim209) (cons (openClaim210) (cons (openClaim211) (cons (openClaim212) (cons (openClaim213) (cons (openClaim214) (cons (openClaim215) (cons (openClaim216) (cons (openClaim217) (cons (openClaim218) (cons (openClaim219) (cons (openClaim220) (cons (openClaim221) (cons (openClaim222) (cons (openClaim223) (cons (openClaim224) (cons (openClaim225) (cons (openClaim226) (cons (openClaim227) (cons (openClaim228) (cons (openClaim229) (cons (openClaim230) (cons (openClaim231) (cons (openClaim232) (cons (openClaim233) (cons (openClaim234) (cons (openClaim235) (cons (openClaim236) (cons (openClaim237) (cons (openClaim238) (cons (openClaim239) (openClaimsFrom240)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: openClaimsFrom144,
+  parameters: [],
+  result: (List Foundation.Remediation.V1.Model::OpenClaim),
+  body: (cons (openClaim144) (cons (openClaim145) (cons (openClaim146) (cons (openClaim147) (cons (openClaim148) (cons (openClaim149) (cons (openClaim150) (cons (openClaim151) (cons (openClaim152) (cons (openClaim153) (cons (openClaim154) (cons (openClaim155) (cons (openClaim156) (cons (openClaim157) (cons (openClaim158) (cons (openClaim159) (cons (openClaim160) (cons (openClaim161) (cons (openClaim162) (cons (openClaim163) (cons (openClaim164) (cons (openClaim165) (cons (openClaim166) (cons (openClaim167) (cons (openClaim168) (cons (openClaim169) (cons (openClaim170) (cons (openClaim171) (cons (openClaim172) (cons (openClaim173) (cons (openClaim174) (cons (openClaim175) (cons (openClaim176) (cons (openClaim177) (cons (openClaim178) (cons (openClaim179) (cons (openClaim180) (cons (openClaim181) (cons (openClaim182) (cons (openClaim183) (cons (openClaim184) (cons (openClaim185) (cons (openClaim186) (cons (openClaim187) (cons (openClaim188) (cons (openClaim189) (cons (openClaim190) (cons (openClaim191) (openClaimsFrom192)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: openClaimsFrom96,
+  parameters: [],
+  result: (List Foundation.Remediation.V1.Model::OpenClaim),
+  body: (cons (openClaim96) (cons (openClaim97) (cons (openClaim98) (cons (openClaim99) (cons (openClaim100) (cons (openClaim101) (cons (openClaim102) (cons (openClaim103) (cons (openClaim104) (cons (openClaim105) (cons (openClaim106) (cons (openClaim107) (cons (openClaim108) (cons (openClaim109) (cons (openClaim110) (cons (openClaim111) (cons (openClaim112) (cons (openClaim113) (cons (openClaim114) (cons (openClaim115) (cons (openClaim116) (cons (openClaim117) (cons (openClaim118) (cons (openClaim119) (cons (openClaim120) (cons (openClaim121) (cons (openClaim122) (cons (openClaim123) (cons (openClaim124) (cons (openClaim125) (cons (openClaim126) (cons (openClaim127) (cons (openClaim128) (cons (openClaim129) (cons (openClaim130) (cons (openClaim131) (cons (openClaim132) (cons (openClaim133) (cons (openClaim134) (cons (openClaim135) (cons (openClaim136) (cons (openClaim137) (cons (openClaim138) (cons (openClaim139) (cons (openClaim140) (cons (openClaim141) (cons (openClaim142) (cons (openClaim143) (openClaimsFrom144)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: openClaimsFrom48,
+  parameters: [],
+  result: (List Foundation.Remediation.V1.Model::OpenClaim),
+  body: (cons (openClaim48) (cons (openClaim49) (cons (openClaim50) (cons (openClaim51) (cons (openClaim52) (cons (openClaim53) (cons (openClaim54) (cons (openClaim55) (cons (openClaim56) (cons (openClaim57) (cons (openClaim58) (cons (openClaim59) (cons (openClaim60) (cons (openClaim61) (cons (openClaim62) (cons (openClaim63) (cons (openClaim64) (cons (openClaim65) (cons (openClaim66) (cons (openClaim67) (cons (openClaim68) (cons (openClaim69) (cons (openClaim70) (cons (openClaim71) (cons (openClaim72) (cons (openClaim73) (cons (openClaim74) (cons (openClaim75) (cons (openClaim76) (cons (openClaim77) (cons (openClaim78) (cons (openClaim79) (cons (openClaim80) (cons (openClaim81) (cons (openClaim82) (cons (openClaim83) (cons (openClaim84) (cons (openClaim85) (cons (openClaim86) (cons (openClaim87) (cons (openClaim88) (cons (openClaim89) (cons (openClaim90) (cons (openClaim91) (cons (openClaim92) (cons (openClaim93) (cons (openClaim94) (cons (openClaim95) (openClaimsFrom96)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: openClaimsFrom0,
+  parameters: [],
+  result: (List Foundation.Remediation.V1.Model::OpenClaim),
+  body: (cons (openClaim0) (cons (openClaim1) (cons (openClaim2) (cons (openClaim3) (cons (openClaim4) (cons (openClaim5) (cons (openClaim6) (cons (openClaim7) (cons (openClaim8) (cons (openClaim9) (cons (openClaim10) (cons (openClaim11) (cons (openClaim12) (cons (openClaim13) (cons (openClaim14) (cons (openClaim15) (cons (openClaim16) (cons (openClaim17) (cons (openClaim18) (cons (openClaim19) (cons (openClaim20) (cons (openClaim21) (cons (openClaim22) (cons (openClaim23) (cons (openClaim24) (cons (openClaim25) (cons (openClaim26) (cons (openClaim27) (cons (openClaim28) (cons (openClaim29) (cons (openClaim30) (cons (openClaim31) (cons (openClaim32) (cons (openClaim33) (cons (openClaim34) (cons (openClaim35) (cons (openClaim36) (cons (openClaim37) (cons (openClaim38) (cons (openClaim39) (cons (openClaim40) (cons (openClaim41) (cons (openClaim42) (cons (openClaim43) (cons (openClaim44) (cons (openClaim45) (cons (openClaim46) (cons (openClaim47) (openClaimsFrom48)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: openClaims,
+  parameters: [],
+  result: (List Foundation.Remediation.V1.Model::OpenClaim),
+  body: (openClaimsFrom0)
+}
+
+theorem{
+  name: registerValidHolds,
+  parameters: [],
+  statement: ((Foundation.Remediation.V1.Model::registerValid (release) (repositories) (changes) (openClaims)) = true),
+  proof: decide{}
+}
+\end{semanticmodule}
+\end{lexlean}

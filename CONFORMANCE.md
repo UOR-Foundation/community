@@ -66,6 +66,14 @@ model does not sanction.
 | `GL-03` | `open` | Live retrieval of the Foundation's Discord waits on a read-only bot in the guild, and its token stays out of the repository |
 | `GL-04` | `build` | Each live Discord probe is an OpenTelemetry trace holding no message content or token, every trace is checked against the paging model the contribution Prism pins, and the next probes are scheduled by bounded Hebbian weights |
 
+## remediation
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `RM-01` | `build` | The remediation register is valid: every repository is projected at one tier exactly when its tier is recorded and at every tier otherwise, a repository without a recorded tier names its tier as an open decision, and each repository's counts of changes, decisions and findings are the records that name it |
+| `RM-02` | `build` | The remediation catalog declares every repository of remediation/register.json at the commit it was observed at, every change that applies at every tier, one issue draft per repository, and the digests of the ecosystem register, the observations and every pinned source and decision app |
+| `RM-03` | `open` | A change only a maintainer or owner can decide, and a norm no change can reach, is carried as an open claim with its evidence, never defaulted; no change is applied to another repository until the Foundation's owners approve it |
+
 ## uor_toc_lifecycle
 
 | ID | Level | Statement |
