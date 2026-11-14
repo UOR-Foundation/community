@@ -257,7 +257,7 @@ model does not sanction.
 | `OB-02` | `build` | The observation corpus is frozen and replayable: every subject is pinned by the commits of its refs, every corpus file is pinned by the sha256 of its bytes, an independent run from the same pins reproduces each file, and the register and its catalog declare the corpus digest |
 | `OB-03` | `build` | Every contribution is credited through the uor-contribution-attribution app as W3C PROV-O: a person is credited for their own work, a software agent's work is credited to a person only through a Co-authored-by delegation naming exactly one person, and no name or email enters the corpus |
 | `OB-04` | `open` | A released CHAOSS metric the oracle binds no computation to, and a computation whose index, field, query, aggregation or script this corpus and projector cannot evaluate exactly as the oracle defines it, is carried as an open claim, never approximated |
-| `OB-05` | `open` | GitHub issues and pull requests enter the corpus only from responses the observations workflow recorded with a token and replayed offline, and the Foundation's Discord only once its read-only bot is installed; until then their observations are open claims |
+| `OB-05` | `open` | GitHub issues and pull requests, and the Foundation's Discord, enter the corpus only from responses the observations workflow recorded and replayed offline; a Discord channel is read only where the uor-discord-read app permits it, and the record keeps no message text and no member's name |
 
 ## remediation
 

@@ -31,6 +31,20 @@ database).
   with `name` and `email` present as `null` (grimoire-elk reads both keys).
   The record is committed under `responses/`, one file per repository, and
   each GitHub entry of `corpus.json` names its file by sha256.
+- **Perceval** `discord` backend and **Chronicler**'s Discord eventizer, the
+  two components `oracles/grimoirelab` adds to the lock's pinned commits
+  (GL-01 to GL-03). `collect.py discord` runs in the observations workflow as
+  the read-only bot. It decides every channel of the guild with the
+  `uor-discord-read` app from what the guild reports (the channel type,
+  whether `@everyone` can view it, the bot's Message Content intent) and from
+  `governance/discord.json` (the Foundation's labels and who installed the
+  bot). Only the permitted channels are read. The record keeps no message text
+  and no thread title, and a member is the sha256 of their Discord user id
+  with Discord's own `bot` flag. `run` decides every channel again from the
+  record, refuses a channel that is permitted now but was not read, and
+  replays the rest with no network. A bot's message is a software agent's
+  activity. The backend is not in Perceval's release, so its files are
+  `covered: false`.
 - **grimoire-elk** `GitEnrich` and `GitHubEnrich`: `get_identities` for the
   identities, `get_rich_item` for the enriched fields. `time_open_days` is left
   out, because grimoire-elk measures it against the clock at enrichment time.
@@ -83,8 +97,9 @@ Together they mean that every value is a function of admitted observations.
 
 ## Open
 
-- **Discord** (GL-03, OB-05). The guild enters the corpus once the read-only
-  bot is installed. The `uor-discord-read` decision then governs collection.
+- **Chat metrics** (OB-04). The guild's 45,216 messages up to the cut are in
+  the corpus, but CHAOSS Chat Platform Inclusivity cites no oracle panel, so
+  no value is computed from them yet.
 
 ## Gate evidence
 

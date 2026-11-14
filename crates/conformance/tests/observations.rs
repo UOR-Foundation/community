@@ -235,9 +235,43 @@ fn observations_ob_05() {
     );
     let corpus = read("observations/corpus.json");
     let github = corpus.matches("\"source\": \"github\"").count();
+    let discord = corpus.matches("\"source\": \"discord\"").count();
     assert_eq!(
         corpus.matches("\"responses\": {").count(),
-        github,
-        "every GitHub file names the responses it was replayed from"
+        github + discord,
+        "every GitHub and Discord file names the responses it was replayed from"
     );
+    assert!(discord <= 1, "the Foundation has one guild");
+    if discord == 1 {
+        let guild = read("observations/responses/discord/guild.json");
+        assert!(
+            guild.contains("\"path\": \"apps/uor-discord-read.prompt.json\""),
+            "every channel was decided by the read app"
+        );
+        let channels = values(&guild, "channel");
+        let decisions = values(&guild, "decision");
+        assert_eq!(channels.len(), decisions.len(), "every channel is decided");
+        let dir = root().join("observations/responses/discord");
+        for entry in std::fs::read_dir(&dir).expect("the Discord record") {
+            let name = entry
+                .expect("an entry")
+                .file_name()
+                .into_string()
+                .expect("a name");
+            if let Some(id) = name.strip_suffix(".jsonl.gz") {
+                let at = channels
+                    .iter()
+                    .position(|c| c == id)
+                    .expect("a recorded channel is decided");
+                assert_eq!(
+                    decisions[at], "permit",
+                    "channel {id} was read only because the app permits it"
+                );
+            }
+        }
+    }
+    for marker in ["MESSAGE_KEYS = ('id', 'channel_id', 'type', 'timestamp', 'edited_timestamp', 'pinned', 'flags')",
+                   "'global_name': None", "'name': None if c['type'] in THREADS"] {
+        assert!(collect.contains(marker), "the Discord record keeps no text or name: {marker}");
+    }
 }
