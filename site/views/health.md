@@ -1,6 +1,6 @@
 # Community health
 
-Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted GrimoireLab observations: 3895 assessments over 31 subjects and 23 periods. Observation register sha256:bd13b815681f5041a0faade852f29726760e51d75bbb9a0077404dc5d9b7a13e.
+Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted GrimoireLab observations: 3895 assessments over 31 subjects and 23 periods. Observation register sha256:57cde021d847205099b6c0f1f4c0fc8bf0cbc39a80a93a239c53fb80c1d9c85a.
 
 ## AI Alignment - Community Aligned Training (Feedback)
 
