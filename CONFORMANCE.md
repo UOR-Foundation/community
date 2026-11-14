@@ -28,6 +28,14 @@ model does not sanction.
 | `CC-04` | `build` | Every CHAOSS metric and metrics model has a complete ISO/IEC 15939 mapping: each element of its measurement information model is either stated from a CHAOSS template section cited by digest or carried as a typed open claim |
 | `CC-05` | `open` | An ISO/IEC 15939 element the CHAOSS templates do not carry, or a definition omits, is an open claim with its reason, never inferred from prose |
 
+## ecosystem
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `EC-01` | `build` | The ecosystem register is valid: every public UOR Foundation repository is numbered and counted against the snapshot, its tier and status are recorded exactly when it carries one tag of that kind, and every repository the repo-standards app does not find conformant is named by an open claim |
+| `EC-02` | `build` | The ecosystem catalog declares every repository of ecosystem/register.json, the snapshot digest, and the digests of the pinned norms and decision app it was projected from |
+| `EC-03` | `open` | A repository that fails a STANDARDS.md norm the repo-standards app decides, or that the app cannot decide without a tier, is carried as an open claim, never dropped or defaulted |
+
 ## frame
 
 | ID | Level | Statement |
