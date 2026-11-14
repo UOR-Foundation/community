@@ -242,7 +242,13 @@ fn chaoss_cc_06() {
         "the release counts the oracle's elements"
     );
     // Every citation names a pinned commit and carries a sha256.
-    let pins = ["grimoirelab-sigils@", "grimoirelab-elk@", "grimoirelab-perceval@", "grimoirelab-sirmordred@", "wg-"];
+    let pins = [
+        "grimoirelab-sigils@",
+        "grimoirelab-elk@",
+        "grimoirelab-perceval@",
+        "grimoirelab-sirmordred@",
+        "wg-",
+    ];
     for source in values(&oracle, "source") {
         assert!(
             pins.iter().any(|p| source.starts_with(p)) && source.contains(':'),
@@ -257,7 +263,10 @@ fn chaoss_cc_06() {
     }
     let sources = read("chaoss/oracle-sources.json");
     for commit in values(&sources, "commit") {
-        assert!(oracle.contains(&commit), "the projection is pinned at {commit}");
+        assert!(
+            oracle.contains(&commit),
+            "the projection is pinned at {commit}"
+        );
     }
 }
 
@@ -281,11 +290,18 @@ fn chaoss_cc_07() {
     }
     let prompt = read("upstream/chaoss-15939/prompt.json");
     assert!(
-        prompt.contains("\"pattern\": \"decisionTable\"") && prompt.contains("\"otherwise\": \"revision\""),
+        prompt.contains("\"pattern\": \"decisionTable\"")
+            && prompt.contains("\"otherwise\": \"revision\""),
         "the contribution is decided by a DMN decision table"
     );
     let patch = read("upstream/chaoss-15939/community-templates.patch");
-    for file in ["community-templates/metric-template.md", "community-templates/metrics-model-template.md"] {
-        assert!(patch.contains(&format!("+++ b/{file}")), "the template patch edits {file}");
+    for file in [
+        "community-templates/metric-template.md",
+        "community-templates/metrics-model-template.md",
+    ] {
+        assert!(
+            patch.contains(&format!("+++ b/{file}")),
+            "the template patch edits {file}"
+        );
     }
 }
