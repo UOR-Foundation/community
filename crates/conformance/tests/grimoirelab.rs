@@ -1,0 +1,252 @@
+//! The `grimoirelab` suite: one test per scenario in
+//! `features/suites/grimoirelab.feature`.
+//!
+//! The oracle itself (upstream's suites at the pinned commits) runs in the
+//! `oracles` workflow, keyed by the digest of everything it reads. These tests
+//! hold fixed what that run is bound to: the record, its digests, and the
+//! wrapper's refusals.
+
+use std::path::PathBuf;
+use std::process::Command;
+
+fn root() -> PathBuf {
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .ancestors()
+        .nth(2)
+        .expect("crates/conformance is two below the root")
+        .to_path_buf()
+}
+
+fn read(path: &str) -> String {
+    std::fs::read_to_string(root().join(path)).expect("the file")
+}
+
+/// Every string value of `key` in a JSON text, in order.
+fn values(json: &str, key: &str) -> Vec<String> {
+    let needle = format!("\"{key}\": \"");
+    json.match_indices(&needle)
+        .map(|(at, _)| {
+            let rest = &json[at + needle.len()..];
+            rest[..rest.find('"').expect("a closed string")].to_string()
+        })
+        .collect()
+}
+
+fn is_hex(s: &str, len: usize) -> bool {
+    s.len() == len
+        && s.bytes()
+            .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
+}
+
+const LOCK: &str = "oracles/grimoirelab/oracle.lock.json";
+
+/// `GL-01`: the oracle record pins every component and binds its digests
+#[test]
+fn grimoirelab_gl_01() {
+    let lock = read(LOCK);
+    for canonical in [
+        "chaoss/grimoirelab-perceval",
+        "chaoss/grimoirelab-sortinghat",
+        "chaoss/grimoirelab",
+        "chaoss/grimoirelab-chronicler",
+        "discord/discord-api-docs",
+    ] {
+        assert!(
+            lock.contains(&format!("\"canonical_id\": \"{canonical}\"")),
+            "{canonical} is an authority"
+        );
+    }
+    let revisions = values(&lock, "revision");
+    assert!(
+        revisions.len() >= 6,
+        "every authority and upstream corpus names a revision"
+    );
+    for revision in &revisions {
+        assert!(is_hex(revision, 40), "{revision} is a full commit id");
+    }
+    let oracles = lock.matches("\"executable\": ").count();
+    assert!(
+        oracles >= 3,
+        "perceval, sortinghat and chronicler are oracles"
+    );
+    for digest in values(&lock, "upstream_payload_sha256")
+        .iter()
+        .chain(values(&lock, "wrapper_sha256").iter())
+    {
+        assert!(is_hex(digest, 64), "{digest} is a SHA-256");
+    }
+    // A payload with no published release is null, and only beside a note
+    // that says why.
+    assert_eq!(
+        lock.matches("\"upstream_payload_sha256\": ").count(),
+        oracles,
+        "every oracle names its upstream payload"
+    );
+    for (at, _) in lock.match_indices("\"upstream_payload_sha256\": null,") {
+        let next = lock[at..].lines().nth(1).unwrap_or_default().trim();
+        assert!(
+            next.starts_with("\"upstream_payload_note\": \"") && next.len() > 30,
+            "a null upstream payload is explained by a note"
+        );
+    }
+    let ids = values(&lock, "id");
+    for oracle in [
+        "grimoirelab-perceval-1.6.2",
+        "grimoirelab-sortinghat-1.16.0",
+        "grimoirelab-chronicler-522221d2",
+    ] {
+        assert!(ids.iter().any(|id| id == oracle), "{oracle} is declared");
+    }
+    assert_eq!(
+        lock.matches("\"covers\": [").count(),
+        oracles,
+        "each oracle declares covers"
+    );
+    assert_eq!(
+        lock.matches("\"does_not_cover\": [").count(),
+        oracles,
+        "each oracle declares does_not_cover"
+    );
+    // The SDK's lock stays the SDK's bytes; this record sits beside it.
+    assert!(
+        !read("standards.lock").contains("grimoirelab"),
+        "standards.lock is the SDK's own"
+    );
+    let result = Command::new("node")
+        .args(["oracles/grimoirelab/lock.mjs", "--check"])
+        .current_dir(root())
+        .output()
+        .expect("Node runs the lock check");
+    assert!(
+        result.status.success(),
+        "GL-01: the wrapper and corpus digests match their bytes\n{}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+}
+
+/// `GL-02`: the Discord backend is new files only, with archive replay
+#[test]
+fn grimoirelab_gl_02() {
+    let verify = read("oracles/grimoirelab/verify.sh");
+    for refusal in [
+        "overlay would replace upstream",
+        "the lock pins",
+        "--require-hashes",
+        "run_tests.py",
+        "NO_PROXY='*'",
+    ] {
+        assert!(verify.contains(refusal), "verify.sh keeps {refusal}");
+    }
+    let backend = read("oracles/grimoirelab/perceval-discord/perceval/backends/core/discord.py");
+    for part in [
+        "class Discord(Backend)",
+        "class DiscordClient(HttpClient, RateLimitHandler)",
+        "class DiscordCommand(BackendCommand)",
+        "def sanitize_for_archive",
+    ] {
+        assert!(backend.contains(part), "the backend declares {part}");
+    }
+    let tests = read("oracles/grimoirelab/perceval-discord/tests/test_discord.py");
+    assert!(
+        tests.contains("class TestDiscordBackendArchive(TestCaseBackendArchive)"),
+        "the backend is replayed from an archive"
+    );
+    assert!(!tests.contains("skip"), "no Discord test is skipped");
+}
+
+/// `GL-03`: live Discord retrieval is open, and no token is committed
+#[test]
+fn grimoirelab_gl_03() {
+    let lock = read(LOCK);
+    assert!(
+        lock.contains("live Discord retrieval: that needs the read-only bot"),
+        "live retrieval is declared not covered"
+    );
+    let mut stack = vec![root().join("oracles")];
+    while let Some(dir) = stack.pop() {
+        for entry in std::fs::read_dir(&dir).expect("a directory").flatten() {
+            let path = entry.path();
+            if path.is_dir() {
+                stack.push(path);
+            } else if let Ok(text) = std::fs::read_to_string(&path) {
+                // A Discord bot token is three base64url parts joined by dots,
+                // the first of which encodes a snowflake (starts "M" or "N").
+                let leaked = text
+                    .split(|c: char| {
+                        !(c.is_ascii_alphanumeric() || c == '.' || c == '_' || c == '-')
+                    })
+                    .any(|word| {
+                        let parts: Vec<&str> = word.split('.').collect();
+                        parts.len() == 3
+                            && parts[0].len() >= 24
+                            && parts[1].len() >= 6
+                            && parts[2].len() >= 27
+                            && (parts[0].starts_with('M') || parts[0].starts_with('N'))
+                    });
+                assert!(
+                    !leaked,
+                    "{} holds what looks like a Discord token",
+                    path.display()
+                );
+            }
+        }
+    }
+}
+
+/// `GL-04`: live probes are traces checked against the pinned model
+#[test]
+fn grimoirelab_gl_04() {
+    let lock = read("oracles/grimoirelab/live/model.lock.json");
+    assert!(
+        lock.contains("\"repository\": \"UOR-Foundation/grimoirelab-discord\""),
+        "the model is the contribution Prism"
+    );
+    let commits = values(&lock, "commit");
+    assert!(
+        commits.len() == 1 && is_hex(&commits[0], 40),
+        "the model is pinned by a full commit"
+    );
+    let digests = values(&lock, "sha256");
+    assert!(
+        digests.len() == 1 && is_hex(&digests[0], 64),
+        "the model is pinned by its SHA-256"
+    );
+    let live = read("oracles/grimoirelab/live/live.py");
+    for part in [
+        "raise ValueError(\"{path} at {commit} is {got}, the lock pins {sha256}",
+        "def conform(app, otlp)",
+        "max(W_MIN, min(W_MAX, w))",
+        "discord.archive.token_free",
+        "discord.content.intent",
+        "chronicler.valid",
+    ] {
+        assert!(live.contains(part), "live.py keeps {part}");
+    }
+    let probe = read("oracles/grimoirelab/live/probe.py");
+    assert!(
+        probe.contains("from chronicler.eventizer import eventize")
+            && !probe.contains("(discord.Discord):"),
+        "probes eventize with Chronicler and run the backend unsubclassed"
+    );
+    let tick = read("oracles/grimoirelab/live/tick.py");
+    assert!(
+        tick.contains("return 1 if divergences else 0"),
+        "a divergence fails the tick"
+    );
+    let verify = read("oracles/grimoirelab/verify.sh");
+    assert!(
+        verify.contains("unittest discover -s \"$here/live/tests\"")
+            && verify.contains("live/tick.py"),
+        "verify.sh runs the harness's tests and the tick"
+    );
+    let workflow = read(".github/workflows/discord-live.yml");
+    assert!(
+        workflow.contains("schedule:") && workflow.contains("verify.sh live"),
+        "a scheduled workflow runs the tick"
+    );
+    assert_eq!(
+        workflow.matches("secrets.DISCORD_BOT_TOKEN").count(),
+        1,
+        "the token reaches one step only"
+    );
+}

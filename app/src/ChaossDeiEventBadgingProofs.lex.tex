@@ -1,0 +1,116 @@
+\begin{lexlean}{ChaossDeiEventBadgingProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{ChaossDeiEventBadging}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : ChaossDeiEventBadging::ChaossDeiEventBadgingRequest],
+  result: Bool,
+  body: (((((project request admitted) <=? 6) && ((project request refused) <=? 6)) && (1 <=? (project request refused))) && ((ChaossDeiEventBadging::chaossDeiEventBadgingJudge request) =? (ChaossDeiEventBadging::chaossDeiEventBadgingAnswerComplete)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : ChaossDeiEventBadging::ChaossDeiEventBadgingRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerComplete,
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerOpen,
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerPartial,
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerUnmeasured,
+      ChaossDeiEventBadging::chaossDeiEventBadgingJudge,
+      ChaossDeiEventBadging::chaossDeiEventBadgingRule1,
+      ChaossDeiEventBadging::chaossDeiEventBadgingRule2,
+      ChaossDeiEventBadging::chaossDeiEventBadgingRule3,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : ChaossDeiEventBadging::ChaossDeiEventBadgingRequest],
+  result: Bool,
+  body: (((((project request admitted) <=? 6) && ((project request refused) <=? 6)) && ((project request admitted) <? 6)) && ((ChaossDeiEventBadging::chaossDeiEventBadgingJudge request) =? (ChaossDeiEventBadging::chaossDeiEventBadgingAnswerComplete)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : ChaossDeiEventBadging::ChaossDeiEventBadgingRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerComplete,
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerOpen,
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerPartial,
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerUnmeasured,
+      ChaossDeiEventBadging::chaossDeiEventBadgingJudge,
+      ChaossDeiEventBadging::chaossDeiEventBadgingRule1,
+      ChaossDeiEventBadging::chaossDeiEventBadgingRule2,
+      ChaossDeiEventBadging::chaossDeiEventBadgingRule3,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : ChaossDeiEventBadging::ChaossDeiEventBadgingRequest],
+  result: Bool,
+  body: ((((((project request admitted) <=? 6) && ((project request refused) <=? 6)) && ((project request refused) =? 0)) && (6 <=? (project request admitted))) && (not ((ChaossDeiEventBadging::chaossDeiEventBadgingJudge request) =? (ChaossDeiEventBadging::chaossDeiEventBadgingAnswerComplete))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : ChaossDeiEventBadging::ChaossDeiEventBadgingRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerComplete,
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerOpen,
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerPartial,
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerUnmeasured,
+      ChaossDeiEventBadging::chaossDeiEventBadgingJudge,
+      ChaossDeiEventBadging::chaossDeiEventBadgingRule1,
+      ChaossDeiEventBadging::chaossDeiEventBadgingRule2,
+      ChaossDeiEventBadging::chaossDeiEventBadgingRule3,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : ChaossDeiEventBadging::ChaossDeiEventBadgingRequest],
+  result: Bool,
+  body: ((((((project request admitted) <=? 6) && ((project request refused) <=? 6)) && (1 <=? (project request admitted))) && ((project request refused) =? 0)) && ((ChaossDeiEventBadging::chaossDeiEventBadgingJudge request) =? (ChaossDeiEventBadging::chaossDeiEventBadgingAnswerUnmeasured)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : ChaossDeiEventBadging::ChaossDeiEventBadgingRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerComplete,
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerOpen,
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerPartial,
+      ChaossDeiEventBadging::chaossDeiEventBadgingAnswerUnmeasured,
+      ChaossDeiEventBadging::chaossDeiEventBadgingJudge,
+      ChaossDeiEventBadging::chaossDeiEventBadgingRule1,
+      ChaossDeiEventBadging::chaossDeiEventBadgingRule2,
+      ChaossDeiEventBadging::chaossDeiEventBadgingRule3,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

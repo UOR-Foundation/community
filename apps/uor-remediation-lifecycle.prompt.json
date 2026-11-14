@@ -1,0 +1,510 @@
+{
+  "schema": "prism/prompt/1",
+  "pattern": "stateMachine",
+  "machine": {
+    "state": "step",
+    "initial": "observed",
+    "final": [
+      "conformant",
+      "declined"
+    ]
+  },
+  "goal": "Move each UOR Foundation repository's remediation from its observed change set to conformance only through an owner's approval, a reviewed pull request, the owner's settings and a fresh observation.",
+  "repository": "UOR-Foundation/community",
+  "app": {
+    "name": "uor-remediation-lifecycle",
+    "title": "Remediation lifecycle",
+    "purpose": "Give the next step of a repository's remediation from its step now, the Organization Owner's approval, its pull request, the settings only the owner applies, and what the decision apps find on a fresh observation.",
+    "fields": [
+      {
+        "name": "step",
+        "kind": "choice",
+        "values": [
+          "observed",
+          "approved",
+          "opened",
+          "merged",
+          "applied",
+          "conformant",
+          "declined"
+        ],
+        "means": "the remediation's step now: observed (change set projected), approved, opened (pull request open), merged, applied (settings applied), conformant, or declined"
+      },
+      {
+        "name": "approval",
+        "kind": "choice",
+        "values": [
+          "given",
+          "none"
+        ],
+        "means": "whether an Organization Owner approved the remediation"
+      },
+      {
+        "name": "pr",
+        "kind": "choice",
+        "values": [
+          "none",
+          "open",
+          "merged",
+          "closed"
+        ],
+        "means": "the remediation pull request: not opened, open, merged, or closed without merging"
+      },
+      {
+        "name": "settings",
+        "kind": "choice",
+        "values": [
+          "pending",
+          "applied"
+        ],
+        "means": "whether the owner applied the topics, rulesets and renames of the change set"
+      },
+      {
+        "name": "outcome",
+        "kind": "choice",
+        "values": [
+          "unobserved",
+          "blocked",
+          "conformant"
+        ],
+        "means": "what the repo decision apps find on a fresh observation: not yet observed, a norm still unmet, or conformant"
+      }
+    ],
+    "outcomes": [
+      "observed",
+      "approved",
+      "opened",
+      "merged",
+      "applied",
+      "conformant",
+      "declined"
+    ],
+    "meanings": {
+      "observed": "the change set is projected from an observation and waits for approval",
+      "approved": "an Organization Owner approved the change set",
+      "opened": "the remediation pull request is open for review",
+      "merged": "a maintainer merged the remediation pull request",
+      "applied": "the owner applied the settings the change set names",
+      "conformant": "a fresh observation finds every decision app conformant",
+      "declined": "a maintainer closed the pull request without merging; the remediation ends and the open claims stay"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "declined"
+          }
+        ],
+        "then": "declined",
+        "why": "a declined remediation is final; its open claims stay in the register"
+      },
+      {
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "conformant"
+          }
+        ],
+        "then": "conformant",
+        "why": "a conformant remediation is final"
+      },
+      {
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "observed"
+          },
+          {
+            "field": "approval",
+            "op": "is",
+            "value": "given"
+          }
+        ],
+        "then": "approved",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 4.1: the Organization Owner makes final governance decisions"
+      },
+      {
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "approved"
+          },
+          {
+            "field": "pr",
+            "op": "is",
+            "value": "open"
+          }
+        ],
+        "then": "opened",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 7.1: open a PR linked to the issue"
+      },
+      {
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "opened"
+          },
+          {
+            "field": "pr",
+            "op": "is",
+            "value": "merged"
+          }
+        ],
+        "then": "merged",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 7.1: pass review and CI, then merge"
+      },
+      {
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "opened"
+          },
+          {
+            "field": "pr",
+            "op": "is",
+            "value": "closed"
+          }
+        ],
+        "then": "declined",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 4.2: on a technical disagreement the maintainer decides"
+      },
+      {
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "merged"
+          },
+          {
+            "field": "settings",
+            "op": "is",
+            "value": "applied"
+          }
+        ],
+        "then": "applied",
+        "why": "GitHub: topics, rulesets and renames are applied by an admin, outside the pull request"
+      },
+      {
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "applied"
+          },
+          {
+            "field": "outcome",
+            "op": "is",
+            "value": "conformant"
+          }
+        ],
+        "then": "conformant",
+        "why": "the decision apps decide conformance on a fresh observation, never on the plan"
+      },
+      {
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "applied"
+          },
+          {
+            "field": "outcome",
+            "op": "is",
+            "value": "blocked"
+          }
+        ],
+        "then": "observed",
+        "why": "a norm still unmet is re-projected as a new change set, never assumed met"
+      },
+      {
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "approved"
+          }
+        ],
+        "then": "approved",
+        "why": "without the act that moves it, the remediation stays at its step"
+      },
+      {
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "opened"
+          }
+        ],
+        "then": "opened",
+        "why": "without the act that moves it, the remediation stays at its step"
+      },
+      {
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "merged"
+          }
+        ],
+        "then": "merged",
+        "why": "without the act that moves it, the remediation stays at its step"
+      },
+      {
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "applied"
+          }
+        ],
+        "then": "applied",
+        "why": "without the act that moves it, the remediation stays at its step"
+      }
+    ],
+    "otherwise": "observed",
+    "otherwiseWhy": "an observed change set waits for an Organization Owner's approval",
+    "properties": [
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "observed"
+          },
+          {
+            "field": "approval",
+            "op": "is",
+            "value": "none"
+          }
+        ],
+        "then": "opened",
+        "why": "no pull request is opened without approval"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "merged"
+          },
+          {
+            "field": "outcome",
+            "op": "is",
+            "value": "conformant"
+          }
+        ],
+        "then": "conformant",
+        "why": "conformance is found only after the settings are applied and the repository observed again"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "declined"
+          }
+        ],
+        "then": "declined",
+        "why": "declined is final"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "step",
+            "op": "is",
+            "value": "applied"
+          },
+          {
+            "field": "outcome",
+            "op": "is",
+            "value": "unobserved"
+          }
+        ],
+        "then": "conformant",
+        "why": "conformance is never assumed without an observation"
+      }
+    ],
+    "examples": [
+      {
+        "request": "observed given none pending unobserved",
+        "response": "approved"
+      },
+      {
+        "request": "observed none none pending unobserved",
+        "response": "observed"
+      },
+      {
+        "request": "approved given open pending unobserved",
+        "response": "opened"
+      },
+      {
+        "request": "opened given merged pending unobserved",
+        "response": "merged"
+      },
+      {
+        "request": "opened given closed pending unobserved",
+        "response": "declined"
+      },
+      {
+        "request": "merged given merged applied unobserved",
+        "response": "applied"
+      },
+      {
+        "request": "applied given merged applied conformant",
+        "response": "conformant"
+      },
+      {
+        "request": "applied given merged applied blocked",
+        "response": "observed"
+      },
+      {
+        "request": "applied given merged applied unobserved",
+        "response": "applied"
+      },
+      {
+        "request": "declined given open applied conformant",
+        "response": "declined"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Organization Owner",
+      "text": "Approves each remediation and applies its settings, and needs to see which step every repository is at.",
+      "concerns": [
+        "Correct answers",
+        "Proved guarantees"
+      ]
+    },
+    {
+      "name": "Repository Maintainer",
+      "text": "Reviews and merges or declines the remediation pull request, and needs a declined remediation to end rather than be reopened.",
+      "concerns": [
+        "Proved guarantees"
+      ]
+    },
+    {
+      "name": "Agent contributor",
+      "text": "Opens the pull requests and re-observes the repositories, and needs each step to name the act that moves it.",
+      "concerns": [
+        "Correct answers"
+      ]
+    },
+    {
+      "name": "Community and Outreach Committee",
+      "text": "Reports the ecosystem's standards health and needs a repository counted conformant only on a fresh observation.",
+      "concerns": [
+        "Correct answers"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "GitHub repository settings",
+      "kind": "externalSystem",
+      "text": "The topics, rulesets, names and files of each UOR-Foundation repository."
+    },
+    {
+      "name": "Remediation register",
+      "kind": "cliAdapter",
+      "text": "remediation/project.mjs and remediation/register.json in UOR-Foundation/community, which project each repository's change set from the decision apps."
+    },
+    {
+      "name": "Ecosystem register",
+      "kind": "cliAdapter",
+      "text": "ecosystem/snapshot.mjs and remediation/observe.mjs, which observe the repositories again after the change."
+    }
+  ],
+  "threats": [
+    {
+      "name": "Conformance claimed on the plan",
+      "text": "A repository is reported conformant because its pull request merged, before any observation.",
+      "stride": "repudiation",
+      "asset": "answer",
+      "likelihood": "medium",
+      "impact": "major",
+      "control": {
+        "name": "Observed conformance only",
+        "text": "Only a fresh observation moves a remediation to conformant.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-002"
+          },
+          {
+            "kind": "proof",
+            "reference": "INV-004"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Pull request without approval",
+      "text": "A remediation pull request is opened before the owner approves it.",
+      "stride": "elevationOfPrivilege",
+      "asset": "answer",
+      "likelihood": "medium",
+      "impact": "major",
+      "control": {
+        "name": "Approval first",
+        "text": "An observed remediation moves only on approval.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-001"
+          }
+        ]
+      }
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Functional suitability",
+      "subcharacteristic": "Functional correctness",
+      "requirement": "Every step moved by its act",
+      "text": "Each transition names the approval, pull request, settings or observation that moves it.",
+      "measure": "Transitions without an act",
+      "measureText": "Rules that change the step with no act in their condition.",
+      "threshold": 0
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Organization Owner",
+      "steps": [
+        "REQ-003",
+        "REQ-007",
+        "INV-001"
+      ]
+    },
+    {
+      "stakeholder": "Repository Maintainer",
+      "steps": [
+        "REQ-005",
+        "REQ-006",
+        "INV-003"
+      ]
+    },
+    {
+      "stakeholder": "Agent contributor",
+      "steps": [
+        "REQ-004",
+        "REQ-008",
+        "REQ-009"
+      ]
+    }
+  ],
+  "concerns": [],
+  "license": "MIT OR Apache-2.0"
+}

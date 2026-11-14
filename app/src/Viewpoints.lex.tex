@@ -1,0 +1,1520 @@
+\begin{lexlean}{Viewpoints}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Viewpoint.V1.Model}
+\title{Stakeholder views}
+\begin{semanticmodule}
+definition{
+  name: stakeholderBoard,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Stakeholder,
+  body: (record Foundation.Viewpoint.V1.Model::Stakeholder {index := 0, slug := "board", name := "Board of Directors", kind := (ctor Foundation.Viewpoint.V1.Model::StakeholderKind.organization), principal := 0, source := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:CODE_OF_CONDUCT.md#sha256:d01bb370bf46dadc5bd8b1b30113a3434baf079b32815e21cfd05af4fb841705", quote := "Ultimate enforcement authority rests with the Board of Directors"})
+}
+
+definition{
+  name: stakeholderOrganizationOwner,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Stakeholder,
+  body: (record Foundation.Viewpoint.V1.Model::Stakeholder {index := 1, slug := "organization-owner", name := "Organization Owner", kind := (ctor Foundation.Viewpoint.V1.Model::StakeholderKind.person), principal := 1, source := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574", quote := "| Organization Owner | Final governance decisions and escalations |"})
+}
+
+definition{
+  name: stakeholderToc,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Stakeholder,
+  body: (record Foundation.Viewpoint.V1.Model::Stakeholder {index := 2, slug := "toc", name := "Technical Oversight Committee", kind := (ctor Foundation.Viewpoint.V1.Model::StakeholderKind.organization), principal := 2, source := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/The_UOR_Foundation_Bylaws.pdf#sha256:21dde54a38910f58fb685867a63030f5fd8d0a6d0d2c93baa58e690641a4906c", quote := "a Technical Oversight Committee responsible for stewarding the UOR Framework specification, open-source repositories, and public API infrastructure"})
+}
+
+definition{
+  name: stakeholderCommunityOutreach,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Stakeholder,
+  body: (record Foundation.Viewpoint.V1.Model::Stakeholder {index := 3, slug := "community-outreach", name := "Community and Outreach Committee", kind := (ctor Foundation.Viewpoint.V1.Model::StakeholderKind.organization), principal := 3, source := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/The_UOR_Foundation_Bylaws.pdf#sha256:21dde54a38910f58fb685867a63030f5fd8d0a6d0d2c93baa58e690641a4906c", quote := "Community and Outreach Committee responsible for supporting the open developer, researcher, and practitioner community engaged with the UOR Framework"})
+}
+
+definition{
+  name: stakeholderMaintainer,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Stakeholder,
+  body: (record Foundation.Viewpoint.V1.Model::Stakeholder {index := 4, slug := "maintainer", name := "Repository Maintainer", kind := (ctor Foundation.Viewpoint.V1.Model::StakeholderKind.person), principal := 4, source := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574", quote := "| Repository Maintainer | Day-to-day repo health, review, and release |"})
+}
+
+definition{
+  name: stakeholderContributor,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Stakeholder,
+  body: (record Foundation.Viewpoint.V1.Model::Stakeholder {index := 5, slug := "contributor", name := "Contributor", kind := (ctor Foundation.Viewpoint.V1.Model::StakeholderKind.person), principal := 5, source := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574", quote := "| Contributor | Proposes and ships improvements through PRs |"})
+}
+
+definition{
+  name: stakeholderAgentContributor,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Stakeholder,
+  body: (record Foundation.Viewpoint.V1.Model::Stakeholder {index := 6, slug := "agent-contributor", name := "Agent contributor", kind := (ctor Foundation.Viewpoint.V1.Model::StakeholderKind.softwareApplication), principal := 5, source := "https://www.w3.org/TR/2013/REC-prov-o-20130430/#sha256:6b96671ab84faf12ce3f041aca12c3f93a6df2ed242348810743179a68e69555", quote := "A software agent is running software."})
+}
+
+definition{
+  name: stakeholderModerator,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Stakeholder,
+  body: (record Foundation.Viewpoint.V1.Model::Stakeholder {index := 7, slug := "moderator", name := "Community Moderator", kind := (ctor Foundation.Viewpoint.V1.Model::StakeholderKind.person), principal := 7, source := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:CODE_OF_CONDUCT.md#sha256:d01bb370bf46dadc5bd8b1b30113a3434baf079b32815e21cfd05af4fb841705", quote := "Community Moderators take reports of violations seriously"})
+}
+
+definition{
+  name: stakeholderParticipant,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Stakeholder,
+  body: (record Foundation.Viewpoint.V1.Model::Stakeholder {index := 8, slug := "participant", name := "Community participant", kind := (ctor Foundation.Viewpoint.V1.Model::StakeholderKind.person), principal := 8, source := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:CODE_OF_CONDUCT.md#sha256:d01bb370bf46dadc5bd8b1b30113a3434baf079b32815e21cfd05af4fb841705", quote := "This Code of Conduct applies to all participants, contributors, and representatives of the UOR Foundation."})
+}
+
+definition{
+  name: stakeholderAdopter,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Stakeholder,
+  body: (record Foundation.Viewpoint.V1.Model::Stakeholder {index := 9, slug := "adopter", name := "Adopter", kind := (ctor Foundation.Viewpoint.V1.Model::StakeholderKind.organization), principal := 9, source := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:toc/README.md#sha256:9674e625d93cefc9e490b3af5ae449f8770eeadb50c85e68597f741656c2d2a2", quote := "At least one adopter or clear integration usage"})
+}
+
+definition{
+  name: decisionChaossAiAlignmentCommunityAlignedTrainingFeedback,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 0, app := "chaoss-ai-alignment-community-aligned-training-feedback", pattern := "decisionTable", source := "apps/chaoss-ai-alignment-community-aligned-training-feedback.prompt.json", sourceDigest := "sha256:8f4156b571af56bb519cd7f6b23b0e5529d488b31c3edd3c5870e45129a87b6a"})
+}
+
+definition{
+  name: decisionChaossBusinessReadinessOfAnOpenSourceProject,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 1, app := "chaoss-business-readiness-of-an-open-source-project", pattern := "decisionTable", source := "apps/chaoss-business-readiness-of-an-open-source-project.prompt.json", sourceDigest := "sha256:59ca360ae8aa0e7d9d11c632c225fb78955f17bdb3b2de3d05d96341af088cec"})
+}
+
+definition{
+  name: decisionChaossCollaborationDevelopmentIndex,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 2, app := "chaoss-collaboration-development-index", pattern := "decisionTable", source := "apps/chaoss-collaboration-development-index.prompt.json", sourceDigest := "sha256:5fea91577e133fa0cebc42f1761dfc1a8f0ff417d058c1abeff0cf2a59aad813"})
+}
+
+definition{
+  name: decisionChaossCommunityActivity,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 3, app := "chaoss-community-activity", pattern := "decisionTable", source := "apps/chaoss-community-activity.prompt.json", sourceDigest := "sha256:3bd62627eedfd825cc93eec1d4b432c101fadf6e021194f57520ebc06a56b433"})
+}
+
+definition{
+  name: decisionChaossCommunityGovernedAiUseInOpenCommunities,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 4, app := "chaoss-community-governed-ai-use-in-open-communities", pattern := "decisionTable", source := "apps/chaoss-community-governed-ai-use-in-open-communities.prompt.json", sourceDigest := "sha256:6a4a4c20df58350e1731f2b5bd68fa2ca936660a33c174773fae27ef4e1777a4"})
+}
+
+definition{
+  name: decisionChaossCommunityServiceAndSupport,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 5, app := "chaoss-community-service-and-support", pattern := "decisionTable", source := "apps/chaoss-community-service-and-support.prompt.json", sourceDigest := "sha256:9452257bcdf525e5305a7873305313659c923352b9ddfafa870fb97001fb8f82"})
+}
+
+definition{
+  name: decisionChaossCommunityWelcomingness,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 6, app := "chaoss-community-welcomingness", pattern := "decisionTable", source := "apps/chaoss-community-welcomingness.prompt.json", sourceDigest := "sha256:18a38b9e1850dc749a1dafceeca80415d74adf4f75cec34242461d7179573969"})
+}
+
+definition{
+  name: decisionChaossDeiEventBadging,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 7, app := "chaoss-dei-event-badging", pattern := "decisionTable", source := "apps/chaoss-dei-event-badging.prompt.json", sourceDigest := "sha256:de2c798965cbe63f84114b14747650b4c4ffecdf58dd7725b9a679c8d55e21ba"})
+}
+
+definition{
+  name: decisionChaossDevelopmentResponsiveness,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 8, app := "chaoss-development-responsiveness", pattern := "decisionTable", source := "apps/chaoss-development-responsiveness.prompt.json", sourceDigest := "sha256:f4e9ede8306bdcfbfa9f67073fbef0e71c4417397d31a88a0192713d31ace1d8"})
+}
+
+definition{
+  name: decisionChaossFunding,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 9, app := "chaoss-funding", pattern := "decisionTable", source := "apps/chaoss-funding.prompt.json", sourceDigest := "sha256:44e0dfcfd43b9288a592e09f8f0e3d108af385f1198f57196617802892504a41"})
+}
+
+definition{
+  name: decisionChaossOssProjectViabilityCommunity,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 10, app := "chaoss-oss-project-viability-community", pattern := "decisionTable", source := "apps/chaoss-oss-project-viability-community.prompt.json", sourceDigest := "sha256:ca658ff7189bf0341bc365b2c0c86497b3bad40a28441c2a59d1fad16975953c"})
+}
+
+definition{
+  name: decisionChaossOssProjectViabilityComplianceSecurity,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 11, app := "chaoss-oss-project-viability-compliance-security", pattern := "decisionTable", source := "apps/chaoss-oss-project-viability-compliance-security.prompt.json", sourceDigest := "sha256:27c7aff85834b13bba6ec4a03aa46d79c9ed47d1412b6c3a8ba88b8258adcb72"})
+}
+
+definition{
+  name: decisionChaossOssProjectViabilityGovernance,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 12, app := "chaoss-oss-project-viability-governance", pattern := "decisionTable", source := "apps/chaoss-oss-project-viability-governance.prompt.json", sourceDigest := "sha256:61710a4fdfe3729cd194e12f868c756564f72f279bde5c45783ec7a74445b52b"})
+}
+
+definition{
+  name: decisionChaossOssProjectViabilityStrategy,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 13, app := "chaoss-oss-project-viability-strategy", pattern := "decisionTable", source := "apps/chaoss-oss-project-viability-strategy.prompt.json", sourceDigest := "sha256:cb55d73050500fb9ff3a1e94c0a3ea9b56eededd7060fe70949f640ed85b44ed"})
+}
+
+definition{
+  name: decisionChaossProjectAwareness,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 14, app := "chaoss-project-awareness", pattern := "decisionTable", source := "apps/chaoss-project-awareness.prompt.json", sourceDigest := "sha256:1fd28434f4bb54bcd1b1455e4b6776e682f1fb3282725ad520690410728f9b89"})
+}
+
+definition{
+  name: decisionChaossProjectEngagement,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 15, app := "chaoss-project-engagement", pattern := "decisionTable", source := "apps/chaoss-project-engagement.prompt.json", sourceDigest := "sha256:3ba6220835c89ea6fe988398db14ea65e28e90c7e70b4e277ddb324d0f8af747"})
+}
+
+definition{
+  name: decisionChaossProjectViabilityStarter,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 16, app := "chaoss-project-viability-starter", pattern := "decisionTable", source := "apps/chaoss-project-viability-starter.prompt.json", sourceDigest := "sha256:78aaefd3bf98460e06fc796a7c0837a0368f129c0d56031eeb34b4ff54774eb5"})
+}
+
+definition{
+  name: decisionChaossSafety,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 17, app := "chaoss-safety", pattern := "decisionTable", source := "apps/chaoss-safety.prompt.json", sourceDigest := "sha256:8ff514dd792b14546795b19d0eddb5cf734cf1fcea88ccd5bc92194b4181add7"})
+}
+
+definition{
+  name: decisionChaossStarterProjectHealth,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 18, app := "chaoss-starter-project-health", pattern := "decisionTable", source := "apps/chaoss-starter-project-health.prompt.json", sourceDigest := "sha256:8ab3764105dbd85bd36652915be559d7808cadbb9c7d589ece75382d2782ab59"})
+}
+
+definition{
+  name: decisionUorCocEnforcement,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 19, app := "uor-coc-enforcement", pattern := "stateMachine", source := "apps/uor-coc-enforcement.prompt.json", sourceDigest := "sha256:6d58d139092fc04c69c104a0f5584b473574853276bbb8ce71bd472e772f4c5a"})
+}
+
+definition{
+  name: decisionUorContributionAttribution,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 20, app := "uor-contribution-attribution", pattern := "policyDecision", source := "apps/uor-contribution-attribution.prompt.json", sourceDigest := "sha256:4ccc45dc46ced862b9f9833b8a30d9f8ba56964260746285eee2824eeeb32153"})
+}
+
+definition{
+  name: decisionUorDiscordRead,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 21, app := "uor-discord-read", pattern := "policyDecision", source := "apps/uor-discord-read.prompt.json", sourceDigest := "sha256:0726c141607d69d919e5e8818405d7bf4bb9538384c82a8debf52df568766bd7"})
+}
+
+definition{
+  name: decisionUorObservationAdmission,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 22, app := "uor-observation-admission", pattern := "policyDecision", source := "apps/uor-observation-admission.prompt.json", sourceDigest := "sha256:a10084dd1b0a7439016ebdcdb31221467ac6085bd4a7b1e3b2b2b1d3fabfe7a0"})
+}
+
+definition{
+  name: decisionUorRemediationLifecycle,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 23, app := "uor-remediation-lifecycle", pattern := "stateMachine", source := "apps/uor-remediation-lifecycle.prompt.json", sourceDigest := "sha256:a80162ae380b73f91e324dbef84b845d279486ced915130acacce47c84e67838"})
+}
+
+definition{
+  name: decisionUorRemediationWrite,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 24, app := "uor-remediation-write", pattern := "policyDecision", source := "apps/uor-remediation-write.prompt.json", sourceDigest := "sha256:6dbad73cfd70454fadb625869cece91cb43c15d33f8c6abe27d3ff10d7cafd1e"})
+}
+
+definition{
+  name: decisionUorRepoFiles,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 25, app := "uor-repo-files", pattern := "decisionTable", source := "apps/uor-repo-files.prompt.json", sourceDigest := "sha256:f6906101daef7a123fd9b8d5ce8a25599f2b441a8e8f16ae38e653b4aa21f91a"})
+}
+
+definition{
+  name: decisionUorRepoNaming,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 26, app := "uor-repo-naming", pattern := "decisionTable", source := "apps/uor-repo-naming.prompt.json", sourceDigest := "sha256:01e8b625728aadd2e788e593038dab6085d38b130cfc11202a2eb67a0984f910"})
+}
+
+definition{
+  name: decisionUorRepoProtection,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 27, app := "uor-repo-protection", pattern := "decisionTable", source := "apps/uor-repo-protection.prompt.json", sourceDigest := "sha256:589c79fc95ddf9219bec0a64d8243677045d3004e4c179f0b5aaca74d3eb81ce"})
+}
+
+definition{
+  name: decisionUorRepoStandards,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 28, app := "uor-repo-standards", pattern := "decisionTable", source := "apps/uor-repo-standards.prompt.json", sourceDigest := "sha256:5110ceae4dcad03303e79f678303c4cc0b1c558ce676eed7a8c82f4f09ebf3b0"})
+}
+
+definition{
+  name: decisionUorRepoTier,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 29, app := "uor-repo-tier", pattern := "decisionTable", source := "apps/uor-repo-tier.prompt.json", sourceDigest := "sha256:549a37d3e5912b33a5dcb3eb3d190492e4a2125d00315469ab7c7ca1b6c1e6c2"})
+}
+
+definition{
+  name: decisionUorTocLifecycle,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Decision,
+  body: (record Foundation.Viewpoint.V1.Model::Decision {index := 30, app := "uor-toc-lifecycle", pattern := "stateMachine", source := "apps/uor-toc-lifecycle.prompt.json", sourceDigest := "sha256:17b433b1465cfa5cc102c8da2104a5f3cb7f7dc0f471f67005f71e7ab0931648"})
+}
+
+definition{
+  name: concern0,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 0, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 0, text := "As a maintainer I want to communicate governance decisions around AI to model builders."})
+}
+
+definition{
+  name: concern1,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 1, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 0, text := "As a maintainer dealing with AI-generated low-quality PRs, I want to flag the contribution pattern to the provider whose tool produced it, so that I'm not bearing the full cost of triaging output I didn't ask for."})
+}
+
+definition{
+  name: concern2,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 2, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 0, text := "As a maintainer, I want a documented intake SLA from each major model provider, so that I can decide whether filing feedback is worth my time before I start."})
+}
+
+definition{
+  name: concern3,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 3, stakeholder := 0, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 0, text := "As a foundation representative, I want baseline metrics on response times, acknowledgment rates, and attribution rates across major model providers, so that I can negotiate collective intake agreements on behalf of member projects from a position of evidence."})
+}
+
+definition{
+  name: concern4,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 4, stakeholder := 0, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 0, text := "As a foundation, I want a standard taxonomy for AI-feedback categories (bias, attribution, safety, accessibility, agent behavior, environmental), so that reports from different projects are comparable and aggregable."})
+}
+
+definition{
+  name: concern5,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 5, stakeholder := 8, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 0, text := "As a community member I want to know what the governance is for raising issues within my community (to gain consensus to report on behalf of that project)."})
+}
+
+definition{
+  name: concern6,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 6, stakeholder := 8, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 0, text := "As a community member who has experienced harm (misattribution, harassment via AI-generated content, privacy exposure), I want a non-public channel for reporting, so that I'm not forced to disclose identity or details to get a response."})
+}
+
+definition{
+  name: concern7,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 7, stakeholder := 8, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 0, text := "As a researcher, I want a public, replicable dataset of AI-feedback events and outcomes across providers and time, so that I can study patterns, identify failure modes, and inform policy."})
+}
+
+definition{
+  name: concern8,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 8, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 0, text := "As a funder of open source infrastructure, I want to see whether the projects I support are receiving proportional value back from the AI ecosystem, so that I can direct grants toward gaps the AI industry is failing to fill."})
+}
+
+definition{
+  name: concern9,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 9, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 3, text := "As a community manager, I want to know how active the projects I manage are."})
+}
+
+definition{
+  name: concern10,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 10, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 3, text := "As a community manager, I want to investigate increases and decreases of community activity and what the root cause (good or bad reasons) may be in these changes."})
+}
+
+definition{
+  name: concern11,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 11, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 3, text := "As a community manager, I hope there are simple ways that would help me quickly identify how active the projects which I manage."})
+}
+
+definition{
+  name: concern12,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 12, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 3, text := "As an OSPO or a program manager from a company, I want to collaborate with active communities, which may indicate that bug fixes and feature requirements could be solved efficiently. This is especially important, when I have multiple projects to choose from."})
+}
+
+definition{
+  name: concern13,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 13, stakeholder := 5, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 3, text := "As a contributor, I want to join a community which is more active, because I may get more support and the value I create is more visible."})
+}
+
+definition{
+  name: concern14,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 14, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a project leader, I want to measure the existing use of AI in my community so that I can determine future project policy on the use of AI in the project."})
+}
+
+definition{
+  name: concern15,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 15, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a team leader, I want to be aware of tools and workflows that people use to participate in my project so that….."})
+}
+
+definition{
+  name: concern16,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 16, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a project leader considering a disclosure-and-ban policy, I want to see how similar projects have fared so I can judge the tradeoffs before adopting it."})
+}
+
+definition{
+  name: concern17,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 17, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a project leader considering a conditional, human-in-the-loop policy, I want a way to express task-specific rules rather than a blanket yes or no."})
+}
+
+definition{
+  name: concern18,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 18, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a project leader who has decided not to restrict AI use, I want to state that clearly so contributors who disagree can choose to fork or leave rather than block others."})
+}
+
+definition{
+  name: concern19,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 19, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a project leader considering an outright ban, I want to see how that reasoning was received elsewhere before deciding whether it holds for my project."})
+}
+
+definition{
+  name: concern20,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 20, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a project leader who adopted a conditional policy, I want to check whether disclosed AI-assisted contributions meet its requirements, so I can tell whether the policy is working or just written down."})
+}
+
+definition{
+  name: concern21,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 21, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a project maintainer, I want to verify or be aware of the ways that my community members and contributors are (or aren't) abiding by the policies the community has consented to, so it can inform my response and maintenance of a healthy community."})
+}
+
+definition{
+  name: concern22,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 22, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a maintainer, I want to see an overview of the specific AI tools and models being used in my (or other) communities, so I can compare tool quality and learn about new frontier models as contributors adopt them."})
+}
+
+definition{
+  name: concern23,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 23, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a maintainer, I want to distinguish AI-assisted human contribution from autonomous agent activity in my workflows, so I know which policy provisions apply to a given contribution."})
+}
+
+definition{
+  name: concern24,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 24, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a maintainer, I want a way to signal that my project has an active human community and pre-LLM history, so a platform's graduated policy places my project correctly rather than flagging it on resource use alone."})
+}
+
+definition{
+  name: concern25,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 25, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a maintainer with a zero-tolerance policy, I want guidance on responding warmly to AI-assisted submissions I still plan to reject, so the contributor leaves treated like any other well-meaning first-time submitter, not shamed."})
+}
+
+definition{
+  name: concern26,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 26, stakeholder := 8, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a community member, I want to know who controls the data behind the AI tools I interact with in a community, so I know where my data is and how I can assert my rights (e.g. GDPR)."})
+}
+
+definition{
+  name: concern27,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 27, stakeholder := 8, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a community member, I want to know what category of tool is being used in a space I'm participating in (assistant, notetaker, autonomous agent), so I can judge what kind of consent applies before I speak or contribute."})
+}
+
+definition{
+  name: concern28,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 28, stakeholder := 8, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a meeting participant, I want to know whether a notetaker bot is a passive transcription tool or one that shares content onward (e.g. training, third-party analysis), so I can judge whether my consent to be recorded covers what happens to that recording."})
+}
+
+definition{
+  name: concern29,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 29, stakeholder := 7, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a content moderator, I want to mitigate against new forms of social engineering attacks and toxic behavior facilitated by AI usage so that I can better protect the psychological safety of my community."})
+}
+
+definition{
+  name: concern30,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 30, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a community manager, I want to understand how AI usage might impact code of conduct enforcement so that….."})
+}
+
+definition{
+  name: concern31,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 31, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a community manager, I want to see which policy provisions actually reduce low-quality AI-driven contribution load, so I can decide what to adopt before we hit the same problem."})
+}
+
+definition{
+  name: concern32,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 32, stakeholder := 5, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a potential contributor, I want to know if my preferences for AI use match community policies so that…."})
+}
+
+definition{
+  name: concern33,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 33, stakeholder := 5, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a contributor who wants to use AI extensively, I want to know where a project sits on the ban-to-permissive spectrum so I don't invest effort building a contribution the project won't accept."})
+}
+
+definition{
+  name: concern34,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 34, stakeholder := 5, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a contributor who codes without AI assistance, I want to be trusted at face value rather than accused of undisclosed LLM use, so suspicion doesn't fall on people doing their own work just because AI use has become harder to rule out."})
+}
+
+definition{
+  name: concern35,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 35, stakeholder := 5, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a contributor I want to understand the rationale behind AI policies to limit use (not just that they do)."})
+}
+
+definition{
+  name: concern36,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 36, stakeholder := 5, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a contributor whose employer requires AI tool use as a condition of employment, I want a way to disclose (attribute) that my use was mandated rather than chosen."})
+}
+
+definition{
+  name: concern37,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 37, stakeholder := 0, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a foundation representative, I want to compare how member projects' AI policies have shifted over time so that I can identify where a shared foundation-level position would help."})
+}
+
+definition{
+  name: concern38,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 38, stakeholder := 0, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a foundation representative, I want the stated rationale behind a policy change broken out as separate, checkable claims, so member projects can evaluate the reasoning on its merits rather than treating the outcome as self-justifying."})
+}
+
+definition{
+  name: concern39,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 39, stakeholder := 0, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, text := "As a foundation representative, I want licensing-related misuse claims (e.g. license laundering) framed as legally unsettled rather than established fact, so member projects don't overstate a position courts haven't yet resolved."})
+}
+
+definition{
+  name: concern40,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 40, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 5, text := "As a community manager, I want to know if my community provides good enough service and support to the contributors, including issue response, infrastructure services and outreach activities."})
+}
+
+definition{
+  name: concern41,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 41, stakeholder := 8, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 5, text := "As a new community member, I want to know if I get adequate support from the community."})
+}
+
+definition{
+  name: concern42,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 42, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 5, text := "As a community software user, I want to know if I can get a quick answer when I have problems."})
+}
+
+definition{
+  name: concern43,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 43, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 5, text := "As an OSPO or a program manager, I want to work with a community, and understanding community service and support can improve my ability to better understand such an engagement."})
+}
+
+definition{
+  name: concern44,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 44, stakeholder := 8, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 5, text := "As an existing community member, I may want to identify areas where community service and support is lacking in an effort to provide support where needed."})
+}
+
+definition{
+  name: concern45,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 45, stakeholder := 8, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 6, text := "As a newcomer, I am curious as to whether I will be welcome in a new community or not."})
+}
+
+definition{
+  name: concern46,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 46, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 6, text := "As a member from an organization interested in an open source project, I would like to know if my employees will be able to contribute to the project on behalf of the organization."})
+}
+
+definition{
+  name: concern47,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 47, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 6, text := "As a maintainer, I would like to know how many potential new contributors I am losing because my project is not as welcoming as it could be."})
+}
+
+definition{
+  name: concern48,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 48, stakeholder := 0, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 6, text := "As an organization who runs open source projects, I want to know if my project is open to including new contributors for the sustainability of my project."})
+}
+
+definition{
+  name: concern49,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 49, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 8, text := "As a company or non-profit and individual I want to evaluate how well an upstream project is set up to respond to priority issues like security."})
+}
+
+definition{
+  name: concern50,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 50, stakeholder := 5, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 8, text := "As a contributor, I want to evaluate whether or not a project is actively engaging with people."})
+}
+
+definition{
+  name: concern51,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 51, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 8, text := "As a community manager/maintainer I want to evaluate how well our project is responding in various capacities (issues, comments etc), and where possible compare to other projects who are similar or direct competitors."})
+}
+
+definition{
+  name: concern52,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 52, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 8, text := "As a community manager/maintainer I want to evaluate how well our project is responding in various capacities (issues, comments etc), and where possible compare to other projects who are similar or direct competitors."})
+}
+
+definition{
+  name: concern53,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 53, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 8, text := "As an OSPO manager (or someone in charge of OS standards at a company/institution/org), I want to identify inactive projects for possible archiving, or remedial/supplementary support."})
+}
+
+definition{
+  name: concern54,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 54, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 9, text := "As an OSPO manager, it may be important to understand if an open source project we rely on has sufficient financial support to ensure long-term sustainability."})
+}
+
+definition{
+  name: concern55,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 55, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 9, text := "As an OSPO manager, it may be important to understand the financial support our organization provides to specific open source proejcts."})
+}
+
+definition{
+  name: concern56,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 56, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 9, text := "As an OSPO manager, financial support can imply influence. Knowing organizational financial support in a project may help understand influence."})
+}
+
+definition{
+  name: concern57,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 57, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 9, text := "As a project maintainer, core contributors who are not compensated are less likely to maintain quality contributions."})
+}
+
+definition{
+  name: concern58,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 58, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 10, text := "As a developer, I want to understand if a project has a thriving open source community, so that I have a higher degree of confidence in its viability. ."})
+}
+
+definition{
+  name: concern59,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 59, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 10, text := "As a project manager, I want to use projects well understood and vetted by a developer community, so that I can mitigate the business risk of adopting unsupported dependencies."})
+}
+
+definition{
+  name: concern60,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 60, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 11, text := "As a developer, I want to: Understand if a dependency is viable.; Investigate how well the project’s dependencies are kept up to date."})
+}
+
+definition{
+  name: concern61,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 61, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 11, text := "As a manager of a project using open source, I want to understand the risk associated with using a project."})
+}
+
+definition{
+  name: concern62,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 62, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 11, text := "As a technologist involved with a project leveraging open source, I want to comply with my organization’s policy using specific open source licenses."})
+}
+
+definition{
+  name: concern63,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 63, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 12, text := "As a developer, I want to: Understand if a dependency is viable.; Investigate my ability to contribute changes to a project if needed"})
+}
+
+definition{
+  name: concern64,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 64, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 12, text := "As a manager of a project using open source, I want to understand the risk associated with using a project."})
+}
+
+definition{
+  name: concern65,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 65, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 13, text := "As a developer who is evaluating a new open source project to use as a dependency, I want to understand the project's future roadmap, so that I can determine if its goals and direction match my needs."})
+}
+
+definition{
+  name: concern66,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 66, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 13, text := "As a manager of a project using open source, I want to: Understand the risk associated with using a project.; Determine if a project aligns with long term technical goals of myself/my organization."})
+}
+
+definition{
+  name: concern67,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 67, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 13, text := "As a stakeholder of a project, I want to understand my opportunity to contribute to project strategy"})
+}
+
+definition{
+  name: concern68,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 68, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 14, text := "As a person at an organization, I want to evaluate the popularity of a project I contribute to or maintain so that I can prioritize allocating resources to more popular or important projects."})
+}
+
+definition{
+  name: concern69,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 69, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 14, text := "As a person at an organization, I want to evaluate the importance of my project so that I can prioritize allocating resources to more popular or important projects."})
+}
+
+definition{
+  name: concern70,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 70, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 14, text := "As a person at an organization, I want to assess how much attention is being given to a project, either positively or negatively, and whether or not there have major increases or decreases in attention (e.g., from media coverage, high impact bugs, etc.)"})
+}
+
+definition{
+  name: concern71,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 71, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 16, text := "As a developer who is evaluating a new open source project to use as a dependency, I want to understand the project's future roadmap, so that I can determine if its goals and direction match my needs."})
+}
+
+definition{
+  name: concern72,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 72, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 16, text := "As a developer, I want to understand if a project has a thriving open source community, so that I have a higher degree of confidence in its viability."})
+}
+
+definition{
+  name: concern73,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 73, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 16, text := "As a developer, I want to: Understand if a dependency is viable.; Investigate how well the project’s dependencies are kept up to date."})
+}
+
+definition{
+  name: concern74,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 74, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 16, text := "As a project manager, I want to use projects well understood and vetted by a developer community, so that I can mitigate the business risk of adopting unsupported dependencies."})
+}
+
+definition{
+  name: concern75,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 75, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 16, text := "As a manager of a project using open source, I want to: Understand the risk associated with using a project.; Determine if a project aligns with long term technical goals of myself/my organization."})
+}
+
+definition{
+  name: concern76,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 76, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 16, text := "As a stakeholder of a project, I want to understand my opportunity to contribute to project strategy"})
+}
+
+definition{
+  name: concern77,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 77, stakeholder := 5, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 17, text := "As a contributor from a traditionally marginalized and equity-seeking group I want to evaluate whether or not a project is invested in my success at all levels of participation including leadership."})
+}
+
+definition{
+  name: concern78,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 78, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 17, text := "As a community manager/maintainer, I want to regularly challenge our project and community around safety and track our progress over time."})
+}
+
+definition{
+  name: concern79,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 79, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 17, text := "As a community manager/maintainer, I want to regularly challenge our project and community around safety and track our progress over time."})
+}
+
+definition{
+  name: concern80,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 80, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 17, text := "As an OSPO (or someone in charge of OS standards at a company/institution/org) I want to evaluate how well we are set up for inclusive governance."})
+}
+
+definition{
+  name: concern81,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 81, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 18, text := "As an OSPO, I want to help our open source contributors improve the health of"})
+}
+
+definition{
+  name: concern82,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 82, stakeholder := 5, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 18, text := "As a contributor, I want to know where I can focus my efforts to help make the"})
+}
+
+definition{
+  name: concern83,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 83, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 0, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern84,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 84, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 1, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern85,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 85, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 2, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern86,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 86, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 3, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern87,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 87, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 4, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern88,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 88, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 5, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern89,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 89, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 6, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern90,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 90, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 7, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern91,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 91, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 8, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern92,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 92, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 9, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern93,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 93, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 10, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern94,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 94, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 11, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern95,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 95, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 12, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern96,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 96, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 13, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern97,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 97, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 14, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern98,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 98, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 15, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern99,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 99, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 16, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern100,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 100, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 17, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern101,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 101, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 18, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern102,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 102, stakeholder := 7, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 19, text := "Investigates reports from email and Discord and needs the ladder's rung for each finding."})
+}
+
+definition{
+  name: concern103,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 103, stakeholder := 8, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 19, text := "Participates on Discord, GitHub and at events and needs enforcement to follow the published ladder, never an unpublished one."})
+}
+
+definition{
+  name: concern104,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 104, stakeholder := 0, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 19, text := "Holds ultimate enforcement authority and delegates it to moderators."})
+}
+
+definition{
+  name: concern105,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 105, stakeholder := 5, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 20, text := "Directs work, often through an agent, and needs it credited to them."})
+}
+
+definition{
+  name: concern106,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 106, stakeholder := 6, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 20, text := "A software agent that writes commits and pull requests and needs its work credited to the person it acted for, never counted as a person."})
+}
+
+definition{
+  name: concern107,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 107, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 20, text := "Reads CHAOSS contributor metrics and needs persons, agents and organizations counted apart."})
+}
+
+definition{
+  name: concern108,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 108, stakeholder := 8, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 21, text := "Talks in the Foundation's Discord and needs to know which channels are read and that direct messages never are."})
+}
+
+definition{
+  name: concern109,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 109, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 21, text := "Installs the bot and labels channels, and needs nothing read that was not labeled public."})
+}
+
+definition{
+  name: concern110,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 110, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 21, text := "Needs Chat Platform Inclusivity measured on the Foundation's live chat."})
+}
+
+definition{
+  name: concern111,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 111, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 22, text := "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated."})
+}
+
+definition{
+  name: concern112,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 112, stakeholder := 5, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 22, text := "Is counted by contributor metrics and needs to be credited only as PROV-O delegation records."})
+}
+
+definition{
+  name: concern113,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 113, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 23, text := "Approves each remediation and applies its settings, and needs to see which step every repository is at."})
+}
+
+definition{
+  name: concern114,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 114, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 23, text := "Reviews and merges or declines the remediation pull request, and needs a declined remediation to end rather than be reopened."})
+}
+
+definition{
+  name: concern115,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 115, stakeholder := 6, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 23, text := "Opens the pull requests and re-observes the repositories, and needs each step to name the act that moves it."})
+}
+
+definition{
+  name: concern116,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 116, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 23, text := "Reports the ecosystem's standards health and needs a repository counted conformant only on a fresh observation."})
+}
+
+definition{
+  name: concern117,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 117, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 24, text := "Approves the remediation and applies the settings only an admin can change, and needs no write to happen without that approval."})
+}
+
+definition{
+  name: concern118,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 118, stakeholder := 6, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 24, text := "Opens the remediation pull requests on behalf of the Organization Owner and needs to know exactly which changes it may make and how."})
+}
+
+definition{
+  name: concern119,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 119, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 24, text := "Reviews each remediation pull request and needs every change to arrive through review, never as a direct push."})
+}
+
+definition{
+  name: concern120,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 120, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 25, text := "Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close."})
+}
+
+definition{
+  name: concern121,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 121, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 25, text := "Holds final governance authority and needs every repository measured against the same published norms."})
+}
+
+definition{
+  name: concern122,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 122, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 26, text := "Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close."})
+}
+
+definition{
+  name: concern123,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 123, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 26, text := "Holds final governance authority and needs every repository measured against the same published norms."})
+}
+
+definition{
+  name: concern124,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 124, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 27, text := "Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close."})
+}
+
+definition{
+  name: concern125,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 125, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 27, text := "Holds final governance authority and needs every repository measured against the same published norms."})
+}
+
+definition{
+  name: concern126,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 126, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 28, text := "Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close."})
+}
+
+definition{
+  name: concern127,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 127, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 28, text := "Holds final governance authority and needs every repository measured against the same published norms."})
+}
+
+definition{
+  name: concern128,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 128, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 29, text := "Records the tier of a repository and needs the proposed tier to follow GOVERNANCE.md 5 and to yield to the tier already recorded."})
+}
+
+definition{
+  name: concern129,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 129, stakeholder := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 29, text := "Holds final governance authority and needs every repository classified by the same published rule."})
+}
+
+definition{
+  name: concern130,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 130, stakeholder := 9, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 29, text := "Chooses which UOR Foundation repositories to depend on and reads the tier as the controls a repository promises."})
+}
+
+definition{
+  name: concern131,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 131, stakeholder := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 30, text := "Opens a Sandbox, Incubation or Graduation issue in UOR-Foundation/.github and needs to know which evidence and which vote move the project."})
+}
+
+definition{
+  name: concern132,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 132, stakeholder := 2, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 30, text := "Votes on applications and needs no transition to happen without a quorum, the required majority and complete evidence."})
+}
+
+definition{
+  name: concern133,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Concern,
+  body: (record Foundation.Viewpoint.V1.Model::Concern {index := 133, stakeholder := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 30, text := "Publishes each project's stage to the community and needs the published stage to be the one the TOC's acts determine."})
+}
+
+definition{
+  name: viewpointBoard,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Viewpoint,
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 0, stakeholder := 0, concerns := (cons 3 (cons 4 (cons 37 (cons 38 (cons 39 (cons 48 (cons 104 (nil Nat))))))))})
+}
+
+definition{
+  name: viewpointOrganizationOwner,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Viewpoint,
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 1, stakeholder := 1, concerns := (cons 109 (cons 113 (cons 117 (cons 121 (cons 123 (cons 125 (cons 127 (cons 129 (nil Nat)))))))))})
+}
+
+definition{
+  name: viewpointToc,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Viewpoint,
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 2, stakeholder := 2, concerns := (cons 132 (nil Nat))})
+}
+
+definition{
+  name: viewpointCommunityOutreach,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Viewpoint,
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 3, stakeholder := 3, concerns := (cons 9 (cons 10 (cons 11 (cons 30 (cons 31 (cons 40 (cons 51 (cons 78 (cons 83 (cons 84 (cons 85 (cons 86 (cons 87 (cons 88 (cons 89 (cons 90 (cons 91 (cons 92 (cons 93 (cons 94 (cons 95 (cons 96 (cons 97 (cons 98 (cons 99 (cons 100 (cons 101 (cons 107 (cons 110 (cons 111 (cons 116 (cons 133 (nil Nat)))))))))))))))))))))))))))))))))})
+}
+
+definition{
+  name: viewpointMaintainer,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Viewpoint,
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 4, stakeholder := 4, concerns := (cons 0 (cons 1 (cons 2 (cons 14 (cons 15 (cons 16 (cons 17 (cons 18 (cons 19 (cons 20 (cons 21 (cons 22 (cons 23 (cons 24 (cons 25 (cons 47 (cons 52 (cons 57 (cons 79 (cons 114 (cons 119 (cons 120 (cons 122 (cons 124 (cons 126 (cons 128 (cons 131 (nil Nat))))))))))))))))))))))))))))})
+}
+
+definition{
+  name: viewpointContributor,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Viewpoint,
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 5, stakeholder := 5, concerns := (cons 13 (cons 32 (cons 33 (cons 34 (cons 35 (cons 36 (cons 50 (cons 77 (cons 82 (cons 105 (cons 112 (nil Nat))))))))))))})
+}
+
+definition{
+  name: viewpointAgentContributor,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Viewpoint,
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 6, stakeholder := 6, concerns := (cons 106 (cons 115 (cons 118 (nil Nat))))})
+}
+
+definition{
+  name: viewpointModerator,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Viewpoint,
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 7, stakeholder := 7, concerns := (cons 29 (cons 102 (nil Nat)))})
+}
+
+definition{
+  name: viewpointParticipant,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Viewpoint,
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 8, stakeholder := 8, concerns := (cons 5 (cons 6 (cons 7 (cons 26 (cons 27 (cons 28 (cons 41 (cons 44 (cons 45 (cons 103 (cons 108 (nil Nat))))))))))))})
+}
+
+definition{
+  name: viewpointAdopter,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Viewpoint,
+  body: (record Foundation.Viewpoint.V1.Model::Viewpoint {index := 9, stakeholder := 9, concerns := (cons 8 (cons 12 (cons 42 (cons 43 (cons 46 (cons 49 (cons 53 (cons 54 (cons 55 (cons 56 (cons 58 (cons 59 (cons 60 (cons 61 (cons 62 (cons 63 (cons 64 (cons 65 (cons 66 (cons 67 (cons 68 (cons 69 (cons 70 (cons 71 (cons 72 (cons 73 (cons 74 (cons 75 (cons 76 (cons 80 (cons 81 (cons 130 (nil Nat)))))))))))))))))))))))))))))))))})
+}
+
+definition{
+  name: viewBoard,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::View,
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 0, viewpoint := 0, models := (cons 0 (cons 4 (cons 6 (nil Nat)))), decisions := (cons 19 (nil Nat)), registerClaims := (nil Nat), claims := (cons 0 (cons 1 (cons 4 (nil Nat))))})
+}
+
+definition{
+  name: viewOrganizationOwner,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::View,
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 1, viewpoint := 1, models := (nil Nat), decisions := (cons 21 (cons 23 (cons 24 (cons 25 (cons 26 (cons 27 (cons 28 (cons 29 (nil Nat))))))))), registerClaims := (nil Nat), claims := (nil Nat)})
+}
+
+definition{
+  name: viewToc,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::View,
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 2, viewpoint := 2, models := (nil Nat), decisions := (cons 30 (nil Nat)), registerClaims := (nil Nat), claims := (nil Nat)})
+}
+
+definition{
+  name: viewCommunityOutreach,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::View,
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 3, viewpoint := 3, models := (cons 3 (cons 4 (cons 5 (cons 8 (cons 17 (nil Nat)))))), decisions := (cons 0 (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 (cons 6 (cons 7 (cons 8 (cons 9 (cons 10 (cons 11 (cons 12 (cons 13 (cons 14 (cons 15 (cons 16 (cons 17 (cons 18 (cons 20 (cons 21 (cons 22 (cons 23 (cons 30 (nil Nat))))))))))))))))))))))))), registerClaims := (nil Nat), claims := (cons 4 (cons 7 (nil Nat)))})
+}
+
+definition{
+  name: viewMaintainer,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::View,
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 4, viewpoint := 4, models := (cons 0 (cons 4 (cons 6 (cons 8 (cons 9 (cons 17 (nil Nat))))))), decisions := (cons 23 (cons 24 (cons 25 (cons 26 (cons 27 (cons 28 (cons 29 (cons 30 (nil Nat))))))))), registerClaims := (nil Nat), claims := (cons 0 (cons 1 (cons 4 (nil Nat))))})
+}
+
+definition{
+  name: viewContributor,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::View,
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 5, viewpoint := 5, models := (cons 3 (cons 4 (cons 8 (cons 17 (cons 18 (nil Nat)))))), decisions := (cons 20 (cons 22 (nil Nat))), registerClaims := (nil Nat), claims := (cons 4 (cons 7 (nil Nat)))})
+}
+
+definition{
+  name: viewAgentContributor,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::View,
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 6, viewpoint := 6, models := (nil Nat), decisions := (cons 20 (cons 22 (cons 23 (cons 24 (nil Nat))))), registerClaims := (nil Nat), claims := (cons 7 (nil Nat))})
+}
+
+definition{
+  name: viewModerator,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::View,
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 7, viewpoint := 7, models := (cons 4 (nil Nat)), decisions := (cons 19 (nil Nat)), registerClaims := (nil Nat), claims := (cons 4 (nil Nat))})
+}
+
+definition{
+  name: viewParticipant,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::View,
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 8, viewpoint := 8, models := (cons 0 (cons 4 (cons 5 (cons 6 (nil Nat))))), decisions := (cons 19 (cons 21 (nil Nat))), registerClaims := (nil Nat), claims := (cons 0 (cons 1 (cons 4 (nil Nat))))})
+}
+
+definition{
+  name: viewAdopter,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::View,
+  body: (record Foundation.Viewpoint.V1.Model::View {index := 9, viewpoint := 9, models := (cons 0 (cons 3 (cons 5 (cons 6 (cons 8 (cons 9 (cons 10 (cons 11 (cons 12 (cons 13 (cons 14 (cons 16 (cons 17 (cons 18 (nil Nat))))))))))))))), decisions := (cons 29 (nil Nat)), registerClaims := (cons 0 (nil Nat)), claims := (cons 0 (cons 1 (nil Nat)))})
+}
+
+definition{
+  name: viewClaim0,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::OpenClaim,
+  body: (record Foundation.Viewpoint.V1.Model::OpenClaim {index := 0, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 0, name := "model provider building feedback intake", reason := "role-maps-to-no-stakeholder"})
+}
+
+definition{
+  name: viewClaim1,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::OpenClaim,
+  body: (record Foundation.Viewpoint.V1.Model::OpenClaim {index := 1, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 0, name := "model provider", reason := "role-maps-to-no-stakeholder"})
+}
+
+definition{
+  name: viewClaim2,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::OpenClaim,
+  body: (record Foundation.Viewpoint.V1.Model::OpenClaim {index := 2, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 1, name := "Business Readiness of an Open Source Project", reason := "model-states-no-user-story"})
+}
+
+definition{
+  name: viewClaim3,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::OpenClaim,
+  body: (record Foundation.Viewpoint.V1.Model::OpenClaim {index := 3, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 2, name := "Collaboration Development Index", reason := "model-states-no-user-story"})
+}
+
+definition{
+  name: viewClaim4,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::OpenClaim,
+  body: (record Foundation.Viewpoint.V1.Model::OpenClaim {index := 4, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 4, name := "model builder", reason := "role-maps-to-no-stakeholder"})
+}
+
+definition{
+  name: viewClaim5,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::OpenClaim,
+  body: (record Foundation.Viewpoint.V1.Model::OpenClaim {index := 5, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 7, name := "CHAOSS DEI Event Badging", reason := "model-states-no-user-story"})
+}
+
+definition{
+  name: viewClaim6,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::OpenClaim,
+  body: (record Foundation.Viewpoint.V1.Model::OpenClaim {index := 6, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.measurementModel), subject := 15, name := "Project Engagement", reason := "model-states-no-user-story"})
+}
+
+definition{
+  name: viewClaim7,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::OpenClaim,
+  body: (record Foundation.Viewpoint.V1.Model::OpenClaim {index := 7, kind := (ctor Foundation.Viewpoint.V1.Model::SubjectKind.decisionModel), subject := 22, name := "Verifier", reason := "role-maps-to-no-stakeholder"})
+}
+
+definition{
+  name: bounds,
+  parameters: [],
+  result: Foundation.Viewpoint.V1.Model::Bounds,
+  body: (record Foundation.Viewpoint.V1.Model::Bounds {stakeholders := 10, models := 19, decisions := 31, concerns := 134, registerClaims := 1, claims := 8})
+}
+
+definition{
+  name: stakeholders,
+  parameters: [],
+  result: (List Foundation.Viewpoint.V1.Model::Stakeholder),
+  body: (cons (stakeholderBoard) (cons (stakeholderOrganizationOwner) (cons (stakeholderToc) (cons (stakeholderCommunityOutreach) (cons (stakeholderMaintainer) (cons (stakeholderContributor) (cons (stakeholderAgentContributor) (cons (stakeholderModerator) (cons (stakeholderParticipant) (cons (stakeholderAdopter) (nil Foundation.Viewpoint.V1.Model::Stakeholder)))))))))))
+}
+
+definition{
+  name: decisions,
+  parameters: [],
+  result: (List Foundation.Viewpoint.V1.Model::Decision),
+  body: (cons (decisionChaossAiAlignmentCommunityAlignedTrainingFeedback) (cons (decisionChaossBusinessReadinessOfAnOpenSourceProject) (cons (decisionChaossCollaborationDevelopmentIndex) (cons (decisionChaossCommunityActivity) (cons (decisionChaossCommunityGovernedAiUseInOpenCommunities) (cons (decisionChaossCommunityServiceAndSupport) (cons (decisionChaossCommunityWelcomingness) (cons (decisionChaossDeiEventBadging) (cons (decisionChaossDevelopmentResponsiveness) (cons (decisionChaossFunding) (cons (decisionChaossOssProjectViabilityCommunity) (cons (decisionChaossOssProjectViabilityComplianceSecurity) (cons (decisionChaossOssProjectViabilityGovernance) (cons (decisionChaossOssProjectViabilityStrategy) (cons (decisionChaossProjectAwareness) (cons (decisionChaossProjectEngagement) (cons (decisionChaossProjectViabilityStarter) (cons (decisionChaossSafety) (cons (decisionChaossStarterProjectHealth) (cons (decisionUorCocEnforcement) (cons (decisionUorContributionAttribution) (cons (decisionUorDiscordRead) (cons (decisionUorObservationAdmission) (cons (decisionUorRemediationLifecycle) (cons (decisionUorRemediationWrite) (cons (decisionUorRepoFiles) (cons (decisionUorRepoNaming) (cons (decisionUorRepoProtection) (cons (decisionUorRepoStandards) (cons (decisionUorRepoTier) (cons (decisionUorTocLifecycle) (nil Foundation.Viewpoint.V1.Model::Decision))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: concerns2,
+  parameters: [],
+  result: (List Foundation.Viewpoint.V1.Model::Concern),
+  body: (cons (concern96) (cons (concern97) (cons (concern98) (cons (concern99) (cons (concern100) (cons (concern101) (cons (concern102) (cons (concern103) (cons (concern104) (cons (concern105) (cons (concern106) (cons (concern107) (cons (concern108) (cons (concern109) (cons (concern110) (cons (concern111) (cons (concern112) (cons (concern113) (cons (concern114) (cons (concern115) (cons (concern116) (cons (concern117) (cons (concern118) (cons (concern119) (cons (concern120) (cons (concern121) (cons (concern122) (cons (concern123) (cons (concern124) (cons (concern125) (cons (concern126) (cons (concern127) (cons (concern128) (cons (concern129) (cons (concern130) (cons (concern131) (cons (concern132) (cons (concern133) (nil Foundation.Viewpoint.V1.Model::Concern)))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: concerns1,
+  parameters: [],
+  result: (List Foundation.Viewpoint.V1.Model::Concern),
+  body: (cons (concern48) (cons (concern49) (cons (concern50) (cons (concern51) (cons (concern52) (cons (concern53) (cons (concern54) (cons (concern55) (cons (concern56) (cons (concern57) (cons (concern58) (cons (concern59) (cons (concern60) (cons (concern61) (cons (concern62) (cons (concern63) (cons (concern64) (cons (concern65) (cons (concern66) (cons (concern67) (cons (concern68) (cons (concern69) (cons (concern70) (cons (concern71) (cons (concern72) (cons (concern73) (cons (concern74) (cons (concern75) (cons (concern76) (cons (concern77) (cons (concern78) (cons (concern79) (cons (concern80) (cons (concern81) (cons (concern82) (cons (concern83) (cons (concern84) (cons (concern85) (cons (concern86) (cons (concern87) (cons (concern88) (cons (concern89) (cons (concern90) (cons (concern91) (cons (concern92) (cons (concern93) (cons (concern94) (cons (concern95) (concerns2)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: concerns,
+  parameters: [],
+  result: (List Foundation.Viewpoint.V1.Model::Concern),
+  body: (cons (concern0) (cons (concern1) (cons (concern2) (cons (concern3) (cons (concern4) (cons (concern5) (cons (concern6) (cons (concern7) (cons (concern8) (cons (concern9) (cons (concern10) (cons (concern11) (cons (concern12) (cons (concern13) (cons (concern14) (cons (concern15) (cons (concern16) (cons (concern17) (cons (concern18) (cons (concern19) (cons (concern20) (cons (concern21) (cons (concern22) (cons (concern23) (cons (concern24) (cons (concern25) (cons (concern26) (cons (concern27) (cons (concern28) (cons (concern29) (cons (concern30) (cons (concern31) (cons (concern32) (cons (concern33) (cons (concern34) (cons (concern35) (cons (concern36) (cons (concern37) (cons (concern38) (cons (concern39) (cons (concern40) (cons (concern41) (cons (concern42) (cons (concern43) (cons (concern44) (cons (concern45) (cons (concern46) (cons (concern47) (concerns1)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: viewpoints,
+  parameters: [],
+  result: (List Foundation.Viewpoint.V1.Model::Viewpoint),
+  body: (cons (viewpointBoard) (cons (viewpointOrganizationOwner) (cons (viewpointToc) (cons (viewpointCommunityOutreach) (cons (viewpointMaintainer) (cons (viewpointContributor) (cons (viewpointAgentContributor) (cons (viewpointModerator) (cons (viewpointParticipant) (cons (viewpointAdopter) (nil Foundation.Viewpoint.V1.Model::Viewpoint)))))))))))
+}
+
+definition{
+  name: views,
+  parameters: [],
+  result: (List Foundation.Viewpoint.V1.Model::View),
+  body: (cons (viewBoard) (cons (viewOrganizationOwner) (cons (viewToc) (cons (viewCommunityOutreach) (cons (viewMaintainer) (cons (viewContributor) (cons (viewAgentContributor) (cons (viewModerator) (cons (viewParticipant) (cons (viewAdopter) (nil Foundation.Viewpoint.V1.Model::View)))))))))))
+}
+
+definition{
+  name: viewClaims,
+  parameters: [],
+  result: (List Foundation.Viewpoint.V1.Model::OpenClaim),
+  body: (cons (viewClaim0) (cons (viewClaim1) (cons (viewClaim2) (cons (viewClaim3) (cons (viewClaim4) (cons (viewClaim5) (cons (viewClaim6) (cons (viewClaim7) (nil Foundation.Viewpoint.V1.Model::OpenClaim)))))))))
+}
+
+definition{
+  name: modelIndices,
+  parameters: [],
+  result: (List Nat),
+  body: (cons 0 (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 (cons 6 (cons 7 (cons 8 (cons 9 (cons 10 (cons 11 (cons 12 (cons 13 (cons 14 (cons 15 (cons 16 (cons 17 (cons 18 (nil Nat))))))))))))))))))))
+}
+
+definition{
+  name: decisionIndices,
+  parameters: [],
+  result: (List Nat),
+  body: (cons 0 (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 (cons 6 (cons 7 (cons 8 (cons 9 (cons 10 (cons 11 (cons 12 (cons 13 (cons 14 (cons 15 (cons 16 (cons 17 (cons 18 (cons 19 (cons 20 (cons 21 (cons 22 (cons 23 (cons 24 (cons 25 (cons 26 (cons 27 (cons 28 (cons 29 (cons 30 (nil Nat))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: stakeholderIndices,
+  parameters: [],
+  result: (List Nat),
+  body: (cons 0 (cons 1 (cons 2 (cons 3 (cons 4 (cons 5 (cons 6 (cons 7 (cons 8 (cons 9 (nil Nat)))))))))))
+}
+
+theorem{
+  name: viewsValidHolds,
+  parameters: [],
+  statement: ((Foundation.Viewpoint.V1.Model::viewsValid (bounds) (stakeholders) (decisions) (concerns) (viewpoints) (views) (viewClaims) (modelIndices) (decisionIndices) (stakeholderIndices)) = true),
+  proof: decide{}
+}
+\end{semanticmodule}
+\end{lexlean}

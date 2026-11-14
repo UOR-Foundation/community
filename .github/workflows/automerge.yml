@@ -1,0 +1,90 @@
+# The merge controller (automation/AUTOMATION.md). Each run decides every open
+# pull request of this repository by automation/stack-step.prompt.json and
+# automation/merge-admission.prompt.json, and acts on the answers: it retargets
+# a pull request whose base has merged, escalates a conflict or a red gate to an
+# agent-task issue, and approves and merges what the policy permits. It never
+# merges a change that reaches outside the organization, a secret or the trust
+# root without a human's approval of that exact head.
+#
+# reuse-exempt: it reads and changes live pull request state on GitHub, which no
+# file a cache key could name records, so no earlier run stands for this one.
+#
+# The controller runs from the default branch, so a pull request cannot change
+# the code that decides it. The one exception is the bootstrap: until the
+# default branch carries automation/controller.mjs, a human-approved label on
+# the pull request that adds it runs the controller from that pull request.
+# Project content, not universal policy.
+name: automerge
+
+on:
+  schedule:
+    - cron: '17,47 * * * *'
+  check_suite:
+    types: [completed]
+  pull_request_review:
+    types: [submitted]
+  pull_request:
+    types: [labeled]
+  # Another repository automation/repos.json lists runs this same controller
+  # from here, on its own pull requests and with its own token:
+  #   jobs: { automerge: { uses: UOR-Foundation/community/.github/workflows/automerge.yml@<community commit> } }
+  workflow_call:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: Decide and record, but change nothing
+        type: boolean
+        default: false
+
+permissions:
+  actions: write
+  checks: read
+  contents: write
+  issues: write
+  pull-requests: write
+  statuses: read
+
+# One pass at a time, and a pass is never cancelled halfway through its merges.
+concurrency:
+  group: automerge
+  cancel-in-progress: false
+
+jobs:
+  controller:
+    name: automerge controller
+    if: github.event_name != 'pull_request' || github.event.label.name == 'human-approved'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out the controller from the community default branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: UOR-Foundation/community
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Bootstrap from the pull request that adds the controller
+        id: bootstrap
+        if: github.event_name == 'pull_request' && github.repository == 'UOR-Foundation/community' && hashFiles('automation/controller.mjs') == ''
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Decide and act
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DRY: ${{ inputs.dry-run && '--dry-run' || '' }}
+        run: |
+          set -euo pipefail
+          # After the bootstrap, a label event only wakes the controller; it still runs the default branch's code.
+          test -f automation/controller.mjs || { echo "the default branch has no controller yet; add human-approved to the pull request that adds it"; exit 0; }
+          node automation/controller.mjs $DRY --events automation-events.jsonl
+      - name: Keep the decisions as telemetry
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: automation-events-${{ github.run_id }}-${{ github.run_attempt }}
+          path: automation-events.jsonl
+          if-no-files-found: ignore
+          retention-days: 90

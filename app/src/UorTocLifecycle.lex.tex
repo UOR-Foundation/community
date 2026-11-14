@@ -1,0 +1,350 @@
+\begin{lexlean}{UorTocLifecycle}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: uorTocLifecycleStageProposed, parameters: [], result: Nat, body: 0}
+
+definition{name: uorTocLifecycleStageSandbox, parameters: [], result: Nat, body: 1}
+
+definition{name: uorTocLifecycleStageIncubation, parameters: [], result: Nat, body: 2}
+
+definition{name: uorTocLifecycleStageGraduated, parameters: [], result: Nat, body: 3}
+
+definition{name: uorTocLifecycleStageArchived, parameters: [], result: Nat, body: 4}
+
+definition{name: uorTocLifecycleApplication2Sandbox, parameters: [], result: Nat, body: 0}
+
+definition{name: uorTocLifecycleApplication2Incubation, parameters: [], result: Nat, body: 1}
+
+definition{name: uorTocLifecycleApplication2Graduation, parameters: [], result: Nat, body: 2}
+
+definition{name: uorTocLifecycleApplication2Archival, parameters: [], result: Nat, body: 3}
+
+definition{name: uorTocLifecycleQuorumMet, parameters: [], result: Nat, body: 0}
+
+definition{name: uorTocLifecycleQuorumUnmet, parameters: [], result: Nat, body: 1}
+
+definition{name: uorTocLifecycleVoteNone, parameters: [], result: Nat, body: 0}
+
+definition{name: uorTocLifecycleVoteRejected, parameters: [], result: Nat, body: 1}
+
+definition{name: uorTocLifecycleVoteMajority, parameters: [], result: Nat, body: 2}
+
+definition{name: uorTocLifecycleVoteTwothirds, parameters: [], result: Nat, body: 3}
+
+definition{name: uorTocLifecycleEvidenceComplete, parameters: [], result: Nat, body: 0}
+
+definition{name: uorTocLifecycleEvidencePartial, parameters: [], result: Nat, body: 1}
+
+definition{name: uorTocLifecycleAnswerProposed, parameters: [], result: Nat, body: 0}
+
+definition{name: uorTocLifecycleAnswerSandbox, parameters: [], result: Nat, body: 1}
+
+definition{name: uorTocLifecycleAnswerIncubation, parameters: [], result: Nat, body: 2}
+
+definition{name: uorTocLifecycleAnswerGraduated, parameters: [], result: Nat, body: 3}
+
+definition{name: uorTocLifecycleAnswerArchived, parameters: [], result: Nat, body: 4}
+
+structure{
+  name: UorTocLifecycleRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: stage, type: Nat},
+    {name: application2, type: Nat},
+    {name: quorum, type: Nat},
+    {name: vote, type: Nat},
+    {name: evidence, type: Nat},
+    {name: comment, type: Nat}
+  ]
+}
+
+definition{
+  name: uorTocLifecycleByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorTocLifecycleDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (uorTocLifecycleByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (uorTocLifecycleDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorTocLifecycleParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (uorTocLifecycleByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (uorTocLifecycleDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorTocLifecycleParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (uorTocLifecycleParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorTocLifecycleParseStage,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x70726f706f736564 : Bool) then (ctor Option.some [Nat] (uorTocLifecycleStageProposed)) else (if (prim equal value 0x73616e64626f78 : Bool) then (ctor Option.some [Nat] (uorTocLifecycleStageSandbox)) else (if (prim equal value 0x696e6375626174696f6e : Bool) then (ctor Option.some [Nat] (uorTocLifecycleStageIncubation)) else (if (prim equal value 0x677261647561746564 : Bool) then (ctor Option.some [Nat] (uorTocLifecycleStageGraduated)) else (if (prim equal value 0x6172636869766564 : Bool) then (ctor Option.some [Nat] (uorTocLifecycleStageArchived)) else (ctor Option.none [Nat]))))))
+}
+
+definition{
+  name: uorTocLifecycleParseApplication,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x73616e64626f78 : Bool) then (ctor Option.some [Nat] (uorTocLifecycleApplication2Sandbox)) else (if (prim equal value 0x696e6375626174696f6e : Bool) then (ctor Option.some [Nat] (uorTocLifecycleApplication2Incubation)) else (if (prim equal value 0x67726164756174696f6e : Bool) then (ctor Option.some [Nat] (uorTocLifecycleApplication2Graduation)) else (if (prim equal value 0x617263686976616c : Bool) then (ctor Option.some [Nat] (uorTocLifecycleApplication2Archival)) else (ctor Option.none [Nat])))))
+}
+
+definition{
+  name: uorTocLifecycleParseQuorum,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6d6574 : Bool) then (ctor Option.some [Nat] (uorTocLifecycleQuorumMet)) else (if (prim equal value 0x756e6d6574 : Bool) then (ctor Option.some [Nat] (uorTocLifecycleQuorumUnmet)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorTocLifecycleParseVote,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6e6f6e65 : Bool) then (ctor Option.some [Nat] (uorTocLifecycleVoteNone)) else (if (prim equal value 0x72656a6563746564 : Bool) then (ctor Option.some [Nat] (uorTocLifecycleVoteRejected)) else (if (prim equal value 0x6d616a6f72697479 : Bool) then (ctor Option.some [Nat] (uorTocLifecycleVoteMajority)) else (if (prim equal value 0x74776f746869726473 : Bool) then (ctor Option.some [Nat] (uorTocLifecycleVoteTwothirds)) else (ctor Option.none [Nat])))))
+}
+
+definition{
+  name: uorTocLifecycleParseEvidence,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x636f6d706c657465 : Bool) then (ctor Option.some [Nat] (uorTocLifecycleEvidenceComplete)) else (if (prim equal value 0x7061727469616c : Bool) then (ctor Option.some [Nat] (uorTocLifecycleEvidencePartial)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorTocLifecycleParseComment,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (uorTocLifecycleParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (365 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorTocLifecycleSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: uorTocLifecycleFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (uorTocLifecycleByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (uorTocLifecycleFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorTocLifecycleDecodeField6,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat, v5 : Nat],
+  result: (Option UorTocLifecycleRequest),
+  body: (let e : Nat := (uorTocLifecycleFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorTocLifecycleParseComment (uorTocLifecycleSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorTocLifecycleRequest])
+    | Option.some v6 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [UorTocLifecycleRequest] (record UorTocLifecycleRequest {stage := v1, application2 := v2, quorum := v3, vote := v4, evidence := v5, comment := v6})) else (ctor Option.none [UorTocLifecycleRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorTocLifecycleDecodeField5,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat],
+  result: (Option UorTocLifecycleRequest),
+  body: (let e : Nat := (uorTocLifecycleFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorTocLifecycleParseEvidence (uorTocLifecycleSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorTocLifecycleRequest])
+    | Option.some v5 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorTocLifecycleDecodeField6 s (e + 1) v1 v2 v3 v4 v5) else (ctor Option.none [UorTocLifecycleRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorTocLifecycleDecodeField4,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat],
+  result: (Option UorTocLifecycleRequest),
+  body: (let e : Nat := (uorTocLifecycleFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorTocLifecycleParseVote (uorTocLifecycleSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorTocLifecycleRequest])
+    | Option.some v4 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorTocLifecycleDecodeField5 s (e + 1) v1 v2 v3 v4) else (ctor Option.none [UorTocLifecycleRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorTocLifecycleDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option UorTocLifecycleRequest),
+  body: (let e : Nat := (uorTocLifecycleFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorTocLifecycleParseQuorum (uorTocLifecycleSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorTocLifecycleRequest])
+    | Option.some v3 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorTocLifecycleDecodeField4 s (e + 1) v1 v2 v3) else (ctor Option.none [UorTocLifecycleRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorTocLifecycleDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option UorTocLifecycleRequest),
+  body: (let e : Nat := (uorTocLifecycleFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorTocLifecycleParseApplication (uorTocLifecycleSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorTocLifecycleRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorTocLifecycleDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [UorTocLifecycleRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorTocLifecycleDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option UorTocLifecycleRequest),
+  body: (let e : Nat := (uorTocLifecycleFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorTocLifecycleParseStage (uorTocLifecycleSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorTocLifecycleRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorTocLifecycleDecodeField2 s (e + 1) v1) else (ctor Option.none [UorTocLifecycleRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorTocLifecycleRule1,
+  parameters: [request : UorTocLifecycleRequest],
+  result: Bool,
+  body: ((project request stage) =? (uorTocLifecycleStageArchived))
+}
+
+definition{
+  name: uorTocLifecycleRule2,
+  parameters: [request : UorTocLifecycleRequest],
+  result: Bool,
+  body: (((((((project request stage) =? (uorTocLifecycleStageProposed)) && ((project request application2) =? (uorTocLifecycleApplication2Sandbox))) && ((project request quorum) =? (uorTocLifecycleQuorumMet))) && (not ((project request vote) =? (uorTocLifecycleVoteNone)))) && (not ((project request vote) =? (uorTocLifecycleVoteRejected)))) && ((project request evidence) =? (uorTocLifecycleEvidenceComplete)))
+}
+
+definition{
+  name: uorTocLifecycleRule3,
+  parameters: [request : UorTocLifecycleRequest],
+  result: Bool,
+  body: (((((((project request stage) =? (uorTocLifecycleStageSandbox)) && ((project request application2) =? (uorTocLifecycleApplication2Incubation))) && ((project request quorum) =? (uorTocLifecycleQuorumMet))) && (not ((project request vote) =? (uorTocLifecycleVoteNone)))) && (not ((project request vote) =? (uorTocLifecycleVoteRejected)))) && ((project request evidence) =? (uorTocLifecycleEvidenceComplete)))
+}
+
+definition{
+  name: uorTocLifecycleRule4,
+  parameters: [request : UorTocLifecycleRequest],
+  result: Bool,
+  body: (((((((project request stage) =? (uorTocLifecycleStageIncubation)) && ((project request application2) =? (uorTocLifecycleApplication2Graduation))) && ((project request quorum) =? (uorTocLifecycleQuorumMet))) && ((project request vote) =? (uorTocLifecycleVoteTwothirds))) && ((project request evidence) =? (uorTocLifecycleEvidenceComplete))) && (14 <=? (project request comment)))
+}
+
+definition{
+  name: uorTocLifecycleRule5,
+  parameters: [request : UorTocLifecycleRequest],
+  result: Bool,
+  body: ((((((not ((project request stage) =? (uorTocLifecycleStageProposed))) && ((project request application2) =? (uorTocLifecycleApplication2Archival))) && ((project request quorum) =? (uorTocLifecycleQuorumMet))) && (not ((project request vote) =? (uorTocLifecycleVoteNone)))) && (not ((project request vote) =? (uorTocLifecycleVoteRejected)))) && ((project request evidence) =? (uorTocLifecycleEvidenceComplete)))
+}
+
+definition{
+  name: uorTocLifecycleRule6,
+  parameters: [request : UorTocLifecycleRequest],
+  result: Bool,
+  body: ((project request stage) =? (uorTocLifecycleStageSandbox))
+}
+
+definition{
+  name: uorTocLifecycleRule7,
+  parameters: [request : UorTocLifecycleRequest],
+  result: Bool,
+  body: ((project request stage) =? (uorTocLifecycleStageIncubation))
+}
+
+definition{
+  name: uorTocLifecycleRule8,
+  parameters: [request : UorTocLifecycleRequest],
+  result: Bool,
+  body: ((project request stage) =? (uorTocLifecycleStageGraduated))
+}
+
+definition{
+  name: uorTocLifecycleStepProposed,
+  parameters: [request : UorTocLifecycleRequest],
+  result: Nat,
+  body: (if (uorTocLifecycleRule2 request) then (uorTocLifecycleAnswerSandbox) else (uorTocLifecycleAnswerProposed))
+}
+
+definition{
+  name: uorTocLifecycleStepSandbox,
+  parameters: [request : UorTocLifecycleRequest],
+  result: Nat,
+  body: (if (uorTocLifecycleRule3 request) then (uorTocLifecycleAnswerIncubation) else (if (uorTocLifecycleRule5 request) then (uorTocLifecycleAnswerArchived) else (if (uorTocLifecycleRule6 request) then (uorTocLifecycleAnswerSandbox) else (uorTocLifecycleAnswerProposed))))
+}
+
+definition{
+  name: uorTocLifecycleStepIncubation,
+  parameters: [request : UorTocLifecycleRequest],
+  result: Nat,
+  body: (if (uorTocLifecycleRule4 request) then (uorTocLifecycleAnswerGraduated) else (if (uorTocLifecycleRule5 request) then (uorTocLifecycleAnswerArchived) else (if (uorTocLifecycleRule7 request) then (uorTocLifecycleAnswerIncubation) else (uorTocLifecycleAnswerProposed))))
+}
+
+definition{
+  name: uorTocLifecycleStepGraduated,
+  parameters: [request : UorTocLifecycleRequest],
+  result: Nat,
+  body: (if (uorTocLifecycleRule5 request) then (uorTocLifecycleAnswerArchived) else (if (uorTocLifecycleRule8 request) then (uorTocLifecycleAnswerGraduated) else (uorTocLifecycleAnswerProposed)))
+}
+
+definition{
+  name: uorTocLifecycleStepArchived,
+  parameters: [request : UorTocLifecycleRequest],
+  result: Nat,
+  body: (if (uorTocLifecycleRule1 request) then (uorTocLifecycleAnswerArchived) else (if (uorTocLifecycleRule5 request) then (uorTocLifecycleAnswerArchived) else (uorTocLifecycleAnswerProposed)))
+}
+
+definition{
+  name: uorTocLifecycleJudge,
+  parameters: [request : UorTocLifecycleRequest],
+  result: Nat,
+  body: (if ((project request stage) =? (uorTocLifecycleStageProposed)) then (uorTocLifecycleStepProposed request) else (if ((project request stage) =? (uorTocLifecycleStageSandbox)) then (uorTocLifecycleStepSandbox request) else (if ((project request stage) =? (uorTocLifecycleStageIncubation)) then (uorTocLifecycleStepIncubation request) else (if ((project request stage) =? (uorTocLifecycleStageGraduated)) then (uorTocLifecycleStepGraduated request) else (if ((project request stage) =? (uorTocLifecycleStageArchived)) then (uorTocLifecycleStepArchived request) else (if (uorTocLifecycleRule5 request) then (uorTocLifecycleAnswerArchived) else (uorTocLifecycleAnswerProposed)))))))
+}
+
+definition{
+  name: uorTocLifecycleEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (uorTocLifecycleAnswerProposed)) then 0x70726f706f736564 else (if (code =? (uorTocLifecycleAnswerSandbox)) then 0x73616e64626f78 else (if (code =? (uorTocLifecycleAnswerIncubation)) then 0x696e6375626174696f6e else (if (code =? (uorTocLifecycleAnswerGraduated)) then 0x677261647561746564 else (if (code =? (uorTocLifecycleAnswerArchived)) then 0x6172636869766564 else 0x696e76616c6964)))))
+}
+
+definition{
+  name: uorTocLifecycleDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (160 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (uorTocLifecycleDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (uorTocLifecycleEncodeAnswer (uorTocLifecycleJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}
