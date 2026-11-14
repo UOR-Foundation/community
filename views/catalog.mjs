@@ -10,6 +10,10 @@
  *   views/discord.json          the read-only Discord digest: Discord API v10
  *                               execute-webhook bodies, within Discord's limits.
  *
+ * Each metrics model a view holds carries its health from health/register.json:
+ * the answer of its ISO/IEC 15939 indicator for every subject in that subject's
+ * latest assessed period, and site/views/health.html holds every assessment.
+ *
  * A stakeholder's view holds the metrics models and decisions that address its
  * concerns. An agent that acts on behalf of a principal (PROV-O) also sees the
  * principal's decisions: those are the norms it carries out. Open claims follow
@@ -27,6 +31,7 @@ const repo = join(here, '..');
 const json = (p) => JSON.parse(readFileSync(join(repo, p), 'utf8'));
 const reg = json('views/register.json');
 const chaoss = json('chaoss/register.json');
+const health = json('health/register.json');
 const { site } = json('views/sources.json');
 const V = 'Foundation.Viewpoint.V1.Model';
 
@@ -67,6 +72,19 @@ const views = stakeholders.map((s, i) => {
   };
 });
 const unviewed = claims.filter((c) => !views.some((v) => v.claims.includes(c.index)));
+
+// ---------------------------------------------------------------- health
+// A subject's current health is its assessment in the latest period the corpus spans for it.
+const hModel = new Map(health.models.map((m, i) => [m.slug, i]));
+const latest = new Map();
+for (const a of health.assessments) {
+  const k = `${a.subject} ${a.model}`;
+  if (!latest.has(k) || latest.get(k).period < a.period) latest.set(k, a);
+}
+const current = (slug) => (hModel.has(slug) ? health.subjects.map((s, i) => latest.get(`${i} ${hModel.get(slug)}`)).filter(Boolean) : []);
+const tally = (slug) => Object.fromEntries(health.outcomes.map((o) => [o, current(slug).filter((a) => a.outcome === o).length]));
+const tallyText = (slug) => (hModel.has(slug) ? health.outcomes.map((o) => `${tally(slug)[o]} ${o}`).join(', ') : 'no indicator, an open claim');
+const anchor = (slug) => slug.replace(/^metrics-model-/, '');
 
 // ---------------------------------------------------------------- LexLean
 const str = (s) => JSON.stringify(String(s));
@@ -155,7 +173,7 @@ const REASON = {
   'model-states-no-user-story': 'states no user story, so no stakeholder is named',
   'stakeholder-has-no-concern': 'no model or decision yet addresses this stakeholder',
 };
-const digest = createHash('sha256').update(JSON.stringify(reg)).update(JSON.stringify(chaoss)).digest('hex');
+const digest = createHash('sha256').update(JSON.stringify(reg)).update(JSON.stringify(chaoss)).update(JSON.stringify(health)).digest('hex');
 
 function viewData(v) {
   const s = v.stakeholder;
@@ -209,7 +227,7 @@ function page(v) {
   out.push(`<h2>Metrics models <span class="n">${x.models.length}</span></h2>\n`);
   if (!x.models.length) out.push('<p class="none">No CHAOSS metrics model names this stakeholder.</p>\n');
   for (const { m, stories } of x.models) {
-    out.push(`<section><h3><a href="${esc(github(m.source))}">${esc(m.title)}</a></h3>\n<p class="meta">${m.members.length} metrics, ${m.localMeasures.length} own measures, <code>${esc(m.workingGroup)}</code></p>\n<ul>${stories.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></section>\n`);
+    out.push(`<section><h3><a href="${esc(github(m.source))}">${esc(m.title)}</a></h3>\n<p class="meta">${m.members.length} metrics, ${m.localMeasures.length} own measures, <code>${esc(m.workingGroup)}</code></p>\n<p class="health">Health now: <a href="health.html#${anchor(m.slug)}">${esc(tallyText(m.slug))}</a></p>\n<ul>${stories.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></section>\n`);
   }
   out.push(`<h2>Decisions <span class="n">${x.decisions.length}</span></h2>\n`);
   if (!x.decisions.length) out.push('<p class="none">No decision app names this stakeholder yet.</p>\n');
@@ -227,7 +245,7 @@ function twin(v) {
   const x = viewData(v);
   const out = [`# ${md(x.s.name)}\n\nSchema.org ${KIND[x.s.kind]}${x.principal ? `, PROV-O actedOnBehalfOf ${md(x.principal.name)}` : ''}. Named in ${github(x.src.ref)}:\n\n> ${md(showQuote(x.s.quote))}\n`];
   out.push(`\n## Metrics models (${x.models.length})\n`);
-  for (const { m, stories } of x.models) out.push(`\n### ${md(m.title)}\n\n${github(m.source)}\n\n${stories.map((t) => `- ${md(t)}`).join('\n')}\n`);
+  for (const { m, stories } of x.models) out.push(`\n### ${md(m.title)}\n\n${github(m.source)}\n\nHealth now: ${tallyText(m.slug)} (${site}views/health.md)\n\n${stories.map((t) => `- ${md(t)}`).join('\n')}\n`);
   out.push(`\n## Decisions (${x.decisions.length})\n`);
   for (const { d, needs } of x.decisions) out.push(`\n### ${md(d.title)}\n\n${PATTERN[d.pattern] ?? d.pattern}, ${repoBlob(d.path)}\n${needs.length ? `\n${needs.map((t) => `- ${md(t)}`).join('\n')}\n` : ''}`);
   out.push(`\n## Open claims (${x.claims.length})\n\n${x.claims.map((c) => `- ${md(c.about)}: ${md(c.text)}`).join('\n') || 'None.'}\n`);
@@ -240,12 +258,44 @@ function index() {
   out.push(`<p>One ISO/IEC/IEEE 42010 view per stakeholder the Foundation's governance names. Each holds the CHAOSS metrics models and decisions that address that stakeholder's concerns, and the claims still open about them.</p>\n<table>\n<thead><tr><th scope="col">Stakeholder</th><th scope="col">Models</th><th scope="col">Decisions</th><th scope="col">Open</th></tr></thead>\n<tbody>\n`);
   for (const v of views) out.push(`<tr><th scope="row"><a href="${v.stakeholder.slug}.html">${esc(v.stakeholder.name)}</a></th><td>${v.models.length}</td><td>${v.decisions.length}</td><td>${v.registerClaims.length + v.claims.length}</td></tr>\n`);
   out.push('</tbody>\n</table>\n');
+  out.push(`<p><a href="health.html">Community health</a>: every metrics model's indicator for every repository and chat.</p>\n`);
   if (unviewed.length) out.push(`<h2>Open claims no view holds <span class="n">${unviewed.length}</span></h2>\n<ul>${unviewed.map((c) => `<li><b>${esc(claimSubject(c))}</b>: ${esc(c.detail)}: ${esc(REASON[c.refusal] ?? c.refusal)}</li>`).join('')}</ul>\n`);
   out.push(foot);
   return out.join('');
 }
 
+const hMeaning = (m) => JSON.parse(readFileSync(join(repo, m.path), 'utf8')).app.meanings;
+function healthPage() {
+  const out = [head('Community health', 'The ISO/IEC 15939 indicator of every CHAOSS metrics model, evaluated for every UOR Foundation repository and chat from admitted GrimoireLab observations.')];
+  out.push(`<nav><a href="./">All views</a></nav>\n<h1>Community health</h1>\n`);
+  out.push(`<p>Each CHAOSS metrics model's indicator, a DMN 1.5 decision table, answered from the observations GrimoireLab collected and uor-observation-admission admitted. ${health.counts.assessments} assessments over ${health.counts.subjects} subjects and ${health.counts.periods} periods; each cell is a subject's latest period. Observation register <code>sha256:${esc(health.inputs.observations.register)}</code>, corpus <code>${esc(health.inputs.observations.corpus)}</code>.</p>\n`);
+  out.push(`<div class="wide"><table class="grid">\n<thead><tr><th scope="col">Subject</th>${health.models.map((m) => `<th scope="col"><a href="#${anchor(m.slug)}" title="${esc(m.title)}">${esc(m.title)}</a></th>`).join('')}</tr></thead>\n<tbody>\n`);
+  health.subjects.forEach((s, si) => {
+    out.push(`<tr><th scope="row">${esc(s.name)}</th>${health.models.map((m, mi) => {
+      const a = latest.get(`${si} ${mi}`);
+      return a ? `<td class="${a.outcome}" title="${esc(`${health.periods[a.period]}: ${a.admitted} admitted, ${a.refused} refused`)}">${a.outcome}</td>` : '<td>–</td>';
+    }).join('')}</tr>\n`);
+  });
+  out.push('</tbody>\n</table></div>\n');
+  for (const m of health.models) {
+    const meanings = hMeaning(m);
+    out.push(`<section id="${anchor(m.slug)}"><h2>${esc(m.title)}</h2>\n<p class="meta"><a href="${esc(repoBlob(m.path))}">${esc(m.app)}</a>, ${m.measures.length} base measures</p>\n<ul>${health.outcomes.map((o) => `<li><b>${o}</b> (${tally(m.slug)[o]}): ${esc(meanings[o])}</li>`).join('')}</ul></section>\n`);
+  }
+  if (health.refusals.length) out.push(`<h2>Open claims <span class="n">${health.refusals.length}</span></h2>\n<ul>${health.refusals.map((c) => `<li><b>${esc(c.refusal)}</b>: ${esc(c.detail)}</li>`).join('')}</ul>\n`);
+  out.push(foot);
+  return out.join('');
+}
+function healthTwin() {
+  const out = [`# Community health\n\nEach CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted GrimoireLab observations: ${health.counts.assessments} assessments over ${health.counts.subjects} subjects and ${health.counts.periods} periods. Observation register sha256:${health.inputs.observations.register}.\n`];
+  for (const [mi, m] of health.models.entries()) {
+    out.push(`\n## ${md(m.title)}\n\n${tallyText(m.slug)}\n\n${health.subjects.map((s, si) => latest.get(`${si} ${mi}`)).map((a, si) => (a ? `- ${md(health.subjects[si].name)}: ${a.outcome} (${health.periods[a.period]}, ${a.admitted} admitted, ${a.refused} refused)` : null)).filter(Boolean).join('\n')}\n`);
+  }
+  if (health.refusals.length) out.push(`\n## Open claims (${health.refusals.length})\n\n${health.refusals.map((c) => `- ${md(c.refusal)}: ${md(c.detail)}`).join('\n')}\n`);
+  return out.join('');
+}
+
 const llms = [`# Community model views\n\n> One ISO/IEC/IEEE 42010 view per UOR Foundation stakeholder, generated from the Prism model. Register sha256:${digest}.\n\n## Views\n\n`];
+llms.push(`- [Community health](${site}views/health.md): ${health.counts.assessments} indicator assessments over ${health.counts.subjects} subjects\n`);
 for (const v of views) llms.push(`- [${v.stakeholder.name}](${site}views/${v.stakeholder.slug}.md): ${v.models.length} metrics models, ${v.decisions.length} decisions, ${v.registerClaims.length + v.claims.length} open claims\n`);
 
 const css = `/* Generated by views/catalog.mjs. Brand variables only; nothing under 14 px. */
@@ -266,6 +316,14 @@ li { margin: 0.25rem 0; }
 table { width: 100%; border-collapse: collapse; font-size: 15px; }
 th, td { text-align: left; padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--border); }
 td { text-align: right; font-variant-numeric: tabular-nums; }
+.wide { overflow-x: auto; }
+.grid { font-size: 14px; }
+.grid th, .grid td { text-align: center; white-space: nowrap; }
+.grid th[scope="row"] { text-align: left; }
+.grid thead a { display: inline-block; max-width: 9rem; overflow: hidden; text-overflow: ellipsis; vertical-align: bottom; }
+.complete { color: var(--brand); font-weight: 600; }
+.open { font-style: italic; }
+.unmeasured { color: var(--muted-foreground); }
 footer { margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 1rem; overflow-wrap: anywhere; }
 `;
 
@@ -282,6 +340,11 @@ const embeds = views.map((v) => {
     ...x.decisions.map(({ d }) => `▸ ${d.title}`),
   ];
   return { title: clip(x.s.name, 256), url: `${site}views/${x.s.slug}.html`, description: clip(lines.join('\n'), 4096) };
+});
+embeds.push({
+  title: 'Community health',
+  url: `${site}views/health.html`,
+  description: clip(health.models.map((m) => `• ${m.title}: ${tallyText(m.slug)}`).join('\n'), 4096),
 });
 const size = (e) => e.title.length + e.description.length;
 const messages = [];
@@ -309,6 +372,8 @@ const outputs = new Map([
   ['site/views/index.html', index()],
   ['site/views/views.css', css],
   ['site/views/llms.txt', llms.join('')],
+  ['site/views/health.html', healthPage()],
+  ['site/views/health.md', healthTwin()],
   ['views/discord.json', `${JSON.stringify(discord, null, 1)}\n`],
   ...views.flatMap((v) => [
     [`site/views/${v.stakeholder.slug}.html`, page(v)],
