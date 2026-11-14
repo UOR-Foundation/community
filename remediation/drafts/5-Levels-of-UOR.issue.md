@@ -35,7 +35,7 @@ Topics: `archived documentation math tier-3-presentation uor uor-foundation`. Th
 
 ### For the maintainers to confirm
 
-- **check-contexts**: Which status checks must pass? The owner's settings script requires the check runs reported on the default branch.
+- **check-contexts**: Which status checks must pass? The owner's settings script requires the jobs a pull request reports from workflows that run on every pull request.
 - **ci**: Which CI workflow should it run? The repository states no test command the remediation can run.
 - **copyright-holder**: Is the copyright holder the drafted LICENSE names right?
 - **domain**: Are the proposed Domain topics all that apply?

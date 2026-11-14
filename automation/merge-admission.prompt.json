@@ -1,0 +1,79 @@
+{
+  "schema": "prism/prompt/1",
+  "goal": "Decide whether the merge controller may approve and merge a pull request on its own, so agents never wait on Alex for work Alex alone owns, and never merge what needs a human.",
+  "pattern": "policyDecision",
+  "repository": "UOR-Foundation/community",
+  "app": {
+    "name": "uor-merge-admission",
+    "title": "Merge admission",
+    "purpose": "Decide whether the merge controller approves and merges one pull request at its head commit, from who maintains the repository, what the change reaches, the state of every check run on the head, whether a human approved that head, and whether it is a draft.",
+    "fields": [
+      { "name": "repository", "kind": "choice", "values": ["owned", "shared"], "means": "owned: automation/repos.json lists the repository as one whose merges Alex alone decides; shared: any other repository" },
+      { "name": "reach", "kind": "choice", "values": ["inside", "secrets", "trust-root", "outside"], "means": "what the diff reaches: inside the model only; a secrets reference or a settings write; the trust root (bootstrap.yml, automation/ or the controller workflow); or something said outside the organization" },
+      { "name": "checks", "kind": "choice", "values": ["green", "red", "running"], "means": "every check run on the head commit, the acceptance gate (just vv) and the oracles among them: all passed or skipped, any failed, or any not finished" },
+      { "name": "human", "kind": "choice", "values": ["approved", "none"], "means": "whether a human approved this exact head: an approving review by a human other than the author, or the human-approved label added after the head commit" },
+      { "name": "draft", "kind": "choice", "values": ["ready", "draft"], "means": "whether the pull request is marked ready for review" }
+    ],
+    "outcomes": ["permit", "deny", "not-applicable", "indeterminate"],
+    "meanings": {
+      "permit": "XACML 3.0 section 7: Permit; the controller approves the head as github-actions and merges it with a merge commit",
+      "deny": "XACML 3.0 section 7: Deny; the controller does not merge, labels the pull request with the rule that denied it, and a human or an agent acts",
+      "not-applicable": "XACML 3.0 section 7: NotApplicable; no automation policy governs it, so the repository's own review rules apply unchanged",
+      "indeterminate": "XACML 3.0 section 7: Indeterminate; a check is still running, so the controller decides on its next run"
+    },
+    "rules": [
+      { "when": [{ "field": "repository", "op": "is", "value": "shared" }], "then": "not-applicable", "why": "UOR-Foundation/.github GOVERNANCE.md 6.2: a repository with other maintainers keeps the review its maintainers give" },
+      { "when": [{ "field": "draft", "op": "is", "value": "draft" }], "then": "not-applicable", "why": "GitHub Docs, About pull requests: a draft pull request cannot be merged" },
+      { "when": [{ "field": "reach", "op": "is", "value": "outside" }], "then": "deny", "why": "AUTOMATION.md H1: anything that speaks for Alex outside the organization (upstream PRs, advisories, DCO sign-offs) is done by a human" },
+      { "when": [{ "field": "checks", "op": "is", "value": "red" }], "then": "deny", "why": "GOVERNANCE.md 6.2 and 7.1 step 5: status checks are required and a change passes CI before it merges" },
+      { "when": [{ "field": "checks", "op": "is", "value": "running" }], "then": "indeterminate", "why": "GitHub Docs, About status checks: a pending check has no conclusion yet" },
+      { "when": [{ "field": "reach", "op": "is", "value": "secrets" }, { "field": "human", "op": "is", "value": "none" }], "then": "deny", "why": "AUTOMATION.md H2: a change that reads, writes or newly exposes a secret needs a human's approval of its exact head" },
+      { "when": [{ "field": "reach", "op": "is", "value": "trust-root" }, { "field": "human", "op": "is", "value": "none" }], "then": "deny", "why": "bootstrap.yml: the minimal human-reviewed trust root; AUTOMATION.md H3: the policy never admits a change to itself" }
+    ],
+    "otherwise": "permit",
+    "otherwiseWhy": "an owned repository, a ready pull request, every check green, and nothing a human must decide: GOVERNANCE.md 6.2 review is given by the controller as an agent acting for Alex (PROV-O actedOnBehalfOf)",
+    "properties": [
+      { "kind": "never", "when": [{ "field": "repository", "op": "is", "value": "shared" }], "then": "permit", "why": "another maintainer's repository is never merged by the controller" },
+      { "kind": "never", "when": [{ "field": "reach", "op": "is", "value": "outside" }], "then": "permit", "why": "nothing is said outside the organization without a human" },
+      { "kind": "never", "when": [{ "field": "checks", "op": "is", "value": "red" }], "then": "permit", "why": "a failing gate or oracle never merges" },
+      { "kind": "never", "when": [{ "field": "checks", "op": "is", "value": "running" }], "then": "permit", "why": "an unfinished gate never merges" },
+      { "kind": "never", "when": [{ "field": "reach", "op": "is", "value": "secrets" }, { "field": "human", "op": "is", "value": "none" }], "then": "permit", "why": "no secret is touched without a human" },
+      { "kind": "never", "when": [{ "field": "reach", "op": "is", "value": "trust-root" }, { "field": "human", "op": "is", "value": "none" }], "then": "permit", "why": "the trust root and the policy never change without a human" },
+      { "kind": "never", "when": [{ "field": "draft", "op": "is", "value": "draft" }], "then": "permit", "why": "a draft never merges" }
+    ],
+    "examples": [
+      { "request": "owned inside green none ready", "response": "permit" },
+      { "request": "shared inside green approved ready", "response": "not-applicable" },
+      { "request": "owned outside green approved ready", "response": "deny" },
+      { "request": "owned inside red none ready", "response": "deny" },
+      { "request": "owned inside running none ready", "response": "indeterminate" },
+      { "request": "owned secrets green none ready", "response": "deny" },
+      { "request": "owned secrets green approved ready", "response": "permit" },
+      { "request": "owned trust-root green none ready", "response": "deny" },
+      { "request": "owned inside green none draft", "response": "not-applicable" }
+    ]
+  },
+  "stakeholders": [
+    { "name": "Organization Owner", "text": "Alex, who owns the decision in the repositories automation/repos.json lists and needs work there to merge without waiting, and nothing outside or secret to move without them.", "concerns": ["Proved guarantees", "Human gate kept"] },
+    { "name": "Agent contributor", "text": "A Claude session acting on behalf of Alex, which needs a green, owned pull request to merge so the next workstream can start.", "concerns": ["Correct answers"] },
+    { "name": "Repository maintainer", "text": "A maintainer of another UOR Foundation repository, who needs the controller never to merge there.", "concerns": ["Human gate kept"] }
+  ],
+  "concerns": [
+    { "name": "Human gate kept", "text": "No change reaching outside the organization, a secret or the trust root merges without a human's approval of its exact head, and no repository with other maintainers is merged by the controller.", "model": "security" }
+  ],
+  "components": [
+    { "name": "automerge workflow", "kind": "service", "text": ".github/workflows/automerge.yml: runs automation/controller.mjs on a schedule, when a check suite completes and on demand, from the default branch only." },
+    { "name": "GitHub", "kind": "externalSystem", "text": "The pull requests, check runs, reviews and rulesets the controller reads and the merges it requests." }
+  ],
+  "threats": [
+    { "name": "Self-approved policy change", "text": "An agent changes the policy or the controller in a pull request and the controller admits its own change.", "stride": "elevationOfPrivilege", "asset": "source", "likelihood": "medium", "impact": "critical",
+      "control": { "name": "Trust root needs a human", "text": "A diff under automation/, the automerge workflow or bootstrap.yml reaches the trust root, and the trust root without a human is denied for every request.", "evidence": [{ "kind": "proof", "reference": "UorMergeAdmissionProofs::inv006Holds" }, { "kind": "gate", "reference": "automation/controller.mjs reachOf" }] } },
+    { "name": "Secret exposed by a merge", "text": "A merged workflow sends a secret to a new step or place without anyone deciding it should.", "stride": "informationDisclosure", "asset": "source", "likelihood": "medium", "impact": "critical",
+      "control": { "name": "Secrets need a human", "text": "A diff that adds or changes a secrets reference reaches secrets, and secrets without a human is denied for every request.", "evidence": [{ "kind": "proof", "reference": "UorMergeAdmissionProofs::inv005Holds" }] } },
+    { "name": "Stale approval", "text": "A human approves one head, an agent pushes another, and the approval is carried to the new head.", "stride": "tampering", "asset": "request", "likelihood": "medium", "impact": "major",
+      "control": { "name": "Approval pinned to the head", "text": "The controller counts a review only when its commit is the head, and the human-approved label only when it was added after the head commit; otherwise it removes the label.", "evidence": [{ "kind": "gate", "reference": "automation/controller.mjs humanOf" }] } }
+  ],
+  "quality": [
+    { "characteristic": "Security", "subcharacteristic": "Accountability", "requirement": "Every decision recorded", "text": "Each decision the controller acts on is written as a CloudEvents 1.0 record naming the pull request, its head, the request and the rule.", "measure": "Unrecorded decisions", "measureText": "Merges, labels or retargets with no CloudEvents record in the run's telemetry.", "threshold": 0 }
+  ]
+}

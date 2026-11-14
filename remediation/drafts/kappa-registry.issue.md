@@ -41,7 +41,7 @@ Topics: `active computation protocol rust tier-2-impl uor uor-foundation`. The r
 ### For the maintainers to confirm
 
 - **branches**: Which of its non-conforming branches are renamed and which deleted?
-- **check-contexts**: Which status checks must pass? The owner's settings script requires the check runs reported on the default branch.
+- **check-contexts**: Which status checks must pass? The owner's settings script requires the jobs a pull request reports from workflows that run on every pull request.
 - **codeowners**: Should CODEOWNERS name the repository's maintainers instead of the Organization Owner?
 - **copyright-holder**: Is the copyright holder the drafted LICENSE names right?
 - **domain**: Are the proposed Domain topics all that apply?

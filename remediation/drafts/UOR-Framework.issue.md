@@ -39,7 +39,7 @@ Topics: `active math rust tier-1-core uor uor-foundation`. The ruleset is `gover
 
 ### For the maintainers to confirm
 
-- **check-contexts**: Which status checks must pass? The owner's settings script requires the check runs reported on the default branch.
+- **check-contexts**: Which status checks must pass? The owner's settings script requires the jobs a pull request reports from workflows that run on every pull request.
 - **codeowners**: Should CODEOWNERS name the repository's maintainers instead of the Organization Owner?
 - **domain**: Are the proposed Domain topics all that apply?
 - **status**: Is the proposed status right (active, maintenance or deprecated)?

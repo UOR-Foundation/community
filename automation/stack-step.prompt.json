@@ -1,0 +1,42 @@
+{
+  "schema": "prism/prompt/1",
+  "goal": "Decide what the merge controller does to keep a stacked pull request mergeable, so a merged base never strands the pull requests stacked on it.",
+  "pattern": "decisionTable",
+  "repository": "UOR-Foundation/community",
+  "app": {
+    "name": "uor-stack-step",
+    "title": "Stack step",
+    "purpose": "Decide whether the controller retargets, updates, escalates or leaves one open pull request, from what its base branch is and what GitHub reports about merging it.",
+    "fields": [
+      { "name": "base", "kind": "choice", "values": ["default", "merged", "open"], "means": "the base branch is the default branch, the head of a pull request that has merged, or the head of one still open" },
+      { "name": "mergeable", "kind": "choice", "values": ["clean", "behind", "conflict", "unknown"], "means": "GitHub's mergeable state: mergeable, behind a base a strict ruleset requires it to contain, conflicting, or not yet computed" }
+    ],
+    "outcomes": ["retarget", "update", "escalate", "wait", "hold"],
+    "meanings": {
+      "retarget": "the base is set to the merged pull request's own base, which already contains the old base's commits through its merge commit",
+      "update": "GitHub's update-branch merges the base into the head",
+      "escalate": "the pull request is labeled needs-rebase and an agent-task issue names it, for the scheduled agent loop to resolve",
+      "wait": "nothing is done until GitHub has computed the state",
+      "hold": "nothing needs doing"
+    },
+    "rules": [
+      { "when": [{ "field": "base", "op": "is", "value": "merged" }], "then": "retarget", "why": "GitHub Docs, Changing the base branch of a pull request; git-merge(1): a merge commit keeps the old base an ancestor, so the stacked head stays a descendant and conflicts with nothing" },
+      { "when": [{ "field": "mergeable", "op": "is", "value": "conflict" }], "then": "escalate", "why": "GitHub Docs, Resolving a merge conflict: a conflict needs a change to the head, which only an author can make" },
+      { "when": [{ "field": "mergeable", "op": "is", "value": "unknown" }], "then": "wait", "why": "GitHub REST, Get a pull request: mergeable is computed in the background and is null until it is" },
+      { "when": [{ "field": "mergeable", "op": "is", "value": "behind" }], "then": "update", "why": "GitHub REST, Update a pull request branch: merges the base into the head when the head is behind" }
+    ],
+    "otherwise": "hold",
+    "otherwiseWhy": "a clean pull request on a live base needs nothing",
+    "properties": [
+      { "kind": "always", "when": [{ "field": "base", "op": "is", "value": "merged" }], "then": "retarget", "why": "no pull request stays on a merged base" },
+      { "kind": "never", "when": [{ "field": "mergeable", "op": "is", "value": "clean" }], "then": "escalate", "why": "a clean pull request never asks an agent for work" }
+    ],
+    "examples": [
+      { "request": "merged conflict", "response": "retarget" },
+      { "request": "default conflict", "response": "escalate" },
+      { "request": "open unknown", "response": "wait" },
+      { "request": "default behind", "response": "update" },
+      { "request": "open clean", "response": "hold" }
+    ]
+  }
+}
