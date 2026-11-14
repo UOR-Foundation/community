@@ -10,7 +10,7 @@ Schema.org Person. Named in https://github.com/UOR-Foundation/.github/blob/92da1
 
 https://github.com/chaoss/wg-ai-alignment/blob/0d0f78655aab6417293aaefd85e08ecc72ddabfa/metrics/ai-alignment-community-feedback/metric-model-ai-alignment-community-aligned-training-feedback.md
 
-Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
+Health now: 0 open, 0 complete, 32 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a community member I want to know what the governance is for raising issues within my community (to gain consensus to report on behalf of that project).
 - As a community member who has experienced harm (misattribution, harassment via AI-generated content, privacy exposure), I want a non-public channel for reporting, so that I'm not forced to disclose identity or details to get a response.
@@ -20,7 +20,7 @@ Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation
 
 https://github.com/chaoss/wg-ai-alignment/blob/0d0f78655aab6417293aaefd85e08ecc72ddabfa/metrics/ai-alignment-community-governed-use/metric-model-ai-alignment-community-governed-use.md
 
-Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
+Health now: 0 open, 0 complete, 32 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a community member, I want to know who controls the data behind the AI tools I interact with in a community, so I know where my data is and how I can assert my rights (e.g. GDPR).
 - As a community member, I want to know what category of tool is being used in a space I'm participating in (assistant, notetaker, autonomous agent), so I can judge what kind of consent applies before I speak or contribute.
@@ -30,7 +30,7 @@ Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation
 
 https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e485918672/metrics-model-libs/community-service-and-support/definition/community-service-and-support.md
 
-Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
+Health now: 0 open, 0 complete, 32 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a new community member, I want to know if I get adequate support from the community.
 - As an existing community member, I may want to identify areas where community service and support is lacking in an effort to provide support where needed.
@@ -39,7 +39,7 @@ Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation
 
 https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e485918672/metrics-model-libs/community-welcomingness/definition/community-welcomingness.md
 
-Health now: 0 open, 0 complete, 16 unmeasured, 15 partial (https://uor-foundation.github.io/community/views/health.md)
+Health now: 0 open, 0 complete, 17 unmeasured, 15 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a newcomer, I am curious as to whether I will be welcome in a new community or not.
 
