@@ -27,7 +27,7 @@ on:
     types: [labeled]
   # Another repository automation/repos.json lists runs this same controller
   # from here, on its own pull requests and with its own token:
-  #   jobs: { automerge: { uses: UOR-Foundation/community/.github/workflows/automerge.yml@main } }
+  #   jobs: { automerge: { uses: UOR-Foundation/community/.github/workflows/automerge.yml@<community commit> } }
   workflow_call:
   workflow_dispatch:
     inputs:
