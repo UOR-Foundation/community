@@ -154,6 +154,13 @@ class TestEngine(unittest.TestCase):
         self.assertEqual(state["tick"], 2)
         self.assertNotIn("REQ-008", live.uncovered(APP, state))
 
+    def test_consolidate_takes_a_divergence_without_a_trace(self):
+        state = live.initial_state()
+        root = dict(ROOT, **{"discord.probe.outcome": "done"})
+        intent = {"check": "discord.content.intent", "text_messages": 12, "content_empty": 12}
+        live.consolidate(state, [(root, ["otherwise"])], [intent], 0)
+        self.assertEqual(state["history"][-1]["divergences"], 1)
+
 
 # --- a local Discord ------------------------------------------------------------
 
