@@ -200,3 +200,27 @@ id = "CP-01"
 level = "build"
 suite = "compliance"
 statement = "The control set the verified build emits as an OSCAL 1.1.0 component definition is accepted by the locked oscal-1.1.0-structural oracle"
+
+[[id]]
+id = "GL-01"
+level = "build"
+suite = "grimoirelab"
+statement = "The GrimoireLab oracle record pins Perceval, SortingHat and the GrimoireLab release by commit and PyPI digest, binds its wrapper and corpus by digest, and declares what each oracle covers and does not cover"
+
+[[id]]
+id = "GL-02"
+level = "build"
+suite = "grimoirelab"
+statement = "The Perceval Discord backend is added to the pinned Perceval as new files only, with unit tests and offline archive replay run by upstream's own test runner"
+
+[[id]]
+id = "GL-03"
+level = "open"
+suite = "grimoirelab"
+statement = "Live retrieval of the Foundation's Discord waits on a read-only bot in the guild, and its token stays out of the repository"
+
+[[id]]
+id = "GL-04"
+level = "build"
+suite = "grimoirelab"
+statement = "Each live Discord probe is an OpenTelemetry trace holding no message content or token, every trace is checked against the paging model the contribution Prism pins, and the next probes are scheduled by bounded Hebbian weights"
