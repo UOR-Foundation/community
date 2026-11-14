@@ -1,0 +1,313 @@
+\begin{lexlean}{UorRepoNaming}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: uorRepoNamingCaseLowercase, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoNamingCaseOther, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoNamingVersionAbsent, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoNamingVersionPresent, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoNamingPatternPreferred, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoNamingPatternOther, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoNamingBranchesConforming, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoNamingBranchesOther, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoNamingCommitsConventional, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoNamingCommitsOther, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoNamingDomainComplete, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoNamingDomainIncomplete, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoNamingTechnologyComplete, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoNamingTechnologyIncomplete, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoNamingAnswerNonconforming, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoNamingAnswerAdvisory, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoNamingAnswerConformant, parameters: [], result: Nat, body: 2}
+
+structure{
+  name: UorRepoNamingRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: case, type: Nat},
+    {name: version, type: Nat},
+    {name: pattern, type: Nat},
+    {name: branches, type: Nat},
+    {name: commits, type: Nat},
+    {name: domain, type: Nat},
+    {name: technology, type: Nat}
+  ]
+}
+
+definition{
+  name: uorRepoNamingByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoNamingDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (uorRepoNamingByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (uorRepoNamingDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorRepoNamingParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (uorRepoNamingByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (uorRepoNamingDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoNamingParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (uorRepoNamingParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoNamingParseCase,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6c6f77657263617365 : Bool) then (ctor Option.some [Nat] (uorRepoNamingCaseLowercase)) else (if (prim equal value 0x6f74686572 : Bool) then (ctor Option.some [Nat] (uorRepoNamingCaseOther)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoNamingParseVersion,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x616273656e74 : Bool) then (ctor Option.some [Nat] (uorRepoNamingVersionAbsent)) else (if (prim equal value 0x70726573656e74 : Bool) then (ctor Option.some [Nat] (uorRepoNamingVersionPresent)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoNamingParsePattern,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x707265666572726564 : Bool) then (ctor Option.some [Nat] (uorRepoNamingPatternPreferred)) else (if (prim equal value 0x6f74686572 : Bool) then (ctor Option.some [Nat] (uorRepoNamingPatternOther)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoNamingParseBranches,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x636f6e666f726d696e67 : Bool) then (ctor Option.some [Nat] (uorRepoNamingBranchesConforming)) else (if (prim equal value 0x6f74686572 : Bool) then (ctor Option.some [Nat] (uorRepoNamingBranchesOther)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoNamingParseCommits,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x636f6e76656e74696f6e616c : Bool) then (ctor Option.some [Nat] (uorRepoNamingCommitsConventional)) else (if (prim equal value 0x6f74686572 : Bool) then (ctor Option.some [Nat] (uorRepoNamingCommitsOther)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoNamingParseDomain,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x636f6d706c657465 : Bool) then (ctor Option.some [Nat] (uorRepoNamingDomainComplete)) else (if (prim equal value 0x696e636f6d706c657465 : Bool) then (ctor Option.some [Nat] (uorRepoNamingDomainIncomplete)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoNamingParseTechnology,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x636f6d706c657465 : Bool) then (ctor Option.some [Nat] (uorRepoNamingTechnologyComplete)) else (if (prim equal value 0x696e636f6d706c657465 : Bool) then (ctor Option.some [Nat] (uorRepoNamingTechnologyIncomplete)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoNamingSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: uorRepoNamingFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (uorRepoNamingByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (uorRepoNamingFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorRepoNamingDecodeField7,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat, v5 : Nat, v6 : Nat],
+  result: (Option UorRepoNamingRequest),
+  body: (let e : Nat := (uorRepoNamingFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoNamingParseTechnology (uorRepoNamingSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoNamingRequest])
+    | Option.some v7 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [UorRepoNamingRequest] (record UorRepoNamingRequest {case := v1, version := v2, pattern := v3, branches := v4, commits := v5, domain := v6, technology := v7})) else (ctor Option.none [UorRepoNamingRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoNamingDecodeField6,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat, v5 : Nat],
+  result: (Option UorRepoNamingRequest),
+  body: (let e : Nat := (uorRepoNamingFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoNamingParseDomain (uorRepoNamingSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoNamingRequest])
+    | Option.some v6 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoNamingDecodeField7 s (e + 1) v1 v2 v3 v4 v5 v6) else (ctor Option.none [UorRepoNamingRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoNamingDecodeField5,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat],
+  result: (Option UorRepoNamingRequest),
+  body: (let e : Nat := (uorRepoNamingFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoNamingParseCommits (uorRepoNamingSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoNamingRequest])
+    | Option.some v5 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoNamingDecodeField6 s (e + 1) v1 v2 v3 v4 v5) else (ctor Option.none [UorRepoNamingRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoNamingDecodeField4,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat],
+  result: (Option UorRepoNamingRequest),
+  body: (let e : Nat := (uorRepoNamingFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoNamingParseBranches (uorRepoNamingSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoNamingRequest])
+    | Option.some v4 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoNamingDecodeField5 s (e + 1) v1 v2 v3 v4) else (ctor Option.none [UorRepoNamingRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoNamingDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option UorRepoNamingRequest),
+  body: (let e : Nat := (uorRepoNamingFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoNamingParsePattern (uorRepoNamingSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoNamingRequest])
+    | Option.some v3 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoNamingDecodeField4 s (e + 1) v1 v2 v3) else (ctor Option.none [UorRepoNamingRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoNamingDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option UorRepoNamingRequest),
+  body: (let e : Nat := (uorRepoNamingFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoNamingParseVersion (uorRepoNamingSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoNamingRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoNamingDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [UorRepoNamingRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoNamingDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option UorRepoNamingRequest),
+  body: (let e : Nat := (uorRepoNamingFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoNamingParseCase (uorRepoNamingSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoNamingRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoNamingDecodeField2 s (e + 1) v1) else (ctor Option.none [UorRepoNamingRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoNamingRule1,
+  parameters: [request : UorRepoNamingRequest],
+  result: Bool,
+  body: ((project request case) =? (uorRepoNamingCaseOther))
+}
+
+definition{
+  name: uorRepoNamingRule2,
+  parameters: [request : UorRepoNamingRequest],
+  result: Bool,
+  body: ((project request version) =? (uorRepoNamingVersionPresent))
+}
+
+definition{
+  name: uorRepoNamingRule3,
+  parameters: [request : UorRepoNamingRequest],
+  result: Bool,
+  body: ((project request branches) =? (uorRepoNamingBranchesOther))
+}
+
+definition{
+  name: uorRepoNamingRule4,
+  parameters: [request : UorRepoNamingRequest],
+  result: Bool,
+  body: ((project request commits) =? (uorRepoNamingCommitsOther))
+}
+
+definition{
+  name: uorRepoNamingRule5,
+  parameters: [request : UorRepoNamingRequest],
+  result: Bool,
+  body: ((project request domain) =? (uorRepoNamingDomainIncomplete))
+}
+
+definition{
+  name: uorRepoNamingRule6,
+  parameters: [request : UorRepoNamingRequest],
+  result: Bool,
+  body: ((project request technology) =? (uorRepoNamingTechnologyIncomplete))
+}
+
+definition{
+  name: uorRepoNamingRule7,
+  parameters: [request : UorRepoNamingRequest],
+  result: Bool,
+  body: ((project request pattern) =? (uorRepoNamingPatternOther))
+}
+
+definition{
+  name: uorRepoNamingJudge,
+  parameters: [request : UorRepoNamingRequest],
+  result: Nat,
+  body: (if (uorRepoNamingRule1 request) then (uorRepoNamingAnswerNonconforming) else (if (uorRepoNamingRule2 request) then (uorRepoNamingAnswerNonconforming) else (if (uorRepoNamingRule3 request) then (uorRepoNamingAnswerNonconforming) else (if (uorRepoNamingRule4 request) then (uorRepoNamingAnswerNonconforming) else (if (uorRepoNamingRule5 request) then (uorRepoNamingAnswerNonconforming) else (if (uorRepoNamingRule6 request) then (uorRepoNamingAnswerNonconforming) else (if (uorRepoNamingRule7 request) then (uorRepoNamingAnswerAdvisory) else (uorRepoNamingAnswerConformant))))))))
+}
+
+definition{
+  name: uorRepoNamingEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (uorRepoNamingAnswerNonconforming)) then 0x6e6f6e636f6e666f726d696e67 else (if (code =? (uorRepoNamingAnswerAdvisory)) then 0x61647669736f7279 else (if (code =? (uorRepoNamingAnswerConformant)) then 0x636f6e666f726d616e74 else 0x696e76616c6964)))
+}
+
+definition{
+  name: uorRepoNamingDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (184 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (uorRepoNamingDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (uorRepoNamingEncodeAnswer (uorRepoNamingJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

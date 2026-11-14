@@ -18,17 +18,340 @@ The three honesty levels (R2):
 `cargo xtask audit-limits` fails if any code path returns an error the
 model does not sanction.
 
-## contract
+## chaoss
 
 | ID | Level | Statement |
 | --- | --- | --- |
-| `TC-01` | `build` | The checker answers conformant exactly when every universal policy file's observed digest equals its locked digest |
+| `CC-01` | `build` | The CHAOSS register is valid: every released metric and metrics model is numbered and counted against the release, every model names only declared metrics or its own measures, and every open claim names a declared model |
+| `CC-02` | `build` | The CHAOSS catalog declares every metric and metrics model of chaoss/register.json with the content digest of its pinned working-group source |
+| `CC-03` | `open` | A released CHAOSS item the projector cannot match to a definition is carried as an open claim, never dropped or guessed |
+| `CC-04` | `build` | Every CHAOSS metric and metrics model has a complete ISO/IEC 15939 mapping: each element of its measurement information model is either stated from a CHAOSS template section cited by digest or carried as a typed open claim |
+| `CC-05` | `open` | An ISO/IEC 15939 element the CHAOSS templates do not carry, or a definition omits, is an open claim with its reason, never inferred from prose |
+| `CC-06` | `build` | An ISO/IEC 15939 element the CHAOSS templates leave open is stated only from what the CHAOSS oracle computes: a GrimoireLab panel the definition cites, a computation the implementation names, and the alias, enricher and backend lines it reads, each pinned to the GrimoireLab 1.23.0 release and cited by sha256 |
+| `CC-07` | `build` | Every 15939 element neither CHAOSS nor its oracle states has one drafted upstream contribution, decided by a DMN decision table and marked as not submitted |
+
+## chaoss_ai_alignment_community_aligned_training_feedback
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CAACATF-01` | `build` | The app never answers complete when refused is at least 1 |
+| `CAACATF-02` | `build` | The app never answers complete when admitted is below 4 |
+| `CAACATF-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 4 |
+| `CAACATF-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_business_readiness_of_an_open_source_project
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CBROAOSP-01` | `build` | The app never answers complete when refused is at least 1 |
+| `CBROAOSP-02` | `build` | The app never answers complete when admitted is below 8 |
+| `CBROAOSP-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 8 |
+| `CBROAOSP-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_collaboration_development_index
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CCDI-01` | `build` | The app never answers complete when refused is at least 1 |
+| `CCDI-02` | `build` | The app never answers complete when admitted is below 5 |
+| `CCDI-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 5 |
+| `CCDI-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_community_activity
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CCA-01` | `build` | The app never answers complete when refused is at least 1 |
+| `CCA-02` | `build` | The app never answers complete when admitted is below 11 |
+| `CCA-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 11 |
+| `CCA-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_community_governed_ai_use_in_open_communities
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CCGAUIOC-01` | `build` | The app never answers complete when refused is at least 1 |
+| `CCGAUIOC-02` | `build` | The app never answers complete when admitted is below 5 |
+| `CCGAUIOC-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 5 |
+| `CCGAUIOC-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_community_service_and_support
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CCSAS-01` | `build` | The app never answers complete when refused is at least 1 |
+| `CCSAS-02` | `build` | The app never answers complete when admitted is below 9 |
+| `CCSAS-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 9 |
+| `CCSAS-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_community_welcomingness
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CCW-01` | `build` | The app never answers complete when refused is at least 1 |
+| `CCW-02` | `build` | The app never answers complete when admitted is below 14 |
+| `CCW-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 14 |
+| `CCW-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_dei_event_badging
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CDEB-01` | `build` | The app never answers complete when refused is at least 1 |
+| `CDEB-02` | `build` | The app never answers complete when admitted is below 6 |
+| `CDEB-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 6 |
+| `CDEB-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_development_responsiveness
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CDR-01` | `build` | The app never answers complete when refused is at least 1 |
+| `CDR-02` | `build` | The app never answers complete when admitted is below 4 |
+| `CDR-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 4 |
+| `CDR-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_funding
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CF-01` | `build` | The app never answers complete when refused is at least 1 |
+| `CF-02` | `build` | The app never answers complete when admitted is below 5 |
+| `CF-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 5 |
+| `CF-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_oss_project_viability_community
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `COPVC-01` | `build` | The app never answers complete when refused is at least 1 |
+| `COPVC-02` | `build` | The app never answers complete when admitted is below 8 |
+| `COPVC-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 8 |
+| `COPVC-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_oss_project_viability_compliance_security
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `COPVCS-01` | `build` | The app never answers complete when refused is at least 1 |
+| `COPVCS-02` | `build` | The app never answers complete when admitted is below 7 |
+| `COPVCS-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 7 |
+| `COPVCS-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_oss_project_viability_governance
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `COPVG-01` | `build` | The app never answers complete when refused is at least 1 |
+| `COPVG-02` | `build` | The app never answers complete when admitted is below 8 |
+| `COPVG-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 8 |
+| `COPVG-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_oss_project_viability_strategy
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `COPVS-01` | `build` | The app never answers complete when refused is at least 1 |
+| `COPVS-02` | `build` | The app never answers complete when admitted is below 5 |
+| `COPVS-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 5 |
+| `COPVS-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_project_awareness
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CPA-01` | `build` | The app never answers complete when refused is at least 1 |
+| `CPA-02` | `build` | The app never answers complete when admitted is below 5 |
+| `CPA-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 5 |
+| `CPA-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_project_engagement
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CPE-01` | `build` | The app never answers complete when refused is at least 1 |
+| `CPE-02` | `build` | The app never answers complete when admitted is below 6 |
+| `CPE-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 6 |
+| `CPE-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_project_viability_starter
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CPVS-01` | `build` | The app never answers complete when refused is at least 1 |
+| `CPVS-02` | `build` | The app never answers complete when admitted is below 6 |
+| `CPVS-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 6 |
+| `CPVS-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_safety
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CS-01` | `build` | The app never answers complete when refused is at least 1 |
+| `CS-02` | `build` | The app never answers complete when admitted is below 6 |
+| `CS-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 6 |
+| `CS-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## chaoss_starter_project_health
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CSPH-01` | `build` | The app never answers complete when refused is at least 1 |
+| `CSPH-02` | `build` | The app never answers complete when admitted is below 4 |
+| `CSPH-03` | `build` | The app always answers complete when refused equals 0 and admitted is at least 4 |
+| `CSPH-04` | `build` | The app never answers unmeasured when admitted is at least 1 and refused equals 0 |
+
+## compliance
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CP-01` | `build` | The control set the verified build emits as an OSCAL 1.1.0 component definition is accepted by the locked oscal-1.1.0-structural oracle |
+
+## ecosystem
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `EC-01` | `build` | The ecosystem register is valid: every public UOR Foundation repository is numbered and counted against the snapshot, its tier and status are recorded exactly when it carries one tag of that kind, and every repository the repo-standards app does not find conformant is named by an open claim |
+| `EC-02` | `build` | The ecosystem catalog declares every repository of ecosystem/register.json, the snapshot digest, and the digests of the pinned norms and decision app it was projected from |
+| `EC-03` | `open` | A repository that fails a STANDARDS.md norm the repo-standards app decides, or that the app cannot decide without a tier, is carried as an open claim, never dropped or defaulted |
 
 ## frame
 
 | ID | Level | Statement |
 | --- | --- | --- |
 | `FR-01` | `build` | With a working worker, the page loads and verifies the archive only in that worker before using its identities or guest |
+
+## governance
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `GV-01` | `build` | The Foundation governance register is valid: every unit, post, role, vote rule, stage, holding, membership, delegation and reference resolves; every rule that decides something belongs to a body with a quorum rule; every TOC lifecycle decision is a Technical Oversight Committee vote; every Board position the Bylaws create is held by exactly one person; and the Board's size is within the Bylaws' bounds |
+| `GV-02` | `build` | The governance catalog declares every provision of governance/register.json with the content digest of its text at the pinned source commit |
+| `GV-03` | `open` | A post, role or committee no pinned source fills, a reference that resolves to nothing, an agent with no person behind it, and every Bylaws notice is carried as an open claim, never dropped or guessed |
+| `GV-04` | `build` | Agents are Schema.org SoftwareApplication, never Person: every PROV-O actedOnBehalfOf delegation runs from a SoftwareApplication to a Person, and only a Person holds a post or a role |
+
+## grimoirelab
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `GL-01` | `build` | The GrimoireLab oracle record pins Perceval, SortingHat and the GrimoireLab release by commit and PyPI digest, binds its wrapper and corpus by digest, and declares what each oracle covers and does not cover |
+| `GL-02` | `build` | The Perceval Discord backend is added to the pinned Perceval as new files only, with unit tests and offline archive replay run by upstream's own test runner |
+| `GL-03` | `open` | Live retrieval of the Foundation's Discord waits on a read-only bot in the guild, and its token stays out of the repository |
+| `GL-04` | `build` | Each live Discord probe is an OpenTelemetry trace holding no message content or token, every trace is checked against the paging model the contribution Prism pins, and the next probes are scheduled by bounded Hebbian weights |
+
+## uor_coc_enforcement
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `UCE-01` | `build` | The app never answers banned when authority is other and record is clear |
+| `UCE-02` | `build` | The app never answers warned when finding is pending and record is clear |
+| `UCE-03` | `build` | The app never answers limited when finding is none and record is warned |
+| `UCE-04` | `build` | The app never answers warned when record is limited |
+| `UCE-05` | `build` | The app never answers clear when record is suspended |
+| `UCE-06` | `build` | The app always answers banned when finding is violation and authority is moderators and severity is severe |
+| `UCE-07` | `build` | The app always answers banned when record is banned |
+
+## uor_community_decisions
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `UCD-01` | `build` | The architecture description declares every stakeholder, concern, component, edge, viewpoint and view it references |
+| `UCD-02` | `build` | The ISO/IEC 25010:2023 quality model declares all 9 characteristics and 40 subcharacteristics, states each subcharacteristic by a requirement or lists it open, and every parent it names is declared |
+| `UCD-03` | `build` | Every STRIDE category each component and data flow is open to is answered by a threat or stated open, and no other pair is stated open |
+| `UCD-04` | `build` | Every compliance obligation is numbered in order and names its evidence |
+
+## uor_contribution_attribution
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `UCA-01` | `build` | The app never answers permit when agent is software and delegation is absent |
+| `UCA-02` | `build` | The app never answers permit when agent is software and trail is missing |
+| `UCA-03` | `build` | The app never answers permit when agent is software and principal is organization |
+| `UCA-04` | `build` | The app never answers permit when identity is unresolved |
+| `UCA-05` | `build` | The app always answers permit when agent is person and identity is resolved |
+
+## uor_discord_read
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `UDR-01` | `build` | The app never answers permit when kind is dm |
+| `UDR-02` | `build` | The app never answers permit when visibility is restricted |
+| `UDR-03` | `build` | The app never answers permit when label is not public |
+| `UDR-04` | `build` | The app never answers permit when install is other |
+| `UDR-05` | `build` | The app never answers permit when intent is missing |
+
+## uor_observation_admission
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `UOA-01` | `build` | The app never answers permit when metric is unreleased |
+| `UOA-02` | `build` | The app never answers permit when oracle is not covers |
+| `UOA-03` | `build` | The app never answers permit when source is unpinned |
+| `UOA-04` | `build` | The app never answers permit when replay is not reproduced |
+| `UOA-05` | `build` | The app never answers permit when collection is deny |
+| `UOA-06` | `build` | The app never answers permit when collection is outside |
+| `UOA-07` | `build` | The app never answers permit when attribution is deny |
+| `UOA-08` | `build` | The app always answers deny when metric is released and collection is deny |
+
+## uor_repo_files
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `URF-01` | `build` | The app never answers conformant when readme is missing |
+| `URF-02` | `build` | The app always answers missing-file when readme is present and license is missing |
+| `URF-03` | `build` | The app never answers conformant when tier is t1 and security is missing |
+| `URF-04` | `build` | The app never answers advisory when tier is t4 |
+
+## uor_repo_naming
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `URN-01` | `build` | The app never answers conformant when case is other |
+| `URN-02` | `build` | The app never answers conformant when version is present |
+| `URN-03` | `build` | The app never answers conformant when commits is other |
+| `URN-04` | `build` | The app never answers conformant when domain is incomplete |
+| `URN-05` | `build` | The app never answers conformant when pattern is other |
+| `URN-06` | `build` | The app always answers advisory when case is lowercase and version is absent and branches is conforming and commits is conventional and domain is complete and technology is complete and pattern is other |
+
+## uor_repo_protection
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `URP-01` | `build` | The app never answers conformant when forcepush is allowed |
+| `URP-02` | `build` | The app never answers conformant when tier is t1 and reviews is below 2 |
+| `URP-03` | `build` | The app never answers conformant when tier is t2 and checks is optional |
+| `URP-04` | `build` | The app always answers conformant when tier is t4 and forcepush is blocked |
+
+## uor_repo_standards
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `URS-01` | `build` | The app never answers conformant when tiertags equals 0 |
+| `URS-02` | `build` | The app never answers conformant when statustags is above 1 |
+| `URS-03` | `build` | The app never answers conformant when tier is t1 and versioning is other |
+| `URS-04` | `build` | The app never answers unversioned when tier is t3 |
+
+## uor_toc_lifecycle
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `UTL-01` | `build` | The app never answers graduated when quorum is unmet and stage is incubation |
+| `UTL-02` | `build` | The app never answers graduated when vote is majority and stage is incubation |
+| `UTL-03` | `build` | The app never answers graduated when comment is below 14 and stage is incubation |
+| `UTL-04` | `build` | The app never answers incubation when stage is proposed |
+| `UTL-05` | `build` | The app never answers graduated when stage is sandbox |
+| `UTL-06` | `build` | The app never answers sandbox when evidence is partial and stage is proposed |
+| `UTL-07` | `build` | The app always answers graduated when stage is graduated and application is not archival |
+| `UTL-08` | `build` | The app always answers archived when stage is archived |
+
+## views
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `SV-01` | `build` | The stakeholder views are a valid ISO/IEC/IEEE 42010 architecture description: each stakeholder has one viewpoint governing one view, every concern is held by a declared stakeholder, framed by its viewpoint and addressed in its view, and every metrics model, decision and stakeholder is addressed or carried as an open claim |
+| `SV-02` | `build` | Every stakeholder is a role its pinned source names, declared with the quote, the source commit and its digest, and an agent acts on behalf of a declared stakeholder (PROV-O actedOnBehalfOf) |
+| `SV-03` | `build` | The Pages views, their Markdown twins, llms.txt and the Discord digest are generated from the stakeholder register, and a surface that differs from the register's catalog fails the gate |
+| `SV-04` | `open` | A user-story role no Foundation stakeholder holds, a metrics model that states no user story, and a stakeholder no model or decision addresses are carried as open claims, never guessed |
 
 ## Cited authorities
 
