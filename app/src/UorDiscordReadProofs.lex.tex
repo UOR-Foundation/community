@@ -1,0 +1,228 @@
+\begin{lexlean}{UorDiscordReadProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{UorDiscordRead}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : UorDiscordRead::UorDiscordReadRequest],
+  result: Bool,
+  body: ((((((((project request kind) <? 4) && ((project request visibility) <? 2)) && ((project request label) <? 3)) && ((project request install) <? 2)) && ((project request intent) <? 2)) && ((project request kind) =? (UorDiscordRead::uorDiscordReadKindDm))) && ((UorDiscordRead::uorDiscordReadJudge request) =? (UorDiscordRead::uorDiscordReadAnswerPermit)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : UorDiscordRead::UorDiscordReadRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorDiscordRead::uorDiscordReadAnswerDeny,
+      UorDiscordRead::uorDiscordReadAnswerIndeterminate,
+      UorDiscordRead::uorDiscordReadAnswerNotApplicable,
+      UorDiscordRead::uorDiscordReadAnswerPermit,
+      UorDiscordRead::uorDiscordReadInstallAdmin,
+      UorDiscordRead::uorDiscordReadInstallOther,
+      UorDiscordRead::uorDiscordReadIntentGranted,
+      UorDiscordRead::uorDiscordReadIntentMissing,
+      UorDiscordRead::uorDiscordReadJudge,
+      UorDiscordRead::uorDiscordReadKindDm,
+      UorDiscordRead::uorDiscordReadKindForum,
+      UorDiscordRead::uorDiscordReadKindText,
+      UorDiscordRead::uorDiscordReadKindVoice,
+      UorDiscordRead::uorDiscordReadLabelExcluded,
+      UorDiscordRead::uorDiscordReadLabelPublic,
+      UorDiscordRead::uorDiscordReadLabelUnlabeled,
+      UorDiscordRead::uorDiscordReadRule1,
+      UorDiscordRead::uorDiscordReadRule2,
+      UorDiscordRead::uorDiscordReadRule3,
+      UorDiscordRead::uorDiscordReadRule4,
+      UorDiscordRead::uorDiscordReadRule5,
+      UorDiscordRead::uorDiscordReadRule6,
+      UorDiscordRead::uorDiscordReadRule7,
+      UorDiscordRead::uorDiscordReadVisibilityEveryone,
+      UorDiscordRead::uorDiscordReadVisibilityRestricted,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : UorDiscordRead::UorDiscordReadRequest],
+  result: Bool,
+  body: ((((((((project request kind) <? 4) && ((project request visibility) <? 2)) && ((project request label) <? 3)) && ((project request install) <? 2)) && ((project request intent) <? 2)) && ((project request visibility) =? (UorDiscordRead::uorDiscordReadVisibilityRestricted))) && ((UorDiscordRead::uorDiscordReadJudge request) =? (UorDiscordRead::uorDiscordReadAnswerPermit)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : UorDiscordRead::UorDiscordReadRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorDiscordRead::uorDiscordReadAnswerDeny,
+      UorDiscordRead::uorDiscordReadAnswerIndeterminate,
+      UorDiscordRead::uorDiscordReadAnswerNotApplicable,
+      UorDiscordRead::uorDiscordReadAnswerPermit,
+      UorDiscordRead::uorDiscordReadInstallAdmin,
+      UorDiscordRead::uorDiscordReadInstallOther,
+      UorDiscordRead::uorDiscordReadIntentGranted,
+      UorDiscordRead::uorDiscordReadIntentMissing,
+      UorDiscordRead::uorDiscordReadJudge,
+      UorDiscordRead::uorDiscordReadKindDm,
+      UorDiscordRead::uorDiscordReadKindForum,
+      UorDiscordRead::uorDiscordReadKindText,
+      UorDiscordRead::uorDiscordReadKindVoice,
+      UorDiscordRead::uorDiscordReadLabelExcluded,
+      UorDiscordRead::uorDiscordReadLabelPublic,
+      UorDiscordRead::uorDiscordReadLabelUnlabeled,
+      UorDiscordRead::uorDiscordReadRule1,
+      UorDiscordRead::uorDiscordReadRule2,
+      UorDiscordRead::uorDiscordReadRule3,
+      UorDiscordRead::uorDiscordReadRule4,
+      UorDiscordRead::uorDiscordReadRule5,
+      UorDiscordRead::uorDiscordReadRule6,
+      UorDiscordRead::uorDiscordReadRule7,
+      UorDiscordRead::uorDiscordReadVisibilityEveryone,
+      UorDiscordRead::uorDiscordReadVisibilityRestricted,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : UorDiscordRead::UorDiscordReadRequest],
+  result: Bool,
+  body: ((((((((project request kind) <? 4) && ((project request visibility) <? 2)) && ((project request label) <? 3)) && ((project request install) <? 2)) && ((project request intent) <? 2)) && (not ((project request label) =? (UorDiscordRead::uorDiscordReadLabelPublic)))) && ((UorDiscordRead::uorDiscordReadJudge request) =? (UorDiscordRead::uorDiscordReadAnswerPermit)))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : UorDiscordRead::UorDiscordReadRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorDiscordRead::uorDiscordReadAnswerDeny,
+      UorDiscordRead::uorDiscordReadAnswerIndeterminate,
+      UorDiscordRead::uorDiscordReadAnswerNotApplicable,
+      UorDiscordRead::uorDiscordReadAnswerPermit,
+      UorDiscordRead::uorDiscordReadInstallAdmin,
+      UorDiscordRead::uorDiscordReadInstallOther,
+      UorDiscordRead::uorDiscordReadIntentGranted,
+      UorDiscordRead::uorDiscordReadIntentMissing,
+      UorDiscordRead::uorDiscordReadJudge,
+      UorDiscordRead::uorDiscordReadKindDm,
+      UorDiscordRead::uorDiscordReadKindForum,
+      UorDiscordRead::uorDiscordReadKindText,
+      UorDiscordRead::uorDiscordReadKindVoice,
+      UorDiscordRead::uorDiscordReadLabelExcluded,
+      UorDiscordRead::uorDiscordReadLabelPublic,
+      UorDiscordRead::uorDiscordReadLabelUnlabeled,
+      UorDiscordRead::uorDiscordReadRule1,
+      UorDiscordRead::uorDiscordReadRule2,
+      UorDiscordRead::uorDiscordReadRule3,
+      UorDiscordRead::uorDiscordReadRule4,
+      UorDiscordRead::uorDiscordReadRule5,
+      UorDiscordRead::uorDiscordReadRule6,
+      UorDiscordRead::uorDiscordReadRule7,
+      UorDiscordRead::uorDiscordReadVisibilityEveryone,
+      UorDiscordRead::uorDiscordReadVisibilityRestricted,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : UorDiscordRead::UorDiscordReadRequest],
+  result: Bool,
+  body: ((((((((project request kind) <? 4) && ((project request visibility) <? 2)) && ((project request label) <? 3)) && ((project request install) <? 2)) && ((project request intent) <? 2)) && ((project request install) =? (UorDiscordRead::uorDiscordReadInstallOther))) && ((UorDiscordRead::uorDiscordReadJudge request) =? (UorDiscordRead::uorDiscordReadAnswerPermit)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : UorDiscordRead::UorDiscordReadRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorDiscordRead::uorDiscordReadAnswerDeny,
+      UorDiscordRead::uorDiscordReadAnswerIndeterminate,
+      UorDiscordRead::uorDiscordReadAnswerNotApplicable,
+      UorDiscordRead::uorDiscordReadAnswerPermit,
+      UorDiscordRead::uorDiscordReadInstallAdmin,
+      UorDiscordRead::uorDiscordReadInstallOther,
+      UorDiscordRead::uorDiscordReadIntentGranted,
+      UorDiscordRead::uorDiscordReadIntentMissing,
+      UorDiscordRead::uorDiscordReadJudge,
+      UorDiscordRead::uorDiscordReadKindDm,
+      UorDiscordRead::uorDiscordReadKindForum,
+      UorDiscordRead::uorDiscordReadKindText,
+      UorDiscordRead::uorDiscordReadKindVoice,
+      UorDiscordRead::uorDiscordReadLabelExcluded,
+      UorDiscordRead::uorDiscordReadLabelPublic,
+      UorDiscordRead::uorDiscordReadLabelUnlabeled,
+      UorDiscordRead::uorDiscordReadRule1,
+      UorDiscordRead::uorDiscordReadRule2,
+      UorDiscordRead::uorDiscordReadRule3,
+      UorDiscordRead::uorDiscordReadRule4,
+      UorDiscordRead::uorDiscordReadRule5,
+      UorDiscordRead::uorDiscordReadRule6,
+      UorDiscordRead::uorDiscordReadRule7,
+      UorDiscordRead::uorDiscordReadVisibilityEveryone,
+      UorDiscordRead::uorDiscordReadVisibilityRestricted,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv005,
+  parameters: [request : UorDiscordRead::UorDiscordReadRequest],
+  result: Bool,
+  body: ((((((((project request kind) <? 4) && ((project request visibility) <? 2)) && ((project request label) <? 3)) && ((project request install) <? 2)) && ((project request intent) <? 2)) && ((project request intent) =? (UorDiscordRead::uorDiscordReadIntentMissing))) && ((UorDiscordRead::uorDiscordReadJudge request) =? (UorDiscordRead::uorDiscordReadAnswerPermit)))
+}
+
+theorem{
+  name: inv005Holds,
+  parameters: [request : UorDiscordRead::UorDiscordReadRequest],
+  statement: ((breaksInv005 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorDiscordRead::uorDiscordReadAnswerDeny,
+      UorDiscordRead::uorDiscordReadAnswerIndeterminate,
+      UorDiscordRead::uorDiscordReadAnswerNotApplicable,
+      UorDiscordRead::uorDiscordReadAnswerPermit,
+      UorDiscordRead::uorDiscordReadInstallAdmin,
+      UorDiscordRead::uorDiscordReadInstallOther,
+      UorDiscordRead::uorDiscordReadIntentGranted,
+      UorDiscordRead::uorDiscordReadIntentMissing,
+      UorDiscordRead::uorDiscordReadJudge,
+      UorDiscordRead::uorDiscordReadKindDm,
+      UorDiscordRead::uorDiscordReadKindForum,
+      UorDiscordRead::uorDiscordReadKindText,
+      UorDiscordRead::uorDiscordReadKindVoice,
+      UorDiscordRead::uorDiscordReadLabelExcluded,
+      UorDiscordRead::uorDiscordReadLabelPublic,
+      UorDiscordRead::uorDiscordReadLabelUnlabeled,
+      UorDiscordRead::uorDiscordReadRule1,
+      UorDiscordRead::uorDiscordReadRule2,
+      UorDiscordRead::uorDiscordReadRule3,
+      UorDiscordRead::uorDiscordReadRule4,
+      UorDiscordRead::uorDiscordReadRule5,
+      UorDiscordRead::uorDiscordReadRule6,
+      UorDiscordRead::uorDiscordReadRule7,
+      UorDiscordRead::uorDiscordReadVisibilityEveryone,
+      UorDiscordRead::uorDiscordReadVisibilityRestricted,
+      breaksInv005
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

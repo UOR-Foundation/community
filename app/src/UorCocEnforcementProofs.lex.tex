@@ -1,0 +1,400 @@
+\begin{lexlean}{UorCocEnforcementProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{UorCocEnforcement}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : UorCocEnforcement::UorCocEnforcementRequest],
+  result: Bool,
+  body: ((((((((project request record2) <? 5) && ((project request finding) <? 3)) && ((project request severity) <? 4)) && ((project request authority) <? 3)) && ((project request authority) =? (UorCocEnforcement::uorCocEnforcementAuthorityOther))) && ((project request record2) =? (UorCocEnforcement::uorCocEnforcementRecord2Clear))) && ((UorCocEnforcement::uorCocEnforcementJudge request) =? (UorCocEnforcement::uorCocEnforcementAnswerBanned)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : UorCocEnforcement::UorCocEnforcementRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorCocEnforcement::uorCocEnforcementAnswerBanned,
+      UorCocEnforcement::uorCocEnforcementAnswerClear,
+      UorCocEnforcement::uorCocEnforcementAnswerLimited,
+      UorCocEnforcement::uorCocEnforcementAnswerSuspended,
+      UorCocEnforcement::uorCocEnforcementAnswerWarned,
+      UorCocEnforcement::uorCocEnforcementAuthorityBoard,
+      UorCocEnforcement::uorCocEnforcementAuthorityModerators,
+      UorCocEnforcement::uorCocEnforcementAuthorityOther,
+      UorCocEnforcement::uorCocEnforcementFindingNone,
+      UorCocEnforcement::uorCocEnforcementFindingPending,
+      UorCocEnforcement::uorCocEnforcementFindingViolation,
+      UorCocEnforcement::uorCocEnforcementJudge,
+      UorCocEnforcement::uorCocEnforcementRecord2Banned,
+      UorCocEnforcement::uorCocEnforcementRecord2Clear,
+      UorCocEnforcement::uorCocEnforcementRecord2Limited,
+      UorCocEnforcement::uorCocEnforcementRecord2Suspended,
+      UorCocEnforcement::uorCocEnforcementRecord2Warned,
+      UorCocEnforcement::uorCocEnforcementRule1,
+      UorCocEnforcement::uorCocEnforcementRule10,
+      UorCocEnforcement::uorCocEnforcementRule11,
+      UorCocEnforcement::uorCocEnforcementRule2,
+      UorCocEnforcement::uorCocEnforcementRule3,
+      UorCocEnforcement::uorCocEnforcementRule4,
+      UorCocEnforcement::uorCocEnforcementRule5,
+      UorCocEnforcement::uorCocEnforcementRule6,
+      UorCocEnforcement::uorCocEnforcementRule7,
+      UorCocEnforcement::uorCocEnforcementRule8,
+      UorCocEnforcement::uorCocEnforcementRule9,
+      UorCocEnforcement::uorCocEnforcementSeverityMinor,
+      UorCocEnforcement::uorCocEnforcementSeverityModerate,
+      UorCocEnforcement::uorCocEnforcementSeveritySerious,
+      UorCocEnforcement::uorCocEnforcementSeveritySevere,
+      UorCocEnforcement::uorCocEnforcementStepBanned,
+      UorCocEnforcement::uorCocEnforcementStepClear,
+      UorCocEnforcement::uorCocEnforcementStepLimited,
+      UorCocEnforcement::uorCocEnforcementStepSuspended,
+      UorCocEnforcement::uorCocEnforcementStepWarned,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : UorCocEnforcement::UorCocEnforcementRequest],
+  result: Bool,
+  body: ((((((((project request record2) <? 5) && ((project request finding) <? 3)) && ((project request severity) <? 4)) && ((project request authority) <? 3)) && ((project request finding) =? (UorCocEnforcement::uorCocEnforcementFindingPending))) && ((project request record2) =? (UorCocEnforcement::uorCocEnforcementRecord2Clear))) && ((UorCocEnforcement::uorCocEnforcementJudge request) =? (UorCocEnforcement::uorCocEnforcementAnswerWarned)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : UorCocEnforcement::UorCocEnforcementRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorCocEnforcement::uorCocEnforcementAnswerBanned,
+      UorCocEnforcement::uorCocEnforcementAnswerClear,
+      UorCocEnforcement::uorCocEnforcementAnswerLimited,
+      UorCocEnforcement::uorCocEnforcementAnswerSuspended,
+      UorCocEnforcement::uorCocEnforcementAnswerWarned,
+      UorCocEnforcement::uorCocEnforcementAuthorityBoard,
+      UorCocEnforcement::uorCocEnforcementAuthorityModerators,
+      UorCocEnforcement::uorCocEnforcementAuthorityOther,
+      UorCocEnforcement::uorCocEnforcementFindingNone,
+      UorCocEnforcement::uorCocEnforcementFindingPending,
+      UorCocEnforcement::uorCocEnforcementFindingViolation,
+      UorCocEnforcement::uorCocEnforcementJudge,
+      UorCocEnforcement::uorCocEnforcementRecord2Banned,
+      UorCocEnforcement::uorCocEnforcementRecord2Clear,
+      UorCocEnforcement::uorCocEnforcementRecord2Limited,
+      UorCocEnforcement::uorCocEnforcementRecord2Suspended,
+      UorCocEnforcement::uorCocEnforcementRecord2Warned,
+      UorCocEnforcement::uorCocEnforcementRule1,
+      UorCocEnforcement::uorCocEnforcementRule10,
+      UorCocEnforcement::uorCocEnforcementRule11,
+      UorCocEnforcement::uorCocEnforcementRule2,
+      UorCocEnforcement::uorCocEnforcementRule3,
+      UorCocEnforcement::uorCocEnforcementRule4,
+      UorCocEnforcement::uorCocEnforcementRule5,
+      UorCocEnforcement::uorCocEnforcementRule6,
+      UorCocEnforcement::uorCocEnforcementRule7,
+      UorCocEnforcement::uorCocEnforcementRule8,
+      UorCocEnforcement::uorCocEnforcementRule9,
+      UorCocEnforcement::uorCocEnforcementSeverityMinor,
+      UorCocEnforcement::uorCocEnforcementSeverityModerate,
+      UorCocEnforcement::uorCocEnforcementSeveritySerious,
+      UorCocEnforcement::uorCocEnforcementSeveritySevere,
+      UorCocEnforcement::uorCocEnforcementStepBanned,
+      UorCocEnforcement::uorCocEnforcementStepClear,
+      UorCocEnforcement::uorCocEnforcementStepLimited,
+      UorCocEnforcement::uorCocEnforcementStepSuspended,
+      UorCocEnforcement::uorCocEnforcementStepWarned,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : UorCocEnforcement::UorCocEnforcementRequest],
+  result: Bool,
+  body: ((((((((project request record2) <? 5) && ((project request finding) <? 3)) && ((project request severity) <? 4)) && ((project request authority) <? 3)) && ((project request finding) =? (UorCocEnforcement::uorCocEnforcementFindingNone))) && ((project request record2) =? (UorCocEnforcement::uorCocEnforcementRecord2Warned))) && ((UorCocEnforcement::uorCocEnforcementJudge request) =? (UorCocEnforcement::uorCocEnforcementAnswerLimited)))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : UorCocEnforcement::UorCocEnforcementRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorCocEnforcement::uorCocEnforcementAnswerBanned,
+      UorCocEnforcement::uorCocEnforcementAnswerClear,
+      UorCocEnforcement::uorCocEnforcementAnswerLimited,
+      UorCocEnforcement::uorCocEnforcementAnswerSuspended,
+      UorCocEnforcement::uorCocEnforcementAnswerWarned,
+      UorCocEnforcement::uorCocEnforcementAuthorityBoard,
+      UorCocEnforcement::uorCocEnforcementAuthorityModerators,
+      UorCocEnforcement::uorCocEnforcementAuthorityOther,
+      UorCocEnforcement::uorCocEnforcementFindingNone,
+      UorCocEnforcement::uorCocEnforcementFindingPending,
+      UorCocEnforcement::uorCocEnforcementFindingViolation,
+      UorCocEnforcement::uorCocEnforcementJudge,
+      UorCocEnforcement::uorCocEnforcementRecord2Banned,
+      UorCocEnforcement::uorCocEnforcementRecord2Clear,
+      UorCocEnforcement::uorCocEnforcementRecord2Limited,
+      UorCocEnforcement::uorCocEnforcementRecord2Suspended,
+      UorCocEnforcement::uorCocEnforcementRecord2Warned,
+      UorCocEnforcement::uorCocEnforcementRule1,
+      UorCocEnforcement::uorCocEnforcementRule10,
+      UorCocEnforcement::uorCocEnforcementRule11,
+      UorCocEnforcement::uorCocEnforcementRule2,
+      UorCocEnforcement::uorCocEnforcementRule3,
+      UorCocEnforcement::uorCocEnforcementRule4,
+      UorCocEnforcement::uorCocEnforcementRule5,
+      UorCocEnforcement::uorCocEnforcementRule6,
+      UorCocEnforcement::uorCocEnforcementRule7,
+      UorCocEnforcement::uorCocEnforcementRule8,
+      UorCocEnforcement::uorCocEnforcementRule9,
+      UorCocEnforcement::uorCocEnforcementSeverityMinor,
+      UorCocEnforcement::uorCocEnforcementSeverityModerate,
+      UorCocEnforcement::uorCocEnforcementSeveritySerious,
+      UorCocEnforcement::uorCocEnforcementSeveritySevere,
+      UorCocEnforcement::uorCocEnforcementStepBanned,
+      UorCocEnforcement::uorCocEnforcementStepClear,
+      UorCocEnforcement::uorCocEnforcementStepLimited,
+      UorCocEnforcement::uorCocEnforcementStepSuspended,
+      UorCocEnforcement::uorCocEnforcementStepWarned,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : UorCocEnforcement::UorCocEnforcementRequest],
+  result: Bool,
+  body: (((((((project request record2) <? 5) && ((project request finding) <? 3)) && ((project request severity) <? 4)) && ((project request authority) <? 3)) && ((project request record2) =? (UorCocEnforcement::uorCocEnforcementRecord2Limited))) && ((UorCocEnforcement::uorCocEnforcementJudge request) =? (UorCocEnforcement::uorCocEnforcementAnswerWarned)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : UorCocEnforcement::UorCocEnforcementRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorCocEnforcement::uorCocEnforcementAnswerBanned,
+      UorCocEnforcement::uorCocEnforcementAnswerClear,
+      UorCocEnforcement::uorCocEnforcementAnswerLimited,
+      UorCocEnforcement::uorCocEnforcementAnswerSuspended,
+      UorCocEnforcement::uorCocEnforcementAnswerWarned,
+      UorCocEnforcement::uorCocEnforcementAuthorityBoard,
+      UorCocEnforcement::uorCocEnforcementAuthorityModerators,
+      UorCocEnforcement::uorCocEnforcementAuthorityOther,
+      UorCocEnforcement::uorCocEnforcementFindingNone,
+      UorCocEnforcement::uorCocEnforcementFindingPending,
+      UorCocEnforcement::uorCocEnforcementFindingViolation,
+      UorCocEnforcement::uorCocEnforcementJudge,
+      UorCocEnforcement::uorCocEnforcementRecord2Banned,
+      UorCocEnforcement::uorCocEnforcementRecord2Clear,
+      UorCocEnforcement::uorCocEnforcementRecord2Limited,
+      UorCocEnforcement::uorCocEnforcementRecord2Suspended,
+      UorCocEnforcement::uorCocEnforcementRecord2Warned,
+      UorCocEnforcement::uorCocEnforcementRule1,
+      UorCocEnforcement::uorCocEnforcementRule10,
+      UorCocEnforcement::uorCocEnforcementRule11,
+      UorCocEnforcement::uorCocEnforcementRule2,
+      UorCocEnforcement::uorCocEnforcementRule3,
+      UorCocEnforcement::uorCocEnforcementRule4,
+      UorCocEnforcement::uorCocEnforcementRule5,
+      UorCocEnforcement::uorCocEnforcementRule6,
+      UorCocEnforcement::uorCocEnforcementRule7,
+      UorCocEnforcement::uorCocEnforcementRule8,
+      UorCocEnforcement::uorCocEnforcementRule9,
+      UorCocEnforcement::uorCocEnforcementSeverityMinor,
+      UorCocEnforcement::uorCocEnforcementSeverityModerate,
+      UorCocEnforcement::uorCocEnforcementSeveritySerious,
+      UorCocEnforcement::uorCocEnforcementSeveritySevere,
+      UorCocEnforcement::uorCocEnforcementStepBanned,
+      UorCocEnforcement::uorCocEnforcementStepClear,
+      UorCocEnforcement::uorCocEnforcementStepLimited,
+      UorCocEnforcement::uorCocEnforcementStepSuspended,
+      UorCocEnforcement::uorCocEnforcementStepWarned,
+      breaksInv004
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv005,
+  parameters: [request : UorCocEnforcement::UorCocEnforcementRequest],
+  result: Bool,
+  body: (((((((project request record2) <? 5) && ((project request finding) <? 3)) && ((project request severity) <? 4)) && ((project request authority) <? 3)) && ((project request record2) =? (UorCocEnforcement::uorCocEnforcementRecord2Suspended))) && ((UorCocEnforcement::uorCocEnforcementJudge request) =? (UorCocEnforcement::uorCocEnforcementAnswerClear)))
+}
+
+theorem{
+  name: inv005Holds,
+  parameters: [request : UorCocEnforcement::UorCocEnforcementRequest],
+  statement: ((breaksInv005 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorCocEnforcement::uorCocEnforcementAnswerBanned,
+      UorCocEnforcement::uorCocEnforcementAnswerClear,
+      UorCocEnforcement::uorCocEnforcementAnswerLimited,
+      UorCocEnforcement::uorCocEnforcementAnswerSuspended,
+      UorCocEnforcement::uorCocEnforcementAnswerWarned,
+      UorCocEnforcement::uorCocEnforcementAuthorityBoard,
+      UorCocEnforcement::uorCocEnforcementAuthorityModerators,
+      UorCocEnforcement::uorCocEnforcementAuthorityOther,
+      UorCocEnforcement::uorCocEnforcementFindingNone,
+      UorCocEnforcement::uorCocEnforcementFindingPending,
+      UorCocEnforcement::uorCocEnforcementFindingViolation,
+      UorCocEnforcement::uorCocEnforcementJudge,
+      UorCocEnforcement::uorCocEnforcementRecord2Banned,
+      UorCocEnforcement::uorCocEnforcementRecord2Clear,
+      UorCocEnforcement::uorCocEnforcementRecord2Limited,
+      UorCocEnforcement::uorCocEnforcementRecord2Suspended,
+      UorCocEnforcement::uorCocEnforcementRecord2Warned,
+      UorCocEnforcement::uorCocEnforcementRule1,
+      UorCocEnforcement::uorCocEnforcementRule10,
+      UorCocEnforcement::uorCocEnforcementRule11,
+      UorCocEnforcement::uorCocEnforcementRule2,
+      UorCocEnforcement::uorCocEnforcementRule3,
+      UorCocEnforcement::uorCocEnforcementRule4,
+      UorCocEnforcement::uorCocEnforcementRule5,
+      UorCocEnforcement::uorCocEnforcementRule6,
+      UorCocEnforcement::uorCocEnforcementRule7,
+      UorCocEnforcement::uorCocEnforcementRule8,
+      UorCocEnforcement::uorCocEnforcementRule9,
+      UorCocEnforcement::uorCocEnforcementSeverityMinor,
+      UorCocEnforcement::uorCocEnforcementSeverityModerate,
+      UorCocEnforcement::uorCocEnforcementSeveritySerious,
+      UorCocEnforcement::uorCocEnforcementSeveritySevere,
+      UorCocEnforcement::uorCocEnforcementStepBanned,
+      UorCocEnforcement::uorCocEnforcementStepClear,
+      UorCocEnforcement::uorCocEnforcementStepLimited,
+      UorCocEnforcement::uorCocEnforcementStepSuspended,
+      UorCocEnforcement::uorCocEnforcementStepWarned,
+      breaksInv005
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv006,
+  parameters: [request : UorCocEnforcement::UorCocEnforcementRequest],
+  result: Bool,
+  body: (((((((((project request record2) <? 5) && ((project request finding) <? 3)) && ((project request severity) <? 4)) && ((project request authority) <? 3)) && ((project request finding) =? (UorCocEnforcement::uorCocEnforcementFindingViolation))) && ((project request authority) =? (UorCocEnforcement::uorCocEnforcementAuthorityModerators))) && ((project request severity) =? (UorCocEnforcement::uorCocEnforcementSeveritySevere))) && (not ((UorCocEnforcement::uorCocEnforcementJudge request) =? (UorCocEnforcement::uorCocEnforcementAnswerBanned))))
+}
+
+theorem{
+  name: inv006Holds,
+  parameters: [request : UorCocEnforcement::UorCocEnforcementRequest],
+  statement: ((breaksInv006 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorCocEnforcement::uorCocEnforcementAnswerBanned,
+      UorCocEnforcement::uorCocEnforcementAnswerClear,
+      UorCocEnforcement::uorCocEnforcementAnswerLimited,
+      UorCocEnforcement::uorCocEnforcementAnswerSuspended,
+      UorCocEnforcement::uorCocEnforcementAnswerWarned,
+      UorCocEnforcement::uorCocEnforcementAuthorityBoard,
+      UorCocEnforcement::uorCocEnforcementAuthorityModerators,
+      UorCocEnforcement::uorCocEnforcementAuthorityOther,
+      UorCocEnforcement::uorCocEnforcementFindingNone,
+      UorCocEnforcement::uorCocEnforcementFindingPending,
+      UorCocEnforcement::uorCocEnforcementFindingViolation,
+      UorCocEnforcement::uorCocEnforcementJudge,
+      UorCocEnforcement::uorCocEnforcementRecord2Banned,
+      UorCocEnforcement::uorCocEnforcementRecord2Clear,
+      UorCocEnforcement::uorCocEnforcementRecord2Limited,
+      UorCocEnforcement::uorCocEnforcementRecord2Suspended,
+      UorCocEnforcement::uorCocEnforcementRecord2Warned,
+      UorCocEnforcement::uorCocEnforcementRule1,
+      UorCocEnforcement::uorCocEnforcementRule10,
+      UorCocEnforcement::uorCocEnforcementRule11,
+      UorCocEnforcement::uorCocEnforcementRule2,
+      UorCocEnforcement::uorCocEnforcementRule3,
+      UorCocEnforcement::uorCocEnforcementRule4,
+      UorCocEnforcement::uorCocEnforcementRule5,
+      UorCocEnforcement::uorCocEnforcementRule6,
+      UorCocEnforcement::uorCocEnforcementRule7,
+      UorCocEnforcement::uorCocEnforcementRule8,
+      UorCocEnforcement::uorCocEnforcementRule9,
+      UorCocEnforcement::uorCocEnforcementSeverityMinor,
+      UorCocEnforcement::uorCocEnforcementSeverityModerate,
+      UorCocEnforcement::uorCocEnforcementSeveritySerious,
+      UorCocEnforcement::uorCocEnforcementSeveritySevere,
+      UorCocEnforcement::uorCocEnforcementStepBanned,
+      UorCocEnforcement::uorCocEnforcementStepClear,
+      UorCocEnforcement::uorCocEnforcementStepLimited,
+      UorCocEnforcement::uorCocEnforcementStepSuspended,
+      UorCocEnforcement::uorCocEnforcementStepWarned,
+      breaksInv006
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv007,
+  parameters: [request : UorCocEnforcement::UorCocEnforcementRequest],
+  result: Bool,
+  body: (((((((project request record2) <? 5) && ((project request finding) <? 3)) && ((project request severity) <? 4)) && ((project request authority) <? 3)) && ((project request record2) =? (UorCocEnforcement::uorCocEnforcementRecord2Banned))) && (not ((UorCocEnforcement::uorCocEnforcementJudge request) =? (UorCocEnforcement::uorCocEnforcementAnswerBanned))))
+}
+
+theorem{
+  name: inv007Holds,
+  parameters: [request : UorCocEnforcement::UorCocEnforcementRequest],
+  statement: ((breaksInv007 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorCocEnforcement::uorCocEnforcementAnswerBanned,
+      UorCocEnforcement::uorCocEnforcementAnswerClear,
+      UorCocEnforcement::uorCocEnforcementAnswerLimited,
+      UorCocEnforcement::uorCocEnforcementAnswerSuspended,
+      UorCocEnforcement::uorCocEnforcementAnswerWarned,
+      UorCocEnforcement::uorCocEnforcementAuthorityBoard,
+      UorCocEnforcement::uorCocEnforcementAuthorityModerators,
+      UorCocEnforcement::uorCocEnforcementAuthorityOther,
+      UorCocEnforcement::uorCocEnforcementFindingNone,
+      UorCocEnforcement::uorCocEnforcementFindingPending,
+      UorCocEnforcement::uorCocEnforcementFindingViolation,
+      UorCocEnforcement::uorCocEnforcementJudge,
+      UorCocEnforcement::uorCocEnforcementRecord2Banned,
+      UorCocEnforcement::uorCocEnforcementRecord2Clear,
+      UorCocEnforcement::uorCocEnforcementRecord2Limited,
+      UorCocEnforcement::uorCocEnforcementRecord2Suspended,
+      UorCocEnforcement::uorCocEnforcementRecord2Warned,
+      UorCocEnforcement::uorCocEnforcementRule1,
+      UorCocEnforcement::uorCocEnforcementRule10,
+      UorCocEnforcement::uorCocEnforcementRule11,
+      UorCocEnforcement::uorCocEnforcementRule2,
+      UorCocEnforcement::uorCocEnforcementRule3,
+      UorCocEnforcement::uorCocEnforcementRule4,
+      UorCocEnforcement::uorCocEnforcementRule5,
+      UorCocEnforcement::uorCocEnforcementRule6,
+      UorCocEnforcement::uorCocEnforcementRule7,
+      UorCocEnforcement::uorCocEnforcementRule8,
+      UorCocEnforcement::uorCocEnforcementRule9,
+      UorCocEnforcement::uorCocEnforcementSeverityMinor,
+      UorCocEnforcement::uorCocEnforcementSeverityModerate,
+      UorCocEnforcement::uorCocEnforcementSeveritySerious,
+      UorCocEnforcement::uorCocEnforcementSeveritySevere,
+      UorCocEnforcement::uorCocEnforcementStepBanned,
+      UorCocEnforcement::uorCocEnforcementStepClear,
+      UorCocEnforcement::uorCocEnforcementStepLimited,
+      UorCocEnforcement::uorCocEnforcementStepSuspended,
+      UorCocEnforcement::uorCocEnforcementStepWarned,
+      breaksInv007
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

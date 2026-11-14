@@ -1,17 +1,37 @@
 {
-  "name": "TOC project lifecycle",
-  "shortName": "TOC",
+  "name": "UOR Foundation community decisions",
+  "shortName": "UOR",
   "live": "https://uor-foundation.github.io/community/",
-  "purpose": "Give the next lifecycle stage of a UOR Foundation project from its stage now, the application before the TOC, whether a quorum met, the TOC's recorded vote, whether the stage's evidence is complete and how many days the public comment period ran. Send stage, application, quorum, vote, evidence or comment, separated by spaces; it answers proposed, sandbox, incubation, graduated or archived, and invalid request for anything else.",
-  "inputLabel": "Request: stage application quorum vote evidence comment",
-  "placeholder": "proposed sandbox met majority complete 0",
+  "purpose": "Answer each decision the UOR Foundation's governance documents and the CHAOSS metrics models ask of its community, by the app that models it, with every stated property proved in Lean. Send the name of one of chaoss-ai-alignment-community-aligned-training-feedback, chaoss-business-readiness-of-an-open-source-project, chaoss-collaboration-development-index, chaoss-community-activity, chaoss-community-governed-ai-use-in-open-communities, chaoss-community-service-and-support, chaoss-community-welcomingness, chaoss-dei-event-badging, chaoss-development-responsiveness, chaoss-funding, chaoss-oss-project-viability-community, chaoss-oss-project-viability-compliance-security, chaoss-oss-project-viability-governance, chaoss-oss-project-viability-strategy, chaoss-project-awareness, chaoss-project-engagement, chaoss-project-viability-starter, chaoss-safety, chaoss-starter-project-health, uor-coc-enforcement, uor-contribution-attribution, uor-discord-read, uor-observation-admission, uor-repo-files, uor-repo-naming, uor-repo-protection, uor-repo-standards or uor-toc-lifecycle, a space, then that app's fields; it answers as that app does, and invalid request for anything else.",
+  "inputLabel": "Request: an app, then its fields",
+  "placeholder": "chaoss-ai-alignment-community-aligned-training-feedback 4 0",
   "submitLabel": "Decide",
   "outputLabel": "Answer",
   "answers": {
     "positive": [
-      "proposed"
+      "open"
     ],
     "negative": [
+      "complete",
+      "unmeasured",
+      "partial",
+      "clear",
+      "warned",
+      "limited",
+      "suspended",
+      "banned",
+      "permit",
+      "deny",
+      "not-applicable",
+      "indeterminate",
+      "missing-file",
+      "advisory",
+      "conformant",
+      "nonconforming",
+      "weak-protection",
+      "untagged",
+      "unversioned",
+      "proposed",
       "sandbox",
       "incubation",
       "graduated",
@@ -23,101 +43,1410 @@
     "headline": "Says conformant exactly when every policy file matches its lock.",
     "detail": "Each of the six universal policy files is compared with the digest the lock records, and any file that drifted is named."
   },
-  "claim": "UT-01: the app never answers graduated when quorum is unmet and stage is incubation. UT-02: the app never answers graduated when vote is majority and stage is incubation. UT-03: the app never answers graduated when comment is below 14 and stage is incubation. UT-04: the app never answers incubation when stage is proposed. UT-05: the app never answers graduated when stage is sandbox. UT-06: the app never answers sandbox when evidence is partial and stage is proposed. UT-07: the app always answers graduated when stage is graduated and application is not archival. UT-08: the app always answers archived when stage is archived.",
+  "claim": "CAACATF-01: the chaoss-ai-alignment-community-aligned-training-feedback app never answers complete when refused is at least 1. CAACATF-02: the chaoss-ai-alignment-community-aligned-training-feedback app never answers complete when admitted is below 4. CAACATF-03: the chaoss-ai-alignment-community-aligned-training-feedback app always answers complete when refused equals 0 and admitted is at least 4. CAACATF-04: the chaoss-ai-alignment-community-aligned-training-feedback app never answers unmeasured when admitted is at least 1 and refused equals 0. CBROAOSP-01: the chaoss-business-readiness-of-an-open-source-project app never answers complete when refused is at least 1. CBROAOSP-02: the chaoss-business-readiness-of-an-open-source-project app never answers complete when admitted is below 8. CBROAOSP-03: the chaoss-business-readiness-of-an-open-source-project app always answers complete when refused equals 0 and admitted is at least 8. CBROAOSP-04: the chaoss-business-readiness-of-an-open-source-project app never answers unmeasured when admitted is at least 1 and refused equals 0. CCDI-01: the chaoss-collaboration-development-index app never answers complete when refused is at least 1. CCDI-02: the chaoss-collaboration-development-index app never answers complete when admitted is below 5. CCDI-03: the chaoss-collaboration-development-index app always answers complete when refused equals 0 and admitted is at least 5. CCDI-04: the chaoss-collaboration-development-index app never answers unmeasured when admitted is at least 1 and refused equals 0. CCA-01: the chaoss-community-activity app never answers complete when refused is at least 1. CCA-02: the chaoss-community-activity app never answers complete when admitted is below 11. CCA-03: the chaoss-community-activity app always answers complete when refused equals 0 and admitted is at least 11. CCA-04: the chaoss-community-activity app never answers unmeasured when admitted is at least 1 and refused equals 0. CCGAUIOC-01: the chaoss-community-governed-ai-use-in-open-communities app never answers complete when refused is at least 1. CCGAUIOC-02: the chaoss-community-governed-ai-use-in-open-communities app never answers complete when admitted is below 5. CCGAUIOC-03: the chaoss-community-governed-ai-use-in-open-communities app always answers complete when refused equals 0 and admitted is at least 5. CCGAUIOC-04: the chaoss-community-governed-ai-use-in-open-communities app never answers unmeasured when admitted is at least 1 and refused equals 0. CCSAS-01: the chaoss-community-service-and-support app never answers complete when refused is at least 1. CCSAS-02: the chaoss-community-service-and-support app never answers complete when admitted is below 9. CCSAS-03: the chaoss-community-service-and-support app always answers complete when refused equals 0 and admitted is at least 9. CCSAS-04: the chaoss-community-service-and-support app never answers unmeasured when admitted is at least 1 and refused equals 0. CCW-01: the chaoss-community-welcomingness app never answers complete when refused is at least 1. CCW-02: the chaoss-community-welcomingness app never answers complete when admitted is below 14. CCW-03: the chaoss-community-welcomingness app always answers complete when refused equals 0 and admitted is at least 14. CCW-04: the chaoss-community-welcomingness app never answers unmeasured when admitted is at least 1 and refused equals 0. CDEB-01: the chaoss-dei-event-badging app never answers complete when refused is at least 1. CDEB-02: the chaoss-dei-event-badging app never answers complete when admitted is below 6. CDEB-03: the chaoss-dei-event-badging app always answers complete when refused equals 0 and admitted is at least 6. CDEB-04: the chaoss-dei-event-badging app never answers unmeasured when admitted is at least 1 and refused equals 0. CDR-01: the chaoss-development-responsiveness app never answers complete when refused is at least 1. CDR-02: the chaoss-development-responsiveness app never answers complete when admitted is below 4. CDR-03: the chaoss-development-responsiveness app always answers complete when refused equals 0 and admitted is at least 4. CDR-04: the chaoss-development-responsiveness app never answers unmeasured when admitted is at least 1 and refused equals 0. CF-01: the chaoss-funding app never answers complete when refused is at least 1. CF-02: the chaoss-funding app never answers complete when admitted is below 5. CF-03: the chaoss-funding app always answers complete when refused equals 0 and admitted is at least 5. CF-04: the chaoss-funding app never answers unmeasured when admitted is at least 1 and refused equals 0. COPVC-01: the chaoss-oss-project-viability-community app never answers complete when refused is at least 1. COPVC-02: the chaoss-oss-project-viability-community app never answers complete when admitted is below 8. COPVC-03: the chaoss-oss-project-viability-community app always answers complete when refused equals 0 and admitted is at least 8. COPVC-04: the chaoss-oss-project-viability-community app never answers unmeasured when admitted is at least 1 and refused equals 0. COPVCS-01: the chaoss-oss-project-viability-compliance-security app never answers complete when refused is at least 1. COPVCS-02: the chaoss-oss-project-viability-compliance-security app never answers complete when admitted is below 7. COPVCS-03: the chaoss-oss-project-viability-compliance-security app always answers complete when refused equals 0 and admitted is at least 7. COPVCS-04: the chaoss-oss-project-viability-compliance-security app never answers unmeasured when admitted is at least 1 and refused equals 0. COPVG-01: the chaoss-oss-project-viability-governance app never answers complete when refused is at least 1. COPVG-02: the chaoss-oss-project-viability-governance app never answers complete when admitted is below 8. COPVG-03: the chaoss-oss-project-viability-governance app always answers complete when refused equals 0 and admitted is at least 8. COPVG-04: the chaoss-oss-project-viability-governance app never answers unmeasured when admitted is at least 1 and refused equals 0. COPVS-01: the chaoss-oss-project-viability-strategy app never answers complete when refused is at least 1. COPVS-02: the chaoss-oss-project-viability-strategy app never answers complete when admitted is below 5. COPVS-03: the chaoss-oss-project-viability-strategy app always answers complete when refused equals 0 and admitted is at least 5. COPVS-04: the chaoss-oss-project-viability-strategy app never answers unmeasured when admitted is at least 1 and refused equals 0. CPA-01: the chaoss-project-awareness app never answers complete when refused is at least 1. CPA-02: the chaoss-project-awareness app never answers complete when admitted is below 5. CPA-03: the chaoss-project-awareness app always answers complete when refused equals 0 and admitted is at least 5. CPA-04: the chaoss-project-awareness app never answers unmeasured when admitted is at least 1 and refused equals 0. CPE-01: the chaoss-project-engagement app never answers complete when refused is at least 1. CPE-02: the chaoss-project-engagement app never answers complete when admitted is below 6. CPE-03: the chaoss-project-engagement app always answers complete when refused equals 0 and admitted is at least 6. CPE-04: the chaoss-project-engagement app never answers unmeasured when admitted is at least 1 and refused equals 0. CPVS-01: the chaoss-project-viability-starter app never answers complete when refused is at least 1. CPVS-02: the chaoss-project-viability-starter app never answers complete when admitted is below 6. CPVS-03: the chaoss-project-viability-starter app always answers complete when refused equals 0 and admitted is at least 6. CPVS-04: the chaoss-project-viability-starter app never answers unmeasured when admitted is at least 1 and refused equals 0. CS-01: the chaoss-safety app never answers complete when refused is at least 1. CS-02: the chaoss-safety app never answers complete when admitted is below 6. CS-03: the chaoss-safety app always answers complete when refused equals 0 and admitted is at least 6. CS-04: the chaoss-safety app never answers unmeasured when admitted is at least 1 and refused equals 0. CSPH-01: the chaoss-starter-project-health app never answers complete when refused is at least 1. CSPH-02: the chaoss-starter-project-health app never answers complete when admitted is below 4. CSPH-03: the chaoss-starter-project-health app always answers complete when refused equals 0 and admitted is at least 4. CSPH-04: the chaoss-starter-project-health app never answers unmeasured when admitted is at least 1 and refused equals 0. UCE-01: the uor-coc-enforcement app never answers banned when authority is other and record is clear. UCE-02: the uor-coc-enforcement app never answers warned when finding is pending and record is clear. UCE-03: the uor-coc-enforcement app never answers limited when finding is none and record is warned. UCE-04: the uor-coc-enforcement app never answers warned when record is limited. UCE-05: the uor-coc-enforcement app never answers clear when record is suspended. UCE-06: the uor-coc-enforcement app always answers banned when finding is violation and authority is moderators and severity is severe. UCE-07: the uor-coc-enforcement app always answers banned when record is banned. UCA-01: the uor-contribution-attribution app never answers permit when agent is software and delegation is absent. UCA-02: the uor-contribution-attribution app never answers permit when agent is software and trail is missing. UCA-03: the uor-contribution-attribution app never answers permit when agent is software and principal is organization. UCA-04: the uor-contribution-attribution app never answers permit when identity is unresolved. UCA-05: the uor-contribution-attribution app always answers permit when agent is person and identity is resolved. UDR-01: the uor-discord-read app never answers permit when kind is dm. UDR-02: the uor-discord-read app never answers permit when visibility is restricted. UDR-03: the uor-discord-read app never answers permit when label is not public. UDR-04: the uor-discord-read app never answers permit when install is other. UDR-05: the uor-discord-read app never answers permit when intent is missing. UOA-01: the uor-observation-admission app never answers permit when metric is unreleased. UOA-02: the uor-observation-admission app never answers permit when oracle is not covers. UOA-03: the uor-observation-admission app never answers permit when source is unpinned. UOA-04: the uor-observation-admission app never answers permit when replay is not reproduced. UOA-05: the uor-observation-admission app never answers permit when collection is deny. UOA-06: the uor-observation-admission app never answers permit when collection is outside. UOA-07: the uor-observation-admission app never answers permit when attribution is deny. UOA-08: the uor-observation-admission app always answers deny when metric is released and collection is deny. URF-01: the uor-repo-files app never answers conformant when readme is missing. URF-02: the uor-repo-files app always answers missing-file when readme is present and license is missing. URF-03: the uor-repo-files app never answers conformant when tier is t1 and security is missing. URF-04: the uor-repo-files app never answers advisory when tier is t4. URN-01: the uor-repo-naming app never answers conformant when case is other. URN-02: the uor-repo-naming app never answers conformant when version is present. URN-03: the uor-repo-naming app never answers conformant when commits is other. URN-04: the uor-repo-naming app never answers conformant when domain is incomplete. URN-05: the uor-repo-naming app never answers conformant when pattern is other. URN-06: the uor-repo-naming app always answers advisory when case is lowercase and version is absent and branches is conforming and commits is conventional and domain is complete and technology is complete and pattern is other. URP-01: the uor-repo-protection app never answers conformant when forcepush is allowed. URP-02: the uor-repo-protection app never answers conformant when tier is t1 and reviews is below 2. URP-03: the uor-repo-protection app never answers conformant when tier is t2 and checks is optional. URP-04: the uor-repo-protection app always answers conformant when tier is t4 and forcepush is blocked. URS-01: the uor-repo-standards app never answers conformant when tiertags equals 0. URS-02: the uor-repo-standards app never answers conformant when statustags is above 1. URS-03: the uor-repo-standards app never answers conformant when tier is t1 and versioning is other. URS-04: the uor-repo-standards app never answers unversioned when tier is t3. UTL-01: the uor-toc-lifecycle app never answers graduated when quorum is unmet and stage is incubation. UTL-02: the uor-toc-lifecycle app never answers graduated when vote is majority and stage is incubation. UTL-03: the uor-toc-lifecycle app never answers graduated when comment is below 14 and stage is incubation. UTL-04: the uor-toc-lifecycle app never answers incubation when stage is proposed. UTL-05: the uor-toc-lifecycle app never answers graduated when stage is sandbox. UTL-06: the uor-toc-lifecycle app never answers sandbox when evidence is partial and stage is proposed. UTL-07: the uor-toc-lifecycle app always answers graduated when stage is graduated and application is not archival. UTL-08: the uor-toc-lifecycle app always answers archived when stage is archived.",
   "proposition": {
-    "name": "judge",
-    "text": "judge request :=\n  stage is archived → archived\n  stage is proposed and application is sandbox and quorum is met and vote is not none and vote is not rejected and evidence is complete → sandbox\n  stage is sandbox and application is incubation and quorum is met and vote is not none and vote is not rejected and evidence is complete → incubation\n  stage is incubation and application is graduation and quorum is met and vote is twothirds and evidence is complete and comment is at least 14 → graduated\n  stage is not proposed and application is archival and quorum is met and vote is not none and vote is not rejected and evidence is complete → archived\n  stage is sandbox → sandbox\n  stage is incubation → incubation\n  stage is graduated → graduated\n  otherwise → proposed",
-    "plain": "Give the next lifecycle stage of a UOR Foundation project from its stage now, the application before the TOC, whether a quorum met, the TOC's recorded vote, whether the stage's evidence is complete and how many days the public comment period ran."
+    "name": "dispatch",
+    "text": "chaoss-ai-alignment-community-aligned-training-feedback request := ChaossAiAlignmentCommunityAlignedTrainingFeedback.judge request\nchaoss-business-readiness-of-an-open-source-project request := ChaossBusinessReadinessOfAnOpenSourceProject.judge request\nchaoss-collaboration-development-index request := ChaossCollaborationDevelopmentIndex.judge request\nchaoss-community-activity request := ChaossCommunityActivity.judge request\nchaoss-community-governed-ai-use-in-open-communities request := ChaossCommunityGovernedAiUseInOpenCommunities.judge request\nchaoss-community-service-and-support request := ChaossCommunityServiceAndSupport.judge request\nchaoss-community-welcomingness request := ChaossCommunityWelcomingness.judge request\nchaoss-dei-event-badging request := ChaossDeiEventBadging.judge request\nchaoss-development-responsiveness request := ChaossDevelopmentResponsiveness.judge request\nchaoss-funding request := ChaossFunding.judge request\nchaoss-oss-project-viability-community request := ChaossOssProjectViabilityCommunity.judge request\nchaoss-oss-project-viability-compliance-security request := ChaossOssProjectViabilityComplianceSecurity.judge request\nchaoss-oss-project-viability-governance request := ChaossOssProjectViabilityGovernance.judge request\nchaoss-oss-project-viability-strategy request := ChaossOssProjectViabilityStrategy.judge request\nchaoss-project-awareness request := ChaossProjectAwareness.judge request\nchaoss-project-engagement request := ChaossProjectEngagement.judge request\nchaoss-project-viability-starter request := ChaossProjectViabilityStarter.judge request\nchaoss-safety request := ChaossSafety.judge request\nchaoss-starter-project-health request := ChaossStarterProjectHealth.judge request\nuor-coc-enforcement request := UorCocEnforcement.judge request\nuor-contribution-attribution request := UorContributionAttribution.judge request\nuor-discord-read request := UorDiscordRead.judge request\nuor-observation-admission request := UorObservationAdmission.judge request\nuor-repo-files request := UorRepoFiles.judge request\nuor-repo-naming request := UorRepoNaming.judge request\nuor-repo-protection request := UorRepoProtection.judge request\nuor-repo-standards request := UorRepoStandards.judge request\nuor-toc-lifecycle request := UorTocLifecycle.judge request",
+    "plain": "Answer each decision the UOR Foundation's governance documents and the CHAOSS metrics models ask of its community, by the app that models it, with every stated property proved in Lean."
   },
   "theorems": [
     {
       "name": "inv001Holds",
-      "statement": "no request meets breaksInv001: the app never answers graduated when quorum is unmet and stage is incubation",
-      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "statement": "no request meets breaksInv001: the chaoss-ai-alignment-community-aligned-training-feedback app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossAiAlignmentCommunityAlignedTrainingFeedbackProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-ai-alignment-community-aligned-training-feedback app never answers complete when admitted is below 4",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossAiAlignmentCommunityAlignedTrainingFeedbackProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-ai-alignment-community-aligned-training-feedback app always answers complete when refused equals 0 and admitted is at least 4",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossAiAlignmentCommunityAlignedTrainingFeedbackProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-ai-alignment-community-aligned-training-feedback app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossAiAlignmentCommunityAlignedTrainingFeedbackProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-business-readiness-of-an-open-source-project app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossBusinessReadinessOfAnOpenSourceProjectProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-business-readiness-of-an-open-source-project app never answers complete when admitted is below 8",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossBusinessReadinessOfAnOpenSourceProjectProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-business-readiness-of-an-open-source-project app always answers complete when refused equals 0 and admitted is at least 8",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossBusinessReadinessOfAnOpenSourceProjectProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-business-readiness-of-an-open-source-project app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossBusinessReadinessOfAnOpenSourceProjectProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-collaboration-development-index app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCollaborationDevelopmentIndexProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-collaboration-development-index app never answers complete when admitted is below 5",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCollaborationDevelopmentIndexProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-collaboration-development-index app always answers complete when refused equals 0 and admitted is at least 5",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCollaborationDevelopmentIndexProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-collaboration-development-index app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCollaborationDevelopmentIndexProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-community-activity app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityActivityProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-community-activity app never answers complete when admitted is below 11",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityActivityProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-community-activity app always answers complete when refused equals 0 and admitted is at least 11",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityActivityProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-community-activity app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityActivityProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-community-governed-ai-use-in-open-communities app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityGovernedAiUseInOpenCommunitiesProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-community-governed-ai-use-in-open-communities app never answers complete when admitted is below 5",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityGovernedAiUseInOpenCommunitiesProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-community-governed-ai-use-in-open-communities app always answers complete when refused equals 0 and admitted is at least 5",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityGovernedAiUseInOpenCommunitiesProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-community-governed-ai-use-in-open-communities app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityGovernedAiUseInOpenCommunitiesProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-community-service-and-support app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityServiceAndSupportProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-community-service-and-support app never answers complete when admitted is below 9",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityServiceAndSupportProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-community-service-and-support app always answers complete when refused equals 0 and admitted is at least 9",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityServiceAndSupportProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-community-service-and-support app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityServiceAndSupportProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-community-welcomingness app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityWelcomingnessProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-community-welcomingness app never answers complete when admitted is below 14",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityWelcomingnessProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-community-welcomingness app always answers complete when refused equals 0 and admitted is at least 14",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityWelcomingnessProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-community-welcomingness app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossCommunityWelcomingnessProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-dei-event-badging app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossDeiEventBadgingProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-dei-event-badging app never answers complete when admitted is below 6",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossDeiEventBadgingProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-dei-event-badging app always answers complete when refused equals 0 and admitted is at least 6",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossDeiEventBadgingProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-dei-event-badging app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossDeiEventBadgingProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-development-responsiveness app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossDevelopmentResponsivenessProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-development-responsiveness app never answers complete when admitted is below 4",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossDevelopmentResponsivenessProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-development-responsiveness app always answers complete when refused equals 0 and admitted is at least 4",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossDevelopmentResponsivenessProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-development-responsiveness app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossDevelopmentResponsivenessProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-funding app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossFundingProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-funding app never answers complete when admitted is below 5",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossFundingProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-funding app always answers complete when refused equals 0 and admitted is at least 5",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossFundingProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-funding app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossFundingProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-oss-project-viability-community app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityCommunityProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-oss-project-viability-community app never answers complete when admitted is below 8",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityCommunityProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-oss-project-viability-community app always answers complete when refused equals 0 and admitted is at least 8",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityCommunityProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-oss-project-viability-community app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityCommunityProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-oss-project-viability-compliance-security app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityComplianceSecurityProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-oss-project-viability-compliance-security app never answers complete when admitted is below 7",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityComplianceSecurityProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-oss-project-viability-compliance-security app always answers complete when refused equals 0 and admitted is at least 7",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityComplianceSecurityProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-oss-project-viability-compliance-security app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityComplianceSecurityProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-oss-project-viability-governance app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityGovernanceProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-oss-project-viability-governance app never answers complete when admitted is below 8",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityGovernanceProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-oss-project-viability-governance app always answers complete when refused equals 0 and admitted is at least 8",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityGovernanceProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-oss-project-viability-governance app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityGovernanceProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-oss-project-viability-strategy app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityStrategyProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-oss-project-viability-strategy app never answers complete when admitted is below 5",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityStrategyProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-oss-project-viability-strategy app always answers complete when refused equals 0 and admitted is at least 5",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityStrategyProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-oss-project-viability-strategy app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossOssProjectViabilityStrategyProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-project-awareness app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossProjectAwarenessProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-project-awareness app never answers complete when admitted is below 5",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossProjectAwarenessProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-project-awareness app always answers complete when refused equals 0 and admitted is at least 5",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossProjectAwarenessProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-project-awareness app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossProjectAwarenessProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-project-engagement app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossProjectEngagementProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-project-engagement app never answers complete when admitted is below 6",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossProjectEngagementProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-project-engagement app always answers complete when refused equals 0 and admitted is at least 6",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossProjectEngagementProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-project-engagement app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossProjectEngagementProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-project-viability-starter app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossProjectViabilityStarterProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-project-viability-starter app never answers complete when admitted is below 6",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossProjectViabilityStarterProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-project-viability-starter app always answers complete when refused equals 0 and admitted is at least 6",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossProjectViabilityStarterProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-project-viability-starter app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossProjectViabilityStarterProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-safety app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossSafetyProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-safety app never answers complete when admitted is below 6",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossSafetyProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-safety app always answers complete when refused equals 0 and admitted is at least 6",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossSafetyProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-safety app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossSafetyProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the chaoss-starter-project-health app never answers complete when refused is at least 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossStarterProjectHealthProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the chaoss-starter-project-health app never answers complete when admitted is below 4",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossStarterProjectHealthProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the chaoss-starter-project-health app always answers complete when refused equals 0 and admitted is at least 4",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossStarterProjectHealthProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the chaoss-starter-project-health app never answers unmeasured when admitted is at least 1 and refused equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/ChaossStarterProjectHealthProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the uor-coc-enforcement app never answers banned when authority is other and record is clear",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorCocEnforcementProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the uor-coc-enforcement app never answers warned when finding is pending and record is clear",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorCocEnforcementProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the uor-coc-enforcement app never answers limited when finding is none and record is warned",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorCocEnforcementProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the uor-coc-enforcement app never answers warned when record is limited",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorCocEnforcementProofs.lex.tex"
+    },
+    {
+      "name": "inv005Holds",
+      "statement": "no request meets breaksInv005: the uor-coc-enforcement app never answers clear when record is suspended",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorCocEnforcementProofs.lex.tex"
+    },
+    {
+      "name": "inv006Holds",
+      "statement": "no request meets breaksInv006: the uor-coc-enforcement app always answers banned when finding is violation and authority is moderators and severity is severe",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorCocEnforcementProofs.lex.tex"
+    },
+    {
+      "name": "inv007Holds",
+      "statement": "no request meets breaksInv007: the uor-coc-enforcement app always answers banned when record is banned",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorCocEnforcementProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the uor-contribution-attribution app never answers permit when agent is software and delegation is absent",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorContributionAttributionProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the uor-contribution-attribution app never answers permit when agent is software and trail is missing",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorContributionAttributionProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the uor-contribution-attribution app never answers permit when agent is software and principal is organization",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorContributionAttributionProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the uor-contribution-attribution app never answers permit when identity is unresolved",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorContributionAttributionProofs.lex.tex"
+    },
+    {
+      "name": "inv005Holds",
+      "statement": "no request meets breaksInv005: the uor-contribution-attribution app always answers permit when agent is person and identity is resolved",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorContributionAttributionProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the uor-discord-read app never answers permit when kind is dm",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorDiscordReadProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the uor-discord-read app never answers permit when visibility is restricted",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorDiscordReadProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the uor-discord-read app never answers permit when label is not public",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorDiscordReadProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the uor-discord-read app never answers permit when install is other",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorDiscordReadProofs.lex.tex"
+    },
+    {
+      "name": "inv005Holds",
+      "statement": "no request meets breaksInv005: the uor-discord-read app never answers permit when intent is missing",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorDiscordReadProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the uor-observation-admission app never answers permit when metric is unreleased",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorObservationAdmissionProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the uor-observation-admission app never answers permit when oracle is not covers",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorObservationAdmissionProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the uor-observation-admission app never answers permit when source is unpinned",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorObservationAdmissionProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the uor-observation-admission app never answers permit when replay is not reproduced",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorObservationAdmissionProofs.lex.tex"
+    },
+    {
+      "name": "inv005Holds",
+      "statement": "no request meets breaksInv005: the uor-observation-admission app never answers permit when collection is deny",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorObservationAdmissionProofs.lex.tex"
+    },
+    {
+      "name": "inv006Holds",
+      "statement": "no request meets breaksInv006: the uor-observation-admission app never answers permit when collection is outside",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorObservationAdmissionProofs.lex.tex"
+    },
+    {
+      "name": "inv007Holds",
+      "statement": "no request meets breaksInv007: the uor-observation-admission app never answers permit when attribution is deny",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorObservationAdmissionProofs.lex.tex"
+    },
+    {
+      "name": "inv008Holds",
+      "statement": "no request meets breaksInv008: the uor-observation-admission app always answers deny when metric is released and collection is deny",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorObservationAdmissionProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the uor-repo-files app never answers conformant when readme is missing",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoFilesProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the uor-repo-files app always answers missing-file when readme is present and license is missing",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoFilesProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the uor-repo-files app never answers conformant when tier is t1 and security is missing",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoFilesProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the uor-repo-files app never answers advisory when tier is t4",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoFilesProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the uor-repo-naming app never answers conformant when case is other",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoNamingProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the uor-repo-naming app never answers conformant when version is present",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoNamingProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the uor-repo-naming app never answers conformant when commits is other",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoNamingProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the uor-repo-naming app never answers conformant when domain is incomplete",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoNamingProofs.lex.tex"
+    },
+    {
+      "name": "inv005Holds",
+      "statement": "no request meets breaksInv005: the uor-repo-naming app never answers conformant when pattern is other",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoNamingProofs.lex.tex"
+    },
+    {
+      "name": "inv006Holds",
+      "statement": "no request meets breaksInv006: the uor-repo-naming app always answers advisory when case is lowercase and version is absent and branches is conforming and commits is conventional and domain is complete and technology is complete and pattern is other",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoNamingProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the uor-repo-protection app never answers conformant when forcepush is allowed",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoProtectionProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the uor-repo-protection app never answers conformant when tier is t1 and reviews is below 2",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoProtectionProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the uor-repo-protection app never answers conformant when tier is t2 and checks is optional",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoProtectionProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the uor-repo-protection app always answers conformant when tier is t4 and forcepush is blocked",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoProtectionProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the uor-repo-standards app never answers conformant when tiertags equals 0",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoStandardsProofs.lex.tex"
+    },
+    {
+      "name": "inv002Holds",
+      "statement": "no request meets breaksInv002: the uor-repo-standards app never answers conformant when statustags is above 1",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoStandardsProofs.lex.tex"
+    },
+    {
+      "name": "inv003Holds",
+      "statement": "no request meets breaksInv003: the uor-repo-standards app never answers conformant when tier is t1 and versioning is other",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoStandardsProofs.lex.tex"
+    },
+    {
+      "name": "inv004Holds",
+      "statement": "no request meets breaksInv004: the uor-repo-standards app never answers unversioned when tier is t3",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
+      "where": "app/src/UorRepoStandardsProofs.lex.tex"
+    },
+    {
+      "name": "inv001Holds",
+      "statement": "no request meets breaksInv001: the uor-toc-lifecycle app never answers graduated when quorum is unmet and stage is incubation",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
       "where": "app/src/UorTocLifecycleProofs.lex.tex"
     },
     {
       "name": "inv002Holds",
-      "statement": "no request meets breaksInv002: the app never answers graduated when vote is majority and stage is incubation",
-      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "statement": "no request meets breaksInv002: the uor-toc-lifecycle app never answers graduated when vote is majority and stage is incubation",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
       "where": "app/src/UorTocLifecycleProofs.lex.tex"
     },
     {
       "name": "inv003Holds",
-      "statement": "no request meets breaksInv003: the app never answers graduated when comment is below 14 and stage is incubation",
-      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "statement": "no request meets breaksInv003: the uor-toc-lifecycle app never answers graduated when comment is below 14 and stage is incubation",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
       "where": "app/src/UorTocLifecycleProofs.lex.tex"
     },
     {
       "name": "inv004Holds",
-      "statement": "no request meets breaksInv004: the app never answers incubation when stage is proposed",
-      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "statement": "no request meets breaksInv004: the uor-toc-lifecycle app never answers incubation when stage is proposed",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
       "where": "app/src/UorTocLifecycleProofs.lex.tex"
     },
     {
       "name": "inv005Holds",
-      "statement": "no request meets breaksInv005: the app never answers graduated when stage is sandbox",
-      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "statement": "no request meets breaksInv005: the uor-toc-lifecycle app never answers graduated when stage is sandbox",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
       "where": "app/src/UorTocLifecycleProofs.lex.tex"
     },
     {
       "name": "inv006Holds",
-      "statement": "no request meets breaksInv006: the app never answers sandbox when evidence is partial and stage is proposed",
-      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "statement": "no request meets breaksInv006: the uor-toc-lifecycle app never answers sandbox when evidence is partial and stage is proposed",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
       "where": "app/src/UorTocLifecycleProofs.lex.tex"
     },
     {
       "name": "inv007Holds",
-      "statement": "no request meets breaksInv007: the app always answers graduated when stage is graduated and application is not archival",
-      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "statement": "no request meets breaksInv007: the uor-toc-lifecycle app always answers graduated when stage is graduated and application is not archival",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
       "where": "app/src/UorTocLifecycleProofs.lex.tex"
     },
     {
       "name": "inv008Holds",
-      "statement": "no request meets breaksInv008: the app always answers archived when stage is archived",
-      "how": "Proved by linear arithmetic, checked by the Lean kernel on the UOR MCP server and again by prismpm verify in CI",
+      "statement": "no request meets breaksInv008: the uor-toc-lifecycle app always answers archived when stage is archived",
+      "how": "Proved by linear arithmetic, checked by the Lean kernel by prismpm verify in CI",
       "where": "app/src/UorTocLifecycleProofs.lex.tex"
     }
   ],
   "pinned": [
     {
-      "name": "uor_toc_lifecycle_ut_01",
-      "what": "UT-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "name": "chaoss_ai_alignment_community_aligned_training_feedback_caacatf_01",
+      "what": "CAACATF-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_ai_alignment_community_aligned_training_feedback.rs"
+    },
+    {
+      "name": "chaoss_ai_alignment_community_aligned_training_feedback_caacatf_02",
+      "what": "CAACATF-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_ai_alignment_community_aligned_training_feedback.rs"
+    },
+    {
+      "name": "chaoss_ai_alignment_community_aligned_training_feedback_caacatf_03",
+      "what": "CAACATF-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_ai_alignment_community_aligned_training_feedback.rs"
+    },
+    {
+      "name": "chaoss_ai_alignment_community_aligned_training_feedback_caacatf_04",
+      "what": "CAACATF-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_ai_alignment_community_aligned_training_feedback.rs"
+    },
+    {
+      "name": "chaoss_business_readiness_of_an_open_source_project_cbroaosp_01",
+      "what": "CBROAOSP-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_business_readiness_of_an_open_source_project.rs"
+    },
+    {
+      "name": "chaoss_business_readiness_of_an_open_source_project_cbroaosp_02",
+      "what": "CBROAOSP-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_business_readiness_of_an_open_source_project.rs"
+    },
+    {
+      "name": "chaoss_business_readiness_of_an_open_source_project_cbroaosp_03",
+      "what": "CBROAOSP-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_business_readiness_of_an_open_source_project.rs"
+    },
+    {
+      "name": "chaoss_business_readiness_of_an_open_source_project_cbroaosp_04",
+      "what": "CBROAOSP-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_business_readiness_of_an_open_source_project.rs"
+    },
+    {
+      "name": "chaoss_collaboration_development_index_ccdi_01",
+      "what": "CCDI-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_collaboration_development_index.rs"
+    },
+    {
+      "name": "chaoss_collaboration_development_index_ccdi_02",
+      "what": "CCDI-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_collaboration_development_index.rs"
+    },
+    {
+      "name": "chaoss_collaboration_development_index_ccdi_03",
+      "what": "CCDI-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_collaboration_development_index.rs"
+    },
+    {
+      "name": "chaoss_collaboration_development_index_ccdi_04",
+      "what": "CCDI-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_collaboration_development_index.rs"
+    },
+    {
+      "name": "chaoss_community_activity_cca_01",
+      "what": "CCA-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_activity.rs"
+    },
+    {
+      "name": "chaoss_community_activity_cca_02",
+      "what": "CCA-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_activity.rs"
+    },
+    {
+      "name": "chaoss_community_activity_cca_03",
+      "what": "CCA-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_activity.rs"
+    },
+    {
+      "name": "chaoss_community_activity_cca_04",
+      "what": "CCA-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_activity.rs"
+    },
+    {
+      "name": "chaoss_community_governed_ai_use_in_open_communities_ccgauioc_01",
+      "what": "CCGAUIOC-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_governed_ai_use_in_open_communities.rs"
+    },
+    {
+      "name": "chaoss_community_governed_ai_use_in_open_communities_ccgauioc_02",
+      "what": "CCGAUIOC-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_governed_ai_use_in_open_communities.rs"
+    },
+    {
+      "name": "chaoss_community_governed_ai_use_in_open_communities_ccgauioc_03",
+      "what": "CCGAUIOC-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_governed_ai_use_in_open_communities.rs"
+    },
+    {
+      "name": "chaoss_community_governed_ai_use_in_open_communities_ccgauioc_04",
+      "what": "CCGAUIOC-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_governed_ai_use_in_open_communities.rs"
+    },
+    {
+      "name": "chaoss_community_service_and_support_ccsas_01",
+      "what": "CCSAS-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_service_and_support.rs"
+    },
+    {
+      "name": "chaoss_community_service_and_support_ccsas_02",
+      "what": "CCSAS-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_service_and_support.rs"
+    },
+    {
+      "name": "chaoss_community_service_and_support_ccsas_03",
+      "what": "CCSAS-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_service_and_support.rs"
+    },
+    {
+      "name": "chaoss_community_service_and_support_ccsas_04",
+      "what": "CCSAS-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_service_and_support.rs"
+    },
+    {
+      "name": "chaoss_community_welcomingness_ccw_01",
+      "what": "CCW-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_welcomingness.rs"
+    },
+    {
+      "name": "chaoss_community_welcomingness_ccw_02",
+      "what": "CCW-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_welcomingness.rs"
+    },
+    {
+      "name": "chaoss_community_welcomingness_ccw_03",
+      "what": "CCW-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_welcomingness.rs"
+    },
+    {
+      "name": "chaoss_community_welcomingness_ccw_04",
+      "what": "CCW-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_community_welcomingness.rs"
+    },
+    {
+      "name": "chaoss_dei_event_badging_cdeb_01",
+      "what": "CDEB-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_dei_event_badging.rs"
+    },
+    {
+      "name": "chaoss_dei_event_badging_cdeb_02",
+      "what": "CDEB-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_dei_event_badging.rs"
+    },
+    {
+      "name": "chaoss_dei_event_badging_cdeb_03",
+      "what": "CDEB-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_dei_event_badging.rs"
+    },
+    {
+      "name": "chaoss_dei_event_badging_cdeb_04",
+      "what": "CDEB-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_dei_event_badging.rs"
+    },
+    {
+      "name": "chaoss_development_responsiveness_cdr_01",
+      "what": "CDR-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_development_responsiveness.rs"
+    },
+    {
+      "name": "chaoss_development_responsiveness_cdr_02",
+      "what": "CDR-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_development_responsiveness.rs"
+    },
+    {
+      "name": "chaoss_development_responsiveness_cdr_03",
+      "what": "CDR-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_development_responsiveness.rs"
+    },
+    {
+      "name": "chaoss_development_responsiveness_cdr_04",
+      "what": "CDR-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_development_responsiveness.rs"
+    },
+    {
+      "name": "chaoss_funding_cf_01",
+      "what": "CF-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_funding.rs"
+    },
+    {
+      "name": "chaoss_funding_cf_02",
+      "what": "CF-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_funding.rs"
+    },
+    {
+      "name": "chaoss_funding_cf_03",
+      "what": "CF-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_funding.rs"
+    },
+    {
+      "name": "chaoss_funding_cf_04",
+      "what": "CF-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_funding.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_community_copvc_01",
+      "what": "COPVC-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_community.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_community_copvc_02",
+      "what": "COPVC-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_community.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_community_copvc_03",
+      "what": "COPVC-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_community.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_community_copvc_04",
+      "what": "COPVC-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_community.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_compliance_security_copvcs_01",
+      "what": "COPVCS-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_compliance_security.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_compliance_security_copvcs_02",
+      "what": "COPVCS-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_compliance_security.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_compliance_security_copvcs_03",
+      "what": "COPVCS-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_compliance_security.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_compliance_security_copvcs_04",
+      "what": "COPVCS-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_compliance_security.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_governance_copvg_01",
+      "what": "COPVG-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_governance.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_governance_copvg_02",
+      "what": "COPVG-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_governance.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_governance_copvg_03",
+      "what": "COPVG-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_governance.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_governance_copvg_04",
+      "what": "COPVG-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_governance.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_strategy_copvs_01",
+      "what": "COPVS-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_strategy.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_strategy_copvs_02",
+      "what": "COPVS-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_strategy.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_strategy_copvs_03",
+      "what": "COPVS-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_strategy.rs"
+    },
+    {
+      "name": "chaoss_oss_project_viability_strategy_copvs_04",
+      "what": "COPVS-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_oss_project_viability_strategy.rs"
+    },
+    {
+      "name": "chaoss_project_awareness_cpa_01",
+      "what": "CPA-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_project_awareness.rs"
+    },
+    {
+      "name": "chaoss_project_awareness_cpa_02",
+      "what": "CPA-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_project_awareness.rs"
+    },
+    {
+      "name": "chaoss_project_awareness_cpa_03",
+      "what": "CPA-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_project_awareness.rs"
+    },
+    {
+      "name": "chaoss_project_awareness_cpa_04",
+      "what": "CPA-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_project_awareness.rs"
+    },
+    {
+      "name": "chaoss_project_engagement_cpe_01",
+      "what": "CPE-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_project_engagement.rs"
+    },
+    {
+      "name": "chaoss_project_engagement_cpe_02",
+      "what": "CPE-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_project_engagement.rs"
+    },
+    {
+      "name": "chaoss_project_engagement_cpe_03",
+      "what": "CPE-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_project_engagement.rs"
+    },
+    {
+      "name": "chaoss_project_engagement_cpe_04",
+      "what": "CPE-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_project_engagement.rs"
+    },
+    {
+      "name": "chaoss_project_viability_starter_cpvs_01",
+      "what": "CPVS-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_project_viability_starter.rs"
+    },
+    {
+      "name": "chaoss_project_viability_starter_cpvs_02",
+      "what": "CPVS-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_project_viability_starter.rs"
+    },
+    {
+      "name": "chaoss_project_viability_starter_cpvs_03",
+      "what": "CPVS-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_project_viability_starter.rs"
+    },
+    {
+      "name": "chaoss_project_viability_starter_cpvs_04",
+      "what": "CPVS-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_project_viability_starter.rs"
+    },
+    {
+      "name": "chaoss_safety_cs_01",
+      "what": "CS-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_safety.rs"
+    },
+    {
+      "name": "chaoss_safety_cs_02",
+      "what": "CS-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_safety.rs"
+    },
+    {
+      "name": "chaoss_safety_cs_03",
+      "what": "CS-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_safety.rs"
+    },
+    {
+      "name": "chaoss_safety_cs_04",
+      "what": "CS-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_safety.rs"
+    },
+    {
+      "name": "chaoss_starter_project_health_csph_01",
+      "what": "CSPH-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_starter_project_health.rs"
+    },
+    {
+      "name": "chaoss_starter_project_health_csph_02",
+      "what": "CSPH-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_starter_project_health.rs"
+    },
+    {
+      "name": "chaoss_starter_project_health_csph_03",
+      "what": "CSPH-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_starter_project_health.rs"
+    },
+    {
+      "name": "chaoss_starter_project_health_csph_04",
+      "what": "CSPH-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/chaoss_starter_project_health.rs"
+    },
+    {
+      "name": "uor_coc_enforcement_uce_01",
+      "what": "UCE-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_coc_enforcement.rs"
+    },
+    {
+      "name": "uor_coc_enforcement_uce_02",
+      "what": "UCE-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_coc_enforcement.rs"
+    },
+    {
+      "name": "uor_coc_enforcement_uce_03",
+      "what": "UCE-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_coc_enforcement.rs"
+    },
+    {
+      "name": "uor_coc_enforcement_uce_04",
+      "what": "UCE-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_coc_enforcement.rs"
+    },
+    {
+      "name": "uor_coc_enforcement_uce_05",
+      "what": "UCE-05's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_coc_enforcement.rs"
+    },
+    {
+      "name": "uor_coc_enforcement_uce_06",
+      "what": "UCE-06's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_coc_enforcement.rs"
+    },
+    {
+      "name": "uor_coc_enforcement_uce_07",
+      "what": "UCE-07's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_coc_enforcement.rs"
+    },
+    {
+      "name": "uor_contribution_attribution_uca_01",
+      "what": "UCA-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_contribution_attribution.rs"
+    },
+    {
+      "name": "uor_contribution_attribution_uca_02",
+      "what": "UCA-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_contribution_attribution.rs"
+    },
+    {
+      "name": "uor_contribution_attribution_uca_03",
+      "what": "UCA-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_contribution_attribution.rs"
+    },
+    {
+      "name": "uor_contribution_attribution_uca_04",
+      "what": "UCA-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_contribution_attribution.rs"
+    },
+    {
+      "name": "uor_contribution_attribution_uca_05",
+      "what": "UCA-05's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_contribution_attribution.rs"
+    },
+    {
+      "name": "uor_discord_read_udr_01",
+      "what": "UDR-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_discord_read.rs"
+    },
+    {
+      "name": "uor_discord_read_udr_02",
+      "what": "UDR-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_discord_read.rs"
+    },
+    {
+      "name": "uor_discord_read_udr_03",
+      "what": "UDR-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_discord_read.rs"
+    },
+    {
+      "name": "uor_discord_read_udr_04",
+      "what": "UDR-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_discord_read.rs"
+    },
+    {
+      "name": "uor_discord_read_udr_05",
+      "what": "UDR-05's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_discord_read.rs"
+    },
+    {
+      "name": "uor_observation_admission_uoa_01",
+      "what": "UOA-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_observation_admission.rs"
+    },
+    {
+      "name": "uor_observation_admission_uoa_02",
+      "what": "UOA-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_observation_admission.rs"
+    },
+    {
+      "name": "uor_observation_admission_uoa_03",
+      "what": "UOA-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_observation_admission.rs"
+    },
+    {
+      "name": "uor_observation_admission_uoa_04",
+      "what": "UOA-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_observation_admission.rs"
+    },
+    {
+      "name": "uor_observation_admission_uoa_05",
+      "what": "UOA-05's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_observation_admission.rs"
+    },
+    {
+      "name": "uor_observation_admission_uoa_06",
+      "what": "UOA-06's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_observation_admission.rs"
+    },
+    {
+      "name": "uor_observation_admission_uoa_07",
+      "what": "UOA-07's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_observation_admission.rs"
+    },
+    {
+      "name": "uor_observation_admission_uoa_08",
+      "what": "UOA-08's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_observation_admission.rs"
+    },
+    {
+      "name": "uor_repo_files_urf_01",
+      "what": "URF-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_files.rs"
+    },
+    {
+      "name": "uor_repo_files_urf_02",
+      "what": "URF-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_files.rs"
+    },
+    {
+      "name": "uor_repo_files_urf_03",
+      "what": "URF-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_files.rs"
+    },
+    {
+      "name": "uor_repo_files_urf_04",
+      "what": "URF-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_files.rs"
+    },
+    {
+      "name": "uor_repo_naming_urn_01",
+      "what": "URN-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_naming.rs"
+    },
+    {
+      "name": "uor_repo_naming_urn_02",
+      "what": "URN-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_naming.rs"
+    },
+    {
+      "name": "uor_repo_naming_urn_03",
+      "what": "URN-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_naming.rs"
+    },
+    {
+      "name": "uor_repo_naming_urn_04",
+      "what": "URN-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_naming.rs"
+    },
+    {
+      "name": "uor_repo_naming_urn_05",
+      "what": "URN-05's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_naming.rs"
+    },
+    {
+      "name": "uor_repo_naming_urn_06",
+      "what": "URN-06's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_naming.rs"
+    },
+    {
+      "name": "uor_repo_protection_urp_01",
+      "what": "URP-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_protection.rs"
+    },
+    {
+      "name": "uor_repo_protection_urp_02",
+      "what": "URP-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_protection.rs"
+    },
+    {
+      "name": "uor_repo_protection_urp_03",
+      "what": "URP-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_protection.rs"
+    },
+    {
+      "name": "uor_repo_protection_urp_04",
+      "what": "URP-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_protection.rs"
+    },
+    {
+      "name": "uor_repo_standards_urs_01",
+      "what": "URS-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_standards.rs"
+    },
+    {
+      "name": "uor_repo_standards_urs_02",
+      "what": "URS-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_standards.rs"
+    },
+    {
+      "name": "uor_repo_standards_urs_03",
+      "what": "URS-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_standards.rs"
+    },
+    {
+      "name": "uor_repo_standards_urs_04",
+      "what": "URS-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "where": "crates/conformance/tests/uor_repo_standards.rs"
+    },
+    {
+      "name": "uor_toc_lifecycle_utl_01",
+      "what": "UTL-01's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
       "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
     },
     {
-      "name": "uor_toc_lifecycle_ut_02",
-      "what": "UT-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "name": "uor_toc_lifecycle_utl_02",
+      "what": "UTL-02's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
       "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
     },
     {
-      "name": "uor_toc_lifecycle_ut_03",
-      "what": "UT-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "name": "uor_toc_lifecycle_utl_03",
+      "what": "UTL-03's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
       "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
     },
     {
-      "name": "uor_toc_lifecycle_ut_04",
-      "what": "UT-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "name": "uor_toc_lifecycle_utl_04",
+      "what": "UTL-04's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
       "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
     },
     {
-      "name": "uor_toc_lifecycle_ut_05",
-      "what": "UT-05's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "name": "uor_toc_lifecycle_utl_05",
+      "what": "UTL-05's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
       "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
     },
     {
-      "name": "uor_toc_lifecycle_ut_06",
-      "what": "UT-06's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "name": "uor_toc_lifecycle_utl_06",
+      "what": "UTL-06's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
       "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
     },
     {
-      "name": "uor_toc_lifecycle_ut_07",
-      "what": "UT-07's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "name": "uor_toc_lifecycle_utl_07",
+      "what": "UTL-07's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
       "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
     },
     {
-      "name": "uor_toc_lifecycle_ut_08",
-      "what": "UT-08's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
+      "name": "uor_toc_lifecycle_utl_08",
+      "what": "UTL-08's condition and the theorem that no request meets it. A string-matching test, not a theorem: a planted defect fails it.",
       "where": "crates/conformance/tests/uor_toc_lifecycle.rs"
     }
   ],

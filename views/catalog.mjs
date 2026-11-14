@@ -71,7 +71,6 @@ const unviewed = claims.filter((c) => !views.some((v) => v.claims.includes(c.ind
 // ---------------------------------------------------------------- LexLean
 const str = (s) => JSON.stringify(String(s));
 const nats = (xs) => xs.reduceRight((rest, x) => `(cons ${x} ${rest})`, '(nil Nat)');
-const list = (type, names) => names.reduceRight((rest, n) => `(cons (${n}) ${rest})`, `(nil ${V}::${type})`);
 const pascal = (s) => s.split(/[^A-Za-z0-9]+/).filter(Boolean).map((w) => w[0].toUpperCase() + w.slice(1)).join('');
 // lexlean fmt's canonical form: one line when it fits in 100 columns.
 const def = (name, type, body) => {
@@ -116,12 +115,22 @@ const clNames = claims.map((c) => {
 });
 const range = (n) => [...Array(n).keys()];
 lean.push(def('bounds', `${V}::Bounds`, `(record ${V}::Bounds {stakeholders := ${stakeholders.length}, models := ${chaoss.models.length}, decisions := ${reg.decisions.length}, concerns := ${concerns.length}, registerClaims := ${chaoss.refusals.length}, claims := ${claims.length}})`));
-lean.push(def('stakeholders', `(List ${V}::Stakeholder)`, list('Stakeholder', sNames)));
-lean.push(def('decisions', `(List ${V}::Decision)`, list('Decision', dNames)));
-lean.push(def('concerns', `(List ${V}::Concern)`, list('Concern', cNames)));
-lean.push(def('viewpoints', `(List ${V}::Viewpoint)`, list('Viewpoint', vpNames)));
-lean.push(def('views', `(List ${V}::View)`, list('View', vNames)));
-lean.push(def('viewClaims', `(List ${V}::OpenClaim)`, list('OpenClaim', clNames)));
+// A list is written in runs of RUN records, each ending in the next run's definition and declared after
+// it, because LexLean links a module through JSON of bounded depth (tools/register-lex.mjs does the same).
+const RUN = 48;
+const lists = (name, type, names) => {
+  const run = (start) => (start === 0 ? name : `${name}${start / RUN}`);
+  for (let start = Math.floor(Math.max(names.length - 1, 0) / RUN) * RUN; start >= 0; start -= RUN) {
+    const tail = start + RUN < names.length ? `(${run(start + RUN)})` : `(nil ${V}::${type})`;
+    lean.push(def(run(start), `(List ${V}::${type})`, names.slice(start, start + RUN).reduceRight((rest, n) => `(cons (${n}) ${rest})`, tail)));
+  }
+};
+lists('stakeholders', 'Stakeholder', sNames);
+lists('decisions', 'Decision', dNames);
+lists('concerns', 'Concern', cNames);
+lists('viewpoints', 'Viewpoint', vpNames);
+lists('views', 'View', vNames);
+lists('viewClaims', 'OpenClaim', clNames);
 lean.push(def('modelIndices', '(List Nat)', nats(range(chaoss.models.length))));
 lean.push(def('decisionIndices', '(List Nat)', nats(range(reg.decisions.length))));
 lean.push(def('stakeholderIndices', '(List Nat)', nats(range(stakeholders.length))));

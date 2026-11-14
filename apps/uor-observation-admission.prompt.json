@@ -1,0 +1,503 @@
+{
+  "schema": "prism/prompt/1",
+  "pattern": "policyDecision",
+  "goal": "Decide whether an observation of a CHAOSS metric enters the UOR Foundation community model.",
+  "repository": "UOR-Foundation/community",
+  "app": {
+    "name": "uor-observation-admission",
+    "title": "CHAOSS observation admission",
+    "purpose": "Admit an observation of a CHAOSS metric into the UOR Foundation community model only when the metric is released, an oracle in standards.lock covers its data source, the data is pinned, the oracle's offline replay reproduces it, and the source's collection policy and the contribution attribution policy permit it.",
+    "fields": [
+      {
+        "name": "metric",
+        "kind": "choice",
+        "values": [
+          "released",
+          "unreleased"
+        ],
+        "means": "whether the metric is in chaoss/register.json, the CHAOSS knowledge base's released set"
+      },
+      {
+        "name": "oracle",
+        "kind": "choice",
+        "values": [
+          "covers",
+          "excludes",
+          "unlisted"
+        ],
+        "means": "whether an oracle in standards.lock lists the observation's data source under covers, lists it under does_not_cover, or is not listed for it"
+      },
+      {
+        "name": "source",
+        "kind": "choice",
+        "values": [
+          "pinned",
+          "unpinned"
+        ],
+        "means": "whether the observed data is pinned to a commit or a sha256 content digest"
+      },
+      {
+        "name": "replay",
+        "kind": "choice",
+        "values": [
+          "reproduced",
+          "differs",
+          "absent"
+        ],
+        "means": "whether the oracle's offline replay over the pinned fixture reproduces the observation, gives another value, or has not run"
+      },
+      {
+        "name": "collection",
+        "kind": "choice",
+        "values": [
+          "permit",
+          "deny",
+          "outside",
+          "indeterminate",
+          "ungoverned"
+        ],
+        "means": "the XACML decision of the source's collection policy app, such as uor-discord-read: permit, deny, outside for NotApplicable, indeterminate; or ungoverned when no collection policy governs the source"
+      },
+      {
+        "name": "attribution",
+        "kind": "choice",
+        "values": [
+          "permit",
+          "deny",
+          "organization",
+          "indeterminate",
+          "aggregate"
+        ],
+        "means": "the uor-contribution-attribution decision for an observation that credits contributors (organization for its NotApplicable, an organization's contribution), or aggregate when it credits no one"
+      }
+    ],
+    "outcomes": [
+      "permit",
+      "deny",
+      "not-applicable",
+      "indeterminate"
+    ],
+    "meanings": {
+      "permit": "the observation is admitted and counts toward its metric",
+      "deny": "the observation is refused, and its metric stays an open claim",
+      "not-applicable": "the metric is not a released CHAOSS metric, so nothing is admitted for it",
+      "indeterminate": "the observation cannot be checked yet: no oracle is listed for its source, or its replay or a policy decision is pending"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "metric",
+            "op": "is",
+            "value": "unreleased"
+          }
+        ],
+        "then": "not-applicable",
+        "why": "chaoss/register.json (CC-01): the released CHAOSS set is the knowledge base sitemap; an unreleased metric is outside the model"
+      },
+      {
+        "when": [
+          {
+            "field": "collection",
+            "op": "is",
+            "value": "deny"
+          }
+        ],
+        "then": "deny",
+        "why": "XACML 3.0 7.11: the source's collection policy denied the read, so data from it is never admitted"
+      },
+      {
+        "when": [
+          {
+            "field": "collection",
+            "op": "is",
+            "value": "outside"
+          }
+        ],
+        "then": "deny",
+        "why": "XACML 3.0 7.11: the collection policy that governs the source did not permit the read, so nothing collected under it is admitted"
+      },
+      {
+        "when": [
+          {
+            "field": "attribution",
+            "op": "is",
+            "value": "deny"
+          }
+        ],
+        "then": "deny",
+        "why": "W3C PROV-O: credit the delegation record does not support is not admitted (uor-contribution-attribution)"
+      },
+      {
+        "when": [
+          {
+            "field": "oracle",
+            "op": "is",
+            "value": "excludes"
+          }
+        ],
+        "then": "deny",
+        "why": "standards.lock does_not_cover: the oracle declares the source outside what it validates, so the metric stays an open claim (AGENTS.md R2)"
+      },
+      {
+        "when": [
+          {
+            "field": "source",
+            "op": "is",
+            "value": "unpinned"
+          }
+        ],
+        "then": "deny",
+        "why": "AGENTS.md R2 and CLAUDE.md: reuse is checked on read; data not pinned to a commit or digest cannot be re-derived"
+      },
+      {
+        "when": [
+          {
+            "field": "replay",
+            "op": "is",
+            "value": "differs"
+          }
+        ],
+        "then": "deny",
+        "why": "GrimoireLab Perceval offline replay: a replay that gives another value refutes the observation"
+      },
+      {
+        "when": [
+          {
+            "field": "oracle",
+            "op": "is",
+            "value": "unlisted"
+          }
+        ],
+        "then": "indeterminate",
+        "why": "Alex's rule: an observation is validated by the strongest oracle; with none listed for its source it cannot be validated yet"
+      },
+      {
+        "when": [
+          {
+            "field": "replay",
+            "op": "is",
+            "value": "absent"
+          }
+        ],
+        "then": "indeterminate",
+        "why": "CLAUDE.md: a failed or missing check is a miss, and a miss does the work in full before the result is trusted"
+      },
+      {
+        "when": [
+          {
+            "field": "collection",
+            "op": "is",
+            "value": "indeterminate"
+          }
+        ],
+        "then": "indeterminate",
+        "why": "XACML 3.0 7.11: the collection policy could not decide, so neither can admission"
+      },
+      {
+        "when": [
+          {
+            "field": "attribution",
+            "op": "is",
+            "value": "indeterminate"
+          }
+        ],
+        "then": "indeterminate",
+        "why": "uor-contribution-attribution: the person cannot be determined until their identity is resolved"
+      }
+    ],
+    "otherwise": "permit",
+    "otherwiseWhy": "a released metric, an oracle that covers the source, pinned data whose replay reproduces it, and collection and attribution both permitted, an organization's, or ungoverned",
+    "properties": [
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "metric",
+            "op": "is",
+            "value": "unreleased"
+          }
+        ],
+        "then": "permit",
+        "why": "only released CHAOSS metrics are measured"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "oracle",
+            "op": "is not",
+            "value": "covers"
+          }
+        ],
+        "then": "permit",
+        "why": "every admitted observation is validated by an oracle that covers its source"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "source",
+            "op": "is",
+            "value": "unpinned"
+          }
+        ],
+        "then": "permit",
+        "why": "every admitted observation is pinned"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "replay",
+            "op": "is not",
+            "value": "reproduced"
+          }
+        ],
+        "then": "permit",
+        "why": "every admitted observation was reproduced by its oracle"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "collection",
+            "op": "is",
+            "value": "deny"
+          }
+        ],
+        "then": "permit",
+        "why": "data a collection policy denied is never admitted"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "collection",
+            "op": "is",
+            "value": "outside"
+          }
+        ],
+        "then": "permit",
+        "why": "data collected outside its governing policy is never admitted"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "attribution",
+            "op": "is",
+            "value": "deny"
+          }
+        ],
+        "then": "permit",
+        "why": "credit PROV-O delegation does not support is never admitted"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "metric",
+            "op": "is",
+            "value": "released"
+          },
+          {
+            "field": "collection",
+            "op": "is",
+            "value": "deny"
+          }
+        ],
+        "then": "deny",
+        "why": "a released metric's observation from a denied source is refused, not left undecided"
+      }
+    ],
+    "examples": [
+      {
+        "request": "released covers pinned reproduced ungoverned aggregate",
+        "response": "permit"
+      },
+      {
+        "request": "released covers pinned reproduced permit permit",
+        "response": "permit"
+      },
+      {
+        "request": "released covers pinned reproduced ungoverned organization",
+        "response": "permit"
+      },
+      {
+        "request": "unreleased covers pinned reproduced permit permit",
+        "response": "not-applicable"
+      },
+      {
+        "request": "released covers pinned reproduced deny permit",
+        "response": "deny"
+      },
+      {
+        "request": "released covers pinned reproduced outside aggregate",
+        "response": "deny"
+      },
+      {
+        "request": "released covers pinned reproduced ungoverned deny",
+        "response": "deny"
+      },
+      {
+        "request": "released excludes pinned reproduced permit aggregate",
+        "response": "deny"
+      },
+      {
+        "request": "released covers unpinned reproduced ungoverned aggregate",
+        "response": "deny"
+      },
+      {
+        "request": "released covers pinned differs ungoverned aggregate",
+        "response": "deny"
+      },
+      {
+        "request": "released unlisted pinned reproduced permit aggregate",
+        "response": "indeterminate"
+      },
+      {
+        "request": "released covers pinned absent ungoverned aggregate",
+        "response": "indeterminate"
+      },
+      {
+        "request": "released covers pinned reproduced indeterminate aggregate",
+        "response": "indeterminate"
+      },
+      {
+        "request": "released covers pinned reproduced ungoverned indeterminate",
+        "response": "indeterminate"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Community and Outreach Committee",
+      "text": "Reads the CHAOSS metrics models of the Foundation's community and needs every number behind them validated.",
+      "concerns": [
+        "Correct answers",
+        "Proved guarantees"
+      ]
+    },
+    {
+      "name": "Contributor",
+      "text": "Is counted by contributor metrics and needs to be credited only as PROV-O delegation records.",
+      "concerns": [
+        "Proved guarantees"
+      ]
+    },
+    {
+      "name": "Verifier",
+      "text": "Anyone who loads the holo, checks its fingerprint and replays its acceptance vectors before trusting an answer.",
+      "concerns": [
+        "Refused malformed requests",
+        "Proved guarantees"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "GrimoireLab",
+      "kind": "externalSystem",
+      "text": "Perceval and SortingHat, the CHAOSS oracle in standards.lock: they collect the data, resolve identities and replay a pinned fixture offline."
+    },
+    {
+      "name": "Community register",
+      "kind": "externalSystem",
+      "text": "chaoss/register.json and its projector, which name the released metrics and their pinned definitions."
+    }
+  ],
+  "threats": [
+    {
+      "name": "Unvalidated number published",
+      "text": "An observation no oracle reproduced is published as a CHAOSS metric of the Foundation.",
+      "stride": "tampering",
+      "asset": "answer",
+      "likelihood": "medium",
+      "impact": "major",
+      "control": {
+        "name": "Oracle replay required",
+        "text": "Only an observation of pinned data that an oracle covering its source reproduced is admitted.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-002"
+          },
+          {
+            "kind": "proof",
+            "reference": "INV-003"
+          },
+          {
+            "kind": "proof",
+            "reference": "INV-004"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Private data counted",
+      "text": "Messages a collection policy forbade reading, or credit no delegation supports, are counted.",
+      "stride": "informationDisclosure",
+      "asset": "answer",
+      "likelihood": "medium",
+      "impact": "critical",
+      "control": {
+        "name": "Policies decide first",
+        "text": "A denied or not-applicable collection decision and a denied attribution are refused before anything else is weighed.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-005"
+          },
+          {
+            "kind": "proof",
+            "reference": "INV-006"
+          },
+          {
+            "kind": "proof",
+            "reference": "INV-007"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Request misstates the evidence",
+      "text": "The request claims a replay or a policy decision that did not happen.",
+      "stride": "spoofing",
+      "asset": "request",
+      "likelihood": "medium",
+      "impact": "major",
+      "accepted": "The app decides on the evidence it is given; running the oracle and the policy apps and reporting their results belongs to the collector that sends the request."
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Functional suitability",
+      "subcharacteristic": "Functional completeness",
+      "requirement": "Every admission gate modeled",
+      "text": "Each of the register, oracle coverage, pinning, replay, collection and attribution checks is a rule.",
+      "measure": "Unmodeled checks",
+      "measureText": "Admission checks with no rule.",
+      "threshold": 0
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Community and Outreach Committee",
+      "steps": [
+        "REQ-001",
+        "REQ-005",
+        "REQ-008",
+        "otherwise"
+      ]
+    },
+    {
+      "stakeholder": "Contributor",
+      "steps": [
+        "REQ-002",
+        "REQ-004",
+        "INV-007"
+      ]
+    }
+  ]
+}

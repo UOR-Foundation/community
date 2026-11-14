@@ -1,0 +1,182 @@
+\begin{lexlean}{ChaossDevelopmentResponsiveness}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: chaossDevelopmentResponsivenessAnswerOpen, parameters: [], result: Nat, body: 0}
+
+definition{
+  name: chaossDevelopmentResponsivenessAnswerComplete,
+  parameters: [],
+  result: Nat,
+  body: 1
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessAnswerUnmeasured,
+  parameters: [],
+  result: Nat,
+  body: 2
+}
+
+definition{name: chaossDevelopmentResponsivenessAnswerPartial, parameters: [], result: Nat, body: 3}
+
+structure{
+  name: ChaossDevelopmentResponsivenessRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: admitted, type: Nat}, {name: refused, type: Nat}]
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (chaossDevelopmentResponsivenessByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (chaossDevelopmentResponsivenessDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (chaossDevelopmentResponsivenessByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (chaossDevelopmentResponsivenessDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (chaossDevelopmentResponsivenessParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessParseAdmitted,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (chaossDevelopmentResponsivenessParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (4 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessParseRefused,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (chaossDevelopmentResponsivenessParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (4 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (chaossDevelopmentResponsivenessByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (chaossDevelopmentResponsivenessFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option ChaossDevelopmentResponsivenessRequest),
+  body: (let e : Nat := (chaossDevelopmentResponsivenessFieldEnd s start (Foundation.Bytes::byteLength s)); (match (chaossDevelopmentResponsivenessParseRefused (chaossDevelopmentResponsivenessSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [ChaossDevelopmentResponsivenessRequest])
+    | Option.some v2 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [ChaossDevelopmentResponsivenessRequest] (record ChaossDevelopmentResponsivenessRequest {admitted := v1, refused := v2})) else (ctor Option.none [ChaossDevelopmentResponsivenessRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option ChaossDevelopmentResponsivenessRequest),
+  body: (let e : Nat := (chaossDevelopmentResponsivenessFieldEnd s start (Foundation.Bytes::byteLength s)); (match (chaossDevelopmentResponsivenessParseAdmitted (chaossDevelopmentResponsivenessSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [ChaossDevelopmentResponsivenessRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (chaossDevelopmentResponsivenessDecodeField2 s (e + 1) v1) else (ctor Option.none [ChaossDevelopmentResponsivenessRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessRule1,
+  parameters: [request : ChaossDevelopmentResponsivenessRequest],
+  result: Bool,
+  body: (1 <=? (project request refused))
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessRule2,
+  parameters: [request : ChaossDevelopmentResponsivenessRequest],
+  result: Bool,
+  body: (4 <=? (project request admitted))
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessRule3,
+  parameters: [request : ChaossDevelopmentResponsivenessRequest],
+  result: Bool,
+  body: ((project request admitted) =? 0)
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessJudge,
+  parameters: [request : ChaossDevelopmentResponsivenessRequest],
+  result: Nat,
+  body: (if (chaossDevelopmentResponsivenessRule1 request) then (chaossDevelopmentResponsivenessAnswerOpen) else (if (chaossDevelopmentResponsivenessRule2 request) then (chaossDevelopmentResponsivenessAnswerComplete) else (if (chaossDevelopmentResponsivenessRule3 request) then (chaossDevelopmentResponsivenessAnswerUnmeasured) else (chaossDevelopmentResponsivenessAnswerPartial))))
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (chaossDevelopmentResponsivenessAnswerOpen)) then 0x6f70656e else (if (code =? (chaossDevelopmentResponsivenessAnswerComplete)) then 0x636f6d706c657465 else (if (code =? (chaossDevelopmentResponsivenessAnswerUnmeasured)) then 0x756e6d65617375726564 else (if (code =? (chaossDevelopmentResponsivenessAnswerPartial)) then 0x7061727469616c else 0x696e76616c6964))))
+}
+
+definition{
+  name: chaossDevelopmentResponsivenessDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (64 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (chaossDevelopmentResponsivenessDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (chaossDevelopmentResponsivenessEncodeAnswer (chaossDevelopmentResponsivenessJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

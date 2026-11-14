@@ -1,0 +1,351 @@
+{
+  "schema": "prism/prompt/1",
+  "pattern": "decisionTable",
+  "goal": "Tell a UOR Foundation repository whether its name, branches, commits and Domain and Technology tags follow STANDARDS.md.",
+  "repository": "UOR-Foundation/.github",
+  "app": {
+    "name": "uor-repo-naming",
+    "title": "Repository naming and topic coverage",
+    "purpose": "Decide whether a UOR Foundation repository follows the STANDARDS.md naming conventions and carries every Domain and Technology topic tag that applies to it, naming a broken convention before a missed preference.",
+    "fields": [
+      {
+        "name": "case",
+        "kind": "choice",
+        "values": [
+          "lowercase",
+          "other"
+        ],
+        "means": "whether the repository name is all lowercase and hyphen-separated"
+      },
+      {
+        "name": "version",
+        "kind": "choice",
+        "values": [
+          "absent",
+          "present"
+        ],
+        "means": "whether the repository name contains a version number"
+      },
+      {
+        "name": "pattern",
+        "kind": "choice",
+        "values": [
+          "preferred",
+          "other"
+        ],
+        "means": "whether the name has the preferred form uor-{domain}-{function}"
+      },
+      {
+        "name": "branches",
+        "kind": "choice",
+        "values": [
+          "conforming",
+          "other"
+        ],
+        "means": "whether every branch other than the default is named {type}/{issue#}-{short-description}"
+      },
+      {
+        "name": "commits",
+        "kind": "choice",
+        "values": [
+          "conventional",
+          "other"
+        ],
+        "means": "whether every commit message on the default branch follows Conventional Commits 1.0.0"
+      },
+      {
+        "name": "domain",
+        "kind": "choice",
+        "values": [
+          "complete",
+          "incomplete"
+        ],
+        "means": "whether the repository carries every Domain topic tag that applies to it: math, cryptography, computation, visualisation, documentation, governance, protocol"
+      },
+      {
+        "name": "technology",
+        "kind": "choice",
+        "values": [
+          "complete",
+          "incomplete"
+        ],
+        "means": "whether the repository carries a Technology topic tag for each of its primary languages: rust, python, typescript, lean4, coq, latex"
+      }
+    ],
+    "outcomes": [
+      "nonconforming",
+      "advisory",
+      "conformant"
+    ],
+    "meanings": {
+      "nonconforming": "a naming convention or a required topic tag is not followed",
+      "advisory": "every convention is followed, but the name is not in the preferred uor-{domain}-{function} form",
+      "conformant": "every naming convention, preference and topic tag rule is followed"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "case",
+            "op": "is",
+            "value": "other"
+          }
+        ],
+        "then": "nonconforming",
+        "why": "STANDARDS.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Naming Conventions: repository names are all lowercase, hyphen-separated"
+      },
+      {
+        "when": [
+          {
+            "field": "version",
+            "op": "is",
+            "value": "present"
+          }
+        ],
+        "then": "nonconforming",
+        "why": "STANDARDS.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Naming Conventions: no version numbers in repo names (use tags)"
+      },
+      {
+        "when": [
+          {
+            "field": "branches",
+            "op": "is",
+            "value": "other"
+          }
+        ],
+        "then": "nonconforming",
+        "why": "STANDARDS.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Naming Conventions: branch names are {type}/{issue#}-{short-description}"
+      },
+      {
+        "when": [
+          {
+            "field": "commits",
+            "op": "is",
+            "value": "other"
+          }
+        ],
+        "then": "nonconforming",
+        "why": "STANDARDS.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Naming Conventions: commit messages follow Conventional Commits v1.0.0"
+      },
+      {
+        "when": [
+          {
+            "field": "domain",
+            "op": "is",
+            "value": "incomplete"
+          }
+        ],
+        "then": "nonconforming",
+        "why": "STANDARDS.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Topic Tags: every repository carries all Domain tags that apply"
+      },
+      {
+        "when": [
+          {
+            "field": "technology",
+            "op": "is",
+            "value": "incomplete"
+          }
+        ],
+        "then": "nonconforming",
+        "why": "STANDARDS.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Topic Tags: every repository carries the Technology tags of its primary languages"
+      },
+      {
+        "when": [
+          {
+            "field": "pattern",
+            "op": "is",
+            "value": "other"
+          }
+        ],
+        "then": "advisory",
+        "why": "STANDARDS.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Naming Conventions: the preferred form is uor-{domain}-{function}"
+      }
+    ],
+    "otherwise": "conformant",
+    "otherwiseWhy": "STANDARDS.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8): every naming convention, the preferred form and the Domain and Technology tag rules are followed",
+    "properties": [
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "case",
+            "op": "is",
+            "value": "other"
+          }
+        ],
+        "then": "conformant",
+        "why": "a name that is not lowercase and hyphen-separated never conforms"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "version",
+            "op": "is",
+            "value": "present"
+          }
+        ],
+        "then": "conformant",
+        "why": "a version number belongs in a tag, never in the name"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "commits",
+            "op": "is",
+            "value": "other"
+          }
+        ],
+        "then": "conformant",
+        "why": "commits that are not Conventional Commits never conform"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "domain",
+            "op": "is",
+            "value": "incomplete"
+          }
+        ],
+        "then": "conformant",
+        "why": "a missing Domain tag never conforms"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "pattern",
+            "op": "is",
+            "value": "other"
+          }
+        ],
+        "then": "conformant",
+        "why": "a name outside the preferred form is at best advisory"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "case",
+            "op": "is",
+            "value": "lowercase"
+          },
+          {
+            "field": "version",
+            "op": "is",
+            "value": "absent"
+          },
+          {
+            "field": "branches",
+            "op": "is",
+            "value": "conforming"
+          },
+          {
+            "field": "commits",
+            "op": "is",
+            "value": "conventional"
+          },
+          {
+            "field": "domain",
+            "op": "is",
+            "value": "complete"
+          },
+          {
+            "field": "technology",
+            "op": "is",
+            "value": "complete"
+          },
+          {
+            "field": "pattern",
+            "op": "is",
+            "value": "other"
+          }
+        ],
+        "then": "advisory",
+        "why": "only the preference is missed, so the answer is advisory"
+      }
+    ],
+    "examples": [
+      {
+        "request": "lowercase absent preferred conforming conventional complete complete",
+        "response": "conformant"
+      },
+      {
+        "request": "lowercase absent other conforming conventional complete complete",
+        "response": "advisory"
+      },
+      {
+        "request": "other absent preferred conforming conventional complete complete",
+        "response": "nonconforming"
+      },
+      {
+        "request": "lowercase present preferred conforming conventional complete complete",
+        "response": "nonconforming"
+      },
+      {
+        "request": "lowercase absent preferred other conventional complete complete",
+        "response": "nonconforming"
+      },
+      {
+        "request": "lowercase absent preferred conforming other complete complete",
+        "response": "nonconforming"
+      },
+      {
+        "request": "lowercase absent preferred conforming conventional incomplete complete",
+        "response": "nonconforming"
+      },
+      {
+        "request": "lowercase absent other conforming conventional complete incomplete",
+        "response": "nonconforming"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Repository Maintainer",
+      "text": "Keeps a repository healthy and needs to know whether it meets its tier and the first gap to close.",
+      "concerns": [
+        "Correct answers",
+        "Refused malformed requests"
+      ]
+    },
+    {
+      "name": "Organization Owner",
+      "text": "Holds final governance authority and needs every repository measured against the same published norms.",
+      "concerns": [
+        "Proved guarantees"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "GitHub repository settings",
+      "kind": "externalSystem",
+      "text": "The files, branch protection and topic tags the request is read from."
+    }
+  ],
+  "threats": [
+    {
+      "name": "Naming read from a stale listing",
+      "text": "The request is built from branch, commit or topic data older than the repository's state.",
+      "stride": "spoofing",
+      "asset": "request",
+      "likelihood": "medium",
+      "impact": "minor",
+      "accepted": "The app decides on the facts it is given; reading the repository at a pinned commit belongs to the ecosystem register that sends the request."
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Functional suitability",
+      "subcharacteristic": "Functional completeness",
+      "requirement": "Every naming and tag norm modeled",
+      "text": "Each Naming Conventions bullet and the Domain and Technology rows of STANDARDS.md is one rule.",
+      "measure": "Unmodeled norms",
+      "measureText": "Naming bullets or tag rows of STANDARDS.md with no rule.",
+      "threshold": 0
+    }
+  ]
+}

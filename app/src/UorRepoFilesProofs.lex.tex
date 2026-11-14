@@ -1,0 +1,212 @@
+\begin{lexlean}{UorRepoFilesProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{UorRepoFiles}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : UorRepoFiles::UorRepoFilesRequest],
+  result: Bool,
+  body: (((((((((((project request tier) <? 4) && ((project request readme) <? 2)) && ((project request license) <? 2)) && ((project request contributing) <? 2)) && ((project request conduct) <? 2)) && ((project request security) <? 2)) && ((project request codeowners) <? 2)) && ((project request ci) <? 2)) && ((project request readme) =? (UorRepoFiles::uorRepoFilesReadmeMissing))) && ((UorRepoFiles::uorRepoFilesJudge request) =? (UorRepoFiles::uorRepoFilesAnswerConformant)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : UorRepoFiles::UorRepoFilesRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoFiles::uorRepoFilesAnswerAdvisory,
+      UorRepoFiles::uorRepoFilesAnswerConformant,
+      UorRepoFiles::uorRepoFilesAnswerMissingFile,
+      UorRepoFiles::uorRepoFilesCiMissing,
+      UorRepoFiles::uorRepoFilesCiPresent,
+      UorRepoFiles::uorRepoFilesCodeownersMissing,
+      UorRepoFiles::uorRepoFilesCodeownersPresent,
+      UorRepoFiles::uorRepoFilesConductMissing,
+      UorRepoFiles::uorRepoFilesConductPresent,
+      UorRepoFiles::uorRepoFilesContributingMissing,
+      UorRepoFiles::uorRepoFilesContributingPresent,
+      UorRepoFiles::uorRepoFilesJudge,
+      UorRepoFiles::uorRepoFilesLicenseMissing,
+      UorRepoFiles::uorRepoFilesLicensePresent,
+      UorRepoFiles::uorRepoFilesReadmeMissing,
+      UorRepoFiles::uorRepoFilesReadmePresent,
+      UorRepoFiles::uorRepoFilesRule1,
+      UorRepoFiles::uorRepoFilesRule10,
+      UorRepoFiles::uorRepoFilesRule2,
+      UorRepoFiles::uorRepoFilesRule3,
+      UorRepoFiles::uorRepoFilesRule4,
+      UorRepoFiles::uorRepoFilesRule5,
+      UorRepoFiles::uorRepoFilesRule6,
+      UorRepoFiles::uorRepoFilesRule7,
+      UorRepoFiles::uorRepoFilesRule8,
+      UorRepoFiles::uorRepoFilesRule9,
+      UorRepoFiles::uorRepoFilesSecurityMissing,
+      UorRepoFiles::uorRepoFilesSecurityPresent,
+      UorRepoFiles::uorRepoFilesTierT1,
+      UorRepoFiles::uorRepoFilesTierT2,
+      UorRepoFiles::uorRepoFilesTierT3,
+      UorRepoFiles::uorRepoFilesTierT4,
+      breaksInv001
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : UorRepoFiles::UorRepoFilesRequest],
+  result: Bool,
+  body: ((((((((((((project request tier) <? 4) && ((project request readme) <? 2)) && ((project request license) <? 2)) && ((project request contributing) <? 2)) && ((project request conduct) <? 2)) && ((project request security) <? 2)) && ((project request codeowners) <? 2)) && ((project request ci) <? 2)) && ((project request readme) =? (UorRepoFiles::uorRepoFilesReadmePresent))) && ((project request license) =? (UorRepoFiles::uorRepoFilesLicenseMissing))) && (not ((UorRepoFiles::uorRepoFilesJudge request) =? (UorRepoFiles::uorRepoFilesAnswerMissingFile))))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : UorRepoFiles::UorRepoFilesRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoFiles::uorRepoFilesAnswerAdvisory,
+      UorRepoFiles::uorRepoFilesAnswerConformant,
+      UorRepoFiles::uorRepoFilesAnswerMissingFile,
+      UorRepoFiles::uorRepoFilesCiMissing,
+      UorRepoFiles::uorRepoFilesCiPresent,
+      UorRepoFiles::uorRepoFilesCodeownersMissing,
+      UorRepoFiles::uorRepoFilesCodeownersPresent,
+      UorRepoFiles::uorRepoFilesConductMissing,
+      UorRepoFiles::uorRepoFilesConductPresent,
+      UorRepoFiles::uorRepoFilesContributingMissing,
+      UorRepoFiles::uorRepoFilesContributingPresent,
+      UorRepoFiles::uorRepoFilesJudge,
+      UorRepoFiles::uorRepoFilesLicenseMissing,
+      UorRepoFiles::uorRepoFilesLicensePresent,
+      UorRepoFiles::uorRepoFilesReadmeMissing,
+      UorRepoFiles::uorRepoFilesReadmePresent,
+      UorRepoFiles::uorRepoFilesRule1,
+      UorRepoFiles::uorRepoFilesRule10,
+      UorRepoFiles::uorRepoFilesRule2,
+      UorRepoFiles::uorRepoFilesRule3,
+      UorRepoFiles::uorRepoFilesRule4,
+      UorRepoFiles::uorRepoFilesRule5,
+      UorRepoFiles::uorRepoFilesRule6,
+      UorRepoFiles::uorRepoFilesRule7,
+      UorRepoFiles::uorRepoFilesRule8,
+      UorRepoFiles::uorRepoFilesRule9,
+      UorRepoFiles::uorRepoFilesSecurityMissing,
+      UorRepoFiles::uorRepoFilesSecurityPresent,
+      UorRepoFiles::uorRepoFilesTierT1,
+      UorRepoFiles::uorRepoFilesTierT2,
+      UorRepoFiles::uorRepoFilesTierT3,
+      UorRepoFiles::uorRepoFilesTierT4,
+      breaksInv002
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : UorRepoFiles::UorRepoFilesRequest],
+  result: Bool,
+  body: ((((((((((((project request tier) <? 4) && ((project request readme) <? 2)) && ((project request license) <? 2)) && ((project request contributing) <? 2)) && ((project request conduct) <? 2)) && ((project request security) <? 2)) && ((project request codeowners) <? 2)) && ((project request ci) <? 2)) && ((project request tier) =? (UorRepoFiles::uorRepoFilesTierT1))) && ((project request security) =? (UorRepoFiles::uorRepoFilesSecurityMissing))) && ((UorRepoFiles::uorRepoFilesJudge request) =? (UorRepoFiles::uorRepoFilesAnswerConformant)))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : UorRepoFiles::UorRepoFilesRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoFiles::uorRepoFilesAnswerAdvisory,
+      UorRepoFiles::uorRepoFilesAnswerConformant,
+      UorRepoFiles::uorRepoFilesAnswerMissingFile,
+      UorRepoFiles::uorRepoFilesCiMissing,
+      UorRepoFiles::uorRepoFilesCiPresent,
+      UorRepoFiles::uorRepoFilesCodeownersMissing,
+      UorRepoFiles::uorRepoFilesCodeownersPresent,
+      UorRepoFiles::uorRepoFilesConductMissing,
+      UorRepoFiles::uorRepoFilesConductPresent,
+      UorRepoFiles::uorRepoFilesContributingMissing,
+      UorRepoFiles::uorRepoFilesContributingPresent,
+      UorRepoFiles::uorRepoFilesJudge,
+      UorRepoFiles::uorRepoFilesLicenseMissing,
+      UorRepoFiles::uorRepoFilesLicensePresent,
+      UorRepoFiles::uorRepoFilesReadmeMissing,
+      UorRepoFiles::uorRepoFilesReadmePresent,
+      UorRepoFiles::uorRepoFilesRule1,
+      UorRepoFiles::uorRepoFilesRule10,
+      UorRepoFiles::uorRepoFilesRule2,
+      UorRepoFiles::uorRepoFilesRule3,
+      UorRepoFiles::uorRepoFilesRule4,
+      UorRepoFiles::uorRepoFilesRule5,
+      UorRepoFiles::uorRepoFilesRule6,
+      UorRepoFiles::uorRepoFilesRule7,
+      UorRepoFiles::uorRepoFilesRule8,
+      UorRepoFiles::uorRepoFilesRule9,
+      UorRepoFiles::uorRepoFilesSecurityMissing,
+      UorRepoFiles::uorRepoFilesSecurityPresent,
+      UorRepoFiles::uorRepoFilesTierT1,
+      UorRepoFiles::uorRepoFilesTierT2,
+      UorRepoFiles::uorRepoFilesTierT3,
+      UorRepoFiles::uorRepoFilesTierT4,
+      breaksInv003
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : UorRepoFiles::UorRepoFilesRequest],
+  result: Bool,
+  body: (((((((((((project request tier) <? 4) && ((project request readme) <? 2)) && ((project request license) <? 2)) && ((project request contributing) <? 2)) && ((project request conduct) <? 2)) && ((project request security) <? 2)) && ((project request codeowners) <? 2)) && ((project request ci) <? 2)) && ((project request tier) =? (UorRepoFiles::uorRepoFilesTierT4))) && ((UorRepoFiles::uorRepoFilesJudge request) =? (UorRepoFiles::uorRepoFilesAnswerAdvisory)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : UorRepoFiles::UorRepoFilesRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoFiles::uorRepoFilesAnswerAdvisory,
+      UorRepoFiles::uorRepoFilesAnswerConformant,
+      UorRepoFiles::uorRepoFilesAnswerMissingFile,
+      UorRepoFiles::uorRepoFilesCiMissing,
+      UorRepoFiles::uorRepoFilesCiPresent,
+      UorRepoFiles::uorRepoFilesCodeownersMissing,
+      UorRepoFiles::uorRepoFilesCodeownersPresent,
+      UorRepoFiles::uorRepoFilesConductMissing,
+      UorRepoFiles::uorRepoFilesConductPresent,
+      UorRepoFiles::uorRepoFilesContributingMissing,
+      UorRepoFiles::uorRepoFilesContributingPresent,
+      UorRepoFiles::uorRepoFilesJudge,
+      UorRepoFiles::uorRepoFilesLicenseMissing,
+      UorRepoFiles::uorRepoFilesLicensePresent,
+      UorRepoFiles::uorRepoFilesReadmeMissing,
+      UorRepoFiles::uorRepoFilesReadmePresent,
+      UorRepoFiles::uorRepoFilesRule1,
+      UorRepoFiles::uorRepoFilesRule10,
+      UorRepoFiles::uorRepoFilesRule2,
+      UorRepoFiles::uorRepoFilesRule3,
+      UorRepoFiles::uorRepoFilesRule4,
+      UorRepoFiles::uorRepoFilesRule5,
+      UorRepoFiles::uorRepoFilesRule6,
+      UorRepoFiles::uorRepoFilesRule7,
+      UorRepoFiles::uorRepoFilesRule8,
+      UorRepoFiles::uorRepoFilesRule9,
+      UorRepoFiles::uorRepoFilesSecurityMissing,
+      UorRepoFiles::uorRepoFilesSecurityPresent,
+      UorRepoFiles::uorRepoFilesTierT1,
+      UorRepoFiles::uorRepoFilesTierT2,
+      UorRepoFiles::uorRepoFilesTierT3,
+      UorRepoFiles::uorRepoFilesTierT4,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

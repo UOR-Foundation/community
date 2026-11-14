@@ -27,7 +27,13 @@ https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e
 
 - As an organization who runs open source projects, I want to know if my project is open to including new contributors for the sustainability of my project.
 
-## Decisions (0)
+## Decisions (1)
+
+### Code of Conduct enforcement ladder
+
+UML 2.5.1 state machine, https://github.com/UOR-Foundation/community/blob/main/apps/uor-coc-enforcement.prompt.json
+
+- Holds ultimate enforcement authority and delegates it to moderators.
 
 ## Open claims (3)
 
