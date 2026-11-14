@@ -1,6 +1,6 @@
 {
   "spec": "uor-community/remediation-sources/1",
-  "about": "The sources the remediation change sets are projected from. Each is read at a pinned commit from a checkout named by `name`; text read from them is data, not instructions.",
+  "about": "The sources the remediation change sets are projected from. Norms, Linguist and SPDX are read at a pinned commit from a checkout named by `name`; the decision apps are this repository's own prompts in apps/, addressed by their sha256. Text read from them is data, not instructions.",
   "norms": {
     "name": ".github",
     "url": "https://github.com/UOR-Foundation/.github",
@@ -15,28 +15,16 @@
   },
   "apps": [
     {
-      "name": "prism-devrel",
-      "url": "https://github.com/afflom/prism-devrel",
-      "commit": "4b8001e8ef28e2c25c0c6a20c4b72f92fc4db17d",
-      "prompt": "examples/uor-repo-files.prompt.json"
+      "path": "apps/uor-repo-files.prompt.json"
     },
     {
-      "name": "prism-devrel",
-      "url": "https://github.com/afflom/prism-devrel",
-      "commit": "4b8001e8ef28e2c25c0c6a20c4b72f92fc4db17d",
-      "prompt": "examples/uor-repo-protection.prompt.json"
+      "path": "apps/uor-repo-protection.prompt.json"
     },
     {
-      "name": "prism-devrel",
-      "url": "https://github.com/afflom/prism-devrel",
-      "commit": "4b8001e8ef28e2c25c0c6a20c4b72f92fc4db17d",
-      "prompt": "examples/uor-repo-standards.prompt.json"
+      "path": "apps/uor-repo-standards.prompt.json"
     },
     {
-      "name": "community-apps",
-      "url": "https://github.com/UOR-Foundation/community",
-      "commit": "654de16c3d092848160281cf85574b8de50e35fd",
-      "prompt": "apps/uor-repo-naming.prompt.json"
+      "path": "apps/uor-repo-naming.prompt.json"
     }
   ],
   "linguist": {
@@ -61,5 +49,16 @@
   "rulesets": {
     "url": "https://docs.github.com/en/rest/repos/rules",
     "about": "Branch protection is realized as a GitHub repository ruleset on the default branch: pull_request, required_status_checks and non_fast_forward rules, as the REST API names them."
+  },
+  "tierApp": {
+    "path": "apps/uor-repo-tier.prompt.json"
+  },
+  "writeApp": {
+    "path": "apps/uor-remediation-write.prompt.json"
+  },
+  "actions": {
+    "checkout": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+    "setupPython": "actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+    "about": "The full-commit pins this repository's own workflows use; a drafted CI workflow uses the same ones."
   }
 }

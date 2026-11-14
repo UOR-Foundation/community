@@ -8,9 +8,10 @@
  *     every tier, every open claim, and the theorem that the register is valid;
  *   the two lexicon entries that title them.
  *
- * registerValid holds when every repository is projected at one tier exactly
- * when its tier is recorded and at every tier otherwise, a repository without a
- * recorded tier names the tier as an open decision, every change and claim names
+ * registerValid holds when every repository is projected at exactly one tier,
+ * the one its tier tag records or else the one the uor-repo-tier app proposes,
+ * a repository without a recorded tier names the proposed tier as an open claim
+ * for its maintainers to confirm, every change and claim names
  * a repository, and each repository's counts of changes, decisions and findings
  * are the records that name it. The same register always writes the same bytes.
  *
@@ -24,7 +25,6 @@ import { typesModule, catalogModule, def, match, camel } from '../tools/register
 const here = dirname(fileURLToPath(import.meta.url));
 const r = JSON.parse(readFileSync(join(here, 'register.json'), 'utf8'));
 const M = 'Foundation.Remediation.V1.Model';
-const tierCount = new Set(r.repositories.flatMap((x) => (x.tiers ?? []).map((t) => t.tier))).size;
 
 const enums = {
   App: r.apps.map((a) => a.app),
@@ -67,31 +67,30 @@ const decl = {
     { name: 'OpenClaim', list: 'openClaims', fields: [['repository', { ref: 'Repository' }], ['name', { enum: 'Refusal' }], ['reason', 'String']] },
   ],
   release: [
-    ['ecosystemDigest', 'String'], ['observationsDigest', 'String'], ['sources', 'String'], ['tierCount', 'Nat'],
+    ['ecosystemDigest', 'String'], ['observationsDigest', 'String'], ['rolesDigest', 'String'], ['sources', 'String'],
   ],
   definitions: [
     predicate('isTierDecision', 'Refusal', (v) => v === 'decision-tier'),
     predicate('isDecision', 'Refusal', isDecision),
     predicate('isFinding', 'Refusal', isFinding),
-    def('agree', ['left : Bool', 'right : Bool'], 'Bool', '(if left then right else (not right))'),
     def('tiersRead', ['repository : Repository'], 'Bool',
-      '(agree (project repository tierRecorded) ((project repository tiersProjected) =? 1))'),
+      '((project repository tiersProjected) =? 1)'),
     count('changesOf', 'Change', 'change', 'true'),
     count('decisionsOf', 'OpenClaim', 'claim', '(isDecision (project claim name))'),
     count('findingsOf', 'OpenClaim', 'claim', '(isFinding (project claim name))'),
     count('tierDecisionsOf', 'OpenClaim', 'claim', '(isTierDecision (project claim name))'),
     // Each repository: projected at every tier when none is recorded, which is then an open decision,
     // and its counts are the records that name it.
-    def('accounted', ['tiers : Nat', 'changes : (List Change)', 'claims : (List OpenClaim)', 'values : (List Repository)'], 'Bool',
+    def('accounted', ['changes : (List Change)', 'claims : (List OpenClaim)', 'values : (List Repository)'], 'Bool',
       match('values', [['List.nil', 'true'], ['List.cons repository rest', and([
-        '((project repository tierRecorded) || (((project repository tiersProjected) =? tiers) && ((tierDecisionsOf (project repository index) claims) =? 1)))',
+        '((project repository tierRecorded) || ((tierDecisionsOf (project repository index) claims) =? 1))',
         '((changesOf (project repository index) changes) =? (project repository changesNow))',
         '((decisionsOf (project repository index) claims) =? (project repository decisions))',
         '((findingsOf (project repository index) claims) =? (project repository findings))',
-        '(accounted tiers changes claims rest)',
+        '(accounted changes claims rest)',
       ])]]), 'values'),
   ],
-  checks: ['(accounted (project release tierCount) changes openClaims repositories)'],
+  checks: ['(accounted changes openClaims repositories)'],
 };
 
 const live = r.repositories.filter((x) => !x.empty);
@@ -110,8 +109,8 @@ r.repositories.forEach((x, i) => { if (x.index !== i) throw new Error(`${x.name}
 const release = {
   ecosystemDigest: `sha256:${r.ecosystem.sha256}`,
   observationsDigest: `sha256:${r.observations.sha256}`,
+  rolesDigest: `sha256:${r.roles.sha256}`,
   sources: r.sources.map((s) => `${s.path}#sha256:${s.sha256}`).join(' '),
-  tierCount,
 };
 
 const entry = (id, surface, module, component) =>

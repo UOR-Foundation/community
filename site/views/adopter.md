@@ -107,7 +107,13 @@ https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e
 
 - As an OSPO, I want to help our open source contributors improve the health of
 
-## Decisions (0)
+## Decisions (1)
+
+### Repository tier by use case
+
+DMN 1.5 decision table, https://github.com/UOR-Foundation/community/blob/main/apps/uor-repo-tier.prompt.json
+
+- Chooses which UOR Foundation repositories to depend on and reads the tier as the controls a repository promises.
 
 ## Open claims (3)
 

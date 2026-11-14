@@ -263,6 +263,20 @@
    "sha256": "a10084dd1b0a7439016ebdcdb31221467ac6085bd4a7b1e3b2b2b1d3fabfe7a0"
   },
   {
+   "app": "uor-remediation-lifecycle",
+   "title": "Remediation lifecycle",
+   "pattern": "stateMachine",
+   "path": "apps/uor-remediation-lifecycle.prompt.json",
+   "sha256": "a80162ae380b73f91e324dbef84b845d279486ced915130acacce47c84e67838"
+  },
+  {
+   "app": "uor-remediation-write",
+   "title": "Remediation write policy",
+   "pattern": "policyDecision",
+   "path": "apps/uor-remediation-write.prompt.json",
+   "sha256": "6dbad73cfd70454fadb625869cece91cb43c15d33f8c6abe27d3ff10d7cafd1e"
+  },
+  {
    "app": "uor-repo-files",
    "title": "Required repository files by tier",
    "pattern": "decisionTable",
@@ -289,6 +303,13 @@
    "pattern": "decisionTable",
    "path": "apps/uor-repo-standards.prompt.json",
    "sha256": "5110ceae4dcad03303e79f678303c4cc0b1c558ce676eed7a8c82f4f09ebf3b0"
+  },
+  {
+   "app": "uor-repo-tier",
+   "title": "Repository tier by use case",
+   "pattern": "decisionTable",
+   "path": "apps/uor-repo-tier.prompt.json",
+   "sha256": "549a37d3e5912b33a5dcb3eb3d190492e4a2125d00315469ab7c7ca1b6c1e6c2"
   },
   {
    "app": "uor-toc-lifecycle",
@@ -1091,6 +1112,55 @@
    "text": "Is counted by contributor metrics and needs to be credited only as PROV-O delegation records."
   },
   {
+   "stakeholder": "organization-owner",
+   "kind": "decisionModel",
+   "subject": "uor-remediation-lifecycle",
+   "role": "Organization Owner",
+   "text": "Approves each remediation and applies its settings, and needs to see which step every repository is at."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "decisionModel",
+   "subject": "uor-remediation-lifecycle",
+   "role": "Repository Maintainer",
+   "text": "Reviews and merges or declines the remediation pull request, and needs a declined remediation to end rather than be reopened."
+  },
+  {
+   "stakeholder": "agent-contributor",
+   "kind": "decisionModel",
+   "subject": "uor-remediation-lifecycle",
+   "role": "Agent contributor",
+   "text": "Opens the pull requests and re-observes the repositories, and needs each step to name the act that moves it."
+  },
+  {
+   "stakeholder": "community-outreach",
+   "kind": "decisionModel",
+   "subject": "uor-remediation-lifecycle",
+   "role": "Community and Outreach Committee",
+   "text": "Reports the ecosystem's standards health and needs a repository counted conformant only on a fresh observation."
+  },
+  {
+   "stakeholder": "organization-owner",
+   "kind": "decisionModel",
+   "subject": "uor-remediation-write",
+   "role": "Organization Owner",
+   "text": "Approves the remediation and applies the settings only an admin can change, and needs no write to happen without that approval."
+  },
+  {
+   "stakeholder": "agent-contributor",
+   "kind": "decisionModel",
+   "subject": "uor-remediation-write",
+   "role": "Agent contributor",
+   "text": "Opens the remediation pull requests on behalf of the Organization Owner and needs to know exactly which changes it may make and how."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "decisionModel",
+   "subject": "uor-remediation-write",
+   "role": "Repository Maintainer",
+   "text": "Reviews each remediation pull request and needs every change to arrive through review, never as a direct push."
+  },
+  {
    "stakeholder": "maintainer",
    "kind": "decisionModel",
    "subject": "uor-repo-files",
@@ -1145,6 +1215,27 @@
    "subject": "uor-repo-standards",
    "role": "Organization Owner",
    "text": "Holds final governance authority and needs every repository measured against the same published norms."
+  },
+  {
+   "stakeholder": "maintainer",
+   "kind": "decisionModel",
+   "subject": "uor-repo-tier",
+   "role": "Repository Maintainer",
+   "text": "Records the tier of a repository and needs the proposed tier to follow GOVERNANCE.md 5 and to yield to the tier already recorded."
+  },
+  {
+   "stakeholder": "organization-owner",
+   "kind": "decisionModel",
+   "subject": "uor-repo-tier",
+   "role": "Organization Owner",
+   "text": "Holds final governance authority and needs every repository classified by the same published rule."
+  },
+  {
+   "stakeholder": "adopter",
+   "kind": "decisionModel",
+   "subject": "uor-repo-tier",
+   "role": "Adopter",
+   "text": "Chooses which UOR Foundation repositories to depend on and reads the tier as the controls a repository promises."
   },
   {
    "stakeholder": "maintainer",
@@ -1220,8 +1311,8 @@
  ],
  "counts": {
   "stakeholders": 10,
-  "decisions": 28,
-  "concerns": 124,
+  "decisions": 31,
+  "concerns": 134,
   "refusals": 8
  }
 }

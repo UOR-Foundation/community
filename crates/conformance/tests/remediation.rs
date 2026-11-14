@@ -58,12 +58,12 @@ fn remediation_rm_01() {
         "((openClaimsTotal openClaims) =? (project release openClaimsCount))",
         "(changesValid 0 (repositoriesTotal repositories) changes)",
         "(openClaimsValid 0 (repositoriesTotal repositories) openClaims)",
-        "(agree (project repository tierRecorded) ((project repository tiersProjected) =? 1))",
-        "((project repository tierRecorded) || (((project repository tiersProjected) =? tiers) && ((tierDecisionsOf (project repository index) claims) =? 1)))",
+        "((project repository tiersProjected) =? 1)",
+        "((project repository tierRecorded) || ((tierDecisionsOf (project repository index) claims) =? 1))",
         "((changesOf (project repository index) changes) =? (project repository changesNow))",
         "((decisionsOf (project repository index) claims) =? (project repository decisions))",
         "((findingsOf (project repository index) claims) =? (project repository findings))",
-        "(accounted (project release tierCount) changes openClaims repositories)",
+        "(accounted changes openClaims repositories)",
     ] {
         assert!(model.contains(part), "registerValid still checks {part}");
     }
@@ -92,7 +92,7 @@ fn remediation_rm_02() {
         );
         assert!(
             root()
-                .join(format!("remediation/drafts/{name}.md"))
+                .join(format!("remediation/drafts/{name}.issue.md"))
                 .is_file(),
             "{name} has an issue draft"
         );

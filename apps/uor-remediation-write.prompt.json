@@ -1,0 +1,509 @@
+{
+  "schema": "prism/prompt/1",
+  "pattern": "policyDecision",
+  "goal": "Decide whether a change to a UOR Foundation repository may be made, by whom and by which route, so that no remediation writes to a repository without its owners' go-ahead.",
+  "repository": "UOR-Foundation/community",
+  "app": {
+    "name": "uor-remediation-write",
+    "title": "Remediation write policy",
+    "purpose": "Decide, as an XACML 3.0 policy decision point, whether a remediation change may be written to a UOR Foundation repository, from who acts, what kind of change it is, the repository's state, whether an Organization Owner approved it, and the route it takes.",
+    "fields": [
+      {
+        "name": "actor",
+        "kind": "choice",
+        "values": [
+          "owner",
+          "agent",
+          "maintainer",
+          "other",
+          "unverified"
+        ],
+        "means": "who acts: an Organization Owner, a software agent that acted on behalf of an owner (PROV-O actedOnBehalfOf), a Repository Maintainer, anyone else, or an actor whose identity cannot be verified"
+      },
+      {
+        "name": "change",
+        "kind": "choice",
+        "values": [
+          "file",
+          "topic",
+          "ruleset",
+          "rename"
+        ],
+        "means": "the kind of change: a file in the repository, a topic tag, a branch ruleset, or a repository rename"
+      },
+      {
+        "name": "repository",
+        "kind": "choice",
+        "values": [
+          "live",
+          "archived"
+        ],
+        "means": "whether the repository is live or archived on GitHub"
+      },
+      {
+        "name": "approval",
+        "kind": "choice",
+        "values": [
+          "given",
+          "none"
+        ],
+        "means": "whether an Organization Owner approved this remediation"
+      },
+      {
+        "name": "route",
+        "kind": "choice",
+        "values": [
+          "pull-request",
+          "direct"
+        ],
+        "means": "a pull request to the default branch, or a direct write"
+      }
+    ],
+    "outcomes": [
+      "permit",
+      "deny",
+      "not-applicable",
+      "indeterminate"
+    ],
+    "meanings": {
+      "permit": "XACML 3.0 section 7: the policy applies and allows the change",
+      "deny": "XACML 3.0 section 7: the policy applies and forbids the change",
+      "not-applicable": "XACML 3.0 section 7: no rule of the remediation policy applies, because the actor is not part of the remediation",
+      "indeterminate": "XACML 3.0 section 7: the policy could not be evaluated, here because the actor's identity cannot be verified"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "actor",
+            "op": "is",
+            "value": "unverified"
+          }
+        ],
+        "then": "indeterminate",
+        "why": "PROV-O: an agent's acts are attributed through actedOnBehalfOf; an actor whose identity cannot be verified cannot be attributed"
+      },
+      {
+        "when": [
+          {
+            "field": "actor",
+            "op": "is",
+            "value": "other"
+          }
+        ],
+        "then": "not-applicable",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 4.1: the remediation is an act of the Organization Owner, Repository Maintainers and agents acting for them"
+      },
+      {
+        "when": [
+          {
+            "field": "repository",
+            "op": "is",
+            "value": "archived"
+          },
+          {
+            "field": "route",
+            "op": "is",
+            "value": "pull-request"
+          }
+        ],
+        "then": "deny",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 11: an archived repository is a read-only historical state; it takes no pull request"
+      },
+      {
+        "when": [
+          {
+            "field": "approval",
+            "op": "is",
+            "value": "none"
+          },
+          {
+            "field": "actor",
+            "op": "is not",
+            "value": "owner"
+          }
+        ],
+        "then": "deny",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 4.1: the Organization Owner makes final governance decisions; no remediation is written without the owner's go-ahead"
+      },
+      {
+        "when": [
+          {
+            "field": "change",
+            "op": "is",
+            "value": "file"
+          },
+          {
+            "field": "route",
+            "op": "is",
+            "value": "direct"
+          }
+        ],
+        "then": "deny",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 3 and 7.1: review before merge, no direct pushes; a change is a pull request linked to an issue"
+      },
+      {
+        "when": [
+          {
+            "field": "change",
+            "op": "is not",
+            "value": "file"
+          },
+          {
+            "field": "actor",
+            "op": "is not",
+            "value": "owner"
+          }
+        ],
+        "then": "deny",
+        "why": "GitHub: topics, rulesets and repository renames are repository settings that need admin permission, which only an Organization Owner holds"
+      },
+      {
+        "when": [
+          {
+            "field": "change",
+            "op": "is not",
+            "value": "file"
+          },
+          {
+            "field": "route",
+            "op": "is",
+            "value": "pull-request"
+          }
+        ],
+        "then": "deny",
+        "why": "GitHub: a repository setting is not carried by a pull request; the owner applies it directly"
+      }
+    ],
+    "otherwise": "permit",
+    "otherwiseWhy": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 4.1 and 7.1: an approved file change by pull request, or an approved setting applied by an Organization Owner",
+    "properties": [
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "approval",
+            "op": "is",
+            "value": "none"
+          },
+          {
+            "field": "actor",
+            "op": "is",
+            "value": "agent"
+          }
+        ],
+        "then": "permit",
+        "why": "an agent never writes without an owner's go-ahead"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "change",
+            "op": "is",
+            "value": "file"
+          },
+          {
+            "field": "route",
+            "op": "is",
+            "value": "direct"
+          }
+        ],
+        "then": "permit",
+        "why": "a file change always goes through review"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "change",
+            "op": "is",
+            "value": "ruleset"
+          },
+          {
+            "field": "actor",
+            "op": "is",
+            "value": "agent"
+          }
+        ],
+        "then": "permit",
+        "why": "an agent never changes branch protection"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "actor",
+            "op": "is",
+            "value": "agent"
+          },
+          {
+            "field": "change",
+            "op": "is",
+            "value": "file"
+          },
+          {
+            "field": "repository",
+            "op": "is",
+            "value": "live"
+          },
+          {
+            "field": "approval",
+            "op": "is",
+            "value": "given"
+          },
+          {
+            "field": "route",
+            "op": "is",
+            "value": "pull-request"
+          }
+        ],
+        "then": "permit",
+        "why": "an approved agent opens the file pull request"
+      }
+    ],
+    "examples": [
+      {
+        "request": "agent file live given pull-request",
+        "response": "permit"
+      },
+      {
+        "request": "agent file live none pull-request",
+        "response": "deny"
+      },
+      {
+        "request": "agent topic live given direct",
+        "response": "deny"
+      },
+      {
+        "request": "owner topic live given direct",
+        "response": "permit"
+      },
+      {
+        "request": "owner rename live none direct",
+        "response": "permit"
+      },
+      {
+        "request": "maintainer file archived given pull-request",
+        "response": "deny"
+      },
+      {
+        "request": "agent file live given direct",
+        "response": "deny"
+      },
+      {
+        "request": "other file live given pull-request",
+        "response": "not-applicable"
+      },
+      {
+        "request": "unverified file live given pull-request",
+        "response": "indeterminate"
+      },
+      {
+        "request": "owner ruleset live given pull-request",
+        "response": "deny"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Organization Owner",
+      "text": "Approves the remediation and applies the settings only an admin can change, and needs no write to happen without that approval.",
+      "concerns": [
+        "Proved guarantees"
+      ]
+    },
+    {
+      "name": "Agent contributor",
+      "text": "Opens the remediation pull requests on behalf of the Organization Owner and needs to know exactly which changes it may make and how.",
+      "concerns": [
+        "Correct answers",
+        "Refused malformed requests"
+      ]
+    },
+    {
+      "name": "Repository Maintainer",
+      "text": "Reviews each remediation pull request and needs every change to arrive through review, never as a direct push.",
+      "concerns": [
+        "Proved guarantees"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "GitHub repository settings",
+      "kind": "externalSystem",
+      "text": "The topics, rulesets, names and files of each UOR-Foundation repository."
+    },
+    {
+      "name": "Remediation register",
+      "kind": "cliAdapter",
+      "text": "remediation/project.mjs and remediation/register.json in UOR-Foundation/community, which project each repository's change set from the decision apps."
+    },
+    {
+      "name": "GitHub App credentials",
+      "kind": "externalSystem",
+      "text": "The scoped token an agent writes with: contents and pull requests, never administration."
+    }
+  ],
+  "threats": [
+    {
+      "name": "Write without approval",
+      "text": "An agent opens or pushes remediation changes the Organization Owner never approved.",
+      "stride": "elevationOfPrivilege",
+      "asset": "answer",
+      "likelihood": "medium",
+      "impact": "major",
+      "control": {
+        "name": "Owner go-ahead",
+        "text": "Any actor other than the owner is denied without approval.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-001"
+          },
+          {
+            "kind": "review",
+            "reference": "Alex's go-ahead in the community project thread, 2026-11-14"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Protection weakened by an agent",
+      "text": "An agent with a broad token changes or removes a branch ruleset.",
+      "stride": "tampering",
+      "asset": "answer",
+      "likelihood": "low",
+      "impact": "critical",
+      "control": {
+        "name": "Settings are the owner's",
+        "text": "Topic, ruleset and rename changes by anyone but the owner are denied.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-003"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Unreviewed push",
+      "text": "A file change lands on a default branch without a pull request.",
+      "stride": "repudiation",
+      "asset": "answer",
+      "likelihood": "medium",
+      "impact": "major",
+      "control": {
+        "name": "Pull request only",
+        "text": "A direct file write is denied.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-002"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Spoofed agent",
+      "text": "An actor claims to act for the owner without a verifiable delegation.",
+      "stride": "spoofing",
+      "asset": "request",
+      "likelihood": "low",
+      "impact": "major",
+      "control": {
+        "name": "Unverified is indeterminate",
+        "text": "An actor whose identity cannot be verified gets indeterminate, never permit.",
+        "evidence": [
+          {
+            "kind": "review",
+            "reference": "W3C PROV-O actedOnBehalfOf"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Credential leaked in a pull request",
+      "text": "A token or secret is committed with a remediation file.",
+      "stride": "informationDisclosure",
+      "asset": "source",
+      "likelihood": "low",
+      "impact": "critical",
+      "accepted": "Remediation files are generated from public data (SPDX text, CODEOWNERS logins, workflow YAML) and carry no secret; GitHub secret scanning covers the rest."
+    },
+    {
+      "name": "Mass pull requests flood maintainers",
+      "text": "Thirty repositories each receive a remediation pull request at once and review stalls.",
+      "stride": "denialOfService",
+      "asset": "answer",
+      "likelihood": "medium",
+      "impact": "minor",
+      "accepted": "One small pull request per repository, each linked to its issue and its change set, keeps every review a single read."
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Security",
+      "subcharacteristic": "Accountability",
+      "requirement": "Every write attributed",
+      "text": "Every permitted change names the owner who approved it and the agent that acted for them.",
+      "measure": "Unattributed writes",
+      "measureText": "Permitted changes without an approving owner.",
+      "threshold": 0
+    },
+    {
+      "characteristic": "Security",
+      "subcharacteristic": "Integrity",
+      "requirement": "Protection changed only by the owner",
+      "text": "No rule permits a ruleset change by anyone but the owner.",
+      "measure": "Non-owner setting permits",
+      "measureText": "Rules that permit a setting change by a non-owner.",
+      "threshold": 0
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Agent contributor",
+      "steps": [
+        "REQ-004",
+        "REQ-005",
+        "otherwise"
+      ]
+    },
+    {
+      "stakeholder": "Organization Owner",
+      "steps": [
+        "INV-001",
+        "INV-003",
+        "refuse"
+      ]
+    },
+    {
+      "stakeholder": "Repository Maintainer",
+      "steps": [
+        "REQ-003",
+        "INV-002"
+      ]
+    }
+  ],
+  "concerns": [],
+  "license": "MIT OR Apache-2.0",
+  "axioms": {
+    "inv001Holds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "inv002Holds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "inv003Holds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  }
+}
