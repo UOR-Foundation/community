@@ -1,0 +1,49 @@
+# Posts the read-only Discord digest of the stakeholder views when it changes on
+# main. views/catalog.mjs writes views/discord.json from the same register as
+# the Pages views; this only delivers it, through a Discord channel webhook
+# (Discord API v10, execute webhook) held in the DISCORD_DIGEST_WEBHOOK secret.
+# allowed_mentions parses nothing, so the digest never pings anyone.
+name: discord-digest
+
+on:
+  push:
+    branches: [main]
+    paths: [views/discord.json]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: discord-digest
+  cancel-in-progress: false
+
+jobs:
+  post:
+    name: post the views digest to Discord
+    if: github.repository == 'UOR-Foundation/community'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out the exact event revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: The digest is the catalog of the register
+        run: node views/catalog.mjs --check
+      - name: Post each message
+        env:
+          WEBHOOK: ${{ secrets.DISCORD_DIGEST_WEBHOOK }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z ${WEBHOOK:-} ]]; then
+            printf '%s\n' 'discord-digest-no-webhook: set the DISCORD_DIGEST_WEBHOOK secret to a channel webhook URL' >&2
+            exit 64
+          fi
+          count=$(node -e 'process.stdout.write(String(require("./views/discord.json").messages.length))')
+          for ((i = 0; i < count; i++)); do
+            node -e 'process.stdout.write(JSON.stringify(require("./views/discord.json").messages[Number(process.argv[1])]))' "$i" |
+              curl --fail-with-body --silent --show-error --retry 3 \
+                -H 'Content-Type: application/json' --data-binary @- "$WEBHOOK?wait=true" >/dev/null
+          done

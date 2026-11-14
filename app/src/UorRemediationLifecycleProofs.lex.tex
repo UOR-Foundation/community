@@ -1,0 +1,398 @@
+\begin{lexlean}{UorRemediationLifecycleProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{UorRemediationLifecycle}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : UorRemediationLifecycle::UorRemediationLifecycleRequest],
+  result: Bool,
+  body: (((((((((project request step) <? 7) && ((project request approval) <? 2)) && ((project request pr) <? 4)) && ((project request settings) <? 2)) && ((project request outcome) <? 3)) && ((project request step) =? (UorRemediationLifecycle::uorRemediationLifecycleStepObserved))) && ((project request approval) =? (UorRemediationLifecycle::uorRemediationLifecycleApprovalNone))) && ((UorRemediationLifecycle::uorRemediationLifecycleJudge request) =? (UorRemediationLifecycle::uorRemediationLifecycleAnswerOpened)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : UorRemediationLifecycle::UorRemediationLifecycleRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerApproved,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerDeclined,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerMerged,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerObserved,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerOpened,
+      UorRemediationLifecycle::uorRemediationLifecycleApprovalGiven,
+      UorRemediationLifecycle::uorRemediationLifecycleApprovalNone,
+      UorRemediationLifecycle::uorRemediationLifecycleJudge,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeBlocked,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeUnobserved,
+      UorRemediationLifecycle::uorRemediationLifecyclePrClosed,
+      UorRemediationLifecycle::uorRemediationLifecyclePrMerged,
+      UorRemediationLifecycle::uorRemediationLifecyclePrNone,
+      UorRemediationLifecycle::uorRemediationLifecyclePrOpen,
+      UorRemediationLifecycle::uorRemediationLifecycleRule1,
+      UorRemediationLifecycle::uorRemediationLifecycleRule10,
+      UorRemediationLifecycle::uorRemediationLifecycleRule11,
+      UorRemediationLifecycle::uorRemediationLifecycleRule12,
+      UorRemediationLifecycle::uorRemediationLifecycleRule13,
+      UorRemediationLifecycle::uorRemediationLifecycleRule2,
+      UorRemediationLifecycle::uorRemediationLifecycleRule3,
+      UorRemediationLifecycle::uorRemediationLifecycleRule4,
+      UorRemediationLifecycle::uorRemediationLifecycleRule5,
+      UorRemediationLifecycle::uorRemediationLifecycleRule6,
+      UorRemediationLifecycle::uorRemediationLifecycleRule7,
+      UorRemediationLifecycle::uorRemediationLifecycleRule8,
+      UorRemediationLifecycle::uorRemediationLifecycleRule9,
+      UorRemediationLifecycle::uorRemediationLifecycleSettingsApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleSettingsPending,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApplied2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApproved,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApproved2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleStepConformant2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepDeclined,
+      UorRemediationLifecycle::uorRemediationLifecycleStepDeclined2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepMerged,
+      UorRemediationLifecycle::uorRemediationLifecycleStepMerged2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepObserved,
+      UorRemediationLifecycle::uorRemediationLifecycleStepObserved2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepOpened,
+      UorRemediationLifecycle::uorRemediationLifecycleStepOpened2,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : UorRemediationLifecycle::UorRemediationLifecycleRequest],
+  result: Bool,
+  body: (((((((((project request step) <? 7) && ((project request approval) <? 2)) && ((project request pr) <? 4)) && ((project request settings) <? 2)) && ((project request outcome) <? 3)) && ((project request step) =? (UorRemediationLifecycle::uorRemediationLifecycleStepMerged))) && ((project request outcome) =? (UorRemediationLifecycle::uorRemediationLifecycleOutcomeConformant))) && ((UorRemediationLifecycle::uorRemediationLifecycleJudge request) =? (UorRemediationLifecycle::uorRemediationLifecycleAnswerConformant)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : UorRemediationLifecycle::UorRemediationLifecycleRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerApproved,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerDeclined,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerMerged,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerObserved,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerOpened,
+      UorRemediationLifecycle::uorRemediationLifecycleApprovalGiven,
+      UorRemediationLifecycle::uorRemediationLifecycleApprovalNone,
+      UorRemediationLifecycle::uorRemediationLifecycleJudge,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeBlocked,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeUnobserved,
+      UorRemediationLifecycle::uorRemediationLifecyclePrClosed,
+      UorRemediationLifecycle::uorRemediationLifecyclePrMerged,
+      UorRemediationLifecycle::uorRemediationLifecyclePrNone,
+      UorRemediationLifecycle::uorRemediationLifecyclePrOpen,
+      UorRemediationLifecycle::uorRemediationLifecycleRule1,
+      UorRemediationLifecycle::uorRemediationLifecycleRule10,
+      UorRemediationLifecycle::uorRemediationLifecycleRule11,
+      UorRemediationLifecycle::uorRemediationLifecycleRule12,
+      UorRemediationLifecycle::uorRemediationLifecycleRule13,
+      UorRemediationLifecycle::uorRemediationLifecycleRule2,
+      UorRemediationLifecycle::uorRemediationLifecycleRule3,
+      UorRemediationLifecycle::uorRemediationLifecycleRule4,
+      UorRemediationLifecycle::uorRemediationLifecycleRule5,
+      UorRemediationLifecycle::uorRemediationLifecycleRule6,
+      UorRemediationLifecycle::uorRemediationLifecycleRule7,
+      UorRemediationLifecycle::uorRemediationLifecycleRule8,
+      UorRemediationLifecycle::uorRemediationLifecycleRule9,
+      UorRemediationLifecycle::uorRemediationLifecycleSettingsApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleSettingsPending,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApplied2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApproved,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApproved2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleStepConformant2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepDeclined,
+      UorRemediationLifecycle::uorRemediationLifecycleStepDeclined2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepMerged,
+      UorRemediationLifecycle::uorRemediationLifecycleStepMerged2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepObserved,
+      UorRemediationLifecycle::uorRemediationLifecycleStepObserved2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepOpened,
+      UorRemediationLifecycle::uorRemediationLifecycleStepOpened2,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : UorRemediationLifecycle::UorRemediationLifecycleRequest],
+  result: Bool,
+  body: ((((((((project request step) <? 7) && ((project request approval) <? 2)) && ((project request pr) <? 4)) && ((project request settings) <? 2)) && ((project request outcome) <? 3)) && ((project request step) =? (UorRemediationLifecycle::uorRemediationLifecycleStepDeclined))) && (not ((UorRemediationLifecycle::uorRemediationLifecycleJudge request) =? (UorRemediationLifecycle::uorRemediationLifecycleAnswerDeclined))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : UorRemediationLifecycle::UorRemediationLifecycleRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerApproved,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerDeclined,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerMerged,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerObserved,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerOpened,
+      UorRemediationLifecycle::uorRemediationLifecycleApprovalGiven,
+      UorRemediationLifecycle::uorRemediationLifecycleApprovalNone,
+      UorRemediationLifecycle::uorRemediationLifecycleJudge,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeBlocked,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeUnobserved,
+      UorRemediationLifecycle::uorRemediationLifecyclePrClosed,
+      UorRemediationLifecycle::uorRemediationLifecyclePrMerged,
+      UorRemediationLifecycle::uorRemediationLifecyclePrNone,
+      UorRemediationLifecycle::uorRemediationLifecyclePrOpen,
+      UorRemediationLifecycle::uorRemediationLifecycleRule1,
+      UorRemediationLifecycle::uorRemediationLifecycleRule10,
+      UorRemediationLifecycle::uorRemediationLifecycleRule11,
+      UorRemediationLifecycle::uorRemediationLifecycleRule12,
+      UorRemediationLifecycle::uorRemediationLifecycleRule13,
+      UorRemediationLifecycle::uorRemediationLifecycleRule2,
+      UorRemediationLifecycle::uorRemediationLifecycleRule3,
+      UorRemediationLifecycle::uorRemediationLifecycleRule4,
+      UorRemediationLifecycle::uorRemediationLifecycleRule5,
+      UorRemediationLifecycle::uorRemediationLifecycleRule6,
+      UorRemediationLifecycle::uorRemediationLifecycleRule7,
+      UorRemediationLifecycle::uorRemediationLifecycleRule8,
+      UorRemediationLifecycle::uorRemediationLifecycleRule9,
+      UorRemediationLifecycle::uorRemediationLifecycleSettingsApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleSettingsPending,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApplied2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApproved,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApproved2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleStepConformant2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepDeclined,
+      UorRemediationLifecycle::uorRemediationLifecycleStepDeclined2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepMerged,
+      UorRemediationLifecycle::uorRemediationLifecycleStepMerged2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepObserved,
+      UorRemediationLifecycle::uorRemediationLifecycleStepObserved2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepOpened,
+      UorRemediationLifecycle::uorRemediationLifecycleStepOpened2,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : UorRemediationLifecycle::UorRemediationLifecycleRequest],
+  result: Bool,
+  body: (((((((((project request step) <? 7) && ((project request approval) <? 2)) && ((project request pr) <? 4)) && ((project request settings) <? 2)) && ((project request outcome) <? 3)) && ((project request step) =? (UorRemediationLifecycle::uorRemediationLifecycleStepApplied))) && ((project request outcome) =? (UorRemediationLifecycle::uorRemediationLifecycleOutcomeUnobserved))) && ((UorRemediationLifecycle::uorRemediationLifecycleJudge request) =? (UorRemediationLifecycle::uorRemediationLifecycleAnswerConformant)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : UorRemediationLifecycle::UorRemediationLifecycleRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerApproved,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerDeclined,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerMerged,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerObserved,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerOpened,
+      UorRemediationLifecycle::uorRemediationLifecycleApprovalGiven,
+      UorRemediationLifecycle::uorRemediationLifecycleApprovalNone,
+      UorRemediationLifecycle::uorRemediationLifecycleJudge,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeBlocked,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeUnobserved,
+      UorRemediationLifecycle::uorRemediationLifecyclePrClosed,
+      UorRemediationLifecycle::uorRemediationLifecyclePrMerged,
+      UorRemediationLifecycle::uorRemediationLifecyclePrNone,
+      UorRemediationLifecycle::uorRemediationLifecyclePrOpen,
+      UorRemediationLifecycle::uorRemediationLifecycleRule1,
+      UorRemediationLifecycle::uorRemediationLifecycleRule10,
+      UorRemediationLifecycle::uorRemediationLifecycleRule11,
+      UorRemediationLifecycle::uorRemediationLifecycleRule12,
+      UorRemediationLifecycle::uorRemediationLifecycleRule13,
+      UorRemediationLifecycle::uorRemediationLifecycleRule2,
+      UorRemediationLifecycle::uorRemediationLifecycleRule3,
+      UorRemediationLifecycle::uorRemediationLifecycleRule4,
+      UorRemediationLifecycle::uorRemediationLifecycleRule5,
+      UorRemediationLifecycle::uorRemediationLifecycleRule6,
+      UorRemediationLifecycle::uorRemediationLifecycleRule7,
+      UorRemediationLifecycle::uorRemediationLifecycleRule8,
+      UorRemediationLifecycle::uorRemediationLifecycleRule9,
+      UorRemediationLifecycle::uorRemediationLifecycleSettingsApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleSettingsPending,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApplied2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApproved,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApproved2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleStepConformant2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepDeclined,
+      UorRemediationLifecycle::uorRemediationLifecycleStepDeclined2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepMerged,
+      UorRemediationLifecycle::uorRemediationLifecycleStepMerged2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepObserved,
+      UorRemediationLifecycle::uorRemediationLifecycleStepObserved2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepOpened,
+      UorRemediationLifecycle::uorRemediationLifecycleStepOpened2,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv005,
+  parameters: [request : UorRemediationLifecycle::UorRemediationLifecycleRequest],
+  result: Bool,
+  body: ((((((((project request step) <? 7) && ((project request approval) <? 2)) && ((project request pr) <? 4)) && ((project request settings) <? 2)) && ((project request outcome) <? 3)) && ((project request step) =? (UorRemediationLifecycle::uorRemediationLifecycleStepConformant))) && (not ((UorRemediationLifecycle::uorRemediationLifecycleJudge request) =? (UorRemediationLifecycle::uorRemediationLifecycleAnswerConformant))))
+}
+
+theorem{
+  name: inv005Holds,
+  parameters: [request : UorRemediationLifecycle::UorRemediationLifecycleRequest],
+  statement: ((breaksInv005 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerApproved,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerDeclined,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerMerged,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerObserved,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerOpened,
+      UorRemediationLifecycle::uorRemediationLifecycleApprovalGiven,
+      UorRemediationLifecycle::uorRemediationLifecycleApprovalNone,
+      UorRemediationLifecycle::uorRemediationLifecycleJudge,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeBlocked,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeUnobserved,
+      UorRemediationLifecycle::uorRemediationLifecyclePrClosed,
+      UorRemediationLifecycle::uorRemediationLifecyclePrMerged,
+      UorRemediationLifecycle::uorRemediationLifecyclePrNone,
+      UorRemediationLifecycle::uorRemediationLifecyclePrOpen,
+      UorRemediationLifecycle::uorRemediationLifecycleRule1,
+      UorRemediationLifecycle::uorRemediationLifecycleRule10,
+      UorRemediationLifecycle::uorRemediationLifecycleRule11,
+      UorRemediationLifecycle::uorRemediationLifecycleRule12,
+      UorRemediationLifecycle::uorRemediationLifecycleRule13,
+      UorRemediationLifecycle::uorRemediationLifecycleRule2,
+      UorRemediationLifecycle::uorRemediationLifecycleRule3,
+      UorRemediationLifecycle::uorRemediationLifecycleRule4,
+      UorRemediationLifecycle::uorRemediationLifecycleRule5,
+      UorRemediationLifecycle::uorRemediationLifecycleRule6,
+      UorRemediationLifecycle::uorRemediationLifecycleRule7,
+      UorRemediationLifecycle::uorRemediationLifecycleRule8,
+      UorRemediationLifecycle::uorRemediationLifecycleRule9,
+      UorRemediationLifecycle::uorRemediationLifecycleSettingsApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleSettingsPending,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApplied2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApproved,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApproved2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleStepConformant2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepDeclined,
+      UorRemediationLifecycle::uorRemediationLifecycleStepDeclined2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepMerged,
+      UorRemediationLifecycle::uorRemediationLifecycleStepMerged2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepObserved,
+      UorRemediationLifecycle::uorRemediationLifecycleStepObserved2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepOpened,
+      UorRemediationLifecycle::uorRemediationLifecycleStepOpened2,
+      breaksInv005
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv006,
+  parameters: [request : UorRemediationLifecycle::UorRemediationLifecycleRequest],
+  result: Bool,
+  body: ((((((((project request step) <? 7) && ((project request approval) <? 2)) && ((project request pr) <? 4)) && ((project request settings) <? 2)) && ((project request outcome) <? 3)) && ((project request step) =? (UorRemediationLifecycle::uorRemediationLifecycleStepDeclined))) && (not ((UorRemediationLifecycle::uorRemediationLifecycleJudge request) =? (UorRemediationLifecycle::uorRemediationLifecycleAnswerDeclined))))
+}
+
+theorem{
+  name: inv006Holds,
+  parameters: [request : UorRemediationLifecycle::UorRemediationLifecycleRequest],
+  statement: ((breaksInv006 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerApproved,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerDeclined,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerMerged,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerObserved,
+      UorRemediationLifecycle::uorRemediationLifecycleAnswerOpened,
+      UorRemediationLifecycle::uorRemediationLifecycleApprovalGiven,
+      UorRemediationLifecycle::uorRemediationLifecycleApprovalNone,
+      UorRemediationLifecycle::uorRemediationLifecycleJudge,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeBlocked,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleOutcomeUnobserved,
+      UorRemediationLifecycle::uorRemediationLifecyclePrClosed,
+      UorRemediationLifecycle::uorRemediationLifecyclePrMerged,
+      UorRemediationLifecycle::uorRemediationLifecyclePrNone,
+      UorRemediationLifecycle::uorRemediationLifecyclePrOpen,
+      UorRemediationLifecycle::uorRemediationLifecycleRule1,
+      UorRemediationLifecycle::uorRemediationLifecycleRule10,
+      UorRemediationLifecycle::uorRemediationLifecycleRule11,
+      UorRemediationLifecycle::uorRemediationLifecycleRule12,
+      UorRemediationLifecycle::uorRemediationLifecycleRule13,
+      UorRemediationLifecycle::uorRemediationLifecycleRule2,
+      UorRemediationLifecycle::uorRemediationLifecycleRule3,
+      UorRemediationLifecycle::uorRemediationLifecycleRule4,
+      UorRemediationLifecycle::uorRemediationLifecycleRule5,
+      UorRemediationLifecycle::uorRemediationLifecycleRule6,
+      UorRemediationLifecycle::uorRemediationLifecycleRule7,
+      UorRemediationLifecycle::uorRemediationLifecycleRule8,
+      UorRemediationLifecycle::uorRemediationLifecycleRule9,
+      UorRemediationLifecycle::uorRemediationLifecycleSettingsApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleSettingsPending,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApplied,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApplied2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApproved,
+      UorRemediationLifecycle::uorRemediationLifecycleStepApproved2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepConformant,
+      UorRemediationLifecycle::uorRemediationLifecycleStepConformant2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepDeclined,
+      UorRemediationLifecycle::uorRemediationLifecycleStepDeclined2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepMerged,
+      UorRemediationLifecycle::uorRemediationLifecycleStepMerged2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepObserved,
+      UorRemediationLifecycle::uorRemediationLifecycleStepObserved2,
+      UorRemediationLifecycle::uorRemediationLifecycleStepOpened,
+      UorRemediationLifecycle::uorRemediationLifecycleStepOpened2,
+      breaksInv006
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

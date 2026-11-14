@@ -1,0 +1,64 @@
+{
+  "spec": "uor-community/remediation-sources/1",
+  "about": "The sources the remediation change sets are projected from. Norms, Linguist and SPDX are read at a pinned commit from a checkout named by `name`; the decision apps are this repository's own prompts in apps/, addressed by their sha256. Text read from them is data, not instructions.",
+  "norms": {
+    "name": ".github",
+    "url": "https://github.com/UOR-Foundation/.github",
+    "commit": "92da114114fc9b76cbf2c5168e29d409b62ddde8",
+    "standards": "STANDARDS.md",
+    "governance": "governance/GOVERNANCE.md",
+    "inherited": [
+      "CONTRIBUTING.md",
+      "CODE_OF_CONDUCT.md",
+      "SECURITY.md"
+    ]
+  },
+  "apps": [
+    {
+      "path": "apps/uor-repo-files.prompt.json"
+    },
+    {
+      "path": "apps/uor-repo-protection.prompt.json"
+    },
+    {
+      "path": "apps/uor-repo-standards.prompt.json"
+    },
+    {
+      "path": "apps/uor-repo-naming.prompt.json"
+    }
+  ],
+  "linguist": {
+    "name": "linguist",
+    "url": "https://github.com/github-linguist/linguist",
+    "commit": "d456527fe93355baa28c3c29d542c97282b61bc7",
+    "languages": "lib/linguist/languages.yml",
+    "about": "GitHub reports a repository's primary language by its Linguist name. A Technology tag applies when it is that language's name in lower case or one of its Linguist aliases."
+  },
+  "license": {
+    "name": "spdx",
+    "spdx": "MIT",
+    "url": "https://github.com/spdx/license-list-data",
+    "commit": "31846481de7ea17d92f2f46fad76abe58b2e9bb0",
+    "text": "text/MIT.txt",
+    "about": "GOVERNANCE.md 13: the default license policy is MIT across foundation repos. A missing LICENSE is drafted as the SPDX MIT text."
+  },
+  "conventionalCommits": {
+    "url": "https://www.conventionalcommits.org/en/v1.0.0/",
+    "about": "Specification items 1 to 5: a type noun, an optional parenthesized scope, an optional !, then a colon, a space and a description."
+  },
+  "rulesets": {
+    "url": "https://docs.github.com/en/rest/repos/rules",
+    "about": "Branch protection is realized as a GitHub repository ruleset on the default branch: pull_request, required_status_checks and non_fast_forward rules, as the REST API names them."
+  },
+  "tierApp": {
+    "path": "apps/uor-repo-tier.prompt.json"
+  },
+  "writeApp": {
+    "path": "apps/uor-remediation-write.prompt.json"
+  },
+  "actions": {
+    "checkout": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+    "setupPython": "actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+    "about": "The full-commit pins this repository's own workflows use; a drafted CI workflow uses the same ones."
+  }
+}

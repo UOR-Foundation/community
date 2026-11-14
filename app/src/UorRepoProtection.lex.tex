@@ -1,0 +1,256 @@
+\begin{lexlean}{UorRepoProtection}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: uorRepoProtectionTierT1, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoProtectionTierT2, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoProtectionTierT3, parameters: [], result: Nat, body: 2}
+
+definition{name: uorRepoProtectionTierT4, parameters: [], result: Nat, body: 3}
+
+definition{name: uorRepoProtectionPrRequired, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoProtectionPrOptional, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoProtectionChecksRequired, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoProtectionChecksOptional, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoProtectionForcepushBlocked, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoProtectionForcepushAllowed, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoProtectionAnswerWeakProtection, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoProtectionAnswerConformant, parameters: [], result: Nat, body: 1}
+
+structure{
+  name: UorRepoProtectionRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: tier, type: Nat},
+    {name: pr, type: Nat},
+    {name: reviews, type: Nat},
+    {name: checks, type: Nat},
+    {name: forcepush, type: Nat}
+  ]
+}
+
+definition{
+  name: uorRepoProtectionByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoProtectionDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (uorRepoProtectionByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (uorRepoProtectionDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorRepoProtectionParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (uorRepoProtectionByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (uorRepoProtectionDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoProtectionParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (uorRepoProtectionParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoProtectionParseTier,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x7431 : Bool) then (ctor Option.some [Nat] (uorRepoProtectionTierT1)) else (if (prim equal value 0x7432 : Bool) then (ctor Option.some [Nat] (uorRepoProtectionTierT2)) else (if (prim equal value 0x7433 : Bool) then (ctor Option.some [Nat] (uorRepoProtectionTierT3)) else (if (prim equal value 0x7434 : Bool) then (ctor Option.some [Nat] (uorRepoProtectionTierT4)) else (ctor Option.none [Nat])))))
+}
+
+definition{
+  name: uorRepoProtectionParsePr,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x7265717569726564 : Bool) then (ctor Option.some [Nat] (uorRepoProtectionPrRequired)) else (if (prim equal value 0x6f7074696f6e616c : Bool) then (ctor Option.some [Nat] (uorRepoProtectionPrOptional)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoProtectionParseReviews,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (uorRepoProtectionParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (8 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoProtectionParseChecks,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x7265717569726564 : Bool) then (ctor Option.some [Nat] (uorRepoProtectionChecksRequired)) else (if (prim equal value 0x6f7074696f6e616c : Bool) then (ctor Option.some [Nat] (uorRepoProtectionChecksOptional)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoProtectionParseForcepush,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x626c6f636b6564 : Bool) then (ctor Option.some [Nat] (uorRepoProtectionForcepushBlocked)) else (if (prim equal value 0x616c6c6f776564 : Bool) then (ctor Option.some [Nat] (uorRepoProtectionForcepushAllowed)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoProtectionSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: uorRepoProtectionFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (uorRepoProtectionByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (uorRepoProtectionFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorRepoProtectionDecodeField5,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat],
+  result: (Option UorRepoProtectionRequest),
+  body: (let e : Nat := (uorRepoProtectionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoProtectionParseForcepush (uorRepoProtectionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoProtectionRequest])
+    | Option.some v5 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [UorRepoProtectionRequest] (record UorRepoProtectionRequest {tier := v1, pr := v2, reviews := v3, checks := v4, forcepush := v5})) else (ctor Option.none [UorRepoProtectionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoProtectionDecodeField4,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat],
+  result: (Option UorRepoProtectionRequest),
+  body: (let e : Nat := (uorRepoProtectionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoProtectionParseChecks (uorRepoProtectionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoProtectionRequest])
+    | Option.some v4 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoProtectionDecodeField5 s (e + 1) v1 v2 v3 v4) else (ctor Option.none [UorRepoProtectionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoProtectionDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option UorRepoProtectionRequest),
+  body: (let e : Nat := (uorRepoProtectionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoProtectionParseReviews (uorRepoProtectionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoProtectionRequest])
+    | Option.some v3 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoProtectionDecodeField4 s (e + 1) v1 v2 v3) else (ctor Option.none [UorRepoProtectionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoProtectionDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option UorRepoProtectionRequest),
+  body: (let e : Nat := (uorRepoProtectionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoProtectionParsePr (uorRepoProtectionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoProtectionRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoProtectionDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [UorRepoProtectionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoProtectionDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option UorRepoProtectionRequest),
+  body: (let e : Nat := (uorRepoProtectionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoProtectionParseTier (uorRepoProtectionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoProtectionRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoProtectionDecodeField2 s (e + 1) v1) else (ctor Option.none [UorRepoProtectionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoProtectionRule1,
+  parameters: [request : UorRepoProtectionRequest],
+  result: Bool,
+  body: ((project request forcepush) =? (uorRepoProtectionForcepushAllowed))
+}
+
+definition{
+  name: uorRepoProtectionRule2,
+  parameters: [request : UorRepoProtectionRequest],
+  result: Bool,
+  body: ((not ((project request tier) =? (uorRepoProtectionTierT4))) && ((project request pr) =? (uorRepoProtectionPrOptional)))
+}
+
+definition{
+  name: uorRepoProtectionRule3,
+  parameters: [request : UorRepoProtectionRequest],
+  result: Bool,
+  body: (((project request tier) =? (uorRepoProtectionTierT1)) && ((project request reviews) <? 2))
+}
+
+definition{
+  name: uorRepoProtectionRule4,
+  parameters: [request : UorRepoProtectionRequest],
+  result: Bool,
+  body: ((not ((project request tier) =? (uorRepoProtectionTierT4))) && ((project request reviews) <? 1))
+}
+
+definition{
+  name: uorRepoProtectionRule5,
+  parameters: [request : UorRepoProtectionRequest],
+  result: Bool,
+  body: ((not ((project request tier) =? (uorRepoProtectionTierT4))) && ((project request checks) =? (uorRepoProtectionChecksOptional)))
+}
+
+definition{
+  name: uorRepoProtectionJudge,
+  parameters: [request : UorRepoProtectionRequest],
+  result: Nat,
+  body: (if (uorRepoProtectionRule1 request) then (uorRepoProtectionAnswerWeakProtection) else (if (uorRepoProtectionRule2 request) then (uorRepoProtectionAnswerWeakProtection) else (if (uorRepoProtectionRule3 request) then (uorRepoProtectionAnswerWeakProtection) else (if (uorRepoProtectionRule4 request) then (uorRepoProtectionAnswerWeakProtection) else (if (uorRepoProtectionRule5 request) then (uorRepoProtectionAnswerWeakProtection) else (uorRepoProtectionAnswerConformant))))))
+}
+
+definition{
+  name: uorRepoProtectionEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (uorRepoProtectionAnswerWeakProtection)) then 0x7765616b2d70726f74656374696f6e else (if (code =? (uorRepoProtectionAnswerConformant)) then 0x636f6e666f726d616e74 else 0x696e76616c6964))
+}
+
+definition{
+  name: uorRepoProtectionDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (136 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (uorRepoProtectionDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (uorRepoProtectionEncodeAnswer (uorRepoProtectionJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

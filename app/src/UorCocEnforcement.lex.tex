@@ -1,0 +1,328 @@
+\begin{lexlean}{UorCocEnforcement}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: uorCocEnforcementRecord2Clear, parameters: [], result: Nat, body: 0}
+
+definition{name: uorCocEnforcementRecord2Warned, parameters: [], result: Nat, body: 1}
+
+definition{name: uorCocEnforcementRecord2Limited, parameters: [], result: Nat, body: 2}
+
+definition{name: uorCocEnforcementRecord2Suspended, parameters: [], result: Nat, body: 3}
+
+definition{name: uorCocEnforcementRecord2Banned, parameters: [], result: Nat, body: 4}
+
+definition{name: uorCocEnforcementFindingViolation, parameters: [], result: Nat, body: 0}
+
+definition{name: uorCocEnforcementFindingNone, parameters: [], result: Nat, body: 1}
+
+definition{name: uorCocEnforcementFindingPending, parameters: [], result: Nat, body: 2}
+
+definition{name: uorCocEnforcementSeverityMinor, parameters: [], result: Nat, body: 0}
+
+definition{name: uorCocEnforcementSeverityModerate, parameters: [], result: Nat, body: 1}
+
+definition{name: uorCocEnforcementSeveritySerious, parameters: [], result: Nat, body: 2}
+
+definition{name: uorCocEnforcementSeveritySevere, parameters: [], result: Nat, body: 3}
+
+definition{name: uorCocEnforcementAuthorityModerators, parameters: [], result: Nat, body: 0}
+
+definition{name: uorCocEnforcementAuthorityBoard, parameters: [], result: Nat, body: 1}
+
+definition{name: uorCocEnforcementAuthorityOther, parameters: [], result: Nat, body: 2}
+
+definition{name: uorCocEnforcementAnswerClear, parameters: [], result: Nat, body: 0}
+
+definition{name: uorCocEnforcementAnswerWarned, parameters: [], result: Nat, body: 1}
+
+definition{name: uorCocEnforcementAnswerLimited, parameters: [], result: Nat, body: 2}
+
+definition{name: uorCocEnforcementAnswerSuspended, parameters: [], result: Nat, body: 3}
+
+definition{name: uorCocEnforcementAnswerBanned, parameters: [], result: Nat, body: 4}
+
+structure{
+  name: UorCocEnforcementRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: record2, type: Nat},
+    {name: finding, type: Nat},
+    {name: severity, type: Nat},
+    {name: authority, type: Nat}
+  ]
+}
+
+definition{
+  name: uorCocEnforcementByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorCocEnforcementDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (uorCocEnforcementByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (uorCocEnforcementDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorCocEnforcementParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (uorCocEnforcementByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (uorCocEnforcementDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorCocEnforcementParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (uorCocEnforcementParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorCocEnforcementParseRecord,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x636c656172 : Bool) then (ctor Option.some [Nat] (uorCocEnforcementRecord2Clear)) else (if (prim equal value 0x7761726e6564 : Bool) then (ctor Option.some [Nat] (uorCocEnforcementRecord2Warned)) else (if (prim equal value 0x6c696d69746564 : Bool) then (ctor Option.some [Nat] (uorCocEnforcementRecord2Limited)) else (if (prim equal value 0x73757370656e646564 : Bool) then (ctor Option.some [Nat] (uorCocEnforcementRecord2Suspended)) else (if (prim equal value 0x62616e6e6564 : Bool) then (ctor Option.some [Nat] (uorCocEnforcementRecord2Banned)) else (ctor Option.none [Nat]))))))
+}
+
+definition{
+  name: uorCocEnforcementParseFinding,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x76696f6c6174696f6e : Bool) then (ctor Option.some [Nat] (uorCocEnforcementFindingViolation)) else (if (prim equal value 0x6e6f6e65 : Bool) then (ctor Option.some [Nat] (uorCocEnforcementFindingNone)) else (if (prim equal value 0x70656e64696e67 : Bool) then (ctor Option.some [Nat] (uorCocEnforcementFindingPending)) else (ctor Option.none [Nat]))))
+}
+
+definition{
+  name: uorCocEnforcementParseSeverity,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6d696e6f72 : Bool) then (ctor Option.some [Nat] (uorCocEnforcementSeverityMinor)) else (if (prim equal value 0x6d6f646572617465 : Bool) then (ctor Option.some [Nat] (uorCocEnforcementSeverityModerate)) else (if (prim equal value 0x736572696f7573 : Bool) then (ctor Option.some [Nat] (uorCocEnforcementSeveritySerious)) else (if (prim equal value 0x736576657265 : Bool) then (ctor Option.some [Nat] (uorCocEnforcementSeveritySevere)) else (ctor Option.none [Nat])))))
+}
+
+definition{
+  name: uorCocEnforcementParseAuthority,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6d6f64657261746f7273 : Bool) then (ctor Option.some [Nat] (uorCocEnforcementAuthorityModerators)) else (if (prim equal value 0x626f617264 : Bool) then (ctor Option.some [Nat] (uorCocEnforcementAuthorityBoard)) else (if (prim equal value 0x6f74686572 : Bool) then (ctor Option.some [Nat] (uorCocEnforcementAuthorityOther)) else (ctor Option.none [Nat]))))
+}
+
+definition{
+  name: uorCocEnforcementSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: uorCocEnforcementFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (uorCocEnforcementByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (uorCocEnforcementFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorCocEnforcementDecodeField4,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat],
+  result: (Option UorCocEnforcementRequest),
+  body: (let e : Nat := (uorCocEnforcementFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorCocEnforcementParseAuthority (uorCocEnforcementSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorCocEnforcementRequest])
+    | Option.some v4 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [UorCocEnforcementRequest] (record UorCocEnforcementRequest {record2 := v1, finding := v2, severity := v3, authority := v4})) else (ctor Option.none [UorCocEnforcementRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorCocEnforcementDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option UorCocEnforcementRequest),
+  body: (let e : Nat := (uorCocEnforcementFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorCocEnforcementParseSeverity (uorCocEnforcementSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorCocEnforcementRequest])
+    | Option.some v3 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorCocEnforcementDecodeField4 s (e + 1) v1 v2 v3) else (ctor Option.none [UorCocEnforcementRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorCocEnforcementDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option UorCocEnforcementRequest),
+  body: (let e : Nat := (uorCocEnforcementFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorCocEnforcementParseFinding (uorCocEnforcementSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorCocEnforcementRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorCocEnforcementDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [UorCocEnforcementRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorCocEnforcementDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option UorCocEnforcementRequest),
+  body: (let e : Nat := (uorCocEnforcementFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorCocEnforcementParseRecord (uorCocEnforcementSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorCocEnforcementRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorCocEnforcementDecodeField2 s (e + 1) v1) else (ctor Option.none [UorCocEnforcementRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorCocEnforcementRule1,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Bool,
+  body: ((project request record2) =? (uorCocEnforcementRecord2Banned))
+}
+
+definition{
+  name: uorCocEnforcementRule2,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Bool,
+  body: ((((project request finding) =? (uorCocEnforcementFindingViolation)) && (not ((project request authority) =? (uorCocEnforcementAuthorityOther)))) && ((project request severity) =? (uorCocEnforcementSeveritySevere)))
+}
+
+definition{
+  name: uorCocEnforcementRule3,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Bool,
+  body: ((((project request finding) =? (uorCocEnforcementFindingViolation)) && (not ((project request authority) =? (uorCocEnforcementAuthorityOther)))) && ((project request record2) =? (uorCocEnforcementRecord2Suspended)))
+}
+
+definition{
+  name: uorCocEnforcementRule4,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Bool,
+  body: ((((project request finding) =? (uorCocEnforcementFindingViolation)) && (not ((project request authority) =? (uorCocEnforcementAuthorityOther)))) && ((project request severity) =? (uorCocEnforcementSeveritySerious)))
+}
+
+definition{
+  name: uorCocEnforcementRule5,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Bool,
+  body: ((((project request finding) =? (uorCocEnforcementFindingViolation)) && (not ((project request authority) =? (uorCocEnforcementAuthorityOther)))) && ((project request record2) =? (uorCocEnforcementRecord2Limited)))
+}
+
+definition{
+  name: uorCocEnforcementRule6,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Bool,
+  body: ((((project request finding) =? (uorCocEnforcementFindingViolation)) && (not ((project request authority) =? (uorCocEnforcementAuthorityOther)))) && ((project request severity) =? (uorCocEnforcementSeverityModerate)))
+}
+
+definition{
+  name: uorCocEnforcementRule7,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Bool,
+  body: ((((project request finding) =? (uorCocEnforcementFindingViolation)) && (not ((project request authority) =? (uorCocEnforcementAuthorityOther)))) && ((project request record2) =? (uorCocEnforcementRecord2Warned)))
+}
+
+definition{
+  name: uorCocEnforcementRule8,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Bool,
+  body: (((project request finding) =? (uorCocEnforcementFindingViolation)) && (not ((project request authority) =? (uorCocEnforcementAuthorityOther))))
+}
+
+definition{
+  name: uorCocEnforcementRule9,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Bool,
+  body: ((project request record2) =? (uorCocEnforcementRecord2Warned))
+}
+
+definition{
+  name: uorCocEnforcementRule10,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Bool,
+  body: ((project request record2) =? (uorCocEnforcementRecord2Limited))
+}
+
+definition{
+  name: uorCocEnforcementRule11,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Bool,
+  body: ((project request record2) =? (uorCocEnforcementRecord2Suspended))
+}
+
+definition{
+  name: uorCocEnforcementStepClear,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Nat,
+  body: (if (uorCocEnforcementRule2 request) then (uorCocEnforcementAnswerBanned) else (if (uorCocEnforcementRule4 request) then (uorCocEnforcementAnswerSuspended) else (if (uorCocEnforcementRule6 request) then (uorCocEnforcementAnswerLimited) else (if (uorCocEnforcementRule8 request) then (uorCocEnforcementAnswerWarned) else (uorCocEnforcementAnswerClear)))))
+}
+
+definition{
+  name: uorCocEnforcementStepWarned,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Nat,
+  body: (if (uorCocEnforcementRule2 request) then (uorCocEnforcementAnswerBanned) else (if (uorCocEnforcementRule4 request) then (uorCocEnforcementAnswerSuspended) else (if (uorCocEnforcementRule6 request) then (uorCocEnforcementAnswerLimited) else (if (uorCocEnforcementRule7 request) then (uorCocEnforcementAnswerLimited) else (if (uorCocEnforcementRule8 request) then (uorCocEnforcementAnswerWarned) else (if (uorCocEnforcementRule9 request) then (uorCocEnforcementAnswerWarned) else (uorCocEnforcementAnswerClear)))))))
+}
+
+definition{
+  name: uorCocEnforcementStepLimited,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Nat,
+  body: (if (uorCocEnforcementRule2 request) then (uorCocEnforcementAnswerBanned) else (if (uorCocEnforcementRule4 request) then (uorCocEnforcementAnswerSuspended) else (if (uorCocEnforcementRule5 request) then (uorCocEnforcementAnswerSuspended) else (if (uorCocEnforcementRule6 request) then (uorCocEnforcementAnswerLimited) else (if (uorCocEnforcementRule8 request) then (uorCocEnforcementAnswerWarned) else (if (uorCocEnforcementRule10 request) then (uorCocEnforcementAnswerLimited) else (uorCocEnforcementAnswerClear)))))))
+}
+
+definition{
+  name: uorCocEnforcementStepSuspended,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Nat,
+  body: (if (uorCocEnforcementRule2 request) then (uorCocEnforcementAnswerBanned) else (if (uorCocEnforcementRule3 request) then (uorCocEnforcementAnswerBanned) else (if (uorCocEnforcementRule4 request) then (uorCocEnforcementAnswerSuspended) else (if (uorCocEnforcementRule6 request) then (uorCocEnforcementAnswerLimited) else (if (uorCocEnforcementRule8 request) then (uorCocEnforcementAnswerWarned) else (if (uorCocEnforcementRule11 request) then (uorCocEnforcementAnswerSuspended) else (uorCocEnforcementAnswerClear)))))))
+}
+
+definition{
+  name: uorCocEnforcementStepBanned,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Nat,
+  body: (if (uorCocEnforcementRule1 request) then (uorCocEnforcementAnswerBanned) else (if (uorCocEnforcementRule2 request) then (uorCocEnforcementAnswerBanned) else (if (uorCocEnforcementRule4 request) then (uorCocEnforcementAnswerSuspended) else (if (uorCocEnforcementRule6 request) then (uorCocEnforcementAnswerLimited) else (if (uorCocEnforcementRule8 request) then (uorCocEnforcementAnswerWarned) else (uorCocEnforcementAnswerClear))))))
+}
+
+definition{
+  name: uorCocEnforcementJudge,
+  parameters: [request : UorCocEnforcementRequest],
+  result: Nat,
+  body: (if ((project request record2) =? (uorCocEnforcementRecord2Clear)) then (uorCocEnforcementStepClear request) else (if ((project request record2) =? (uorCocEnforcementRecord2Warned)) then (uorCocEnforcementStepWarned request) else (if ((project request record2) =? (uorCocEnforcementRecord2Limited)) then (uorCocEnforcementStepLimited request) else (if ((project request record2) =? (uorCocEnforcementRecord2Suspended)) then (uorCocEnforcementStepSuspended request) else (if ((project request record2) =? (uorCocEnforcementRecord2Banned)) then (uorCocEnforcementStepBanned request) else (if (uorCocEnforcementRule2 request) then (uorCocEnforcementAnswerBanned) else (if (uorCocEnforcementRule4 request) then (uorCocEnforcementAnswerSuspended) else (if (uorCocEnforcementRule6 request) then (uorCocEnforcementAnswerLimited) else (if (uorCocEnforcementRule8 request) then (uorCocEnforcementAnswerWarned) else (uorCocEnforcementAnswerClear))))))))))
+}
+
+definition{
+  name: uorCocEnforcementEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (uorCocEnforcementAnswerClear)) then 0x636c656172 else (if (code =? (uorCocEnforcementAnswerWarned)) then 0x7761726e6564 else (if (code =? (uorCocEnforcementAnswerLimited)) then 0x6c696d69746564 else (if (code =? (uorCocEnforcementAnswerSuspended)) then 0x73757370656e646564 else (if (code =? (uorCocEnforcementAnswerBanned)) then 0x62616e6e6564 else 0x696e76616c6964)))))
+}
+
+definition{
+  name: uorCocEnforcementDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (112 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (uorCocEnforcementDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (uorCocEnforcementEncodeAnswer (uorCocEnforcementJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

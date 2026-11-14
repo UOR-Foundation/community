@@ -1,0 +1,192 @@
+\begin{lexlean}{UorRemediationWriteProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{UorRemediationWrite}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : UorRemediationWrite::UorRemediationWriteRequest],
+  result: Bool,
+  body: (((((((((project request actor) <? 5) && ((project request change) <? 4)) && ((project request repository) <? 2)) && ((project request approval) <? 2)) && ((project request route) <? 2)) && ((project request approval) =? (UorRemediationWrite::uorRemediationWriteApprovalNone))) && ((project request actor) =? (UorRemediationWrite::uorRemediationWriteActorAgent))) && ((UorRemediationWrite::uorRemediationWriteJudge request) =? (UorRemediationWrite::uorRemediationWriteAnswerPermit)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : UorRemediationWrite::UorRemediationWriteRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRemediationWrite::uorRemediationWriteActorAgent,
+      UorRemediationWrite::uorRemediationWriteActorMaintainer,
+      UorRemediationWrite::uorRemediationWriteActorOther,
+      UorRemediationWrite::uorRemediationWriteActorOwner,
+      UorRemediationWrite::uorRemediationWriteActorUnverified,
+      UorRemediationWrite::uorRemediationWriteAnswerDeny,
+      UorRemediationWrite::uorRemediationWriteAnswerIndeterminate,
+      UorRemediationWrite::uorRemediationWriteAnswerNotApplicable,
+      UorRemediationWrite::uorRemediationWriteAnswerPermit,
+      UorRemediationWrite::uorRemediationWriteApprovalGiven,
+      UorRemediationWrite::uorRemediationWriteApprovalNone,
+      UorRemediationWrite::uorRemediationWriteChangeFile,
+      UorRemediationWrite::uorRemediationWriteChangeRename,
+      UorRemediationWrite::uorRemediationWriteChangeRuleset,
+      UorRemediationWrite::uorRemediationWriteChangeTopic,
+      UorRemediationWrite::uorRemediationWriteJudge,
+      UorRemediationWrite::uorRemediationWriteRepositoryArchived,
+      UorRemediationWrite::uorRemediationWriteRepositoryLive,
+      UorRemediationWrite::uorRemediationWriteRouteDirect,
+      UorRemediationWrite::uorRemediationWriteRoutePullRequest,
+      UorRemediationWrite::uorRemediationWriteRule1,
+      UorRemediationWrite::uorRemediationWriteRule2,
+      UorRemediationWrite::uorRemediationWriteRule3,
+      UorRemediationWrite::uorRemediationWriteRule4,
+      UorRemediationWrite::uorRemediationWriteRule5,
+      UorRemediationWrite::uorRemediationWriteRule6,
+      UorRemediationWrite::uorRemediationWriteRule7,
+      breaksInv001
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : UorRemediationWrite::UorRemediationWriteRequest],
+  result: Bool,
+  body: (((((((((project request actor) <? 5) && ((project request change) <? 4)) && ((project request repository) <? 2)) && ((project request approval) <? 2)) && ((project request route) <? 2)) && ((project request change) =? (UorRemediationWrite::uorRemediationWriteChangeFile))) && ((project request route) =? (UorRemediationWrite::uorRemediationWriteRouteDirect))) && ((UorRemediationWrite::uorRemediationWriteJudge request) =? (UorRemediationWrite::uorRemediationWriteAnswerPermit)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : UorRemediationWrite::UorRemediationWriteRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRemediationWrite::uorRemediationWriteActorAgent,
+      UorRemediationWrite::uorRemediationWriteActorMaintainer,
+      UorRemediationWrite::uorRemediationWriteActorOther,
+      UorRemediationWrite::uorRemediationWriteActorOwner,
+      UorRemediationWrite::uorRemediationWriteActorUnverified,
+      UorRemediationWrite::uorRemediationWriteAnswerDeny,
+      UorRemediationWrite::uorRemediationWriteAnswerIndeterminate,
+      UorRemediationWrite::uorRemediationWriteAnswerNotApplicable,
+      UorRemediationWrite::uorRemediationWriteAnswerPermit,
+      UorRemediationWrite::uorRemediationWriteApprovalGiven,
+      UorRemediationWrite::uorRemediationWriteApprovalNone,
+      UorRemediationWrite::uorRemediationWriteChangeFile,
+      UorRemediationWrite::uorRemediationWriteChangeRename,
+      UorRemediationWrite::uorRemediationWriteChangeRuleset,
+      UorRemediationWrite::uorRemediationWriteChangeTopic,
+      UorRemediationWrite::uorRemediationWriteJudge,
+      UorRemediationWrite::uorRemediationWriteRepositoryArchived,
+      UorRemediationWrite::uorRemediationWriteRepositoryLive,
+      UorRemediationWrite::uorRemediationWriteRouteDirect,
+      UorRemediationWrite::uorRemediationWriteRoutePullRequest,
+      UorRemediationWrite::uorRemediationWriteRule1,
+      UorRemediationWrite::uorRemediationWriteRule2,
+      UorRemediationWrite::uorRemediationWriteRule3,
+      UorRemediationWrite::uorRemediationWriteRule4,
+      UorRemediationWrite::uorRemediationWriteRule5,
+      UorRemediationWrite::uorRemediationWriteRule6,
+      UorRemediationWrite::uorRemediationWriteRule7,
+      breaksInv002
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : UorRemediationWrite::UorRemediationWriteRequest],
+  result: Bool,
+  body: (((((((((project request actor) <? 5) && ((project request change) <? 4)) && ((project request repository) <? 2)) && ((project request approval) <? 2)) && ((project request route) <? 2)) && ((project request change) =? (UorRemediationWrite::uorRemediationWriteChangeRuleset))) && ((project request actor) =? (UorRemediationWrite::uorRemediationWriteActorAgent))) && ((UorRemediationWrite::uorRemediationWriteJudge request) =? (UorRemediationWrite::uorRemediationWriteAnswerPermit)))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : UorRemediationWrite::UorRemediationWriteRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRemediationWrite::uorRemediationWriteActorAgent,
+      UorRemediationWrite::uorRemediationWriteActorMaintainer,
+      UorRemediationWrite::uorRemediationWriteActorOther,
+      UorRemediationWrite::uorRemediationWriteActorOwner,
+      UorRemediationWrite::uorRemediationWriteActorUnverified,
+      UorRemediationWrite::uorRemediationWriteAnswerDeny,
+      UorRemediationWrite::uorRemediationWriteAnswerIndeterminate,
+      UorRemediationWrite::uorRemediationWriteAnswerNotApplicable,
+      UorRemediationWrite::uorRemediationWriteAnswerPermit,
+      UorRemediationWrite::uorRemediationWriteApprovalGiven,
+      UorRemediationWrite::uorRemediationWriteApprovalNone,
+      UorRemediationWrite::uorRemediationWriteChangeFile,
+      UorRemediationWrite::uorRemediationWriteChangeRename,
+      UorRemediationWrite::uorRemediationWriteChangeRuleset,
+      UorRemediationWrite::uorRemediationWriteChangeTopic,
+      UorRemediationWrite::uorRemediationWriteJudge,
+      UorRemediationWrite::uorRemediationWriteRepositoryArchived,
+      UorRemediationWrite::uorRemediationWriteRepositoryLive,
+      UorRemediationWrite::uorRemediationWriteRouteDirect,
+      UorRemediationWrite::uorRemediationWriteRoutePullRequest,
+      UorRemediationWrite::uorRemediationWriteRule1,
+      UorRemediationWrite::uorRemediationWriteRule2,
+      UorRemediationWrite::uorRemediationWriteRule3,
+      UorRemediationWrite::uorRemediationWriteRule4,
+      UorRemediationWrite::uorRemediationWriteRule5,
+      UorRemediationWrite::uorRemediationWriteRule6,
+      UorRemediationWrite::uorRemediationWriteRule7,
+      breaksInv003
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : UorRemediationWrite::UorRemediationWriteRequest],
+  result: Bool,
+  body: ((((((((((((project request actor) <? 5) && ((project request change) <? 4)) && ((project request repository) <? 2)) && ((project request approval) <? 2)) && ((project request route) <? 2)) && ((project request actor) =? (UorRemediationWrite::uorRemediationWriteActorAgent))) && ((project request change) =? (UorRemediationWrite::uorRemediationWriteChangeFile))) && ((project request repository) =? (UorRemediationWrite::uorRemediationWriteRepositoryLive))) && ((project request approval) =? (UorRemediationWrite::uorRemediationWriteApprovalGiven))) && ((project request route) =? (UorRemediationWrite::uorRemediationWriteRoutePullRequest))) && (not ((UorRemediationWrite::uorRemediationWriteJudge request) =? (UorRemediationWrite::uorRemediationWriteAnswerPermit))))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : UorRemediationWrite::UorRemediationWriteRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRemediationWrite::uorRemediationWriteActorAgent,
+      UorRemediationWrite::uorRemediationWriteActorMaintainer,
+      UorRemediationWrite::uorRemediationWriteActorOther,
+      UorRemediationWrite::uorRemediationWriteActorOwner,
+      UorRemediationWrite::uorRemediationWriteActorUnverified,
+      UorRemediationWrite::uorRemediationWriteAnswerDeny,
+      UorRemediationWrite::uorRemediationWriteAnswerIndeterminate,
+      UorRemediationWrite::uorRemediationWriteAnswerNotApplicable,
+      UorRemediationWrite::uorRemediationWriteAnswerPermit,
+      UorRemediationWrite::uorRemediationWriteApprovalGiven,
+      UorRemediationWrite::uorRemediationWriteApprovalNone,
+      UorRemediationWrite::uorRemediationWriteChangeFile,
+      UorRemediationWrite::uorRemediationWriteChangeRename,
+      UorRemediationWrite::uorRemediationWriteChangeRuleset,
+      UorRemediationWrite::uorRemediationWriteChangeTopic,
+      UorRemediationWrite::uorRemediationWriteJudge,
+      UorRemediationWrite::uorRemediationWriteRepositoryArchived,
+      UorRemediationWrite::uorRemediationWriteRepositoryLive,
+      UorRemediationWrite::uorRemediationWriteRouteDirect,
+      UorRemediationWrite::uorRemediationWriteRoutePullRequest,
+      UorRemediationWrite::uorRemediationWriteRule1,
+      UorRemediationWrite::uorRemediationWriteRule2,
+      UorRemediationWrite::uorRemediationWriteRule3,
+      UorRemediationWrite::uorRemediationWriteRule4,
+      UorRemediationWrite::uorRemediationWriteRule5,
+      UorRemediationWrite::uorRemediationWriteRule6,
+      UorRemediationWrite::uorRemediationWriteRule7,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}
