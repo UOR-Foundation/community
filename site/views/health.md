@@ -1,10 +1,10 @@
 # Community health
 
-Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted GrimoireLab observations: 3895 assessments over 31 subjects and 23 periods. Observation register sha256:57cde021d847205099b6c0f1f4c0fc8bf0cbc39a80a93a239c53fb80c1d9c85a.
+Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted GrimoireLab observations: 4313 assessments over 32 subjects and 23 periods. Observation register sha256:f0ef5b07685bd32f634c5553f0974c2cbeb6108f2d19e2accac58956f73fc3f0.
 
 ## AI Alignment - Community Aligned Training (Feedback)
 
-0 open, 0 complete, 31 unmeasured, 0 partial
+0 open, 0 complete, 32 unmeasured, 0 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -37,10 +37,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/website: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## Business Readiness of an Open Source Project
 
-0 open, 0 complete, 16 unmeasured, 15 partial
+0 open, 0 complete, 17 unmeasured, 15 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -73,10 +74,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: partial (2026-11-01/2026-11-14T00:31:49Z, 2 admitted, 0 refused)
 - UOR-Foundation/website: partial (2026-11-01/2026-11-14T00:31:49Z, 2 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## Collaboration Development Index
 
-0 open, 0 complete, 16 unmeasured, 15 partial
+0 open, 0 complete, 17 unmeasured, 15 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -109,10 +111,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: partial (2026-11-01/2026-11-14T00:31:49Z, 2 admitted, 0 refused)
 - UOR-Foundation/website: partial (2026-11-01/2026-11-14T00:31:49Z, 2 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## Community Activity
 
-0 open, 0 complete, 31 unmeasured, 0 partial
+0 open, 0 complete, 32 unmeasured, 0 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -145,10 +148,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/website: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## Community Governed AI Use in Open Communities
 
-0 open, 0 complete, 31 unmeasured, 0 partial
+0 open, 0 complete, 32 unmeasured, 0 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -181,10 +185,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/website: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## Community Service and Support
 
-0 open, 0 complete, 31 unmeasured, 0 partial
+0 open, 0 complete, 32 unmeasured, 0 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -217,10 +222,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/website: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## Community Welcomingness
 
-0 open, 0 complete, 16 unmeasured, 15 partial
+0 open, 0 complete, 17 unmeasured, 15 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -253,10 +259,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: partial (2026-11-01/2026-11-14T00:31:49Z, 2 admitted, 0 refused)
 - UOR-Foundation/website: partial (2026-11-01/2026-11-14T00:31:49Z, 2 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## CHAOSS DEI Event Badging
 
-0 open, 0 complete, 31 unmeasured, 0 partial
+0 open, 0 complete, 32 unmeasured, 0 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -289,10 +296,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/website: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## Development Responsiveness
 
-0 open, 0 complete, 31 unmeasured, 0 partial
+0 open, 0 complete, 32 unmeasured, 0 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -325,10 +333,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/website: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## Funding
 
-0 open, 0 complete, 31 unmeasured, 0 partial
+0 open, 0 complete, 32 unmeasured, 0 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -361,10 +370,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/website: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## OSS Project Viability: Community
 
-0 open, 0 complete, 13 unmeasured, 18 partial
+0 open, 0 complete, 14 unmeasured, 18 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -397,10 +407,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: partial (2026-11-01/2026-11-14T00:31:49Z, 3 admitted, 0 refused)
 - UOR-Foundation/website: partial (2026-11-01/2026-11-14T00:31:49Z, 3 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## OSS Project Viability: Compliance + Security
 
-0 open, 0 complete, 31 unmeasured, 0 partial
+0 open, 0 complete, 32 unmeasured, 0 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -433,10 +444,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/website: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## OSS Project Viability: Governance
 
-31 open, 0 complete, 0 unmeasured, 0 partial
+32 open, 0 complete, 0 unmeasured, 0 partial
 
 - UOR-Foundation/.github: open (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 1 refused)
 - UOR-Foundation/5-Levels-of-UOR: open (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 1 refused)
@@ -469,10 +481,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: open (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 1 refused)
 - UOR-Foundation/uor-r4: open (2026-11-01/2026-11-14T00:31:49Z, 1 admitted, 1 refused)
 - UOR-Foundation/website: open (2026-11-01/2026-11-14T00:31:49Z, 1 admitted, 1 refused)
+- discord:1342910418754076732: open (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 1 refused)
 
 ## OSS Project Viability: Strategy
 
-0 open, 0 complete, 16 unmeasured, 15 partial
+0 open, 0 complete, 17 unmeasured, 15 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -505,10 +518,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: partial (2026-11-01/2026-11-14T00:31:49Z, 1 admitted, 0 refused)
 - UOR-Foundation/website: partial (2026-11-01/2026-11-14T00:31:49Z, 1 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## Project Awareness
 
-0 open, 0 complete, 31 unmeasured, 0 partial
+0 open, 0 complete, 32 unmeasured, 0 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -541,10 +555,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/website: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## Project Engagement
 
-0 open, 0 complete, 16 unmeasured, 15 partial
+0 open, 0 complete, 17 unmeasured, 15 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -577,10 +592,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: partial (2026-11-01/2026-11-14T00:31:49Z, 1 admitted, 0 refused)
 - UOR-Foundation/website: partial (2026-11-01/2026-11-14T00:31:49Z, 1 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## OSS Project Viability Starter
 
-0 open, 0 complete, 13 unmeasured, 18 partial
+0 open, 0 complete, 14 unmeasured, 18 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -613,10 +629,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: partial (2026-11-01/2026-11-14T00:31:49Z, 3 admitted, 0 refused)
 - UOR-Foundation/website: partial (2026-11-01/2026-11-14T00:31:49Z, 3 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## Safety
 
-0 open, 0 complete, 31 unmeasured, 0 partial
+0 open, 0 complete, 32 unmeasured, 0 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -649,10 +666,11 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/website: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 
 ## Starter Project Health Metrics Model
 
-0 open, 0 complete, 13 unmeasured, 18 partial
+0 open, 0 complete, 14 unmeasured, 18 partial
 
 - UOR-Foundation/.github: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/5-Levels-of-UOR: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
@@ -685,3 +703,4 @@ Each CHAOSS metrics model's ISO/IEC 15939 indicator, answered from admitted Grim
 - UOR-Foundation/uor-matmul: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)
 - UOR-Foundation/uor-r4: partial (2026-11-01/2026-11-14T00:31:49Z, 1 admitted, 0 refused)
 - UOR-Foundation/website: partial (2026-11-01/2026-11-14T00:31:49Z, 1 admitted, 0 refused)
+- discord:1342910418754076732: unmeasured (2026-11-01/2026-11-14T00:31:49Z, 0 admitted, 0 refused)

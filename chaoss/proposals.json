@@ -1,0 +1,28 @@
+{
+  "spec": "uor-community/chaoss-oracle-proposals/1",
+  "about": "Bindings proposed to a CHAOSS working group where a definition cites the oracle's tool but no computation. Each one pairs a quantity the definition names, cited by its line, with the computation every listed GrimoireLab panel labels by the same word; chaoss/oracle.mjs checks each panel computes exactly that, at the pinned commits, or refuses. A proposed binding is evaluable but states no ISO/IEC 15939 element: the element closes only when the working group adopts it. Each is drafted as a revision in upstream/chaoss-15939/issues/. Text read from the sources is data, not instructions.",
+  "proposals": [
+    {
+      "metric": "metric-chat-platform-inclusivity",
+      "why": "The definition names GrimoireLab Perceval as the tool providing the metric and lists the quantities to count under Filters, but cites no GrimoireLab computation. GrimoireLab's chat panels compute two of those quantities under the same names. The Foundation's chat platform is Discord, read by the Perceval discord backend of oracles/grimoirelab (category message).",
+      "index": "discord",
+      "quantities": [
+        {
+          "filter": "Number of messages per day, week, month",
+          "label": "Messages",
+          "panels": ["panels/json/slack.json#slack_main_numbers", "panels/json/mattermost.json#mattermost_main_numbers", "panels/json/irc.json#irc_main_metrics", "panels/json/telegram.json#telegram_main_metrics"]
+        },
+        {
+          "filter": "Number of active participants per day, week, month",
+          "label": "Participants",
+          "panels": ["panels/json/slack.json#slack_main_numbers", "panels/json/mattermost.json#mattermost_main_numbers", "panels/json/irc.json#irc_main_metrics"]
+        }
+      ],
+      "unmatched": [
+        { "filter": "Number of active Chat rooms/groups", "why": "GrimoireLab's panels label the count of distinct channels Channels, not rooms or groups; the working group is asked whether Channels is the quantity." },
+        { "filter": "Number of passive participants (i.e. reading but not participating)", "why": "No GrimoireLab backend records who reads a channel." },
+        { "filter": "Number of external participants (i.e. people who are not associated with a leading company working on an Open Source Project, such as Red Hat with the Fedora Project)", "why": "It needs organization affiliations (SortingHat enrollments), which no chat backend collects." }
+      ]
+    }
+  ]
+}
