@@ -56,10 +56,14 @@ telemetry it records and uses that telemetry to choose the next probes
   `app/prompt.json` of UOR-Foundation/grimoirelab-discord at the commit and
   SHA-256 that `model.lock.json` pins. Every step of every trace must be a
   transition of that model.
-- `live.py` also runs three checks of its own:
+- `live.py` also runs four checks of its own:
   - an archive must replay to the same items;
   - an archive must not hold the token;
-  - most text messages coming back empty means the Message Content intent is off.
+  - most text messages coming back empty means the Message Content intent is off;
+  - the pinned Chronicler, with the Discord eventizer, must turn the fetched
+    items into valid CloudEvents 1.0 events (specversion, id, source and type
+    present, ids unique, one message event per item). The trace records the
+    count of each event type, not the events.
 - The engine keeps an integer weight for each pair of channel family and
   probe strategy, bounded to [1, 16]. A probe that diverged from the model, or
   that reached a rule its family had not reached before, gains 2; any other
@@ -72,7 +76,12 @@ telemetry it records and uses that telemetry to choose the next probes
   with the bot's token and commits the state, traces and report to the
   `telemetry/discord` branch. A divergence fails the run.
 - `verify.sh perceval` also runs `live/tests` against a local Discord that
-  speaks the API subset the backend uses.
+  speaks the API subset the backend uses. Both `perceval` and `live` stage
+  the pinned Chronicler with its overlay and install its runtime set with
+  hashes required.
+- Writing the eventizer check found a trap: a subclass of the backend
+  changes `backend_name` in every item, and Chronicler then refuses the
+  items. The probe therefore wraps the unmodified backend instead.
 
 The harness's first run found a defect. Perceval archives the whole response
 object, and that object keeps the request that was sent, with the session's
@@ -92,4 +101,4 @@ way. They are likely affected too, but this has not been tested.
 | A byte changed in `chaoss/register.json` | `node oracles/reproject.mjs chaoss <dir>` | `register.json is not the projection of the pinned sources` | passes |
 | Upstream's git fixtures extracted as root | `verify.sh perceval` | 2 errors in `test_git` setUpClass (`dubious ownership`) | 1079 pass with a run-scoped `safe.directory` |
 | The token-removing response hook disabled in `discord.py` | `verify.sh perceval` (`test_archive_holds_no_token`) | `the token is in the archive` | 1050 pass |
-| A full page followed by no request, reported as done | `live/tests` (`test_a_fetch_that_stops_early_diverges`) | one divergence: expected `paging`, observed `done` | 18 pass |
+| A full page followed by no request, reported as done | `live/tests` (`test_a_fetch_that_stops_early_diverges`) | one divergence: expected `paging`, observed `done` | 20 pass |
