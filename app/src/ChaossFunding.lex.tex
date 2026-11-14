@@ -1,0 +1,172 @@
+\begin{lexlean}{ChaossFunding}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: chaossFundingAnswerOpen, parameters: [], result: Nat, body: 0}
+
+definition{name: chaossFundingAnswerComplete, parameters: [], result: Nat, body: 1}
+
+definition{name: chaossFundingAnswerUnmeasured, parameters: [], result: Nat, body: 2}
+
+definition{name: chaossFundingAnswerPartial, parameters: [], result: Nat, body: 3}
+
+structure{
+  name: ChaossFundingRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: admitted, type: Nat}, {name: refused, type: Nat}]
+}
+
+definition{
+  name: chaossFundingByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossFundingDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (chaossFundingByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (chaossFundingDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: chaossFundingParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (chaossFundingByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (chaossFundingDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossFundingParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (chaossFundingParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossFundingParseAdmitted,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (chaossFundingParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (5 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossFundingParseRefused,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (chaossFundingParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (5 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossFundingSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: chaossFundingFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (chaossFundingByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (chaossFundingFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: chaossFundingDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option ChaossFundingRequest),
+  body: (let e : Nat := (chaossFundingFieldEnd s start (Foundation.Bytes::byteLength s)); (match (chaossFundingParseRefused (chaossFundingSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [ChaossFundingRequest])
+    | Option.some v2 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [ChaossFundingRequest] (record ChaossFundingRequest {admitted := v1, refused := v2})) else (ctor Option.none [ChaossFundingRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossFundingDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option ChaossFundingRequest),
+  body: (let e : Nat := (chaossFundingFieldEnd s start (Foundation.Bytes::byteLength s)); (match (chaossFundingParseAdmitted (chaossFundingSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [ChaossFundingRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (chaossFundingDecodeField2 s (e + 1) v1) else (ctor Option.none [ChaossFundingRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossFundingRule1,
+  parameters: [request : ChaossFundingRequest],
+  result: Bool,
+  body: (1 <=? (project request refused))
+}
+
+definition{
+  name: chaossFundingRule2,
+  parameters: [request : ChaossFundingRequest],
+  result: Bool,
+  body: (5 <=? (project request admitted))
+}
+
+definition{
+  name: chaossFundingRule3,
+  parameters: [request : ChaossFundingRequest],
+  result: Bool,
+  body: ((project request admitted) =? 0)
+}
+
+definition{
+  name: chaossFundingJudge,
+  parameters: [request : ChaossFundingRequest],
+  result: Nat,
+  body: (if (chaossFundingRule1 request) then (chaossFundingAnswerOpen) else (if (chaossFundingRule2 request) then (chaossFundingAnswerComplete) else (if (chaossFundingRule3 request) then (chaossFundingAnswerUnmeasured) else (chaossFundingAnswerPartial))))
+}
+
+definition{
+  name: chaossFundingEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (chaossFundingAnswerOpen)) then 0x6f70656e else (if (code =? (chaossFundingAnswerComplete)) then 0x636f6d706c657465 else (if (code =? (chaossFundingAnswerUnmeasured)) then 0x756e6d65617375726564 else (if (code =? (chaossFundingAnswerPartial)) then 0x7061727469616c else 0x696e76616c6964))))
+}
+
+definition{
+  name: chaossFundingDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (64 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (chaossFundingDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (chaossFundingEncodeAnswer (chaossFundingJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

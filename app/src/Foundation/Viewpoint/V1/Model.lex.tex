@@ -1,0 +1,380 @@
+\begin{lexlean}{Foundation.Viewpoint.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Stakeholder viewpoint model}
+\begin{semanticmodule}
+inductive{
+  name: StakeholderKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: person, fields: []},
+    {name: organization, fields: []},
+    {name: softwareApplication, fields: []}
+  ]
+}
+
+inductive{
+  name: SubjectKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: measurementModel, fields: []},
+    {name: decisionModel, fields: []},
+    {name: stakeholder, fields: []}
+  ]
+}
+
+structure{
+  name: Stakeholder,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: slug, type: String},
+    {name: name, type: String},
+    {name: kind, type: StakeholderKind},
+    {name: principal, type: Nat},
+    {name: source, type: String},
+    {name: quote, type: String}
+  ]
+}
+
+structure{
+  name: Decision,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: app, type: String},
+    {name: pattern, type: String},
+    {name: source, type: String},
+    {name: sourceDigest, type: String}
+  ]
+}
+
+structure{
+  name: Concern,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: stakeholder, type: Nat},
+    {name: kind, type: SubjectKind},
+    {name: subject, type: Nat},
+    {name: text, type: String}
+  ]
+}
+
+structure{
+  name: Viewpoint,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: stakeholder, type: Nat},
+    {name: concerns, type: (List Nat)}
+  ]
+}
+
+structure{
+  name: View,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: viewpoint, type: Nat},
+    {name: models, type: (List Nat)},
+    {name: decisions, type: (List Nat)},
+    {name: registerClaims, type: (List Nat)},
+    {name: claims, type: (List Nat)}
+  ]
+}
+
+structure{
+  name: OpenClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: kind, type: SubjectKind},
+    {name: subject, type: Nat},
+    {name: name, type: String},
+    {name: reason, type: String}
+  ]
+}
+
+structure{
+  name: Bounds,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: stakeholders, type: Nat},
+    {name: models, type: Nat},
+    {name: decisions, type: Nat},
+    {name: concerns, type: Nat},
+    {name: registerClaims, type: Nat},
+    {name: claims, type: Nat}
+  ]
+}
+
+definition{
+  name: allBelow,
+  parameters: [bound : Nat, values : (List Nat)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons value rest => ((value <? bound) && (allBelow bound rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: natMember,
+  parameters: [wanted : Nat, values : (List Nat)],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons value rest => ((value =? wanted) || (natMember wanted rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: kindBound,
+  parameters: [bounds : Bounds, kind : SubjectKind],
+  result: Nat,
+  body: (match kind
+    | SubjectKind.measurementModel => (project bounds models)
+    | SubjectKind.decisionModel => (project bounds decisions)
+    | SubjectKind.stakeholder => (project bounds stakeholders))
+}
+
+definition{
+  name: isStakeholderKind,
+  parameters: [kind : SubjectKind],
+  result: Bool,
+  body: (match kind
+    | SubjectKind.measurementModel => false
+    | SubjectKind.decisionModel => false
+    | SubjectKind.stakeholder => true)
+}
+
+definition{
+  name: stakeholdersNumbered,
+  parameters: [position : Nat, bounds : Bounds, stakeholders : (List Stakeholder)],
+  result: Bool,
+  body: (match stakeholders
+    | List.nil => (position =? (project bounds stakeholders))
+    | List.cons stakeholder rest => (((project stakeholder index) =? position) && (((project stakeholder principal) <? (project bounds stakeholders)) && (stakeholdersNumbered (position + 1) bounds rest)))),
+  recursive_argument: stakeholders
+}
+
+definition{
+  name: decisionsNumbered,
+  parameters: [position : Nat, bounds : Bounds, decisions : (List Decision)],
+  result: Bool,
+  body: (match decisions
+    | List.nil => (position =? (project bounds decisions))
+    | List.cons decision rest => (((project decision index) =? position) && (decisionsNumbered (position + 1) bounds rest))),
+  recursive_argument: decisions
+}
+
+definition{
+  name: concernsWellFormed,
+  parameters: [position : Nat, bounds : Bounds, concerns : (List Concern)],
+  result: Bool,
+  body: (match concerns
+    | List.nil => (position =? (project bounds concerns))
+    | List.cons concern rest => (((project concern index) =? position) && (((project concern stakeholder) <? (project bounds stakeholders)) && ((not (isStakeholderKind (project concern kind))) && (((project concern subject) <? (kindBound bounds (project concern kind))) && (concernsWellFormed (position + 1) bounds rest)))))),
+  recursive_argument: concerns
+}
+
+definition{
+  name: concernHeldBy,
+  parameters: [stakeholder : Nat, wanted : Nat, concerns : (List Concern)],
+  result: Bool,
+  body: (match concerns
+    | List.nil => false
+    | List.cons concern rest => ((((project concern index) =? wanted) && ((project concern stakeholder) =? stakeholder)) || (concernHeldBy stakeholder wanted rest))),
+  recursive_argument: concerns
+}
+
+definition{
+  name: allHeldBy,
+  parameters: [stakeholder : Nat, concerns : (List Concern), wanted : (List Nat)],
+  result: Bool,
+  body: (match wanted
+    | List.nil => true
+    | List.cons concern rest => ((concernHeldBy stakeholder concern concerns) && (allHeldBy stakeholder concerns rest))),
+  recursive_argument: wanted
+}
+
+definition{
+  name: viewpointsGoverned,
+  parameters: [
+    position : Nat,
+    bounds : Bounds,
+    concerns : (List Concern),
+    viewpoints : (List Viewpoint)
+  ],
+  result: Bool,
+  body: (match viewpoints
+    | List.nil => (position =? (project bounds stakeholders))
+    | List.cons viewpoint rest => (((project viewpoint index) =? position) && (((project viewpoint stakeholder) =? position) && ((allHeldBy position concerns (project viewpoint concerns)) && (viewpointsGoverned (position + 1) bounds concerns rest))))),
+  recursive_argument: viewpoints
+}
+
+definition{
+  name: viewsGoverned,
+  parameters: [position : Nat, bounds : Bounds, views : (List View)],
+  result: Bool,
+  body: (match views
+    | List.nil => (position =? (project bounds stakeholders))
+    | List.cons view rest => (((project view index) =? position) && (((project view viewpoint) =? position) && ((allBelow (project bounds models) (project view models)) && ((allBelow (project bounds decisions) (project view decisions)) && ((allBelow (project bounds registerClaims) (project view registerClaims)) && ((allBelow (project bounds claims) (project view claims)) && (viewsGoverned (position + 1) bounds rest)))))))),
+  recursive_argument: views
+}
+
+definition{
+  name: framedBy,
+  parameters: [concern : Concern, viewpoints : (List Viewpoint)],
+  result: Bool,
+  body: (match viewpoints
+    | List.nil => false
+    | List.cons viewpoint rest => ((((project viewpoint stakeholder) =? (project concern stakeholder)) && (natMember (project concern index) (project viewpoint concerns))) || (framedBy concern rest))),
+  recursive_argument: viewpoints
+}
+
+definition{
+  name: viewShows,
+  parameters: [kind : SubjectKind, subject : Nat, view : View],
+  result: Bool,
+  body: (match kind
+    | SubjectKind.measurementModel => (natMember subject (project view models))
+    | SubjectKind.decisionModel => (natMember subject (project view decisions))
+    | SubjectKind.stakeholder => false)
+}
+
+definition{
+  name: addressedBy,
+  parameters: [concern : Concern, views : (List View)],
+  result: Bool,
+  body: (match views
+    | List.nil => false
+    | List.cons view rest => ((((project view viewpoint) =? (project concern stakeholder)) && (viewShows (project concern kind) (project concern subject) view)) || (addressedBy concern rest))),
+  recursive_argument: views
+}
+
+definition{
+  name: concernsFramedAndAddressed,
+  parameters: [viewpoints : (List Viewpoint), views : (List View), concerns : (List Concern)],
+  result: Bool,
+  body: (match concerns
+    | List.nil => true
+    | List.cons concern rest => ((framedBy concern viewpoints) && ((addressedBy concern views) && (concernsFramedAndAddressed viewpoints views rest)))),
+  recursive_argument: concerns
+}
+
+definition{
+  name: claimsWellFormed,
+  parameters: [position : Nat, bounds : Bounds, claims : (List OpenClaim)],
+  result: Bool,
+  body: (match claims
+    | List.nil => (position =? (project bounds claims))
+    | List.cons claim rest => (((project claim index) =? position) && (((project claim subject) <? (kindBound bounds (project claim kind))) && (claimsWellFormed (position + 1) bounds rest)))),
+  recursive_argument: claims
+}
+
+definition{
+  name: kindCode,
+  parameters: [kind : SubjectKind],
+  result: Nat,
+  body: (match kind
+    | SubjectKind.measurementModel => 0
+    | SubjectKind.decisionModel => 1
+    | SubjectKind.stakeholder => 2)
+}
+
+definition{
+  name: concernOnSubject,
+  parameters: [kind : SubjectKind, subject : Nat, concerns : (List Concern)],
+  result: Bool,
+  body: (match concerns
+    | List.nil => false
+    | List.cons concern rest => ((((kindCode (project concern kind)) =? (kindCode kind)) && ((project concern subject) =? subject)) || (concernOnSubject kind subject rest))),
+  recursive_argument: concerns
+}
+
+definition{
+  name: concernOfStakeholder,
+  parameters: [stakeholder : Nat, concerns : (List Concern)],
+  result: Bool,
+  body: (match concerns
+    | List.nil => false
+    | List.cons concern rest => (((project concern stakeholder) =? stakeholder) || (concernOfStakeholder stakeholder rest))),
+  recursive_argument: concerns
+}
+
+definition{
+  name: concernAbout,
+  parameters: [kind : SubjectKind, subject : Nat, concerns : (List Concern)],
+  result: Bool,
+  body: (match kind
+    | SubjectKind.measurementModel => (concernOnSubject kind subject concerns)
+    | SubjectKind.decisionModel => (concernOnSubject kind subject concerns)
+    | SubjectKind.stakeholder => (concernOfStakeholder subject concerns))
+}
+
+definition{
+  name: claimAbout,
+  parameters: [kind : SubjectKind, subject : Nat, claims : (List OpenClaim)],
+  result: Bool,
+  body: (match claims
+    | List.nil => false
+    | List.cons claim rest => ((((kindCode (project claim kind)) =? (kindCode kind)) && ((project claim subject) =? subject)) || (claimAbout kind subject rest))),
+  recursive_argument: claims
+}
+
+definition{
+  name: covered,
+  parameters: [
+    kind : SubjectKind,
+    concerns : (List Concern),
+    claims : (List OpenClaim),
+    subjects : (List Nat)
+  ],
+  result: Bool,
+  body: (match subjects
+    | List.nil => true
+    | List.cons subject rest => (((concernAbout kind subject concerns) || (claimAbout kind subject claims)) && (covered kind concerns claims rest))),
+  recursive_argument: subjects
+}
+
+definition{
+  name: upTo,
+  parameters: [count : Nat, from : Nat, values : (List Nat)],
+  result: Bool,
+  body: (match values
+    | List.nil => (from =? count)
+    | List.cons value rest => ((value =? from) && (upTo count (from + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: viewsValid,
+  parameters: [
+    bounds : Bounds,
+    stakeholders : (List Stakeholder),
+    decisions : (List Decision),
+    concerns : (List Concern),
+    viewpoints : (List Viewpoint),
+    views : (List View),
+    claims : (List OpenClaim),
+    modelIndices : (List Nat),
+    decisionIndices : (List Nat),
+    stakeholderIndices : (List Nat)
+  ],
+  result: Bool,
+  body: ((stakeholdersNumbered 0 bounds stakeholders) && ((decisionsNumbered 0 bounds decisions) && ((concernsWellFormed 0 bounds concerns) && ((viewpointsGoverned 0 bounds concerns viewpoints) && ((viewsGoverned 0 bounds views) && ((concernsFramedAndAddressed viewpoints views concerns) && ((claimsWellFormed 0 bounds claims) && ((upTo (project bounds models) 0 modelIndices) && ((upTo (project bounds decisions) 0 decisionIndices) && ((upTo (project bounds stakeholders) 0 stakeholderIndices) && ((covered (ctor SubjectKind.measurementModel) concerns claims modelIndices) && ((covered (ctor SubjectKind.decisionModel) concerns claims decisionIndices) && (covered (ctor SubjectKind.stakeholder) concerns claims stakeholderIndices)))))))))))))
+}
+\end{semanticmodule}
+\end{lexlean}

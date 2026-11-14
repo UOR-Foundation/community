@@ -1,0 +1,275 @@
+{
+  "spec": "uor-community/remediation-roles/1",
+  "about": "The judgments the remediation cannot read from a source, each with the evidence it was made from, for the repository's maintainers to confirm or correct. role is the GOVERNANCE.md 5 use case the uor-repo-tier app maps to a tier. status is STANDARDS.md's Status tag for a live repository; archived repositories take archived from GitHub. domains are the STANDARDS.md Domain tags that apply. owners are the .github/CODEOWNERS entries; until maintainers record themselves, the Organization Owner owns each repository. holder is the copyright holder a drafted LICENSE names, the one the Foundation's own repositories (prism, research, UOR-Framework) already name.",
+  "defaults": {
+    "status": "active",
+    "owners": [
+      "@afflom"
+    ],
+    "holder": "The UOR Foundation"
+  },
+  "repositories": [
+    {
+      "name": ".github",
+      "role": "docs",
+      "evidence": "README: \"the main entry point for the UOR Foundation on GitHub\"; it holds the governance documents",
+      "domains": [
+        "governance",
+        "documentation"
+      ]
+    },
+    {
+      "name": "5-Levels-of-UOR",
+      "role": "presentation",
+      "evidence": "description: \"Explains how the Prime Framework works in 5 levels of difficulty\"",
+      "domains": [
+        "documentation",
+        "math"
+      ]
+    },
+    {
+      "name": "atlas-12288",
+      "role": "implementation",
+      "evidence": "README: \"A Lean 4 implementation of the Prime Structure/Φ-Atlas-12288 mathematical framework with FFI bindings\"",
+      "domains": [
+        "math",
+        "computation"
+      ]
+    },
+    {
+      "name": "calculator-example",
+      "role": "presentation",
+      "evidence": "README: \"Calculator is the reference PrismPM product\", an example of the toolchain",
+      "domains": [
+        "computation",
+        "documentation"
+      ]
+    },
+    {
+      "name": "community",
+      "role": "implementation",
+      "evidence": "the UOR Foundation community modeled as a Prism application",
+      "domains": [
+        "governance"
+      ]
+    },
+    {
+      "name": "compression",
+      "role": "implementation",
+      "evidence": "description: \"UORC (Universal Object Reference Compression) implemented in LexLean via PrismPM\"",
+      "domains": [
+        "computation"
+      ]
+    },
+    {
+      "name": "F1",
+      "role": "experiment",
+      "evidence": "description: \"Lean 4 research base … (RH open)\"",
+      "domains": [
+        "math"
+      ]
+    },
+    {
+      "name": "foundry",
+      "role": "implementation",
+      "evidence": "description: \"Seamlessly build self-verifying AI applications\"",
+      "domains": [
+        "computation"
+      ]
+    },
+    {
+      "name": "foundry-web",
+      "role": "website",
+      "evidence": "description: \"The UOR Foundation portal\"",
+      "domains": [
+        "documentation"
+      ]
+    },
+    {
+      "name": "holo-search",
+      "role": "implementation",
+      "evidence": "description: \"find, verify and open Prism apps by address\"",
+      "domains": [
+        "computation"
+      ]
+    },
+    {
+      "name": "kappa-distribution",
+      "role": "experiment",
+      "evidence": "an empty README and one commit",
+      "domains": [
+        "computation"
+      ]
+    },
+    {
+      "name": "kappa-registry",
+      "role": "implementation",
+      "evidence": "README: \"A single-binary server that speaks Docker, Git, S3, Nix, and AT Protocol\"",
+      "domains": [
+        "computation",
+        "protocol"
+      ]
+    },
+    {
+      "name": "LexLean",
+      "role": "framework",
+      "evidence": "description: \"A formally verified compiler\", the language every Prism model is written in",
+      "domains": [
+        "math",
+        "computation"
+      ]
+    },
+    {
+      "name": "lexlean-mcp",
+      "role": "integration",
+      "evidence": "README: \"serves LexLean to LLM clients over the Model Context Protocol\"",
+      "domains": [
+        "protocol"
+      ]
+    },
+    {
+      "name": "malachite-usdc",
+      "role": "experiment",
+      "evidence": "description: \"BFT consensus engine throughput upgrade\", two commits",
+      "domains": [
+        "protocol"
+      ]
+    },
+    {
+      "name": "MCP",
+      "role": "integration",
+      "evidence": "README: \"The Model Context Protocol … implemented as a server protocol core in LexLean\"",
+      "domains": [
+        "protocol"
+      ]
+    },
+    {
+      "name": "MNIST",
+      "role": "presentation",
+      "evidence": "README: \"The ONNX Model Zoo's int8 MNIST network as one LexLean model\", a worked example",
+      "domains": [
+        "computation"
+      ]
+    },
+    {
+      "name": "nest-uor",
+      "role": "integration",
+      "evidence": "description: \"structural content addressing … for the NANDA DataFacts layer\"",
+      "domains": [
+        "cryptography",
+        "protocol"
+      ]
+    },
+    {
+      "name": "OOO",
+      "role": "experiment",
+      "evidence": "README: \"Object Oriented Ontology (OOO) Quadruple Object in UOR\", a research note",
+      "domains": [
+        "math"
+      ]
+    },
+    {
+      "name": "prism",
+      "role": "framework",
+      "evidence": "description: \"Universal coordinate system for information\"",
+      "domains": [
+        "math",
+        "computation"
+      ]
+    },
+    {
+      "name": "prism-code",
+      "role": "implementation",
+      "evidence": "README: \"dataflow-policy … is a Prism application\"",
+      "domains": [
+        "computation"
+      ]
+    },
+    {
+      "name": "PrismPM",
+      "role": "framework",
+      "evidence": "description: \"Build, run and ship self-verifying AI applications\", the SDK every Prism repository pins",
+      "domains": [
+        "computation"
+      ]
+    },
+    {
+      "name": "research",
+      "role": "experiment",
+      "evidence": "archived research code",
+      "domains": [
+        "math"
+      ]
+    },
+    {
+      "name": "template",
+      "role": "spec",
+      "evidence": "TEMPLATE-CONTRACT.md: the contract every Prism repository derived from it carries",
+      "domains": [
+        "computation",
+        "documentation"
+      ]
+    },
+    {
+      "name": "uor-addr",
+      "role": "implementation",
+      "evidence": "description: \"Reference implementation of UOR-ADDR\"",
+      "domains": [
+        "cryptography",
+        "protocol"
+      ]
+    },
+    {
+      "name": "uor-foundry",
+      "role": "implementation",
+      "evidence": "description: \"PrismPM organizational modeling of the UOR Foundation\"",
+      "domains": [
+        "governance"
+      ]
+    },
+    {
+      "name": "UOR-Framework",
+      "role": "framework",
+      "evidence": "description: \"Formalization of the UOR Framework as the https://uor.foundation/ model\"",
+      "domains": [
+        "math"
+      ]
+    },
+    {
+      "name": "uor-jcs-nfc",
+      "role": "spec",
+      "evidence": "description: \"Specification, reference implementation, and conformance suite for UOR's RFC 8785 JCS + Unicode NFC JSON digest context\"",
+      "domains": [
+        "cryptography",
+        "protocol"
+      ]
+    },
+    {
+      "name": "uor-matmul",
+      "role": "implementation",
+      "evidence": "README: \"MatMul as an operation on coded operands\"",
+      "domains": [
+        "math",
+        "computation"
+      ]
+    },
+    {
+      "name": "uor-r4",
+      "role": "experiment",
+      "evidence": "README: \"An open research project\"",
+      "domains": [
+        "computation",
+        "math"
+      ]
+    },
+    {
+      "name": "website",
+      "role": "website",
+      "evidence": "the uor.foundation website",
+      "domains": [
+        "documentation",
+        "visualisation"
+      ]
+    }
+  ]
+}

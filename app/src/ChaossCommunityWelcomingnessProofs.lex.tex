@@ -1,0 +1,116 @@
+\begin{lexlean}{ChaossCommunityWelcomingnessProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{ChaossCommunityWelcomingness}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : ChaossCommunityWelcomingness::ChaossCommunityWelcomingnessRequest],
+  result: Bool,
+  body: (((((project request admitted) <=? 14) && ((project request refused) <=? 14)) && (1 <=? (project request refused))) && ((ChaossCommunityWelcomingness::chaossCommunityWelcomingnessJudge request) =? (ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerComplete)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : ChaossCommunityWelcomingness::ChaossCommunityWelcomingnessRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerComplete,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerOpen,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerPartial,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerUnmeasured,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessJudge,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessRule1,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessRule2,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessRule3,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : ChaossCommunityWelcomingness::ChaossCommunityWelcomingnessRequest],
+  result: Bool,
+  body: (((((project request admitted) <=? 14) && ((project request refused) <=? 14)) && ((project request admitted) <? 14)) && ((ChaossCommunityWelcomingness::chaossCommunityWelcomingnessJudge request) =? (ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerComplete)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : ChaossCommunityWelcomingness::ChaossCommunityWelcomingnessRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerComplete,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerOpen,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerPartial,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerUnmeasured,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessJudge,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessRule1,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessRule2,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessRule3,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : ChaossCommunityWelcomingness::ChaossCommunityWelcomingnessRequest],
+  result: Bool,
+  body: ((((((project request admitted) <=? 14) && ((project request refused) <=? 14)) && ((project request refused) =? 0)) && (14 <=? (project request admitted))) && (not ((ChaossCommunityWelcomingness::chaossCommunityWelcomingnessJudge request) =? (ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerComplete))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : ChaossCommunityWelcomingness::ChaossCommunityWelcomingnessRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerComplete,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerOpen,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerPartial,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerUnmeasured,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessJudge,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessRule1,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessRule2,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessRule3,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : ChaossCommunityWelcomingness::ChaossCommunityWelcomingnessRequest],
+  result: Bool,
+  body: ((((((project request admitted) <=? 14) && ((project request refused) <=? 14)) && (1 <=? (project request admitted))) && ((project request refused) =? 0)) && ((ChaossCommunityWelcomingness::chaossCommunityWelcomingnessJudge request) =? (ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerUnmeasured)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : ChaossCommunityWelcomingness::ChaossCommunityWelcomingnessRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerComplete,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerOpen,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerPartial,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessAnswerUnmeasured,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessJudge,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessRule1,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessRule2,
+      ChaossCommunityWelcomingness::chaossCommunityWelcomingnessRule3,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

@@ -1,0 +1,356 @@
+\begin{lexlean}{UorCommunityDecisions}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\importmodule{ChaossAiAlignmentCommunityAlignedTrainingFeedback}
+\importmodule{ChaossBusinessReadinessOfAnOpenSourceProject}
+\importmodule{ChaossCollaborationDevelopmentIndex}
+\importmodule{ChaossCommunityActivity}
+\importmodule{ChaossCommunityGovernedAiUseInOpenCommunities}
+\importmodule{ChaossCommunityServiceAndSupport}
+\importmodule{ChaossCommunityWelcomingness}
+\importmodule{ChaossDeiEventBadging}
+\importmodule{ChaossDevelopmentResponsiveness}
+\importmodule{ChaossFunding}
+\importmodule{ChaossOssProjectViabilityCommunity}
+\importmodule{ChaossOssProjectViabilityComplianceSecurity}
+\importmodule{ChaossOssProjectViabilityGovernance}
+\importmodule{ChaossOssProjectViabilityStrategy}
+\importmodule{ChaossProjectAwareness}
+\importmodule{ChaossProjectEngagement}
+\importmodule{ChaossProjectViabilityStarter}
+\importmodule{ChaossSafety}
+\importmodule{ChaossStarterProjectHealth}
+\importmodule{UorCocEnforcement}
+\importmodule{UorContributionAttribution}
+\importmodule{UorDiscordRead}
+\importmodule{UorObservationAdmission}
+\importmodule{UorRemediationLifecycle}
+\importmodule{UorRemediationWrite}
+\importmodule{UorRepoFiles}
+\importmodule{UorRepoNaming}
+\importmodule{UorRepoProtection}
+\importmodule{UorRepoStandards}
+\importmodule{UorRepoTier}
+\importmodule{UorTocLifecycle}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: byteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: sliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: fieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (byteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (fieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: route31,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x756f722d746f632d6c6966656379636c65 : Bool) then (UorTocLifecycle::uorTocLifecycleDispatch rest) else 0x696e76616c6964),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route30,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x756f722d7265706f2d74696572 : Bool) then (UorRepoTier::uorRepoTierDispatch rest) else (route31 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route29,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x756f722d7265706f2d7374616e6461726473 : Bool) then (UorRepoStandards::uorRepoStandardsDispatch rest) else (route30 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route28,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x756f722d7265706f2d70726f74656374696f6e : Bool) then (UorRepoProtection::uorRepoProtectionDispatch rest) else (route29 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route27,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x756f722d7265706f2d6e616d696e67 : Bool) then (UorRepoNaming::uorRepoNamingDispatch rest) else (route28 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route26,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x756f722d7265706f2d66696c6573 : Bool) then (UorRepoFiles::uorRepoFilesDispatch rest) else (route27 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route25,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x756f722d72656d6564696174696f6e2d7772697465 : Bool) then (UorRemediationWrite::uorRemediationWriteDispatch rest) else (route26 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route24,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x756f722d72656d6564696174696f6e2d6c6966656379636c65 : Bool) then (UorRemediationLifecycle::uorRemediationLifecycleDispatch rest) else (route25 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route23,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x756f722d6f62736572766174696f6e2d61646d697373696f6e : Bool) then (UorObservationAdmission::uorObservationAdmissionDispatch rest) else (route24 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route22,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x756f722d646973636f72642d72656164 : Bool) then (UorDiscordRead::uorDiscordReadDispatch rest) else (route23 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route21,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x756f722d636f6e747269627574696f6e2d6174747269627574696f6e : Bool) then (UorContributionAttribution::uorContributionAttributionDispatch rest) else (route22 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route20,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x756f722d636f632d656e666f7263656d656e74 : Bool) then (UorCocEnforcement::uorCocEnforcementDispatch rest) else (route21 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route19,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d737461727465722d70726f6a6563742d6865616c7468 : Bool) then (ChaossStarterProjectHealth::chaossStarterProjectHealthDispatch rest) else (route20 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route18,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d736166657479 : Bool) then (ChaossSafety::chaossSafetyDispatch rest) else (route19 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route17,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d70726f6a6563742d76696162696c6974792d73746172746572 : Bool) then (ChaossProjectViabilityStarter::chaossProjectViabilityStarterDispatch rest) else (route18 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route16,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d70726f6a6563742d656e676167656d656e74 : Bool) then (ChaossProjectEngagement::chaossProjectEngagementDispatch rest) else (route17 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route15,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d70726f6a6563742d61776172656e657373 : Bool) then (ChaossProjectAwareness::chaossProjectAwarenessDispatch rest) else (route16 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route14,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d7374726174656779 : Bool) then (ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyDispatch rest) else (route15 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route13,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d676f7665726e616e6365 : Bool) then (ChaossOssProjectViabilityGovernance::chaossOssProjectViabilityGovernanceDispatch rest) else (route14 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route12,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d636f6d706c69616e63652d7365637572697479 : Bool) then (ChaossOssProjectViabilityComplianceSecurity::chaossOssProjectViabilityComplianceSecurityDispatch rest) else (route13 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route11,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d636f6d6d756e697479 : Bool) then (ChaossOssProjectViabilityCommunity::chaossOssProjectViabilityCommunityDispatch rest) else (route12 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route10,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d66756e64696e67 : Bool) then (ChaossFunding::chaossFundingDispatch rest) else (route11 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route9,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d646576656c6f706d656e742d726573706f6e736976656e657373 : Bool) then (ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessDispatch rest) else (route10 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route8,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d6465692d6576656e742d62616467696e67 : Bool) then (ChaossDeiEventBadging::chaossDeiEventBadgingDispatch rest) else (route9 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route7,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d636f6d6d756e6974792d77656c636f6d696e676e657373 : Bool) then (ChaossCommunityWelcomingness::chaossCommunityWelcomingnessDispatch rest) else (route8 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route6,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d636f6d6d756e6974792d736572766963652d616e642d737570706f7274 : Bool) then (ChaossCommunityServiceAndSupport::chaossCommunityServiceAndSupportDispatch rest) else (route7 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route5,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d636f6d6d756e6974792d676f7665726e65642d61692d7573652d696e2d6f70656e2d636f6d6d756e6974696573 : Bool) then (ChaossCommunityGovernedAiUseInOpenCommunities::chaossCommunityGovernedAiUseInOpenCommunitiesDispatch rest) else (route6 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route4,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d636f6d6d756e6974792d6163746976697479 : Bool) then (ChaossCommunityActivity::chaossCommunityActivityDispatch rest) else (route5 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route3,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d636f6c6c61626f726174696f6e2d646576656c6f706d656e742d696e646578 : Bool) then (ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexDispatch rest) else (route4 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route2,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d627573696e6573732d72656164696e6573732d6f662d616e2d6f70656e2d736f757263652d70726f6a656374 : Bool) then (ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectDispatch rest) else (route3 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: route1,
+  parameters: [name : Bytes, rest : Bytes],
+  result: Bytes,
+  body: (if (prim equal name 0x6368616f73732d61692d616c69676e6d656e742d636f6d6d756e6974792d616c69676e65642d747261696e696e672d666565646261636b : Bool) then (ChaossAiAlignmentCommunityAlignedTrainingFeedback::chaossAiAlignmentCommunityAlignedTrainingFeedbackDispatch rest) else (route2 name rest)),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: dispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (223 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (let e : Nat := (fieldEnd value 0 (Foundation.Bytes::byteLength value)); (if (e <? (Foundation.Bytes::byteLength value)) then (route1 (sliceOf value 0 e) (sliceOf value (e + 1) (prim subtract (Foundation.Bytes::byteLength value) (e + 1) : Nat))) else 0x696e76616c6964))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: vectors2,
+  parameters: [],
+  result: (List Foundation.View.Text.V1.Model::AcceptanceVector),
+  body: (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d66696c65732074332070726573656e742070726573656e74206d697373696e672070726573656e74206d697373696e67206d697373696e672070726573656e74, response := 0x61647669736f7279}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d66696c657320, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d6e616d696e67206c6f7765726361736520616273656e742070726566657272656420636f6e666f726d696e6720636f6e76656e74696f6e616c20636f6d706c65746520636f6d706c657465, response := 0x636f6e666f726d616e74}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d6e616d696e67206c6f7765726361736520616273656e74206f7468657220636f6e666f726d696e6720636f6e76656e74696f6e616c20636f6d706c65746520636f6d706c657465, response := 0x61647669736f7279}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d6e616d696e67206f7468657220616273656e742070726566657272656420636f6e666f726d696e6720636f6e76656e74696f6e616c20636f6d706c65746520636f6d706c657465, response := 0x6e6f6e636f6e666f726d696e67}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d6e616d696e6720, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d70726f74656374696f6e207431207265717569726564203220726571756972656420626c6f636b6564, response := 0x636f6e666f726d616e74}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d70726f74656374696f6e207431207265717569726564203120726571756972656420626c6f636b6564, response := 0x7765616b2d70726f74656374696f6e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d70726f74656374696f6e20, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d7374616e64617264732074312070726573656e74203120312073656d766572, response := 0x636f6e666f726d616e74}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d7374616e64617264732074312070726573656e7420312031206f74686572, response := 0x756e76657273696f6e6564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d7374616e6461726473207433206d697373696e6720312031206f74686572, response := 0x756e746167676564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d7374616e646172647320, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d74696572206e6f6e65206672616d65776f726b, response := 0x7431}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d74696572206e6f6e6520696d706c656d656e746174696f6e, response := 0x7432}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d74696572206e6f6e6520646f6373, response := 0x7433}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d74696572206e6f6e65206578706572696d656e74, response := 0x7434}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d7469657220, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d746f632d6c6966656379636c652070726f706f7365642073616e64626f78206d6574206d616a6f7269747920636f6d706c6574652030, response := 0x73616e64626f78}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d746f632d6c6966656379636c652070726f706f7365642073616e64626f7820756e6d6574206d616a6f7269747920636f6d706c6574652030, response := 0x70726f706f736564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d746f632d6c6966656379636c652073616e64626f7820696e6375626174696f6e206d6574206d616a6f7269747920636f6d706c6574652030, response := 0x696e6375626174696f6e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d746f632d6c6966656379636c6520696e6375626174696f6e2067726164756174696f6e206d65742074776f74686972647320636f6d706c657465203134, response := 0x677261647561746564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d746f632d6c6966656379636c652067726164756174656420617263686976616c206d6574206d616a6f7269747920636f6d706c6574652030, response := 0x6172636869766564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d746f632d6c6966656379636c6520, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0xff, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d61692d616c69676e6d656e742d636f6d6d756e6974792d616c69676e65642d747261696e696e672d666565646261636b, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756e6b6e6f776e20342030, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x78787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878, response := 0x696e76616c6964}) (nil Foundation.View.Text.V1.Model::AcceptanceVector))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: vectors1,
+  parameters: [],
+  result: (List Foundation.View.Text.V1.Model::AcceptanceVector),
+  body: (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d737472617465677920302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d737472617465677920312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d737472617465677920, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d70726f6a6563742d61776172656e65737320352030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d70726f6a6563742d61776172656e65737320342030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d70726f6a6563742d61776172656e65737320302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d70726f6a6563742d61776172656e65737320312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d70726f6a6563742d61776172656e65737320, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d70726f6a6563742d656e676167656d656e7420362030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d70726f6a6563742d656e676167656d656e7420352030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d70726f6a6563742d656e676167656d656e7420302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d70726f6a6563742d656e676167656d656e7420312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d70726f6a6563742d656e676167656d656e7420, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d70726f6a6563742d76696162696c6974792d7374617274657220362030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d70726f6a6563742d76696162696c6974792d7374617274657220352030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d70726f6a6563742d76696162696c6974792d7374617274657220302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d70726f6a6563742d76696162696c6974792d7374617274657220312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d70726f6a6563742d76696162696c6974792d7374617274657220, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d73616665747920362030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d73616665747920352030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d73616665747920302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d73616665747920312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d73616665747920, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d737461727465722d70726f6a6563742d6865616c746820342030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d737461727465722d70726f6a6563742d6865616c746820332030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d737461727465722d70726f6a6563742d6865616c746820302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d737461727465722d70726f6a6563742d6865616c746820312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d737461727465722d70726f6a6563742d6865616c746820, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d636f632d656e666f7263656d656e7420636c6561722076696f6c6174696f6e206d696e6f72206d6f64657261746f7273, response := 0x7761726e6564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d636f632d656e666f7263656d656e7420636c6561722076696f6c6174696f6e206d6f646572617465206d6f64657261746f7273, response := 0x6c696d69746564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d636f632d656e666f7263656d656e7420636c6561722076696f6c6174696f6e20736572696f757320626f617264, response := 0x73757370656e646564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d636f632d656e666f7263656d656e7420636c6561722076696f6c6174696f6e20736576657265206d6f64657261746f7273, response := 0x62616e6e6564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d636f632d656e666f7263656d656e7420636c6561722070656e64696e6720736576657265206d6f64657261746f7273, response := 0x636c656172}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d636f632d656e666f7263656d656e7420, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d636f6e747269627574696f6e2d6174747269627574696f6e20706572736f6e207265736f6c76656420616273656e74206e6f6e65206d697373696e67, response := 0x7065726d6974}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d636f6e747269627574696f6e2d6174747269627574696f6e20706572736f6e20756e7265736f6c76656420616273656e74206e6f6e65206d697373696e67, response := 0x696e64657465726d696e617465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d636f6e747269627574696f6e2d6174747269627574696f6e20736f667477617265207265736f6c766564206465636c6172656420706572736f6e206d697373696e67, response := 0x64656e79}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d636f6e747269627574696f6e2d6174747269627574696f6e206f7267616e697a6174696f6e207265736f6c76656420616273656e74206e6f6e65206d697373696e67, response := 0x6e6f742d6170706c696361626c65}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d636f6e747269627574696f6e2d6174747269627574696f6e20, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d646973636f72642d7265616420746578742065766572796f6e65207075626c69632061646d696e206772616e746564, response := 0x7065726d6974}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d646973636f72642d7265616420646d2065766572796f6e65207075626c69632061646d696e206772616e746564, response := 0x64656e79}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d646973636f72642d7265616420746578742065766572796f6e6520756e6c6162656c65642061646d696e206772616e746564, response := 0x6e6f742d6170706c696361626c65}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d646973636f72642d7265616420746578742065766572796f6e65207075626c69632061646d696e206d697373696e67, response := 0x696e64657465726d696e617465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d646973636f72642d7265616420, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d6f62736572766174696f6e2d61646d697373696f6e2072656c656173656420636f766572732070696e6e656420726570726f647563656420756e676f7665726e656420616767726567617465, response := 0x7065726d6974}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d6f62736572766174696f6e2d61646d697373696f6e20756e72656c656173656420636f766572732070696e6e656420726570726f6475636564207065726d6974207065726d6974, response := 0x6e6f742d6170706c696361626c65}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d6f62736572766174696f6e2d61646d697373696f6e2072656c656173656420636f766572732070696e6e656420726570726f64756365642064656e79207065726d6974, response := 0x64656e79}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d6f62736572766174696f6e2d61646d697373696f6e2072656c656173656420756e6c69737465642070696e6e656420726570726f6475636564207065726d697420616767726567617465, response := 0x696e64657465726d696e617465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d6f62736572766174696f6e2d61646d697373696f6e20, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d72656d6564696174696f6e2d6c6966656379636c65206f6273657276656420676976656e206e6f6e652070656e64696e6720756e6f62736572766564, response := 0x617070726f766564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d72656d6564696174696f6e2d6c6966656379636c65206f62736572766564206e6f6e65206e6f6e652070656e64696e6720756e6f62736572766564, response := 0x6f62736572766564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d72656d6564696174696f6e2d6c6966656379636c6520617070726f76656420676976656e206f70656e2070656e64696e6720756e6f62736572766564, response := 0x6f70656e6564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d72656d6564696174696f6e2d6c6966656379636c65206f70656e656420676976656e206d65726765642070656e64696e6720756e6f62736572766564, response := 0x6d6572676564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d72656d6564696174696f6e2d6c6966656379636c65206f70656e656420676976656e20636c6f7365642070656e64696e6720756e6f62736572766564, response := 0x6465636c696e6564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d72656d6564696174696f6e2d6c6966656379636c65206d657267656420676976656e206d6572676564206170706c69656420756e6f62736572766564, response := 0x6170706c696564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d72656d6564696174696f6e2d6c6966656379636c65206170706c69656420676976656e206d6572676564206170706c69656420636f6e666f726d616e74, response := 0x636f6e666f726d616e74}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d72656d6564696174696f6e2d6c6966656379636c6520, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d72656d6564696174696f6e2d7772697465206167656e742066696c65206c69766520676976656e2070756c6c2d72657175657374, response := 0x7065726d6974}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d72656d6564696174696f6e2d7772697465206167656e742066696c65206c697665206e6f6e652070756c6c2d72657175657374, response := 0x64656e79}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d72656d6564696174696f6e2d7772697465206f746865722066696c65206c69766520676976656e2070756c6c2d72657175657374, response := 0x6e6f742d6170706c696361626c65}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d72656d6564696174696f6e2d777269746520756e76657269666965642066696c65206c69766520676976656e2070756c6c2d72657175657374, response := 0x696e64657465726d696e617465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d72656d6564696174696f6e2d777269746520, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d66696c65732074312070726573656e742070726573656e742070726573656e742070726573656e742070726573656e742070726573656e742070726573656e74, response := 0x636f6e666f726d616e74}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x756f722d7265706f2d66696c65732074312070726573656e742070726573656e742070726573656e742070726573656e74206d697373696e672070726573656e742070726573656e74, response := 0x6d697373696e672d66696c65}) (vectors2)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: vectors,
+  parameters: [],
+  result: (List Foundation.View.Text.V1.Model::AcceptanceVector),
+  body: (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d61692d616c69676e6d656e742d636f6d6d756e6974792d616c69676e65642d747261696e696e672d666565646261636b20342030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d61692d616c69676e6d656e742d636f6d6d756e6974792d616c69676e65642d747261696e696e672d666565646261636b20332030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d61692d616c69676e6d656e742d636f6d6d756e6974792d616c69676e65642d747261696e696e672d666565646261636b20302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d61692d616c69676e6d656e742d636f6d6d756e6974792d616c69676e65642d747261696e696e672d666565646261636b20312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d61692d616c69676e6d656e742d636f6d6d756e6974792d616c69676e65642d747261696e696e672d666565646261636b20, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d627573696e6573732d72656164696e6573732d6f662d616e2d6f70656e2d736f757263652d70726f6a65637420382030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d627573696e6573732d72656164696e6573732d6f662d616e2d6f70656e2d736f757263652d70726f6a65637420372030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d627573696e6573732d72656164696e6573732d6f662d616e2d6f70656e2d736f757263652d70726f6a65637420302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d627573696e6573732d72656164696e6573732d6f662d616e2d6f70656e2d736f757263652d70726f6a65637420312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d627573696e6573732d72656164696e6573732d6f662d616e2d6f70656e2d736f757263652d70726f6a65637420, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6c6c61626f726174696f6e2d646576656c6f706d656e742d696e64657820352030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6c6c61626f726174696f6e2d646576656c6f706d656e742d696e64657820342030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6c6c61626f726174696f6e2d646576656c6f706d656e742d696e64657820302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6c6c61626f726174696f6e2d646576656c6f706d656e742d696e64657820312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6c6c61626f726174696f6e2d646576656c6f706d656e742d696e64657820, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d61637469766974792031312030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d61637469766974792031302030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d616374697669747920302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d616374697669747920312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d616374697669747920, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d676f7665726e65642d61692d7573652d696e2d6f70656e2d636f6d6d756e697469657320352030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d676f7665726e65642d61692d7573652d696e2d6f70656e2d636f6d6d756e697469657320342030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d676f7665726e65642d61692d7573652d696e2d6f70656e2d636f6d6d756e697469657320302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d676f7665726e65642d61692d7573652d696e2d6f70656e2d636f6d6d756e697469657320312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d676f7665726e65642d61692d7573652d696e2d6f70656e2d636f6d6d756e697469657320, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d736572766963652d616e642d737570706f727420392030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d736572766963652d616e642d737570706f727420382030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d736572766963652d616e642d737570706f727420302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d736572766963652d616e642d737570706f727420312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d736572766963652d616e642d737570706f727420, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d77656c636f6d696e676e6573732031342030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d77656c636f6d696e676e6573732031332030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d77656c636f6d696e676e65737320302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d77656c636f6d696e676e65737320312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d636f6d6d756e6974792d77656c636f6d696e676e65737320, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6465692d6576656e742d62616467696e6720362030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6465692d6576656e742d62616467696e6720352030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6465692d6576656e742d62616467696e6720302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6465692d6576656e742d62616467696e6720312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6465692d6576656e742d62616467696e6720, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d646576656c6f706d656e742d726573706f6e736976656e65737320342030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d646576656c6f706d656e742d726573706f6e736976656e65737320332030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d646576656c6f706d656e742d726573706f6e736976656e65737320302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d646576656c6f706d656e742d726573706f6e736976656e65737320312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d646576656c6f706d656e742d726573706f6e736976656e65737320, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d66756e64696e6720352030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d66756e64696e6720342030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d66756e64696e6720302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d66756e64696e6720312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d66756e64696e6720, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d636f6d6d756e69747920382030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d636f6d6d756e69747920372030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d636f6d6d756e69747920302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d636f6d6d756e69747920312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d636f6d6d756e69747920, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d636f6d706c69616e63652d736563757269747920372030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d636f6d706c69616e63652d736563757269747920362030, response := 0x7061727469616c}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d636f6d706c69616e63652d736563757269747920302030, response := 0x756e6d65617375726564}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d636f6d706c69616e63652d736563757269747920312031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d636f6d706c69616e63652d736563757269747920, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d676f7665726e616e636520382031, response := 0x6f70656e}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d676f7665726e616e636520, response := 0x696e76616c6964}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d737472617465677920352030, response := 0x636f6d706c657465}) (cons (record Foundation.View.Text.V1.Model::AcceptanceVector {request := 0x6368616f73732d6f73732d70726f6a6563742d76696162696c6974792d737472617465677920342030, response := 0x7061727469616c}) (vectors1)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: application,
+  parameters: [],
+  result: Foundation.View.Text.V1.Model::TextApplication,
+  body: (record Foundation.View.Text.V1.Model::TextApplication {profile := "prismpm/text-application/1", name := "UOR Foundation community decisions", cargoName := "prism-uor-community-decisions", cargoVersion := "0.1.0", cargoDescription := "Answer each decision the UOR Foundation's governance documents and the CHAOSS metrics models ask of its community, by the app that models it, with every stated property proved in Lean.", cargoRepository := "https://github.com/UOR-Foundation/community", cargoHomepage := "https://github.com/UOR-Foundation/community", libraryRoots := (cons "PrismUorCommunityDecisions.UorCommunityDecisions.dispatch" (nil String)), acceptanceVectors := (vectors), entryRoot := "PrismUorCommunityDecisions.UorCommunityDecisions.dispatch", coreContract := "hologram:guest/core-wasm@1", requestMaximum := (223 : UInt32), responseMaximum := (64 : UInt32), guestAllocationMaximum := (446 : UInt32), capabilitiesEmpty := true, fatArchive := true, primaryLayer := (0 : UInt8), viewLayer := (1 : UInt8), view := (record Foundation.View.Text.V1.Model::TextView {title := "UOR Foundation community decisions", heading := "UOR Foundation community decisions", inputLabel := "Request: an app, then its fields", submitLabel := "Decide", outputLabel := "Answer", inputError := "Invalid request", responseError := "Invalid response"})})
+}
+\end{semanticmodule}
+\end{lexlean}

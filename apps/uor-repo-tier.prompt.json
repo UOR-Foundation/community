@@ -1,0 +1,380 @@
+{
+  "schema": "prism/prompt/1",
+  "pattern": "decisionTable",
+  "goal": "Give every UOR Foundation repository the tier GOVERNANCE.md 5 defines for what it is, keeping a tier its maintainers already recorded.",
+  "repository": "UOR-Foundation/community",
+  "app": {
+    "name": "uor-repo-tier",
+    "title": "Repository tier by use case",
+    "purpose": "Decide a UOR Foundation repository's tier from the tier tag it already carries, if any, and otherwise from its use case as GOVERNANCE.md 5 classifies it.",
+    "fields": [
+      {
+        "name": "recorded",
+        "kind": "choice",
+        "values": [
+          "t1",
+          "t2",
+          "t3",
+          "t4",
+          "none"
+        ],
+        "means": "the tier its single tier topic tag records, or none when it carries no single tier tag"
+      },
+      {
+        "name": "role",
+        "kind": "choice",
+        "values": [
+          "framework",
+          "spec",
+          "implementation",
+          "integration",
+          "docs",
+          "website",
+          "presentation",
+          "experiment"
+        ],
+        "means": "the repository's use case: core framework, critical specification, implementation, integration, documentation, website, presentation, or early experiment"
+      }
+    ],
+    "outcomes": [
+      "t1",
+      "t2",
+      "t3",
+      "t4"
+    ],
+    "meanings": {
+      "t1": "Tier 1: core framework and critical specs, strong review and verification",
+      "t2": "Tier 2: implementations and integrations, standard review and CI",
+      "t3": "Tier 3: docs, websites and presentation repos, basic review and CI",
+      "t4": "Tier 4: early experiments, clear status and basic hygiene"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "recorded",
+            "op": "is",
+            "value": "t1"
+          }
+        ],
+        "then": "t1",
+        "why": "STANDARDS.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Topic Tags: a repository carries exactly one tier tag; the tag its maintainers recorded is kept"
+      },
+      {
+        "when": [
+          {
+            "field": "recorded",
+            "op": "is",
+            "value": "t2"
+          }
+        ],
+        "then": "t2",
+        "why": "STANDARDS.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Topic Tags: a repository carries exactly one tier tag; the tag its maintainers recorded is kept"
+      },
+      {
+        "when": [
+          {
+            "field": "recorded",
+            "op": "is",
+            "value": "t3"
+          }
+        ],
+        "then": "t3",
+        "why": "STANDARDS.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Topic Tags: a repository carries exactly one tier tag; the tag its maintainers recorded is kept"
+      },
+      {
+        "when": [
+          {
+            "field": "recorded",
+            "op": "is",
+            "value": "t4"
+          }
+        ],
+        "then": "t4",
+        "why": "STANDARDS.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Topic Tags: a repository carries exactly one tier tag; the tag its maintainers recorded is kept"
+      },
+      {
+        "when": [
+          {
+            "field": "role",
+            "op": "is",
+            "value": "framework"
+          }
+        ],
+        "then": "t1",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 5: Tier 1 is core framework and critical specs"
+      },
+      {
+        "when": [
+          {
+            "field": "role",
+            "op": "is",
+            "value": "spec"
+          }
+        ],
+        "then": "t1",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 5: Tier 1 is core framework and critical specs"
+      },
+      {
+        "when": [
+          {
+            "field": "role",
+            "op": "is",
+            "value": "implementation"
+          }
+        ],
+        "then": "t2",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 5: Tier 2 is implementations and integrations"
+      },
+      {
+        "when": [
+          {
+            "field": "role",
+            "op": "is",
+            "value": "integration"
+          }
+        ],
+        "then": "t2",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 5: Tier 2 is implementations and integrations"
+      },
+      {
+        "when": [
+          {
+            "field": "role",
+            "op": "is",
+            "value": "docs"
+          }
+        ],
+        "then": "t3",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 5: Tier 3 is docs, websites, and presentation repos"
+      },
+      {
+        "when": [
+          {
+            "field": "role",
+            "op": "is",
+            "value": "website"
+          }
+        ],
+        "then": "t3",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 5: Tier 3 is docs, websites, and presentation repos"
+      },
+      {
+        "when": [
+          {
+            "field": "role",
+            "op": "is",
+            "value": "presentation"
+          }
+        ],
+        "then": "t3",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 5: Tier 3 is docs, websites, and presentation repos"
+      }
+    ],
+    "otherwise": "t4",
+    "otherwiseWhy": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 5: Tier 4 is early experiments",
+    "properties": [
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "recorded",
+            "op": "is",
+            "value": "t2"
+          },
+          {
+            "field": "role",
+            "op": "is",
+            "value": "framework"
+          }
+        ],
+        "then": "t2",
+        "why": "a tier its maintainers recorded is never overridden by the use case"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "recorded",
+            "op": "is",
+            "value": "none"
+          },
+          {
+            "field": "role",
+            "op": "is",
+            "value": "experiment"
+          }
+        ],
+        "then": "t1",
+        "why": "an early experiment is never Tier 1 unless its maintainers record it"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "recorded",
+            "op": "is",
+            "value": "none"
+          },
+          {
+            "field": "role",
+            "op": "is",
+            "value": "website"
+          }
+        ],
+        "then": "t3",
+        "why": "a website is Tier 3"
+      }
+    ],
+    "examples": [
+      {
+        "request": "none framework",
+        "response": "t1"
+      },
+      {
+        "request": "none spec",
+        "response": "t1"
+      },
+      {
+        "request": "none implementation",
+        "response": "t2"
+      },
+      {
+        "request": "none integration",
+        "response": "t2"
+      },
+      {
+        "request": "none docs",
+        "response": "t3"
+      },
+      {
+        "request": "none website",
+        "response": "t3"
+      },
+      {
+        "request": "none presentation",
+        "response": "t3"
+      },
+      {
+        "request": "none experiment",
+        "response": "t4"
+      },
+      {
+        "request": "t2 framework",
+        "response": "t2"
+      },
+      {
+        "request": "t4 spec",
+        "response": "t4"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Repository Maintainer",
+      "text": "Records the tier of a repository and needs the proposed tier to follow GOVERNANCE.md 5 and to yield to the tier already recorded.",
+      "concerns": [
+        "Correct answers"
+      ]
+    },
+    {
+      "name": "Organization Owner",
+      "text": "Holds final governance authority and needs every repository classified by the same published rule.",
+      "concerns": [
+        "Proved guarantees"
+      ]
+    },
+    {
+      "name": "Adopter",
+      "text": "Chooses which UOR Foundation repositories to depend on and reads the tier as the controls a repository promises.",
+      "concerns": [
+        "Correct answers"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "GitHub repository settings",
+      "kind": "externalSystem",
+      "text": "The topics, rulesets, names and files of each UOR-Foundation repository."
+    },
+    {
+      "name": "Remediation register",
+      "kind": "cliAdapter",
+      "text": "remediation/project.mjs and remediation/register.json in UOR-Foundation/community, which project each repository's change set from the decision apps."
+    }
+  ],
+  "threats": [
+    {
+      "name": "Tier understated to escape controls",
+      "text": "A core framework or critical spec is proposed as Tier 3 or 4 so that it needs fewer reviews and no required files.",
+      "stride": "elevationOfPrivilege",
+      "asset": "answer",
+      "likelihood": "medium",
+      "impact": "major",
+      "control": {
+        "name": "Use case decides",
+        "text": "A framework or spec with no recorded tier is Tier 1.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-002"
+          },
+          {
+            "kind": "review",
+            "reference": "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8 governance/GOVERNANCE.md 5"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Recorded tier overwritten",
+      "text": "A remediation replaces the tier tag a maintainer recorded.",
+      "stride": "tampering",
+      "asset": "answer",
+      "likelihood": "low",
+      "impact": "major",
+      "control": {
+        "name": "Recorded tier kept",
+        "text": "Any recorded tier is the answer, whatever the use case.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-001"
+          }
+        ]
+      }
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Functional suitability",
+      "subcharacteristic": "Functional completeness",
+      "requirement": "Every tier row modeled",
+      "text": "Each row of the GOVERNANCE.md 5 classification table is reached by a rule.",
+      "measure": "Unmodeled tier rows",
+      "measureText": "Rows of GOVERNANCE.md 5 with no rule.",
+      "threshold": 0
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Repository Maintainer",
+      "steps": [
+        "REQ-001",
+        "REQ-005",
+        "otherwise"
+      ]
+    },
+    {
+      "stakeholder": "Organization Owner",
+      "steps": [
+        "INV-001",
+        "INV-002",
+        "refuse"
+      ]
+    }
+  ],
+  "concerns": [],
+  "license": "MIT OR Apache-2.0"
+}

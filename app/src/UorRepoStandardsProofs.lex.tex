@@ -1,0 +1,152 @@
+\begin{lexlean}{UorRepoStandardsProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{UorRepoStandards}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : UorRepoStandards::UorRepoStandardsRequest],
+  result: Bool,
+  body: ((((((((project request tier) <? 4) && ((project request identity) <? 2)) && ((project request tiertags) <=? 4)) && ((project request statustags) <=? 4)) && ((project request versioning) <? 3)) && ((project request tiertags) =? 0)) && ((UorRepoStandards::uorRepoStandardsJudge request) =? (UorRepoStandards::uorRepoStandardsAnswerConformant)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : UorRepoStandards::UorRepoStandardsRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoStandards::uorRepoStandardsAnswerConformant,
+      UorRepoStandards::uorRepoStandardsAnswerUntagged,
+      UorRepoStandards::uorRepoStandardsAnswerUnversioned,
+      UorRepoStandards::uorRepoStandardsIdentityMissing,
+      UorRepoStandards::uorRepoStandardsIdentityPresent,
+      UorRepoStandards::uorRepoStandardsJudge,
+      UorRepoStandards::uorRepoStandardsRule1,
+      UorRepoStandards::uorRepoStandardsRule2,
+      UorRepoStandards::uorRepoStandardsRule3,
+      UorRepoStandards::uorRepoStandardsRule4,
+      UorRepoStandards::uorRepoStandardsTierT1,
+      UorRepoStandards::uorRepoStandardsTierT2,
+      UorRepoStandards::uorRepoStandardsTierT3,
+      UorRepoStandards::uorRepoStandardsTierT4,
+      UorRepoStandards::uorRepoStandardsVersioningOther,
+      UorRepoStandards::uorRepoStandardsVersioningSemver,
+      UorRepoStandards::uorRepoStandardsVersioningUnreleased,
+      breaksInv001
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : UorRepoStandards::UorRepoStandardsRequest],
+  result: Bool,
+  body: ((((((((project request tier) <? 4) && ((project request identity) <? 2)) && ((project request tiertags) <=? 4)) && ((project request statustags) <=? 4)) && ((project request versioning) <? 3)) && (1 <? (project request statustags))) && ((UorRepoStandards::uorRepoStandardsJudge request) =? (UorRepoStandards::uorRepoStandardsAnswerConformant)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : UorRepoStandards::UorRepoStandardsRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoStandards::uorRepoStandardsAnswerConformant,
+      UorRepoStandards::uorRepoStandardsAnswerUntagged,
+      UorRepoStandards::uorRepoStandardsAnswerUnversioned,
+      UorRepoStandards::uorRepoStandardsIdentityMissing,
+      UorRepoStandards::uorRepoStandardsIdentityPresent,
+      UorRepoStandards::uorRepoStandardsJudge,
+      UorRepoStandards::uorRepoStandardsRule1,
+      UorRepoStandards::uorRepoStandardsRule2,
+      UorRepoStandards::uorRepoStandardsRule3,
+      UorRepoStandards::uorRepoStandardsRule4,
+      UorRepoStandards::uorRepoStandardsTierT1,
+      UorRepoStandards::uorRepoStandardsTierT2,
+      UorRepoStandards::uorRepoStandardsTierT3,
+      UorRepoStandards::uorRepoStandardsTierT4,
+      UorRepoStandards::uorRepoStandardsVersioningOther,
+      UorRepoStandards::uorRepoStandardsVersioningSemver,
+      UorRepoStandards::uorRepoStandardsVersioningUnreleased,
+      breaksInv002
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : UorRepoStandards::UorRepoStandardsRequest],
+  result: Bool,
+  body: (((((((((project request tier) <? 4) && ((project request identity) <? 2)) && ((project request tiertags) <=? 4)) && ((project request statustags) <=? 4)) && ((project request versioning) <? 3)) && ((project request tier) =? (UorRepoStandards::uorRepoStandardsTierT1))) && ((project request versioning) =? (UorRepoStandards::uorRepoStandardsVersioningOther))) && ((UorRepoStandards::uorRepoStandardsJudge request) =? (UorRepoStandards::uorRepoStandardsAnswerConformant)))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : UorRepoStandards::UorRepoStandardsRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoStandards::uorRepoStandardsAnswerConformant,
+      UorRepoStandards::uorRepoStandardsAnswerUntagged,
+      UorRepoStandards::uorRepoStandardsAnswerUnversioned,
+      UorRepoStandards::uorRepoStandardsIdentityMissing,
+      UorRepoStandards::uorRepoStandardsIdentityPresent,
+      UorRepoStandards::uorRepoStandardsJudge,
+      UorRepoStandards::uorRepoStandardsRule1,
+      UorRepoStandards::uorRepoStandardsRule2,
+      UorRepoStandards::uorRepoStandardsRule3,
+      UorRepoStandards::uorRepoStandardsRule4,
+      UorRepoStandards::uorRepoStandardsTierT1,
+      UorRepoStandards::uorRepoStandardsTierT2,
+      UorRepoStandards::uorRepoStandardsTierT3,
+      UorRepoStandards::uorRepoStandardsTierT4,
+      UorRepoStandards::uorRepoStandardsVersioningOther,
+      UorRepoStandards::uorRepoStandardsVersioningSemver,
+      UorRepoStandards::uorRepoStandardsVersioningUnreleased,
+      breaksInv003
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : UorRepoStandards::UorRepoStandardsRequest],
+  result: Bool,
+  body: ((((((((project request tier) <? 4) && ((project request identity) <? 2)) && ((project request tiertags) <=? 4)) && ((project request statustags) <=? 4)) && ((project request versioning) <? 3)) && ((project request tier) =? (UorRepoStandards::uorRepoStandardsTierT3))) && ((UorRepoStandards::uorRepoStandardsJudge request) =? (UorRepoStandards::uorRepoStandardsAnswerUnversioned)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : UorRepoStandards::UorRepoStandardsRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoStandards::uorRepoStandardsAnswerConformant,
+      UorRepoStandards::uorRepoStandardsAnswerUntagged,
+      UorRepoStandards::uorRepoStandardsAnswerUnversioned,
+      UorRepoStandards::uorRepoStandardsIdentityMissing,
+      UorRepoStandards::uorRepoStandardsIdentityPresent,
+      UorRepoStandards::uorRepoStandardsJudge,
+      UorRepoStandards::uorRepoStandardsRule1,
+      UorRepoStandards::uorRepoStandardsRule2,
+      UorRepoStandards::uorRepoStandardsRule3,
+      UorRepoStandards::uorRepoStandardsRule4,
+      UorRepoStandards::uorRepoStandardsTierT1,
+      UorRepoStandards::uorRepoStandardsTierT2,
+      UorRepoStandards::uorRepoStandardsTierT3,
+      UorRepoStandards::uorRepoStandardsTierT4,
+      UorRepoStandards::uorRepoStandardsVersioningOther,
+      UorRepoStandards::uorRepoStandardsVersioningSemver,
+      UorRepoStandards::uorRepoStandardsVersioningUnreleased,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

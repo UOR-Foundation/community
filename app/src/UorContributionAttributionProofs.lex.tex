@@ -1,0 +1,213 @@
+\begin{lexlean}{UorContributionAttributionProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{UorContributionAttribution}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : UorContributionAttribution::UorContributionAttributionRequest],
+  result: Bool,
+  body: (((((((((project request agent) <? 3) && ((project request identity) <? 2)) && ((project request delegation) <? 2)) && ((project request principal) <? 3)) && ((project request trail) <? 2)) && ((project request agent) =? (UorContributionAttribution::uorContributionAttributionAgentSoftware))) && ((project request delegation) =? (UorContributionAttribution::uorContributionAttributionDelegationAbsent))) && ((UorContributionAttribution::uorContributionAttributionJudge request) =? (UorContributionAttribution::uorContributionAttributionAnswerPermit)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : UorContributionAttribution::UorContributionAttributionRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorContributionAttribution::uorContributionAttributionAgentOrganization,
+      UorContributionAttribution::uorContributionAttributionAgentPerson,
+      UorContributionAttribution::uorContributionAttributionAgentSoftware,
+      UorContributionAttribution::uorContributionAttributionAnswerDeny,
+      UorContributionAttribution::uorContributionAttributionAnswerIndeterminate,
+      UorContributionAttribution::uorContributionAttributionAnswerNotApplicable,
+      UorContributionAttribution::uorContributionAttributionAnswerPermit,
+      UorContributionAttribution::uorContributionAttributionDelegationAbsent,
+      UorContributionAttribution::uorContributionAttributionDelegationDeclared,
+      UorContributionAttribution::uorContributionAttributionIdentityResolved,
+      UorContributionAttribution::uorContributionAttributionIdentityUnresolved,
+      UorContributionAttribution::uorContributionAttributionJudge,
+      UorContributionAttribution::uorContributionAttributionPrincipalNone,
+      UorContributionAttribution::uorContributionAttributionPrincipalOrganization,
+      UorContributionAttribution::uorContributionAttributionPrincipalPerson,
+      UorContributionAttribution::uorContributionAttributionRule1,
+      UorContributionAttribution::uorContributionAttributionRule2,
+      UorContributionAttribution::uorContributionAttributionRule3,
+      UorContributionAttribution::uorContributionAttributionRule4,
+      UorContributionAttribution::uorContributionAttributionRule5,
+      UorContributionAttribution::uorContributionAttributionTrailMissing,
+      UorContributionAttribution::uorContributionAttributionTrailRecorded,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : UorContributionAttribution::UorContributionAttributionRequest],
+  result: Bool,
+  body: (((((((((project request agent) <? 3) && ((project request identity) <? 2)) && ((project request delegation) <? 2)) && ((project request principal) <? 3)) && ((project request trail) <? 2)) && ((project request agent) =? (UorContributionAttribution::uorContributionAttributionAgentSoftware))) && ((project request trail) =? (UorContributionAttribution::uorContributionAttributionTrailMissing))) && ((UorContributionAttribution::uorContributionAttributionJudge request) =? (UorContributionAttribution::uorContributionAttributionAnswerPermit)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : UorContributionAttribution::UorContributionAttributionRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorContributionAttribution::uorContributionAttributionAgentOrganization,
+      UorContributionAttribution::uorContributionAttributionAgentPerson,
+      UorContributionAttribution::uorContributionAttributionAgentSoftware,
+      UorContributionAttribution::uorContributionAttributionAnswerDeny,
+      UorContributionAttribution::uorContributionAttributionAnswerIndeterminate,
+      UorContributionAttribution::uorContributionAttributionAnswerNotApplicable,
+      UorContributionAttribution::uorContributionAttributionAnswerPermit,
+      UorContributionAttribution::uorContributionAttributionDelegationAbsent,
+      UorContributionAttribution::uorContributionAttributionDelegationDeclared,
+      UorContributionAttribution::uorContributionAttributionIdentityResolved,
+      UorContributionAttribution::uorContributionAttributionIdentityUnresolved,
+      UorContributionAttribution::uorContributionAttributionJudge,
+      UorContributionAttribution::uorContributionAttributionPrincipalNone,
+      UorContributionAttribution::uorContributionAttributionPrincipalOrganization,
+      UorContributionAttribution::uorContributionAttributionPrincipalPerson,
+      UorContributionAttribution::uorContributionAttributionRule1,
+      UorContributionAttribution::uorContributionAttributionRule2,
+      UorContributionAttribution::uorContributionAttributionRule3,
+      UorContributionAttribution::uorContributionAttributionRule4,
+      UorContributionAttribution::uorContributionAttributionRule5,
+      UorContributionAttribution::uorContributionAttributionTrailMissing,
+      UorContributionAttribution::uorContributionAttributionTrailRecorded,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : UorContributionAttribution::UorContributionAttributionRequest],
+  result: Bool,
+  body: (((((((((project request agent) <? 3) && ((project request identity) <? 2)) && ((project request delegation) <? 2)) && ((project request principal) <? 3)) && ((project request trail) <? 2)) && ((project request agent) =? (UorContributionAttribution::uorContributionAttributionAgentSoftware))) && ((project request principal) =? (UorContributionAttribution::uorContributionAttributionPrincipalOrganization))) && ((UorContributionAttribution::uorContributionAttributionJudge request) =? (UorContributionAttribution::uorContributionAttributionAnswerPermit)))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : UorContributionAttribution::UorContributionAttributionRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorContributionAttribution::uorContributionAttributionAgentOrganization,
+      UorContributionAttribution::uorContributionAttributionAgentPerson,
+      UorContributionAttribution::uorContributionAttributionAgentSoftware,
+      UorContributionAttribution::uorContributionAttributionAnswerDeny,
+      UorContributionAttribution::uorContributionAttributionAnswerIndeterminate,
+      UorContributionAttribution::uorContributionAttributionAnswerNotApplicable,
+      UorContributionAttribution::uorContributionAttributionAnswerPermit,
+      UorContributionAttribution::uorContributionAttributionDelegationAbsent,
+      UorContributionAttribution::uorContributionAttributionDelegationDeclared,
+      UorContributionAttribution::uorContributionAttributionIdentityResolved,
+      UorContributionAttribution::uorContributionAttributionIdentityUnresolved,
+      UorContributionAttribution::uorContributionAttributionJudge,
+      UorContributionAttribution::uorContributionAttributionPrincipalNone,
+      UorContributionAttribution::uorContributionAttributionPrincipalOrganization,
+      UorContributionAttribution::uorContributionAttributionPrincipalPerson,
+      UorContributionAttribution::uorContributionAttributionRule1,
+      UorContributionAttribution::uorContributionAttributionRule2,
+      UorContributionAttribution::uorContributionAttributionRule3,
+      UorContributionAttribution::uorContributionAttributionRule4,
+      UorContributionAttribution::uorContributionAttributionRule5,
+      UorContributionAttribution::uorContributionAttributionTrailMissing,
+      UorContributionAttribution::uorContributionAttributionTrailRecorded,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : UorContributionAttribution::UorContributionAttributionRequest],
+  result: Bool,
+  body: ((((((((project request agent) <? 3) && ((project request identity) <? 2)) && ((project request delegation) <? 2)) && ((project request principal) <? 3)) && ((project request trail) <? 2)) && ((project request identity) =? (UorContributionAttribution::uorContributionAttributionIdentityUnresolved))) && ((UorContributionAttribution::uorContributionAttributionJudge request) =? (UorContributionAttribution::uorContributionAttributionAnswerPermit)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : UorContributionAttribution::UorContributionAttributionRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorContributionAttribution::uorContributionAttributionAgentOrganization,
+      UorContributionAttribution::uorContributionAttributionAgentPerson,
+      UorContributionAttribution::uorContributionAttributionAgentSoftware,
+      UorContributionAttribution::uorContributionAttributionAnswerDeny,
+      UorContributionAttribution::uorContributionAttributionAnswerIndeterminate,
+      UorContributionAttribution::uorContributionAttributionAnswerNotApplicable,
+      UorContributionAttribution::uorContributionAttributionAnswerPermit,
+      UorContributionAttribution::uorContributionAttributionDelegationAbsent,
+      UorContributionAttribution::uorContributionAttributionDelegationDeclared,
+      UorContributionAttribution::uorContributionAttributionIdentityResolved,
+      UorContributionAttribution::uorContributionAttributionIdentityUnresolved,
+      UorContributionAttribution::uorContributionAttributionJudge,
+      UorContributionAttribution::uorContributionAttributionPrincipalNone,
+      UorContributionAttribution::uorContributionAttributionPrincipalOrganization,
+      UorContributionAttribution::uorContributionAttributionPrincipalPerson,
+      UorContributionAttribution::uorContributionAttributionRule1,
+      UorContributionAttribution::uorContributionAttributionRule2,
+      UorContributionAttribution::uorContributionAttributionRule3,
+      UorContributionAttribution::uorContributionAttributionRule4,
+      UorContributionAttribution::uorContributionAttributionRule5,
+      UorContributionAttribution::uorContributionAttributionTrailMissing,
+      UorContributionAttribution::uorContributionAttributionTrailRecorded,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv005,
+  parameters: [request : UorContributionAttribution::UorContributionAttributionRequest],
+  result: Bool,
+  body: (((((((((project request agent) <? 3) && ((project request identity) <? 2)) && ((project request delegation) <? 2)) && ((project request principal) <? 3)) && ((project request trail) <? 2)) && ((project request agent) =? (UorContributionAttribution::uorContributionAttributionAgentPerson))) && ((project request identity) =? (UorContributionAttribution::uorContributionAttributionIdentityResolved))) && (not ((UorContributionAttribution::uorContributionAttributionJudge request) =? (UorContributionAttribution::uorContributionAttributionAnswerPermit))))
+}
+
+theorem{
+  name: inv005Holds,
+  parameters: [request : UorContributionAttribution::UorContributionAttributionRequest],
+  statement: ((breaksInv005 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorContributionAttribution::uorContributionAttributionAgentOrganization,
+      UorContributionAttribution::uorContributionAttributionAgentPerson,
+      UorContributionAttribution::uorContributionAttributionAgentSoftware,
+      UorContributionAttribution::uorContributionAttributionAnswerDeny,
+      UorContributionAttribution::uorContributionAttributionAnswerIndeterminate,
+      UorContributionAttribution::uorContributionAttributionAnswerNotApplicable,
+      UorContributionAttribution::uorContributionAttributionAnswerPermit,
+      UorContributionAttribution::uorContributionAttributionDelegationAbsent,
+      UorContributionAttribution::uorContributionAttributionDelegationDeclared,
+      UorContributionAttribution::uorContributionAttributionIdentityResolved,
+      UorContributionAttribution::uorContributionAttributionIdentityUnresolved,
+      UorContributionAttribution::uorContributionAttributionJudge,
+      UorContributionAttribution::uorContributionAttributionPrincipalNone,
+      UorContributionAttribution::uorContributionAttributionPrincipalOrganization,
+      UorContributionAttribution::uorContributionAttributionPrincipalPerson,
+      UorContributionAttribution::uorContributionAttributionRule1,
+      UorContributionAttribution::uorContributionAttributionRule2,
+      UorContributionAttribution::uorContributionAttributionRule3,
+      UorContributionAttribution::uorContributionAttributionRule4,
+      UorContributionAttribution::uorContributionAttributionRule5,
+      UorContributionAttribution::uorContributionAttributionTrailMissing,
+      UorContributionAttribution::uorContributionAttributionTrailRecorded,
+      breaksInv005
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

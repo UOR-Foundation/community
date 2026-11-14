@@ -1,0 +1,56 @@
+diff --git a/README.md b/README.md
+index 646c548..d7a43a9 100644
+--- a/README.md
++++ b/README.md
+@@ -18,6 +18,7 @@ are:
+     bugzilla         Fetch bugs from a Bugzilla server
+     bugzillarest     Fetch bugs from a Bugzilla server (>=5.0) using its REST API
+     confluence       Fetch contents from a Confluence server
++    discord          Fetch messages from a Discord channel
+     discourse        Fetch posts from Discourse site
+     dockerhub        Fetch repository data from Docker Hub site
+     gerrit           Fetch reviews from a Gerrit server
+@@ -215,6 +216,31 @@ $ perceval bugzillarest 'https://bugzilla.mozilla.org/' --backend-user user --ba
+ $ perceval confluence 'https://wiki.opnfv.org/' --from-date '2016-01-01'
+ ```
+ 
++### Discord
++
++Discord backend requires a bot token for authentication. Create an application
++in the [Discord Developer Portal](https://discord.com/developers/applications),
++add a bot to it, enable the **Message Content** privileged intent, and invite
++the bot to the server (guild) with only the **View Channels** and **Read
++Message History** permissions. The backend only reads; it never needs more.
++
++The backend fetches the messages of one channel or thread, given the guild
++(server) and channel identifiers. Enable Developer Mode in Discord to copy them
++with *Copy Server ID* and *Copy Channel ID*. Messages are fetched oldest first,
++so `--from-date` resumes a previous fetch, and the token is removed from the
++requests stored in an archive. A channel that does not belong to the given
++guild is refused.
++
++Each message keeps the `author` object Discord sends, including its `bot` flag,
++so messages written by bots can be told apart from those written by people.
++Perceval does not refetch messages edited or deleted after they were fetched;
++consider Discord's [Developer Policy](https://discord.com/developers/docs/policies-and-agreements/developer-policy)
++when storing them.
++
++```
++$ perceval discord 1301234567890123456 1301234567890123457 --from-date 2016-01-12 -t abcedefghijk
++```
++
+ ### Discourse
+ ```
+ $ perceval discourse 'https://foro.mozilla-hispano.org/' --from-date '2016-01-01'
+diff --git a/perceval/perceval.py b/perceval/perceval.py
+index ca05501..3c3968c 100755
+--- a/perceval/perceval.py
++++ b/perceval/perceval.py
+@@ -52,6 +52,7 @@ are:
+     bugzilla         Fetch bugs from a Bugzilla server
+     bugzillarest     Fetch bugs from a Bugzilla server (>=5.0) using its REST API
+     confluence       Fetch contents from a Confluence server
++    discord          Fetch messages from a Discord channel
+     discourse        Fetch posts from Discourse site
+     dockerhub        Fetch repository data from Docker Hub site
+     gerrit           Fetch reviews from a Gerrit server
