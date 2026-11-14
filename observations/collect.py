@@ -28,9 +28,12 @@ issue, up to the cut. The API answers with today's state, not the cut's, so the
 record is frozen instead: `github` records every response Perceval receives
 (the Authorization header is never written, so no token reaches the record),
 and `run` replays those responses to the unmodified backend with no network.
-A /users/<login> answer keeps only login, id and type, the account's public
-identity and GitHub's own Bot/User/Organization class; name, email, company,
-location and the rest are dropped before the record is written.
+A /users/<login> answer keeps only login, id, node_id and type, the account's
+public identity and GitHub's own Bot/User/Organization class; company, location
+and the rest are dropped before the record is written. grimoire-elk reads name
+and email, so they stay as keys with null, the value GitHub gives a profile that
+leaves them unset. The replayer applies the same reduction, so a record written
+before null keys were kept replays to the same bytes.
 
 Each corpus file is canonical JSON lines, sorted by Perceval uuid, and
 corpus.json records its sha256. Fields that hold a person's name or email are
@@ -49,6 +52,17 @@ import sys
 # The release whose poetry.lock fixes every component version below; the CI job installs from it, hash-checked.
 GRIMOIRELAB = {'release': '1.23.0', 'commit': '61c957b1cf1aecacb40bb1875d4864b6fd679192'}
 USER_FIELDS = ('login', 'id', 'node_id', 'type')
+UNSET_FIELDS = ('name', 'email')  # read by GitHubEnrich; always null in the record
+
+
+def public_profile(doc):
+    """The published part of a /users/<login> answer: USER_FIELDS, plus UNSET_FIELDS as null."""
+    return {**{k: doc[k] for k in USER_FIELDS if k in doc}, **{k: None for k in UNSET_FIELDS}}
+
+
+def is_profile(url):
+    path = url.split('?')[0].split('api.github.com', 1)[-1].strip('/').split('/')
+    return path[0] == 'users' and len(path) == 2
 
 
 def sha256(b):
@@ -129,8 +143,7 @@ def github(sources_path, out):
         body = r.content
         path = request.url.split('?')[0].split('api.github.com', 1)[-1].strip('/').split('/')
         if path[0] == 'users' and r.ok and len(path) == 2:
-            doc = json.loads(body)
-            body = canon({k: doc[k] for k in USER_FIELDS if k in doc}).encode()
+            body = canon(public_profile(json.loads(body))).encode()
         elif path[0] == 'users' and r.ok and len(path) == 3 and path[2] == 'orgs':
             body = canon([{k: o[k] for k in ('login', 'id') if k in o} for o in json.loads(body)]).encode()
         keep = ('Content-Type', 'Link', 'X-RateLimit-Limit', 'X-RateLimit-Remaining', 'X-RateLimit-Reset')
@@ -177,7 +190,10 @@ def github_replay(repo, cut, responses):
         resp = requests.Response()
         resp.status_code, resp.url, resp.request = rec['status'], request.url, request
         resp.headers.update(rec['headers'])
-        resp._content = rec['body'].encode()
+        body = rec['body']
+        if is_profile(request.url) and rec['status'] == 200:
+            body = canon(public_profile(json.loads(body)))
+        resp._content = body.encode()
         resp.encoding = 'utf-8'
         return resp
 

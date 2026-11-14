@@ -27,7 +27,10 @@ database).
   [observations workflow](../.github/workflows/observations.yml) records the
   responses once, keyed by the content address of its inputs, and `run`
   replays them to the backend with no network. No Authorization header is
-  recorded, and a user profile keeps only `login`, `id`, `node_id` and `type`.
+  recorded, and a user profile keeps only `login`, `id`, `node_id` and `type`,
+  with `name` and `email` present as `null` (grimoire-elk reads both keys).
+  The record is committed under `responses/`, one file per repository, and
+  each GitHub entry of `corpus.json` names its file by sha256.
 - **grimoire-elk** `GitEnrich` and `GitHubEnrich`: `get_identities` for the
   identities, `get_rich_item` for the enriched fields. `time_open_days` is left
   out, because grimoire-elk measures it against the clock at enrichment time.
@@ -80,10 +83,6 @@ Together they mean that every value is a function of admitted observations.
 
 ## Open
 
-- **GitHub** (OB-05). Issues and pull requests enter the corpus once the
-  observations workflow has recorded them. This session's GitHub access serves
-  only repository-scoped endpoints for a few repositories, and Perceval also
-  reads `/users/<login>`.
 - **Discord** (GL-03, OB-05). The guild enters the corpus once the read-only
   bot is installed. The `uor-discord-read` decision then governs collection.
 
