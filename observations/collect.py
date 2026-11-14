@@ -353,10 +353,18 @@ def discord(sources_path, out):
     intent = bool(int(ask('applications', '@me').get('flags') or 0) & MESSAGE_CONTENT_INTENTS)
     roles = ask('guilds', guild, 'roles')
     listed = ask('guilds', guild, 'channels') + ask('guilds', guild, 'threads', 'active')['threads']
-    for parent in [c for c in listed if c['type'] in TEXT | FORUM]:
+    # Archived threads are listed only under a parent the app permits: a thread inherits its parent's visibility,
+    # so nothing under a denied parent is asked for. A parent whose listing Discord refuses is recorded as such.
+    unlisted = {}
+    first = {c['channel']: decide(app, c['request']) for c in discord_channels(guild, roles, listed, intent, policy)}
+    for parent in [c for c in listed if c['type'] in TEXT | FORUM and first.get(c['id']) == 'permit']:
         before = None
         while True:
-            page = ask('channels', parent['id'], 'threads', 'archived', 'public', **({'before': before} if before else {}))
+            try:
+                page = ask('channels', parent['id'], 'threads', 'archived', 'public', **({'before': before} if before else {}))
+            except requests.HTTPError as e:
+                unlisted[parent['id']] = e.response.status_code
+                break
             listed += page['threads']
             if not page.get('has_more') or not page['threads']:
                 break
@@ -365,6 +373,8 @@ def discord(sources_path, out):
     channels = discord_channels(guild, roles, listed, intent, policy)
     for c in channels:
         c['decision'] = decide(app, c['request'])
+        if c['channel'] in unlisted:
+            c['archivedThreads'] = {'status': unlisted[c['channel']]}
 
     send = requests.Session.send
     record = []
@@ -383,7 +393,13 @@ def discord(sources_path, out):
             if c['decision'] != 'permit' or not c['reads']:
                 continue
             record.clear()
-            n = sum(1 for _ in Discord(guild, c['channel'], token, sleep_for_rate=True).fetch())
+            try:
+                n = sum(1 for _ in Discord(guild, c['channel'], token, sleep_for_rate=True).fetch())
+            except requests.HTTPError as e:
+                # Permitted, but Discord refuses the bot: the refusal is the record, and no message is read.
+                c['refused'] = e.response.status_code
+                print(f"discord {c['channel']}: refused with {c['refused']}", file=sys.stderr)
+                continue
             with open(os.path.join(out, 'discord', c['channel'] + '.jsonl.gz'), 'wb') as f:
                 f.write(gzip.compress(('\n'.join(record) + '\n').encode(), mtime=0))
             print(f"discord {c['channel']}: {n} messages, {len(record)} responses", file=sys.stderr)
@@ -395,7 +411,8 @@ def discord(sources_path, out):
     counts = {}
     for c in channels:
         counts[c['decision']] = counts.get(c['decision'], 0) + 1
-    print(f'discord: {len(channels)} channels decided {counts}', file=sys.stderr)
+    refused = [c['channel'] for c in channels if c.get('refused')]
+    print(f'discord: {len(channels)} channels decided {counts}; Discord refused the bot {len(refused)} permitted channels', file=sys.stderr)
 
 
 def discord_chronicler():
@@ -421,7 +438,7 @@ def discord_replay(root, responses, cut):
         label = policy['labels']['channels'].get(c['channel'], policy['labels']['default'])
         request = {**c['request'], 'label': label, 'install': policy['install']['value']}
         decision = decide(app, request)
-        if decision != 'permit' or not c['reads']:
+        if decision != 'permit' or not c['reads'] or c.get('refused'):
             continue
         if c['decision'] != 'permit':
             raise SystemExit(f"discord: channel {c['channel']} is permitted now but was not read; record again")
@@ -590,7 +607,8 @@ def run(sources_path, work, out, responses=None):
         pending.append({'subject': f"discord:{decisions['guild']}", 'source': 'discord', 'index': 'discord', 'category': 'message',
                         'backend': f'{Discord.__module__}.{Discord.__name__}', 'covered': shipped,
                         'path': f"discord/{decisions['guild']}.jsonl.gz", 'items': len(lines), 'sha256': sha256(body),
-                        'channels': permitted, 'responses': drefs})
+                        'channels': permitted, 'refused': [c['channel'] for c in decisions['channels'] if c.get('refused')],
+                        'responses': drefs})
     for repo, source, backend, items in raw:
         lines = []
         for item in sorted(items, key=lambda i: i['uuid']):
