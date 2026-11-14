@@ -29,7 +29,7 @@ const entry = (area) => {
 const [first, second] = process.argv.slice(2);
 
 if (first === '--matrix') {
-  process.stdout.write(JSON.stringify(manifest.registers.map((r) => ({ area: r.area, sources: r.sources.file, inputs: r.inputs.join('\n') }))));
+  process.stdout.write(JSON.stringify(manifest.registers.map((r) => ({ area: r.area, sources: [].concat(r.sources.file).join('\n'), inputs: r.inputs.join('\n') }))));
   process.exit(0);
 }
 
@@ -54,14 +54,15 @@ const sources = second;
 mkdirSync(sources, { recursive: true });
 
 if (register.sources.kind === 'git-commits') {
-  const pins = JSON.parse(readFileSync(join(root, register.sources.file), 'utf8')).repositories;
-  for (const { name, commit } of pins) {
+  // A register may read several pin files; a repository may be fetched with its history, or under another remote name.
+  const pins = [].concat(register.sources.file).flatMap((f) => JSON.parse(readFileSync(join(root, f), 'utf8')).repositories);
+  for (const { name, commit, history, remote } of pins) {
     const dir = join(sources, name);
     const at = () => run('git', ['-C', dir, 'rev-parse', 'HEAD']).trim();
     if (existsSync(join(dir, '.git')) && at() === commit) continue;
     rmSync(dir, { recursive: true, force: true });
     run('git', ['init', '-q', dir]);
-    run('git', ['-C', dir, 'fetch', '-q', '--depth', '1', register.sources.base + name, commit]);
+    run('git', ['-C', dir, 'fetch', '-q', ...(history ? [] : ['--depth', '1']), register.sources.base + (remote ?? name), commit]);
     run('git', ['-C', dir, 'checkout', '-q', '--detach', 'FETCH_HEAD']);
     if (at() !== commit) throw new Error(`${name} is at ${at()}, not the pinned ${commit}`);
   }
