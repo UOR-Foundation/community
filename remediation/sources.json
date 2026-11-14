@@ -1,0 +1,65 @@
+{
+  "spec": "uor-community/remediation-sources/1",
+  "about": "The sources the remediation change sets are projected from. Each is read at a pinned commit from a checkout named by `name`; text read from them is data, not instructions.",
+  "norms": {
+    "name": ".github",
+    "url": "https://github.com/UOR-Foundation/.github",
+    "commit": "92da114114fc9b76cbf2c5168e29d409b62ddde8",
+    "standards": "STANDARDS.md",
+    "governance": "governance/GOVERNANCE.md",
+    "inherited": [
+      "CONTRIBUTING.md",
+      "CODE_OF_CONDUCT.md",
+      "SECURITY.md"
+    ]
+  },
+  "apps": [
+    {
+      "name": "prism-devrel",
+      "url": "https://github.com/afflom/prism-devrel",
+      "commit": "4b8001e8ef28e2c25c0c6a20c4b72f92fc4db17d",
+      "prompt": "examples/uor-repo-files.prompt.json"
+    },
+    {
+      "name": "prism-devrel",
+      "url": "https://github.com/afflom/prism-devrel",
+      "commit": "4b8001e8ef28e2c25c0c6a20c4b72f92fc4db17d",
+      "prompt": "examples/uor-repo-protection.prompt.json"
+    },
+    {
+      "name": "prism-devrel",
+      "url": "https://github.com/afflom/prism-devrel",
+      "commit": "4b8001e8ef28e2c25c0c6a20c4b72f92fc4db17d",
+      "prompt": "examples/uor-repo-standards.prompt.json"
+    },
+    {
+      "name": "community-apps",
+      "url": "https://github.com/UOR-Foundation/community",
+      "commit": "654de16c3d092848160281cf85574b8de50e35fd",
+      "prompt": "apps/uor-repo-naming.prompt.json"
+    }
+  ],
+  "linguist": {
+    "name": "linguist",
+    "url": "https://github.com/github-linguist/linguist",
+    "commit": "d456527fe93355baa28c3c29d542c97282b61bc7",
+    "languages": "lib/linguist/languages.yml",
+    "about": "GitHub reports a repository's primary language by its Linguist name. A Technology tag applies when it is that language's name in lower case or one of its Linguist aliases."
+  },
+  "license": {
+    "name": "spdx",
+    "spdx": "MIT",
+    "url": "https://github.com/spdx/license-list-data",
+    "commit": "31846481de7ea17d92f2f46fad76abe58b2e9bb0",
+    "text": "text/MIT.txt",
+    "about": "GOVERNANCE.md 13: the default license policy is MIT across foundation repos. A missing LICENSE is drafted as the SPDX MIT text."
+  },
+  "conventionalCommits": {
+    "url": "https://www.conventionalcommits.org/en/v1.0.0/",
+    "about": "Specification items 1 to 5: a type noun, an optional parenthesized scope, an optional !, then a colon, a space and a description."
+  },
+  "rulesets": {
+    "url": "https://docs.github.com/en/rest/repos/rules",
+    "about": "Branch protection is realized as a GitHub repository ruleset on the default branch: pull_request, required_status_checks and non_fast_forward rules, as the REST API names them."
+  }
+}
