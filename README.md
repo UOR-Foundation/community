@@ -54,3 +54,9 @@ tracked in the project. The next parts are:
 Built from [UOR-Foundation/template](https://github.com/UOR-Foundation/template);
 [AGENTS.md](AGENTS.md) holds rules R1 to R6. Licensed under
 [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE).
+
+## Product facets
+
+The facet modules (`app/src/Quality.lex.tex`, `Security.lex.tex`, `Compliance.lex.tex`) are written by the prism-devrel builder from `app/prompt.json`. Quality declares the whole ISO/IEC 25010:2023 model (9 characteristics, 40 subcharacteristics) and proves each subcharacteristic is stated by a requirement or listed open. Security enumerates STRIDE per element over every component and data flow and proves each pair is answered by a threat or stated open; the open count is pinned by `strideOpenCount`. Compliance re-proves every facet predicate it cites. `just app` then runs the locked `oscal-1.1.0-structural` oracle on the OSCAL 1.1.0 component definition the verified build emits (`CP-01`).
+
+Planted defect for `CP-01`: the emitted `oscal/component-definition.json` with `"oscal-version":"1.1.0"` changed to `1`. `oscal-validator` printed "OSCAL 1.1.0 JSON structural validation rejected the subject" and exited 4, which fails `just app`. With the file restored, it reports `"valid":true` and `just vv` passes.
