@@ -16,11 +16,12 @@
       "retarget": "the base is set to the merged pull request's own base, which already contains the old base's commits through its merge commit",
       "update": "GitHub's update-branch merges the base into the head",
       "escalate": "the pull request is labeled needs-rebase and an agent-task issue names it, for the scheduled agent loop to resolve",
-      "wait": "nothing is done until GitHub has computed the state",
+      "wait": "nothing is done until GitHub has computed the state, or until the open base below it has merged",
       "hold": "nothing needs doing"
     },
     "rules": [
       { "when": [{ "field": "base", "op": "is", "value": "merged" }], "then": "retarget", "why": "GitHub Docs, Changing the base branch of a pull request; git-merge(1): a merge commit keeps the old base an ancestor, so the stacked head stays a descendant and conflicts with nothing" },
+      { "when": [{ "field": "base", "op": "is", "value": "open" }], "then": "wait", "why": "a pull request stacked on an open one merges into the default branch after its base does, never into the base's branch, so the base's approved head never moves" },
       { "when": [{ "field": "mergeable", "op": "is", "value": "conflict" }], "then": "escalate", "why": "GitHub Docs, Resolving a merge conflict: a conflict needs a change to the head, which only an author can make" },
       { "when": [{ "field": "mergeable", "op": "is", "value": "unknown" }], "then": "wait", "why": "GitHub REST, Get a pull request: mergeable is computed in the background and is null until it is" },
       { "when": [{ "field": "mergeable", "op": "is", "value": "behind" }], "then": "update", "why": "GitHub REST, Update a pull request branch: merges the base into the head when the head is behind" }
@@ -29,6 +30,7 @@
     "otherwiseWhy": "a clean pull request on a live base needs nothing",
     "properties": [
       { "kind": "always", "when": [{ "field": "base", "op": "is", "value": "merged" }], "then": "retarget", "why": "no pull request stays on a merged base" },
+      { "kind": "always", "when": [{ "field": "base", "op": "is", "value": "open" }], "then": "wait", "why": "nothing merges into another open pull request's branch" },
       { "kind": "never", "when": [{ "field": "mergeable", "op": "is", "value": "clean" }], "then": "escalate", "why": "a clean pull request never asks an agent for work" }
     ],
     "examples": [
@@ -36,7 +38,8 @@
       { "request": "default conflict", "response": "escalate" },
       { "request": "open unknown", "response": "wait" },
       { "request": "default behind", "response": "update" },
-      { "request": "open clean", "response": "hold" }
+      { "request": "open clean", "response": "wait" },
+      { "request": "default clean", "response": "hold" }
     ]
   }
 }
