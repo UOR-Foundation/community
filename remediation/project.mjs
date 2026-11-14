@@ -549,7 +549,7 @@ const settings = [
       lines.push(`  if [ "$contexts" = "[]" ]; then [ -n "$enforce" ] || echo "UOR-Foundation/${r.name}: no job that merged and open pull requests all report; required status checks not set" >&2; rules=${q(JSON.stringify(rules))};`);
       lines.push(`  else rules=$(jq -c --argjson c "$contexts" '. + [{type: "required_status_checks", parameters: {strict_required_status_checks_policy: false, required_status_checks: $c}}]' <<<${q(JSON.stringify(rules))}); fi`);
     } else lines.push(`  rules=${q(JSON.stringify(rules))}`);
-    lines.push(`  bot=$(pushes ${q(r.name)} ${q(r.defaultBranch)}); [ "$bot" = false ] || echo "UOR-Foundation/${r.name}: GitHub Actions pushes to the default branch, so it may bypass" >&2`);
+    lines.push(`  bot=$(pushes ${q(r.name)} ${q(r.defaultBranch)}); [ "$bot" = true ] || bot=false; [ "$bot" = false ] || echo "UOR-Foundation/${r.name}: GitHub Actions pushes to the default branch, so it may bypass" >&2`);
     lines.push(`  jq -c --argjson r "$rules" --argjson bot "$bot" '.rules = $r | if $bot then .bypass_actors += [{actor_id: 15368, actor_type: "Integration", bypass_mode: "always"}] else . end' <<<${q(JSON.stringify(body))} | ruleset ${q(r.name)} ${q(body.name)}`);
     if (rename) lines.push(`  call -X PATCH repos/UOR-Foundation/${r.name} -f name=${q(rename.name)}`);
     if (r.archived) lines.push(`  call -X PATCH repos/UOR-Foundation/${rename ? rename.name : r.name} -F archived=true`);
