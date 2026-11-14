@@ -150,7 +150,8 @@ fn observations_ob_03() {
         !collect.contains("'name': ident"),
         "a name never enters the corpus"
     );
-    let project = read("observations/project.mjs");
+    // The evaluation observations/project.mjs projects lives in evaluate.mjs.
+    let project = read("observations/evaluate.mjs");
     assert!(
         project
             .contains("const attribution = app('apps/uor-contribution-attribution.prompt.json');"),

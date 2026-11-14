@@ -1,0 +1,44 @@
+{
+  "schema": "prism/prompt/1",
+  "goal": "Decide what an enacted intervention did to the series it was for, by the same control chart that raised the signal, so the community learns which interventions work before anything is said about them.",
+  "pattern": "decisionTable",
+  "repository": "UOR-Foundation/community",
+  "app": {
+    "name": "uor-intervention-effect",
+    "title": "Intervention effect",
+    "purpose": "Decide, for one enacted intervention, whether the series it was for returned to its control limits, kept moving the way it signalled, moved the other way, or has too few weeks since to say, from the signal and the weeks after enactment judged against the limits frozen at the signal.",
+    "fields": [
+      { "name": "signal", "kind": "choice", "values": ["rise", "fall"], "means": "the uor-intervention-signal answer the intervention was proposed for" },
+      { "name": "after", "kind": "choice", "values": ["rise", "fall", "steady"], "means": "the uor-intervention-signal answer for the complete weeks after enactment, against the control limits of the baseline the signal was judged on" },
+      { "name": "span", "kind": "choice", "values": ["full", "partial"], "means": "full: at least nine complete weeks since enactment, the length of ISO 7870-2:2023 test 2; partial: fewer" }
+    ],
+    "outcomes": ["restored", "persists", "reversed", "pending"],
+    "meanings": {
+      "restored": "the series is back within its frozen limits with no run for nine weeks",
+      "persists": "the series still signals the way it did",
+      "reversed": "the series now signals the other way",
+      "pending": "too few weeks since enactment to say it is back in control"
+    },
+    "rules": [
+      { "when": [{ "field": "signal", "op": "is", "value": "rise" }, { "field": "after", "op": "is", "value": "rise" }], "then": "persists", "why": "ISO 7870-2:2023: the special cause still acts" },
+      { "when": [{ "field": "signal", "op": "is", "value": "fall" }, { "field": "after", "op": "is", "value": "fall" }], "then": "persists", "why": "ISO 7870-2:2023: the special cause still acts" },
+      { "when": [{ "field": "signal", "op": "is", "value": "rise" }, { "field": "after", "op": "is", "value": "fall" }], "then": "reversed", "why": "ISO 7870-2:2023 tests 1 and 2: a special cause acts the other way" },
+      { "when": [{ "field": "signal", "op": "is", "value": "fall" }, { "field": "after", "op": "is", "value": "rise" }], "then": "reversed", "why": "ISO 7870-2:2023 tests 1 and 2: a special cause acts the other way" },
+      { "when": [{ "field": "span", "op": "is", "value": "partial" }], "then": "pending", "why": "ISO 7870-2:2023 test 2 needs nine points before a series can be said to have no run" }
+    ],
+    "otherwise": "restored",
+    "otherwiseWhy": "ISO 7870-2:2023: nine weeks within the limits with no run is a process back in statistical control",
+    "properties": [
+      { "kind": "never", "when": [{ "field": "span", "op": "is", "value": "partial" }], "then": "restored", "why": "control is never claimed on fewer than nine weeks" },
+      { "kind": "always", "when": [{ "field": "signal", "op": "is", "value": "fall" }, { "field": "after", "op": "is", "value": "fall" }], "then": "persists", "why": "a fall that keeps falling persists" }
+    ],
+    "examples": [
+      { "request": "rise rise full", "response": "persists" },
+      { "request": "fall fall partial", "response": "persists" },
+      { "request": "rise fall partial", "response": "reversed" },
+      { "request": "fall rise full", "response": "reversed" },
+      { "request": "fall steady partial", "response": "pending" },
+      { "request": "rise steady full", "response": "restored" }
+    ]
+  }
+}

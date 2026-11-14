@@ -249,6 +249,16 @@ model does not sanction.
 | `HL-04` | `build` | Every stakeholder view shows the current health of each metrics model it holds, and the health page, its Markdown twin and the Discord digest carry every indicator's answers, all generated from the health register |
 | `HL-05` | `open` | A registered repository the observation corpus never reached, a metrics model with no indicator app, and an observation of a subject outside the ecosystem register are carried as open claims, never assessed by default |
 
+## interventions
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `IV-01` | `build` | The interventions register is the projection of the observation corpus evaluated at the ISO 8601 week grain, the intervention catalog, the approvals and the three intervention prompts, each prompt answering every example it states and holding every property over its whole request space; a register that differs fails the gate |
+| `IV-02` | `build` | Every chart's signal is the uor-intervention-signal answer on its ISO 7870-2:2023 individuals chart: limits are the mean of the weeks before the nine-week window plus or minus 2.66 times their mean moving range, test 1 is on the latest complete week, test 2 is over the window, and fewer than 20 baseline weeks is insufficient |
+| `IV-03` | `build` | No intervention reaches a contributor, participant or partner without a human: every proposal that reaches people is denied and only drafted, an agent task opens only in UOR-Foundation/community for a proposal the trust-root approvals file approves by id, and the runner refuses a run whose register or decisions it cannot re-derive |
+| `IV-04` | `build` | Every enacted intervention's effect, and every untreated signal onset in each chart's history, is the uor-intervention-effect answer over the first nine complete weeks after it against the limits frozen at its signal, so an intervention's effect is read against what untreated signals did |
+| `IV-05` | `open` | The three intervention apps are re-checked by the pinned builder on every run but are not yet in apps/set.json, so no Lean proof covers them; a chart of an average or a ratio with a week of no value, and the Discord guild until a chat computation is bound, are carried as refusals, never charted |
+
 ## observations
 
 | ID | Level | Statement |
