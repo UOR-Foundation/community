@@ -27,7 +27,7 @@ call the same workflow.
   given by the controller, as an agent acting for the Organization Owner
   (W3C PROV-O `actedOnBehalfOf`). Its review body names the request and the
   rule.
-- **A2, stacks.** When a base merges, every pull request stacked on it is
+- **A2, stacks.** A pull request merges only into the default branch: one stacked on an open pull request waits. When a base merges, every pull request stacked on it is
   retargeted to that base's own base. A merge commit keeps the old head an
   ancestor, so nothing conflicts. A branch behind a strict ruleset is updated.
 - **A3, escalation.** A conflict or a red check opens one `agent-task` issue
