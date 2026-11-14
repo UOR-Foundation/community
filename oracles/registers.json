@@ -23,6 +23,16 @@
       ]
     },
     {
+      "area": "observations",
+      "sources": { "kind": "committed", "file": "observations/corpus.json" },
+      "inputs": ["observations/**", "chaoss/register.json", "chaoss/oracle-methods.json", "apps/uor-observation-admission.prompt.json", "apps/uor-contribution-attribution.prompt.json", "governance/agents.json"],
+      "tools": [],
+      "check": [
+        ["node", "observations/project.mjs", "--check"],
+        ["node", "observations/catalog.mjs", "--check"]
+      ]
+    },
+    {
       "area": "chaoss-oracle",
       "sources": { "kind": "git-commits", "file": ["chaoss/sources.json", "chaoss/oracle-sources.json", "chaoss/upstream-sources.json"], "base": "https://github.com/chaoss/" },
       "inputs": ["chaoss/**", "upstream/chaoss-15939/**"],
