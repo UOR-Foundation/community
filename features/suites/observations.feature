@@ -34,7 +34,8 @@ Feature: observations
     Then every metric is bound or one open claim, and every refused binding is one open claim
 
   @OB-05 @open
-  Scenario: GitHub issues and pull requests enter the corpus only from responses the observations workflow recorded with a token and replayed offline, and the Foundation's Discord only once its read-only bot is installed; until then their observations are open claims
+  Scenario: GitHub issues and pull requests, and the Foundation's Discord, enter the corpus only from responses the observations workflow recorded and replayed offline; a Discord channel is read only where the uor-discord-read app permits it, and the record keeps no message text and no member's name
     Given the observations workflow and the corpus manifest
-    When a GitHub source is in the corpus
+    When a GitHub or Discord source is in the corpus
     Then it names the recorded responses it was replayed from by digest
+    And every Discord channel it read is one the uor-discord-read app permits, recorded without message text or names

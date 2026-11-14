@@ -97,8 +97,9 @@ Together they mean that every value is a function of admitted observations.
 
 ## Open
 
-- **Discord** (GL-03, OB-05). The guild enters the corpus once the read-only
-  bot is installed. The `uor-discord-read` decision then governs collection.
+- **Chat metrics** (OB-04). The guild's 45,216 messages up to the cut are in
+  the corpus, but CHAOSS Chat Platform Inclusivity cites no oracle panel, so
+  no value is computed from them yet.
 
 ## Gate evidence
 
