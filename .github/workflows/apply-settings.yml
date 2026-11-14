@@ -90,13 +90,11 @@ jobs:
           # Public reads: the dry run shows the exact required checks each ruleset would get.
           CHECKS_TOKEN: ${{ github.token }}
         run: |
-          {
-            echo '## Repository settings (dry run)'
-            echo '```'
-            # shellcheck disable=SC2086
-            bash remediation/apply-settings.sh ${ENFORCEMENT:+--enforcement "$ENFORCEMENT"} $REPOS 2>&1
-            echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
+          # The calls go to the log as well as the summary, so the log alone shows each ruleset's required checks.
+          # shellcheck disable=SC2086
+          bash remediation/apply-settings.sh ${ENFORCEMENT:+--enforcement "$ENFORCEMENT"} $REPOS > dry-run.txt 2>&1
+          cat dry-run.txt
+          { echo '## Repository settings (dry run)'; echo '```'; cat dry-run.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
       - name: Apply
         if: steps.mode.outputs.apply == 'true'
         env:
