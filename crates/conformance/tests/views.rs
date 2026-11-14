@@ -119,7 +119,7 @@ fn views_sv_03() {
     // The planted defect: a copy of the inputs with one page edited by hand.
     let scratch = std::env::temp_dir().join(format!("views-sv-03-{}", std::process::id()));
     let _ = std::fs::remove_dir_all(&scratch);
-    for dir in ["views", "chaoss", "site/views", "app/src"] {
+    for dir in ["views", "chaoss", "health", "apps", "site/views", "app/src"] {
         std::fs::create_dir_all(scratch.join(dir)).expect("a scratch directory");
     }
     for file in [
@@ -128,9 +128,15 @@ fn views_sv_03() {
         "views/sources.json",
         "views/discord.json",
         "chaoss/register.json",
+        "health/register.json",
         "app/src/Viewpoints.lex.tex",
     ] {
         std::fs::copy(root().join(file), scratch.join(file)).expect("a copied input");
+    }
+    for entry in std::fs::read_dir(root().join("apps")).expect("apps") {
+        let path = entry.expect("an entry").path();
+        std::fs::copy(&path, scratch.join("apps").join(path.file_name().expect("a name")))
+            .expect("a copied prompt");
     }
     for entry in std::fs::read_dir(root().join("site/views")).expect("site/views") {
         let path = entry.expect("an entry").path();
