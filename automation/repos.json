@@ -1,0 +1,32 @@
+{
+  "spec": "uor-community/automation-repos/1",
+  "about": "The repositories whose merges Alex alone decides, which the merge controller may merge (uor-merge-admission: repository is owned), and the paths each pull request is read against. Every other repository is shared, and the controller never merges there. Adding a repository here changes the trust root, so it needs a human (AUTOMATION.md H3).",
+  "owned": [
+    {
+      "repository": "UOR-Foundation/community",
+      "why": "Created by Alex for the community model (2026-11-13); every pull request is an agent's, acting for Alex. Alex asked for its development to be automated on 2026-11-14.",
+      "dispatchAfterMerge": ["bootstrap.yml", "pages.yml", "oracles.yml"]
+    },
+    {
+      "repository": "UOR-Foundation/grimoirelab-discord",
+      "why": "Created by Alex for the GrimoireLab Discord contribution Prism (2026-11-13). Its upstream PR to CHAOSS stays a human act (H1).",
+      "dispatchAfterMerge": ["bootstrap.yml", "pages.yml"]
+    },
+    {
+      "repository": "afflom/prism-devrel",
+      "why": "Alex's own repository; Alex is its only maintainer.",
+      "dispatchAfterMerge": ["bootstrap.yml", "pages.yml"]
+    }
+  ],
+  "gate": "^acceptance / ",
+  "trustRoot": [
+    ".github/workflows/bootstrap.yml",
+    ".github/workflows/automerge.yml",
+    "automation/**",
+    ".github/CODEOWNERS"
+  ],
+  "secretsPaths": [
+    "remediation/apply-settings.sh",
+    "remediation/open-dotgithub-pr.sh"
+  ]
+}

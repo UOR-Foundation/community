@@ -440,7 +440,7 @@ const QUESTIONS = {
   'copyright-holder': 'Is the copyright holder the drafted LICENSE names right?',
   codeowners: 'Should CODEOWNERS name the repository\'s maintainers instead of the Organization Owner?',
   ci: 'Which CI workflow should it run? The repository states no test command the remediation can run.',
-  'check-contexts': 'Which status checks must pass? The owner\'s settings script requires the check runs reported on the default branch.',
+  'check-contexts': 'Which status checks must pass? The owner\'s settings script requires the jobs a pull request reports from workflows that run on every pull request.',
   versioning: 'How should its non-SemVer tags be superseded?',
   branches: 'Which of its non-conforming branches are renamed and which deleted?',
   readme: 'What should its README say?',
@@ -495,8 +495,8 @@ const settings = [
   '# may apply (the uor-remediation-write app): topics, the GOVERNANCE.md 6.2 ruleset and',
   '# lowercase renames. It prints every call and writes nothing unless --apply is given.',
   '# Every call is idempotent, so it is safe to run again (.github/workflows/apply-settings.yml).',
-  '# Required status checks are the check runs GitHub reports on the default branch when',
-  '# it runs; a repository that reports none keeps its other rules and is named on stderr.',
+  '# Required status checks are the jobs a pull request reports, from workflows that run on every',
+  '# pull request; a repository that reports none keeps its other rules and is named on stderr.',
   '#',
   '#   remediation/apply-settings.sh [--apply] [repository...]',
   'set -euo pipefail',
@@ -504,8 +504,14 @@ const settings = [
   'only=" $* "',
   'call() { if [ "$apply" = 1 ]; then gh api "$@" >/dev/null; else printf "gh api %s\\n" "$*"; fi; }',
   'want() { [ "$only" = "  " ] || [[ "$only" == *" $1 "* ]]; }',
-  '# Check runs are public, so they are read with CHECKS_TOKEN when it is set (the workflow passes its own token).',
-  'checks() { GH_TOKEN="${CHECKS_TOKEN:-${GH_TOKEN:-}}" gh api "repos/UOR-Foundation/$1/commits/$2/check-runs" --paginate --jq \'.check_runs[].name\' | sort -u | jq -R . | jq -sc \'map({context: .})\'; }',
+  '# Required status checks are the jobs a pull request reports (GitHub Docs, "About protected branches: Require status',
+  '# checks before merging": a required check must run on the pull request). They are read from the pull_request',
+  '# workflow runs of the most recently updated pull request, keeping only workflows with no paths or paths-ignore',
+  '# filter on pull_request: a filtered workflow does not report on every pull request, so requiring it would leave',
+  '# the others pending forever. Jobs that only run on a push to the default branch are never required.',
+  '# Runs and workflow files are public, so they are read with CHECKS_TOKEN when it is set (the workflow passes its own token).',
+  'unfiltered() { GH_TOKEN="${CHECKS_TOKEN:-${GH_TOKEN:-}}" gh api "repos/UOR-Foundation/$1/contents/$2?ref=$3" --jq .content | base64 -d | awk \'/^on:/{o=1;next} o&&/^[^ #]/{o=0} o&&/^  pull_request:/{p=1;next} p&&/^  [^ ]/{p=0} p&&/^    paths(-ignore)?:/{f=1} END{exit f}\'; }',
+  'checks() { export GH_TOKEN="${CHECKS_TOKEN:-${GH_TOKEN:-}}"; sha=$(gh api "repos/UOR-Foundation/$1/pulls?state=all&sort=updated&direction=desc&per_page=1" --jq \'.[0].head.sha // empty\'); [ -n "$sha" ] || { echo "[]"; return; }; gh api "repos/UOR-Foundation/$1/actions/runs?head_sha=$sha&event=pull_request&per_page=100" --jq \'.workflow_runs[] | "\\(.id) \\(.path)"\' | sort -u -k2,2 | while read -r id path; do unfiltered "$1" "$path" "$2" && gh api "repos/UOR-Foundation/$1/actions/runs/$id/jobs" --paginate --jq \'.jobs[].name\'; done | sort -u | jq -R . | jq -sc \'map({context: .})\'; }',
   '# A ruleset with the same name is updated in place, so running the script again changes nothing.',
   'ruleset() { if [ "$apply" = 1 ]; then id=$(gh api "repos/UOR-Foundation/$1/rulesets" --jq ".[] | select(.name == \\"$2\\") | .id"); if [ -n "$id" ]; then gh api -X PUT "repos/UOR-Foundation/$1/rulesets/$id" --input - >/dev/null; else gh api -X POST "repos/UOR-Foundation/$1/rulesets" --input - >/dev/null; fi; else printf "gh api -X POST repos/UOR-Foundation/%s/rulesets --input %s\\n" "$1" "$(cat)"; fi; }',
   ...repositories.flatMap((r) => {
@@ -520,8 +526,8 @@ const settings = [
     if (r.archived) lines.push(`  call -X PATCH repos/UOR-Foundation/${r.name} -F archived=false`);
     lines.push(`  call -X PUT repos/UOR-Foundation/${r.name}/topics ${t.topics.map((x) => `-f 'names[]=${x}'`).join(' ')}`);
     if (needsChecks) {
-      lines.push(`  if [ "$apply" = 1 ]; then contexts=$(checks ${q(r.name)} ${q(r.defaultBranch)}); else contexts='[{"context":"<each check run on ${r.defaultBranch}, read when applied>"}]'; fi`);
-      lines.push(`  if [ "$contexts" = "[]" ]; then echo "UOR-Foundation/${r.name}: no check runs on ${r.defaultBranch}; required status checks not set" >&2; rules=${q(JSON.stringify(rules))};`);
+      lines.push(`  if [ "$apply" = 1 ]; then contexts=$(checks ${q(r.name)} ${q(r.defaultBranch)}); else contexts='[{"context":"<each job a pull request reports, read when applied>"}]'; fi`);
+      lines.push(`  if [ "$contexts" = "[]" ]; then echo "UOR-Foundation/${r.name}: no unfiltered pull_request jobs; required status checks not set" >&2; rules=${q(JSON.stringify(rules))};`);
       lines.push(`  else rules=$(jq -c --argjson c "$contexts" '. + [{type: "required_status_checks", parameters: {strict_required_status_checks_policy: false, required_status_checks: $c}}]' <<<${q(JSON.stringify(rules))}); fi`);
     } else lines.push(`  rules=${q(JSON.stringify(rules))}`);
     lines.push(`  jq -c --argjson r "$rules" '.rules = $r' <<<${q(JSON.stringify(body))} | ruleset ${q(r.name)} ${q(body.name)}`);

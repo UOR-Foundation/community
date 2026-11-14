@@ -38,7 +38,7 @@ Topics: `active documentation tier-3-presentation uor uor-foundation`. The rules
 ### For the maintainers to confirm
 
 - **branches**: Which of its non-conforming branches are renamed and which deleted?
-- **check-contexts**: Which status checks must pass? The owner's settings script requires the check runs reported on the default branch.
+- **check-contexts**: Which status checks must pass? The owner's settings script requires the jobs a pull request reports from workflows that run on every pull request.
 - **domain**: Are the proposed Domain topics all that apply?
 - **status**: Is the proposed status right (active, maintenance or deprecated)?
 - **tier**: Is the proposed tier right?
