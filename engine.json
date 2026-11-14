@@ -1,17 +1,23 @@
 {
  "coverage": {
   "announcement": [
+   "REQ-004",
    "REQ-008",
    "otherwise"
   ],
   "text": [
+   "REQ-004",
    "REQ-008",
    "otherwise"
   ],
   "thread": [
-   "REQ-006"
+   "REQ-004",
+   "REQ-006",
+   "REQ-008",
+   "otherwise"
   ],
   "voice": [
+   "REQ-004",
    "REQ-008",
    "otherwise"
   ]
@@ -21,29 +27,42 @@
    "divergences": 0,
    "probes": 12,
    "tick": 0
+  },
+  {
+   "divergences": 0,
+   "probes": 12,
+   "tick": 1
   }
  ],
  "schema": "uor-community/discord-live-engine/1",
- "tick": 1,
+ "tick": 2,
  "weights": {
   "announcement": {
-   "full": 10,
+   "foreign": 10,
+   "full": 9,
    "recent": 7,
+   "replay": 7,
    "small": 7
   },
   "text": {
-   "full": 10,
+   "foreign": 10,
+   "full": 9,
    "recent": 7,
+   "replay": 7,
    "small": 7
   },
   "thread": {
-   "full": 10,
+   "foreign": 10,
+   "full": 12,
    "recent": 7,
+   "replay": 7,
    "small": 7
   },
   "voice": {
-   "full": 10,
+   "foreign": 10,
+   "full": 9,
    "recent": 7,
+   "replay": 7,
    "small": 7
   }
  }
