@@ -1,0 +1,423 @@
+\begin{lexlean}{Foundation.Health.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{ChaossAiAlignmentCommunityAlignedTrainingFeedback}
+\importmodule{ChaossBusinessReadinessOfAnOpenSourceProject}
+\importmodule{ChaossCollaborationDevelopmentIndex}
+\importmodule{ChaossCommunityActivity}
+\importmodule{ChaossCommunityGovernedAiUseInOpenCommunities}
+\importmodule{ChaossCommunityServiceAndSupport}
+\importmodule{ChaossCommunityWelcomingness}
+\importmodule{ChaossDeiEventBadging}
+\importmodule{ChaossDevelopmentResponsiveness}
+\importmodule{ChaossFunding}
+\importmodule{ChaossOssProjectViabilityCommunity}
+\importmodule{ChaossOssProjectViabilityComplianceSecurity}
+\importmodule{ChaossOssProjectViabilityGovernance}
+\importmodule{ChaossOssProjectViabilityStrategy}
+\importmodule{ChaossProjectAwareness}
+\importmodule{ChaossProjectEngagement}
+\importmodule{ChaossProjectViabilityStarter}
+\importmodule{ChaossSafety}
+\importmodule{ChaossStarterProjectHealth}
+\title{Health model}
+\begin{semanticmodule}
+inductive{
+  name: Answer,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: answerOpen, fields: []},
+    {name: answerComplete, fields: []},
+    {name: answerUnmeasured, fields: []},
+    {name: answerPartial, fields: []}
+  ]
+}
+
+inductive{
+  name: SubjectKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: repository, fields: []}, {name: chat, fields: []}]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: subjectsCount, type: Nat},
+    {name: periodsCount, type: Nat},
+    {name: indicatorsCount, type: Nat},
+    {name: assessmentsCount, type: Nat},
+    {name: evidenceCount, type: Nat},
+    {name: openClaimsCount, type: Nat},
+    {name: chaossDigest, type: String},
+    {name: ecosystemDigest, type: String},
+    {name: observationsDigest, type: String},
+    {name: corpus, type: String},
+    {name: openCount, type: Nat},
+    {name: completeCount, type: Nat},
+    {name: unmeasuredCount, type: Nat},
+    {name: partialCount, type: Nat}
+  ]
+}
+
+structure{
+  name: Subject,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: name, type: String}, {name: kind, type: SubjectKind}]
+}
+
+structure{
+  name: Period,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: interval, type: String}]
+}
+
+structure{
+  name: Indicator,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: slug, type: String},
+    {name: app, type: String},
+    {name: source, type: String},
+    {name: measures, type: Nat},
+    {name: openMembers, type: Nat}
+  ]
+}
+
+structure{
+  name: Assessment,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: subject, type: Nat},
+    {name: period, type: Nat},
+    {name: model, type: Nat},
+    {name: admitted, type: Nat},
+    {name: refused, type: Nat},
+    {name: outcome, type: Answer}
+  ]
+}
+
+structure{
+  name: Evidence,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: assessment, type: Nat},
+    {name: position, type: Nat},
+    {name: permitted, type: Nat},
+    {name: denied, type: Nat},
+    {name: indeterminate, type: Nat},
+    {name: values, type: Nat}
+  ]
+}
+
+structure{
+  name: OpenClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: name, type: String}, {name: reason, type: String}]
+}
+
+definition{
+  name: answerCode,
+  parameters: [answer : Answer],
+  result: Nat,
+  body: (match answer
+    | Answer.answerOpen => 0
+    | Answer.answerComplete => 1
+    | Answer.answerUnmeasured => 2
+    | Answer.answerPartial => 3)
+}
+
+definition{
+  name: verdict,
+  parameters: [model : Nat, admitted : Nat, refused : Nat],
+  result: Nat,
+  body: (if (model =? 0) then (ChaossAiAlignmentCommunityAlignedTrainingFeedback::chaossAiAlignmentCommunityAlignedTrainingFeedbackJudge (record ChaossAiAlignmentCommunityAlignedTrainingFeedback::ChaossAiAlignmentCommunityAlignedTrainingFeedbackRequest {admitted := admitted, refused := refused})) else (if (model =? 1) then (ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectJudge (record ChaossBusinessReadinessOfAnOpenSourceProject::ChaossBusinessReadinessOfAnOpenSourceProjectRequest {admitted := admitted, refused := refused})) else (if (model =? 2) then (ChaossCollaborationDevelopmentIndex::chaossCollaborationDevelopmentIndexJudge (record ChaossCollaborationDevelopmentIndex::ChaossCollaborationDevelopmentIndexRequest {admitted := admitted, refused := refused})) else (if (model =? 3) then (ChaossCommunityActivity::chaossCommunityActivityJudge (record ChaossCommunityActivity::ChaossCommunityActivityRequest {admitted := admitted, refused := refused})) else (if (model =? 4) then (ChaossCommunityGovernedAiUseInOpenCommunities::chaossCommunityGovernedAiUseInOpenCommunitiesJudge (record ChaossCommunityGovernedAiUseInOpenCommunities::ChaossCommunityGovernedAiUseInOpenCommunitiesRequest {admitted := admitted, refused := refused})) else (if (model =? 5) then (ChaossCommunityServiceAndSupport::chaossCommunityServiceAndSupportJudge (record ChaossCommunityServiceAndSupport::ChaossCommunityServiceAndSupportRequest {admitted := admitted, refused := refused})) else (if (model =? 6) then (ChaossCommunityWelcomingness::chaossCommunityWelcomingnessJudge (record ChaossCommunityWelcomingness::ChaossCommunityWelcomingnessRequest {admitted := admitted, refused := refused})) else (if (model =? 7) then (ChaossDeiEventBadging::chaossDeiEventBadgingJudge (record ChaossDeiEventBadging::ChaossDeiEventBadgingRequest {admitted := admitted, refused := refused})) else (if (model =? 8) then (ChaossDevelopmentResponsiveness::chaossDevelopmentResponsivenessJudge (record ChaossDevelopmentResponsiveness::ChaossDevelopmentResponsivenessRequest {admitted := admitted, refused := refused})) else (if (model =? 9) then (ChaossFunding::chaossFundingJudge (record ChaossFunding::ChaossFundingRequest {admitted := admitted, refused := refused})) else (if (model =? 10) then (ChaossOssProjectViabilityCommunity::chaossOssProjectViabilityCommunityJudge (record ChaossOssProjectViabilityCommunity::ChaossOssProjectViabilityCommunityRequest {admitted := admitted, refused := refused})) else (if (model =? 11) then (ChaossOssProjectViabilityComplianceSecurity::chaossOssProjectViabilityComplianceSecurityJudge (record ChaossOssProjectViabilityComplianceSecurity::ChaossOssProjectViabilityComplianceSecurityRequest {admitted := admitted, refused := refused})) else (if (model =? 12) then (ChaossOssProjectViabilityGovernance::chaossOssProjectViabilityGovernanceJudge (record ChaossOssProjectViabilityGovernance::ChaossOssProjectViabilityGovernanceRequest {admitted := admitted, refused := refused})) else (if (model =? 13) then (ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyJudge (record ChaossOssProjectViabilityStrategy::ChaossOssProjectViabilityStrategyRequest {admitted := admitted, refused := refused})) else (if (model =? 14) then (ChaossProjectAwareness::chaossProjectAwarenessJudge (record ChaossProjectAwareness::ChaossProjectAwarenessRequest {admitted := admitted, refused := refused})) else (if (model =? 15) then (ChaossProjectEngagement::chaossProjectEngagementJudge (record ChaossProjectEngagement::ChaossProjectEngagementRequest {admitted := admitted, refused := refused})) else (if (model =? 16) then (ChaossProjectViabilityStarter::chaossProjectViabilityStarterJudge (record ChaossProjectViabilityStarter::ChaossProjectViabilityStarterRequest {admitted := admitted, refused := refused})) else (if (model =? 17) then (ChaossSafety::chaossSafetyJudge (record ChaossSafety::ChaossSafetyRequest {admitted := admitted, refused := refused})) else (if (model =? 18) then (ChaossStarterProjectHealth::chaossStarterProjectHealthJudge (record ChaossStarterProjectHealth::ChaossStarterProjectHealthRequest {admitted := admitted, refused := refused})) else 4)))))))))))))))))))
+}
+
+definition{
+  name: answered,
+  parameters: [answer : Answer, values : (List Assessment)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons assessment rest => ((if ((answerCode (project assessment outcome)) =? (answerCode answer)) then 1 else 0) + (answered answer rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: indicatorAt,
+  parameters: [position : Nat, values : (List Indicator)],
+  result: (Option Indicator),
+  body: (match values
+    | List.nil => (ctor Option.none [Indicator])
+    | List.cons indicator rest => (if ((project indicator index) =? position) then (ctor Option.some [Indicator] indicator) else (indicatorAt position rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: closesWith,
+  parameters: [
+    assessment : Assessment,
+    admitted : Nat,
+    refused : Nat,
+    floor : Nat,
+    found : (Option Indicator)
+  ],
+  result: Bool,
+  body: (match found
+    | Option.none => false
+    | Option.some indicator => (((project assessment admitted) =? admitted) && (((project assessment refused) =? (refused + (project indicator openMembers))) && (floor <=? (prim subtract (project indicator measures) (project indicator openMembers) : Nat)))))
+}
+
+definition{
+  name: closes,
+  parameters: [
+    indicators : (List Indicator),
+    admitted : Nat,
+    refused : Nat,
+    floor : Nat,
+    pending : (List Assessment)
+  ],
+  result: Bool,
+  body: (match pending
+    | List.nil => false
+    | List.cons assessment rest => (closesWith assessment admitted refused floor (indicatorAt (project assessment model) indicators)))
+}
+
+definition{
+  name: later,
+  parameters: [pending : (List Assessment)],
+  result: (List Assessment),
+  body: (match pending | List.nil => (nil Assessment) | List.cons assessment rest => rest)
+}
+
+definition{
+  name: done,
+  parameters: [pending : (List Assessment)],
+  result: Bool,
+  body: (match pending | List.nil => true | List.cons assessment rest => false)
+}
+
+definition{
+  name: headIndex,
+  parameters: [pending : (List Assessment)],
+  result: Nat,
+  body: (match pending | List.nil => 0 | List.cons assessment rest => (project assessment index))
+}
+
+definition{
+  name: rowFor,
+  parameters: [position : Nat, rows : (List Evidence)],
+  result: Bool,
+  body: (match rows
+    | List.nil => false
+    | List.cons row rest => ((project row assessment) =? position))
+}
+
+definition{
+  name: exhausted,
+  parameters: [rows : (List Evidence)],
+  result: Bool,
+  body: (match rows | List.nil => true | List.cons row rest => false)
+}
+
+definition{
+  name: drop,
+  parameters: [rows : (List Evidence)],
+  result: (List Evidence),
+  body: (match rows | List.nil => (nil Evidence) | List.cons row rest => rest)
+}
+
+definition{
+  name: admits,
+  parameters: [rows : (List Evidence)],
+  result: Nat,
+  body: (match rows
+    | List.nil => 0
+    | List.cons row rest => (if (1 <=? (project row permitted)) then 1 else 0))
+}
+
+definition{
+  name: refuses,
+  parameters: [rows : (List Evidence)],
+  result: Nat,
+  body: (match rows
+    | List.nil => 0
+    | List.cons row rest => (if (1 <=? (project row denied)) then 1 else 0))
+}
+
+definition{
+  name: above,
+  parameters: [floor : Nat, rows : (List Evidence)],
+  result: Bool,
+  body: (match rows | List.nil => false | List.cons row rest => (floor <=? (project row position)))
+}
+
+definition{
+  name: next,
+  parameters: [rows : (List Evidence)],
+  result: Nat,
+  body: (match rows | List.nil => 0 | List.cons row rest => ((project row position) + 1))
+}
+
+definition{
+  name: tallied,
+  parameters: [
+    indicators : (List Indicator),
+    pending : (List Assessment),
+    rows : (List Evidence),
+    admitted : Nat,
+    refused : Nat,
+    floor : Nat,
+    fuel : Nat
+  ],
+  result: Bool,
+  body: (match fuel
+    | Nat.zero => false
+    | Nat.succ more => (if (done pending) then (exhausted rows) else (if (rowFor (headIndex pending) rows) then ((above floor rows) && (tallied indicators pending (drop rows) (admitted + (admits rows)) (refused + (refuses rows)) (next rows) more)) else ((closes indicators admitted refused floor pending) && (tallied indicators (later pending) rows 0 0 0 more))))),
+  recursive_argument: fuel
+}
+
+definition{
+  name: subjectsValid,
+  parameters: [position : Nat, values : (List Subject)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons subject rest => (((project subject index) =? position) && (subjectsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: subjectsTotal,
+  parameters: [values : (List Subject)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons subject rest => (1 + (subjectsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: periodsValid,
+  parameters: [position : Nat, values : (List Period)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons period rest => (((project period index) =? position) && (periodsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: periodsTotal,
+  parameters: [values : (List Period)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons period rest => (1 + (periodsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: indicatorsValid,
+  parameters: [position : Nat, values : (List Indicator)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons indicator rest => (((project indicator index) =? position) && (((project indicator openMembers) <=? (project indicator measures)) && (indicatorsValid (position + 1) rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: indicatorsTotal,
+  parameters: [values : (List Indicator)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons indicator rest => (1 + (indicatorsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: assessmentsValid,
+  parameters: [
+    position : Nat,
+    subjectsCount : Nat,
+    periodsCount : Nat,
+    indicatorsCount : Nat,
+    values : (List Assessment)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons assessment rest => (((project assessment index) =? position) && (((project assessment subject) <? subjectsCount) && (((project assessment period) <? periodsCount) && (((project assessment model) <? indicatorsCount) && (((answerCode (project assessment outcome)) =? (verdict (project assessment model) (project assessment admitted) (project assessment refused))) && (assessmentsValid (position + 1) subjectsCount periodsCount indicatorsCount rest))))))),
+  recursive_argument: values
+}
+
+definition{
+  name: assessmentsTotal,
+  parameters: [values : (List Assessment)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons assessment rest => (1 + (assessmentsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: evidenceValid,
+  parameters: [position : Nat, assessmentsCount : Nat, values : (List Evidence)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons evidence rest => (((project evidence index) =? position) && (((project evidence assessment) <? assessmentsCount) && ((((project evidence values) =? 0) || (1 <=? (project evidence permitted))) && (evidenceValid (position + 1) assessmentsCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: evidenceTotal,
+  parameters: [values : (List Evidence)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons evidence rest => (1 + (evidenceTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsValid,
+  parameters: [position : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons openClaim rest => (((project openClaim index) =? position) && (openClaimsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsTotal,
+  parameters: [values : (List OpenClaim)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    subjects : (List Subject),
+    periods : (List Period),
+    indicators : (List Indicator),
+    assessments : (List Assessment),
+    evidence : (List Evidence),
+    openClaims : (List OpenClaim)
+  ],
+  result: Bool,
+  body: (((subjectsTotal subjects) =? (project release subjectsCount)) && (((periodsTotal periods) =? (project release periodsCount)) && (((indicatorsTotal indicators) =? (project release indicatorsCount)) && (((assessmentsTotal assessments) =? (project release assessmentsCount)) && (((evidenceTotal evidence) =? (project release evidenceCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && ((subjectsValid 0 subjects) && ((periodsValid 0 periods) && ((indicatorsValid 0 indicators) && ((assessmentsValid 0 (subjectsTotal subjects) (periodsTotal periods) (indicatorsTotal indicators) assessments) && ((evidenceValid 0 (assessmentsTotal assessments) evidence) && ((openClaimsValid 0 openClaims) && ((tallied indicators assessments evidence 0 0 0 4639) && (((answered (ctor Answer.answerOpen) assessments) =? (project release openCount)) && (((answered (ctor Answer.answerComplete) assessments) =? (project release completeCount)) && (((answered (ctor Answer.answerUnmeasured) assessments) =? (project release unmeasuredCount)) && ((answered (ctor Answer.answerPartial) assessments) =? (project release partialCount))))))))))))))))))
+}
+\end{semanticmodule}
+\end{lexlean}
