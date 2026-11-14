@@ -15,8 +15,10 @@
 #   Contents: write         push the .github LICENSE branch
 #   Issues: write           the .github tracking issue
 #   Pull requests: write    the .github LICENSE pull request
-# The check runs that become required status checks are public, so they are
-# read with this workflow's own token (CHECKS_TOKEN), not the owner's.
+# The dry run reads the public check runs that become required status checks
+# with this workflow's own token (CHECKS_TOKEN). Applying reads them with the
+# owner's token, whose higher rate limit covers every repository in one run; a
+# read that fails stops the run before anything more is written.
 # Settings are applied when an admin of this repository adds the
 # apply-settings label to a pull request, or runs the workflow with apply
 # ticked. Every call is idempotent, so running it again changes nothing.
@@ -101,7 +103,6 @@ jobs:
         if: steps.mode.outputs.apply == 'true'
         env:
           GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
-          CHECKS_TOKEN: ${{ github.token }}
           REPOS: ${{ inputs.repositories }}
           ENFORCEMENT: ${{ inputs.enforcement }}
         run: |
