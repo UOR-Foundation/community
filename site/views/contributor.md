@@ -46,7 +46,7 @@ Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation
 
 https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e485918672/metrics-model-libs/starter-project-health/definition/starter-project-health.md
 
-Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
+Health now: 0 open, 0 complete, 13 unmeasured, 18 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a contributor, I want to know where I can focus my efforts to help make the
 
