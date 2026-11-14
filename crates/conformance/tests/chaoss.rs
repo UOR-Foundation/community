@@ -179,8 +179,10 @@ fn chaoss_cc_04() {
             "the digest {digest} is declared"
         );
     }
+    // The release also counts the elements the oracle states (CC-06).
+    let resolved = numbers(&read("chaoss/oracle-methods.json"), "resolved")[0];
     assert!(
-        catalog.contains(&format!("statedCount := {stated}")),
+        catalog.contains(&format!("statedCount := {}", stated + resolved)),
         "the release counts every stated element"
     );
 }
@@ -209,9 +211,81 @@ fn chaoss_cc_05() {
             "{reason} is declared"
         );
     }
+    let resolved = numbers(&read("chaoss/oracle-methods.json"), "resolved")[0];
     assert_eq!(
         catalog.matches("stated := false").count(),
-        open,
-        "every open element is a Mapping that is not stated"
+        open - resolved,
+        "every open element the oracle does not state is a Mapping that is not stated"
     );
+}
+
+/// `CC-06`: An element the CHAOSS templates leave open is stated only from what GrimoireLab computes
+#[test]
+fn chaoss_cc_06() {
+    let oracle = read("chaoss/oracle-methods.json");
+    let catalog = read("app/src/MeasurementMapping.lex.tex");
+    let facet = read("app/src/Foundation/Community/V1/Measurement.lex.tex");
+    for part in [
+        "((oracleTotal mappings) =? (project release oracleCount))",
+        "(oracleSound (project release metricCount) mappings)",
+    ] {
+        assert!(facet.contains(part), "registerValid checks {part}");
+    }
+    let resolved = numbers(&oracle, "resolved")[0];
+    assert_eq!(
+        catalog.matches("byOracle := true").count(),
+        resolved,
+        "every element the oracle resolves is a Mapping stated by the oracle"
+    );
+    assert!(
+        catalog.contains(&format!("oracleCount := {resolved}")),
+        "the release counts the oracle's elements"
+    );
+    // Every citation names a pinned commit and carries a sha256.
+    let pins = ["grimoirelab-sigils@", "grimoirelab-elk@", "grimoirelab-perceval@", "grimoirelab-sirmordred@", "wg-"];
+    for source in values(&oracle, "source") {
+        assert!(
+            pins.iter().any(|p| source.starts_with(p)) && source.contains(':'),
+            "{source} cites a pinned source"
+        );
+    }
+    for digest in values(&oracle, "digest") {
+        assert!(
+            digest.len() == 64 && digest.bytes().all(|b| b.is_ascii_hexdigit()),
+            "{digest} is a sha256"
+        );
+    }
+    let sources = read("chaoss/oracle-sources.json");
+    for commit in values(&sources, "commit") {
+        assert!(oracle.contains(&commit), "the projection is pinned at {commit}");
+    }
+}
+
+/// `CC-07`: Every element neither CHAOSS nor its oracle states has a drafted upstream contribution, unsubmitted
+#[test]
+fn chaoss_cc_07() {
+    let drafts = read("upstream/chaoss-15939/contributions.json");
+    let mapping = read("chaoss/measurement.json");
+    assert!(
+        drafts.contains("\"status\": \"draft-not-submitted\""),
+        "the drafts are marked as not submitted"
+    );
+    let open = numbers(&mapping, "open")[0];
+    let kinds = values(&drafts, "contribution");
+    assert_eq!(kinds.len(), open, "every open element has one contribution");
+    for kind in &kinds {
+        assert!(
+            ["adopt", "oracle", "template", "revision"].contains(&kind.as_str()),
+            "{kind} is an answer of the contribution decision table"
+        );
+    }
+    let prompt = read("upstream/chaoss-15939/prompt.json");
+    assert!(
+        prompt.contains("\"pattern\": \"decisionTable\"") && prompt.contains("\"otherwise\": \"revision\""),
+        "the contribution is decided by a DMN decision table"
+    );
+    let patch = read("upstream/chaoss-15939/community-templates.patch");
+    for file in ["community-templates/metric-template.md", "community-templates/metrics-model-template.md"] {
+        assert!(patch.contains(&format!("+++ b/{file}")), "the template patch edits {file}");
+    }
 }

@@ -33,3 +33,15 @@ Feature: chaoss
     Given the open entries in chaoss/measurement.json
     When the measures are read
     Then each open entry is a Mapping that is not stated and names its reason
+
+  @CC-06 @build
+  Scenario: An ISO/IEC 15939 element the CHAOSS templates leave open is stated only from what the CHAOSS oracle computes: a GrimoireLab panel the definition cites, a computation the implementation names, and the alias, enricher and backend lines it reads, each pinned to the GrimoireLab 1.23.0 release and cited by sha256
+    Given chaoss/oracle-methods.json projected by chaoss/oracle.mjs from GrimoireLab pinned at its 1.23.0 release
+    When the Lean kernel checks registerValidHolds of the measurement mapping during prismpm verify
+    Then every mapping stated by the oracle is a stated metric element, and the release counts them
+
+  @CC-07 @build
+  Scenario: Every 15939 element neither CHAOSS nor its oracle states has one drafted upstream contribution, decided by a DMN decision table and marked as not submitted
+    Given upstream/chaoss-15939 written by chaoss/upstream.mjs
+    When the drafts are read
+    Then each open element has one contribution the decision table answers, and none is submitted

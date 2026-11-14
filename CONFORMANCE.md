@@ -27,6 +27,8 @@ model does not sanction.
 | `CC-03` | `open` | A released CHAOSS item the projector cannot match to a definition is carried as an open claim, never dropped or guessed |
 | `CC-04` | `build` | Every CHAOSS metric and metrics model has a complete ISO/IEC 15939 mapping: each element of its measurement information model is either stated from a CHAOSS template section cited by digest or carried as a typed open claim |
 | `CC-05` | `open` | An ISO/IEC 15939 element the CHAOSS templates do not carry, or a definition omits, is an open claim with its reason, never inferred from prose |
+| `CC-06` | `build` | An ISO/IEC 15939 element the CHAOSS templates leave open is stated only from what the CHAOSS oracle computes: a GrimoireLab panel the definition cites, a computation the implementation names, and the alias, enricher and backend lines it reads, each pinned to the GrimoireLab 1.23.0 release and cited by sha256 |
+| `CC-07` | `build` | Every 15939 element neither CHAOSS nor its oracle states has one drafted upstream contribution, decided by a DMN decision table and marked as not submitted |
 
 ## compliance
 
