@@ -1253,31 +1253,151 @@
    "index": 20,
    "slug": "metric-chat-platform-inclusivity",
    "kind": "metric",
-   "candidates": "panel",
+   "candidates": "proposed",
    "links": [],
-   "bindings": [],
+   "bindings": [
+    {
+     "index": [
+      "discord"
+     ],
+     "function": null,
+     "series": [
+      {
+       "aggregation": "count",
+       "field": "",
+       "index": "discord",
+       "collection": null,
+       "pullRequest": null,
+       "query": "",
+       "dateField": ""
+      }
+     ],
+     "entity": null,
+     "unit": "{message}",
+     "label": "Messages",
+     "at": {
+      "source": "grimoirelab-sigils@71a26ac67d2d694382b48d6f2f4d953412dd33f1:panels/json/slack.json#slack_main_numbers",
+      "digest": "9a6e9dd379a7446d8d60aaaa609c300bbcdda5f862e507f4f69780338417ecc2"
+     },
+     "proposal": {
+      "filterText": "Number of messages per day, week, month",
+      "filter": {
+       "source": "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/project-and-community/chat-platform-inclusivity.md#L29",
+       "digest": "2dd7bafd636ac6dc3b35d03c4cdf4e9ad9abdfb9e3e21d7d3d3d985f9a26495c"
+      },
+      "panels": [
+       {
+        "source": "grimoirelab-sigils@71a26ac67d2d694382b48d6f2f4d953412dd33f1:panels/json/slack.json#slack_main_numbers",
+        "digest": "9a6e9dd379a7446d8d60aaaa609c300bbcdda5f862e507f4f69780338417ecc2"
+       },
+       {
+        "source": "grimoirelab-sigils@71a26ac67d2d694382b48d6f2f4d953412dd33f1:panels/json/mattermost.json#6f147b00-bd3d-11eb-ac68-4b98ff9064cd",
+        "digest": "e3e59e34298567ce1946f2f77fcb8a91bd4496529dd487970f99f370c243bd87"
+       },
+       {
+        "source": "grimoirelab-sigils@71a26ac67d2d694382b48d6f2f4d953412dd33f1:panels/json/irc.json#irc_main_metrics",
+        "digest": "1bca29f1380a52b6fb6e0e0aa298888e8b66543880ebb99d872a2f92ff17a903"
+       },
+       {
+        "source": "grimoirelab-sigils@71a26ac67d2d694382b48d6f2f4d953412dd33f1:panels/json/telegram.json#telegram_main_metrics",
+        "digest": "67d5a140b5fab32d055bf875196ec34fc8595aeaecb63f5ae7a2816c88855334"
+       }
+      ],
+      "category": {
+       "source": "oracles/grimoirelab/perceval-discord/perceval/backends/core/discord.py#L46",
+       "digest": "ced9b6c27d8d7ab0ed004c94b40ccd3a7e2f2e7ea4cea98a63c61ee35f977402"
+      }
+     }
+    },
+    {
+     "index": [
+      "discord"
+     ],
+     "function": null,
+     "series": [
+      {
+       "aggregation": "cardinality",
+       "field": "author_uuid",
+       "index": "discord",
+       "collection": null,
+       "pullRequest": null,
+       "query": "",
+       "dateField": ""
+      }
+     ],
+     "entity": null,
+     "unit": "{author_uuid}",
+     "label": "Participants",
+     "at": {
+      "source": "grimoirelab-sigils@71a26ac67d2d694382b48d6f2f4d953412dd33f1:panels/json/slack.json#slack_main_numbers",
+      "digest": "9a6e9dd379a7446d8d60aaaa609c300bbcdda5f862e507f4f69780338417ecc2"
+     },
+     "proposal": {
+      "filterText": "Number of active participants per day, week, month",
+      "filter": {
+       "source": "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/project-and-community/chat-platform-inclusivity.md#L30",
+       "digest": "90c30da28dea53967c4b3605d80df0ab6e51a5f28b83521eba21304348a9bb06"
+      },
+      "panels": [
+       {
+        "source": "grimoirelab-sigils@71a26ac67d2d694382b48d6f2f4d953412dd33f1:panels/json/slack.json#slack_main_numbers",
+        "digest": "9a6e9dd379a7446d8d60aaaa609c300bbcdda5f862e507f4f69780338417ecc2"
+       },
+       {
+        "source": "grimoirelab-sigils@71a26ac67d2d694382b48d6f2f4d953412dd33f1:panels/json/mattermost.json#6f147b00-bd3d-11eb-ac68-4b98ff9064cd",
+        "digest": "e3e59e34298567ce1946f2f77fcb8a91bd4496529dd487970f99f370c243bd87"
+       },
+       {
+        "source": "grimoirelab-sigils@71a26ac67d2d694382b48d6f2f4d953412dd33f1:panels/json/irc.json#irc_main_metrics",
+        "digest": "1bca29f1380a52b6fb6e0e0aa298888e8b66543880ebb99d872a2f92ff17a903"
+       }
+      ],
+      "category": {
+       "source": "oracles/grimoirelab/perceval-discord/perceval/backends/core/discord.py#L46",
+       "digest": "ced9b6c27d8d7ab0ed004c94b40ccd3a7e2f2e7ea4cea98a63c61ee35f977402"
+      }
+     }
+    }
+   ],
    "elements": [
     {
      "element": "entity",
      "status": "open",
-     "reason": "definition-cites-no-oracle-panel"
+     "reason": "proposed-binding-awaits-working-group"
     },
     {
      "element": "attribute",
      "status": "open",
-     "reason": "definition-cites-no-oracle-panel"
+     "reason": "proposed-binding-awaits-working-group"
     },
     {
      "element": "scale",
      "status": "open",
-     "reason": "definition-cites-no-oracle-panel"
+     "reason": "proposed-binding-awaits-working-group"
     },
     {
      "element": "unit",
      "status": "open",
-     "reason": "definition-cites-no-oracle-panel"
+     "reason": "proposed-binding-awaits-working-group"
     }
-   ]
+   ],
+   "proposal": {
+    "why": "The definition names GrimoireLab Perceval as the tool providing the metric and lists the quantities to count under Filters, but cites no GrimoireLab computation. GrimoireLab's chat panels compute two of those quantities under the same names. The Foundation's chat platform is Discord, read by the Perceval discord backend of oracles/grimoirelab (category message).",
+    "unmatched": [
+     {
+      "filter": "Number of active Chat rooms/groups",
+      "why": "GrimoireLab's panels label the count of distinct channels Channels, not rooms or groups; the working group is asked whether Channels is the quantity."
+     },
+     {
+      "filter": "Number of passive participants (i.e. reading but not participating)",
+      "why": "No GrimoireLab backend records who reads a channel."
+     },
+     {
+      "filter": "Number of external participants (i.e. people who are not associated with a leading company working on an Open Source Project, such as Red Hat with the Fedora Project)",
+      "why": "It needs organization affiliations (SortingHat enrollments), which no chat backend collects."
+     }
+    ]
+   }
   },
   {
    "index": 21,
