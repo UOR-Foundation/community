@@ -21,6 +21,17 @@
         ["node", "remediation/project.mjs", "{sources}", "--check"],
         ["node", "remediation/catalog.mjs", "--check"]
       ]
+    },
+    {
+      "area": "chaoss-oracle",
+      "sources": { "kind": "git-commits", "file": ["chaoss/sources.json", "chaoss/oracle-sources.json", "chaoss/upstream-sources.json"], "base": "https://github.com/chaoss/" },
+      "inputs": ["chaoss/**", "upstream/chaoss-15939/**"],
+      "tools": [],
+      "check": [
+        ["node", "chaoss/oracle.mjs", "{sources}", "--check"],
+        ["node", "chaoss/measurement.mjs", "--check"],
+        ["node", "chaoss/upstream.mjs", "{sources}", "--check"]
+      ]
     }
   ]
 }
