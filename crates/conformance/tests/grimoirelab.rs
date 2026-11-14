@@ -218,9 +218,16 @@ fn grimoirelab_gl_04() {
         "max(W_MIN, min(W_MAX, w))",
         "discord.archive.token_free",
         "discord.content.intent",
+        "chronicler.valid",
     ] {
         assert!(live.contains(part), "live.py keeps {part}");
     }
+    let probe = read("oracles/grimoirelab/live/probe.py");
+    assert!(
+        probe.contains("from chronicler.eventizer import eventize")
+            && !probe.contains("(discord.Discord):"),
+        "probes eventize with Chronicler and run the backend unsubclassed"
+    );
     let tick = read("oracles/grimoirelab/live/tick.py");
     assert!(
         tick.contains("return 1 if divergences else 0"),

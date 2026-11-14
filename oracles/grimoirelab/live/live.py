@@ -42,6 +42,9 @@ FAMILIES = {
 # bucket (REQ-009).
 STRATEGIES = ["full", "recent", "small", "replay", "foreign", "missing", "floor"]
 
+# The Chronicler event types of the Discord eventizer share this prefix.
+EVENT_PREFIX = "org.grimoirelab.events.discord."
+
 W_MIN, W_MAX, W_INITIAL = 1, 16, 8
 RAISE, LOWER = 2, 1
 HISTORY = 12
@@ -190,7 +193,7 @@ def conform(app, otlp):
                     "trace": root["discord.probe.trace"], "strategy": root["discord.probe.strategy"],
                     "record": record, "rule": rule, "expected": expected, "observed": observed,
                 })
-        for check in ("discord.replay.equal", "discord.archive.token_free"):
+        for check in ("discord.replay.equal", "discord.archive.token_free", "chronicler.valid"):
             if root.get(check) is False:
                 divergences.append({
                     "trace": root["discord.probe.trace"], "strategy": root["discord.probe.strategy"],

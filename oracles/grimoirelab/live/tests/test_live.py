@@ -109,6 +109,11 @@ class TestConform(unittest.TestCase):
         self.assertEqual(sorted(d["check"] for d in divergences),
                          ["discord.archive.token_free", "discord.replay.equal"])
 
+    def test_invalid_events_diverge(self):
+        root = dict(ROOT, **{"discord.probe.outcome": "done", "chronicler.valid": False})
+        divergences, _ = live.conform(APP, trace(root, [CHANNEL, page(0, [5])]))
+        self.assertEqual([d["check"] for d in divergences], ["chronicler.valid"])
+
     def test_content_intent(self):
         root = dict(ROOT, **{"discord.probe.outcome": "done", "perceval.max_items": 100})
         empty = dict(page(0, list(range(1, 13))),
@@ -197,10 +202,17 @@ class TestProbe(unittest.TestCase):
         cls.probe, cls.tick = probe, tick
         now = datetime.now(timezone.utc)
         FakeDiscord.messages = [{
-            "id": str(snowflake(now) - (12 - i) * (1 << 22) * 60000), "type": 0, "content": "m%d" % i,
+            "id": str(snowflake(now) - (12 - i) * (1 << 22) * 60000), "channel_id": TEXT,
+            "type": 0, "content": "m%d" % i,
             "timestamp": now.isoformat(), "author": {"id": "1", "username": "u"},
             "attachments": [], "embeds": [],
         } for i in range(12)]
+        # A reply to the first message, with a reaction, so the eventizer
+        # emits more than message events.
+        FakeDiscord.messages[-1].update({
+            "type": 19, "message_reference": {"type": 0, "message_id": FakeDiscord.messages[0]["id"]},
+            "reactions": [{"count": 2, "emoji": {"id": None, "name": "x"}}],
+        })
         cls.server = ThreadingHTTPServer(("127.0.0.1", 0), FakeDiscord)
         threading.Thread(target=cls.server.serve_forever, daemon=True).start()
         cls.saved = discord.DISCORD_API_URL
@@ -234,6 +246,14 @@ class TestProbe(unittest.TestCase):
         root = self.one("replay")[0]
         self.assertIs(root["discord.replay.equal"], True)
         self.assertIs(root["discord.archive.token_free"], True)
+
+    def test_items_eventize_to_valid_cloudevents(self):
+        root = self.one("full")[0]
+        self.assertIs(root["chronicler.valid"], True)
+        # OTLP/JSON writes 64-bit integers as strings.
+        self.assertEqual(int(root["chronicler.message"]), 12)
+        self.assertEqual(int(root["chronicler.message.reply"]), 1)
+        self.assertGreater(int(root["chronicler.events"]), 12)
 
     def test_telemetry_holds_no_content_or_token(self):
         text = json.dumps(self.probe.document(self.probe.run("full", GUILD, TEXT, "text", TOKEN, 0), "t"))
