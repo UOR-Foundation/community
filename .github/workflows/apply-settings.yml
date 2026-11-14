@@ -44,8 +44,10 @@ permissions:
   contents: read
   checks: read
 
+# Only runs that apply share a group, so they run one at a time; each dry run
+# has its own group and never holds up a run that applies.
 concurrency:
-  group: apply-settings
+  group: ${{ (github.event.label.name == 'apply-settings' || inputs.apply) && 'apply-settings' || format('apply-settings-dry-{0}', github.run_id) }}
   cancel-in-progress: false
 
 jobs:
