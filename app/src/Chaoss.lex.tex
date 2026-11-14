@@ -1,0 +1,869 @@
+\begin{lexlean}{Chaoss}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Community.V1.Model}
+\title{CHAOSS register}
+\begin{semanticmodule}
+definition{
+  name: release,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Release,
+  body: (record Foundation.Community.V1.Model::Release {sitemapDigest := "sha256:b755574291a1d1fa7b85ab7d7bf877bea097d4bf673282aab1ec55385cad9502", sources := "wg-ai-alignment@0d0f78655aab6417293aaefd85e08ecc72ddabfa wg-app-ecosystem@9b848e30f3ef87a53289abe58732eba7db541b0e wg-data-science@0c18087dbf3eaf07250f0b784f87e46d9d30a53e wg-dei@18640f18067f94590b5a463afe6138a114b0fd53 wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506 wg-funding-impact@96912212628065163941b8fcac2edc3a595d6929 wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672 wg-package-metadata@f19076c0ab18450c3b87da9e0112fd94388b54b7 wg-risk@20c0e0af5b194be32d20a36b1a99ed350ed23d68 wg-value@902ba8412e9346623fd4015d273561193ef460cf Accessibility@b69c986ad80ee089b32bfe211cdab424439970fb", metricCount := 98, modelCount := 19, openClaimCount := 1})
+}
+
+definition{
+  name: metricAiFeedbackGovernance,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 0, slug := "ai-feedback-governance", title := "AI Feedback Governance", question := "To be added.", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.aiAlignment), focusArea := "ai-alignment-community-feedback", source := "wg-ai-alignment@0d0f78655aab6417293aaefd85e08ecc72ddabfa:metrics/ai-alignment-community-feedback/ai-feedback-governance.md", sourceDigest := "sha256:2138f626a6b00705ca7b0183dcae0851e2f095175d766759cb0e5a028ebe94b9"})
+}
+
+definition{
+  name: metricDefectResolutionDuration,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 1, slug := "defect-resolution-duration", title := "Defect Resolution Duration", question := "How much time does a project take to resolve defects once they have been reported and recorded?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.risk), focusArea := "code-quality", source := "wg-risk@20c0e0af5b194be32d20a36b1a99ed350ed23d68:focus-areas/code-quality/defect-resolution-duration.md", sourceDigest := "sha256:bd674fd9ae61bad9f40250deaba177d2852d37bdbbc3cb66b8818ecfd7565285"})
+}
+
+definition{
+  name: metricFeedbackChannelEffectiveness,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 2, slug := "feedback-channel-effectiveness", title := "Feedback Channel Effectiveness", question := "To be added.", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.aiAlignment), focusArea := "ai-alignment-community-feedback", source := "wg-ai-alignment@0d0f78655aab6417293aaefd85e08ecc72ddabfa:metrics/ai-alignment-community-feedback/ai-feedback-effectiveness.md", sourceDigest := "sha256:524c5b22662d5db9338dde6b49d0807e2abe92bf08a9fe5c0e7b4cabeff16595"})
+}
+
+definition{
+  name: metricFeedbackChannelEfficiency,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 3, slug := "feedback-channel-efficiency", title := "Feedback Channel Efficiency", question := "To be added.", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.aiAlignment), focusArea := "ai-alignment-community-feedback", source := "wg-ai-alignment@0d0f78655aab6417293aaefd85e08ecc72ddabfa:metrics/ai-alignment-community-feedback/ai-feedback-efficiency.md", sourceDigest := "sha256:cc09b91d7f3d8be2fe555d36e0175ec63bf09c225cec0f026642009db739266e"})
+}
+
+definition{
+  name: metricFeedbackChannelQuality,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 4, slug := "feedback-channel-quality", title := "Feedback Channel Quality", question := "To be added.", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.aiAlignment), focusArea := "ai-alignment-community-feedback", source := "wg-ai-alignment@0d0f78655aab6417293aaefd85e08ecc72ddabfa:metrics/ai-alignment-community-feedback/ai-feedback-channel-quality.md", sourceDigest := "sha256:021515520d624a3459eecd49d1e79f1780c318058dad21a8a33b5e0c1d61bd33"})
+}
+
+definition{
+  name: metricAcademicOpenSourceProjectImpact,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 5, slug := "metric-academic-open-source-project-impact", title := "Academic Open Source Project Impact", question := "What is the impact of open source projects that an academician or a team of academicians creates as an important part of a university reappointment, tenure, and promotion process?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.value), focusArea := "academic-value", source := "wg-value@902ba8412e9346623fd4015d273561193ef460cf:focus-areas/academic-value/academic-open-source-project-impact.md", sourceDigest := "sha256:6d08a5a567b1bc569732cea805a8a6a85871515d0dbc0458bb6edbe971069d2a"})
+}
+
+definition{
+  name: metricActivityDatesAndTimes,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 6, slug := "metric-activity-dates-and-times", title := "Activity Dates and Times", question := "What are the dates and timestamps of when contributor activities occur?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "time", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/time/activity-dates-and-times.md", sourceDigest := "sha256:e20797233a7419c280de43675214efb3e7a69662c5fc7df6f7b8ce8384377166"})
+}
+
+definition{
+  name: metricBoardCouncilDiversity,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 7, slug := "metric-board-council-diversity", title := "Board/Council Diversity", question := "What is the diversity within a governing board or council?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "governance", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/governance/board-council-diversity.md", sourceDigest := "sha256:5bdd054398f089657967c39de6607d0b77cbd66ca640697af3c285b19aac2c58"})
+}
+
+definition{
+  name: metricBotActivity,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 8, slug := "metric-bot-activity", title := "Bot Activity", question := "What is the volume of automated bot activity?**", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "people", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/people/bot-activity.md", sourceDigest := "sha256:3d0819ae52ebd849c514f1e25a567f8919727ce1d4eed7f52ce639d44d3a7c4f"})
+}
+
+definition{
+  name: metricBranchLifecycle,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 9, slug := "metric-branch-lifecycle", title := "Branch Lifecycle", question := "How do projects manage the lifecycle of their version control branches?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "code-development-activity", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/code-development-activity/branch-lifecycle.md", sourceDigest := "sha256:4c5fe5e96f789a60dea276682d69f2bd57bae641b1a9425274c53166707f25d9"})
+}
+
+definition{
+  name: metricBurstiness,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 10, slug := "metric-burstiness", title := "Burstiness", question := "How are short timeframes of intense activity, followed by a corresponding return to a typical pattern of activity, observed in a project?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "time", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/time/burstiness.md", sourceDigest := "sha256:c595e39682421298af5e1fc7599a3f70a014ee69ad87bd64b25faa2207ec1a39"})
+}
+
+definition{
+  name: metricChangeRequestAcceptanceRatio,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 11, slug := "metric-change-request-acceptance-ratio", title := "Change Request Acceptance Ratio", question := "What is the ratio of change requests accepted to change requests closed without being merged?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "code-development-efficiency", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/code-development-efficiency/change-request-acceptance-ratio.md", sourceDigest := "sha256:8cf86b73293c705e73a0bd484a4ebaa5523d9e1b0a75f321ee1e5afbc6b3b7b4"})
+}
+
+definition{
+  name: metricChangeRequestClosureRatio,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 12, slug := "metric-change-request-closure-ratio", title := "Change Request Closure Ratio", question := "Is the project keeping up with change requests?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "time", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/time/change-request-closure-ratio.md", sourceDigest := "sha256:5a7b4fd87d0830225eeb1d91ddc0374895907edeb01caafe0c22de8d168bd363"})
+}
+
+definition{
+  name: metricChangeRequestCommits,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 13, slug := "metric-change-request-commits", title := "Change Request Commits", question := "How many [code change commits](https://chaoss.community/metric-code-change-commits/) are included in a [change request](https://chaoss.community/metric-change-requests/)?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "code-development-activity", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/code-development-activity/change-request-commits.md", sourceDigest := "sha256:c1ccc12f833d30a2d376f37c81894ebdb1d51d1d29eaa61e98885abf7200cb72"})
+}
+
+definition{
+  name: metricChangeRequestReviewDuration,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 14, slug := "metric-change-request-review-duration", title := "Change Request Review Duration", question := "How long does it take a [change request](https://github.com/chaoss/wg-evolution/blob/main/focus-areas/code-development-process-quality/change-requests.md) reviewer to review a specific change request?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "time", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/time/change-request-review-duration.md", sourceDigest := "sha256:18846f1b152303c4ce48debe205668d44db00e1af0fc9d68d64343ac98fc4425"})
+}
+
+definition{
+  name: metricChangeRequestReviews,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 15, slug := "metric-change-request-reviews", title := "Change Request Reviews", question := "To what extent are [change requests](https://chaoss.community/metric-change-requests/) put through a formal review process using platform features?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "code-development-process-quality", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/code-development-process-quality/change-request-reviews.md", sourceDigest := "sha256:311d79f9ca51dce979c0f1d7a4c6d4d18214c81d679567d79427cb0f7e71f579"})
+}
+
+definition{
+  name: metricChangeRequests,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 16, slug := "metric-change-requests", title := "Change Requests", question := "What new change requests to the source code occurred during a certain period?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "code-development-process-quality", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/code-development-process-quality/change-requests.md", sourceDigest := "sha256:108241f3f293a1bb3937c1173d18db8ac6b7de14e573febcddd9cf8efb0290d2"})
+}
+
+definition{
+  name: metricChangeRequestsAccepted,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 17, slug := "metric-change-requests-accepted", title := "**Change Requests Accepted**", question := "How many accepted change requests are present in a code change?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "code-development-efficiency", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/code-development-efficiency/change-requests-accepted.md", sourceDigest := "sha256:8f092646f5b2be534466cc1fc4dc7eda67d2035b3619944aca2d03dbcd21d871"})
+}
+
+definition{
+  name: metricChangeRequestsDeclined,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 18, slug := "metric-change-requests-declined", title := "**Change Requests Declined**", question := "What change requests ended up being declined during a certain period?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "code-development-efficiency", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/code-development-efficiency/change-requests-declined.md", sourceDigest := "sha256:35893b912233675c7976a607278cffd967b418dd0315cf976143c4feb4ffffb4"})
+}
+
+definition{
+  name: metricChangeRequestsDuration,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 19, slug := "metric-change-requests-duration", title := "Change Requests Duration", question := "What is the duration of time between the moment a change request starts and the moment it is accepted or closed?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "code-development-efficiency", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/code-development-efficiency/change-requests-duration.md", sourceDigest := "sha256:bdd675e83f0c2b7c9d976f6440dab26bd441114deaa91b58c1b544b7a16cc075"})
+}
+
+definition{
+  name: metricChatPlatformInclusivity,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 20, slug := "metric-chat-platform-inclusivity", title := "Chat Platform Inclusivity", question := "How do you review Chat Platform inclusivity for your community?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "project-and-community", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/project-and-community/chat-platform-inclusivity.md", sourceDigest := "sha256:b89b6f22843672c3a1d1f51ba6874b88bd341df2b1ea57f2fa0722f4631ae44d"})
+}
+
+definition{
+  name: metricClones,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 21, slug := "metric-clones", title := "Clones", question := "How many copies of an open source project repository have been saved on a local machine?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "contributions", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/contributions/clones.md", sourceDigest := "sha256:7fcefd8008f19e41fec258a553d2fb0cc9bd7d134eaff467b94e4f3cde3dc261"})
+}
+
+definition{
+  name: metricCodeChangesCommits,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 22, slug := "metric-code-changes-commits", title := "Code Changes Commits", question := "How many changes were made to the source code during a specified period?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "code-development-activity", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/code-development-activity/code-changes-commits.md", sourceDigest := "sha256:7aa7bbfafbcaf5131173d9389e2099e62efa01da7ee294111a10160d9d7113d7"})
+}
+
+definition{
+  name: metricCodeChangesLines,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 23, slug := "metric-code-changes-lines", title := "Code Changes Lines", question := "What is the sum of the number of lines touched (lines added plus lines removed) in all changes to the source code during a certain period?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "code-development-activity", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/code-development-activity/code-changes-lines.md", sourceDigest := "sha256:04d859e40d3caae8e01bdd89dba00c5b9b33f243d50f00efcb2629998ec596ae"})
+}
+
+definition{
+  name: metricCodeOfConductAtEvent,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 24, slug := "metric-code-of-conduct-at-event", title := "Code of Conduct at Event", question := "How does the Code of Conduct for events support diversity and inclusion?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "event-diversity", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/event-diversity/code-of-conduct-at-event.md", sourceDigest := "sha256:e014b448ee0ee894be94b306a631b9aa31c2c8c67d154e55888a590cb23633d6"})
+}
+
+definition{
+  name: metricCodeOfConductForAProject,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 25, slug := "metric-code-of-conduct-for-a-project", title := "Code of Conduct for a Project", question := "How, and in what specific ways, does the code of conduct for a project support diversity, equity, and inclusion?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "governance", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/governance/code-of-conduct-project.md", sourceDigest := "sha256:9b602dcf715243c705d87647c77a70ce13408b4be200f26bb9065b62b0175515"})
+}
+
+definition{
+  name: metricCollaborationPlatformActivity,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 26, slug := "metric-collaboration-platform-activity", title := "Collaboration Platform Activity", question := "What is the count of activities across digital collaboration platforms (e.g., GitHub, GitLab, Slack, email) used by a project?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "place", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/place/collaboration-platform-activity.md", sourceDigest := "sha256:6767d245b2ebdb753aaec94be124b48019d21a75cf202b62a5deff2fad586989"})
+}
+
+definition{
+  name: metricCommitters,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 27, slug := "metric-committers", title := "Committers", question := "How robust are the contributors to a community?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.risk), focusArea := "business-risk", source := "wg-risk@20c0e0af5b194be32d20a36b1a99ed350ed23d68:focus-areas/business-risk/committers.md", sourceDigest := "sha256:52d16dc2b20cf2873028c8ed629549f111442e89e76e9ef2e48387608a7dae39"})
+}
+
+definition{
+  name: metricCommunicationTransparency,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 28, slug := "metric-communication-transparency", title := "Communication Transparency", question := "How transparent is project communication?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "project-and-community", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/project-and-community/communication-transparency.md", sourceDigest := "sha256:36e8dd44e43e1fbc5cb3e3b31d4789dfd236eb1e3504aa42df217bae5d026951"})
+}
+
+definition{
+  name: metricConflictResolutionAndMediation,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 29, slug := "metric-conflict-resolution-and-mediation", title := "Conflict Resolution and Mediation", question := "How do open source maintainers address conflict that may arise while collaborating on a project?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "project-and-community", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/project-and-community/conflict-resolution-and-mediation.md", sourceDigest := "sha256:0b88d57283431f92c77a47ef8b004937fa1e61f59f0937ebf41806671ac579f8"})
+}
+
+definition{
+  name: metricContributionAttribution,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 30, slug := "metric-contribution-attribution", title := "Contribution Attribution", question := "Who has contributed to an open-source project, and what attribution information about people and organizations is assigned for contributions?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "community-growth", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/community-growth/contribution-attribution.md", sourceDigest := "sha256:fc41e4fe7f6b77dd62fc355371caf1560c8f31810865142d6a6d8f5c5e9e31bc"})
+}
+
+definition{
+  name: metricContributorAbsenceFactor,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 31, slug := "metric-contributor-absence-factor", title := "Contributor Absence Factor", question := "How high is the risk to a project should the most active people leave?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.risk), focusArea := "business-risk", source := "wg-risk@20c0e0af5b194be32d20a36b1a99ed350ed23d68:focus-areas/business-risk/contributor-absence-factor.md", sourceDigest := "sha256:6a6f2b344aa5f0bed319ddd7262bcfbd3f7a8253d6d23fd8f445b6521ab42b50"})
+}
+
+definition{
+  name: metricContributorLocation,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 32, slug := "metric-contributor-location", title := "Contributor Location", question := "What is the location of contributors?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "people", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/people/contributor-location.md", sourceDigest := "sha256:893f5c85850cf7572c61ea78d952c7d8f6ed32b790507a5125b897aed3bfcb71"})
+}
+
+definition{
+  name: metricContributors,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 33, slug := "metric-contributors", title := "Contributors", question := "Who are the contributors to a project?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "people", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/people/contributors.md", sourceDigest := "sha256:aa2cdae39e18ae7e0c83298e83b607e1a8a370cf8818854670827037294e3fb7"})
+}
+
+definition{
+  name: metricConversionRate,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 34, slug := "metric-conversion-rate", title := "Conversion Rate", question := "What are the rates at which new contributors become more sustained contributors?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "community-growth", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/community-growth/conversion-rate.md", sourceDigest := "sha256:c78ddb79270eb56843d57664397aa47b977e06ab94c97cd8b0c3627b5f1a7c21"})
+}
+
+definition{
+  name: metricDiversityAccessTickets,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 35, slug := "metric-diversity-access-tickets", title := "Diversity Access Tickets", question := "How are Diversity Access Tickets used to support diversity and inclusion for an event?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "event-diversity", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/event-diversity/diversity-access-tickets.md", sourceDigest := "sha256:34fcbb19fd346880b35ba99e3bbfc96c1263a38c688ec0bec04cb8d0ad4dac86"})
+}
+
+definition{
+  name: metricDocumentationAccessibility,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 36, slug := "metric-documentation-accessibility", title := "Documentation Accessibility", question := "How does the documentation accommodate different users?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "project-and-community", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/project-and-community/documentation-accessibility.md", sourceDigest := "sha256:b758968913b0cecfb5d4d8d8b7797d3f31bf07a92a766d24300ff3313dc270fd"})
+}
+
+definition{
+  name: metricDocumentationDiscoverability,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 37, slug := "metric-documentation-discoverability", title := "Documentation Discoverability", question := "How easily can users and contributors find the information they are looking for in a project’s documentation?**", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "project-and-community", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/project-and-community/documentation-discoverability.md", sourceDigest := "sha256:0cde066e72128a2d393543e3ab6621e79b34c2f0329ade477d7d38b63e14beb0"})
+}
+
+definition{
+  name: metricDocumentationUsability,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 38, slug := "metric-documentation-usability", title := "Documentation Usability", question := "What is the usability of documentation from content and structure perspectives?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "project-and-community", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/project-and-community/documentation-usability.md", sourceDigest := "sha256:3b2aa97678b23624a20c662711909fe42815d23f3d516a114ba63f20430d1797"})
+}
+
+definition{
+  name: metricElephantFactor,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 39, slug := "metric-elephant-factor", title := "Elephant Factor", question := "What is the distribution of work in the community across companies?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.risk), focusArea := "business-risk", source := "wg-risk@20c0e0af5b194be32d20a36b1a99ed350ed23d68:focus-areas/business-risk/elephant-factor.md", sourceDigest := "sha256:340726fbc0a2f5d03f7b19ceedb2a7bf54bb5c96d7d6e60ad24998a9973da486"})
+}
+
+definition{
+  name: metricEventAccessibility,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 40, slug := "metric-event-accessibility", title := "Event Accessibility", question := "To what extent does your event accommodate those with various accessibility needs?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "event-diversity", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/event-diversity/event-accessibility.md", sourceDigest := "sha256:501db8b4e5516071f4549c0d1078d354882de43906b1b9358d28574cbe1552c5"})
+}
+
+definition{
+  name: metricEventDemographics,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 41, slug := "metric-event-demographics", title := "Event Demographics", question := "To what extent does an event consider and pay attention to attendee, speaker, and volunteer demographics?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "event-diversity", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/event-diversity/event-demographics.md", sourceDigest := "sha256:c310c1485cd8fd024a286be552d6eb40b909318801dacd34657a1dfd7f933623"})
+}
+
+definition{
+  name: metricEventLocationInclusivity,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 42, slug := "metric-event-location-inclusivity", title := "Event Location Inclusivity", question := "Is the event located in a region where governments, cultural contexts, or society may cause harm to the physical safety and/or psychological safety of event attendees?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "event-diversity", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/event-diversity/event-location-inclusivity.md", sourceDigest := "sha256:d26060764c10c4f43a1af77d7fcfc6b6f3e6f4b8052f0e118a7ce22137066fa5"})
+}
+
+definition{
+  name: metricEventLocations,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 43, slug := "metric-event-locations", title := "Event Locations", question := "Where are open source project events located?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "place", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/place/event-locations.md", sourceDigest := "sha256:d03088b5baa10057a6ac0b19fab2be1ef9211b326ac97974d75f55b1eb6c2a92"})
+}
+
+definition{
+  name: metricFamilyFriendliness,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 44, slug := "metric-family-friendliness", title := "Family Friendliness", question := "How does enabling families to attend together support diversity and inclusion of the event?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "event-diversity", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/event-diversity/family-friendliness.md", sourceDigest := "sha256:4234152ddc782a66f7eb4e4a27302de77174b7f6d4bba3aa1f5f4e8d0e16337f"})
+}
+
+definition{
+  name: metricInactiveContributors,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 45, slug := "metric-inactive-contributors", title := "Inactive Contributors", question := "How many Contributors have gone inactive over a specific period of time?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "community-growth", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/community-growth/inactive-contributors.md", sourceDigest := "sha256:9d99715271bcd9f952ac002b89c371f8d63d705b8ddde039b705e6f18b37d6ef"})
+}
+
+definition{
+  name: metricInclusiveExperienceAtEvent,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 46, slug := "metric-inclusive-experience-at-event", title := "Inclusive Experience at Event", question := "To what extent does an event organizing team commit to an inclusive experience at an event?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "event-diversity", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/event-diversity/inclusive-experience-at-event.md", sourceDigest := "sha256:5bd7e217a2ecf80ccedbdbdf09dfe4e16e752a96ccc14946bdbf424f05758dae"})
+}
+
+definition{
+  name: metricInclusiveLeadership,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 47, slug := "metric-inclusive-leadership", title := "Inclusive Leadership", question := "How well is a project and community set up for diverse leadership?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "leadership", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/leadership/inclusive-leadership.md", sourceDigest := "sha256:4fdbf4ad81361d0ea3f4ddb50df3e706bc7aaf55fbafec38d8d5a0788abc4b3e"})
+}
+
+definition{
+  name: metricIssueAge,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 48, slug := "metric-issue-age", title := "Issue Age", question := "How long have open issues been left open?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "issue-resolution", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/issue-resolution/issue-age.md", sourceDigest := "sha256:14b1bd3b08a1c1f1510ef4c54ca87723f857eff7a736d6f0ee0078f758b6bf65"})
+}
+
+definition{
+  name: metricIssueLabelInclusivity,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 49, slug := "metric-issue-label-inclusivity", title := "Issue Label Inclusivity", question := "How well are project issues labelled to invite new contributors, skilled contributors, non-code contributors, and other types of contributors?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "project-and-community", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/project-and-community/issue-label-inclusivity.md", sourceDigest := "sha256:61fbcd3ae7ecfa5362dabbacaa33ac8d59ab072028bb917383cb555825879b2d"})
+}
+
+definition{
+  name: metricIssueResolutionDuration,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 50, slug := "metric-issue-resolution-duration", title := "Issue Resolution Duration", question := "How long does it take for an issue to be closed?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "issue-resolution", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/issue-resolution/issue-resolution-duration.md", sourceDigest := "sha256:0d3d9adb846d84b70ff38a86c4a86417e66d725c80326029bacb7583176f9fdf"})
+}
+
+definition{
+  name: metricIssueResponseTime,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 51, slug := "metric-issue-response-time", title := "**Issue Response Time**", question := "How much time passes between the opening of an issue and a response in the issue thread from another contributor?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "issue-resolution", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/issue-resolution/issue-response-time.md", sourceDigest := "sha256:d8bcaad5f5f7f43b2e294907a7e825d7e88b18b49c974026f4dcb513c49e279e"})
+}
+
+definition{
+  name: metricIssuesActive,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 52, slug := "metric-issues-active", title := "**Issues Active**", question := "How many issues were active during a certain period?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "issue-resolution", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/issue-resolution/issues-active.md", sourceDigest := "sha256:e0fd1e85c0843daafba920ad5ff91bb217303492c5d29fd42c967056eb5e5f6e"})
+}
+
+definition{
+  name: metricIssuesClosed,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 53, slug := "metric-issues-closed", title := "Issues Closed", question := "How many issues were closed during a certain period?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "issue-resolution", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/issue-resolution/issues-closed.md", sourceDigest := "sha256:f54c8f4f09c7727e68c55bca0d08f2738b595dcef367ea40a505f6c7ccc120b1"})
+}
+
+definition{
+  name: metricIssuesNew,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 54, slug := "metric-issues-new", title := "Issues New", question := "How many new issues are created during a certain period?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "issue-resolution", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/issue-resolution/issues-new.md", sourceDigest := "sha256:99f04ea1ab17ed51a2ae9b1794d6ea03416086c627d76e2410c0c91b8e9651af"})
+}
+
+definition{
+  name: metricJobOpportunities,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 55, slug := "metric-job-opportunities", title := "Job Opportunities", question := "How many job postings request skills with technologies from a project?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.value), focusArea := "individual-value", source := "wg-value@902ba8412e9346623fd4015d273561193ef460cf:focus-areas/individual-value/job-opportunities.md", sourceDigest := "sha256:6c912d11ac8f0ab2f886e069886fd8c8ca94b4e673e922578c2a046f911ad222"})
+}
+
+definition{
+  name: metricLaborInvestment,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 56, slug := "metric-labor-investment", title := "Labor Investment", question := "What was the cost of an organization for its employees to create the counted contributions (e.g., commits, issues, and pull requests)?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.value), focusArea := "organizational-value", source := "wg-value@902ba8412e9346623fd4015d273561193ef460cf:focus-areas/organizational-value/labor-investment.md", sourceDigest := "sha256:3589253fa9c80de6217b33de447b1f60b4a435f5d531f1b0a86b1b4852288c55"})
+}
+
+definition{
+  name: metricLibyears,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 57, slug := "metric-libyears", title := "Libyears", question := "What is the age of the project’s dependencies compared to current stable releases?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.risk), focusArea := "dependency-risk-assessment", source := "wg-risk@20c0e0af5b194be32d20a36b1a99ed350ed23d68:focus-areas/dependency-risk-assessment/libyear.md", sourceDigest := "sha256:f85b4491a294a5aae97d5ac61141baafe9e59e2d7ae0336c463412c499767418"})
+}
+
+definition{
+  name: metricLicenseCoverage,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 58, slug := "metric-license-coverage", title := "License Coverage", question := "How much of the code base has declared licenses?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.risk), focusArea := "licensing", source := "wg-risk@20c0e0af5b194be32d20a36b1a99ed350ed23d68:focus-areas/licensing/license-coverage.md", sourceDigest := "sha256:5f130eed1ca93a8194c994355a20b0cc7ff106d510a2d43928a42446dbad1735"})
+}
+
+definition{
+  name: metricLicensesDeclared,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 59, slug := "metric-licenses-declared", title := "License Declared", question := "What are the declared software package licenses?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.risk), focusArea := "licensing", source := "wg-risk@20c0e0af5b194be32d20a36b1a99ed350ed23d68:focus-areas/licensing/license-declared.md", sourceDigest := "sha256:338abb592ab309269f97f1aa07174df166e0e3abaf03929214a71ce6b70bd940"})
+}
+
+definition{
+  name: metricMeetingAttendeeCount,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 60, slug := "metric-meeting-attendee-count", title := "Meeting Attendee Count", question := "How many people are attending our virtual or in-person meetings?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "people", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/people/meeting-attendee-count.md", sourceDigest := "sha256:929e8cbb16843cd1be3bcadb23e380211a29c1c7bec301cf83c44bb36917f437"})
+}
+
+definition{
+  name: metricMentorship,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 61, slug := "metric-mentorship", title := "Mentorship", question := "How effective are our mentorship programs at supporting diversity and inclusion in our project?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "leadership", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/leadership/mentorship.md", sourceDigest := "sha256:92e2c28e7f9430c7082ae360f6fee33c5c861ca3d143dad977170feb610f8e02"})
+}
+
+definition{
+  name: metricNewContributors,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 62, slug := "metric-new-contributors", title := "New Contributors", question := "How many contributors are making their first contribution to a given project and who are they?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "community-growth", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/community-growth/new-contributors.md", sourceDigest := "sha256:64091b9f3da9a6f69f57d4651c2e0f1aa50a2a032759dc015a2df3be3b7700da"})
+}
+
+definition{
+  name: metricNewContributorsClosingIssues,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 63, slug := "metric-new-contributors-closing-issues", title := "**New Contributors Closing Issues**", question := "How many contributors are closing issues for the first time in a given project?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "community-growth", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/community-growth/new-contributor-closing-issues.md", sourceDigest := "sha256:481116292951eb814385469149db757c166a512f97c17c74fc6510e9df741e71"})
+}
+
+definition{
+  name: metricNewcomerExperience,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 64, slug := "metric-newcomer-experience", title := "Newcomer Experience", question := "How well does an open source community attend to welcoming newcomers?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "project-and-community", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/project-and-community/newcomer-experience.md", sourceDigest := "sha256:f7e1b99b1049af4e740b20b6897fdfa26547940ac2783bc48fa38e4cd4788381"})
+}
+
+definition{
+  name: metricNumberOfDownloads,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 65, slug := "metric-number-of-downloads", title := "Number of Downloads", question := "How many downloads occurred since the software artifact was released?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.evolution), focusArea := "community-growth", source := "wg-evolution@ada8c11ee342fdc64e94f5f894676565aa2e6506:focus-areas/community-growth/number-of-downloads.md", sourceDigest := "sha256:fe7b3e3903d3b6ec03b22d4fe77ac0d0e1d1d2a3ea0f92772983e72b0f0041cb"})
+}
+
+definition{
+  name: metricOccasionalContributors,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 66, slug := "metric-occasional-contributors", title := "Occasional Contributors", question := "How do we understand the number of occasional contributors and the contributions that they make?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "people", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/people/occasional-contributors.md", sourceDigest := "sha256:5d5cc395ff5584f8eb5048198bbb423efe6e3a661f2c39d2f49a9c2da3a9f50e"})
+}
+
+definition{
+  name: metricOpenSourceSecurityFoundationOpenssfBestPracticesBadge,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 67, slug := "metric-open-source-security-foundation-openssf-best-practices-badge", title := "Open Source Security Foundation (OpenSSF) Best Practices Badge", question := "What is the current OpenSSF Best Practices status for the project?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.risk), focusArea := "security", source := "wg-risk@20c0e0af5b194be32d20a36b1a99ed350ed23d68:focus-areas/security/openssf-best-practices.md", sourceDigest := "sha256:b08cf3d57c1a2cc6601811ad1d97da8442096cdda1a68be95ea51cfcd50b3ac1"})
+}
+
+definition{
+  name: metricOrganizationalDiversity,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 68, slug := "metric-organizational-diversity", title := "Organizational Diversity", question := "What is the organizational diversity of contributions?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "people", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/people/organizational-diversity.md", sourceDigest := "sha256:084c9ea34aa5aa4f6daed5673c1f757c1dd58c0ea63dee832c57b2afdb462ffd"})
+}
+
+definition{
+  name: metricOrganizationalInfluence,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 69, slug := "metric-organizational-influence", title := "Organizational Influence", question := "How much influence does an organization have on an open source community?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.value), focusArea := "organizational-value", source := "wg-value@902ba8412e9346623fd4015d273561193ef460cf:focus-areas/organizational-value/organizational-influence.md", sourceDigest := "sha256:a0609423c142fc159bb1715e74eeedd4265afc7a7e8ce1f3079199458fa3cad5"})
+}
+
+definition{
+  name: metricOrganizationalProjectSkillDemand,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 70, slug := "metric-organizational-project-skill-demand", title := "Organizational Project Skill Demand", question := "How many organizations are using this project and could hire me if I become proficient?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.value), focusArea := "individual-value", source := "wg-value@902ba8412e9346623fd4015d273561193ef460cf:focus-areas/individual-value/organizational-project-skill-demand.md", sourceDigest := "sha256:d44cebbf6c1f4077129ebe61429414c190c55f6fd49031270ea62d660f952ba3"})
+}
+
+definition{
+  name: metricOsiApprovedLicenses,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 71, slug := "metric-osi-approved-licenses", title := "OSI Approved Licenses", question := "What percentage of a project’s licenses are OSI-approved open source licenses?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.risk), focusArea := "licensing", source := "wg-risk@20c0e0af5b194be32d20a36b1a99ed350ed23d68:focus-areas/licensing/osi-approved-licenses.md", sourceDigest := "sha256:9cbe1733bff7133cc17842891096b06bfcf592ee6d0d289e2b5c7b97d528febc"})
+}
+
+definition{
+  name: metricProgrammingLanguageDistribution,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 72, slug := "metric-programming-language-distribution", title := "Programming Language Distribution", question := "What are the different programming languages present in an open-source project(s), and what is the percentage of each language?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "contributions", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/contributions/programming-language-distribution.md", sourceDigest := "sha256:0921109a1bac272346ef841d5da07f6418f3c5210242823f5a4aed7b78e9c10c"})
+}
+
+definition{
+  name: metricProjectAccess,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 73, slug := "metric-project-access", title := "Project Access", question := "To what extent does your project provide access and help those with various access needs?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "project-and-community", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/project-and-community/project-access.md", sourceDigest := "sha256:f92f061f94f264d080de345fc25d02de6b0d339a967a60f718526ffc22bfb97d"})
+}
+
+definition{
+  name: metricProjectBurnout,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 74, slug := "metric-project-burnout", title := "Project Burnout", question := "How is project burnout identified and managed within an open source project?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "project-and-community", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/project-and-community/project-burnout.md", sourceDigest := "sha256:c38d78a632b3944c54f4f16fbbbfc2e6b576ada3d4b0d28cb370d1787a463330"})
+}
+
+definition{
+  name: metricProjectDemographics,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 75, slug := "metric-project-demographics", title := "Project Demographics", question := "What are the demographics within a project?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "project-and-community", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/project-and-community/project-demographics.md", sourceDigest := "sha256:d8922c338849ebfd8b7116dd6e0b6b06556c8b4f7997a7ec9bc83fed676db1f6"})
+}
+
+definition{
+  name: metricProjectPopularity,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 76, slug := "metric-project-popularity", title := "Project Popularity", question := "How popular is an open source project?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.value), focusArea := "communal-value", source := "wg-value@902ba8412e9346623fd4015d273561193ef460cf:focus-areas/communal-value/project-popularity.md", sourceDigest := "sha256:b7f20b330f8f743c4b0f9f1c6367fd1f98693976e1d52560ade655e7d240a97c"})
+}
+
+definition{
+  name: metricProjectRecommendability,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 77, slug := "metric-project-recommendability", title := "Project Recommendability", question := "How likely is it that you would recommend a community or project to other people?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.value), focusArea := "communal-value", source := "wg-value@902ba8412e9346623fd4015d273561193ef460cf:focus-areas/communal-value/project-recommendability.md", sourceDigest := "sha256:e1cea5121f0c309a6d0a1ad7ab09814ff73b484a5e2b2c78c2fd68d8c9f4bc69"})
+}
+
+definition{
+  name: metricProjectVelocity,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 78, slug := "metric-project-velocity", title := "Project Velocity", question := "What is the development speed for an organization?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.value), focusArea := "communal-value", source := "wg-value@902ba8412e9346623fd4015d273561193ef460cf:focus-areas/communal-value/project-velocity.md", sourceDigest := "sha256:1789a065eaa654c5de1d82434961bbab2204036e271d1865d25180043266f8dc"})
+}
+
+definition{
+  name: metricPsychologicalSafety,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 79, slug := "metric-psychological-safety", title := "Psychological Safety", question := "To what extent do community members feel safe within a community, including adding contributions, influencing change, bringing their authentic selves, and generally participating in the project?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "project-and-community", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/project-and-community/psychological-safety.md", sourceDigest := "sha256:8cc61532eda3bf65a06456fac745de6f85e8ad1ac99422d069081fda97b8e246"})
+}
+
+definition{
+  name: metricPublicHealthAndSafety,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 80, slug := "metric-public-health-and-safety", title := "Public Health and Safety", question := "To what extent does your event address public health through policies around masks, vaccines, COVID testing, and in infrastructure such as ventilation and air purification in indoor venues?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "event-diversity", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/event-diversity/public-health-and-safety.md", sourceDigest := "sha256:305964d02b60205888737ecd62fd9eb74ad115a604b88a632dbd400829b6e820"})
+}
+
+definition{
+  name: metricReleaseFrequency,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 81, slug := "metric-release-frequency", title := "Release Frequency", question := "How often does a project publish a release of their software / artifact?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "time", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/time/release-frequency.md", sourceDigest := "sha256:ff0da5875c3d2ad07e33c132940f6a2177d6c75fa3337aa42ffb58619fc89021"})
+}
+
+definition{
+  name: metricReviewCycleDurationWithinAChangeRequest,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 82, slug := "metric-review-cycle-duration-within-a-change-request", title := "Review Cycle Duration within a Change Request", question := "What is the duration of a review cycle within a single change request?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "time", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/time/review-cycle-duration-within-a-change-request.md", sourceDigest := "sha256:b939c69883a224b09361f8623d83fd77450309d34b3f90cb5aaba5b3c32cab38"})
+}
+
+definition{
+  name: metricSelfMergeRates,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 83, slug := "metric-self-merge-rates", title := "Self Merge Rates", question := "How many of the contributions in the project repository are being merged by the original contributor?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "contributions", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/contributions/self-merge-rates.md", sourceDigest := "sha256:e1e3ec56b2bf6286ad3f1e75e5429be30de14fbde7dc28fcd7cda47e97dcd40c"})
+}
+
+definition{
+  name: metricSpdxDocument,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 84, slug := "metric-spdx-document", title := "SPDX Document", question := "Does the software package have an associated SPDX document as a standard expression of dependencies, licensing, and security-related issues?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.risk), focusArea := "licensing", source := "wg-risk@20c0e0af5b194be32d20a36b1a99ed350ed23d68:focus-areas/licensing/spdx-document.md", sourceDigest := "sha256:d9a8c6f79cdadd7260e93a4698597d37fc65cdca9049770294f83fb1bc0a6227"})
+}
+
+definition{
+  name: metricSponsorship,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 85, slug := "metric-sponsorship", title := "Sponsorship", question := "How effective are long-time members who sponsor people in supporting diversity and inclusion in a community?**", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "leadership", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/leadership/sponsorship.md", sourceDigest := "sha256:9b9bbb4eafac92b9104c811c6f395f799eef17e0d399a4a41573ad0af48c930f"})
+}
+
+definition{
+  name: metricTechnicalFork,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 86, slug := "metric-technical-fork", title := "Technical Fork", question := "What are a number of technical forks of an open source project on code development platforms?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "contributions", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/contributions/technical-fork.md", sourceDigest := "sha256:6af16626737b98c485c463e76f17479b7dc0514bf72ecddf03f8d66ea38f1aaf"})
+}
+
+definition{
+  name: metricTestCoverage,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 87, slug := "metric-test-coverage", title := "Test Coverage", question := "How well is the code tested?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.risk), focusArea := "code-quality", source := "wg-risk@20c0e0af5b194be32d20a36b1a99ed350ed23d68:focus-areas/code-quality/test-coverage.md", sourceDigest := "sha256:ddcfa6d8f3c82c7865d2e7e181747a6326b0ec5db27319c04684e6f0038e3296"})
+}
+
+definition{
+  name: metricTimeInclusionForVirtualEvents,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 88, slug := "metric-time-inclusion-for-virtual-events", title := "Time Inclusion for Virtual Events", question := "How can organizers of virtual events be mindful of attendees and speakers in other time zones?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.dei), focusArea := "event-diversity", source := "wg-dei@18640f18067f94590b5a463afe6138a114b0fd53:focus-areas/event-diversity/time-inclusion-for-virtual-events.md", sourceDigest := "sha256:2f9d60c148f08e180e65bfaed807241c5b294991b4759a75696c808490d8060d"})
+}
+
+definition{
+  name: metricTimeToClose,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 89, slug := "metric-time-to-close", title := "Time to Close", question := "How much time passes between creating and closing an operation such as an issue, change request, or support ticket?**", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "time", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/time/time-to-close.md", sourceDigest := "sha256:a23b5d43f99338c0217fa2cf524901085382d3bfd4f82896fe65764271dc955b"})
+}
+
+definition{
+  name: metricTimeToFirstResponse,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 90, slug := "metric-time-to-first-response", title := "Time to First Response", question := "How much time passes between when an activity requiring attention is created and the first response?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "time", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/time/time-to-first-response.md", sourceDigest := "sha256:93fa57929b0aca84b9b94c028ad1739cece0b42a70d2c5173d570e3cf7fdd3ec"})
+}
+
+definition{
+  name: metricTypesOfContributions,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 91, slug := "metric-types-of-contributions", title := "Types of Contributions", question := "What types of contributions are being made?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsDevelopment), focusArea := "contributions", source := "wg-metrics-development@003671d4c461fda2487aae612db00a9f80de4e6d:focus-areas/contributions/type-of-contributions.md", sourceDigest := "sha256:8310bfb7beb8f7b7ad06be70fd5fa502bb0ab8633d72d66afac2800acbaf6f51"})
+}
+
+definition{
+  name: metricUpstreamCodeDependencies,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 92, slug := "metric-upstream-code-dependencies", title := "Upstream Code Dependencies", question := "What projects and libraries does my project depend on?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.risk), focusArea := "dependency-risk-assessment", source := "wg-risk@20c0e0af5b194be32d20a36b1a99ed350ed23d68:focus-areas/dependency-risk-assessment/upstream-code-dependencies.md", sourceDigest := "sha256:1859bf0dbc3cb9e5fa12f4dea1f9857c2ea205982c27eb468c3332b675812960"})
+}
+
+definition{
+  name: metricMisuse,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 93, slug := "misuse", title := "Misuse", question := "Is AI use causing harm or violating community norms and expectations including the Code of Conduct.", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.aiAlignment), focusArea := "ai-alignment-community-governed-use", source := "wg-ai-alignment@0d0f78655aab6417293aaefd85e08ecc72ddabfa:metrics/ai-alignment-community-governed-use/ai-use-misuse.md", sourceDigest := "sha256:908ed869ae4993d473c5ab330add0f2a68092471b4aac64abe87282a828538d2"})
+}
+
+definition{
+  name: metricPolicyChange,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 94, slug := "policy-change", title := "Policy Change", question := "How do communities' AI policies change over time, and how do those changes compare across projects?", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.aiAlignment), focusArea := "ai-alignment-community-governed-use", source := "wg-ai-alignment@0d0f78655aab6417293aaefd85e08ecc72ddabfa:metrics/ai-alignment-community-governed-use/ai-use-policy-change.md", sourceDigest := "sha256:e65b2ff5343810306f20521e57c567b62927a68d6191a9e926edb7ce7c33458c"})
+}
+
+definition{
+  name: metricPolicySpecificity,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 95, slug := "policy-specificity", title := "Policy Specificity", question := "How specifically, does a community's AI policy addresses each domain where AI shows up, rather than one blanket statement covering all use.", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.aiAlignment), focusArea := "ai-alignment-community-governed-use", source := "wg-ai-alignment@0d0f78655aab6417293aaefd85e08ecc72ddabfa:metrics/ai-alignment-community-governed-use/ai-use-consent-policy-specificity.md", sourceDigest := "sha256:7e3e189f3b018a9faf19df51319d63a990989f0e90766f9b804a56e4a2f253cc"})
+}
+
+definition{
+  name: metricUseCompliance,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 96, slug := "use-compliance", title := "Use Compliance", question := "Does AI use match what current policy permits.", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.aiAlignment), focusArea := "ai-alignment-community-governed-use", source := "wg-ai-alignment@0d0f78655aab6417293aaefd85e08ecc72ddabfa:metrics/ai-alignment-community-governed-use/ai-use-compliance.md", sourceDigest := "sha256:24149993d2f89874fe8027f020f5da4a598d5777d1f08c164ced4209bdea4975"})
+}
+
+definition{
+  name: metricUseComposition,
+  parameters: [],
+  result: Foundation.Community.V1.Model::Metric,
+  body: (record Foundation.Community.V1.Model::Metric {index := 97, slug := "use-composition", title := "Use Composition", question := "What AI tools, models, and ownership structures are in use across a community's spaces.", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.aiAlignment), focusArea := "ai-alignment-community-governed-use", source := "wg-ai-alignment@0d0f78655aab6417293aaefd85e08ecc72ddabfa:metrics/ai-alignment-community-governed-use/ai-use-composition.md", sourceDigest := "sha256:3e9c594b092ac3719d6d1599685b39ca94d24089beed9e2ee41d61750c03ae33"})
+}
+
+definition{
+  name: modelAiAlignmentCommunityAlignedTrainingFeedback,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 0, slug := "metrics-model-ai-alignment-community-aligned-training-feedback", title := "Metrics Model: AI Alignment - Community Aligned Training (Feedback)", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.aiAlignment), members := (cons 0 (cons 4 (cons 3 (cons 2 (nil Nat))))), localMeasures := 0, source := "wg-ai-alignment@0d0f78655aab6417293aaefd85e08ecc72ddabfa:metrics/ai-alignment-community-feedback/metric-model-ai-alignment-community-aligned-training-feedback.md", sourceDigest := "sha256:e916574b09a4b01e478d17b8844500d88aeacaad993b726c7b99c15d178fd780"})
+}
+
+definition{
+  name: modelBusinessReadinessOfAnOpenSourceProject,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 1, slug := "metrics-model-business-readiness-of-an-open-source-project", title := "Business Readiness of an Open Source Project", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 1 (cons 87 (cons 58 (cons 59 (cons 71 (cons 31 (cons 27 (cons 39 (nil Nat))))))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/business-readiness/definition/business-readiness.md", sourceDigest := "sha256:7c1e95ee15f84e398207e9c399751258c275eb0cd1030da7992285a4b003a6f3"})
+}
+
+definition{
+  name: modelCollaborationDevelopmentIndex,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 2, slug := "metrics-model-collaboration-development-index", title := "Collaboration Development Index", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 33 (cons 22 (cons 15 (cons 86 (cons 23 (nil Nat)))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/collaboration-development-index/definition/collaboration-development-index.md", sourceDigest := "sha256:bb74febe04ee27fa973ce370cca7468255ec5224f956e65b2de1dc73f638d0b1"})
+}
+
+definition{
+  name: modelCommunityActivity,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 3, slug := "metrics-model-community-activity", title := "Community Activity", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (nil Nat), localMeasures := 11, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/community-activity/definition/community-activity.md", sourceDigest := "sha256:505814967c8e390e88df1206e774b421b7b259f3f11554862d69324bf3750cc3"})
+}
+
+definition{
+  name: modelCommunityGovernedAiUseInOpenCommunities,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 4, slug := "metrics-model-community-governed-ai-use-in-open-communities", title := "Metrics Model: Community Governed AI Use in Open Communities", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.aiAlignment), members := (cons 95 (cons 94 (cons 97 (cons 96 (cons 93 (nil Nat)))))), localMeasures := 0, source := "wg-ai-alignment@0d0f78655aab6417293aaefd85e08ecc72ddabfa:metrics/ai-alignment-community-governed-use/metric-model-ai-alignment-community-governed-use.md", sourceDigest := "sha256:b3e7273720f3972f52ad54d0da87cffb2783d4587f67af0c9400c23c2d167cf3"})
+}
+
+definition{
+  name: modelCommunityServiceAndSupport,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 5, slug := "metrics-model-community-service-and-support", title := "Community Service and Support", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 51 (cons 48 (cons 50 (cons 52 (cons 19 (cons 15 (cons 18 (cons 17 (cons 26 (nil Nat)))))))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/community-service-and-support/definition/community-service-and-support.md", sourceDigest := "sha256:eb76131e1fb9fac267f17d17a85f907b056bbc0dda2c22bf16fa8f3b73ca2cb1"})
+}
+
+definition{
+  name: modelCommunityWelcomingness,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 6, slug := "metrics-model-community-welcomingness", title := "Community Welcomingness", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 48 (cons 51 (cons 90 (cons 25 (cons 47 (cons 58 (cons 59 (cons 67 (cons 87 (cons 31 (cons 27 (cons 39 (cons 62 (cons 11 (nil Nat))))))))))))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/community-welcomingness/definition/community-welcomingness.md", sourceDigest := "sha256:17567bbc8aeaeb78559158929533e8916d35fd7a9ef51d7fd1755f340fde4764"})
+}
+
+definition{
+  name: modelDeiEventBadging,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 7, slug := "metrics-model-dei-event-badging", title := "CHAOSS DEI Event Badging", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 24 (cons 35 (cons 44 (cons 41 (cons 46 (cons 88 (nil Nat))))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/dei-event-badging/definition/dei-event-badging.md", sourceDigest := "sha256:dbf162203af99d6600a70596d165083c61913bc8ef0e1d1b0a6f61c588126a86"})
+}
+
+definition{
+  name: modelDevelopmentResponsiveness,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 8, slug := "metrics-model-development-responsiveness", title := "Development Responsiveness", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 82 (cons 19 (cons 51 (cons 1 (nil Nat))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/development-responsiveness/definition/development-responsiveness.md", sourceDigest := "sha256:86654645395b24987d2a6044f404cf42c474a96aa8b21f1907c286e4f60871dc"})
+}
+
+definition{
+  name: modelFunding,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 9, slug := "metrics-model-funding", title := "Funding", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 30 (cons 69 (cons 91 (cons 56 (cons 68 (nil Nat)))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/funding/definition/funding.md", sourceDigest := "sha256:c7ca41695babde22f787425414a4ddeae75aed0b5ede125a2ddc417042992c07"})
+}
+
+definition{
+  name: modelOssProjectViabilityCommunity,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 10, slug := "metrics-model-oss-project-viability-community", title := "OSS Project Viability: Community", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 21 (cons 86 (cons 91 (cons 16 (cons 27 (cons 12 (cons 76 (cons 57 (nil Nat))))))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/viability/community/definition/viability-community.md", sourceDigest := "sha256:a675280c6eb29a2a4993f348a05033b7b6913f0e715f61747eadfc4a152ef316"})
+}
+
+definition{
+  name: modelOssProjectViabilityComplianceSecurity,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 11, slug := "metrics-model-oss-project-viability-compliance-security", title := "OSS Project Viability: Compliance + Security", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 67 (cons 58 (cons 71 (cons 59 (cons 1 (cons 57 (cons 92 (nil Nat)))))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/viability/compliance-security/definition/viability-compliance-security.md", sourceDigest := "sha256:22cbea000d2c6d716ca84ef52a6366a15cdf2ee14b7b7d68c260d9cb34902ee4"})
+}
+
+definition{
+  name: modelOssProjectViabilityGovernance,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 12, slug := "metrics-model-oss-project-viability-governance", title := "OSS Project Viability: Governance", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 38 (cons 89 (cons 12 (cons 76 (cons 57 (cons 48 (cons 81 (nil Nat)))))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/viability/governance/definition/viability-governance.md", sourceDigest := "sha256:084cd5f211c752690cac3ea0360e7d9d08f0546be367941ffcd474a02e7fe26b"})
+}
+
+definition{
+  name: modelOssProjectViabilityStrategy,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 13, slug := "metrics-model-oss-project-viability-strategy", title := "OSS Project Viability: Strategy", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 72 (cons 31 (cons 39 (cons 69 (cons 81 (nil Nat)))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/viability/strategy/definition/viability-strategy.md", sourceDigest := "sha256:8c1c17341bfc58d73bfab113b01250c338893e5bae61e7bab5cc3eef4a9c475a"})
+}
+
+definition{
+  name: modelProjectAwareness,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 14, slug := "metrics-model-project-awareness", title := "Project Awareness", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 21 (cons 86 (cons 10 (cons 33 (cons 68 (nil Nat)))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/project-awareness/definition/project-awareness.md", sourceDigest := "sha256:ae1d8ca740faa1cfa0e2ba6bc98cfd6c79c5f1fee296914ca956688f25eb84a5"})
+}
+
+definition{
+  name: modelProjectEngagement,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 15, slug := "metrics-model-project-engagement", title := "Project Engagement", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 17 (cons 27 (cons 33 (cons 53 (cons 68 (cons 82 (nil Nat))))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/project_engagement/definition/project_engagement.md", sourceDigest := "sha256:52ed723c7362357a98a658b223b45652deb10274304499fa693cfd8a157a7acc"})
+}
+
+definition{
+  name: modelProjectViabilityStarter,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 16, slug := "metrics-model-project-viability-starter", title := "OSS Project Viability Starter", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 31 (cons 39 (cons 16 (cons 12 (cons 57 (cons 71 (nil Nat))))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/viability/starter/definition/viability-starter.md", sourceDigest := "sha256:570d82960e0190a9a4b300e7997489e30b29be18a7716195c9ec8de1a5575c15"})
+}
+
+definition{
+  name: modelSafety,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 17, slug := "metrics-model-safety", title := "Safety", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 79 (cons 25 (cons 24 (cons 47 (cons 7 (cons 74 (nil Nat))))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/safety/definition/safety.md", sourceDigest := "sha256:1c32493c290f74e0b0926a23249d6d3ab9ecc345441a82ac86cc9c195e7e2861"})
+}
+
+definition{
+  name: modelStarterProjectHealth,
+  parameters: [],
+  result: Foundation.Community.V1.Model::MetricModel,
+  body: (record Foundation.Community.V1.Model::MetricModel {index := 18, slug := "metrics-model-starter-project-health", title := "Starter Project Health Metrics Model", workingGroup := (ctor Foundation.Community.V1.Model::WorkingGroup.metricsModels), members := (cons 90 (cons 12 (cons 31 (cons 81 (nil Nat))))), localMeasures := 0, source := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/starter-project-health/definition/starter-project-health.md", sourceDigest := "sha256:2d083584ba311fef86f71b4711440fd70b4f0697e3f5dfceafba2423270df2da"})
+}
+
+definition{
+  name: openClaim0,
+  parameters: [],
+  result: Foundation.Community.V1.Model::OpenClaim,
+  body: (record Foundation.Community.V1.Model::OpenClaim {index := 0, model := 12, name := "Issues Inclusivity https://chaoss.community/?p=3533", reason := "member-not-released"})
+}
+
+definition{
+  name: metrics,
+  parameters: [],
+  result: (List Foundation.Community.V1.Model::Metric),
+  body: (cons (metricAiFeedbackGovernance) (cons (metricDefectResolutionDuration) (cons (metricFeedbackChannelEffectiveness) (cons (metricFeedbackChannelEfficiency) (cons (metricFeedbackChannelQuality) (cons (metricAcademicOpenSourceProjectImpact) (cons (metricActivityDatesAndTimes) (cons (metricBoardCouncilDiversity) (cons (metricBotActivity) (cons (metricBranchLifecycle) (cons (metricBurstiness) (cons (metricChangeRequestAcceptanceRatio) (cons (metricChangeRequestClosureRatio) (cons (metricChangeRequestCommits) (cons (metricChangeRequestReviewDuration) (cons (metricChangeRequestReviews) (cons (metricChangeRequests) (cons (metricChangeRequestsAccepted) (cons (metricChangeRequestsDeclined) (cons (metricChangeRequestsDuration) (cons (metricChatPlatformInclusivity) (cons (metricClones) (cons (metricCodeChangesCommits) (cons (metricCodeChangesLines) (cons (metricCodeOfConductAtEvent) (cons (metricCodeOfConductForAProject) (cons (metricCollaborationPlatformActivity) (cons (metricCommitters) (cons (metricCommunicationTransparency) (cons (metricConflictResolutionAndMediation) (cons (metricContributionAttribution) (cons (metricContributorAbsenceFactor) (cons (metricContributorLocation) (cons (metricContributors) (cons (metricConversionRate) (cons (metricDiversityAccessTickets) (cons (metricDocumentationAccessibility) (cons (metricDocumentationDiscoverability) (cons (metricDocumentationUsability) (cons (metricElephantFactor) (cons (metricEventAccessibility) (cons (metricEventDemographics) (cons (metricEventLocationInclusivity) (cons (metricEventLocations) (cons (metricFamilyFriendliness) (cons (metricInactiveContributors) (cons (metricInclusiveExperienceAtEvent) (cons (metricInclusiveLeadership) (cons (metricIssueAge) (cons (metricIssueLabelInclusivity) (cons (metricIssueResolutionDuration) (cons (metricIssueResponseTime) (cons (metricIssuesActive) (cons (metricIssuesClosed) (cons (metricIssuesNew) (cons (metricJobOpportunities) (cons (metricLaborInvestment) (cons (metricLibyears) (cons (metricLicenseCoverage) (cons (metricLicensesDeclared) (cons (metricMeetingAttendeeCount) (cons (metricMentorship) (cons (metricNewContributors) (cons (metricNewContributorsClosingIssues) (cons (metricNewcomerExperience) (cons (metricNumberOfDownloads) (cons (metricOccasionalContributors) (cons (metricOpenSourceSecurityFoundationOpenssfBestPracticesBadge) (cons (metricOrganizationalDiversity) (cons (metricOrganizationalInfluence) (cons (metricOrganizationalProjectSkillDemand) (cons (metricOsiApprovedLicenses) (cons (metricProgrammingLanguageDistribution) (cons (metricProjectAccess) (cons (metricProjectBurnout) (cons (metricProjectDemographics) (cons (metricProjectPopularity) (cons (metricProjectRecommendability) (cons (metricProjectVelocity) (cons (metricPsychologicalSafety) (cons (metricPublicHealthAndSafety) (cons (metricReleaseFrequency) (cons (metricReviewCycleDurationWithinAChangeRequest) (cons (metricSelfMergeRates) (cons (metricSpdxDocument) (cons (metricSponsorship) (cons (metricTechnicalFork) (cons (metricTestCoverage) (cons (metricTimeInclusionForVirtualEvents) (cons (metricTimeToClose) (cons (metricTimeToFirstResponse) (cons (metricTypesOfContributions) (cons (metricUpstreamCodeDependencies) (cons (metricMisuse) (cons (metricPolicyChange) (cons (metricPolicySpecificity) (cons (metricUseCompliance) (cons (metricUseComposition) (nil Foundation.Community.V1.Model::Metric)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: models,
+  parameters: [],
+  result: (List Foundation.Community.V1.Model::MetricModel),
+  body: (cons (modelAiAlignmentCommunityAlignedTrainingFeedback) (cons (modelBusinessReadinessOfAnOpenSourceProject) (cons (modelCollaborationDevelopmentIndex) (cons (modelCommunityActivity) (cons (modelCommunityGovernedAiUseInOpenCommunities) (cons (modelCommunityServiceAndSupport) (cons (modelCommunityWelcomingness) (cons (modelDeiEventBadging) (cons (modelDevelopmentResponsiveness) (cons (modelFunding) (cons (modelOssProjectViabilityCommunity) (cons (modelOssProjectViabilityComplianceSecurity) (cons (modelOssProjectViabilityGovernance) (cons (modelOssProjectViabilityStrategy) (cons (modelProjectAwareness) (cons (modelProjectEngagement) (cons (modelProjectViabilityStarter) (cons (modelSafety) (cons (modelStarterProjectHealth) (nil Foundation.Community.V1.Model::MetricModel))))))))))))))))))))
+}
+
+definition{
+  name: openClaims,
+  parameters: [],
+  result: (List Foundation.Community.V1.Model::OpenClaim),
+  body: (cons (openClaim0) (nil Foundation.Community.V1.Model::OpenClaim))
+}
+
+theorem{
+  name: registerValidHolds,
+  parameters: [],
+  statement: ((Foundation.Community.V1.Model::registerValid (release) (metrics) (models) (openClaims)) = true),
+  proof: decide{}
+}
+\end{semanticmodule}
+\end{lexlean}

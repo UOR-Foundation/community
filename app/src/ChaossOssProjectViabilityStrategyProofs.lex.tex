@@ -1,0 +1,132 @@
+\begin{lexlean}{ChaossOssProjectViabilityStrategyProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{ChaossOssProjectViabilityStrategy}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [
+    request : ChaossOssProjectViabilityStrategy::ChaossOssProjectViabilityStrategyRequest
+  ],
+  result: Bool,
+  body: (((((project request admitted) <=? 5) && ((project request refused) <=? 5)) && (1 <=? (project request refused))) && ((ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyJudge request) =? (ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerComplete)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [
+    request : ChaossOssProjectViabilityStrategy::ChaossOssProjectViabilityStrategyRequest
+  ],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerComplete,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerOpen,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerPartial,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerUnmeasured,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyJudge,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyRule1,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyRule2,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyRule3,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [
+    request : ChaossOssProjectViabilityStrategy::ChaossOssProjectViabilityStrategyRequest
+  ],
+  result: Bool,
+  body: (((((project request admitted) <=? 5) && ((project request refused) <=? 5)) && ((project request admitted) <? 5)) && ((ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyJudge request) =? (ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerComplete)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [
+    request : ChaossOssProjectViabilityStrategy::ChaossOssProjectViabilityStrategyRequest
+  ],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerComplete,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerOpen,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerPartial,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerUnmeasured,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyJudge,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyRule1,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyRule2,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyRule3,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [
+    request : ChaossOssProjectViabilityStrategy::ChaossOssProjectViabilityStrategyRequest
+  ],
+  result: Bool,
+  body: ((((((project request admitted) <=? 5) && ((project request refused) <=? 5)) && ((project request refused) =? 0)) && (5 <=? (project request admitted))) && (not ((ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyJudge request) =? (ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerComplete))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [
+    request : ChaossOssProjectViabilityStrategy::ChaossOssProjectViabilityStrategyRequest
+  ],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerComplete,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerOpen,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerPartial,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerUnmeasured,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyJudge,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyRule1,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyRule2,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyRule3,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [
+    request : ChaossOssProjectViabilityStrategy::ChaossOssProjectViabilityStrategyRequest
+  ],
+  result: Bool,
+  body: ((((((project request admitted) <=? 5) && ((project request refused) <=? 5)) && (1 <=? (project request admitted))) && ((project request refused) =? 0)) && ((ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyJudge request) =? (ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerUnmeasured)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [
+    request : ChaossOssProjectViabilityStrategy::ChaossOssProjectViabilityStrategyRequest
+  ],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerComplete,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerOpen,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerPartial,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyAnswerUnmeasured,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyJudge,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyRule1,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyRule2,
+      ChaossOssProjectViabilityStrategy::chaossOssProjectViabilityStrategyRule3,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

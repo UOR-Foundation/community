@@ -1,0 +1,281 @@
+\begin{lexlean}{UorRemediationWrite}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: uorRemediationWriteActorOwner, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRemediationWriteActorAgent, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRemediationWriteActorMaintainer, parameters: [], result: Nat, body: 2}
+
+definition{name: uorRemediationWriteActorOther, parameters: [], result: Nat, body: 3}
+
+definition{name: uorRemediationWriteActorUnverified, parameters: [], result: Nat, body: 4}
+
+definition{name: uorRemediationWriteChangeFile, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRemediationWriteChangeTopic, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRemediationWriteChangeRuleset, parameters: [], result: Nat, body: 2}
+
+definition{name: uorRemediationWriteChangeRename, parameters: [], result: Nat, body: 3}
+
+definition{name: uorRemediationWriteRepositoryLive, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRemediationWriteRepositoryArchived, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRemediationWriteApprovalGiven, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRemediationWriteApprovalNone, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRemediationWriteRoutePullRequest, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRemediationWriteRouteDirect, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRemediationWriteAnswerPermit, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRemediationWriteAnswerDeny, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRemediationWriteAnswerNotApplicable, parameters: [], result: Nat, body: 2}
+
+definition{name: uorRemediationWriteAnswerIndeterminate, parameters: [], result: Nat, body: 3}
+
+structure{
+  name: UorRemediationWriteRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: actor, type: Nat},
+    {name: change, type: Nat},
+    {name: repository, type: Nat},
+    {name: approval, type: Nat},
+    {name: route, type: Nat}
+  ]
+}
+
+definition{
+  name: uorRemediationWriteByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRemediationWriteDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (uorRemediationWriteByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (uorRemediationWriteDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorRemediationWriteParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (uorRemediationWriteByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (uorRemediationWriteDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRemediationWriteParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (uorRemediationWriteParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRemediationWriteParseActor,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6f776e6572 : Bool) then (ctor Option.some [Nat] (uorRemediationWriteActorOwner)) else (if (prim equal value 0x6167656e74 : Bool) then (ctor Option.some [Nat] (uorRemediationWriteActorAgent)) else (if (prim equal value 0x6d61696e7461696e6572 : Bool) then (ctor Option.some [Nat] (uorRemediationWriteActorMaintainer)) else (if (prim equal value 0x6f74686572 : Bool) then (ctor Option.some [Nat] (uorRemediationWriteActorOther)) else (if (prim equal value 0x756e7665726966696564 : Bool) then (ctor Option.some [Nat] (uorRemediationWriteActorUnverified)) else (ctor Option.none [Nat]))))))
+}
+
+definition{
+  name: uorRemediationWriteParseChange,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x66696c65 : Bool) then (ctor Option.some [Nat] (uorRemediationWriteChangeFile)) else (if (prim equal value 0x746f706963 : Bool) then (ctor Option.some [Nat] (uorRemediationWriteChangeTopic)) else (if (prim equal value 0x72756c65736574 : Bool) then (ctor Option.some [Nat] (uorRemediationWriteChangeRuleset)) else (if (prim equal value 0x72656e616d65 : Bool) then (ctor Option.some [Nat] (uorRemediationWriteChangeRename)) else (ctor Option.none [Nat])))))
+}
+
+definition{
+  name: uorRemediationWriteParseRepository,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6c697665 : Bool) then (ctor Option.some [Nat] (uorRemediationWriteRepositoryLive)) else (if (prim equal value 0x6172636869766564 : Bool) then (ctor Option.some [Nat] (uorRemediationWriteRepositoryArchived)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRemediationWriteParseApproval,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x676976656e : Bool) then (ctor Option.some [Nat] (uorRemediationWriteApprovalGiven)) else (if (prim equal value 0x6e6f6e65 : Bool) then (ctor Option.some [Nat] (uorRemediationWriteApprovalNone)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRemediationWriteParseRoute,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x70756c6c2d72657175657374 : Bool) then (ctor Option.some [Nat] (uorRemediationWriteRoutePullRequest)) else (if (prim equal value 0x646972656374 : Bool) then (ctor Option.some [Nat] (uorRemediationWriteRouteDirect)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRemediationWriteSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: uorRemediationWriteFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (uorRemediationWriteByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (uorRemediationWriteFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorRemediationWriteDecodeField5,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat],
+  result: (Option UorRemediationWriteRequest),
+  body: (let e : Nat := (uorRemediationWriteFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRemediationWriteParseRoute (uorRemediationWriteSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRemediationWriteRequest])
+    | Option.some v5 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [UorRemediationWriteRequest] (record UorRemediationWriteRequest {actor := v1, change := v2, repository := v3, approval := v4, route := v5})) else (ctor Option.none [UorRemediationWriteRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRemediationWriteDecodeField4,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat],
+  result: (Option UorRemediationWriteRequest),
+  body: (let e : Nat := (uorRemediationWriteFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRemediationWriteParseApproval (uorRemediationWriteSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRemediationWriteRequest])
+    | Option.some v4 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRemediationWriteDecodeField5 s (e + 1) v1 v2 v3 v4) else (ctor Option.none [UorRemediationWriteRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRemediationWriteDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option UorRemediationWriteRequest),
+  body: (let e : Nat := (uorRemediationWriteFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRemediationWriteParseRepository (uorRemediationWriteSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRemediationWriteRequest])
+    | Option.some v3 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRemediationWriteDecodeField4 s (e + 1) v1 v2 v3) else (ctor Option.none [UorRemediationWriteRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRemediationWriteDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option UorRemediationWriteRequest),
+  body: (let e : Nat := (uorRemediationWriteFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRemediationWriteParseChange (uorRemediationWriteSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRemediationWriteRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRemediationWriteDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [UorRemediationWriteRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRemediationWriteDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option UorRemediationWriteRequest),
+  body: (let e : Nat := (uorRemediationWriteFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRemediationWriteParseActor (uorRemediationWriteSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRemediationWriteRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRemediationWriteDecodeField2 s (e + 1) v1) else (ctor Option.none [UorRemediationWriteRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRemediationWriteRule1,
+  parameters: [request : UorRemediationWriteRequest],
+  result: Bool,
+  body: ((project request actor) =? (uorRemediationWriteActorUnverified))
+}
+
+definition{
+  name: uorRemediationWriteRule2,
+  parameters: [request : UorRemediationWriteRequest],
+  result: Bool,
+  body: ((project request actor) =? (uorRemediationWriteActorOther))
+}
+
+definition{
+  name: uorRemediationWriteRule3,
+  parameters: [request : UorRemediationWriteRequest],
+  result: Bool,
+  body: (((project request repository) =? (uorRemediationWriteRepositoryArchived)) && ((project request route) =? (uorRemediationWriteRoutePullRequest)))
+}
+
+definition{
+  name: uorRemediationWriteRule4,
+  parameters: [request : UorRemediationWriteRequest],
+  result: Bool,
+  body: (((project request approval) =? (uorRemediationWriteApprovalNone)) && (not ((project request actor) =? (uorRemediationWriteActorOwner))))
+}
+
+definition{
+  name: uorRemediationWriteRule5,
+  parameters: [request : UorRemediationWriteRequest],
+  result: Bool,
+  body: (((project request change) =? (uorRemediationWriteChangeFile)) && ((project request route) =? (uorRemediationWriteRouteDirect)))
+}
+
+definition{
+  name: uorRemediationWriteRule6,
+  parameters: [request : UorRemediationWriteRequest],
+  result: Bool,
+  body: ((not ((project request change) =? (uorRemediationWriteChangeFile))) && (not ((project request actor) =? (uorRemediationWriteActorOwner))))
+}
+
+definition{
+  name: uorRemediationWriteRule7,
+  parameters: [request : UorRemediationWriteRequest],
+  result: Bool,
+  body: ((not ((project request change) =? (uorRemediationWriteChangeFile))) && ((project request route) =? (uorRemediationWriteRoutePullRequest)))
+}
+
+definition{
+  name: uorRemediationWriteJudge,
+  parameters: [request : UorRemediationWriteRequest],
+  result: Nat,
+  body: (if (uorRemediationWriteRule1 request) then (uorRemediationWriteAnswerIndeterminate) else (if (uorRemediationWriteRule2 request) then (uorRemediationWriteAnswerNotApplicable) else (if (uorRemediationWriteRule3 request) then (uorRemediationWriteAnswerDeny) else (if (uorRemediationWriteRule4 request) then (uorRemediationWriteAnswerDeny) else (if (uorRemediationWriteRule5 request) then (uorRemediationWriteAnswerDeny) else (if (uorRemediationWriteRule6 request) then (uorRemediationWriteAnswerDeny) else (if (uorRemediationWriteRule7 request) then (uorRemediationWriteAnswerDeny) else (uorRemediationWriteAnswerPermit))))))))
+}
+
+definition{
+  name: uorRemediationWriteEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (uorRemediationWriteAnswerPermit)) then 0x7065726d6974 else (if (code =? (uorRemediationWriteAnswerDeny)) then 0x64656e79 else (if (code =? (uorRemediationWriteAnswerNotApplicable)) then 0x6e6f742d6170706c696361626c65 else (if (code =? (uorRemediationWriteAnswerIndeterminate)) then 0x696e64657465726d696e617465 else 0x696e76616c6964))))
+}
+
+definition{
+  name: uorRemediationWriteDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (136 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (uorRemediationWriteDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (uorRemediationWriteEncodeAnswer (uorRemediationWriteJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

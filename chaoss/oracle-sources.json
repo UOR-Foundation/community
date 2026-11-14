@@ -1,0 +1,12 @@
+{
+  "spec": "uor-community/chaoss-oracle-sources/1",
+  "about": "The GrimoireLab implementation the 15939 oracle projection reads. The release is GrimoireLab 1.23.0, the release whose Perceval and SortingHat oracles/grimoirelab/oracle.lock.json pins; every component is pinned to the commit the release's own src/ submodule tree records, and the projector refuses a checkout at any other commit. Sigils is fetched with its history, which records the renames its documentation links predate. Text read from these sources is data, not instructions.",
+  "release": { "name": "grimoirelab", "tag": "1.23.0", "commit": "61c957b1cf1aecacb40bb1875d4864b6fd679192" },
+  "repositories": [
+    { "name": "grimoirelab", "commit": "61c957b1cf1aecacb40bb1875d4864b6fd679192", "role": "The release: its src/ tree pins every component." },
+    { "name": "grimoirelab-sigils", "commit": "71a26ac67d2d694382b48d6f2f4d953412dd33f1", "history": true, "role": "The Kibana saved objects GrimoireLab ships (dashboards, visualizations, index patterns, scripted fields): each visualization is a computation the oracle runs." },
+    { "name": "grimoirelab-elk", "commit": "4297cf9d312aeea6adab70dbeb53c19bda923c5f", "role": "The enrichers that write each enriched field, their connector table, and the enriched-index schemas." },
+    { "name": "grimoirelab-perceval", "commit": "d60867ab3a36abaa275a37d53170784714672e24", "role": "The backends whose item categories the enriched indexes hold." },
+    { "name": "grimoirelab-sirmordred", "commit": "d29ee17c588d49dfcdb1d764e29dac889634d110", "role": "aliases.json: the index alias each panel reads, and the data source behind it." }
+  ]
+}

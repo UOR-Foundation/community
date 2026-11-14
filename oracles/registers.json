@@ -1,0 +1,47 @@
+{
+  "spec": "uor-community/registers/1",
+  "about": "Every projected register, the pinned sources it reads and the commands that re-project it with --check. oracles/reproject.mjs runs one entry; the oracles workflow runs each entry whose inputs changed. `inputs` are the globs the entry's cache key hashes; `tools` are the commands whose output names a tool version the projection depends on. In a command, {sources} is the directory the pinned sources were fetched into.",
+  "registers": [
+    {
+      "area": "chaoss",
+      "sources": { "kind": "git-commits", "file": "chaoss/sources.json", "base": "https://github.com/chaoss/" },
+      "inputs": ["chaoss/**"],
+      "tools": [],
+      "check": [
+        ["node", "chaoss/project.mjs", "{sources}", "--check"],
+        ["node", "chaoss/catalog.mjs", "--check"]
+      ]
+    },
+    {
+      "area": "remediation",
+      "sources": { "kind": "git-urls", "file": "remediation/sources.json" },
+      "inputs": ["remediation/**", "automation/repos.json", "ecosystem/register.json", "ecosystem/snapshot.json"],
+      "tools": [],
+      "check": [
+        ["node", "remediation/project.mjs", "{sources}", "--check"],
+        ["node", "remediation/catalog.mjs", "--check"]
+      ]
+    },
+    {
+      "area": "observations",
+      "sources": { "kind": "committed", "file": "observations/corpus.json" },
+      "inputs": ["observations/**", "chaoss/register.json", "chaoss/oracle-methods.json", "apps/uor-observation-admission.prompt.json", "apps/uor-contribution-attribution.prompt.json", "governance/agents.json"],
+      "tools": [],
+      "check": [
+        ["node", "observations/project.mjs", "--check"],
+        ["node", "observations/catalog.mjs", "--check"]
+      ]
+    },
+    {
+      "area": "chaoss-oracle",
+      "sources": { "kind": "git-commits", "file": ["chaoss/sources.json", "chaoss/oracle-sources.json", "chaoss/upstream-sources.json"], "base": "https://github.com/chaoss/" },
+      "inputs": ["chaoss/**", "upstream/chaoss-15939/**"],
+      "tools": [],
+      "check": [
+        ["node", "chaoss/oracle.mjs", "{sources}", "--check"],
+        ["node", "chaoss/measurement.mjs", "--check"],
+        ["node", "chaoss/upstream.mjs", "{sources}", "--check"]
+      ]
+    }
+  ]
+}

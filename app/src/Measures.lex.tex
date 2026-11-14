@@ -1,0 +1,1563 @@
+\begin{lexlean}{Measures}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Chaoss}
+\importmodule{Foundation.Community.V1.Model}
+\importmodule{MeasurementMapping}
+\importmodule{Foundation.Community.V1.Measurement}
+\importmodule{Foundation.Measurement.V1.Model}
+\title{CHAOSS measures}
+\begin{semanticmodule}
+definition{
+  name: need0,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 0, name := "Defect Resolution Duration", text := "How much time does a project take to resolve defects once they have been reported and recorded?"})
+}
+
+definition{
+  name: need1,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 1, name := "Academic Open Source Project Impact", text := "What is the impact of open source projects that an academician or a team of academicians creates as an important part of a university reappointment, tenure, and promotion process?"})
+}
+
+definition{
+  name: need2,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 2, name := "Activity Dates and Times", text := "What are the dates and timestamps of when contributor activities occur?"})
+}
+
+definition{
+  name: need3,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 3, name := "Board/Council Diversity", text := "What is the diversity within a governing board or council?"})
+}
+
+definition{
+  name: need4,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 4, name := "Bot Activity", text := "What is the volume of automated bot activity?**"})
+}
+
+definition{
+  name: need5,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 5, name := "Branch Lifecycle", text := "How do projects manage the lifecycle of their version control branches?"})
+}
+
+definition{
+  name: need6,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 6, name := "Burstiness", text := "How are short timeframes of intense activity, followed by a corresponding return to a typical pattern of activity, observed in a project?"})
+}
+
+definition{
+  name: need7,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 7, name := "Change Request Acceptance Ratio", text := "What is the ratio of change requests accepted to change requests closed without being merged?"})
+}
+
+definition{
+  name: need8,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 8, name := "Change Request Closure Ratio", text := "Is the project keeping up with change requests?"})
+}
+
+definition{
+  name: need9,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 9, name := "Change Request Commits", text := "How many [code change commits](https://chaoss.community/metric-code-change-commits/) are included in a [change request](https://chaoss.community/metric-change-requests/)?"})
+}
+
+definition{
+  name: need10,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 10, name := "Change Request Review Duration", text := "How long does it take a [change request](https://github.com/chaoss/wg-evolution/blob/main/focus-areas/code-development-process-quality/change-requests.md) reviewer to review a specific change request?"})
+}
+
+definition{
+  name: need11,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 11, name := "Change Request Reviews", text := "To what extent are [change requests](https://chaoss.community/metric-change-requests/) put through a formal review process using platform features?"})
+}
+
+definition{
+  name: need12,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 12, name := "Change Requests", text := "What new change requests to the source code occurred during a certain period?"})
+}
+
+definition{
+  name: need13,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 13, name := "**Change Requests Accepted**", text := "How many accepted change requests are present in a code change?"})
+}
+
+definition{
+  name: need14,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 14, name := "**Change Requests Declined**", text := "What change requests ended up being declined during a certain period?"})
+}
+
+definition{
+  name: need15,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 15, name := "Change Requests Duration", text := "What is the duration of time between the moment a change request starts and the moment it is accepted or closed?"})
+}
+
+definition{
+  name: need16,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 16, name := "Chat Platform Inclusivity", text := "How do you review Chat Platform inclusivity for your community?"})
+}
+
+definition{
+  name: need17,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 17, name := "Clones", text := "How many copies of an open source project repository have been saved on a local machine?"})
+}
+
+definition{
+  name: need18,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 18, name := "Code Changes Commits", text := "How many changes were made to the source code during a specified period?"})
+}
+
+definition{
+  name: need19,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 19, name := "Code Changes Lines", text := "What is the sum of the number of lines touched (lines added plus lines removed) in all changes to the source code during a certain period?"})
+}
+
+definition{
+  name: need20,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 20, name := "Code of Conduct at Event", text := "How does the Code of Conduct for events support diversity and inclusion?"})
+}
+
+definition{
+  name: need21,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 21, name := "Code of Conduct for a Project", text := "How, and in what specific ways, does the code of conduct for a project support diversity, equity, and inclusion?"})
+}
+
+definition{
+  name: need22,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 22, name := "Collaboration Platform Activity", text := "What is the count of activities across digital collaboration platforms (e.g., GitHub, GitLab, Slack, email) used by a project?"})
+}
+
+definition{
+  name: need23,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 23, name := "Committers", text := "How robust are the contributors to a community?"})
+}
+
+definition{
+  name: need24,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 24, name := "Communication Transparency", text := "How transparent is project communication?"})
+}
+
+definition{
+  name: need25,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 25, name := "Conflict Resolution and Mediation", text := "How do open source maintainers address conflict that may arise while collaborating on a project?"})
+}
+
+definition{
+  name: need26,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 26, name := "Contribution Attribution", text := "Who has contributed to an open-source project, and what attribution information about people and organizations is assigned for contributions?"})
+}
+
+definition{
+  name: need27,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 27, name := "Contributor Absence Factor", text := "How high is the risk to a project should the most active people leave?"})
+}
+
+definition{
+  name: need28,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 28, name := "Contributor Location", text := "What is the location of contributors?"})
+}
+
+definition{
+  name: need29,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 29, name := "Contributors", text := "Who are the contributors to a project?"})
+}
+
+definition{
+  name: need30,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 30, name := "Conversion Rate", text := "What are the rates at which new contributors become more sustained contributors?"})
+}
+
+definition{
+  name: need31,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 31, name := "Diversity Access Tickets", text := "How are Diversity Access Tickets used to support diversity and inclusion for an event?"})
+}
+
+definition{
+  name: need32,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 32, name := "Documentation Accessibility", text := "How does the documentation accommodate different users?"})
+}
+
+definition{
+  name: need33,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 33, name := "Documentation Discoverability", text := "How easily can users and contributors find the information they are looking for in a project’s documentation?**"})
+}
+
+definition{
+  name: need34,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 34, name := "Documentation Usability", text := "What is the usability of documentation from content and structure perspectives?"})
+}
+
+definition{
+  name: need35,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 35, name := "Elephant Factor", text := "What is the distribution of work in the community across companies?"})
+}
+
+definition{
+  name: need36,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 36, name := "Event Accessibility", text := "To what extent does your event accommodate those with various accessibility needs?"})
+}
+
+definition{
+  name: need37,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 37, name := "Event Demographics", text := "To what extent does an event consider and pay attention to attendee, speaker, and volunteer demographics?"})
+}
+
+definition{
+  name: need38,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 38, name := "Event Location Inclusivity", text := "Is the event located in a region where governments, cultural contexts, or society may cause harm to the physical safety and/or psychological safety of event attendees?"})
+}
+
+definition{
+  name: need39,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 39, name := "Event Locations", text := "Where are open source project events located?"})
+}
+
+definition{
+  name: need40,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 40, name := "Family Friendliness", text := "How does enabling families to attend together support diversity and inclusion of the event?"})
+}
+
+definition{
+  name: need41,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 41, name := "Inactive Contributors", text := "How many Contributors have gone inactive over a specific period of time?"})
+}
+
+definition{
+  name: need42,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 42, name := "Inclusive Experience at Event", text := "To what extent does an event organizing team commit to an inclusive experience at an event?"})
+}
+
+definition{
+  name: need43,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 43, name := "Inclusive Leadership", text := "How well is a project and community set up for diverse leadership?"})
+}
+
+definition{
+  name: need44,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 44, name := "Issue Age", text := "How long have open issues been left open?"})
+}
+
+definition{
+  name: need45,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 45, name := "Issue Label Inclusivity", text := "How well are project issues labelled to invite new contributors, skilled contributors, non-code contributors, and other types of contributors?"})
+}
+
+definition{
+  name: need46,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 46, name := "Issue Resolution Duration", text := "How long does it take for an issue to be closed?"})
+}
+
+definition{
+  name: need47,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 47, name := "**Issue Response Time**", text := "How much time passes between the opening of an issue and a response in the issue thread from another contributor?"})
+}
+
+definition{
+  name: need48,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 48, name := "**Issues Active**", text := "How many issues were active during a certain period?"})
+}
+
+definition{
+  name: need49,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 49, name := "Issues Closed", text := "How many issues were closed during a certain period?"})
+}
+
+definition{
+  name: need50,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 50, name := "Issues New", text := "How many new issues are created during a certain period?"})
+}
+
+definition{
+  name: need51,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 51, name := "Job Opportunities", text := "How many job postings request skills with technologies from a project?"})
+}
+
+definition{
+  name: need52,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 52, name := "Labor Investment", text := "What was the cost of an organization for its employees to create the counted contributions (e.g., commits, issues, and pull requests)?"})
+}
+
+definition{
+  name: need53,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 53, name := "Libyears", text := "What is the age of the project’s dependencies compared to current stable releases?"})
+}
+
+definition{
+  name: need54,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 54, name := "License Coverage", text := "How much of the code base has declared licenses?"})
+}
+
+definition{
+  name: need55,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 55, name := "License Declared", text := "What are the declared software package licenses?"})
+}
+
+definition{
+  name: need56,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 56, name := "Meeting Attendee Count", text := "How many people are attending our virtual or in-person meetings?"})
+}
+
+definition{
+  name: need57,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 57, name := "Mentorship", text := "How effective are our mentorship programs at supporting diversity and inclusion in our project?"})
+}
+
+definition{
+  name: need58,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 58, name := "New Contributors", text := "How many contributors are making their first contribution to a given project and who are they?"})
+}
+
+definition{
+  name: need59,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 59, name := "**New Contributors Closing Issues**", text := "How many contributors are closing issues for the first time in a given project?"})
+}
+
+definition{
+  name: need60,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 60, name := "Newcomer Experience", text := "How well does an open source community attend to welcoming newcomers?"})
+}
+
+definition{
+  name: need61,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 61, name := "Number of Downloads", text := "How many downloads occurred since the software artifact was released?"})
+}
+
+definition{
+  name: need62,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 62, name := "Occasional Contributors", text := "How do we understand the number of occasional contributors and the contributions that they make?"})
+}
+
+definition{
+  name: need63,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 63, name := "Open Source Security Foundation (OpenSSF) Best Practices Badge", text := "What is the current OpenSSF Best Practices status for the project?"})
+}
+
+definition{
+  name: need64,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 64, name := "Organizational Diversity", text := "What is the organizational diversity of contributions?"})
+}
+
+definition{
+  name: need65,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 65, name := "Organizational Influence", text := "How much influence does an organization have on an open source community?"})
+}
+
+definition{
+  name: need66,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 66, name := "Organizational Project Skill Demand", text := "How many organizations are using this project and could hire me if I become proficient?"})
+}
+
+definition{
+  name: need67,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 67, name := "OSI Approved Licenses", text := "What percentage of a project’s licenses are OSI-approved open source licenses?"})
+}
+
+definition{
+  name: need68,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 68, name := "Programming Language Distribution", text := "What are the different programming languages present in an open-source project(s), and what is the percentage of each language?"})
+}
+
+definition{
+  name: need69,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 69, name := "Project Access", text := "To what extent does your project provide access and help those with various access needs?"})
+}
+
+definition{
+  name: need70,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 70, name := "Project Burnout", text := "How is project burnout identified and managed within an open source project?"})
+}
+
+definition{
+  name: need71,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 71, name := "Project Demographics", text := "What are the demographics within a project?"})
+}
+
+definition{
+  name: need72,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 72, name := "Project Popularity", text := "How popular is an open source project?"})
+}
+
+definition{
+  name: need73,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 73, name := "Project Recommendability", text := "How likely is it that you would recommend a community or project to other people?"})
+}
+
+definition{
+  name: need74,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 74, name := "Project Velocity", text := "What is the development speed for an organization?"})
+}
+
+definition{
+  name: need75,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 75, name := "Psychological Safety", text := "To what extent do community members feel safe within a community, including adding contributions, influencing change, bringing their authentic selves, and generally participating in the project?"})
+}
+
+definition{
+  name: need76,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 76, name := "Public Health and Safety", text := "To what extent does your event address public health through policies around masks, vaccines, COVID testing, and in infrastructure such as ventilation and air purification in indoor venues?"})
+}
+
+definition{
+  name: need77,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 77, name := "Release Frequency", text := "How often does a project publish a release of their software / artifact?"})
+}
+
+definition{
+  name: need78,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 78, name := "Review Cycle Duration within a Change Request", text := "What is the duration of a review cycle within a single change request?"})
+}
+
+definition{
+  name: need79,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 79, name := "Self Merge Rates", text := "How many of the contributions in the project repository are being merged by the original contributor?"})
+}
+
+definition{
+  name: need80,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 80, name := "SPDX Document", text := "Does the software package have an associated SPDX document as a standard expression of dependencies, licensing, and security-related issues?"})
+}
+
+definition{
+  name: need81,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 81, name := "Sponsorship", text := "How effective are long-time members who sponsor people in supporting diversity and inclusion in a community?**"})
+}
+
+definition{
+  name: need82,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 82, name := "Technical Fork", text := "What are a number of technical forks of an open source project on code development platforms?"})
+}
+
+definition{
+  name: need83,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 83, name := "Test Coverage", text := "How well is the code tested?"})
+}
+
+definition{
+  name: need84,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 84, name := "Time Inclusion for Virtual Events", text := "How can organizers of virtual events be mindful of attendees and speakers in other time zones?"})
+}
+
+definition{
+  name: need85,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 85, name := "Time to Close", text := "How much time passes between creating and closing an operation such as an issue, change request, or support ticket?**"})
+}
+
+definition{
+  name: need86,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 86, name := "Time to First Response", text := "How much time passes between when an activity requiring attention is created and the first response?"})
+}
+
+definition{
+  name: need87,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 87, name := "Types of Contributions", text := "What types of contributions are being made?"})
+}
+
+definition{
+  name: need88,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 88, name := "Upstream Code Dependencies", text := "What projects and libraries does my project depend on?"})
+}
+
+definition{
+  name: need89,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 89, name := "Misuse", text := "Is AI use causing harm or violating community norms and expectations including the Code of Conduct."})
+}
+
+definition{
+  name: need90,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 90, name := "Policy Change", text := "How do communities' AI policies change over time, and how do those changes compare across projects?"})
+}
+
+definition{
+  name: need91,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 91, name := "Policy Specificity", text := "How specifically, does a community's AI policy addresses each domain where AI shows up, rather than one blanket statement covering all use."})
+}
+
+definition{
+  name: need92,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 92, name := "Use Compliance", text := "Does AI use match what current policy permits."})
+}
+
+definition{
+  name: need93,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 93, name := "Use Composition", text := "What AI tools, models, and ownership structures are in use across a community's spaces."})
+}
+
+definition{
+  name: need94,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 94, name := "Metrics Model: AI Alignment - Community Aligned Training (Feedback)", text := "wg-ai-alignment@0d0f78655aab6417293aaefd85e08ecc72ddabfa:metrics/ai-alignment-community-feedback/metric-model-ai-alignment-community-aligned-training-feedback.md#why-it-matters"})
+}
+
+definition{
+  name: need95,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 95, name := "Business Readiness of an Open Source Project", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/business-readiness/definition/business-readiness.md#why-it-matters"})
+}
+
+definition{
+  name: need96,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 96, name := "Collaboration Development Index", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/collaboration-development-index/definition/collaboration-development-index.md#why-it-matters"})
+}
+
+definition{
+  name: need97,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 97, name := "Community Activity", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/community-activity/definition/community-activity.md#why-it-matters"})
+}
+
+definition{
+  name: need98,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 98, name := "Metrics Model: Community Governed AI Use in Open Communities", text := "wg-ai-alignment@0d0f78655aab6417293aaefd85e08ecc72ddabfa:metrics/ai-alignment-community-governed-use/metric-model-ai-alignment-community-governed-use.md#why-it-matters"})
+}
+
+definition{
+  name: need99,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 99, name := "Community Service and Support", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/community-service-and-support/definition/community-service-and-support.md#why-it-matters"})
+}
+
+definition{
+  name: need100,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 100, name := "Community Welcomingness", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/community-welcomingness/definition/community-welcomingness.md#why-it-matters"})
+}
+
+definition{
+  name: need101,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 101, name := "CHAOSS DEI Event Badging", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/dei-event-badging/definition/dei-event-badging.md#why-it-matters"})
+}
+
+definition{
+  name: need102,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 102, name := "Development Responsiveness", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/development-responsiveness/definition/development-responsiveness.md#why-it-matters"})
+}
+
+definition{
+  name: need103,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 103, name := "Funding", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/funding/definition/funding.md#why-it-matters"})
+}
+
+definition{
+  name: need104,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 104, name := "OSS Project Viability: Community", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/viability/community/definition/viability-community.md#why-it-matters"})
+}
+
+definition{
+  name: need105,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 105, name := "OSS Project Viability: Compliance + Security", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/viability/compliance-security/definition/viability-compliance-security.md#why-it-matters"})
+}
+
+definition{
+  name: need106,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 106, name := "OSS Project Viability: Governance", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/viability/governance/definition/viability-governance.md#why-it-matters"})
+}
+
+definition{
+  name: need107,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 107, name := "OSS Project Viability: Strategy", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/viability/strategy/definition/viability-strategy.md#why-it-matters"})
+}
+
+definition{
+  name: need108,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 108, name := "Project Awareness", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/project-awareness/definition/project-awareness.md#why-it-matters"})
+}
+
+definition{
+  name: need109,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 109, name := "Project Engagement", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/project_engagement/definition/project_engagement.md#why-it-matters"})
+}
+
+definition{
+  name: need110,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 110, name := "OSS Project Viability Starter", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/viability/starter/definition/viability-starter.md#why-it-matters"})
+}
+
+definition{
+  name: need111,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 111, name := "Safety", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/safety/definition/safety.md#why-it-matters"})
+}
+
+definition{
+  name: need112,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::InformationNeed,
+  body: (record Foundation.Measurement.V1.Model::InformationNeed {index := 112, name := "Starter Project Health Metrics Model", text := "wg-metrics-models@4365fe61cf9654ef7b3911805425f4e485918672:metrics-model-libs/starter-project-health/definition/starter-project-health.md#why-it-matters"})
+}
+
+definition{
+  name: concept0,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 0, informationNeedIndex := 0, name := "Defect Resolution Duration"})
+}
+
+definition{
+  name: concept1,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 1, informationNeedIndex := 1, name := "Academic Open Source Project Impact"})
+}
+
+definition{
+  name: concept2,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 2, informationNeedIndex := 2, name := "Activity Dates and Times"})
+}
+
+definition{
+  name: concept3,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 3, informationNeedIndex := 3, name := "Board/Council Diversity"})
+}
+
+definition{
+  name: concept4,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 4, informationNeedIndex := 4, name := "Bot Activity"})
+}
+
+definition{
+  name: concept5,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 5, informationNeedIndex := 5, name := "Branch Lifecycle"})
+}
+
+definition{
+  name: concept6,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 6, informationNeedIndex := 6, name := "Burstiness"})
+}
+
+definition{
+  name: concept7,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 7, informationNeedIndex := 7, name := "Change Request Acceptance Ratio"})
+}
+
+definition{
+  name: concept8,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 8, informationNeedIndex := 8, name := "Change Request Closure Ratio"})
+}
+
+definition{
+  name: concept9,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 9, informationNeedIndex := 9, name := "Change Request Commits"})
+}
+
+definition{
+  name: concept10,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 10, informationNeedIndex := 10, name := "Change Request Review Duration"})
+}
+
+definition{
+  name: concept11,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 11, informationNeedIndex := 11, name := "Change Request Reviews"})
+}
+
+definition{
+  name: concept12,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 12, informationNeedIndex := 12, name := "Change Requests"})
+}
+
+definition{
+  name: concept13,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 13, informationNeedIndex := 13, name := "**Change Requests Accepted**"})
+}
+
+definition{
+  name: concept14,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 14, informationNeedIndex := 14, name := "**Change Requests Declined**"})
+}
+
+definition{
+  name: concept15,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 15, informationNeedIndex := 15, name := "Change Requests Duration"})
+}
+
+definition{
+  name: concept16,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 16, informationNeedIndex := 16, name := "Chat Platform Inclusivity"})
+}
+
+definition{
+  name: concept17,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 17, informationNeedIndex := 17, name := "Clones"})
+}
+
+definition{
+  name: concept18,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 18, informationNeedIndex := 18, name := "Code Changes Commits"})
+}
+
+definition{
+  name: concept19,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 19, informationNeedIndex := 19, name := "Code Changes Lines"})
+}
+
+definition{
+  name: concept20,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 20, informationNeedIndex := 20, name := "Code of Conduct at Event"})
+}
+
+definition{
+  name: concept21,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 21, informationNeedIndex := 21, name := "Code of Conduct for a Project"})
+}
+
+definition{
+  name: concept22,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 22, informationNeedIndex := 22, name := "Collaboration Platform Activity"})
+}
+
+definition{
+  name: concept23,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 23, informationNeedIndex := 23, name := "Committers"})
+}
+
+definition{
+  name: concept24,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 24, informationNeedIndex := 24, name := "Communication Transparency"})
+}
+
+definition{
+  name: concept25,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 25, informationNeedIndex := 25, name := "Conflict Resolution and Mediation"})
+}
+
+definition{
+  name: concept26,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 26, informationNeedIndex := 26, name := "Contribution Attribution"})
+}
+
+definition{
+  name: concept27,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 27, informationNeedIndex := 27, name := "Contributor Absence Factor"})
+}
+
+definition{
+  name: concept28,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 28, informationNeedIndex := 28, name := "Contributor Location"})
+}
+
+definition{
+  name: concept29,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 29, informationNeedIndex := 29, name := "Contributors"})
+}
+
+definition{
+  name: concept30,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 30, informationNeedIndex := 30, name := "Conversion Rate"})
+}
+
+definition{
+  name: concept31,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 31, informationNeedIndex := 31, name := "Diversity Access Tickets"})
+}
+
+definition{
+  name: concept32,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 32, informationNeedIndex := 32, name := "Documentation Accessibility"})
+}
+
+definition{
+  name: concept33,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 33, informationNeedIndex := 33, name := "Documentation Discoverability"})
+}
+
+definition{
+  name: concept34,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 34, informationNeedIndex := 34, name := "Documentation Usability"})
+}
+
+definition{
+  name: concept35,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 35, informationNeedIndex := 35, name := "Elephant Factor"})
+}
+
+definition{
+  name: concept36,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 36, informationNeedIndex := 36, name := "Event Accessibility"})
+}
+
+definition{
+  name: concept37,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 37, informationNeedIndex := 37, name := "Event Demographics"})
+}
+
+definition{
+  name: concept38,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 38, informationNeedIndex := 38, name := "Event Location Inclusivity"})
+}
+
+definition{
+  name: concept39,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 39, informationNeedIndex := 39, name := "Event Locations"})
+}
+
+definition{
+  name: concept40,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 40, informationNeedIndex := 40, name := "Family Friendliness"})
+}
+
+definition{
+  name: concept41,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 41, informationNeedIndex := 41, name := "Inactive Contributors"})
+}
+
+definition{
+  name: concept42,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 42, informationNeedIndex := 42, name := "Inclusive Experience at Event"})
+}
+
+definition{
+  name: concept43,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 43, informationNeedIndex := 43, name := "Inclusive Leadership"})
+}
+
+definition{
+  name: concept44,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 44, informationNeedIndex := 44, name := "Issue Age"})
+}
+
+definition{
+  name: concept45,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 45, informationNeedIndex := 45, name := "Issue Label Inclusivity"})
+}
+
+definition{
+  name: concept46,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 46, informationNeedIndex := 46, name := "Issue Resolution Duration"})
+}
+
+definition{
+  name: concept47,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 47, informationNeedIndex := 47, name := "**Issue Response Time**"})
+}
+
+definition{
+  name: concept48,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 48, informationNeedIndex := 48, name := "**Issues Active**"})
+}
+
+definition{
+  name: concept49,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 49, informationNeedIndex := 49, name := "Issues Closed"})
+}
+
+definition{
+  name: concept50,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 50, informationNeedIndex := 50, name := "Issues New"})
+}
+
+definition{
+  name: concept51,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 51, informationNeedIndex := 51, name := "Job Opportunities"})
+}
+
+definition{
+  name: concept52,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 52, informationNeedIndex := 52, name := "Labor Investment"})
+}
+
+definition{
+  name: concept53,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 53, informationNeedIndex := 53, name := "Libyears"})
+}
+
+definition{
+  name: concept54,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 54, informationNeedIndex := 54, name := "License Coverage"})
+}
+
+definition{
+  name: concept55,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 55, informationNeedIndex := 55, name := "License Declared"})
+}
+
+definition{
+  name: concept56,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 56, informationNeedIndex := 56, name := "Meeting Attendee Count"})
+}
+
+definition{
+  name: concept57,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 57, informationNeedIndex := 57, name := "Mentorship"})
+}
+
+definition{
+  name: concept58,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 58, informationNeedIndex := 58, name := "New Contributors"})
+}
+
+definition{
+  name: concept59,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 59, informationNeedIndex := 59, name := "**New Contributors Closing Issues**"})
+}
+
+definition{
+  name: concept60,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 60, informationNeedIndex := 60, name := "Newcomer Experience"})
+}
+
+definition{
+  name: concept61,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 61, informationNeedIndex := 61, name := "Number of Downloads"})
+}
+
+definition{
+  name: concept62,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 62, informationNeedIndex := 62, name := "Occasional Contributors"})
+}
+
+definition{
+  name: concept63,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 63, informationNeedIndex := 63, name := "Open Source Security Foundation (OpenSSF) Best Practices Badge"})
+}
+
+definition{
+  name: concept64,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 64, informationNeedIndex := 64, name := "Organizational Diversity"})
+}
+
+definition{
+  name: concept65,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 65, informationNeedIndex := 65, name := "Organizational Influence"})
+}
+
+definition{
+  name: concept66,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 66, informationNeedIndex := 66, name := "Organizational Project Skill Demand"})
+}
+
+definition{
+  name: concept67,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 67, informationNeedIndex := 67, name := "OSI Approved Licenses"})
+}
+
+definition{
+  name: concept68,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 68, informationNeedIndex := 68, name := "Programming Language Distribution"})
+}
+
+definition{
+  name: concept69,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 69, informationNeedIndex := 69, name := "Project Access"})
+}
+
+definition{
+  name: concept70,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 70, informationNeedIndex := 70, name := "Project Burnout"})
+}
+
+definition{
+  name: concept71,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 71, informationNeedIndex := 71, name := "Project Demographics"})
+}
+
+definition{
+  name: concept72,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 72, informationNeedIndex := 72, name := "Project Popularity"})
+}
+
+definition{
+  name: concept73,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 73, informationNeedIndex := 73, name := "Project Recommendability"})
+}
+
+definition{
+  name: concept74,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 74, informationNeedIndex := 74, name := "Project Velocity"})
+}
+
+definition{
+  name: concept75,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 75, informationNeedIndex := 75, name := "Psychological Safety"})
+}
+
+definition{
+  name: concept76,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 76, informationNeedIndex := 76, name := "Public Health and Safety"})
+}
+
+definition{
+  name: concept77,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 77, informationNeedIndex := 77, name := "Release Frequency"})
+}
+
+definition{
+  name: concept78,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 78, informationNeedIndex := 78, name := "Review Cycle Duration within a Change Request"})
+}
+
+definition{
+  name: concept79,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 79, informationNeedIndex := 79, name := "Self Merge Rates"})
+}
+
+definition{
+  name: concept80,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 80, informationNeedIndex := 80, name := "SPDX Document"})
+}
+
+definition{
+  name: concept81,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 81, informationNeedIndex := 81, name := "Sponsorship"})
+}
+
+definition{
+  name: concept82,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 82, informationNeedIndex := 82, name := "Technical Fork"})
+}
+
+definition{
+  name: concept83,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 83, informationNeedIndex := 83, name := "Test Coverage"})
+}
+
+definition{
+  name: concept84,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 84, informationNeedIndex := 84, name := "Time Inclusion for Virtual Events"})
+}
+
+definition{
+  name: concept85,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 85, informationNeedIndex := 85, name := "Time to Close"})
+}
+
+definition{
+  name: concept86,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 86, informationNeedIndex := 86, name := "Time to First Response"})
+}
+
+definition{
+  name: concept87,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 87, informationNeedIndex := 87, name := "Types of Contributions"})
+}
+
+definition{
+  name: concept88,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 88, informationNeedIndex := 88, name := "Upstream Code Dependencies"})
+}
+
+definition{
+  name: concept89,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 89, informationNeedIndex := 89, name := "Misuse"})
+}
+
+definition{
+  name: concept90,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 90, informationNeedIndex := 90, name := "Policy Change"})
+}
+
+definition{
+  name: concept91,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 91, informationNeedIndex := 91, name := "Policy Specificity"})
+}
+
+definition{
+  name: concept92,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 92, informationNeedIndex := 92, name := "Use Compliance"})
+}
+
+definition{
+  name: concept93,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 93, informationNeedIndex := 93, name := "Use Composition"})
+}
+
+definition{
+  name: concept94,
+  parameters: [],
+  result: Foundation.Measurement.V1.Model::MeasurableConcept,
+  body: (record Foundation.Measurement.V1.Model::MeasurableConcept {index := 94, informationNeedIndex := 94, name := "Metrics Model: AI Alignment - Community Aligned Training (Feedback)"})
+}
+
+definition{
+  name: needsFrom96,
+  parameters: [],
+  result: (List Foundation.Measurement.V1.Model::InformationNeed),
+  body: (cons (need96) (cons (need97) (cons (need98) (cons (need99) (cons (need100) (cons (need101) (cons (need102) (cons (need103) (cons (need104) (cons (need105) (cons (need106) (cons (need107) (cons (need108) (cons (need109) (cons (need110) (cons (need111) (cons (need112) (nil Foundation.Measurement.V1.Model::InformationNeed))))))))))))))))))
+}
+
+definition{
+  name: needsFrom48,
+  parameters: [],
+  result: (List Foundation.Measurement.V1.Model::InformationNeed),
+  body: (cons (need48) (cons (need49) (cons (need50) (cons (need51) (cons (need52) (cons (need53) (cons (need54) (cons (need55) (cons (need56) (cons (need57) (cons (need58) (cons (need59) (cons (need60) (cons (need61) (cons (need62) (cons (need63) (cons (need64) (cons (need65) (cons (need66) (cons (need67) (cons (need68) (cons (need69) (cons (need70) (cons (need71) (cons (need72) (cons (need73) (cons (need74) (cons (need75) (cons (need76) (cons (need77) (cons (need78) (cons (need79) (cons (need80) (cons (need81) (cons (need82) (cons (need83) (cons (need84) (cons (need85) (cons (need86) (cons (need87) (cons (need88) (cons (need89) (cons (need90) (cons (need91) (cons (need92) (cons (need93) (cons (need94) (cons (need95) (needsFrom96)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: needsFrom0,
+  parameters: [],
+  result: (List Foundation.Measurement.V1.Model::InformationNeed),
+  body: (cons (need0) (cons (need1) (cons (need2) (cons (need3) (cons (need4) (cons (need5) (cons (need6) (cons (need7) (cons (need8) (cons (need9) (cons (need10) (cons (need11) (cons (need12) (cons (need13) (cons (need14) (cons (need15) (cons (need16) (cons (need17) (cons (need18) (cons (need19) (cons (need20) (cons (need21) (cons (need22) (cons (need23) (cons (need24) (cons (need25) (cons (need26) (cons (need27) (cons (need28) (cons (need29) (cons (need30) (cons (need31) (cons (need32) (cons (need33) (cons (need34) (cons (need35) (cons (need36) (cons (need37) (cons (need38) (cons (need39) (cons (need40) (cons (need41) (cons (need42) (cons (need43) (cons (need44) (cons (need45) (cons (need46) (cons (need47) (needsFrom48)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: needs,
+  parameters: [],
+  result: (List Foundation.Measurement.V1.Model::InformationNeed),
+  body: (needsFrom0)
+}
+
+definition{
+  name: conceptsFrom48,
+  parameters: [],
+  result: (List Foundation.Measurement.V1.Model::MeasurableConcept),
+  body: (cons (concept48) (cons (concept49) (cons (concept50) (cons (concept51) (cons (concept52) (cons (concept53) (cons (concept54) (cons (concept55) (cons (concept56) (cons (concept57) (cons (concept58) (cons (concept59) (cons (concept60) (cons (concept61) (cons (concept62) (cons (concept63) (cons (concept64) (cons (concept65) (cons (concept66) (cons (concept67) (cons (concept68) (cons (concept69) (cons (concept70) (cons (concept71) (cons (concept72) (cons (concept73) (cons (concept74) (cons (concept75) (cons (concept76) (cons (concept77) (cons (concept78) (cons (concept79) (cons (concept80) (cons (concept81) (cons (concept82) (cons (concept83) (cons (concept84) (cons (concept85) (cons (concept86) (cons (concept87) (cons (concept88) (cons (concept89) (cons (concept90) (cons (concept91) (cons (concept92) (cons (concept93) (cons (concept94) (nil Foundation.Measurement.V1.Model::MeasurableConcept))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: conceptsFrom0,
+  parameters: [],
+  result: (List Foundation.Measurement.V1.Model::MeasurableConcept),
+  body: (cons (concept0) (cons (concept1) (cons (concept2) (cons (concept3) (cons (concept4) (cons (concept5) (cons (concept6) (cons (concept7) (cons (concept8) (cons (concept9) (cons (concept10) (cons (concept11) (cons (concept12) (cons (concept13) (cons (concept14) (cons (concept15) (cons (concept16) (cons (concept17) (cons (concept18) (cons (concept19) (cons (concept20) (cons (concept21) (cons (concept22) (cons (concept23) (cons (concept24) (cons (concept25) (cons (concept26) (cons (concept27) (cons (concept28) (cons (concept29) (cons (concept30) (cons (concept31) (cons (concept32) (cons (concept33) (cons (concept34) (cons (concept35) (cons (concept36) (cons (concept37) (cons (concept38) (cons (concept39) (cons (concept40) (cons (concept41) (cons (concept42) (cons (concept43) (cons (concept44) (cons (concept45) (cons (concept46) (cons (concept47) (conceptsFrom48)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: concepts,
+  parameters: [],
+  result: (List Foundation.Measurement.V1.Model::MeasurableConcept),
+  body: (conceptsFrom0)
+}
+
+definition{
+  name: needTotal,
+  parameters: [values : (List Foundation.Measurement.V1.Model::InformationNeed)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons value rest => (1 + (needTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: needsNumbered,
+  parameters: [position : Nat, values : (List Foundation.Measurement.V1.Model::InformationNeed)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons need rest => (((project need index) =? position) && (needsNumbered (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: conceptsNumbered,
+  parameters: [
+    position : Nat,
+    needCount : Nat,
+    values : (List Foundation.Measurement.V1.Model::MeasurableConcept)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons concept rest => (((project concept index) =? position) && (((project concept informationNeedIndex) <? needCount) && (conceptsNumbered (position + 1) needCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: measuresValid,
+  parameters: [],
+  result: Bool,
+  body: (((project (MeasurementMapping::release) metricCount) =? (project (Chaoss::release) metricCount)) && (((project (MeasurementMapping::release) itemsCount) =? ((project (Chaoss::release) metricCount) + (project (Chaoss::release) modelCount))) && ((needsNumbered 0 (needs)) && (conceptsNumbered 0 (needTotal (needs)) (concepts)))))
+}
+
+theorem{
+  name: measuresValidHolds,
+  parameters: [],
+  statement: ((measuresValid) = true),
+  proof: decide{}
+}
+\end{semanticmodule}
+\end{lexlean}

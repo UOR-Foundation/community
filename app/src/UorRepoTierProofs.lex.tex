@@ -1,0 +1,152 @@
+\begin{lexlean}{UorRepoTierProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{UorRepoTier}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : UorRepoTier::UorRepoTierRequest],
+  result: Bool,
+  body: ((((((project request recorded) <? 5) && ((project request role) <? 8)) && ((project request recorded) =? (UorRepoTier::uorRepoTierRecordedT2))) && ((project request role) =? (UorRepoTier::uorRepoTierRoleFramework))) && (not ((UorRepoTier::uorRepoTierJudge request) =? (UorRepoTier::uorRepoTierAnswerT2))))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : UorRepoTier::UorRepoTierRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoTier::uorRepoTierAnswerT1,
+      UorRepoTier::uorRepoTierAnswerT2,
+      UorRepoTier::uorRepoTierAnswerT3,
+      UorRepoTier::uorRepoTierAnswerT4,
+      UorRepoTier::uorRepoTierJudge,
+      UorRepoTier::uorRepoTierRecordedNone,
+      UorRepoTier::uorRepoTierRecordedT1,
+      UorRepoTier::uorRepoTierRecordedT2,
+      UorRepoTier::uorRepoTierRecordedT3,
+      UorRepoTier::uorRepoTierRecordedT4,
+      UorRepoTier::uorRepoTierRoleDocs,
+      UorRepoTier::uorRepoTierRoleExperiment,
+      UorRepoTier::uorRepoTierRoleFramework,
+      UorRepoTier::uorRepoTierRoleImplementation,
+      UorRepoTier::uorRepoTierRoleIntegration,
+      UorRepoTier::uorRepoTierRolePresentation,
+      UorRepoTier::uorRepoTierRoleSpec,
+      UorRepoTier::uorRepoTierRoleWebsite,
+      UorRepoTier::uorRepoTierRule1,
+      UorRepoTier::uorRepoTierRule10,
+      UorRepoTier::uorRepoTierRule11,
+      UorRepoTier::uorRepoTierRule2,
+      UorRepoTier::uorRepoTierRule3,
+      UorRepoTier::uorRepoTierRule4,
+      UorRepoTier::uorRepoTierRule5,
+      UorRepoTier::uorRepoTierRule6,
+      UorRepoTier::uorRepoTierRule7,
+      UorRepoTier::uorRepoTierRule8,
+      UorRepoTier::uorRepoTierRule9,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : UorRepoTier::UorRepoTierRequest],
+  result: Bool,
+  body: ((((((project request recorded) <? 5) && ((project request role) <? 8)) && ((project request recorded) =? (UorRepoTier::uorRepoTierRecordedNone))) && ((project request role) =? (UorRepoTier::uorRepoTierRoleExperiment))) && ((UorRepoTier::uorRepoTierJudge request) =? (UorRepoTier::uorRepoTierAnswerT1)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : UorRepoTier::UorRepoTierRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoTier::uorRepoTierAnswerT1,
+      UorRepoTier::uorRepoTierAnswerT2,
+      UorRepoTier::uorRepoTierAnswerT3,
+      UorRepoTier::uorRepoTierAnswerT4,
+      UorRepoTier::uorRepoTierJudge,
+      UorRepoTier::uorRepoTierRecordedNone,
+      UorRepoTier::uorRepoTierRecordedT1,
+      UorRepoTier::uorRepoTierRecordedT2,
+      UorRepoTier::uorRepoTierRecordedT3,
+      UorRepoTier::uorRepoTierRecordedT4,
+      UorRepoTier::uorRepoTierRoleDocs,
+      UorRepoTier::uorRepoTierRoleExperiment,
+      UorRepoTier::uorRepoTierRoleFramework,
+      UorRepoTier::uorRepoTierRoleImplementation,
+      UorRepoTier::uorRepoTierRoleIntegration,
+      UorRepoTier::uorRepoTierRolePresentation,
+      UorRepoTier::uorRepoTierRoleSpec,
+      UorRepoTier::uorRepoTierRoleWebsite,
+      UorRepoTier::uorRepoTierRule1,
+      UorRepoTier::uorRepoTierRule10,
+      UorRepoTier::uorRepoTierRule11,
+      UorRepoTier::uorRepoTierRule2,
+      UorRepoTier::uorRepoTierRule3,
+      UorRepoTier::uorRepoTierRule4,
+      UorRepoTier::uorRepoTierRule5,
+      UorRepoTier::uorRepoTierRule6,
+      UorRepoTier::uorRepoTierRule7,
+      UorRepoTier::uorRepoTierRule8,
+      UorRepoTier::uorRepoTierRule9,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : UorRepoTier::UorRepoTierRequest],
+  result: Bool,
+  body: ((((((project request recorded) <? 5) && ((project request role) <? 8)) && ((project request recorded) =? (UorRepoTier::uorRepoTierRecordedNone))) && ((project request role) =? (UorRepoTier::uorRepoTierRoleWebsite))) && (not ((UorRepoTier::uorRepoTierJudge request) =? (UorRepoTier::uorRepoTierAnswerT3))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : UorRepoTier::UorRepoTierRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorRepoTier::uorRepoTierAnswerT1,
+      UorRepoTier::uorRepoTierAnswerT2,
+      UorRepoTier::uorRepoTierAnswerT3,
+      UorRepoTier::uorRepoTierAnswerT4,
+      UorRepoTier::uorRepoTierJudge,
+      UorRepoTier::uorRepoTierRecordedNone,
+      UorRepoTier::uorRepoTierRecordedT1,
+      UorRepoTier::uorRepoTierRecordedT2,
+      UorRepoTier::uorRepoTierRecordedT3,
+      UorRepoTier::uorRepoTierRecordedT4,
+      UorRepoTier::uorRepoTierRoleDocs,
+      UorRepoTier::uorRepoTierRoleExperiment,
+      UorRepoTier::uorRepoTierRoleFramework,
+      UorRepoTier::uorRepoTierRoleImplementation,
+      UorRepoTier::uorRepoTierRoleIntegration,
+      UorRepoTier::uorRepoTierRolePresentation,
+      UorRepoTier::uorRepoTierRoleSpec,
+      UorRepoTier::uorRepoTierRoleWebsite,
+      UorRepoTier::uorRepoTierRule1,
+      UorRepoTier::uorRepoTierRule10,
+      UorRepoTier::uorRepoTierRule11,
+      UorRepoTier::uorRepoTierRule2,
+      UorRepoTier::uorRepoTierRule3,
+      UorRepoTier::uorRepoTierRule4,
+      UorRepoTier::uorRepoTierRule5,
+      UorRepoTier::uorRepoTierRule6,
+      UorRepoTier::uorRepoTierRule7,
+      UorRepoTier::uorRepoTierRule8,
+      UorRepoTier::uorRepoTierRule9,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}
