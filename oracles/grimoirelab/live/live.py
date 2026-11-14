@@ -253,7 +253,8 @@ def consolidate(state, exercised, divergences, tick_id):
     keep confirming known behavior lose weight to the ones that reach new
     parts of the model.
     """
-    diverged = {d["trace"] for d in divergences}
+    # A guild-wide divergence (the Message Content intent) names no probe, so it rewards none.
+    diverged = {d["trace"] for d in divergences if "trace" in d}
     for root, rules in exercised:
         family, strategy = root["discord.channel.family"], root["discord.probe.strategy"]
         seen = set(state["coverage"].get(family, []))

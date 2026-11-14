@@ -222,6 +222,11 @@ fn observations_ob_05() {
         collect.contains("USER_FIELDS = ('login', 'id', 'node_id', 'type')"),
         "a profile keeps its public identity only"
     );
+    assert!(
+        collect.contains("UNSET_FIELDS = ('name', 'email')")
+            && collect.contains("**{k: None for k in UNSET_FIELDS}"),
+        "a profile's name and email are recorded and replayed as null"
+    );
     let workflow = read(".github/workflows/observations.yml");
     assert_eq!(
         workflow.matches("${{ github.token }}").count(),

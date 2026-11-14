@@ -62,7 +62,7 @@ Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation
 
 https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e485918672/metrics-model-libs/viability/community/definition/viability-community.md
 
-Health now: 0 open, 0 complete, 16 unmeasured, 15 partial (https://uor-foundation.github.io/community/views/health.md)
+Health now: 0 open, 0 complete, 13 unmeasured, 18 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a developer, I want to understand if a project has a thriving open source community, so that I have a higher degree of confidence in its viability. .
 - As a project manager, I want to use projects well understood and vetted by a developer community, so that I can mitigate the business risk of adopting unsupported dependencies.
@@ -110,7 +110,7 @@ Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation
 
 https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e485918672/metrics-model-libs/viability/starter/definition/viability-starter.md
 
-Health now: 0 open, 0 complete, 16 unmeasured, 15 partial (https://uor-foundation.github.io/community/views/health.md)
+Health now: 0 open, 0 complete, 13 unmeasured, 18 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a developer who is evaluating a new open source project to use as a dependency, I want to understand the project's future roadmap, so that I can determine if its goals and direction match my needs.
 - As a developer, I want to understand if a project has a thriving open source community, so that I have a higher degree of confidence in its viability.
@@ -131,7 +131,7 @@ Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation
 
 https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e485918672/metrics-model-libs/starter-project-health/definition/starter-project-health.md
 
-Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
+Health now: 0 open, 0 complete, 13 unmeasured, 18 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As an OSPO, I want to help our open source contributors improve the health of
 
