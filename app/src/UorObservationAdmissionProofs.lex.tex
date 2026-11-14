@@ -1,0 +1,448 @@
+\begin{lexlean}{UorObservationAdmissionProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{UorObservationAdmission}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  result: Bool,
+  body: (((((((((project request metric) <? 2) && ((project request oracle) <? 3)) && ((project request source) <? 2)) && ((project request replay) <? 3)) && ((project request collection) <? 5)) && ((project request attribution) <? 5)) && ((project request metric) =? (UorObservationAdmission::uorObservationAdmissionMetricUnreleased))) && ((UorObservationAdmission::uorObservationAdmissionJudge request) =? (UorObservationAdmission::uorObservationAdmissionAnswerPermit)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorObservationAdmission::uorObservationAdmissionAnswerDeny,
+      UorObservationAdmission::uorObservationAdmissionAnswerIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAnswerNotApplicable,
+      UorObservationAdmission::uorObservationAdmissionAnswerPermit,
+      UorObservationAdmission::uorObservationAdmissionAttributionAggregate,
+      UorObservationAdmission::uorObservationAdmissionAttributionDeny,
+      UorObservationAdmission::uorObservationAdmissionAttributionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAttributionOrganization,
+      UorObservationAdmission::uorObservationAdmissionAttributionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionDeny,
+      UorObservationAdmission::uorObservationAdmissionCollectionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionCollectionOutside,
+      UorObservationAdmission::uorObservationAdmissionCollectionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionUngoverned,
+      UorObservationAdmission::uorObservationAdmissionJudge,
+      UorObservationAdmission::uorObservationAdmissionMetricReleased,
+      UorObservationAdmission::uorObservationAdmissionMetricUnreleased,
+      UorObservationAdmission::uorObservationAdmissionOracleCovers,
+      UorObservationAdmission::uorObservationAdmissionOracleExcludes,
+      UorObservationAdmission::uorObservationAdmissionOracleUnlisted,
+      UorObservationAdmission::uorObservationAdmissionReplayAbsent,
+      UorObservationAdmission::uorObservationAdmissionReplayDiffers,
+      UorObservationAdmission::uorObservationAdmissionReplayReproduced,
+      UorObservationAdmission::uorObservationAdmissionRule1,
+      UorObservationAdmission::uorObservationAdmissionRule10,
+      UorObservationAdmission::uorObservationAdmissionRule11,
+      UorObservationAdmission::uorObservationAdmissionRule2,
+      UorObservationAdmission::uorObservationAdmissionRule3,
+      UorObservationAdmission::uorObservationAdmissionRule4,
+      UorObservationAdmission::uorObservationAdmissionRule5,
+      UorObservationAdmission::uorObservationAdmissionRule6,
+      UorObservationAdmission::uorObservationAdmissionRule7,
+      UorObservationAdmission::uorObservationAdmissionRule8,
+      UorObservationAdmission::uorObservationAdmissionRule9,
+      UorObservationAdmission::uorObservationAdmissionSourcePinned,
+      UorObservationAdmission::uorObservationAdmissionSourceUnpinned,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  result: Bool,
+  body: (((((((((project request metric) <? 2) && ((project request oracle) <? 3)) && ((project request source) <? 2)) && ((project request replay) <? 3)) && ((project request collection) <? 5)) && ((project request attribution) <? 5)) && (not ((project request oracle) =? (UorObservationAdmission::uorObservationAdmissionOracleCovers)))) && ((UorObservationAdmission::uorObservationAdmissionJudge request) =? (UorObservationAdmission::uorObservationAdmissionAnswerPermit)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorObservationAdmission::uorObservationAdmissionAnswerDeny,
+      UorObservationAdmission::uorObservationAdmissionAnswerIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAnswerNotApplicable,
+      UorObservationAdmission::uorObservationAdmissionAnswerPermit,
+      UorObservationAdmission::uorObservationAdmissionAttributionAggregate,
+      UorObservationAdmission::uorObservationAdmissionAttributionDeny,
+      UorObservationAdmission::uorObservationAdmissionAttributionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAttributionOrganization,
+      UorObservationAdmission::uorObservationAdmissionAttributionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionDeny,
+      UorObservationAdmission::uorObservationAdmissionCollectionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionCollectionOutside,
+      UorObservationAdmission::uorObservationAdmissionCollectionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionUngoverned,
+      UorObservationAdmission::uorObservationAdmissionJudge,
+      UorObservationAdmission::uorObservationAdmissionMetricReleased,
+      UorObservationAdmission::uorObservationAdmissionMetricUnreleased,
+      UorObservationAdmission::uorObservationAdmissionOracleCovers,
+      UorObservationAdmission::uorObservationAdmissionOracleExcludes,
+      UorObservationAdmission::uorObservationAdmissionOracleUnlisted,
+      UorObservationAdmission::uorObservationAdmissionReplayAbsent,
+      UorObservationAdmission::uorObservationAdmissionReplayDiffers,
+      UorObservationAdmission::uorObservationAdmissionReplayReproduced,
+      UorObservationAdmission::uorObservationAdmissionRule1,
+      UorObservationAdmission::uorObservationAdmissionRule10,
+      UorObservationAdmission::uorObservationAdmissionRule11,
+      UorObservationAdmission::uorObservationAdmissionRule2,
+      UorObservationAdmission::uorObservationAdmissionRule3,
+      UorObservationAdmission::uorObservationAdmissionRule4,
+      UorObservationAdmission::uorObservationAdmissionRule5,
+      UorObservationAdmission::uorObservationAdmissionRule6,
+      UorObservationAdmission::uorObservationAdmissionRule7,
+      UorObservationAdmission::uorObservationAdmissionRule8,
+      UorObservationAdmission::uorObservationAdmissionRule9,
+      UorObservationAdmission::uorObservationAdmissionSourcePinned,
+      UorObservationAdmission::uorObservationAdmissionSourceUnpinned,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  result: Bool,
+  body: (((((((((project request metric) <? 2) && ((project request oracle) <? 3)) && ((project request source) <? 2)) && ((project request replay) <? 3)) && ((project request collection) <? 5)) && ((project request attribution) <? 5)) && ((project request source) =? (UorObservationAdmission::uorObservationAdmissionSourceUnpinned))) && ((UorObservationAdmission::uorObservationAdmissionJudge request) =? (UorObservationAdmission::uorObservationAdmissionAnswerPermit)))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorObservationAdmission::uorObservationAdmissionAnswerDeny,
+      UorObservationAdmission::uorObservationAdmissionAnswerIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAnswerNotApplicable,
+      UorObservationAdmission::uorObservationAdmissionAnswerPermit,
+      UorObservationAdmission::uorObservationAdmissionAttributionAggregate,
+      UorObservationAdmission::uorObservationAdmissionAttributionDeny,
+      UorObservationAdmission::uorObservationAdmissionAttributionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAttributionOrganization,
+      UorObservationAdmission::uorObservationAdmissionAttributionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionDeny,
+      UorObservationAdmission::uorObservationAdmissionCollectionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionCollectionOutside,
+      UorObservationAdmission::uorObservationAdmissionCollectionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionUngoverned,
+      UorObservationAdmission::uorObservationAdmissionJudge,
+      UorObservationAdmission::uorObservationAdmissionMetricReleased,
+      UorObservationAdmission::uorObservationAdmissionMetricUnreleased,
+      UorObservationAdmission::uorObservationAdmissionOracleCovers,
+      UorObservationAdmission::uorObservationAdmissionOracleExcludes,
+      UorObservationAdmission::uorObservationAdmissionOracleUnlisted,
+      UorObservationAdmission::uorObservationAdmissionReplayAbsent,
+      UorObservationAdmission::uorObservationAdmissionReplayDiffers,
+      UorObservationAdmission::uorObservationAdmissionReplayReproduced,
+      UorObservationAdmission::uorObservationAdmissionRule1,
+      UorObservationAdmission::uorObservationAdmissionRule10,
+      UorObservationAdmission::uorObservationAdmissionRule11,
+      UorObservationAdmission::uorObservationAdmissionRule2,
+      UorObservationAdmission::uorObservationAdmissionRule3,
+      UorObservationAdmission::uorObservationAdmissionRule4,
+      UorObservationAdmission::uorObservationAdmissionRule5,
+      UorObservationAdmission::uorObservationAdmissionRule6,
+      UorObservationAdmission::uorObservationAdmissionRule7,
+      UorObservationAdmission::uorObservationAdmissionRule8,
+      UorObservationAdmission::uorObservationAdmissionRule9,
+      UorObservationAdmission::uorObservationAdmissionSourcePinned,
+      UorObservationAdmission::uorObservationAdmissionSourceUnpinned,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  result: Bool,
+  body: (((((((((project request metric) <? 2) && ((project request oracle) <? 3)) && ((project request source) <? 2)) && ((project request replay) <? 3)) && ((project request collection) <? 5)) && ((project request attribution) <? 5)) && (not ((project request replay) =? (UorObservationAdmission::uorObservationAdmissionReplayReproduced)))) && ((UorObservationAdmission::uorObservationAdmissionJudge request) =? (UorObservationAdmission::uorObservationAdmissionAnswerPermit)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorObservationAdmission::uorObservationAdmissionAnswerDeny,
+      UorObservationAdmission::uorObservationAdmissionAnswerIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAnswerNotApplicable,
+      UorObservationAdmission::uorObservationAdmissionAnswerPermit,
+      UorObservationAdmission::uorObservationAdmissionAttributionAggregate,
+      UorObservationAdmission::uorObservationAdmissionAttributionDeny,
+      UorObservationAdmission::uorObservationAdmissionAttributionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAttributionOrganization,
+      UorObservationAdmission::uorObservationAdmissionAttributionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionDeny,
+      UorObservationAdmission::uorObservationAdmissionCollectionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionCollectionOutside,
+      UorObservationAdmission::uorObservationAdmissionCollectionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionUngoverned,
+      UorObservationAdmission::uorObservationAdmissionJudge,
+      UorObservationAdmission::uorObservationAdmissionMetricReleased,
+      UorObservationAdmission::uorObservationAdmissionMetricUnreleased,
+      UorObservationAdmission::uorObservationAdmissionOracleCovers,
+      UorObservationAdmission::uorObservationAdmissionOracleExcludes,
+      UorObservationAdmission::uorObservationAdmissionOracleUnlisted,
+      UorObservationAdmission::uorObservationAdmissionReplayAbsent,
+      UorObservationAdmission::uorObservationAdmissionReplayDiffers,
+      UorObservationAdmission::uorObservationAdmissionReplayReproduced,
+      UorObservationAdmission::uorObservationAdmissionRule1,
+      UorObservationAdmission::uorObservationAdmissionRule10,
+      UorObservationAdmission::uorObservationAdmissionRule11,
+      UorObservationAdmission::uorObservationAdmissionRule2,
+      UorObservationAdmission::uorObservationAdmissionRule3,
+      UorObservationAdmission::uorObservationAdmissionRule4,
+      UorObservationAdmission::uorObservationAdmissionRule5,
+      UorObservationAdmission::uorObservationAdmissionRule6,
+      UorObservationAdmission::uorObservationAdmissionRule7,
+      UorObservationAdmission::uorObservationAdmissionRule8,
+      UorObservationAdmission::uorObservationAdmissionRule9,
+      UorObservationAdmission::uorObservationAdmissionSourcePinned,
+      UorObservationAdmission::uorObservationAdmissionSourceUnpinned,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv005,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  result: Bool,
+  body: (((((((((project request metric) <? 2) && ((project request oracle) <? 3)) && ((project request source) <? 2)) && ((project request replay) <? 3)) && ((project request collection) <? 5)) && ((project request attribution) <? 5)) && ((project request collection) =? (UorObservationAdmission::uorObservationAdmissionCollectionDeny))) && ((UorObservationAdmission::uorObservationAdmissionJudge request) =? (UorObservationAdmission::uorObservationAdmissionAnswerPermit)))
+}
+
+theorem{
+  name: inv005Holds,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  statement: ((breaksInv005 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorObservationAdmission::uorObservationAdmissionAnswerDeny,
+      UorObservationAdmission::uorObservationAdmissionAnswerIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAnswerNotApplicable,
+      UorObservationAdmission::uorObservationAdmissionAnswerPermit,
+      UorObservationAdmission::uorObservationAdmissionAttributionAggregate,
+      UorObservationAdmission::uorObservationAdmissionAttributionDeny,
+      UorObservationAdmission::uorObservationAdmissionAttributionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAttributionOrganization,
+      UorObservationAdmission::uorObservationAdmissionAttributionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionDeny,
+      UorObservationAdmission::uorObservationAdmissionCollectionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionCollectionOutside,
+      UorObservationAdmission::uorObservationAdmissionCollectionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionUngoverned,
+      UorObservationAdmission::uorObservationAdmissionJudge,
+      UorObservationAdmission::uorObservationAdmissionMetricReleased,
+      UorObservationAdmission::uorObservationAdmissionMetricUnreleased,
+      UorObservationAdmission::uorObservationAdmissionOracleCovers,
+      UorObservationAdmission::uorObservationAdmissionOracleExcludes,
+      UorObservationAdmission::uorObservationAdmissionOracleUnlisted,
+      UorObservationAdmission::uorObservationAdmissionReplayAbsent,
+      UorObservationAdmission::uorObservationAdmissionReplayDiffers,
+      UorObservationAdmission::uorObservationAdmissionReplayReproduced,
+      UorObservationAdmission::uorObservationAdmissionRule1,
+      UorObservationAdmission::uorObservationAdmissionRule10,
+      UorObservationAdmission::uorObservationAdmissionRule11,
+      UorObservationAdmission::uorObservationAdmissionRule2,
+      UorObservationAdmission::uorObservationAdmissionRule3,
+      UorObservationAdmission::uorObservationAdmissionRule4,
+      UorObservationAdmission::uorObservationAdmissionRule5,
+      UorObservationAdmission::uorObservationAdmissionRule6,
+      UorObservationAdmission::uorObservationAdmissionRule7,
+      UorObservationAdmission::uorObservationAdmissionRule8,
+      UorObservationAdmission::uorObservationAdmissionRule9,
+      UorObservationAdmission::uorObservationAdmissionSourcePinned,
+      UorObservationAdmission::uorObservationAdmissionSourceUnpinned,
+      breaksInv005
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv006,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  result: Bool,
+  body: (((((((((project request metric) <? 2) && ((project request oracle) <? 3)) && ((project request source) <? 2)) && ((project request replay) <? 3)) && ((project request collection) <? 5)) && ((project request attribution) <? 5)) && ((project request collection) =? (UorObservationAdmission::uorObservationAdmissionCollectionOutside))) && ((UorObservationAdmission::uorObservationAdmissionJudge request) =? (UorObservationAdmission::uorObservationAdmissionAnswerPermit)))
+}
+
+theorem{
+  name: inv006Holds,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  statement: ((breaksInv006 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorObservationAdmission::uorObservationAdmissionAnswerDeny,
+      UorObservationAdmission::uorObservationAdmissionAnswerIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAnswerNotApplicable,
+      UorObservationAdmission::uorObservationAdmissionAnswerPermit,
+      UorObservationAdmission::uorObservationAdmissionAttributionAggregate,
+      UorObservationAdmission::uorObservationAdmissionAttributionDeny,
+      UorObservationAdmission::uorObservationAdmissionAttributionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAttributionOrganization,
+      UorObservationAdmission::uorObservationAdmissionAttributionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionDeny,
+      UorObservationAdmission::uorObservationAdmissionCollectionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionCollectionOutside,
+      UorObservationAdmission::uorObservationAdmissionCollectionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionUngoverned,
+      UorObservationAdmission::uorObservationAdmissionJudge,
+      UorObservationAdmission::uorObservationAdmissionMetricReleased,
+      UorObservationAdmission::uorObservationAdmissionMetricUnreleased,
+      UorObservationAdmission::uorObservationAdmissionOracleCovers,
+      UorObservationAdmission::uorObservationAdmissionOracleExcludes,
+      UorObservationAdmission::uorObservationAdmissionOracleUnlisted,
+      UorObservationAdmission::uorObservationAdmissionReplayAbsent,
+      UorObservationAdmission::uorObservationAdmissionReplayDiffers,
+      UorObservationAdmission::uorObservationAdmissionReplayReproduced,
+      UorObservationAdmission::uorObservationAdmissionRule1,
+      UorObservationAdmission::uorObservationAdmissionRule10,
+      UorObservationAdmission::uorObservationAdmissionRule11,
+      UorObservationAdmission::uorObservationAdmissionRule2,
+      UorObservationAdmission::uorObservationAdmissionRule3,
+      UorObservationAdmission::uorObservationAdmissionRule4,
+      UorObservationAdmission::uorObservationAdmissionRule5,
+      UorObservationAdmission::uorObservationAdmissionRule6,
+      UorObservationAdmission::uorObservationAdmissionRule7,
+      UorObservationAdmission::uorObservationAdmissionRule8,
+      UorObservationAdmission::uorObservationAdmissionRule9,
+      UorObservationAdmission::uorObservationAdmissionSourcePinned,
+      UorObservationAdmission::uorObservationAdmissionSourceUnpinned,
+      breaksInv006
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv007,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  result: Bool,
+  body: (((((((((project request metric) <? 2) && ((project request oracle) <? 3)) && ((project request source) <? 2)) && ((project request replay) <? 3)) && ((project request collection) <? 5)) && ((project request attribution) <? 5)) && ((project request attribution) =? (UorObservationAdmission::uorObservationAdmissionAttributionDeny))) && ((UorObservationAdmission::uorObservationAdmissionJudge request) =? (UorObservationAdmission::uorObservationAdmissionAnswerPermit)))
+}
+
+theorem{
+  name: inv007Holds,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  statement: ((breaksInv007 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorObservationAdmission::uorObservationAdmissionAnswerDeny,
+      UorObservationAdmission::uorObservationAdmissionAnswerIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAnswerNotApplicable,
+      UorObservationAdmission::uorObservationAdmissionAnswerPermit,
+      UorObservationAdmission::uorObservationAdmissionAttributionAggregate,
+      UorObservationAdmission::uorObservationAdmissionAttributionDeny,
+      UorObservationAdmission::uorObservationAdmissionAttributionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAttributionOrganization,
+      UorObservationAdmission::uorObservationAdmissionAttributionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionDeny,
+      UorObservationAdmission::uorObservationAdmissionCollectionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionCollectionOutside,
+      UorObservationAdmission::uorObservationAdmissionCollectionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionUngoverned,
+      UorObservationAdmission::uorObservationAdmissionJudge,
+      UorObservationAdmission::uorObservationAdmissionMetricReleased,
+      UorObservationAdmission::uorObservationAdmissionMetricUnreleased,
+      UorObservationAdmission::uorObservationAdmissionOracleCovers,
+      UorObservationAdmission::uorObservationAdmissionOracleExcludes,
+      UorObservationAdmission::uorObservationAdmissionOracleUnlisted,
+      UorObservationAdmission::uorObservationAdmissionReplayAbsent,
+      UorObservationAdmission::uorObservationAdmissionReplayDiffers,
+      UorObservationAdmission::uorObservationAdmissionReplayReproduced,
+      UorObservationAdmission::uorObservationAdmissionRule1,
+      UorObservationAdmission::uorObservationAdmissionRule10,
+      UorObservationAdmission::uorObservationAdmissionRule11,
+      UorObservationAdmission::uorObservationAdmissionRule2,
+      UorObservationAdmission::uorObservationAdmissionRule3,
+      UorObservationAdmission::uorObservationAdmissionRule4,
+      UorObservationAdmission::uorObservationAdmissionRule5,
+      UorObservationAdmission::uorObservationAdmissionRule6,
+      UorObservationAdmission::uorObservationAdmissionRule7,
+      UorObservationAdmission::uorObservationAdmissionRule8,
+      UorObservationAdmission::uorObservationAdmissionRule9,
+      UorObservationAdmission::uorObservationAdmissionSourcePinned,
+      UorObservationAdmission::uorObservationAdmissionSourceUnpinned,
+      breaksInv007
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv008,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  result: Bool,
+  body: ((((((((((project request metric) <? 2) && ((project request oracle) <? 3)) && ((project request source) <? 2)) && ((project request replay) <? 3)) && ((project request collection) <? 5)) && ((project request attribution) <? 5)) && ((project request metric) =? (UorObservationAdmission::uorObservationAdmissionMetricReleased))) && ((project request collection) =? (UorObservationAdmission::uorObservationAdmissionCollectionDeny))) && (not ((UorObservationAdmission::uorObservationAdmissionJudge request) =? (UorObservationAdmission::uorObservationAdmissionAnswerDeny))))
+}
+
+theorem{
+  name: inv008Holds,
+  parameters: [request : UorObservationAdmission::UorObservationAdmissionRequest],
+  statement: ((breaksInv008 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorObservationAdmission::uorObservationAdmissionAnswerDeny,
+      UorObservationAdmission::uorObservationAdmissionAnswerIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAnswerNotApplicable,
+      UorObservationAdmission::uorObservationAdmissionAnswerPermit,
+      UorObservationAdmission::uorObservationAdmissionAttributionAggregate,
+      UorObservationAdmission::uorObservationAdmissionAttributionDeny,
+      UorObservationAdmission::uorObservationAdmissionAttributionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionAttributionOrganization,
+      UorObservationAdmission::uorObservationAdmissionAttributionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionDeny,
+      UorObservationAdmission::uorObservationAdmissionCollectionIndeterminate,
+      UorObservationAdmission::uorObservationAdmissionCollectionOutside,
+      UorObservationAdmission::uorObservationAdmissionCollectionPermit,
+      UorObservationAdmission::uorObservationAdmissionCollectionUngoverned,
+      UorObservationAdmission::uorObservationAdmissionJudge,
+      UorObservationAdmission::uorObservationAdmissionMetricReleased,
+      UorObservationAdmission::uorObservationAdmissionMetricUnreleased,
+      UorObservationAdmission::uorObservationAdmissionOracleCovers,
+      UorObservationAdmission::uorObservationAdmissionOracleExcludes,
+      UorObservationAdmission::uorObservationAdmissionOracleUnlisted,
+      UorObservationAdmission::uorObservationAdmissionReplayAbsent,
+      UorObservationAdmission::uorObservationAdmissionReplayDiffers,
+      UorObservationAdmission::uorObservationAdmissionReplayReproduced,
+      UorObservationAdmission::uorObservationAdmissionRule1,
+      UorObservationAdmission::uorObservationAdmissionRule10,
+      UorObservationAdmission::uorObservationAdmissionRule11,
+      UorObservationAdmission::uorObservationAdmissionRule2,
+      UorObservationAdmission::uorObservationAdmissionRule3,
+      UorObservationAdmission::uorObservationAdmissionRule4,
+      UorObservationAdmission::uorObservationAdmissionRule5,
+      UorObservationAdmission::uorObservationAdmissionRule6,
+      UorObservationAdmission::uorObservationAdmissionRule7,
+      UorObservationAdmission::uorObservationAdmissionRule8,
+      UorObservationAdmission::uorObservationAdmissionRule9,
+      UorObservationAdmission::uorObservationAdmissionSourcePinned,
+      UorObservationAdmission::uorObservationAdmissionSourceUnpinned,
+      breaksInv008
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

@@ -1,0 +1,192 @@
+\begin{lexlean}{ChaossBusinessReadinessOfAnOpenSourceProject}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectAnswerOpen,
+  parameters: [],
+  result: Nat,
+  body: 0
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectAnswerComplete,
+  parameters: [],
+  result: Nat,
+  body: 1
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectAnswerUnmeasured,
+  parameters: [],
+  result: Nat,
+  body: 2
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectAnswerPartial,
+  parameters: [],
+  result: Nat,
+  body: 3
+}
+
+structure{
+  name: ChaossBusinessReadinessOfAnOpenSourceProjectRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: admitted, type: Nat}, {name: refused, type: Nat}]
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (chaossBusinessReadinessOfAnOpenSourceProjectByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (chaossBusinessReadinessOfAnOpenSourceProjectDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (chaossBusinessReadinessOfAnOpenSourceProjectByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (chaossBusinessReadinessOfAnOpenSourceProjectDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (chaossBusinessReadinessOfAnOpenSourceProjectParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectParseAdmitted,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (chaossBusinessReadinessOfAnOpenSourceProjectParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (8 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectParseRefused,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (match (chaossBusinessReadinessOfAnOpenSourceProjectParseNumber value)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some parsed => (if (8 <? parsed) then (ctor Option.none [Nat]) else (ctor Option.some [Nat] parsed))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (chaossBusinessReadinessOfAnOpenSourceProjectByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (chaossBusinessReadinessOfAnOpenSourceProjectFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option ChaossBusinessReadinessOfAnOpenSourceProjectRequest),
+  body: (let e : Nat := (chaossBusinessReadinessOfAnOpenSourceProjectFieldEnd s start (Foundation.Bytes::byteLength s)); (match (chaossBusinessReadinessOfAnOpenSourceProjectParseRefused (chaossBusinessReadinessOfAnOpenSourceProjectSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [ChaossBusinessReadinessOfAnOpenSourceProjectRequest])
+    | Option.some v2 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [ChaossBusinessReadinessOfAnOpenSourceProjectRequest] (record ChaossBusinessReadinessOfAnOpenSourceProjectRequest {admitted := v1, refused := v2})) else (ctor Option.none [ChaossBusinessReadinessOfAnOpenSourceProjectRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option ChaossBusinessReadinessOfAnOpenSourceProjectRequest),
+  body: (let e : Nat := (chaossBusinessReadinessOfAnOpenSourceProjectFieldEnd s start (Foundation.Bytes::byteLength s)); (match (chaossBusinessReadinessOfAnOpenSourceProjectParseAdmitted (chaossBusinessReadinessOfAnOpenSourceProjectSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [ChaossBusinessReadinessOfAnOpenSourceProjectRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (chaossBusinessReadinessOfAnOpenSourceProjectDecodeField2 s (e + 1) v1) else (ctor Option.none [ChaossBusinessReadinessOfAnOpenSourceProjectRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectRule1,
+  parameters: [request : ChaossBusinessReadinessOfAnOpenSourceProjectRequest],
+  result: Bool,
+  body: (1 <=? (project request refused))
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectRule2,
+  parameters: [request : ChaossBusinessReadinessOfAnOpenSourceProjectRequest],
+  result: Bool,
+  body: (8 <=? (project request admitted))
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectRule3,
+  parameters: [request : ChaossBusinessReadinessOfAnOpenSourceProjectRequest],
+  result: Bool,
+  body: ((project request admitted) =? 0)
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectJudge,
+  parameters: [request : ChaossBusinessReadinessOfAnOpenSourceProjectRequest],
+  result: Nat,
+  body: (if (chaossBusinessReadinessOfAnOpenSourceProjectRule1 request) then (chaossBusinessReadinessOfAnOpenSourceProjectAnswerOpen) else (if (chaossBusinessReadinessOfAnOpenSourceProjectRule2 request) then (chaossBusinessReadinessOfAnOpenSourceProjectAnswerComplete) else (if (chaossBusinessReadinessOfAnOpenSourceProjectRule3 request) then (chaossBusinessReadinessOfAnOpenSourceProjectAnswerUnmeasured) else (chaossBusinessReadinessOfAnOpenSourceProjectAnswerPartial))))
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (chaossBusinessReadinessOfAnOpenSourceProjectAnswerOpen)) then 0x6f70656e else (if (code =? (chaossBusinessReadinessOfAnOpenSourceProjectAnswerComplete)) then 0x636f6d706c657465 else (if (code =? (chaossBusinessReadinessOfAnOpenSourceProjectAnswerUnmeasured)) then 0x756e6d65617375726564 else (if (code =? (chaossBusinessReadinessOfAnOpenSourceProjectAnswerPartial)) then 0x7061727469616c else 0x696e76616c6964))))
+}
+
+definition{
+  name: chaossBusinessReadinessOfAnOpenSourceProjectDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (64 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (chaossBusinessReadinessOfAnOpenSourceProjectDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (chaossBusinessReadinessOfAnOpenSourceProjectEncodeAnswer (chaossBusinessReadinessOfAnOpenSourceProjectJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

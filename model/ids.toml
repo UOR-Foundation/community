@@ -28,72 +28,6 @@ suite = "frame"
 statement = "With a working worker, the page loads and verifies the archive only in that worker before using its identities or guest"
 
 [[id]]
-id = "UT-01"
-level = "build"
-suite = "uor_toc_lifecycle"
-statement = "The app never answers graduated when quorum is unmet and stage is incubation"
-
-[[id]]
-id = "UT-02"
-level = "build"
-suite = "uor_toc_lifecycle"
-statement = "The app never answers graduated when vote is majority and stage is incubation"
-
-[[id]]
-id = "UT-03"
-level = "build"
-suite = "uor_toc_lifecycle"
-statement = "The app never answers graduated when comment is below 14 and stage is incubation"
-
-[[id]]
-id = "UT-04"
-level = "build"
-suite = "uor_toc_lifecycle"
-statement = "The app never answers incubation when stage is proposed"
-
-[[id]]
-id = "UT-05"
-level = "build"
-suite = "uor_toc_lifecycle"
-statement = "The app never answers graduated when stage is sandbox"
-
-[[id]]
-id = "UT-06"
-level = "build"
-suite = "uor_toc_lifecycle"
-statement = "The app never answers sandbox when evidence is partial and stage is proposed"
-
-[[id]]
-id = "UT-07"
-level = "build"
-suite = "uor_toc_lifecycle"
-statement = "The app always answers graduated when stage is graduated and application is not archival"
-
-[[id]]
-id = "UT-08"
-level = "build"
-suite = "uor_toc_lifecycle"
-statement = "The app always answers archived when stage is archived"
-
-[[id]]
-id = "UT-09"
-level = "build"
-suite = "uor_toc_lifecycle"
-statement = "The architecture description declares every stakeholder, concern, component, edge, viewpoint and view it references"
-
-[[id]]
-id = "UT-10"
-level = "build"
-suite = "uor_toc_lifecycle"
-statement = "The ISO/IEC 25010:2023 quality model declares all 9 characteristics and 40 subcharacteristics, states each subcharacteristic by a requirement or lists it open, and every parent it names is declared"
-
-[[id]]
-id = "UT-11"
-level = "build"
-suite = "uor_toc_lifecycle"
-statement = "Every STRIDE category each component and data flow is open to is answered by a threat or stated open, and no other pair is stated open"
-
-[[id]]
 id = "CC-01"
 level = "build"
 suite = "chaoss"
@@ -110,6 +44,12 @@ id = "CC-03"
 level = "open"
 suite = "chaoss"
 statement = "A released CHAOSS item the projector cannot match to a definition is carried as an open claim, never dropped or guessed"
+
+[[id]]
+id = "CP-01"
+level = "build"
+suite = "compliance"
+statement = "The control set the verified build emits as an OSCAL 1.1.0 component definition is accepted by the locked oscal-1.1.0-structural oracle"
 
 [[id]]
 id = "GV-01"
@@ -190,18 +130,6 @@ suite = "views"
 statement = "A user-story role no Foundation stakeholder holds, a metrics model that states no user story, and a stakeholder no model or decision addresses are carried as open claims, never guessed"
 
 [[id]]
-id = "UT-12"
-level = "build"
-suite = "uor_toc_lifecycle"
-statement = "Every compliance obligation is numbered in order and names its evidence"
-
-[[id]]
-id = "CP-01"
-level = "build"
-suite = "compliance"
-statement = "The control set the verified build emits as an OSCAL 1.1.0 component definition is accepted by the locked oscal-1.1.0-structural oracle"
-
-[[id]]
 id = "GL-01"
 level = "build"
 suite = "grimoirelab"
@@ -224,6 +152,792 @@ id = "GL-04"
 level = "build"
 suite = "grimoirelab"
 statement = "Each live Discord probe is an OpenTelemetry trace holding no message content or token, every trace is checked against the paging model the contribution Prism pins, and the next probes are scheduled by bounded Hebbian weights"
+
+[[id]]
+id = "CAACATF-01"
+level = "build"
+suite = "chaoss_ai_alignment_community_aligned_training_feedback"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "CAACATF-02"
+level = "build"
+suite = "chaoss_ai_alignment_community_aligned_training_feedback"
+statement = "The app never answers complete when admitted is below 4"
+
+[[id]]
+id = "CAACATF-03"
+level = "build"
+suite = "chaoss_ai_alignment_community_aligned_training_feedback"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 4"
+
+[[id]]
+id = "CAACATF-04"
+level = "build"
+suite = "chaoss_ai_alignment_community_aligned_training_feedback"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "CBROAOSP-01"
+level = "build"
+suite = "chaoss_business_readiness_of_an_open_source_project"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "CBROAOSP-02"
+level = "build"
+suite = "chaoss_business_readiness_of_an_open_source_project"
+statement = "The app never answers complete when admitted is below 8"
+
+[[id]]
+id = "CBROAOSP-03"
+level = "build"
+suite = "chaoss_business_readiness_of_an_open_source_project"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 8"
+
+[[id]]
+id = "CBROAOSP-04"
+level = "build"
+suite = "chaoss_business_readiness_of_an_open_source_project"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "CCDI-01"
+level = "build"
+suite = "chaoss_collaboration_development_index"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "CCDI-02"
+level = "build"
+suite = "chaoss_collaboration_development_index"
+statement = "The app never answers complete when admitted is below 5"
+
+[[id]]
+id = "CCDI-03"
+level = "build"
+suite = "chaoss_collaboration_development_index"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 5"
+
+[[id]]
+id = "CCDI-04"
+level = "build"
+suite = "chaoss_collaboration_development_index"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "CCA-01"
+level = "build"
+suite = "chaoss_community_activity"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "CCA-02"
+level = "build"
+suite = "chaoss_community_activity"
+statement = "The app never answers complete when admitted is below 11"
+
+[[id]]
+id = "CCA-03"
+level = "build"
+suite = "chaoss_community_activity"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 11"
+
+[[id]]
+id = "CCA-04"
+level = "build"
+suite = "chaoss_community_activity"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "CCGAUIOC-01"
+level = "build"
+suite = "chaoss_community_governed_ai_use_in_open_communities"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "CCGAUIOC-02"
+level = "build"
+suite = "chaoss_community_governed_ai_use_in_open_communities"
+statement = "The app never answers complete when admitted is below 5"
+
+[[id]]
+id = "CCGAUIOC-03"
+level = "build"
+suite = "chaoss_community_governed_ai_use_in_open_communities"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 5"
+
+[[id]]
+id = "CCGAUIOC-04"
+level = "build"
+suite = "chaoss_community_governed_ai_use_in_open_communities"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "CCSAS-01"
+level = "build"
+suite = "chaoss_community_service_and_support"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "CCSAS-02"
+level = "build"
+suite = "chaoss_community_service_and_support"
+statement = "The app never answers complete when admitted is below 9"
+
+[[id]]
+id = "CCSAS-03"
+level = "build"
+suite = "chaoss_community_service_and_support"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 9"
+
+[[id]]
+id = "CCSAS-04"
+level = "build"
+suite = "chaoss_community_service_and_support"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "CCW-01"
+level = "build"
+suite = "chaoss_community_welcomingness"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "CCW-02"
+level = "build"
+suite = "chaoss_community_welcomingness"
+statement = "The app never answers complete when admitted is below 14"
+
+[[id]]
+id = "CCW-03"
+level = "build"
+suite = "chaoss_community_welcomingness"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 14"
+
+[[id]]
+id = "CCW-04"
+level = "build"
+suite = "chaoss_community_welcomingness"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "CDEB-01"
+level = "build"
+suite = "chaoss_dei_event_badging"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "CDEB-02"
+level = "build"
+suite = "chaoss_dei_event_badging"
+statement = "The app never answers complete when admitted is below 6"
+
+[[id]]
+id = "CDEB-03"
+level = "build"
+suite = "chaoss_dei_event_badging"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 6"
+
+[[id]]
+id = "CDEB-04"
+level = "build"
+suite = "chaoss_dei_event_badging"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "CDR-01"
+level = "build"
+suite = "chaoss_development_responsiveness"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "CDR-02"
+level = "build"
+suite = "chaoss_development_responsiveness"
+statement = "The app never answers complete when admitted is below 4"
+
+[[id]]
+id = "CDR-03"
+level = "build"
+suite = "chaoss_development_responsiveness"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 4"
+
+[[id]]
+id = "CDR-04"
+level = "build"
+suite = "chaoss_development_responsiveness"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "CF-01"
+level = "build"
+suite = "chaoss_funding"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "CF-02"
+level = "build"
+suite = "chaoss_funding"
+statement = "The app never answers complete when admitted is below 5"
+
+[[id]]
+id = "CF-03"
+level = "build"
+suite = "chaoss_funding"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 5"
+
+[[id]]
+id = "CF-04"
+level = "build"
+suite = "chaoss_funding"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "COPVC-01"
+level = "build"
+suite = "chaoss_oss_project_viability_community"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "COPVC-02"
+level = "build"
+suite = "chaoss_oss_project_viability_community"
+statement = "The app never answers complete when admitted is below 8"
+
+[[id]]
+id = "COPVC-03"
+level = "build"
+suite = "chaoss_oss_project_viability_community"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 8"
+
+[[id]]
+id = "COPVC-04"
+level = "build"
+suite = "chaoss_oss_project_viability_community"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "COPVCS-01"
+level = "build"
+suite = "chaoss_oss_project_viability_compliance_security"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "COPVCS-02"
+level = "build"
+suite = "chaoss_oss_project_viability_compliance_security"
+statement = "The app never answers complete when admitted is below 7"
+
+[[id]]
+id = "COPVCS-03"
+level = "build"
+suite = "chaoss_oss_project_viability_compliance_security"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 7"
+
+[[id]]
+id = "COPVCS-04"
+level = "build"
+suite = "chaoss_oss_project_viability_compliance_security"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "COPVG-01"
+level = "build"
+suite = "chaoss_oss_project_viability_governance"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "COPVG-02"
+level = "build"
+suite = "chaoss_oss_project_viability_governance"
+statement = "The app never answers complete when admitted is below 8"
+
+[[id]]
+id = "COPVG-03"
+level = "build"
+suite = "chaoss_oss_project_viability_governance"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 8"
+
+[[id]]
+id = "COPVG-04"
+level = "build"
+suite = "chaoss_oss_project_viability_governance"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "COPVS-01"
+level = "build"
+suite = "chaoss_oss_project_viability_strategy"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "COPVS-02"
+level = "build"
+suite = "chaoss_oss_project_viability_strategy"
+statement = "The app never answers complete when admitted is below 5"
+
+[[id]]
+id = "COPVS-03"
+level = "build"
+suite = "chaoss_oss_project_viability_strategy"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 5"
+
+[[id]]
+id = "COPVS-04"
+level = "build"
+suite = "chaoss_oss_project_viability_strategy"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "CPA-01"
+level = "build"
+suite = "chaoss_project_awareness"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "CPA-02"
+level = "build"
+suite = "chaoss_project_awareness"
+statement = "The app never answers complete when admitted is below 5"
+
+[[id]]
+id = "CPA-03"
+level = "build"
+suite = "chaoss_project_awareness"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 5"
+
+[[id]]
+id = "CPA-04"
+level = "build"
+suite = "chaoss_project_awareness"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "CPE-01"
+level = "build"
+suite = "chaoss_project_engagement"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "CPE-02"
+level = "build"
+suite = "chaoss_project_engagement"
+statement = "The app never answers complete when admitted is below 6"
+
+[[id]]
+id = "CPE-03"
+level = "build"
+suite = "chaoss_project_engagement"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 6"
+
+[[id]]
+id = "CPE-04"
+level = "build"
+suite = "chaoss_project_engagement"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "CPVS-01"
+level = "build"
+suite = "chaoss_project_viability_starter"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "CPVS-02"
+level = "build"
+suite = "chaoss_project_viability_starter"
+statement = "The app never answers complete when admitted is below 6"
+
+[[id]]
+id = "CPVS-03"
+level = "build"
+suite = "chaoss_project_viability_starter"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 6"
+
+[[id]]
+id = "CPVS-04"
+level = "build"
+suite = "chaoss_project_viability_starter"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "CS-01"
+level = "build"
+suite = "chaoss_safety"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "CS-02"
+level = "build"
+suite = "chaoss_safety"
+statement = "The app never answers complete when admitted is below 6"
+
+[[id]]
+id = "CS-03"
+level = "build"
+suite = "chaoss_safety"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 6"
+
+[[id]]
+id = "CS-04"
+level = "build"
+suite = "chaoss_safety"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "CSPH-01"
+level = "build"
+suite = "chaoss_starter_project_health"
+statement = "The app never answers complete when refused is at least 1"
+
+[[id]]
+id = "CSPH-02"
+level = "build"
+suite = "chaoss_starter_project_health"
+statement = "The app never answers complete when admitted is below 4"
+
+[[id]]
+id = "CSPH-03"
+level = "build"
+suite = "chaoss_starter_project_health"
+statement = "The app always answers complete when refused equals 0 and admitted is at least 4"
+
+[[id]]
+id = "CSPH-04"
+level = "build"
+suite = "chaoss_starter_project_health"
+statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
+
+[[id]]
+id = "UCE-01"
+level = "build"
+suite = "uor_coc_enforcement"
+statement = "The app never answers banned when authority is other and record is clear"
+
+[[id]]
+id = "UCE-02"
+level = "build"
+suite = "uor_coc_enforcement"
+statement = "The app never answers warned when finding is pending and record is clear"
+
+[[id]]
+id = "UCE-03"
+level = "build"
+suite = "uor_coc_enforcement"
+statement = "The app never answers limited when finding is none and record is warned"
+
+[[id]]
+id = "UCE-04"
+level = "build"
+suite = "uor_coc_enforcement"
+statement = "The app never answers warned when record is limited"
+
+[[id]]
+id = "UCE-05"
+level = "build"
+suite = "uor_coc_enforcement"
+statement = "The app never answers clear when record is suspended"
+
+[[id]]
+id = "UCE-06"
+level = "build"
+suite = "uor_coc_enforcement"
+statement = "The app always answers banned when finding is violation and authority is moderators and severity is severe"
+
+[[id]]
+id = "UCE-07"
+level = "build"
+suite = "uor_coc_enforcement"
+statement = "The app always answers banned when record is banned"
+
+[[id]]
+id = "UCA-01"
+level = "build"
+suite = "uor_contribution_attribution"
+statement = "The app never answers permit when agent is software and delegation is absent"
+
+[[id]]
+id = "UCA-02"
+level = "build"
+suite = "uor_contribution_attribution"
+statement = "The app never answers permit when agent is software and trail is missing"
+
+[[id]]
+id = "UCA-03"
+level = "build"
+suite = "uor_contribution_attribution"
+statement = "The app never answers permit when agent is software and principal is organization"
+
+[[id]]
+id = "UCA-04"
+level = "build"
+suite = "uor_contribution_attribution"
+statement = "The app never answers permit when identity is unresolved"
+
+[[id]]
+id = "UCA-05"
+level = "build"
+suite = "uor_contribution_attribution"
+statement = "The app always answers permit when agent is person and identity is resolved"
+
+[[id]]
+id = "UDR-01"
+level = "build"
+suite = "uor_discord_read"
+statement = "The app never answers permit when kind is dm"
+
+[[id]]
+id = "UDR-02"
+level = "build"
+suite = "uor_discord_read"
+statement = "The app never answers permit when visibility is restricted"
+
+[[id]]
+id = "UDR-03"
+level = "build"
+suite = "uor_discord_read"
+statement = "The app never answers permit when label is not public"
+
+[[id]]
+id = "UDR-04"
+level = "build"
+suite = "uor_discord_read"
+statement = "The app never answers permit when install is other"
+
+[[id]]
+id = "UDR-05"
+level = "build"
+suite = "uor_discord_read"
+statement = "The app never answers permit when intent is missing"
+
+[[id]]
+id = "UOA-01"
+level = "build"
+suite = "uor_observation_admission"
+statement = "The app never answers permit when metric is unreleased"
+
+[[id]]
+id = "UOA-02"
+level = "build"
+suite = "uor_observation_admission"
+statement = "The app never answers permit when oracle is not covers"
+
+[[id]]
+id = "UOA-03"
+level = "build"
+suite = "uor_observation_admission"
+statement = "The app never answers permit when source is unpinned"
+
+[[id]]
+id = "UOA-04"
+level = "build"
+suite = "uor_observation_admission"
+statement = "The app never answers permit when replay is not reproduced"
+
+[[id]]
+id = "UOA-05"
+level = "build"
+suite = "uor_observation_admission"
+statement = "The app never answers permit when collection is deny"
+
+[[id]]
+id = "UOA-06"
+level = "build"
+suite = "uor_observation_admission"
+statement = "The app never answers permit when collection is outside"
+
+[[id]]
+id = "UOA-07"
+level = "build"
+suite = "uor_observation_admission"
+statement = "The app never answers permit when attribution is deny"
+
+[[id]]
+id = "UOA-08"
+level = "build"
+suite = "uor_observation_admission"
+statement = "The app always answers deny when metric is released and collection is deny"
+
+[[id]]
+id = "URF-01"
+level = "build"
+suite = "uor_repo_files"
+statement = "The app never answers conformant when readme is missing"
+
+[[id]]
+id = "URF-02"
+level = "build"
+suite = "uor_repo_files"
+statement = "The app always answers missing-file when readme is present and license is missing"
+
+[[id]]
+id = "URF-03"
+level = "build"
+suite = "uor_repo_files"
+statement = "The app never answers conformant when tier is t1 and security is missing"
+
+[[id]]
+id = "URF-04"
+level = "build"
+suite = "uor_repo_files"
+statement = "The app never answers advisory when tier is t4"
+
+[[id]]
+id = "URN-01"
+level = "build"
+suite = "uor_repo_naming"
+statement = "The app never answers conformant when case is other"
+
+[[id]]
+id = "URN-02"
+level = "build"
+suite = "uor_repo_naming"
+statement = "The app never answers conformant when version is present"
+
+[[id]]
+id = "URN-03"
+level = "build"
+suite = "uor_repo_naming"
+statement = "The app never answers conformant when commits is other"
+
+[[id]]
+id = "URN-04"
+level = "build"
+suite = "uor_repo_naming"
+statement = "The app never answers conformant when domain is incomplete"
+
+[[id]]
+id = "URN-05"
+level = "build"
+suite = "uor_repo_naming"
+statement = "The app never answers conformant when pattern is other"
+
+[[id]]
+id = "URN-06"
+level = "build"
+suite = "uor_repo_naming"
+statement = "The app always answers advisory when case is lowercase and version is absent and branches is conforming and commits is conventional and domain is complete and technology is complete and pattern is other"
+
+[[id]]
+id = "URP-01"
+level = "build"
+suite = "uor_repo_protection"
+statement = "The app never answers conformant when forcepush is allowed"
+
+[[id]]
+id = "URP-02"
+level = "build"
+suite = "uor_repo_protection"
+statement = "The app never answers conformant when tier is t1 and reviews is below 2"
+
+[[id]]
+id = "URP-03"
+level = "build"
+suite = "uor_repo_protection"
+statement = "The app never answers conformant when tier is t2 and checks is optional"
+
+[[id]]
+id = "URP-04"
+level = "build"
+suite = "uor_repo_protection"
+statement = "The app always answers conformant when tier is t4 and forcepush is blocked"
+
+[[id]]
+id = "URS-01"
+level = "build"
+suite = "uor_repo_standards"
+statement = "The app never answers conformant when tiertags equals 0"
+
+[[id]]
+id = "URS-02"
+level = "build"
+suite = "uor_repo_standards"
+statement = "The app never answers conformant when statustags is above 1"
+
+[[id]]
+id = "URS-03"
+level = "build"
+suite = "uor_repo_standards"
+statement = "The app never answers conformant when tier is t1 and versioning is other"
+
+[[id]]
+id = "URS-04"
+level = "build"
+suite = "uor_repo_standards"
+statement = "The app never answers unversioned when tier is t3"
+
+[[id]]
+id = "UTL-01"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when quorum is unmet and stage is incubation"
+
+[[id]]
+id = "UTL-02"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when vote is majority and stage is incubation"
+
+[[id]]
+id = "UTL-03"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when comment is below 14 and stage is incubation"
+
+[[id]]
+id = "UTL-04"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers incubation when stage is proposed"
+
+[[id]]
+id = "UTL-05"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers graduated when stage is sandbox"
+
+[[id]]
+id = "UTL-06"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app never answers sandbox when evidence is partial and stage is proposed"
+
+[[id]]
+id = "UTL-07"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app always answers graduated when stage is graduated and application is not archival"
+
+[[id]]
+id = "UTL-08"
+level = "build"
+suite = "uor_toc_lifecycle"
+statement = "The app always answers archived when stage is archived"
+
+[[id]]
+id = "UCD-01"
+level = "build"
+suite = "uor_community_decisions"
+statement = "The architecture description declares every stakeholder, concern, component, edge, viewpoint and view it references"
+
+[[id]]
+id = "UCD-02"
+level = "build"
+suite = "uor_community_decisions"
+statement = "The ISO/IEC 25010:2023 quality model declares all 9 characteristics and 40 subcharacteristics, states each subcharacteristic by a requirement or lists it open, and every parent it names is declared"
+
+[[id]]
+id = "UCD-03"
+level = "build"
+suite = "uor_community_decisions"
+statement = "Every STRIDE category each component and data flow is open to is answered by a threat or stated open, and no other pair is stated open"
+
+[[id]]
+id = "UCD-04"
+level = "build"
+suite = "uor_community_decisions"
+statement = "Every compliance obligation is numbered in order and names its evidence"
 
 [[id]]
 id = "RM-01"

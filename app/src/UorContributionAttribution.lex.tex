@@ -1,0 +1,276 @@
+\begin{lexlean}{UorContributionAttribution}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: uorContributionAttributionAgentPerson, parameters: [], result: Nat, body: 0}
+
+definition{name: uorContributionAttributionAgentSoftware, parameters: [], result: Nat, body: 1}
+
+definition{name: uorContributionAttributionAgentOrganization, parameters: [], result: Nat, body: 2}
+
+definition{name: uorContributionAttributionIdentityResolved, parameters: [], result: Nat, body: 0}
+
+definition{name: uorContributionAttributionIdentityUnresolved, parameters: [], result: Nat, body: 1}
+
+definition{name: uorContributionAttributionDelegationDeclared, parameters: [], result: Nat, body: 0}
+
+definition{name: uorContributionAttributionDelegationAbsent, parameters: [], result: Nat, body: 1}
+
+definition{name: uorContributionAttributionPrincipalPerson, parameters: [], result: Nat, body: 0}
+
+definition{
+  name: uorContributionAttributionPrincipalOrganization,
+  parameters: [],
+  result: Nat,
+  body: 1
+}
+
+definition{name: uorContributionAttributionPrincipalNone, parameters: [], result: Nat, body: 2}
+
+definition{name: uorContributionAttributionTrailRecorded, parameters: [], result: Nat, body: 0}
+
+definition{name: uorContributionAttributionTrailMissing, parameters: [], result: Nat, body: 1}
+
+definition{name: uorContributionAttributionAnswerPermit, parameters: [], result: Nat, body: 0}
+
+definition{name: uorContributionAttributionAnswerDeny, parameters: [], result: Nat, body: 1}
+
+definition{
+  name: uorContributionAttributionAnswerNotApplicable,
+  parameters: [],
+  result: Nat,
+  body: 2
+}
+
+definition{
+  name: uorContributionAttributionAnswerIndeterminate,
+  parameters: [],
+  result: Nat,
+  body: 3
+}
+
+structure{
+  name: UorContributionAttributionRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: agent, type: Nat},
+    {name: identity, type: Nat},
+    {name: delegation, type: Nat},
+    {name: principal, type: Nat},
+    {name: trail, type: Nat}
+  ]
+}
+
+definition{
+  name: uorContributionAttributionByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorContributionAttributionDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (uorContributionAttributionByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (uorContributionAttributionDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorContributionAttributionParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (uorContributionAttributionByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (uorContributionAttributionDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorContributionAttributionParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (uorContributionAttributionParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorContributionAttributionParseAgent,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x706572736f6e : Bool) then (ctor Option.some [Nat] (uorContributionAttributionAgentPerson)) else (if (prim equal value 0x736f667477617265 : Bool) then (ctor Option.some [Nat] (uorContributionAttributionAgentSoftware)) else (if (prim equal value 0x6f7267616e697a6174696f6e : Bool) then (ctor Option.some [Nat] (uorContributionAttributionAgentOrganization)) else (ctor Option.none [Nat]))))
+}
+
+definition{
+  name: uorContributionAttributionParseIdentity,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x7265736f6c766564 : Bool) then (ctor Option.some [Nat] (uorContributionAttributionIdentityResolved)) else (if (prim equal value 0x756e7265736f6c766564 : Bool) then (ctor Option.some [Nat] (uorContributionAttributionIdentityUnresolved)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorContributionAttributionParseDelegation,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6465636c61726564 : Bool) then (ctor Option.some [Nat] (uorContributionAttributionDelegationDeclared)) else (if (prim equal value 0x616273656e74 : Bool) then (ctor Option.some [Nat] (uorContributionAttributionDelegationAbsent)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorContributionAttributionParsePrincipal,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x706572736f6e : Bool) then (ctor Option.some [Nat] (uorContributionAttributionPrincipalPerson)) else (if (prim equal value 0x6f7267616e697a6174696f6e : Bool) then (ctor Option.some [Nat] (uorContributionAttributionPrincipalOrganization)) else (if (prim equal value 0x6e6f6e65 : Bool) then (ctor Option.some [Nat] (uorContributionAttributionPrincipalNone)) else (ctor Option.none [Nat]))))
+}
+
+definition{
+  name: uorContributionAttributionParseTrail,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x7265636f72646564 : Bool) then (ctor Option.some [Nat] (uorContributionAttributionTrailRecorded)) else (if (prim equal value 0x6d697373696e67 : Bool) then (ctor Option.some [Nat] (uorContributionAttributionTrailMissing)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorContributionAttributionSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: uorContributionAttributionFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (uorContributionAttributionByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (uorContributionAttributionFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorContributionAttributionDecodeField5,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat],
+  result: (Option UorContributionAttributionRequest),
+  body: (let e : Nat := (uorContributionAttributionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorContributionAttributionParseTrail (uorContributionAttributionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorContributionAttributionRequest])
+    | Option.some v5 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [UorContributionAttributionRequest] (record UorContributionAttributionRequest {agent := v1, identity := v2, delegation := v3, principal := v4, trail := v5})) else (ctor Option.none [UorContributionAttributionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorContributionAttributionDecodeField4,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat],
+  result: (Option UorContributionAttributionRequest),
+  body: (let e : Nat := (uorContributionAttributionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorContributionAttributionParsePrincipal (uorContributionAttributionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorContributionAttributionRequest])
+    | Option.some v4 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorContributionAttributionDecodeField5 s (e + 1) v1 v2 v3 v4) else (ctor Option.none [UorContributionAttributionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorContributionAttributionDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option UorContributionAttributionRequest),
+  body: (let e : Nat := (uorContributionAttributionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorContributionAttributionParseDelegation (uorContributionAttributionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorContributionAttributionRequest])
+    | Option.some v3 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorContributionAttributionDecodeField4 s (e + 1) v1 v2 v3) else (ctor Option.none [UorContributionAttributionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorContributionAttributionDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option UorContributionAttributionRequest),
+  body: (let e : Nat := (uorContributionAttributionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorContributionAttributionParseIdentity (uorContributionAttributionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorContributionAttributionRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorContributionAttributionDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [UorContributionAttributionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorContributionAttributionDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option UorContributionAttributionRequest),
+  body: (let e : Nat := (uorContributionAttributionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorContributionAttributionParseAgent (uorContributionAttributionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorContributionAttributionRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorContributionAttributionDecodeField2 s (e + 1) v1) else (ctor Option.none [UorContributionAttributionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorContributionAttributionRule1,
+  parameters: [request : UorContributionAttributionRequest],
+  result: Bool,
+  body: ((project request agent) =? (uorContributionAttributionAgentOrganization))
+}
+
+definition{
+  name: uorContributionAttributionRule2,
+  parameters: [request : UorContributionAttributionRequest],
+  result: Bool,
+  body: ((project request identity) =? (uorContributionAttributionIdentityUnresolved))
+}
+
+definition{
+  name: uorContributionAttributionRule3,
+  parameters: [request : UorContributionAttributionRequest],
+  result: Bool,
+  body: ((project request agent) =? (uorContributionAttributionAgentPerson))
+}
+
+definition{
+  name: uorContributionAttributionRule4,
+  parameters: [request : UorContributionAttributionRequest],
+  result: Bool,
+  body: (((((project request agent) =? (uorContributionAttributionAgentSoftware)) && ((project request delegation) =? (uorContributionAttributionDelegationDeclared))) && ((project request principal) =? (uorContributionAttributionPrincipalPerson))) && ((project request trail) =? (uorContributionAttributionTrailRecorded)))
+}
+
+definition{
+  name: uorContributionAttributionRule5,
+  parameters: [request : UorContributionAttributionRequest],
+  result: Bool,
+  body: ((project request agent) =? (uorContributionAttributionAgentSoftware))
+}
+
+definition{
+  name: uorContributionAttributionJudge,
+  parameters: [request : UorContributionAttributionRequest],
+  result: Nat,
+  body: (if (uorContributionAttributionRule1 request) then (uorContributionAttributionAnswerNotApplicable) else (if (uorContributionAttributionRule2 request) then (uorContributionAttributionAnswerIndeterminate) else (if (uorContributionAttributionRule3 request) then (uorContributionAttributionAnswerPermit) else (if (uorContributionAttributionRule4 request) then (uorContributionAttributionAnswerPermit) else (if (uorContributionAttributionRule5 request) then (uorContributionAttributionAnswerDeny) else (uorContributionAttributionAnswerDeny))))))
+}
+
+definition{
+  name: uorContributionAttributionEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (uorContributionAttributionAnswerPermit)) then 0x7065726d6974 else (if (code =? (uorContributionAttributionAnswerDeny)) then 0x64656e79 else (if (code =? (uorContributionAttributionAnswerNotApplicable)) then 0x6e6f742d6170706c696361626c65 else (if (code =? (uorContributionAttributionAnswerIndeterminate)) then 0x696e64657465726d696e617465 else 0x696e76616c6964))))
+}
+
+definition{
+  name: uorContributionAttributionDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (136 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (uorContributionAttributionDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (uorContributionAttributionEncodeAnswer (uorContributionAttributionJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

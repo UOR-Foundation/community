@@ -6,8 +6,18 @@ Schema.org SoftwareApplication, PROV-O actedOnBehalfOf Contributor. Named in htt
 
 ## Metrics models (0)
 
-## Decisions (0)
+## Decisions (2)
+
+### Contribution attribution
+
+XACML 3.0 policy, https://github.com/UOR-Foundation/community/blob/main/apps/uor-contribution-attribution.prompt.json
+
+- A software agent that writes commits and pull requests and needs its work credited to the person it acted for, never counted as a person.
+
+### CHAOSS observation admission
+
+XACML 3.0 policy, https://github.com/UOR-Foundation/community/blob/main/apps/uor-observation-admission.prompt.json
 
 ## Open claims (1)
 
-- Agent contributor: no model or decision yet addresses this stakeholder
+- CHAOSS observation admission: Verifier: names a role no Foundation stakeholder holds

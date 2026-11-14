@@ -13,7 +13,7 @@ in the SDK that `prismpm.lock` pins.
 
 | Part | What it is | Where |
 | --- | --- | --- |
-| Application | The TOC project lifecycle: Sandbox, Incubation, Graduated and Archived, moved only by a quorate committee act on complete evidence (OMG UML 2.5.1 state machine) | `app/src/UorTocLifecycle.lex.tex`, `app/prompt.json` |
+| Decision apps | 28 decisions in one application: the TOC lifecycle, the repository files, protection, standards and naming norms, the Code of Conduct ladder, PROV-O contribution attribution, the Discord read policy, CHAOSS observation admission, and one ISO/IEC 15939 indicator per CHAOSS metrics model. A router answers `<app> <fields>` | `apps/*.prompt.json`, `app/src/Uor*.lex.tex`, `app/src/Chaoss*.lex.tex` |
 | Community facet | `Foundation.Community.V1`: CHAOSS metrics, metrics models, working groups, the release they come from and open claims, with the validity check of the register | `app/src/Foundation/Community/V1/Model.lex.tex` |
 | CHAOSS register | Every released CHAOSS metric (98) and metrics model (19), each read from its working group's repository at a pinned commit and addressed by its sha256 | `chaoss/register.json`, `app/src/Chaoss.lex.tex` |
 | Facets | Architecture (ISO/IEC/IEEE 42010), design (OPM, UML), features and journeys, security (STRIDE), quality (ISO/IEC 25010) and compliance | `app/src/*.lex.tex` |
@@ -38,6 +38,21 @@ node chaoss/catalog.mjs                        # rewrite app/src/Chaoss.lex.tex
 just vv                                        # the whole gate, in the locked SDK
 ```
 
+## The decision apps
+
+Each decision is one `prism/prompt/1` in `apps/`: a DMN 1.5 decision table, an
+XACML 3.0 policy decision or a UML 2.5.1 state machine, every rule citing its
+source. `apps/indicators.mjs` writes one indicator prompt per CHAOSS metrics
+model from the register, and the Prism-DevRel builder's `build-set` writes
+every app into the one `app/`, with a router as the project's application
+root, so the template's own gate verifies and publishes all of them
+([ADR 0001](docs/decisions/0001-one-app-many-decisions.md)).
+
+```sh
+apps/build.sh            # regenerate every app, in the locked SDK
+apps/build.sh --check    # fail if a generated file is stale
+```
+
 ## Where this is going
 
 This is the first part of the full model. The plan, including every facet, the
@@ -45,10 +60,6 @@ standards each one implements and how each stakeholder sees the model, is
 tracked in the project. The next parts are:
 
 - the ISO/IEC 15939 measurement mapping of every metric and model;
-- the remaining decision apps (repository norms, Code of Conduct ladder, PROV-O
-  attribution, Discord read policy and observation admission), which are
-  already verified as examples in
-  [Prism-DevRel](https://github.com/afflom/prism-devrel);
 - the GrimoireLab oracle in `standards.lock`.
 
 Built from [UOR-Foundation/template](https://github.com/UOR-Foundation/template);
@@ -57,6 +68,6 @@ Built from [UOR-Foundation/template](https://github.com/UOR-Foundation/template)
 
 ## Product facets
 
-The facet modules (`app/src/Quality.lex.tex`, `Security.lex.tex`, `Compliance.lex.tex`) are written by the prism-devrel builder from `app/prompt.json`. Quality declares the whole ISO/IEC 25010:2023 model (9 characteristics, 40 subcharacteristics) and proves each subcharacteristic is stated by a requirement or listed open. Security enumerates STRIDE per element over every component and data flow and proves each pair is answered by a threat or stated open; the open count is pinned by `strideOpenCount`. Compliance re-proves every facet predicate it cites. `just app` then runs the locked `oscal-1.1.0-structural` oracle on the OSCAL 1.1.0 component definition the verified build emits (`CP-01`).
+The facet modules (`app/src/Quality.lex.tex`, `Security.lex.tex`, `Compliance.lex.tex`) are written by the prism-devrel builder (`build-set`) over every app of the community application, from the prompts in `apps/` (`apps/build.sh`). Quality declares the whole ISO/IEC 25010:2023 model (9 characteristics, 40 subcharacteristics) and proves each subcharacteristic is stated by a requirement or listed open. Security enumerates STRIDE per element over every component and data flow and proves each pair is answered by a threat or stated open; the open count is pinned by `strideOpenCount`. Compliance re-proves every facet predicate it cites. `just app` then runs the locked `oscal-1.1.0-structural` oracle on the OSCAL 1.1.0 component definition the verified build emits (`CP-01`).
 
 Planted defect for `CP-01`: the emitted `oscal/component-definition.json` with `"oscal-version":"1.1.0"` changed to `1`. `oscal-validator` printed "OSCAL 1.1.0 JSON structural validation rejected the subject" and exited 4, which fails `just app`. With the file restored, it reports `"valid":true` and `just vv` passes.

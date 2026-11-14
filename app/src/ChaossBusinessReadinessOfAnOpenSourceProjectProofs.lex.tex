@@ -1,0 +1,132 @@
+\begin{lexlean}{ChaossBusinessReadinessOfAnOpenSourceProjectProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{ChaossBusinessReadinessOfAnOpenSourceProject}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [
+    request : ChaossBusinessReadinessOfAnOpenSourceProject::ChaossBusinessReadinessOfAnOpenSourceProjectRequest
+  ],
+  result: Bool,
+  body: (((((project request admitted) <=? 8) && ((project request refused) <=? 8)) && (1 <=? (project request refused))) && ((ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectJudge request) =? (ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerComplete)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [
+    request : ChaossBusinessReadinessOfAnOpenSourceProject::ChaossBusinessReadinessOfAnOpenSourceProjectRequest
+  ],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerComplete,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerOpen,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerPartial,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerUnmeasured,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectJudge,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectRule1,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectRule2,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectRule3,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [
+    request : ChaossBusinessReadinessOfAnOpenSourceProject::ChaossBusinessReadinessOfAnOpenSourceProjectRequest
+  ],
+  result: Bool,
+  body: (((((project request admitted) <=? 8) && ((project request refused) <=? 8)) && ((project request admitted) <? 8)) && ((ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectJudge request) =? (ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerComplete)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [
+    request : ChaossBusinessReadinessOfAnOpenSourceProject::ChaossBusinessReadinessOfAnOpenSourceProjectRequest
+  ],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerComplete,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerOpen,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerPartial,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerUnmeasured,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectJudge,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectRule1,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectRule2,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectRule3,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [
+    request : ChaossBusinessReadinessOfAnOpenSourceProject::ChaossBusinessReadinessOfAnOpenSourceProjectRequest
+  ],
+  result: Bool,
+  body: ((((((project request admitted) <=? 8) && ((project request refused) <=? 8)) && ((project request refused) =? 0)) && (8 <=? (project request admitted))) && (not ((ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectJudge request) =? (ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerComplete))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [
+    request : ChaossBusinessReadinessOfAnOpenSourceProject::ChaossBusinessReadinessOfAnOpenSourceProjectRequest
+  ],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerComplete,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerOpen,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerPartial,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerUnmeasured,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectJudge,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectRule1,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectRule2,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectRule3,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [
+    request : ChaossBusinessReadinessOfAnOpenSourceProject::ChaossBusinessReadinessOfAnOpenSourceProjectRequest
+  ],
+  result: Bool,
+  body: ((((((project request admitted) <=? 8) && ((project request refused) <=? 8)) && (1 <=? (project request admitted))) && ((project request refused) =? 0)) && ((ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectJudge request) =? (ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerUnmeasured)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [
+    request : ChaossBusinessReadinessOfAnOpenSourceProject::ChaossBusinessReadinessOfAnOpenSourceProjectRequest
+  ],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerComplete,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerOpen,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerPartial,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectAnswerUnmeasured,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectJudge,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectRule1,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectRule2,
+      ChaossBusinessReadinessOfAnOpenSourceProject::chaossBusinessReadinessOfAnOpenSourceProjectRule3,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

@@ -35,7 +35,19 @@ https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e
 
 - As a newcomer, I am curious as to whether I will be welcome in a new community or not.
 
-## Decisions (0)
+## Decisions (2)
+
+### Code of Conduct enforcement ladder
+
+UML 2.5.1 state machine, https://github.com/UOR-Foundation/community/blob/main/apps/uor-coc-enforcement.prompt.json
+
+- Participates on Discord, GitHub and at events and needs enforcement to follow the published ladder, never an unpublished one.
+
+### Discord channel read policy
+
+XACML 3.0 policy, https://github.com/UOR-Foundation/community/blob/main/apps/uor-discord-read.prompt.json
+
+- Talks in the Foundation's Discord and needs to know which channels are read and that direct messages never are.
 
 ## Open claims (3)
 
