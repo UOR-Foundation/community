@@ -22,7 +22,7 @@ call the same workflow.
 
 - **A1, merge.** An owned repository's ready pull request whose check runs
   are all green (the acceptance gate `just vv` and every oracle among them)
-  and that reaches nothing in H1 to H3 is approved by the controller and
+  and that reaches nothing H1 to H3 hold is approved by the controller and
   merged with a merge commit. The review that GOVERNANCE.md 6.2 requires is
   given by the controller, as an agent acting for the Organization Owner
   (W3C PROV-O `actedOnBehalfOf`). Its review body names the request and the
@@ -39,6 +39,42 @@ call the same workflow.
   `automation-events-*` artifact and job summary. The agent loop reads the
   records to find recurring denials and failing gates, and turns each one
   into the next change to the model.
+
+## Interventions (I)
+
+CHAOSS values drive the community's development through three more apps, all
+in the trust root. The admission policy, the runner and the approvals file are gates, so a change to them needs a human (H3); the signal and effect apps and the catalog merge on green gates.
+
+| App | Pattern | Prompt | Decides |
+| --- | --- | --- | --- |
+| uor-intervention-signal | OMG DMN 1.5 decision table (hit policy FIRST) | `intervention-signal.prompt.json` | whether an ISO 7870-2:2023 individuals chart of a weekly CHAOSS value rises, falls, is steady, or has too short a baseline for limits |
+| uor-intervention-admission | OASIS XACML 3.0 policy decision | `intervention-admission.prompt.json` | whether `interventions.mjs` carries out one proposed intervention |
+| uor-intervention-effect | OMG DMN 1.5 decision table (hit policy FIRST) | `intervention-effect.prompt.json` | what an enacted intervention, or an untreated signal, did over the nine weeks after it |
+
+- **I1, signals.** `interventions/project.mjs` charts every oracle
+  computation of every subject at the ISO 8601 week grain, from the same
+  evaluation the observation register is projected from
+  (`observations/evaluate.mjs`), and proposes each action of
+  `interventions.json` for each signal. A signal is never a threshold chosen
+  here: it is ISO 7870-2 test 1 or test 2 against limits from at least 20
+  baseline weeks.
+- **I2, what runs on its own.** Only the record: every proposal is a
+  CloudEvents 1.0 record (type `org.uorfoundation.community.intervention`) in
+  the run's `intervention-events-*` artifact and job summary, which the agent
+  loop reads (A4).
+- **I3, what needs Alex.** An agent task (an `agent-task` issue in this
+  repository, for the agent loop to find the assignable cause) opens only when
+  `intervention-approvals.json` approves that proposal's id. A proposal that
+  reaches people (a note to a repository's maintainers, a Discord post, a
+  comment or a label anywhere a contributor, participant or partner reads) is
+  always denied: the runner lists its draft for Alex and sends nothing. Alex
+  sends it or not, and records the time it was sent as `enacted` in the
+  approvals file.
+- **I4, effects.** An enacted intervention's effect is decided over the nine
+  complete weeks after it, against the limits frozen at its signal, and is
+  read against the effects of every untreated signal onset in the charts'
+  history, which the register carries. An intervention is evidence only where
+  its effects differ from what untreated signals did.
 
 ## Rulesets
 
@@ -70,9 +106,18 @@ or `active` switches the existing rulesets off or on and changes nothing else.
   reference or the `ORG_ADMIN_TOKEN`, or changes the scripts that apply
   organization settings with it, needs a human's approval of its exact head.
   Creating or changing a secret's value is only ever done by a human.
-- **H3, trust root.** `bootstrap.yml` (the template's human-reviewed trust
-  root), `automerge.yml`, `automation/**` and `CODEOWNERS` need a human's
-  approval. The policy never admits a change to itself.
+- **H3, gates.** A change to a file that holds or enforces a human gate
+  needs a human's approval: `repos.json` lists them under `gates` (the two
+  admission policies, the controller, runner and builder code that reads reach
+  and approvals, `intervention-approvals.json`, `bootstrap.yml`,
+  `automerge.yml` and `CODEOWNERS`). The policy never admits a change to its
+  own gates, so no agent can remove H1, H2, H3 or the intervention people
+  gate. Every other trust-root change (the rest of `automation/**` and the
+  workflows the agent loop runs) merges on green gates like any other change
+  in an owned repository (Alex, 2026-11-14T21:36Z: merge trust-root changes in
+  owned repos on green checks, keeping the people, upstream and secrets
+  gates). A diff that reaches a secret or a gate is decided as that, whatever
+  else it reaches.
 - **H4, shared repositories.** A repository not in `repos.json` keeps the
   review its own maintainers give. The controller answers not-applicable
   there and changes nothing. This includes the 23 per-repository standards
@@ -91,7 +136,7 @@ Giving agents their own GitHub identity would close this gap.
 | Field | Read from |
 | --- | --- |
 | repository | `repos.json` `owned` |
-| reach | the diff's paths against `trustRoot` and `secretsPaths`, its `+`/`-` lines against `secrets.`, and the `speaks-outside` label |
+| reach | the `speaks-outside` label, the diff's `+`/`-` lines against `secrets.` and its paths against `secretsPaths`, then `gates`, then `trustRoot` |
 | checks | every check run and commit status on the head, except the controller's own; with no `acceptance / ` run yet, the checks count as running |
 | human | the reviews and the `human-approved` label event, compared with the head commit |
 | draft | the pull request's draft flag |

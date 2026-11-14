@@ -12,7 +12,7 @@
  *
  * This file only observes facts and turns them into requests:
  *   repository  automation/repos.json lists this repository as owned
- *   reach       reachOf: the diff's paths and its secrets references, and the speaks-outside label
+ *   reach       reachOf: the speaks-outside label, the diff's secrets references, its gate and trust-root paths
  *   checks      every check run and status on the head
  *   human       humanOf: an approving human review of the head, or human-approved added after it
  *   draft       the pull request's draft flag
@@ -25,47 +25,21 @@
  * loop and the next development step read (AUTOMATION.md).
  */
 import { execFileSync } from 'node:child_process';
-import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { appendFileSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { decide, load } from './builder.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const root = join(here, '..');
 const argv = process.argv.slice(2);
 const opt = (name) => (argv.includes(name) ? argv[argv.indexOf(name) + 1] : undefined);
 const dry = argv.includes('--dry-run');
 const factsFile = opt('--facts');
 const eventsFile = opt('--events');
 
-// ---- The builder, addressed by the commit apps/set.json pins (as apps/build.sh fetches it) ----
-async function builder() {
-  if (process.env.PRISM_BUILDER) return dirname(process.env.PRISM_BUILDER);
-  const set = JSON.parse(readFileSync(join(root, 'apps/set.json'), 'utf8')).builder;
-  const dir = join(process.env.XDG_CACHE_HOME ?? join(process.env.HOME, '.cache'), 'prism-devrel', set.commit);
-  if (!existsSync(join(dir, 'builder/cli.mjs'))) {
-    mkdirSync(dir, { recursive: true });
-    const git = (...a) => execFileSync('git', ['-C', dir, ...a], { stdio: 'ignore' });
-    git('init', '-q');
-    git('fetch', '-q', '--depth', '1', `https://github.com/${set.repository}`, set.commit);
-    git('checkout', '-q', 'FETCH_HEAD');
-  }
-  const at = execFileSync('git', ['-C', dir, 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
-  if (at !== set.commit) throw new Error(`builder checkout is ${at}, not ${set.commit}`);
-  return join(dir, 'builder');
-}
-const b = await builder();
-const { checkedSpec } = await import(join(b, 'model.mjs'));
-const { judge, respond } = await import(join(b, 'vendor/prism-code/src/journey/spec.mjs'));
-const load = (file) => checkedSpec(JSON.parse(readFileSync(join(here, file), 'utf8')).app);
+// ---- The two apps, re-checked and answered by the pinned builder (automation/builder.mjs) ----
 const admission = load('merge-admission.prompt.json');
 const stack = load('stack-step.prompt.json');
-const decide = (spec, request) => {
-  const text = spec.fields.map((f) => request[f.name]).join(' ');
-  const outcome = respond(spec, new TextEncoder().encode(text));
-  const { rule } = judge(spec, request);
-  if (outcome === 'invalid') throw new Error(`${spec.name} refuses ${text}`);
-  return { app: spec.name, request: text, outcome, rule: rule ?? 'otherwise' };
-};
 
 // ---- Telemetry: CloudEvents 1.0 ----
 const runUrl = process.env.GITHUB_RUN_ID ? `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}` : 'urn:uor:automation:local';
@@ -111,11 +85,14 @@ const defaultBranch = get(`repos/${repo}`).default_branch;
 /** What the diff reaches (AUTOMATION.md: the human gates H1 to H3). */
 function reachOf(pr, files) {
   if (pr.labels.some((l) => l.name === 'speaks-outside')) return 'outside';
-  const trust = registry.trustRoot.map((p) => new RegExp(`^${p.replace(/[.]/g, '\\.').replace(/\*\*/g, '.*')}$`));
-  if (files.some((f) => trust.some((t) => t.test(f.filename) || (f.previous_filename && t.test(f.previous_filename))))) return 'trust-root';
+  const glob = (p) => new RegExp(`^${p.replace(/[.]/g, '\\.').replace(/\*\*/g, '.*')}$`);
+  const touches = (globs) => files.some((f) => globs.map(glob).some((t) => t.test(f.filename) || (f.previous_filename && t.test(f.previous_filename))));
+  // Most guarded first: a diff that reaches a secret or a gate is decided as that, whatever else it reaches.
   const secret = /\$\{\{[^}]*\bsecrets\.|ORG_ADMIN_TOKEN/;
   if (files.some((f) => (f.patch ?? '').split('\n').some((l) => /^[+-]/.test(l) && secret.test(l)))) return 'secrets';
   if (files.some((f) => registry.secretsPaths.some((p) => f.filename.startsWith(p)))) return 'secrets';
+  if (touches(registry.gates)) return 'gate';
+  if (touches(registry.trustRoot)) return 'trust-root';
   return 'inside';
 }
 
