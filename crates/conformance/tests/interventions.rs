@@ -170,6 +170,21 @@ console.log('ok');"
         repos.contains("\"automation/**\""),
         "the approvals, the catalog and the prompts are in the trust root"
     );
+    let gates = &repos[repos.find("\"gates\": [").expect("the gates")..];
+    let gates = &gates[..gates.find(']').expect("closed")];
+    for gate in [
+        "automation/intervention-admission.prompt.json",
+        "automation/intervention-approvals.json",
+        "automation/interventions.mjs",
+        "automation/merge-admission.prompt.json",
+        "automation/controller.mjs",
+        "automation/repos.json",
+    ] {
+        assert!(
+            gates.contains(&format!("\"{gate}\"")),
+            "{gate} is a gate: a change to it needs a human"
+        );
+    }
 }
 
 /// `IV-04`: effects and untreated onsets are the effect app's answers

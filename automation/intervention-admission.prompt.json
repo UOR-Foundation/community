@@ -10,7 +10,7 @@
     "fields": [
       { "name": "signal", "kind": "choice", "values": ["rise", "fall", "steady", "insufficient"], "means": "the uor-intervention-signal answer for the chart the proposal is for" },
       { "name": "reach", "kind": "choice", "values": ["record", "agent-task", "people"], "means": "record: the run's own CloudEvents record and job summary; agent-task: an agent-task issue in UOR-Foundation/community for the scheduled agent loop; people: anything a contributor, participant or partner reads, such as a Discord post, a comment, a label or an issue in their repository" },
-      { "name": "approval", "kind": "choice", "values": ["exact", "none"], "means": "exact: automation/intervention-approvals.json, a trust-root file only a human-approved change can edit, approves this proposal's id; none: it does not" }
+      { "name": "approval", "kind": "choice", "values": ["exact", "none"], "means": "exact: automation/intervention-approvals.json, a gate file only a human-approved change can edit, approves this proposal's id; none: it does not" }
     ],
     "outcomes": ["permit", "deny", "not-applicable", "indeterminate"],
     "meanings": {
