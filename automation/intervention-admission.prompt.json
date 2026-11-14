@@ -1,0 +1,47 @@
+{
+  "schema": "prism/prompt/1",
+  "goal": "Decide whether the intervention runner may carry out one proposed intervention on its own, so CHAOSS signals can drive the community's development without anything reaching a contributor, participant or partner that a human has not sent.",
+  "pattern": "policyDecision",
+  "repository": "UOR-Foundation/community",
+  "app": {
+    "name": "uor-intervention-admission",
+    "title": "Intervention admission",
+    "purpose": "Decide whether automation/interventions.mjs carries out one intervention proposed for a signal of uor-intervention-signal, from the signal, whom the act reaches, and whether Alex approved that exact proposal.",
+    "fields": [
+      { "name": "signal", "kind": "choice", "values": ["rise", "fall", "steady", "insufficient"], "means": "the uor-intervention-signal answer for the chart the proposal is for" },
+      { "name": "reach", "kind": "choice", "values": ["record", "agent-task", "people"], "means": "record: the run's own CloudEvents record and job summary; agent-task: an agent-task issue in UOR-Foundation/community for the scheduled agent loop; people: anything a contributor, participant or partner reads, such as a Discord post, a comment, a label or an issue in their repository" },
+      { "name": "approval", "kind": "choice", "values": ["exact", "none"], "means": "exact: automation/intervention-approvals.json, a trust-root file only a human-approved change can edit, approves this proposal's id; none: it does not" }
+    ],
+    "outcomes": ["permit", "deny", "not-applicable", "indeterminate"],
+    "meanings": {
+      "permit": "XACML 3.0 section 7: Permit; the runner carries out the act",
+      "deny": "XACML 3.0 section 7: Deny; the runner does not act, and the proposal, with its draft, is listed for Alex in the run's summary",
+      "not-applicable": "XACML 3.0 section 7: NotApplicable; there is no signal, so no intervention is proposed",
+      "indeterminate": "XACML 3.0 section 7: Indeterminate; unused, every request is decided"
+    },
+    "rules": [
+      { "when": [{ "field": "signal", "op": "is", "value": "steady" }], "then": "not-applicable", "why": "ISO 7870-2:2023: acting on common-cause variation as if it had a special cause makes a process worse" },
+      { "when": [{ "field": "signal", "op": "is", "value": "insufficient" }], "then": "not-applicable", "why": "uor-intervention-signal claims no signal without control limits" },
+      { "when": [{ "field": "reach", "op": "is", "value": "people" }], "then": "deny", "why": "Alex, 2026-11-14: be very cautious not to overstep with contributors, participants and partners; AUTOMATION.md H1: what speaks for the organization to people is sent by a human, so the runner only drafts it" },
+      { "when": [{ "field": "reach", "op": "is", "value": "record" }], "then": "permit", "why": "AUTOMATION.md A4: every decision is a CloudEvents 1.0 record in the run's own telemetry, which reaches no one" },
+      { "when": [{ "field": "approval", "op": "is", "value": "none" }], "then": "deny", "why": "Alex, 2026-11-14: nothing proposed from community measurement acts without Alex approving the exact act; an agent task names a subject publicly" }
+    ],
+    "otherwise": "permit",
+    "otherwiseWhy": "a signal, an agent task in the community repository, and Alex's approval of this exact proposal: AUTOMATION.md A3, the scheduled agent loop investigates the assignable cause",
+    "properties": [
+      { "kind": "never", "when": [{ "field": "reach", "op": "is", "value": "people" }], "then": "permit", "why": "the runner never speaks to people" },
+      { "kind": "never", "when": [{ "field": "signal", "op": "is", "value": "steady" }], "then": "permit", "why": "common-cause variation is never acted on" },
+      { "kind": "never", "when": [{ "field": "signal", "op": "is", "value": "insufficient" }], "then": "permit", "why": "no act without control limits" },
+      { "kind": "never", "when": [{ "field": "reach", "op": "is", "value": "agent-task" }, { "field": "approval", "op": "is", "value": "none" }], "then": "permit", "why": "no agent task without Alex's approval of it" },
+      { "kind": "always", "when": [{ "field": "signal", "op": "is", "value": "fall" }, { "field": "reach", "op": "is", "value": "record" }], "then": "permit", "why": "every signal is recorded" }
+    ],
+    "examples": [
+      { "request": "steady record none", "response": "not-applicable" },
+      { "request": "insufficient agent-task exact", "response": "not-applicable" },
+      { "request": "rise people exact", "response": "deny" },
+      { "request": "fall record none", "response": "permit" },
+      { "request": "rise agent-task none", "response": "deny" },
+      { "request": "fall agent-task exact", "response": "permit" }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "spec": "uor-community/interventions/1",
+  "about": "The interventions a CHAOSS signal can propose, and the control chart that raises the signal. interventions/project.mjs proposes each action for every chart whose uor-intervention-signal answer and computation it names; automation/interventions.mjs carries out only what uor-intervention-admission permits. A trust-root file (AUTOMATION.md H3): a change here needs a human.",
+  "grain": "week",
+  "chart": {
+    "standard": "ISO 7870-2:2023 Shewhart control charts, individuals chart with moving range",
+    "baseline": 20,
+    "window": 9,
+    "e2": 2.66,
+    "why": "ISO 7870-2:2023: limits for individual values are the mean plus or minus E2 = 2.66 times the mean moving range of span 2, computed from 20 to 25 preliminary subgroups; test 2 counts nine points. The baseline is the complete weeks before the nine-week window, so the window is judged against limits it did not set."
+  },
+  "fill": {
+    "aggregations": ["count", "cardinality", "sum"],
+    "why": "Elasticsearch date_histogram with min_doc_count 0, as GrimoireLab's Kibana panels draw it: a week with no items has count, cardinality and sum 0. An average or a ratio of no items has no value, so a series of one is charted only when every week has a value."
+  },
+  "actions": [
+    {
+      "name": "record",
+      "reach": "record",
+      "signals": ["rise", "fall"],
+      "computations": "any",
+      "text": "{label} for {subject} {moved} since the week of {since}: {tests}.",
+      "why": "AUTOMATION.md A4: every decision is a CloudEvents 1.0 record the agent loop reads"
+    },
+    {
+      "name": "investigate",
+      "reach": "agent-task",
+      "signals": ["rise", "fall"],
+      "computations": "any",
+      "text": "Find the assignable cause: weekly {label} for {subject} {moved} from the week of {since} to the week of {week} ({tests}; centre line {cl}, limits {lcl} to {ucl}, latest {latest}). CHAOSS metrics: {metrics}. Read the items the corpus holds for those weeks, name the cause, and propose the change to the model, the automation or a draft for Alex. Speak to no one outside this repository.",
+      "why": "ISO 7870-2:2023: a signal of a special cause is investigated and its assignable cause identified before any action on the process; AUTOMATION.md A3: the scheduled agent loop takes agent-task issues"
+    },
+    {
+      "name": "maintainer-note",
+      "reach": "people",
+      "signals": ["fall"],
+      "computations": [
+        { "index": "github_issues", "aggregation": "cardinality", "field": "author_uuid", "metric": "metric-change-requests" },
+        { "index": "git", "aggregation": "cardinality", "field": "author_uuid", "metric": "metric-committers" }
+      ],
+      "text": "Draft for Alex to send, or not, to the maintainers of {subject}: fewer people than usual have been credited with contributions each week ({label}, CHAOSS {metric}) since the week of {since}. CHAOSS asks: {question} Is there anything the Foundation can do to help?",
+      "why": "CHAOSS Committers and Change Requests ask how robust a community's contributors are; UOR-Foundation/.github GOVERNANCE.md: a repository's maintainers own its community. Sending is a human act (AUTOMATION.md H1)."
+    },
+    {
+      "name": "thank-contributors",
+      "reach": "people",
+      "signals": ["rise"],
+      "computations": [
+        { "index": "github_issues", "aggregation": "cardinality", "field": "author_uuid", "metric": "metric-change-requests" },
+        { "index": "git", "aggregation": "cardinality", "field": "author_uuid", "metric": "metric-committers" }
+      ],
+      "text": "Draft for Alex to post, or not, in the Foundation Discord: more people than usual have been credited with contributions to {subject} each week ({label}, CHAOSS {metric}) since the week of {since}. Thank you to everyone taking part.",
+      "why": "CHAOSS Community Welcomingness asks how a community welcomes and keeps its contributors; recognition is one of its practices. Posting is a human act (AUTOMATION.md H1)."
+    }
+  ]
+}
