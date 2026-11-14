@@ -111,7 +111,8 @@ const indexPatterns = new Map();
 for (const p of panelFiles) {
   const d = JSON.parse(file(SIG, p).text);
   if (d.dashboard) dashboardById.set(d.dashboard.id, [...(dashboardById.get(d.dashboard.id) ?? []), p]);
-  for (const ip of d.index_patterns ?? []) indexPatterns.set(ip.id, { file: p, ...ip });
+  // Each Sigils collection ships its own index patterns; a dashboard reads the ones of its own directory.
+  for (const ip of d.index_patterns ?? []) indexPatterns.set(`${dirname(p)}|${ip.id}`, { file: p, ...ip });
 }
 const renames = new Map();
 for (const l of git(dirs[SIG], 'log', '--format=', '--name-status', '--diff-filter=R', '-M100%', pins[SIG]).split('\n')) {
@@ -141,13 +142,15 @@ function resolveLink(url) {
 // ---- Computations: Kibana aggregations and Timelion series. ----
 const words = (s) => String(s).toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
 const holds = (hay, needle) => { const h = words(hay); const n = words(needle); return n.length > 0 && h.some((_, i) => n.every((w, j) => h[i + j] === w)); };
+// A Kibana saved query is a Lucene string, or the ES query DSL whose query_string carries one; any other DSL is kept as JSON.
+const lucene = (q) => (q === undefined || q === null || q === '' ? '' : typeof q === 'string' ? q : typeof q?.query_string?.query === 'string' ? q.query_string.query : JSON.stringify(q));
 const parseQuery = (q) => { const m = String(q ?? '').match(/\bpull_request:(true|false)\b/); return m ? m[1] === 'true' : undefined; };
 const filterFlag = (filters = []) => {
   let v;
   for (const f of filters) if (f?.meta?.key === 'pull_request' && !f.meta.disabled) { const x = String(f.meta.params?.query ?? f.meta.value) === 'true'; v = f.meta.negate ? !x : x; }
   return v;
 };
-const indexTitle = (ref) => (indexPatterns.has(ref) ? indexPatterns.get(ref).value.title : ref);
+const indexTitle = (ref, dir) => (indexPatterns.has(`${dir}|${ref}`) ? indexPatterns.get(`${dir}|${ref}`).value.title : ref);
 
 function computations(dashFile) {
   const d = JSON.parse(file(SIG, dashFile).text);
@@ -158,9 +161,10 @@ function computations(dashFile) {
     const vs = JSON.parse(v.value.visState);
     const ss = JSON.parse(v.value.kibanaSavedObjectMeta?.searchSourceJSON || '{}');
     const saved = v.value.savedSearchId ? searches.get(v.value.savedSearchId) ?? {} : {};
-    const index = indexTitle(ss.index ?? saved.index ?? '');
-    const flag = [parseQuery(ss.query?.query), filterFlag(ss.filter), parseQuery(saved.query?.query), filterFlag(saved.filter), filterFlag(dss.filter)].find((x) => x !== undefined);
-    const query = [ss.query?.query, saved.query?.query].filter(Boolean).join(' AND ');
+    const collection = dirname(dashFile);
+    const index = indexTitle(ss.index ?? saved.index ?? '', collection);
+    const flag = [parseQuery(lucene(ss.query?.query)), filterFlag(ss.filter), parseQuery(lucene(saved.query?.query)), filterFlag(saved.filter), filterFlag(dss.filter)].find((x) => x !== undefined);
+    const query = [lucene(ss.query?.query), lucene(saved.query?.query)].filter((q) => q && q !== '*').join(' AND ');
     const at = citeObject(SIG, dashFile, v.id, v.value.visState);
     if (vs.type === 'timelion') {
       const chains = String(vs.params.expression).split(/,\s*\n/).map((c) => c.trim()).filter(Boolean);
@@ -168,7 +172,7 @@ function computations(dashFile) {
         const label = (chain.match(/\.label\('([^']*)'\)/) || [])[1] ?? '';
         const series = [...chain.matchAll(/\.es\(([^)]*)\)/g)].map((m) => Object.fromEntries([...m[1].matchAll(/(\w+)=('([^']*)'|[^,\s]+)/g)].map((x) => [x[1], x[3] ?? x[2]])));
         const ops = [...chain.matchAll(/\.(divide|multiply|subtract|sum|trend|cusum|derivative|movingaverage)\(/g)].map((m) => m[1]).filter((o) => o !== 'trend');
-        const parsed = series.map((s) => { const [agg, field] = (s.metric ?? 'count').split(':'); return { aggregation: agg, field: field ?? '', index: indexTitle(s.index ?? index), pullRequest: parseQuery(s.q), query: s.q ?? '', dateField: s.timefield ?? '' }; });
+        const parsed = series.map((s) => { const [agg, field] = (s.metric ?? 'count').split(':'); return { aggregation: agg, field: field ?? '', index: indexTitle(s.index ?? index, collection), collection, pullRequest: parseQuery(s.q), query: s.q ?? '', dateField: s.timefield ?? '' }; });
         if (!series.length || ops.some((o) => o !== 'divide') || (ops.length && series.length !== 2)) out.push({ vis: v.id, title: vs.title, names: [vs.title, label], unparsed: series.length ? `timelion-${ops.join('-')}` : 'timelion-without-es', at });
         else out.push({ vis: v.id, title: vs.title, names: [vs.title, label], label, series: parsed, function: ops[0] ?? null, at });
       }
@@ -179,7 +183,7 @@ function computations(dashFile) {
     if (!aggs.length) { out.push({ vis: v.id, title: vs.title, names: [vs.title], unparsed: vs.type, at }); continue; }
     const dateField = (aggs.find((a) => a.type === 'date_histogram')?.params?.field) ?? '';
     for (const a of aggs.filter((x) => x.schema === 'metric' || ['count', 'cardinality', 'sum', 'avg', 'median', 'percentiles', 'min', 'max'].includes(x.type) && x.schema !== 'bucket' && x.schema !== 'segment' && x.schema !== 'split')) {
-      out.push({ vis: v.id, title: vs.title, names: [vs.title, a.params?.customLabel ?? ''], label: a.params?.customLabel ?? '', series: [{ aggregation: a.type, field: a.params?.field ?? '', index, pullRequest: flag, query, dateField }], function: null, at });
+      out.push({ vis: v.id, title: vs.title, names: [vs.title, a.params?.customLabel ?? ''], label: a.params?.customLabel ?? '', series: [{ aggregation: a.type, field: a.params?.field ?? '', index, collection, pullRequest: flag, query, dateField }], function: null, at });
     }
   }
   return out;
@@ -240,13 +244,13 @@ function entityOf(ds, pullRequest) {
   return { value, cites: [cite(PERCEVAL, ds.backend, decl.trim()), cite(PERCEVAL, ds.backend, be.lines.find((l) => /^\s*CATEGORIES = \[/.test(l)).trim())] };
 }
 const schemaFile = (ds) => { const n = ds.section.replace(':', '_'); for (const c of [`schema/${n}.csv`, `schema/${ds.section.split(':')[0]}.csv`, `schema/${ds.section.split(':')[0]}_issues.csv`]) if (existsSync(join(dirs[ELK], c))) return c; return null; };
-function attributeOf(ds, index, field, entity) {
+function attributeOf(ds, index, field, dir) {
   if (!field) return { refusal: 'count-of-items', unit: entity ? `{${entity}}` : null };
-  const ip = [...indexPatterns.values()].find((p) => p.value.title === index);
+  const ip = [...indexPatterns.entries()].filter(([k, p]) => k.startsWith(`${dir}|`) && p.value.title === index).map(([, p]) => p)[0];
   const scripted = ip && JSON.parse(ip.value.fields).find((f) => f.name === field && f.scripted);
   if (scripted) {
     const days = /\.toMinutes\(\)\/1440\.0;/.test(scripted.script) && !/return (?!Duration|0;)/.test(scripted.script.replace(/return Duration[^;]*;/g, ''));
-    return { name: field, kind: 'scripted', cites: [citeObject(SIG, ip.file, `${ip.id}/fields/${field}`, scripted.script)], unit: days ? 'd' : null, type: scripted.type };
+    return { name: field, kind: 'scripted', script: scripted.script, cites: [citeObject(SIG, ip.file, `${ip.id}/fields/${field}`, scripted.script)], unit: days ? 'd' : null, type: scripted.type };
   }
   const schema = schemaFile(ds);
   const row = schema && file(ELK, schema).lines.find((l) => l.startsWith(`${field},`));
@@ -312,7 +316,7 @@ for (const x of m.items) {
       const item = entityOf(ds, sr.pullRequest ?? undefined);
       const counting = COUNTS.has(sr.aggregation);
       const entity = counting ? { refusal: 'count-characterizes-a-collection' } : item;
-      const attr = counting ? (sr.field ? attributeOf(ds, sr.index, sr.field) : { refusal: 'count-of-items' }) : attributeOf(ds, sr.index, sr.field);
+      const attr = counting ? (sr.field ? attributeOf(ds, sr.index, sr.field, sr.collection) : { refusal: 'count-of-items' }) : attributeOf(ds, sr.index, sr.field, sr.collection);
       const unit = sr.aggregation === 'count' ? (item.value ? `{${item.value}}` : null)
         : sr.aggregation === 'cardinality' ? (attr.name ? `{${attr.name}}` : null)
         : attr.unit ?? null;
@@ -332,7 +336,9 @@ for (const x of m.items) {
       cites: { entity: series.flatMap((x) => x.entity?.cites ?? []), item: series.flatMap((x) => x.item?.cites ?? []), attribute: series.flatMap((x) => x.attr?.cites ?? []) },
     };
   });
-  const binding = (f) => ({ index: f.c.series.map((x) => x.index), function: f.c.function, series: f.c.series, entity: f.entity, unit: f.unit, label: f.c.label, at: f.c.at });
+  // A scripted field's Painless source travels with the series that aggregates it, with its citation.
+  const withScript = (x) => (x.attr?.kind === 'scripted' ? { ...x.sr, script: { lang: 'painless', source: x.attr.script, at: x.attr.cites[0] } } : x.sr);
+  const binding = (f) => ({ index: f.c.series.map((x) => x.index), function: f.c.function, series: f.series.map(withScript), entity: f.entity, unit: f.unit, label: f.c.label, at: f.c.at });
   const bindings = uniq(facts.filter((f) => !f.refusal).map(binding));
   const agree = (element, key, cites) => {
     if (why) return refuse(why);
