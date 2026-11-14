@@ -908,7 +908,7 @@
        "dateField": "",
        "script": {
         "lang": "painless",
-        "source": "if (doc.containsKey('state')) {\n  if (doc['state'].value == 'closed') {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['closed_at'].value.millis), ZoneId.of('Z'))).toMinutes()/1440.0;\n  } else {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(new Date().getTime()), ZoneId.of('Z'))).toMinutes()/1440.0;\n  }\n\n  \n} else {\n  return 0;\n}",
+        "code": "if (doc.containsKey('state')) {\n  if (doc['state'].value == 'closed') {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['closed_at'].value.millis), ZoneId.of('Z'))).toMinutes()/1440.0;\n  } else {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(new Date().getTime()), ZoneId.of('Z'))).toMinutes()/1440.0;\n  }\n\n  \n} else {\n  return 0;\n}",
         "at": {
          "source": "grimoirelab-sigils@71a26ac67d2d694382b48d6f2f4d953412dd33f1:panels/json/github_issues-index-pattern.json#github_issues/fields/painless_delay",
          "digest": "caaf6d444863a12f9288289668056645b8a1aa7b17cb72ea24d872db8d3e0486"
@@ -2145,7 +2145,7 @@
        "dateField": "grimoire_creation_date",
        "script": {
         "lang": "painless",
-        "source": "return doc['lines_removed'].value * -1",
+        "code": "return doc['lines_removed'].value * -1",
         "at": {
          "source": "grimoirelab-sigils@71a26ac67d2d694382b48d6f2f4d953412dd33f1:chaoss-gmd-cde/git-index-pattern.json#git/fields/painless_inverted_lines_removed_git",
          "digest": "9f65c5f7d1d7dedc7268234982cf88f8106967b8589421c1bb17af6f07bdd441"
@@ -5859,7 +5859,7 @@
        "dateField": "",
        "script": {
         "lang": "painless",
-        "source": "if (doc.containsKey('state')) {\n  if (doc['state'].value == 'closed') {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['closed_at'].value.millis), ZoneId.of('Z'))).toMinutes()/1440.0;\n  } else {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(new Date().getTime()), ZoneId.of('Z'))).toMinutes()/1440.0;\n  }\n\n  \n} else {\n  return 0;\n}",
+        "code": "if (doc.containsKey('state')) {\n  if (doc['state'].value == 'closed') {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['closed_at'].value.millis), ZoneId.of('Z'))).toMinutes()/1440.0;\n  } else {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(new Date().getTime()), ZoneId.of('Z'))).toMinutes()/1440.0;\n  }\n\n  \n} else {\n  return 0;\n}",
         "at": {
          "source": "grimoirelab-sigils@71a26ac67d2d694382b48d6f2f4d953412dd33f1:panels/json/github_issues-index-pattern.json#github_issues/fields/painless_delay",
          "digest": "caaf6d444863a12f9288289668056645b8a1aa7b17cb72ea24d872db8d3e0486"
@@ -5891,7 +5891,7 @@
        "dateField": "",
        "script": {
         "lang": "painless",
-        "source": "if (doc.containsKey('state')) {\n  if (doc['state'].value == 'closed') {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['closed_at'].value.millis), ZoneId.of('Z'))).toMinutes()/1440.0;\n  } else {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(new Date().getTime()), ZoneId.of('Z'))).toMinutes()/1440.0;\n  }\n\n  \n} else {\n  return 0;\n}",
+        "code": "if (doc.containsKey('state')) {\n  if (doc['state'].value == 'closed') {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['closed_at'].value.millis), ZoneId.of('Z'))).toMinutes()/1440.0;\n  } else {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(new Date().getTime()), ZoneId.of('Z'))).toMinutes()/1440.0;\n  }\n\n  \n} else {\n  return 0;\n}",
         "at": {
          "source": "grimoirelab-sigils@71a26ac67d2d694382b48d6f2f4d953412dd33f1:panels/json/github_issues-index-pattern.json#github_issues/fields/painless_delay",
          "digest": "caaf6d444863a12f9288289668056645b8a1aa7b17cb72ea24d872db8d3e0486"
@@ -5923,7 +5923,7 @@
        "dateField": "",
        "script": {
         "lang": "painless",
-        "source": "if (doc.containsKey('state')) {\n  if (doc['state'].value == 'closed') {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['closed_at'].value.millis), ZoneId.of('Z'))).toMinutes()/1440.0;\n  } else {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(new Date().getTime()), ZoneId.of('Z'))).toMinutes()/1440.0;\n  }\n\n  \n} else {\n  return 0;\n}",
+        "code": "if (doc.containsKey('state')) {\n  if (doc['state'].value == 'closed') {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['closed_at'].value.millis), ZoneId.of('Z'))).toMinutes()/1440.0;\n  } else {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(new Date().getTime()), ZoneId.of('Z'))).toMinutes()/1440.0;\n  }\n\n  \n} else {\n  return 0;\n}",
         "at": {
          "source": "grimoirelab-sigils@71a26ac67d2d694382b48d6f2f4d953412dd33f1:panels/json/github_issues-index-pattern.json#github_issues/fields/painless_delay",
          "digest": "caaf6d444863a12f9288289668056645b8a1aa7b17cb72ea24d872db8d3e0486"
@@ -5955,7 +5955,7 @@
        "dateField": "",
        "script": {
         "lang": "painless",
-        "source": "if (doc.containsKey('state')) {\n  if (doc['state'].value == 'closed') {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['closed_at'].value.millis), ZoneId.of('Z'))).toMinutes()/1440.0;\n  } else {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(new Date().getTime()), ZoneId.of('Z'))).toMinutes()/1440.0;\n  }\n\n  \n} else {\n  return 0;\n}",
+        "code": "if (doc.containsKey('state')) {\n  if (doc['state'].value == 'closed') {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['closed_at'].value.millis), ZoneId.of('Z'))).toMinutes()/1440.0;\n  } else {\n     return Duration.between(LocalDateTime.ofInstant(Instant.ofEpochMilli(doc['grimoire_creation_date'].value.millis), ZoneId.of('Z')), LocalDateTime.ofInstant(Instant.ofEpochMilli(new Date().getTime()), ZoneId.of('Z'))).toMinutes()/1440.0;\n  }\n\n  \n} else {\n  return 0;\n}",
         "at": {
          "source": "grimoirelab-sigils@71a26ac67d2d694382b48d6f2f4d953412dd33f1:panels/json/github_issues-index-pattern.json#github_issues/fields/painless_delay",
          "digest": "caaf6d444863a12f9288289668056645b8a1aa7b17cb72ea24d872db8d3e0486"

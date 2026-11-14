@@ -337,7 +337,7 @@ for (const x of m.items) {
     };
   });
   // A scripted field's Painless source travels with the series that aggregates it, with its citation.
-  const withScript = (x) => (x.attr?.kind === 'scripted' ? { ...x.sr, script: { lang: 'painless', source: x.attr.script, at: x.attr.cites[0] } } : x.sr);
+  const withScript = (x) => (x.attr?.kind === 'scripted' ? { ...x.sr, script: { lang: 'painless', code: x.attr.script, at: x.attr.cites[0] } } : x.sr);
   const binding = (f) => ({ index: f.c.series.map((x) => x.index), function: f.c.function, series: f.series.map(withScript), entity: f.entity, unit: f.unit, label: f.c.label, at: f.c.at });
   const bindings = uniq(facts.filter((f) => !f.refusal).map(binding));
   const agree = (element, key, cites) => {
