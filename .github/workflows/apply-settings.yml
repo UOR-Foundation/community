@@ -12,10 +12,11 @@
 # Applying needs the ORG_ADMIN_TOKEN secret, a fine-grained token owned by
 # UOR-Foundation with access to all repositories and these permissions:
 #   Administration: write   topics, rulesets, renames, archive state
-#   Checks: read            the check runs that become required status checks
 #   Contents: write         push the .github LICENSE branch
 #   Issues: write           the .github tracking issue
 #   Pull requests: write    the .github LICENSE pull request
+# The check runs that become required status checks are public, so they are
+# read with this workflow's own token (CHECKS_TOKEN), not the owner's.
 # Settings are applied when an admin of this repository adds the
 # apply-settings label to a pull request, or runs the workflow with apply
 # ticked. Every call is idempotent, so running it again changes nothing.
@@ -41,6 +42,7 @@ on:
 
 permissions:
   contents: read
+  checks: read
 
 concurrency:
   group: apply-settings
@@ -86,6 +88,7 @@ jobs:
         if: steps.mode.outputs.apply == 'true'
         env:
           GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          CHECKS_TOKEN: ${{ github.token }}
           REPOS: ${{ inputs.repositories }}
         run: |
           # shellcheck disable=SC2086

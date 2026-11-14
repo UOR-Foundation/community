@@ -14,7 +14,8 @@ apply=0; [ "${1:-}" = --apply ] && { apply=1; shift; }
 only=" $* "
 call() { if [ "$apply" = 1 ]; then gh api "$@" >/dev/null; else printf "gh api %s\n" "$*"; fi; }
 want() { [ "$only" = "  " ] || [[ "$only" == *" $1 "* ]]; }
-checks() { gh api "repos/UOR-Foundation/$1/commits/$2/check-runs" --paginate --jq '.check_runs[].name' | sort -u | jq -R . | jq -sc 'map({context: .})'; }
+# Check runs are public, so they are read with CHECKS_TOKEN when it is set (the workflow passes its own token).
+checks() { GH_TOKEN="${CHECKS_TOKEN:-${GH_TOKEN:-}}" gh api "repos/UOR-Foundation/$1/commits/$2/check-runs" --paginate --jq '.check_runs[].name' | sort -u | jq -R . | jq -sc 'map({context: .})'; }
 # A ruleset with the same name is updated in place, so running the script again changes nothing.
 ruleset() { if [ "$apply" = 1 ]; then id=$(gh api "repos/UOR-Foundation/$1/rulesets" --jq ".[] | select(.name == \"$2\") | .id"); if [ -n "$id" ]; then gh api -X PUT "repos/UOR-Foundation/$1/rulesets/$id" --input - >/dev/null; else gh api -X POST "repos/UOR-Foundation/$1/rulesets" --input - >/dev/null; fi; else printf "gh api -X POST repos/UOR-Foundation/%s/rulesets --input %s\n" "$1" "$(cat)"; fi; }
 if want '.github'; then
