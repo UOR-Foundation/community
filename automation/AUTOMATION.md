@@ -44,9 +44,11 @@ call the same workflow.
 
 `remediation/apply-settings.sh` writes each repository's GOVERNANCE.md 6.2
 ruleset. A ruleset requires only checks that normal pull requests are shown to
-pass: the jobs that succeeded on each of the three pull requests merged most
+pass: the jobs that succeeded on each of the five pull requests merged most
 recently into the default branch, from unfiltered workflows that exist on that
-branch. A job that only an unmerged pull request adds, or only a push runs, is
+branch, and that every open ready pull request also reports. A matrix job is
+never required, since a planned matrix runs different entries for different
+changes. A job that only an unmerged pull request adds, or only a push runs, is
 never required, and a repository with no merged pull request requires none. In
 a repository listed in `repos.json` no human approval count is set, because the
 controller's gate is the requirement there; elsewhere the count is at most one.
