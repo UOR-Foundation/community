@@ -66,7 +66,8 @@ if (register.sources.kind === 'git-commits') {
     run('git', ['-C', dir, 'checkout', '-q', '--detach', 'FETCH_HEAD']);
     if (at() !== commit) throw new Error(`${name} is at ${at()}, not the pinned ${commit}`);
   }
-} else {
+} else if (register.sources.kind !== 'committed') {
+  // committed: every input is a file of this repository, pinned by the digests its register records.
   throw new Error(`unknown source kind ${register.sources.kind}`);
 }
 

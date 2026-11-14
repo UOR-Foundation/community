@@ -45,9 +45,9 @@ const countOf = (kind) => `${camel(kind.list)}Count`;
 
 /** The type module: enumerations, structures, the Release, and registerValid. */
 export function typesModule(decl) {
-  const { module, title, enums = {}, kinds, release = [], definitions = [], checks = [] } = decl;
+  const { module, title, enums = {}, kinds, release = [], definitions = [], checks = [], imports = [] } = decl;
   const byName = new Map(kinds.map((k) => [k.name, k]));
-  const out = [`\\begin{lexlean}{${module}}\n\\useglossary{lexlean.std.bool@1.2.0}\n\\useglossary{lexlean.std.nat@1.2.0}\n\\useglossary{prism.arch@1.0.0}\n\\title{${title}}\n\\begin{semanticmodule}`];
+  const out = [`\\begin{lexlean}{${module}}\n\\useglossary{lexlean.std.bool@1.2.0}\n\\useglossary{lexlean.std.nat@1.2.0}\n\\useglossary{prism.arch@1.0.0}\n${imports.map((m) => `\\importmodule{${m}}\n`).join('')}\\title{${title}}\n\\begin{semanticmodule}`];
   for (const [name, values] of Object.entries(enums)) {
     out.push(`inductive{\n  name: ${name},\n  type_parameters: [],\n  parameters: [],\n${bracket('  constructors: ', values.map((v) => `{name: ${camel(v)}, fields: []}`))}\n}\n`);
   }
