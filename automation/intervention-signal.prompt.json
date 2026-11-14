@@ -1,0 +1,46 @@
+{
+  "schema": "prism/prompt/1",
+  "goal": "Decide whether a CHAOSS metric value series shows a signal worth acting on, by the standard rule for telling a special cause from the ordinary variation of a process, never by a threshold chosen here.",
+  "pattern": "decisionTable",
+  "repository": "UOR-Foundation/community",
+  "app": {
+    "name": "uor-intervention-signal",
+    "title": "Intervention signal",
+    "purpose": "Decide, for one oracle computation of one subject at the ISO 8601 week grain, whether its individuals control chart (ISO 7870-2:2023) shows the series rising, falling, steady, or too short to have control limits, from the size of its baseline and the two tests for special causes over the latest complete weeks.",
+    "fields": [
+      { "name": "baseline", "kind": "choice", "values": ["enough", "short"], "means": "enough: at least 20 complete weeks precede the nine-week test window, the fewest subgroups ISO 7870-2:2023 computes preliminary control limits from; short: fewer" },
+      { "name": "latest", "kind": "choice", "values": ["high", "low", "inside"], "means": "ISO 7870-2:2023 test 1 on the latest complete week: high: its value is above the upper control limit; low: below the lower one; inside: neither; limits are the baseline mean plus or minus 2.66 times its mean moving range" },
+      { "name": "run", "kind": "choice", "values": ["high", "low", "none"], "means": "ISO 7870-2:2023 test 2: the nine complete weeks ending at the latest high: all lie above the centre line; low: all below it; none: neither" }
+    ],
+    "outcomes": ["rise", "fall", "steady", "insufficient"],
+    "meanings": {
+      "rise": "a special cause has moved the series up",
+      "fall": "a special cause has moved the series down",
+      "steady": "only common-cause variation: nothing to investigate",
+      "insufficient": "no control limits can be computed yet, so no signal is claimed"
+    },
+    "rules": [
+      { "when": [{ "field": "baseline", "op": "is", "value": "short" }], "then": "insufficient", "why": "ISO 7870-2:2023: control limits are computed from 20 to 25 subgroups of preliminary data; with fewer, no point can be judged against them" },
+      { "when": [{ "field": "latest", "op": "is", "value": "high" }], "then": "rise", "why": "ISO 7870-2:2023 test 1: one point beyond the upper control limit signals a special cause" },
+      { "when": [{ "field": "latest", "op": "is", "value": "low" }], "then": "fall", "why": "ISO 7870-2:2023 test 1: one point beyond the lower control limit signals a special cause" },
+      { "when": [{ "field": "run", "op": "is", "value": "high" }], "then": "rise", "why": "ISO 7870-2:2023 test 2: nine points in a row on one side of the centre line signal a shift" },
+      { "when": [{ "field": "run", "op": "is", "value": "low" }], "then": "fall", "why": "ISO 7870-2:2023 test 2: nine points in a row on one side of the centre line signal a shift" }
+    ],
+    "otherwise": "steady",
+    "otherwiseWhy": "ISO 7870-2:2023: a process with no point beyond its limits and no run is in statistical control, and its variation has common causes only",
+    "properties": [
+      { "kind": "always", "when": [{ "field": "baseline", "op": "is", "value": "short" }], "then": "insufficient", "why": "no signal is claimed without control limits" },
+      { "kind": "never", "when": [{ "field": "latest", "op": "is", "value": "inside" }, { "field": "run", "op": "is", "value": "none" }], "then": "rise", "why": "a series inside its limits with no run never signals" },
+      { "kind": "never", "when": [{ "field": "latest", "op": "is", "value": "inside" }, { "field": "run", "op": "is", "value": "none" }], "then": "fall", "why": "a series inside its limits with no run never signals" },
+      { "kind": "always", "when": [{ "field": "baseline", "op": "is", "value": "enough" }, { "field": "latest", "op": "is", "value": "high" }], "then": "rise", "why": "a point above the limit always signals a rise" }
+    ],
+    "examples": [
+      { "request": "short high high", "response": "insufficient" },
+      { "request": "enough high low", "response": "rise" },
+      { "request": "enough low none", "response": "fall" },
+      { "request": "enough inside high", "response": "rise" },
+      { "request": "enough inside low", "response": "fall" },
+      { "request": "enough inside none", "response": "steady" }
+    ]
+  }
+}
