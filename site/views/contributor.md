@@ -10,11 +10,15 @@ Schema.org Person. Named in https://github.com/UOR-Foundation/.github/blob/92da1
 
 https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e485918672/metrics-model-libs/community-activity/definition/community-activity.md
 
+Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
+
 - As a contributor, I want to join a community which is more active, because I may get more support and the value I create is more visible.
 
 ### Metrics Model: Community Governed AI Use in Open Communities
 
 https://github.com/chaoss/wg-ai-alignment/blob/0d0f78655aab6417293aaefd85e08ecc72ddabfa/metrics/ai-alignment-community-governed-use/metric-model-ai-alignment-community-governed-use.md
+
+Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a potential contributor, I want to know if my preferences for AI use match community policies so that….
 - As a contributor who wants to use AI extensively, I want to know where a project sits on the ban-to-permissive spectrum so I don't invest effort building a contribution the project won't accept.
@@ -26,17 +30,23 @@ https://github.com/chaoss/wg-ai-alignment/blob/0d0f78655aab6417293aaefd85e08ecc7
 
 https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e485918672/metrics-model-libs/development-responsiveness/definition/development-responsiveness.md
 
+Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
+
 - As a contributor, I want to evaluate whether or not a project is actively engaging with people.
 
 ### Safety
 
 https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e485918672/metrics-model-libs/safety/definition/safety.md
 
+Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
+
 - As a contributor from a traditionally marginalized and equity-seeking group I want to evaluate whether or not a project is invested in my success at all levels of participation including leadership.
 
 ### Starter Project Health Metrics Model
 
 https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e485918672/metrics-model-libs/starter-project-health/definition/starter-project-health.md
+
+Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a contributor, I want to know where I can focus my efforts to help make the
 

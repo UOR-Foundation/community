@@ -16,4 +16,12 @@ li { margin: 0.25rem 0; }
 table { width: 100%; border-collapse: collapse; font-size: 15px; }
 th, td { text-align: left; padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--border); }
 td { text-align: right; font-variant-numeric: tabular-nums; }
+.wide { overflow-x: auto; }
+.grid { font-size: 14px; }
+.grid th, .grid td { text-align: center; white-space: nowrap; }
+.grid th[scope="row"] { text-align: left; }
+.grid thead a { display: inline-block; max-width: 9rem; overflow: hidden; text-overflow: ellipsis; vertical-align: bottom; }
+.complete { color: var(--brand); font-weight: 600; }
+.open { font-style: italic; }
+.unmeasured { color: var(--muted-foreground); }
 footer { margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 1rem; overflow-wrap: anywhere; }
