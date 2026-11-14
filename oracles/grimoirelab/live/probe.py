@@ -17,10 +17,11 @@ from grimoirelab_toolkit.uris import urijoin
 from requests.exceptions import HTTPError
 
 import perceval.backends.core.discord as discord
+from chronicler.eventizer import eventize
 from perceval.archive import ArchiveManager
 from perceval.errors import BackendError, RateLimitError
 
-from live import FAMILIES, otlp_attrs
+from live import EVENT_PREFIX, FAMILIES, otlp_attrs
 
 EPOCH = datetime(2015, 1, 1, tzinfo=timezone.utc)
 
@@ -102,16 +103,43 @@ class Recorder:
         return response
 
 
-class ProbedDiscord(discord.Discord):
-    """The Discord backend with the recorder on its client's session."""
+def recorded(backend, recorder):
+    """The backend, unchanged, with the recorder on its live client's session.
 
-    recorder = None
+    The backend is not subclassed: items carry the backend's class name as
+    backend_name, and Chronicler eventizes only items named Discord.
+    """
+    init = backend._init_client
 
-    def _init_client(self, from_archive=False):
-        client = super()._init_client(from_archive=from_archive)
-        if not from_archive and self.recorder is not None:
-            client.session.hooks["response"].append(self.recorder)
+    def _init_client(from_archive=False):
+        client = init(from_archive=from_archive)
+        if not from_archive:
+            client.session.hooks["response"].append(recorder)
         return client
+
+    backend._init_client = _init_client
+    return backend
+
+
+def cloudevents(items):
+    """Eventize the items with Chronicler and describe the events, not their data.
+
+    Counts each event type, and checks what CloudEvents 1.0 requires of every
+    event (specversion 1.0, a non-empty id, source and type) and what the
+    eventizer promises: ids unique, and one message event per item.
+    """
+    events = list(eventize("discord", iter(items)))
+    counts, ids, valid = {}, set(), True
+    for e in events:
+        kind = e["type"]
+        counts[kind] = counts.get(kind, 0) + 1
+        valid &= e["specversion"] == "1.0" and all(e.get(a) for a in ("id", "source", "type"))
+        valid &= kind.startswith(EVENT_PREFIX) and e["id"] not in ids
+        ids.add(e["id"])
+    out = {"chronicler." + k[len(EVENT_PREFIX):]: n for k, n in counts.items()}
+    out["chronicler.events"] = len(events)
+    out["chronicler.valid"] = bool(valid) and counts.get(EVENT_PREFIX + "message", 0) == len(items)
+    return out
 
 
 def _id(*parts, size):
@@ -134,14 +162,14 @@ def run(strategy, guild, channel, family, token, tick, now=None, max_pages=50):
     }
     with tempfile.TemporaryDirectory() as tmp:
         archive = ArchiveManager(os.path.join(tmp, "archive")).create_archive() if p["archive"] else None
-        backend = ProbedDiscord(guild_arg, channel_arg, token, max_items=p["max_items"], archive=archive,
-                                sleep_for_rate=p["sleep_for_rate"], min_rate_to_sleep=p["min_rate_to_sleep"])
-        backend.recorder = recorder
+        backend = recorded(discord.Discord(guild_arg, channel_arg, token, max_items=p["max_items"], archive=archive,
+                                           sleep_for_rate=p["sleep_for_rate"],
+                                           min_rate_to_sleep=p["min_rate_to_sleep"]), recorder)
         start = time.time_ns()
-        uuids = []
+        items = []
         try:
             for item in backend.fetch(from_date=p["from_date"]):
-                uuids.append(item["uuid"])
+                items.append(item)
                 if len(recorder.spans) > max_pages:
                     root["discord.probe.outcome"] = "truncated"
                     break
@@ -151,9 +179,12 @@ def run(strategy, guild, channel, family, token, tick, now=None, max_pages=50):
             root.update({"discord.probe.outcome": "refused", "error.type": type(e).__name__})
         except (HTTPError, RateLimitError) as e:
             root.update({"discord.probe.outcome": "failed", "error.type": type(e).__name__})
+        uuids = [i["uuid"] for i in items]
         root["discord.items"] = len(uuids)
+        if items:
+            root.update(cloudevents(items))
         if archive is not None and root["discord.probe.outcome"] == "done":
-            replayed = ProbedDiscord(guild_arg, channel_arg, token, max_items=p["max_items"], archive=archive)
+            replayed = discord.Discord(guild_arg, channel_arg, token, max_items=p["max_items"], archive=archive)
             root["discord.replay.equal"] = [i["uuid"] for i in replayed.fetch_from_archive()] == uuids
             with open(archive.archive_path, "rb") as f:
                 root["discord.archive.token_free"] = token.encode() not in f.read()
