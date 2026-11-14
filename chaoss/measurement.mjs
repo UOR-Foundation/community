@@ -130,6 +130,14 @@ if (root) outputs.set(jsonPath, JSON.stringify(project(JSON.parse(readFileSync(j
 const m = JSON.parse(outputs.get(jsonPath) ?? readFileSync(jsonPath, 'utf8'));
 if (m.register !== sha256(readFileSync(join(here, 'register.json')))) throw new Error('chaoss/measurement.json was projected from another register; rerun with the checkouts');
 
+// The elements the CHAOSS templates leave open but the CHAOSS oracle, GrimoireLab, computes: chaoss/oracle.mjs
+// projects them from the oracle's pinned implementation, and they are stated here with its citation.
+const oraclePath = join(here, 'oracle-methods.json');
+const oracle = JSON.parse(readFileSync(oraclePath, 'utf8'));
+if (oracle.measurement !== sha256(outputs.get(jsonPath) ?? readFileSync(jsonPath))) throw new Error('chaoss/oracle-methods.json was projected from another chaoss/measurement.json; rerun chaoss/oracle.mjs with the checkouts');
+const byOracle = new Map(oracle.items.flatMap((x) => x.elements.filter((e) => e.status === 'resolved').map((e) => [`${x.index} ${e.element}`, e])));
+const oracleCount = byOracle.size;
+
 // ---- The mapping register, written by the shared register emitter. ----
 const F = 'Foundation.Community.V1.Measurement';
 const S = 'Foundation.Measurement.V1.Model';
@@ -144,9 +152,9 @@ const decl = {
   enums: { Element: ELEMENTS },
   kinds: [
     { name: 'Item', list: 'items', fields: [['slug', 'String']] },
-    { name: 'Mapping', list: 'mappings', fields: [['item', { ref: 'Item' }], ['element', { enum: 'Element' }], ['stated', 'Bool'], ['source', 'String'], ['evidence', 'String']] },
+    { name: 'Mapping', list: 'mappings', fields: [['item', { ref: 'Item' }], ['element', { enum: 'Element' }], ['stated', 'Bool'], ['byOracle', 'Bool'], ['source', 'String'], ['evidence', 'String']] },
   ],
-  release: [['metricCount', 'Nat'], ['statedCount', 'Nat'], ['standard', 'String'], ['register', 'String']],
+  release: [['metricCount', 'Nat'], ['statedCount', 'Nat'], ['oracleCount', 'Nat'], ['standard', 'String'], ['register', 'String']],
   definitions: [
     def('metricRank', ['element : Element'], 'Nat', rank('metric')),
     def('modelRank', ['element : Element'], 'Nat', rank('model')),
@@ -154,18 +162,29 @@ const decl = {
       match('mappings', [['List.nil', '((item =? itemCount) && (step =? 0))'], ['List.cons mapping rest', planned]]), 'mappings'),
     def('statedTotal', ['mappings : (List Mapping)'], 'Nat',
       match('mappings', [['List.nil', '0'], ['List.cons mapping rest', '((if (project mapping stated) then 1 else 0) + (statedTotal rest))']]), 'mappings'),
+    // An element the oracle states is stated, and only a metric's base-measure element can be: GrimoireLab computes no metrics model.
+    def('oracleTotal', ['mappings : (List Mapping)'], 'Nat',
+      match('mappings', [['List.nil', '0'], ['List.cons mapping rest', '((if (project mapping byOracle) then 1 else 0) + (oracleTotal rest))']]), 'mappings'),
+    def('oracleSound', ['metricCount : Nat', 'mappings : (List Mapping)'], 'Bool',
+      match('mappings', [['List.nil', 'true'], ['List.cons mapping rest', '((if (project mapping byOracle) then ((project mapping stated) && ((project mapping item) <? metricCount)) else true) && (oracleSound metricCount rest))']]), 'mappings'),
   ],
   checks: [
     '((project release metricCount) <? ((project release itemsCount) + 1))',
     '(planned (project release metricCount) (project release itemsCount) 0 0 mappings)',
     '((statedTotal mappings) =? (project release statedCount))',
+    '((oracleTotal mappings) =? (project release oracleCount))',
+    '(oracleSound (project release metricCount) mappings)',
   ],
 };
 const records = {
   items: m.items.map((x) => ({ slug: x.slug })),
-  mappings: m.items.flatMap((x) => x.entries.map((e) => ({ item: x.index, element: e.element, stated: e.status === 'stated', source: e.source ?? '', evidence: e.status === 'stated' ? `sha256:${e.digest}` : e.reason }))),
+  mappings: m.items.flatMap((x) => x.entries.map((e) => {
+    const o = e.status === 'open' ? byOracle.get(`${x.index} ${e.element}`) : undefined;
+    if (o) return { item: x.index, element: e.element, stated: true, byOracle: true, source: o.cites[0].source, evidence: `sha256:${sha256(JSON.stringify(o.value))}` };
+    return { item: x.index, element: e.element, stated: e.status === 'stated', byOracle: false, source: e.source ?? '', evidence: e.status === 'stated' ? `sha256:${e.digest}` : e.reason };
+  })),
 };
-const releaseValues = { metricCount: m.counts.metrics, statedCount: m.counts.stated, standard: m.standard, register: `sha256:${m.register}` };
+const releaseValues = { metricCount: m.counts.metrics, statedCount: m.counts.stated + oracleCount, oracleCount, standard: m.standard, register: `sha256:${m.register}` };
 
 // ---- The ISO/IEC 15939 records the mapping supports, tied to the CHAOSS release. ----
 const body = [];
@@ -221,4 +240,4 @@ for (const [path, text] of outputs) {
   } else writeFileSync(path, text);
 }
 if (stale) process.exit(1);
-process.stdout.write(`${m.items.length} items, ${m.counts.stated} elements stated, ${m.counts.open} open, ${needNames.length} information needs, ${conceptNames.length} measurable concepts\n`);
+process.stdout.write(`${m.items.length} items, ${m.counts.stated + oracleCount} elements stated (${oracleCount} by the oracle), ${m.counts.open - oracleCount} open, ${needNames.length} information needs, ${conceptNames.length} measurable concepts\n`);

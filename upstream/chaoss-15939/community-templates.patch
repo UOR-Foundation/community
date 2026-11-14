@@ -1,0 +1,48 @@
+diff --git a/community-templates/metric-template.md b/community-templates/metric-template.md
+index 4001c5e..e035494 100644
+--- a/community-templates/metric-template.md
++++ b/community-templates/metric-template.md
+@@ -29,6 +29,16 @@ An overview of the metric should include:
+ 
+ (encouraged, cite tool/website and date created/retrieved. Citation should be below the image as Figure X: Title (Source, Year))
+ 
++### Measurement Specification
++
++(encouraged, the elements of the ISO/IEC 15939 measurement information model. Write ‘Not specified’ for an element that is not known yet.)
++
++*   **Entity:** the object the metric characterizes, e.g., a repository, an issue, a change request, or a person.
++*   **Attribute:** the property of the entity this metric measures.
++*   **Measurement Method:** the operations that turn the data points in Data Collection Strategies into a value, e.g., count the change requests closed in the period.
++*   **Scale:** nominal, ordinal, interval, or ratio.
++*   **Unit:** the unit of the value, in UCUM (The Unified Code for Units of Measure) where one applies, e.g., `d` for days, `1` for a ratio, `{commit}` for a count of commits.
++
+ </details></span>
+ 
+ ## References
+diff --git a/community-templates/metrics-model-template.md b/community-templates/metrics-model-template.md
+index ba0d5c0..feb3ed9 100644
+--- a/community-templates/metrics-model-template.md
++++ b/community-templates/metrics-model-template.md
+@@ -11,6 +11,9 @@ Provide text to the different types of users of this metrics model. This could i
+ - Model 2 (Link to metrics model on the CHAOSS website if applicable and brief description of the metrics model)
+ - And so on
+ 
++## What We Want to Measure
++Provide text that names the property of a project or community that the metrics model, as a whole, measures. This is the measurable concept of ISO/IEC 15939.
++
+ ## Metrics in the Metrics Model
+ - Metric 1 (Link to metric on the CHAOSS website if applicable and the suggested timeframe associated with data collection if applicable)
+   - Description: A description of what the metric is and what it captures.
+@@ -22,6 +25,12 @@ Provide text to the different types of users of this metrics model. This could i
+   - Implementation: Details on how to measure the metric, collect the data, and analyze it.
+ - And so on
+ 
++## Measurement Function
++Provide text that explains how the values of the metrics in the model are combined into the model's result, e.g., a weighted sum, a ratio, or a rule over thresholds. If the metrics are read side by side and not combined, say so.
++
++## Decision Criteria
++Provide the thresholds or targets that tell a reader of the model's result what to do, and where each one comes from. If the model sets none, put ‘None specified’.
++
+ ## Data Insights (Optional - Can be included after deployment)
+ 
+ ### Background of the Investigated Context (Optional - Can be included after deployment)
