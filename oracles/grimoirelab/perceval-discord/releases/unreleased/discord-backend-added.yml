@@ -1,0 +1,12 @@
+---
+title: Discord backend added
+category: added
+author: UOR Foundation
+issue: null
+notes: >
+  Perceval can fetch the messages of a Discord channel or
+  thread through the Discord HTTP API v10 with a bot token.
+  Messages are fetched oldest first using the `after`
+  snowflake, so a fetch can be resumed from a date, and
+  the requests can be stored in and replayed from an
+  archive. The token is removed from archived requests.
