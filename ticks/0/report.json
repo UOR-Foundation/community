@@ -1,0 +1,144 @@
+{
+ "tick": 0,
+ "families": {
+  "announcement": 2,
+  "text": 26,
+  "thread": 20,
+  "voice": 2
+ },
+ "probes": [
+  {
+   "strategy": "full",
+   "family": "announcement",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "recent",
+   "family": "announcement",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "small",
+   "family": "announcement",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "text",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "recent",
+   "family": "text",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "small",
+   "family": "text",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "thread",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "recent",
+   "family": "thread",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "small",
+   "family": "thread",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "voice",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "recent",
+   "family": "voice",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "small",
+   "family": "voice",
+   "outcome": "truncated",
+   "rules": [
+    "otherwise"
+   ]
+  }
+ ],
+ "divergences": [],
+ "uncovered": [
+  "REQ-004",
+  "REQ-005",
+  "REQ-007",
+  "REQ-009"
+ ],
+ "weights": {
+  "announcement": {
+   "full": 10,
+   "recent": 7,
+   "small": 7
+  },
+  "text": {
+   "full": 10,
+   "recent": 7,
+   "small": 7
+  },
+  "thread": {
+   "full": 10,
+   "recent": 7,
+   "small": 7
+  },
+  "voice": {
+   "full": 10,
+   "recent": 7,
+   "small": 7
+  }
+ }
+}
