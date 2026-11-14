@@ -1106,3 +1106,33 @@ id = "OB-05"
 level = "open"
 suite = "observations"
 statement = "GitHub issues and pull requests, and the Foundation's Discord, enter the corpus only from responses the observations workflow recorded and replayed offline; a Discord channel is read only where the uor-discord-read app permits it, and the record keeps no message text and no member's name"
+
+[[id]]
+id = "IV-01"
+level = "build"
+suite = "interventions"
+statement = "The interventions register is the projection of the observation corpus evaluated at the ISO 8601 week grain, the intervention catalog, the approvals and the three intervention prompts, each prompt answering every example it states and holding every property over its whole request space; a register that differs fails the gate"
+
+[[id]]
+id = "IV-02"
+level = "build"
+suite = "interventions"
+statement = "Every chart's signal is the uor-intervention-signal answer on its ISO 7870-2:2023 individuals chart: limits are the mean of the weeks before the nine-week window plus or minus 2.66 times their mean moving range, test 1 is on the latest complete week, test 2 is over the window, and fewer than 20 baseline weeks is insufficient"
+
+[[id]]
+id = "IV-03"
+level = "build"
+suite = "interventions"
+statement = "No intervention reaches a contributor, participant or partner without a human: every proposal that reaches people is denied and only drafted, an agent task opens only in UOR-Foundation/community for a proposal the trust-root approvals file approves by id, and the runner refuses a run whose register or decisions it cannot re-derive"
+
+[[id]]
+id = "IV-04"
+level = "build"
+suite = "interventions"
+statement = "Every enacted intervention's effect, and every untreated signal onset in each chart's history, is the uor-intervention-effect answer over the first nine complete weeks after it against the limits frozen at its signal, so an intervention's effect is read against what untreated signals did"
+
+[[id]]
+id = "IV-05"
+level = "open"
+suite = "interventions"
+statement = "The three intervention apps are re-checked by the pinned builder on every run but are not yet in apps/set.json, so no Lean proof covers them; a chart of an average or a ratio with a week of no value, and the Discord guild until a chat computation is bound, are carried as refusals, never charted"

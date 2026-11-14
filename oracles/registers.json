@@ -33,6 +33,15 @@
       ]
     },
     {
+      "area": "interventions",
+      "sources": { "kind": "committed", "file": "observations/corpus.json" },
+      "inputs": ["interventions/**", "observations/**", "chaoss/register.json", "chaoss/oracle-methods.json", "apps/uor-observation-admission.prompt.json", "apps/uor-contribution-attribution.prompt.json", "governance/agents.json", "automation/intervention-*.json", "automation/intervention-*.prompt.json", "automation/interventions.json"],
+      "tools": [],
+      "check": [
+        ["node", "interventions/project.mjs", "--check"]
+      ]
+    },
+    {
       "area": "chaoss-oracle",
       "sources": { "kind": "git-commits", "file": ["chaoss/sources.json", "chaoss/oracle-sources.json", "chaoss/upstream-sources.json"], "base": "https://github.com/chaoss/" },
       "inputs": ["chaoss/**", "upstream/chaoss-15939/**"],

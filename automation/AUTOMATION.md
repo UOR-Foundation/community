@@ -40,6 +40,42 @@ call the same workflow.
   records to find recurring denials and failing gates, and turns each one
   into the next change to the model.
 
+## Interventions (I)
+
+CHAOSS values drive the community's development through three more apps, all
+in this trust root, so a change to any of them needs a human (H3).
+
+| App | Pattern | Prompt | Decides |
+| --- | --- | --- | --- |
+| uor-intervention-signal | OMG DMN 1.5 decision table (hit policy FIRST) | `intervention-signal.prompt.json` | whether an ISO 7870-2:2023 individuals chart of a weekly CHAOSS value rises, falls, is steady, or has too short a baseline for limits |
+| uor-intervention-admission | OASIS XACML 3.0 policy decision | `intervention-admission.prompt.json` | whether `interventions.mjs` carries out one proposed intervention |
+| uor-intervention-effect | OMG DMN 1.5 decision table (hit policy FIRST) | `intervention-effect.prompt.json` | what an enacted intervention, or an untreated signal, did over the nine weeks after it |
+
+- **I1, signals.** `interventions/project.mjs` charts every oracle
+  computation of every subject at the ISO 8601 week grain, from the same
+  evaluation the observation register is projected from
+  (`observations/evaluate.mjs`), and proposes each action of
+  `interventions.json` for each signal. A signal is never a threshold chosen
+  here: it is ISO 7870-2 test 1 or test 2 against limits from at least 20
+  baseline weeks.
+- **I2, what runs on its own.** Only the record: every proposal is a
+  CloudEvents 1.0 record (type `org.uorfoundation.community.intervention`) in
+  the run's `intervention-events-*` artifact and job summary, which the agent
+  loop reads (A4).
+- **I3, what needs Alex.** An agent task (an `agent-task` issue in this
+  repository, for the agent loop to find the assignable cause) opens only when
+  `intervention-approvals.json` approves that proposal's id. A proposal that
+  reaches people (a note to a repository's maintainers, a Discord post, a
+  comment or a label anywhere a contributor, participant or partner reads) is
+  always denied: the runner lists its draft for Alex and sends nothing. Alex
+  sends it or not, and records the time it was sent as `enacted` in the
+  approvals file.
+- **I4, effects.** An enacted intervention's effect is decided over the nine
+  complete weeks after it, against the limits frozen at its signal, and is
+  read against the effects of every untreated signal onset in the charts'
+  history, which the register carries. An intervention is evidence only where
+  its effects differ from what untreated signals did.
+
 ## Rulesets
 
 `remediation/apply-settings.sh` writes each repository's GOVERNANCE.md 6.2

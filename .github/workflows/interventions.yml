@@ -1,0 +1,69 @@
+# The intervention runner (automation/AUTOMATION.md, I1 to I4). Each run
+# re-derives interventions/register.json, re-decides every proposal by
+# automation/intervention-admission.prompt.json, records every proposal as a
+# CloudEvents 1.0 record, and opens an agent-task issue in this repository only
+# for a proposal automation/intervention-approvals.json approves by id. It never
+# posts, comments, labels or writes anywhere a contributor, participant or
+# partner reads: those proposals are drafts in the job summary, for Alex.
+#
+# reuse-exempt: it reads live agent-task issue state on GitHub to open each task
+# once, which no file a cache key could name records, so no earlier run stands
+# for this one.
+#
+# It runs from the default branch, so a pull request cannot change the code or
+# the approvals that decide it.
+# Project content, not universal policy.
+name: interventions
+
+on:
+  schedule:
+    - cron: '41 20 * * *'
+  push:
+    branches: [main]
+    paths:
+      - interventions/**
+      - observations/**
+      - automation/intervention*
+      - automation/interventions*
+      - automation/builder.mjs
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: Decide and record, but open nothing
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: interventions
+  cancel-in-progress: false
+
+jobs:
+  runner:
+    name: interventions runner
+    if: github.repository == 'UOR-Foundation/community'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out the runner from the default branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Decide and act
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DRY: ${{ (github.event_name == 'workflow_dispatch' && inputs.dry-run) && '--dry-run' || '' }}
+        run: node automation/interventions.mjs $DRY --events intervention-events.jsonl
+      - name: Keep the decisions as telemetry
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: intervention-events-${{ github.run_id }}-${{ github.run_attempt }}
+          path: intervention-events.jsonl
+          if-no-files-found: ignore
+          retention-days: 90
