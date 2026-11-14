@@ -57,10 +57,11 @@ const ELEMENT_TITLE = {
 };
 const decide = (templateReason, oracleStatus, oracleReason) => {
   if (oracleStatus === 'resolved') return 'adopt';
-  if (templateReason === 'no-template-section') return /^oracle-panel-names|unstated-by-oracle|implementations-disagree|oracle-index-unresolved|oracle-link-unresolved/.test(oracleReason ?? '') ? 'oracle' : 'template';
+  if (templateReason === 'no-template-section') return /^oracle-panel-names|unstated-by-oracle|implementations-disagree|oracle-index-unresolved|oracle-link-unresolved|proposed-binding/.test(oracleReason ?? '') ? 'oracle' : 'template';
   return 'revision';
 };
 const oracleOf = new Map(oracle.items.map((x) => [x.index, x]));
+const o0 = (c) => oracleOf.get(c.item);
 const contributions = [];
 for (const x of m.items) {
   const o = oracleOf.get(x.index);
@@ -172,11 +173,19 @@ for (const wg of groups) {
   for (const s of slugs) {
     const r = rows.filter((y) => y.slug === s);
     lines.push(`#### ${r[0].title}`, '');
+    const pr = o0(r[0])?.proposal;
+    if (pr) {
+      lines.push(`The definition names GrimoireLab Perceval as the tool providing this metric, but no computation. GrimoireLab's own chat panels compute two of its Filters under the same names, and we propose citing them:`, '');
+      for (const b of o0(r[0]).bindings) lines.push(`* **${b.proposal.filterText}** → GrimoireLab “${b.label}”: \`${b.series[0].aggregation}(${b.series[0].field})\` over the chat index, as ${b.proposal.panels.map((p) => `\`${p.source.split(':')[1]}\``).join(', ')} compute it.`);
+      for (const u of pr.unmatched) lines.push(`* **${u.filter}**: ${u.why}`);
+      lines.push('');
+    }
     for (const c of r) {
       const name = ELEMENT_TITLE[c.element];
       if (c.contribution === 'adopt') {
         lines.push(`- **${name}:** GrimoireLab ${oracle.release.tag} computes this element; proposed value \`${typeof c.oracle.value === 'string' ? c.oracle.value : c.oracle.value.label || 'see binding'}\`. Sources: ${c.oracle.cites.map((x) => `\`${x.source}\``).join(', ')}.`);
       } else if (c.contribution === 'oracle') {
+        if (o0(c).proposal) { lines.push(`- **${name}:** open until the working group names the computations proposed above.`); continue; }
         lines.push(`- **${name}:** the definition cites ${c.panels.map((p) => `\`${p.dashboard.split(':')[1]}\` (${p.computations} computations)`).join(' and ')}, and nothing names which computation is this metric (${c.oracle.reason}). Naming it settles the element.`);
       } else {
         lines.push(`- **${name}:** the template has this section and the definition ${c.templateReason === 'section-absent' ? 'lacks it' : c.templateReason === 'section-empty' ? 'leaves it empty' : 'repeats it'}.`);
@@ -228,7 +237,7 @@ const prompt = {
 };
 // Every contribution the drafts carry is the decision the app makes for its inputs.
 const sectionOf = (r) => ({ 'no-template-section': 'none', 'section-absent': 'absent', 'section-empty': 'empty', 'section-ambiguous': 'ambiguous' })[r];
-const oracleOfC = (c) => (c.oracle?.value !== undefined ? 'resolved' : /^oracle-panel-names|unstated-by-oracle|implementations-disagree|oracle-index-unresolved|oracle-link-unresolved/.test(c.oracle?.reason ?? '') ? 'unsingled' : 'uncited');
+const oracleOfC = (c) => (c.oracle?.value !== undefined ? 'resolved' : /^oracle-panel-names|unstated-by-oracle|implementations-disagree|oracle-index-unresolved|oracle-link-unresolved|proposed-binding/.test(c.oracle?.reason ?? '') ? 'unsingled' : 'uncited');
 for (const c of contributions) {
   const inputs = { section: sectionOf(c.templateReason), oracle: oracleOfC(c) };
   const rule = prompt.app.rules.find((r) => r.when.every((w) => inputs[w.field] === w.value));

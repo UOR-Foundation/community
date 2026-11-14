@@ -10,7 +10,7 @@ Schema.org Person. Named in https://github.com/UOR-Foundation/.github/blob/92da1
 
 https://github.com/chaoss/wg-ai-alignment/blob/0d0f78655aab6417293aaefd85e08ecc72ddabfa/metrics/ai-alignment-community-feedback/metric-model-ai-alignment-community-aligned-training-feedback.md
 
-Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
+Health now: 0 open, 0 complete, 32 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a maintainer I want to communicate governance decisions around AI to model builders.
 - As a maintainer dealing with AI-generated low-quality PRs, I want to flag the contribution pattern to the provider whose tool produced it, so that I'm not bearing the full cost of triaging output I didn't ask for.
@@ -20,7 +20,7 @@ Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation
 
 https://github.com/chaoss/wg-ai-alignment/blob/0d0f78655aab6417293aaefd85e08ecc72ddabfa/metrics/ai-alignment-community-governed-use/metric-model-ai-alignment-community-governed-use.md
 
-Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
+Health now: 0 open, 0 complete, 32 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a project leader, I want to measure the existing use of AI in my community so that I can determine future project policy on the use of AI in the project.
 - As a team leader, I want to be aware of tools and workflows that people use to participate in my project so that…..
@@ -39,7 +39,7 @@ Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation
 
 https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e485918672/metrics-model-libs/community-welcomingness/definition/community-welcomingness.md
 
-Health now: 0 open, 0 complete, 16 unmeasured, 15 partial (https://uor-foundation.github.io/community/views/health.md)
+Health now: 0 open, 0 complete, 17 unmeasured, 15 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a maintainer, I would like to know how many potential new contributors I am losing because my project is not as welcoming as it could be.
 
@@ -47,7 +47,7 @@ Health now: 0 open, 0 complete, 16 unmeasured, 15 partial (https://uor-foundatio
 
 https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e485918672/metrics-model-libs/development-responsiveness/definition/development-responsiveness.md
 
-Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
+Health now: 0 open, 0 complete, 32 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a community manager/maintainer I want to evaluate how well our project is responding in various capacities (issues, comments etc), and where possible compare to other projects who are similar or direct competitors.
 
@@ -55,7 +55,7 @@ Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation
 
 https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e485918672/metrics-model-libs/funding/definition/funding.md
 
-Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
+Health now: 0 open, 0 complete, 32 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a project maintainer, core contributors who are not compensated are less likely to maintain quality contributions.
 
@@ -63,7 +63,7 @@ Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation
 
 https://github.com/chaoss/wg-metrics-models/blob/4365fe61cf9654ef7b3911805425f4e485918672/metrics-model-libs/safety/definition/safety.md
 
-Health now: 0 open, 0 complete, 31 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
+Health now: 0 open, 0 complete, 32 unmeasured, 0 partial (https://uor-foundation.github.io/community/views/health.md)
 
 - As a community manager/maintainer, I want to regularly challenge our project and community around safety and track our progress over time.
 

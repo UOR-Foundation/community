@@ -250,6 +250,15 @@ fn chaoss_cc_06() {
         "wg-",
     ];
     for source in values(&oracle, "source") {
+        // A file of this repository (the Discord backend it adds to Perceval) is pinned by this commit.
+        if let Some(local) = source.strip_prefix("oracles/grimoirelab/") {
+            let path = local.split('#').next().expect("a path");
+            assert!(
+                root().join("oracles/grimoirelab").join(path).exists(),
+                "{source} names a file of this repository"
+            );
+            continue;
+        }
         assert!(
             pins.iter().any(|p| source.starts_with(p)) && source.contains(':'),
             "{source} cites a pinned source"
@@ -304,4 +313,35 @@ fn chaoss_cc_07() {
             "the template patch edits {file}"
         );
     }
+}
+
+/// `CC-08`: A proposed binding is evaluable but states no 15939 element until its working group adopts it
+#[test]
+fn chaoss_cc_08() {
+    let oracle = read("chaoss/oracle-methods.json");
+    let proposals = read("chaoss/proposals.json");
+    for metric in values(&proposals, "metric") {
+        let at = oracle
+            .find(&format!("\"slug\": \"{metric}\""))
+            .unwrap_or_else(|| panic!("{metric} is projected"));
+        let rest = &oracle[at..];
+        let item = &rest[..rest.find("\n {\n").unwrap_or(rest.len())];
+        assert!(
+            item.contains("\"candidates\": \"proposed\""),
+            "{metric} carries proposed bindings"
+        );
+        assert!(
+            !item.contains("\"status\": \"resolved\""),
+            "a proposed binding states no element of {metric}"
+        );
+        assert!(
+            item.contains("\"reason\": \"proposed-binding-awaits-working-group\""),
+            "{metric}'s elements wait on its working group"
+        );
+    }
+    let drafts = read("upstream/chaoss-15939/issues/wg-dei.md");
+    assert!(
+        drafts.contains("we propose citing them"),
+        "the proposal is drafted to the working group"
+    );
 }
