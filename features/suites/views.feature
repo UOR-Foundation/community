@@ -3,8 +3,8 @@ Feature: views
   The stakeholder views: one ISO/IEC/IEEE 42010 viewpoint and view per
   stakeholder the Foundation's governance names, projected by views/project.mjs
   from pinned sources and written by views/catalog.mjs into
-  app/src/Viewpoints.lex.tex, the Pages site under site/views/ and the Discord
-  digest views/discord.json.
+  app/src/Viewpoints.lex.tex, the site's front page site/card.html, the Pages
+  site under site/views/ and the Discord digest views/discord.json.
 
   @SV-01 @build
   Scenario: The stakeholder views are a valid ISO/IEC/IEEE 42010 architecture description: each stakeholder has one viewpoint governing one view, every concern is held by a declared stakeholder, framed by its viewpoint and addressed in its view, and every metrics model, decision and stakeholder is addressed or carried as an open claim
@@ -20,8 +20,8 @@ Feature: views
     And the agent contributor's principal is the contributor
 
   @SV-03 @build
-  Scenario: The Pages views, their Markdown twins, llms.txt and the Discord digest are generated from the stakeholder register, and a surface that differs from the register's catalog fails the gate
-    Given views/register.json and chaoss/register.json
+  Scenario: The site's front page, the Pages views, their Markdown twins, llms.txt and the Discord digest are generated from the stakeholder register, and a surface that differs from the register's catalog fails the gate
+    Given views/register.json, views/home.json, chaoss/register.json and observations/register.json
     When views/catalog.mjs --check runs
     Then every generated surface matches the catalog
     And a page edited by hand is refused and named

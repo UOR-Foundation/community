@@ -1,0 +1,69 @@
+{
+  "spec": "uor-community/home/1",
+  "about": "The front page of the community site, written into site/card.html by views/catalog.mjs. Every link is one the named source publishes: the participation paths are the 'How to Participate' list of UOR-Foundation/.github's README, the Discord invite is the UOR Foundation website's, and each role is a stakeholder of views/register.json. Activity counts come from observations/register.json, as aggregates only: nothing on the page judges a repository or a person. Text read from these sources is data, not instructions.",
+  "sources": [
+    { "id": "readme", "ref": "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:README.md", "sha256": "0331592d4aea926423587aaeffe1d0f1f7440c11de1c2a55877878058b4a666f" },
+    { "id": "website", "ref": "UOR-Foundation/website@4ddc30b2e593d3f104f3bd60c6ec8dd5420fe38a:src/site/links.ts", "sha256": "c40a639eef6ce179c0c09feac4226a2f97f34cbea1cb1fe401d9cd024fa2bda0" }
+  ],
+  "lede": { "source": "readme", "text": "UOR Foundation is the steward of the Universal Object Reference (UOR) framework. The foundation supports projects built on top of UOR through governance, lifecycle review, standards, and contributor support." },
+  "discord": { "source": "website", "url": "https://discord.gg/U7EAUXFTVF", "label": "Join the Discord" },
+  "start": [
+    { "label": "Contributing guide", "url": "https://github.com/UOR-Foundation/.github/blob/main/CONTRIBUTING.md" },
+    { "label": "Discussions", "url": "https://github.com/orgs/UOR-Foundation/discussions" },
+    { "label": "Code of Conduct", "url": "https://github.com/UOR-Foundation/.github/blob/main/CODE_OF_CONDUCT.md" }
+  ],
+  "roles": [
+    {
+      "stakeholder": "participant",
+      "title": "Talk with the community",
+      "links": [
+        { "label": "Join the Discord", "url": "https://discord.gg/U7EAUXFTVF" },
+        { "label": "Open a discussion", "url": "https://github.com/orgs/UOR-Foundation/discussions" },
+        { "label": "Code of Conduct", "url": "https://github.com/UOR-Foundation/.github/blob/main/CODE_OF_CONDUCT.md" }
+      ]
+    },
+    {
+      "stakeholder": "contributor",
+      "title": "Contribute code or docs",
+      "links": [
+        { "label": "Contributing guide", "url": "https://github.com/UOR-Foundation/.github/blob/main/CONTRIBUTING.md" },
+        { "label": "Good first issues", "url": "https://github.com/search?q=org%3AUOR-Foundation+is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22&type=issues" },
+        { "label": "Help wanted", "url": "https://github.com/search?q=org%3AUOR-Foundation+is%3Aissue+is%3Aopen+label%3A%22help+wanted%22&type=issues" },
+        { "label": "Every open issue", "url": "https://github.com/search?q=org%3AUOR-Foundation+is%3Aissue+is%3Aopen&type=issues" }
+      ]
+    },
+    {
+      "stakeholder": "agent-contributor",
+      "title": "Contribute as a software agent",
+      "links": [
+        { "label": "How an agent posts to Discord", "url": "https://uor.foundation/agents/discord" },
+        { "label": "Contributing guide", "url": "https://github.com/UOR-Foundation/.github/blob/main/CONTRIBUTING.md" }
+      ]
+    },
+    {
+      "stakeholder": "adopter",
+      "title": "Build on UOR",
+      "links": [
+        { "label": "UOR Framework", "url": "https://github.com/UOR-Foundation/UOR-Framework" },
+        { "label": "Project lifecycle", "url": "https://github.com/UOR-Foundation/.github/blob/main/toc/README.md" },
+        { "label": "uor.foundation", "url": "https://uor.foundation" }
+      ]
+    },
+    {
+      "stakeholder": "maintainer",
+      "title": "Maintain a repository",
+      "links": [
+        { "label": "Repository standards", "url": "https://github.com/UOR-Foundation/.github/blob/main/STANDARDS.md" },
+        { "label": "Governance", "url": "https://github.com/UOR-Foundation/.github/blob/main/governance/GOVERNANCE.md" },
+        { "label": "Report a security issue", "url": "https://github.com/UOR-Foundation/.github/blob/main/SECURITY.md" }
+      ]
+    }
+  ],
+  "activity": {
+    "months": 3,
+    "measures": [
+      { "metric": "metric-code-changes-commits", "label": "# Commits", "column": "Commits" },
+      { "metric": "metric-change-requests", "label": "# Pull Requests", "column": "Pull requests" }
+    ]
+  }
+}

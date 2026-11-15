@@ -106,7 +106,7 @@ fn views_sv_02() {
     );
 }
 
-/// `SV-03`: Every surface is the register's catalog, and a page edited by hand is refused
+/// `SV-03`: Every surface, the front page included, is the register's catalog, and a page edited by hand is refused
 #[test]
 fn views_sv_03() {
     let ok = catalog_check(&root());
@@ -116,52 +116,63 @@ fn views_sv_03() {
         String::from_utf8_lossy(&ok.stderr)
     );
 
-    // The planted defect: a copy of the inputs with one page edited by hand.
-    let scratch = std::env::temp_dir().join(format!("views-sv-03-{}", std::process::id()));
-    let _ = std::fs::remove_dir_all(&scratch);
-    for dir in ["views", "chaoss", "health", "apps", "site/views", "app/src"] {
-        std::fs::create_dir_all(scratch.join(dir)).expect("a scratch directory");
+    // The planted defect: a copy of the inputs with one surface edited by hand,
+    // once a stakeholder's page and once the site's front page.
+    for planted in ["site/views/contributor.md", "site/card.html"] {
+        let scratch = std::env::temp_dir().join(format!("views-sv-03-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&scratch);
+        for dir in [
+            "views",
+            "chaoss",
+            "health",
+            "observations",
+            "ecosystem",
+            "apps",
+            "site/views",
+            "app/src",
+        ] {
+            std::fs::create_dir_all(scratch.join(dir)).expect("a scratch directory");
+        }
+        for file in [
+            "views/catalog.mjs",
+            "views/register.json",
+            "views/sources.json",
+            "views/home.json",
+            "views/discord.json",
+            "chaoss/register.json",
+            "health/register.json",
+            "observations/register.json",
+            "ecosystem/register.json",
+            "app/src/Viewpoints.lex.tex",
+            "site/card.html",
+        ] {
+            std::fs::copy(root().join(file), scratch.join(file)).expect("a copied input");
+        }
+        for dir in ["apps", "site/views"] {
+            for entry in std::fs::read_dir(root().join(dir)).expect(dir) {
+                let path = entry.expect("an entry").path();
+                std::fs::copy(
+                    &path,
+                    scratch.join(dir).join(path.file_name().expect("a name")),
+                )
+                .expect("a copied file");
+            }
+        }
+        let page = scratch.join(planted);
+        let edited = std::fs::read_to_string(&page).expect("the page") + "\nAdded by hand.\n";
+        std::fs::write(&page, edited).expect("the edit");
+        let refused = catalog_check(&scratch);
+        let _ = std::fs::remove_dir_all(&scratch);
+        assert!(
+            !refused.status.success(),
+            "a hand-edited {planted} is refused"
+        );
+        assert!(
+            String::from_utf8_lossy(&refused.stderr).contains(planted),
+            "the refusal names {planted}: {}",
+            String::from_utf8_lossy(&refused.stderr)
+        );
     }
-    for file in [
-        "views/catalog.mjs",
-        "views/register.json",
-        "views/sources.json",
-        "views/discord.json",
-        "chaoss/register.json",
-        "health/register.json",
-        "app/src/Viewpoints.lex.tex",
-    ] {
-        std::fs::copy(root().join(file), scratch.join(file)).expect("a copied input");
-    }
-    for entry in std::fs::read_dir(root().join("apps")).expect("apps") {
-        let path = entry.expect("an entry").path();
-        std::fs::copy(
-            &path,
-            scratch.join("apps").join(path.file_name().expect("a name")),
-        )
-        .expect("a copied prompt");
-    }
-    for entry in std::fs::read_dir(root().join("site/views")).expect("site/views") {
-        let path = entry.expect("an entry").path();
-        std::fs::copy(
-            &path,
-            scratch
-                .join("site/views")
-                .join(path.file_name().expect("a name")),
-        )
-        .expect("a copied page");
-    }
-    let page = scratch.join("site/views/contributor.md");
-    let edited = std::fs::read_to_string(&page).expect("the page") + "\nAdded by hand.\n";
-    std::fs::write(&page, edited).expect("the edit");
-    let refused = catalog_check(&scratch);
-    let _ = std::fs::remove_dir_all(&scratch);
-    assert!(!refused.status.success(), "a hand-edited page is refused");
-    assert!(
-        String::from_utf8_lossy(&refused.stderr).contains("site/views/contributor.md"),
-        "the refusal names the page: {}",
-        String::from_utf8_lossy(&refused.stderr)
-    );
 }
 
 /// `SV-04`: Unmapped roles, story-less models and unaddressed stakeholders are open claims
