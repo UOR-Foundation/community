@@ -168,7 +168,7 @@ for (const pin of pins.json.repositories) {
     rmSync(tagDir, { recursive: true, force: true });
     execFileSync('git', ['init', '-q', '--bare', tagDir]);
     git(tagDir, ['fetch', '-q', '--depth', '1', '--filter=tree:0', pin.url, ...tagCommits]);
-    for (const c of tagCommits) dates.set(c, git(tagDir, ['log', '-1', '--format=%cI', c]).trim());
+    for (const c of tagCommits) dates.set(c, git(tagDir, ['log', '-1', '--format=%cI', c]).trim().replace(/Z$/, '+00:00')); // git >= 2.5x prints UTC as Z, older as +00:00; RFC 3339 allows both, keep one
     rmSync(tagDir, { recursive: true, force: true });
   }
   const tags = ecoTags.map((t) => {
