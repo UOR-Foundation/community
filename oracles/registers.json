@@ -112,6 +112,16 @@
         ["node", "policies/project.mjs", "{sources}", "--check"],
         ["node", "policies/catalog.mjs", "--check"]
       ]
+    },
+    {
+      "area": "standards",
+      "sources": {"kind": "committed", "file": "standards/snapshot.json"},
+      "inputs": ["standards/**", "apps/uor-standard-applicability.prompt.json", "standards.lock", "*/register.json", "*/sources.json", "tools/register-lex.mjs"],
+      "tools": [],
+      "check": [
+        ["node", "standards/project.mjs", "--check"],
+        ["node", "standards/catalog.mjs", "--check"]
+      ]
     }
   ]
 }

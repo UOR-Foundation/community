@@ -44,7 +44,8 @@ const enums = {
   Jurisdiction: field('jurisdiction'),
   Activity: field('activity'),
   Outcome: app.outcomes,
-  Status: ['implemented', 'partial', 'unimplemented', 'unrated'],
+  // OSCAL implementation-status `partial`, spelled partiallyImplemented because `partial` is a Lean keyword.
+  Status: ['implemented', 'partiallyImplemented', 'unimplemented', 'unrated'],
 };
 if (field('adopted').join() !== enums.YesNo.join()) throw new Error('adopted and inscope must share one yes/no vocabulary');
 for (const [name, values] of Object.entries(enums)) {
@@ -106,7 +107,7 @@ const decl = {
     def('needsClaim', ['decision : Decision'], 'Bool', '((outcomeIsUndecided (project decision outcome)) || ((outcomeApplicable (project decision outcome)) && (not (statusIsImplemented (project decision status)))))'),
     // Pairs strictly ordered by part, then by standard: no pair is decided twice.
     def('decisionsOrdered', ['values : (List Decision)', 'current : Nat', 'low : Nat'], 'Bool', match('values', [['List.nil', 'true'],
-      ['List.cons decision rest', '((((current <? (project decision part)) || (((project decision part) =? current) && (low <? ((project decision standard) + 1)))) && (decisionsOrdered rest (project decision part) ((project decision standard) + 1)))']]), 'values'),
+      ['List.cons decision rest', '(((current <? (project decision part)) || (((project decision part) =? current) && (low <? ((project decision standard) + 1)))) && (decisionsOrdered rest (project decision part) ((project decision standard) + 1)))']]), 'values'),
     // Walking the ordered pairs, every part from 0 to the last appears and has an applicable standard.
     def('partsCovered', ['values : (List Decision)', 'current : Nat', 'seen : Bool', 'total : Nat'], 'Bool', match('values', [['List.nil', '(seen && ((current + 1) =? total))'],
       ['List.cons decision rest', '(if ((project decision part) =? current) then (partsCovered rest current (seen || (outcomeApplicable (project decision outcome))) total) else (seen && (((project decision part) =? (current + 1)) && (partsCovered rest (project decision part) (outcomeApplicable (project decision outcome)) total))))']]), 'values'),
@@ -130,7 +131,7 @@ const decl = {
     '(claimsMatch openClaims decisions)',
     '(implementedFaceted facets checks decisions)',
     `((statusTotal decisions ${enums.Status.indexOf('implemented')}) =? (project release implementedCount))`,
-    `((statusTotal decisions ${enums.Status.indexOf('partial')}) =? (project release partialCount))`,
+    `((statusTotal decisions ${enums.Status.indexOf('partiallyImplemented')}) =? (project release partialCount))`,
     `((statusTotal decisions ${enums.Status.indexOf('unimplemented')}) =? (project release unimplementedCount))`,
     '((applicableTotal decisions) =? (project release applicableCount))',
   ],
@@ -141,7 +142,7 @@ const records = {
   checks: r.checks,
   parts: r.parts.map((p) => ({ identifier: p.id, name: p.name, kind: p.kind, facet: r.facets.findIndex((f) => f.id === p.facets[0]) })),
   standards: r.standards.map((s) => ({ identifier: s.id, name: s.name, issuer: s.issuer, edition: s.edition, force: s.force, owner: s.owner, scope: s.scope, url: s.url, digest: s.sha256 ? `sha256:${s.sha256}` : '', fetchedAt: s.fetchedAt, quote: s.quote, clauses: s.clauses.length })),
-  decisions: r.decisions,
+  decisions: r.decisions.map((d) => (d.status === 'partial' ? { ...d, status: 'partiallyImplemented' } : d)),
   openClaims: r.openClaims.map((c) => ({ decision: c.decision, owner: c.owner, refusal: c.refusal, detail: c.detail })),
   scopeClaims: r.refusals.map((c) => ({ standard: c.standard, refusal: c.refusal, detail: c.detail })),
 };

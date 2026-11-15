@@ -370,6 +370,42 @@ suite = "policies"
 statement = "Every requirement no clause covers, every post a policy names that no one holds, every record class no pinned authority states a retention period for, and every staged act is carried as an open claim, never dropped or presumed done"
 
 [[id]]
+id = "LC-01"
+level = "build"
+suite = "licensing"
+statement = "The licensing register is valid: every declared license identifier is a License record taken from the pinned SPDX License List, a repository is REUSE compliant exactly when every count the REUSE tool holds against compliance is zero and every file carries copyright and licensing information, every non-compliant repository is named by an open claim, and the counts reconcile with the release"
+
+[[id]]
+id = "LC-02"
+level = "build"
+suite = "licensing"
+statement = "The licensing catalog declares the REUSE tool version and wheel digest, the SPDX License List version and digests, the digests of the scan, snapshot and policy sources, and the commit of every repository it observed"
+
+[[id]]
+id = "LC-03"
+level = "open"
+suite = "licensing"
+statement = "A repository the REUSE tool does not find compliant, a declaration the Foundation's license policy or website does not allow, a missing or unidentified LICENSE text, and an identifier off the SPDX License List are carried as open claims citing both sources, never dropped or guessed"
+
+[[id]]
+id = "ST-01"
+level = "build"
+suite = "standards"
+statement = "The standards register is valid: every part of The UOR Foundation has at least one applicable standard, every candidate pair is decided once by the uor-standard-applicability table, every applicable pair has exactly one status, every implemented pair names an existing facet and a check of it, every pair that is not implemented is an open claim, and every pair the security facet owns carries owner security"
+
+[[id]]
+id = "ST-02"
+level = "build"
+suite = "standards"
+statement = "The standards catalog declares every part, candidate standard, decided pair and open claim of standards/register.json, each standard's issuer page with its sha256 and fetch time, and the digests of the inputs and the security facet table it was projected from"
+
+[[id]]
+id = "ST-03"
+level = "open"
+suite = "standards"
+statement = "A standard that applies to a part of The UOR Foundation but is not implemented there in full, and a candidate whose scope its issuer's page did not yield, are carried as open claims and grouped into workstreams, never dropped or guessed"
+
+[[id]]
 id = "CAACATF-01"
 level = "build"
 suite = "chaoss_ai_alignment_community_aligned_training_feedback"
@@ -1234,6 +1270,36 @@ suite = "uor_repo_tier"
 statement = "The app always answers t3 when recorded is none and role is website"
 
 [[id]]
+id = "USA-01"
+level = "build"
+suite = "uor_standard_applicability"
+statement = "The app never answers applicable when owner is security and inscope is yes"
+
+[[id]]
+id = "USA-02"
+level = "build"
+suite = "uor_standard_applicability"
+statement = "The app always answers undecided when owner is standards and scope is unread"
+
+[[id]]
+id = "USA-03"
+level = "build"
+suite = "uor_standard_applicability"
+statement = "The app always answers inapplicable when owner is standards and scope is quoted and inscope is yes and force is law and jurisdiction is foreign"
+
+[[id]]
+id = "USA-04"
+level = "build"
+suite = "uor_standard_applicability"
+statement = "The app never answers inapplicable when owner is standards and scope is quoted and inscope is yes and force is law and jurisdiction is own and activity is undetermined"
+
+[[id]]
+id = "USA-05"
+level = "build"
+suite = "uor_standard_applicability"
+statement = "The app always answers mandatory when owner is standards and scope is quoted and inscope is yes and force is law and jurisdiction is own and activity is present"
+
+[[id]]
 id = "UTL-01"
 level = "build"
 suite = "uor_toc_lifecycle"
@@ -1304,39 +1370,3 @@ id = "UCD-04"
 level = "build"
 suite = "uor_community_decisions"
 statement = "Every compliance obligation is numbered in order and names its evidence"
-
-[[id]]
-id = "LC-01"
-level = "build"
-suite = "licensing"
-statement = "The licensing register is valid: every declared license identifier is a License record taken from the pinned SPDX License List, a repository is REUSE compliant exactly when every count the REUSE tool holds against compliance is zero and every file carries copyright and licensing information, every non-compliant repository is named by an open claim, and the counts reconcile with the release"
-
-[[id]]
-id = "LC-02"
-level = "build"
-suite = "licensing"
-statement = "The licensing catalog declares the REUSE tool version and wheel digest, the SPDX License List version and digests, the digests of the scan, snapshot and policy sources, and the commit of every repository it observed"
-
-[[id]]
-id = "LC-03"
-level = "open"
-suite = "licensing"
-statement = "A repository the REUSE tool does not find compliant, a declaration the Foundation's license policy or website does not allow, a missing or unidentified LICENSE text, and an identifier off the SPDX License List are carried as open claims citing both sources, never dropped or guessed"
-
-[[id]]
-id = "ST-01"
-level = "build"
-suite = "standards"
-statement = "The standards register is valid: every part of The UOR Foundation has at least one applicable standard, every candidate pair is decided once by the uor-standard-applicability table, every applicable pair has exactly one status, every implemented pair names an existing facet and a check of it, every pair that is not implemented is an open claim, and every pair the security facet owns carries owner security"
-
-[[id]]
-id = "ST-02"
-level = "build"
-suite = "standards"
-statement = "The standards catalog declares every part, candidate standard, decided pair and open claim of standards/register.json, each standard's issuer page with its sha256 and fetch time, and the digests of the inputs and the security facet table it was projected from"
-
-[[id]]
-id = "ST-03"
-level = "open"
-suite = "standards"
-statement = "A standard that applies to a part of The UOR Foundation but is not implemented there in full, and a candidate whose scope its issuer's page did not yield, are carried as open claims and grouped into workstreams, never dropped or guessed"

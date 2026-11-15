@@ -1778,59 +1778,108 @@ definition{
 }
 
 definition{
-  name: requirementUorTocLifecycleBoundedAllocation,
+  name: requirementUorStandardApplicabilityBoundedAllocation,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
   body: (record Foundation.Qual::QualityRequirement {index := 203, subcharacteristicIndex := 29})
 }
 
 definition{
-  name: requirementUorTocLifecycleBoundedRequest,
+  name: requirementUorStandardApplicabilityBoundedRequest,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
   body: (record Foundation.Qual::QualityRequirement {index := 204, subcharacteristicIndex := 36})
 }
 
 definition{
-  name: requirementUorTocLifecycleEveryMoveIsACommitteeAct,
+  name: requirementUorStandardApplicabilityEveryCandidatePairDecided,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 205, subcharacteristicIndex := 0})
+  body: (record Foundation.Qual::QualityRequirement {index := 205, subcharacteristicIndex := 13})
 }
 
 definition{
-  name: requirementUorTocLifecycleEveryPropertyProved,
+  name: requirementUorStandardApplicabilityEveryPropertyProved,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
   body: (record Foundation.Qual::QualityRequirement {index := 206, subcharacteristicIndex := 18})
 }
 
 definition{
-  name: requirementUorTocLifecycleEveryRequestAnswered,
+  name: requirementUorStandardApplicabilityEveryRequestAnswered,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
   body: (record Foundation.Qual::QualityRequirement {index := 207, subcharacteristicIndex := 13})
 }
 
 definition{
+  name: requirementUorStandardApplicabilityEveryVectorReplays,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 208, subcharacteristicIndex := 11})
+}
+
+definition{
+  name: requirementUorStandardApplicabilityExamplesAnsweredAsStated,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 209, subcharacteristicIndex := 14})
+}
+
+definition{
+  name: requirementUorTocLifecycleBoundedAllocation,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 210, subcharacteristicIndex := 29})
+}
+
+definition{
+  name: requirementUorTocLifecycleBoundedRequest,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 211, subcharacteristicIndex := 36})
+}
+
+definition{
+  name: requirementUorTocLifecycleEveryMoveIsACommitteeAct,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 212, subcharacteristicIndex := 0})
+}
+
+definition{
+  name: requirementUorTocLifecycleEveryPropertyProved,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 213, subcharacteristicIndex := 18})
+}
+
+definition{
+  name: requirementUorTocLifecycleEveryRequestAnswered,
+  parameters: [],
+  result: Foundation.Qual::QualityRequirement,
+  body: (record Foundation.Qual::QualityRequirement {index := 214, subcharacteristicIndex := 13})
+}
+
+definition{
   name: requirementUorTocLifecycleEveryStageDecisionModeled,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 208, subcharacteristicIndex := 13})
+  body: (record Foundation.Qual::QualityRequirement {index := 215, subcharacteristicIndex := 13})
 }
 
 definition{
   name: requirementUorTocLifecycleEveryVectorReplays,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 209, subcharacteristicIndex := 11})
+  body: (record Foundation.Qual::QualityRequirement {index := 216, subcharacteristicIndex := 11})
 }
 
 definition{
   name: requirementUorTocLifecycleExamplesAnsweredAsStated,
   parameters: [],
   result: Foundation.Qual::QualityRequirement,
-  body: (record Foundation.Qual::QualityRequirement {index := 210, subcharacteristicIndex := 14})
+  body: (record Foundation.Qual::QualityRequirement {index := 217, subcharacteristicIndex := 14})
 }
 
 definition{
@@ -3255,59 +3304,108 @@ definition{
 }
 
 definition{
+  name: measureUorStandardApplicabilityExampleMismatches,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 203, requirementIndex := 209, threshold := 0})
+}
+
+definition{
+  name: measureUorStandardApplicabilityFailedVectors,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 204, requirementIndex := 208, threshold := 0})
+}
+
+definition{
+  name: measureUorStandardApplicabilityGuestAllocationBytes,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 205, requirementIndex := 203, threshold := 368})
+}
+
+definition{
+  name: measureUorStandardApplicabilityRequestBytesRead,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 206, requirementIndex := 204, threshold := 184})
+}
+
+definition{
+  name: measureUorStandardApplicabilityUnansweredRequests,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 207, requirementIndex := 207, threshold := 0})
+}
+
+definition{
+  name: measureUorStandardApplicabilityUndecidedPairsWithAQuotedScope,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 208, requirementIndex := 205, threshold := 0})
+}
+
+definition{
+  name: measureUorStandardApplicabilityUnprovedProperties,
+  parameters: [],
+  result: Foundation.Qual::QualityMeasure,
+  body: (record Foundation.Qual::QualityMeasure {index := 209, requirementIndex := 206, threshold := 0})
+}
+
+definition{
   name: measureUorTocLifecycleExampleMismatches,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 203, requirementIndex := 210, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 210, requirementIndex := 217, threshold := 0})
 }
 
 definition{
   name: measureUorTocLifecycleFailedVectors,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 204, requirementIndex := 209, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 211, requirementIndex := 216, threshold := 0})
 }
 
 definition{
   name: measureUorTocLifecycleGuestAllocationBytes,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 205, requirementIndex := 203, threshold := 320})
+  body: (record Foundation.Qual::QualityMeasure {index := 212, requirementIndex := 210, threshold := 320})
 }
 
 definition{
   name: measureUorTocLifecycleRequestBytesRead,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 206, requirementIndex := 204, threshold := 160})
+  body: (record Foundation.Qual::QualityMeasure {index := 213, requirementIndex := 211, threshold := 160})
 }
 
 definition{
   name: measureUorTocLifecycleTransitionsWithoutAnAct,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 207, requirementIndex := 205, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 214, requirementIndex := 212, threshold := 0})
 }
 
 definition{
   name: measureUorTocLifecycleUnansweredRequests,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 208, requirementIndex := 207, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 215, requirementIndex := 214, threshold := 0})
 }
 
 definition{
   name: measureUorTocLifecycleUnmodeledStageDecisions,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 209, requirementIndex := 208, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 216, requirementIndex := 215, threshold := 0})
 }
 
 definition{
   name: measureUorTocLifecycleUnprovedProperties,
   parameters: [],
   result: Foundation.Qual::QualityMeasure,
-  body: (record Foundation.Qual::QualityMeasure {index := 210, requirementIndex := 206, threshold := 0})
+  body: (record Foundation.Qual::QualityMeasure {index := 217, requirementIndex := 213, threshold := 0})
 }
 
 definition{
@@ -3328,7 +3426,7 @@ definition{
   name: requirementNames3,
   parameters: [],
   result: (List Named),
-  body: (cons (record Named {index := 192, name := "Every request answered: Repository tags and versioning", text := "Every request gets an answer: a rule, conformant otherwise, or invalid."}) (cons (record Named {index := 193, name := "Every tag and versioning rule modeled: Repository tags and versioning", text := "Each STANDARDS.md topic tag rule and the Semantic Versioning rule is one rule."}) (cons (record Named {index := 194, name := "Every vector replays: Repository tags and versioning", text := "All 55 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 195, name := "Examples answered as stated: Repository tags and versioning", text := "Every one of the 8 examples of the spec is answered as it states."}) (cons (record Named {index := 196, name := "Bounded allocation: Repository tier by use case", text := "The guest allocates at most 128 bytes for one request."}) (cons (record Named {index := 197, name := "Bounded request: Repository tier by use case", text := "A request over 64 bytes is refused before any field is read."}) (cons (record Named {index := 198, name := "Every property proved: Repository tier by use case", text := "All 3 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 199, name := "Every request answered: Repository tier by use case", text := "Every request gets an answer: a rule, t4 otherwise, or invalid."}) (cons (record Named {index := 200, name := "Every tier row modeled: Repository tier by use case", text := "Each row of the GOVERNANCE.md 5 classification table is reached by a rule."}) (cons (record Named {index := 201, name := "Every vector replays: Repository tier by use case", text := "All 43 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 202, name := "Examples answered as stated: Repository tier by use case", text := "Every one of the 10 examples of the spec is answered as it states."}) (cons (record Named {index := 203, name := "Bounded allocation: TOC project lifecycle", text := "The guest allocates at most 320 bytes for one request."}) (cons (record Named {index := 204, name := "Bounded request: TOC project lifecycle", text := "A request over 160 bytes is refused before any field is read."}) (cons (record Named {index := 205, name := "Every move is a committee act: TOC project lifecycle", text := "No transition fires without a quorum and a carried vote."}) (cons (record Named {index := 206, name := "Every property proved: TOC project lifecycle", text := "All 8 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 207, name := "Every request answered: TOC project lifecycle", text := "Every request gets an answer: a rule, proposed otherwise, or invalid."}) (cons (record Named {index := 208, name := "Every stage decision modeled: TOC project lifecycle", text := "Each Decision row of the toc/README.md stage table is one rule of the machine."}) (cons (record Named {index := 209, name := "Every vector replays: TOC project lifecycle", text := "All 56 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 210, name := "Examples answered as stated: TOC project lifecycle", text := "Every one of the 15 examples of the spec is answered as it states."}) (nil Named))))))))))))))))))))
+  body: (cons (record Named {index := 192, name := "Every request answered: Repository tags and versioning", text := "Every request gets an answer: a rule, conformant otherwise, or invalid."}) (cons (record Named {index := 193, name := "Every tag and versioning rule modeled: Repository tags and versioning", text := "Each STANDARDS.md topic tag rule and the Semantic Versioning rule is one rule."}) (cons (record Named {index := 194, name := "Every vector replays: Repository tags and versioning", text := "All 55 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 195, name := "Examples answered as stated: Repository tags and versioning", text := "Every one of the 8 examples of the spec is answered as it states."}) (cons (record Named {index := 196, name := "Bounded allocation: Repository tier by use case", text := "The guest allocates at most 128 bytes for one request."}) (cons (record Named {index := 197, name := "Bounded request: Repository tier by use case", text := "A request over 64 bytes is refused before any field is read."}) (cons (record Named {index := 198, name := "Every property proved: Repository tier by use case", text := "All 3 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 199, name := "Every request answered: Repository tier by use case", text := "Every request gets an answer: a rule, t4 otherwise, or invalid."}) (cons (record Named {index := 200, name := "Every tier row modeled: Repository tier by use case", text := "Each row of the GOVERNANCE.md 5 classification table is reached by a rule."}) (cons (record Named {index := 201, name := "Every vector replays: Repository tier by use case", text := "All 43 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 202, name := "Examples answered as stated: Repository tier by use case", text := "Every one of the 10 examples of the spec is answered as it states."}) (cons (record Named {index := 203, name := "Bounded allocation: Standard applicability by scope and jurisdiction", text := "The guest allocates at most 368 bytes for one request."}) (cons (record Named {index := 204, name := "Bounded request: Standard applicability by scope and jurisdiction", text := "A request over 184 bytes is refused before any field is read."}) (cons (record Named {index := 205, name := "Every candidate pair decided: Standard applicability by scope and jurisdiction", text := "Each candidate pair of part and standard in standards/register.json is decided by a rule or the otherwise outcome."}) (cons (record Named {index := 206, name := "Every property proved: Standard applicability by scope and jurisdiction", text := "All 5 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 207, name := "Every request answered: Standard applicability by scope and jurisdiction", text := "Every request gets an answer: a rule, applicable otherwise, or invalid."}) (cons (record Named {index := 208, name := "Every vector replays: Standard applicability by scope and jurisdiction", text := "All 44 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 209, name := "Examples answered as stated: Standard applicability by scope and jurisdiction", text := "Every one of the 10 examples of the spec is answered as it states."}) (cons (record Named {index := 210, name := "Bounded allocation: TOC project lifecycle", text := "The guest allocates at most 320 bytes for one request."}) (cons (record Named {index := 211, name := "Bounded request: TOC project lifecycle", text := "A request over 160 bytes is refused before any field is read."}) (cons (record Named {index := 212, name := "Every move is a committee act: TOC project lifecycle", text := "No transition fires without a quorum and a carried vote."}) (cons (record Named {index := 213, name := "Every property proved: TOC project lifecycle", text := "All 8 properties are theorems the Lean kernel checks."}) (cons (record Named {index := 214, name := "Every request answered: TOC project lifecycle", text := "Every request gets an answer: a rule, proposed otherwise, or invalid."}) (cons (record Named {index := 215, name := "Every stage decision modeled: TOC project lifecycle", text := "Each Decision row of the toc/README.md stage table is one rule of the machine."}) (cons (record Named {index := 216, name := "Every vector replays: TOC project lifecycle", text := "All 56 acceptance vectors replay in the compiled guest, the shortest 0 bytes long."}) (cons (record Named {index := 217, name := "Examples answered as stated: TOC project lifecycle", text := "Every one of the 15 examples of the spec is answered as it states."}) (nil Named)))))))))))))))))))))))))))
 }
 
 definition{
@@ -3356,7 +3454,7 @@ definition{
   name: measureNames3,
   parameters: [],
   result: (List Named),
-  body: (cons (record Named {index := 192, name := "Request bytes read: Repository tags and versioning", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 193, name := "Unanswered requests: Repository tags and versioning", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 194, name := "Unmodeled rules: Repository tags and versioning", text := "STANDARDS.md tag or versioning rules with no rule."}) (cons (record Named {index := 195, name := "Unproved properties: Repository tags and versioning", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 196, name := "Example mismatches: Repository tier by use case", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 197, name := "Failed vectors: Repository tier by use case", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 198, name := "Guest allocation bytes: Repository tier by use case", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 199, name := "Request bytes read: Repository tier by use case", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 200, name := "Unanswered requests: Repository tier by use case", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 201, name := "Unmodeled tier rows: Repository tier by use case", text := "Rows of GOVERNANCE.md 5 with no rule."}) (cons (record Named {index := 202, name := "Unproved properties: Repository tier by use case", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 203, name := "Example mismatches: TOC project lifecycle", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 204, name := "Failed vectors: TOC project lifecycle", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 205, name := "Guest allocation bytes: TOC project lifecycle", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 206, name := "Request bytes read: TOC project lifecycle", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 207, name := "Transitions without an act: TOC project lifecycle", text := "Rules that change the stage without quorum met and a carried vote."}) (cons (record Named {index := 208, name := "Unanswered requests: TOC project lifecycle", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 209, name := "Unmodeled stage decisions: TOC project lifecycle", text := "Stage table rows with no rule."}) (cons (record Named {index := 210, name := "Unproved properties: TOC project lifecycle", text := "Properties of the spec without a checked theorem."}) (nil Named))))))))))))))))))))
+  body: (cons (record Named {index := 192, name := "Request bytes read: Repository tags and versioning", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 193, name := "Unanswered requests: Repository tags and versioning", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 194, name := "Unmodeled rules: Repository tags and versioning", text := "STANDARDS.md tag or versioning rules with no rule."}) (cons (record Named {index := 195, name := "Unproved properties: Repository tags and versioning", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 196, name := "Example mismatches: Repository tier by use case", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 197, name := "Failed vectors: Repository tier by use case", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 198, name := "Guest allocation bytes: Repository tier by use case", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 199, name := "Request bytes read: Repository tier by use case", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 200, name := "Unanswered requests: Repository tier by use case", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 201, name := "Unmodeled tier rows: Repository tier by use case", text := "Rows of GOVERNANCE.md 5 with no rule."}) (cons (record Named {index := 202, name := "Unproved properties: Repository tier by use case", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 203, name := "Example mismatches: Standard applicability by scope and jurisdiction", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 204, name := "Failed vectors: Standard applicability by scope and jurisdiction", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 205, name := "Guest allocation bytes: Standard applicability by scope and jurisdiction", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 206, name := "Request bytes read: Standard applicability by scope and jurisdiction", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 207, name := "Unanswered requests: Standard applicability by scope and jurisdiction", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 208, name := "Undecided pairs with a quoted scope: Standard applicability by scope and jurisdiction", text := "Pairs whose scope is quoted and which no rule decides."}) (cons (record Named {index := 209, name := "Unproved properties: Standard applicability by scope and jurisdiction", text := "Properties of the spec without a checked theorem."}) (cons (record Named {index := 210, name := "Example mismatches: TOC project lifecycle", text := "Examples the guest answers otherwise than they state."}) (cons (record Named {index := 211, name := "Failed vectors: TOC project lifecycle", text := "Acceptance vectors whose replay differs from the model."}) (cons (record Named {index := 212, name := "Guest allocation bytes: TOC project lifecycle", text := "Most bytes the guest allocates for one request."}) (cons (record Named {index := 213, name := "Request bytes read: TOC project lifecycle", text := "Longest request the guest decodes, in bytes."}) (cons (record Named {index := 214, name := "Transitions without an act: TOC project lifecycle", text := "Rules that change the stage without quorum met and a carried vote."}) (cons (record Named {index := 215, name := "Unanswered requests: TOC project lifecycle", text := "Acceptance vectors the guest does not answer."}) (cons (record Named {index := 216, name := "Unmodeled stage decisions: TOC project lifecycle", text := "Stage table rows with no rule."}) (cons (record Named {index := 217, name := "Unproved properties: TOC project lifecycle", text := "Properties of the spec without a checked theorem."}) (nil Named)))))))))))))))))))))))))))
 }
 
 definition{
@@ -3391,7 +3489,7 @@ definition{
   name: requirementRecords3,
   parameters: [],
   result: (List Foundation.Qual::QualityRequirement),
-  body: (cons (requirementUorRepoStandardsEveryRequestAnswered) (cons (requirementUorRepoStandardsEveryTagAndVersioningRuleModeled) (cons (requirementUorRepoStandardsEveryVectorReplays) (cons (requirementUorRepoStandardsExamplesAnsweredAsStated) (cons (requirementUorRepoTierBoundedAllocation) (cons (requirementUorRepoTierBoundedRequest) (cons (requirementUorRepoTierEveryPropertyProved) (cons (requirementUorRepoTierEveryRequestAnswered) (cons (requirementUorRepoTierEveryTierRowModeled) (cons (requirementUorRepoTierEveryVectorReplays) (cons (requirementUorRepoTierExamplesAnsweredAsStated) (cons (requirementUorTocLifecycleBoundedAllocation) (cons (requirementUorTocLifecycleBoundedRequest) (cons (requirementUorTocLifecycleEveryMoveIsACommitteeAct) (cons (requirementUorTocLifecycleEveryPropertyProved) (cons (requirementUorTocLifecycleEveryRequestAnswered) (cons (requirementUorTocLifecycleEveryStageDecisionModeled) (cons (requirementUorTocLifecycleEveryVectorReplays) (cons (requirementUorTocLifecycleExamplesAnsweredAsStated) (nil Foundation.Qual::QualityRequirement))))))))))))))))))))
+  body: (cons (requirementUorRepoStandardsEveryRequestAnswered) (cons (requirementUorRepoStandardsEveryTagAndVersioningRuleModeled) (cons (requirementUorRepoStandardsEveryVectorReplays) (cons (requirementUorRepoStandardsExamplesAnsweredAsStated) (cons (requirementUorRepoTierBoundedAllocation) (cons (requirementUorRepoTierBoundedRequest) (cons (requirementUorRepoTierEveryPropertyProved) (cons (requirementUorRepoTierEveryRequestAnswered) (cons (requirementUorRepoTierEveryTierRowModeled) (cons (requirementUorRepoTierEveryVectorReplays) (cons (requirementUorRepoTierExamplesAnsweredAsStated) (cons (requirementUorStandardApplicabilityBoundedAllocation) (cons (requirementUorStandardApplicabilityBoundedRequest) (cons (requirementUorStandardApplicabilityEveryCandidatePairDecided) (cons (requirementUorStandardApplicabilityEveryPropertyProved) (cons (requirementUorStandardApplicabilityEveryRequestAnswered) (cons (requirementUorStandardApplicabilityEveryVectorReplays) (cons (requirementUorStandardApplicabilityExamplesAnsweredAsStated) (cons (requirementUorTocLifecycleBoundedAllocation) (cons (requirementUorTocLifecycleBoundedRequest) (cons (requirementUorTocLifecycleEveryMoveIsACommitteeAct) (cons (requirementUorTocLifecycleEveryPropertyProved) (cons (requirementUorTocLifecycleEveryRequestAnswered) (cons (requirementUorTocLifecycleEveryStageDecisionModeled) (cons (requirementUorTocLifecycleEveryVectorReplays) (cons (requirementUorTocLifecycleExamplesAnsweredAsStated) (nil Foundation.Qual::QualityRequirement)))))))))))))))))))))))))))
 }
 
 definition{
@@ -3419,7 +3517,7 @@ definition{
   name: measureRecords3,
   parameters: [],
   result: (List Foundation.Qual::QualityMeasure),
-  body: (cons (measureUorRepoStandardsRequestBytesRead) (cons (measureUorRepoStandardsUnansweredRequests) (cons (measureUorRepoStandardsUnmodeledRules) (cons (measureUorRepoStandardsUnprovedProperties) (cons (measureUorRepoTierExampleMismatches) (cons (measureUorRepoTierFailedVectors) (cons (measureUorRepoTierGuestAllocationBytes) (cons (measureUorRepoTierRequestBytesRead) (cons (measureUorRepoTierUnansweredRequests) (cons (measureUorRepoTierUnmodeledTierRows) (cons (measureUorRepoTierUnprovedProperties) (cons (measureUorTocLifecycleExampleMismatches) (cons (measureUorTocLifecycleFailedVectors) (cons (measureUorTocLifecycleGuestAllocationBytes) (cons (measureUorTocLifecycleRequestBytesRead) (cons (measureUorTocLifecycleTransitionsWithoutAnAct) (cons (measureUorTocLifecycleUnansweredRequests) (cons (measureUorTocLifecycleUnmodeledStageDecisions) (cons (measureUorTocLifecycleUnprovedProperties) (nil Foundation.Qual::QualityMeasure))))))))))))))))))))
+  body: (cons (measureUorRepoStandardsRequestBytesRead) (cons (measureUorRepoStandardsUnansweredRequests) (cons (measureUorRepoStandardsUnmodeledRules) (cons (measureUorRepoStandardsUnprovedProperties) (cons (measureUorRepoTierExampleMismatches) (cons (measureUorRepoTierFailedVectors) (cons (measureUorRepoTierGuestAllocationBytes) (cons (measureUorRepoTierRequestBytesRead) (cons (measureUorRepoTierUnansweredRequests) (cons (measureUorRepoTierUnmodeledTierRows) (cons (measureUorRepoTierUnprovedProperties) (cons (measureUorStandardApplicabilityExampleMismatches) (cons (measureUorStandardApplicabilityFailedVectors) (cons (measureUorStandardApplicabilityGuestAllocationBytes) (cons (measureUorStandardApplicabilityRequestBytesRead) (cons (measureUorStandardApplicabilityUnansweredRequests) (cons (measureUorStandardApplicabilityUndecidedPairsWithAQuotedScope) (cons (measureUorStandardApplicabilityUnprovedProperties) (cons (measureUorTocLifecycleExampleMismatches) (cons (measureUorTocLifecycleFailedVectors) (cons (measureUorTocLifecycleGuestAllocationBytes) (cons (measureUorTocLifecycleRequestBytesRead) (cons (measureUorTocLifecycleTransitionsWithoutAnAct) (cons (measureUorTocLifecycleUnansweredRequests) (cons (measureUorTocLifecycleUnmodeledStageDecisions) (cons (measureUorTocLifecycleUnprovedProperties) (nil Foundation.Qual::QualityMeasure)))))))))))))))))))))))))))
 }
 
 definition{
@@ -3557,7 +3655,7 @@ definition{
   name: qualityValid,
   parameters: [],
   result: Bool,
-  body: (((namesLength (characteristicNames)) =? 9) && (((namesLength (subcharacteristicNames)) =? 40) && ((coverageStated 0 (subcharacteristicNames)) && ((namesNumbered 0 (characteristicNames)) && ((namesNumbered 0 (subcharacteristicNames)) && ((namesNumbered 0 (requirementNames)) && ((namesNumbered 0 (measureNames)) && ((parentsKnown 9 (subcharacteristicRecords)) && ((requirementsKnown 40 (requirementRecords)) && (measuresKnown 211 (measureRecords)))))))))))
+  body: (((namesLength (characteristicNames)) =? 9) && (((namesLength (subcharacteristicNames)) =? 40) && ((coverageStated 0 (subcharacteristicNames)) && ((namesNumbered 0 (characteristicNames)) && ((namesNumbered 0 (subcharacteristicNames)) && ((namesNumbered 0 (requirementNames)) && ((namesNumbered 0 (measureNames)) && ((parentsKnown 9 (subcharacteristicRecords)) && ((requirementsKnown 40 (requirementRecords)) && (measuresKnown 218 (measureRecords)))))))))))
 }
 
 theorem{
@@ -4996,58 +5094,107 @@ theorem{
 }
 
 theorem{
-  name: measureUorTocLifecycleExampleMismatchesThreshold,
+  name: measureUorStandardApplicabilityExampleMismatchesThreshold,
   parameters: [],
   statement: ((thresholdOf 203 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureUorTocLifecycleFailedVectorsThreshold,
+  name: measureUorStandardApplicabilityFailedVectorsThreshold,
   parameters: [],
   statement: ((thresholdOf 204 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureUorTocLifecycleGuestAllocationBytesThreshold,
+  name: measureUorStandardApplicabilityGuestAllocationBytesThreshold,
   parameters: [],
-  statement: ((thresholdOf 205 (measureRecords)) = 320),
+  statement: ((thresholdOf 205 (measureRecords)) = 368),
   proof: decide{}
 }
 
 theorem{
-  name: measureUorTocLifecycleRequestBytesReadThreshold,
+  name: measureUorStandardApplicabilityRequestBytesReadThreshold,
   parameters: [],
-  statement: ((thresholdOf 206 (measureRecords)) = 160),
+  statement: ((thresholdOf 206 (measureRecords)) = 184),
   proof: decide{}
 }
 
 theorem{
-  name: measureUorTocLifecycleTransitionsWithoutAnActThreshold,
+  name: measureUorStandardApplicabilityUnansweredRequestsThreshold,
   parameters: [],
   statement: ((thresholdOf 207 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureUorTocLifecycleUnansweredRequestsThreshold,
+  name: measureUorStandardApplicabilityUndecidedPairsWithAQuotedScopeThreshold,
   parameters: [],
   statement: ((thresholdOf 208 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureUorTocLifecycleUnmodeledStageDecisionsThreshold,
+  name: measureUorStandardApplicabilityUnprovedPropertiesThreshold,
   parameters: [],
   statement: ((thresholdOf 209 (measureRecords)) = 0),
   proof: decide{}
 }
 
 theorem{
-  name: measureUorTocLifecycleUnprovedPropertiesThreshold,
+  name: measureUorTocLifecycleExampleMismatchesThreshold,
   parameters: [],
   statement: ((thresholdOf 210 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUorTocLifecycleFailedVectorsThreshold,
+  parameters: [],
+  statement: ((thresholdOf 211 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUorTocLifecycleGuestAllocationBytesThreshold,
+  parameters: [],
+  statement: ((thresholdOf 212 (measureRecords)) = 320),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUorTocLifecycleRequestBytesReadThreshold,
+  parameters: [],
+  statement: ((thresholdOf 213 (measureRecords)) = 160),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUorTocLifecycleTransitionsWithoutAnActThreshold,
+  parameters: [],
+  statement: ((thresholdOf 214 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUorTocLifecycleUnansweredRequestsThreshold,
+  parameters: [],
+  statement: ((thresholdOf 215 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUorTocLifecycleUnmodeledStageDecisionsThreshold,
+  parameters: [],
+  statement: ((thresholdOf 216 (measureRecords)) = 0),
+  proof: decide{}
+}
+
+theorem{
+  name: measureUorTocLifecycleUnprovedPropertiesThreshold,
+  parameters: [],
+  statement: ((thresholdOf 217 (measureRecords)) = 0),
   proof: decide{}
 }
 \end{semanticmodule}

@@ -476,6 +476,16 @@ model does not sanction.
 | `URT-02` | `build` | The app never answers t1 when recorded is none and role is experiment |
 | `URT-03` | `build` | The app always answers t3 when recorded is none and role is website |
 
+## uor_standard_applicability
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `USA-01` | `build` | The app never answers applicable when owner is security and inscope is yes |
+| `USA-02` | `build` | The app always answers undecided when owner is standards and scope is unread |
+| `USA-03` | `build` | The app always answers inapplicable when owner is standards and scope is quoted and inscope is yes and force is law and jurisdiction is foreign |
+| `USA-04` | `build` | The app never answers inapplicable when owner is standards and scope is quoted and inscope is yes and force is law and jurisdiction is own and activity is undetermined |
+| `USA-05` | `build` | The app always answers mandatory when owner is standards and scope is quoted and inscope is yes and force is law and jurisdiction is own and activity is present |
+
 ## uor_toc_lifecycle
 
 | ID | Level | Statement |

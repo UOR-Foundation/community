@@ -34,6 +34,7 @@
 \importmodule{UorRepoProtection}
 \importmodule{UorRepoStandards}
 \importmodule{UorRepoTier}
+\importmodule{UorStandardApplicability}
 \importmodule{UorTocLifecycle}
 \importmodule{Architecture}
 \importmodule{Foundation.Arch}
@@ -1045,6 +1046,41 @@ definition{
   parameters: [],
   result: String,
   body: "UorRepoTierProofs::inv003Holds"
+}
+
+definition{
+  name: acceptUorStandardApplicabilityINV001,
+  parameters: [],
+  result: String,
+  body: "UorStandardApplicabilityProofs::inv001Holds"
+}
+
+definition{
+  name: acceptUorStandardApplicabilityINV002,
+  parameters: [],
+  result: String,
+  body: "UorStandardApplicabilityProofs::inv002Holds"
+}
+
+definition{
+  name: acceptUorStandardApplicabilityINV003,
+  parameters: [],
+  result: String,
+  body: "UorStandardApplicabilityProofs::inv003Holds"
+}
+
+definition{
+  name: acceptUorStandardApplicabilityINV004,
+  parameters: [],
+  result: String,
+  body: "UorStandardApplicabilityProofs::inv004Holds"
+}
+
+definition{
+  name: acceptUorStandardApplicabilityINV005,
+  parameters: [],
+  result: String,
+  body: "UorStandardApplicabilityProofs::inv005Holds"
 }
 
 definition{
@@ -3708,6 +3744,118 @@ definition{
 }
 
 definition{
+  name: featureUorStandardApplicabilityRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When owner is security and inscope is yes, the answer is secured.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityRule1" (cons "UorStandardApplicability::uorStandardApplicabilityJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorStandardApplicabilityRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When scope is unread, the answer is undecided.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityRule2" (cons "UorStandardApplicability::uorStandardApplicabilityJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorStandardApplicabilityRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When inscope is no, the answer is inapplicable.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityRule3" (cons "UorStandardApplicability::uorStandardApplicabilityJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorStandardApplicabilityRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When force is law and jurisdiction is foreign, the answer is inapplicable.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityRule4" (cons "UorStandardApplicability::uorStandardApplicabilityJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorStandardApplicabilityRule5,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When force is law and activity is absent, the answer is inapplicable.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityRule5" (cons "UorStandardApplicability::uorStandardApplicabilityJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorStandardApplicabilityRule6,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When force is law and activity is undetermined, the answer is conditional.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityRule6" (cons "UorStandardApplicability::uorStandardApplicabilityJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorStandardApplicabilityRule7,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When force is law and jurisdiction is own and activity is present, the answer is mandatory.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityRule7" (cons "UorStandardApplicability::uorStandardApplicabilityJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorStandardApplicabilityRule8,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When force is voluntary and adopted is yes, the answer is adopted.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityRule8" (cons "UorStandardApplicability::uorStandardApplicabilityJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorStandardApplicabilityRule9,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When force is law, the answer is undecided.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityRule9" (cons "UorStandardApplicability::uorStandardApplicabilityJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorStandardApplicabilityOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is applicable.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityJudge" (nil String)), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorStandardApplicabilityRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not owner, scope, inscope, force, jurisdiction, activity, adopted in order, separated by single spaces, or is over 184 bytes, is answered invalid.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityDispatch" (cons "UorStandardApplicability::uorStandardApplicabilityDecodeField1" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorStandardApplicabilityINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers applicable when owner is security and inscope is yes.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityJudge" (nil String)), acceptance := (cons "Features::acceptUorStandardApplicabilityINV001" (nil String))})
+}
+
+definition{
+  name: featureUorStandardApplicabilityINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers undecided when owner is standards and scope is unread.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityJudge" (nil String)), acceptance := (cons "Features::acceptUorStandardApplicabilityINV002" (nil String))})
+}
+
+definition{
+  name: featureUorStandardApplicabilityINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers inapplicable when owner is standards and scope is quoted and inscope is yes and force is law and jurisdiction is foreign.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityJudge" (nil String)), acceptance := (cons "Features::acceptUorStandardApplicabilityINV003" (nil String))})
+}
+
+definition{
+  name: featureUorStandardApplicabilityINV004,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers inapplicable when owner is standards and scope is quoted and inscope is yes and force is law and jurisdiction is own and activity is undetermined.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityJudge" (nil String)), acceptance := (cons "Features::acceptUorStandardApplicabilityINV004" (nil String))})
+}
+
+definition{
+  name: featureUorStandardApplicabilityINV005,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers mandatory when owner is standards and scope is quoted and inscope is yes and force is law and jurisdiction is own and activity is present.", calls := (cons "UorStandardApplicability::uorStandardApplicabilityJudge" (nil String)), acceptance := (cons "Features::acceptUorStandardApplicabilityINV005" (nil String))})
+}
+
+definition{
   name: featureUorTocLifecycleRule1,
   parameters: [],
   result: Foundation.Arch::Feature,
@@ -4447,6 +4595,34 @@ definition{
   parameters: [],
   result: Foundation.Arch::Journey,
   body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureUorRepoTierRefuseMalformed" (cons "Features::featureUorRepoTierINV001" (cons "Features::featureUorRepoTierINV002" (cons "Features::featureUorRepoTierINV003" (nil String)))))})
+}
+
+definition{
+  name: journeyUorStandardApplicabilityBoardOfDirectors,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderBoardOfDirectors", steps := (cons "Features::featureUorStandardApplicabilityRule7" (cons "Features::featureUorStandardApplicabilityRule6" (cons "Features::featureUorStandardApplicabilityOtherwise" (nil String))))})
+}
+
+definition{
+  name: journeyUorStandardApplicabilityContributor,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderContributor", steps := (cons "Features::featureUorStandardApplicabilityRule1" (cons "Features::featureUorStandardApplicabilityRule2" (cons "Features::featureUorStandardApplicabilityRule3" (cons "Features::featureUorStandardApplicabilityRule4" (cons "Features::featureUorStandardApplicabilityRule5" (cons "Features::featureUorStandardApplicabilityRule6" (cons "Features::featureUorStandardApplicabilityRule7" (cons "Features::featureUorStandardApplicabilityRule8" (cons "Features::featureUorStandardApplicabilityRule9" (cons "Features::featureUorStandardApplicabilityOtherwise" (nil String)))))))))))})
+}
+
+definition{
+  name: journeyUorStandardApplicabilityOrganizationOwner,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderOrganizationOwner", steps := (cons "Features::featureUorStandardApplicabilityINV001" (cons "Features::featureUorStandardApplicabilityINV005" (cons "Features::featureUorStandardApplicabilityRefuseMalformed" (nil String))))})
+}
+
+definition{
+  name: journeyUorStandardApplicabilityVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureUorStandardApplicabilityRefuseMalformed" (cons "Features::featureUorStandardApplicabilityINV001" (cons "Features::featureUorStandardApplicabilityINV002" (cons "Features::featureUorStandardApplicabilityINV003" (cons "Features::featureUorStandardApplicabilityINV004" (cons "Features::featureUorStandardApplicabilityINV005" (nil String)))))))})
 }
 
 definition{
