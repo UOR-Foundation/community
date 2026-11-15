@@ -9,7 +9,7 @@ definition{
   name: release,
   parameters: [],
   result: Foundation.Standards.V1.Model::Release,
-  body: (record Foundation.Standards.V1.Model::Release {facetsCount := 16, checksCount := 11, partsCount := 77, standardsCount := 107, decisionsCount := 724, openClaimsCount := 648, scopeClaimsCount := 3, inputs := "standards/candidates.json#sha256:ca14cf3be7165d0c9f822365743905d11eff9268b9d9fceb5b766ecb07854083 standards/parts.json#sha256:d30f1ab309121b3cb38dc05c67d401bd4b01d002a336a3f78c7bc2fffebbec9f standards/snapshot.json#sha256:160f08ba9fdbec07f873a9b0528baab60f69b87a5d4aa8d7a24b0212f9952098 apps/uor-standard-applicability.prompt.json#sha256:1076e946a3cf7fe6b69f10723817e64c63d426533a7497921072f54b5f4fa1d4 inventory/register.json#sha256:9ee0034b56d6951e5c14b310607e702a8388cad1faf055ffeb431df88bf51621 nonprofit/register.json#sha256:6093a5c17de804464ae904ce9465037540569ca23ef65e3ca9b45eadd0c49883 governance/register.json#sha256:d042b7bb0a87843c38d0bcfd6dde0ec1eb983aafd6e64340e180fc552bdcb77b standards.lock#sha256:c7a9312edbb964ed6f275fdf7f4c25a759676a2fd695ef9df0e84dec4ef414f7", app := "apps/uor-standard-applicability.prompt.json", security := "https://raw.githubusercontent.com/UOR-Foundation/community/6360c460d56cb225e8ab172fa4d0b6bfc36b78b7/security/README.md#sha256:1ce9f12088bbda70afcc79e8011d355493981782f99c54f693e6ddd3b17b38e7", implementedCount := 12, partialCount := 300, unimplementedCount := 343, applicableCount := 655})
+  body: (record Foundation.Standards.V1.Model::Release {facetsCount := 17, checksCount := 12, partsCount := 77, standardsCount := 107, decisionsCount := 724, openClaimsCount := 648, scopeClaimsCount := 3, inputs := "standards/candidates.json#sha256:9686624f1f62561e483eccdeea99292a9dfa309bb10fddc6750069e204c8bc09 standards/parts.json#sha256:cae99ded77916bfc2401e532fc8522efab2bd5344508e2220d6e32219b3619fb standards/snapshot.json#sha256:160f08ba9fdbec07f873a9b0528baab60f69b87a5d4aa8d7a24b0212f9952098 apps/uor-standard-applicability.prompt.json#sha256:1076e946a3cf7fe6b69f10723817e64c63d426533a7497921072f54b5f4fa1d4 inventory/register.json#sha256:9ee0034b56d6951e5c14b310607e702a8388cad1faf055ffeb431df88bf51621 nonprofit/register.json#sha256:6093a5c17de804464ae904ce9465037540569ca23ef65e3ca9b45eadd0c49883 governance/register.json#sha256:d042b7bb0a87843c38d0bcfd6dde0ec1eb983aafd6e64340e180fc552bdcb77b standards.lock#sha256:c7a9312edbb964ed6f275fdf7f4c25a759676a2fd695ef9df0e84dec4ef414f7", app := "apps/uor-standard-applicability.prompt.json", security := "https://raw.githubusercontent.com/UOR-Foundation/community/6360c460d56cb225e8ab172fa4d0b6bfc36b78b7/security/README.md#sha256:1ce9f12088bbda70afcc79e8011d355493981782f99c54f693e6ddd3b17b38e7", implementedCount := 12, partialCount := 340, unimplementedCount := 303, applicableCount := 655})
 }
 
 definition{
@@ -125,10 +125,17 @@ definition{
 }
 
 definition{
+  name: facet16,
+  parameters: [],
+  result: Foundation.Standards.V1.Model::Facet,
+  body: (record Foundation.Standards.V1.Model::Facet {index := 16, identifier := "accessibility", directory := "accessibility", present := true, commit := "", checkName := "Accessibility registerValidHolds (AX-01)"})
+}
+
+definition{
   name: facetsFrom0,
   parameters: [],
   result: (List Foundation.Standards.V1.Model::Facet),
-  body: (cons (facet0) (cons (facet1) (cons (facet2) (cons (facet3) (cons (facet4) (cons (facet5) (cons (facet6) (cons (facet7) (cons (facet8) (cons (facet9) (cons (facet10) (cons (facet11) (cons (facet12) (cons (facet13) (cons (facet14) (cons (facet15) (nil Foundation.Standards.V1.Model::Facet)))))))))))))))))
+  body: (cons (facet0) (cons (facet1) (cons (facet2) (cons (facet3) (cons (facet4) (cons (facet5) (cons (facet6) (cons (facet7) (cons (facet8) (cons (facet9) (cons (facet10) (cons (facet11) (cons (facet12) (cons (facet13) (cons (facet14) (cons (facet15) (cons (facet16) (nil Foundation.Standards.V1.Model::Facet))))))))))))))))))
 }
 
 definition{
@@ -216,10 +223,17 @@ definition{
 }
 
 definition{
+  name: check11,
+  parameters: [],
+  result: Foundation.Standards.V1.Model::Check,
+  body: (record Foundation.Standards.V1.Model::Check {index := 11, facet := 16, name := "Accessibility registerValidHolds (AX-01)"})
+}
+
+definition{
   name: checksFrom0,
   parameters: [],
   result: (List Foundation.Standards.V1.Model::Check),
-  body: (cons (check0) (cons (check1) (cons (check2) (cons (check3) (cons (check4) (cons (check5) (cons (check6) (cons (check7) (cons (check8) (cons (check9) (cons (check10) (nil Foundation.Standards.V1.Model::Check))))))))))))
+  body: (cons (check0) (cons (check1) (cons (check2) (cons (check3) (cons (check4) (cons (check5) (cons (check6) (cons (check7) (cons (check8) (cons (check9) (cons (check10) (cons (check11) (nil Foundation.Standards.V1.Model::Check)))))))))))))
 }
 
 definition{
@@ -2410,14 +2424,14 @@ definition{
   name: decision120,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 120, part := 12, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 120, part := 12, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision121,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 121, part := 12, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 121, part := 12, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -2725,7 +2739,7 @@ definition{
   name: decision165,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 165, part := 15, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 165, part := 15, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -2802,7 +2816,7 @@ definition{
   name: decision176,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 176, part := 16, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 176, part := 16, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -2879,7 +2893,7 @@ definition{
   name: decision187,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 187, part := 17, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 187, part := 17, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -2956,7 +2970,7 @@ definition{
   name: decision198,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 198, part := 18, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 198, part := 18, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -3033,7 +3047,7 @@ definition{
   name: decision209,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 209, part := 19, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 209, part := 19, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -3110,7 +3124,7 @@ definition{
   name: decision220,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 220, part := 20, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 220, part := 20, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -3187,7 +3201,7 @@ definition{
   name: decision231,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 231, part := 21, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 231, part := 21, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -3264,7 +3278,7 @@ definition{
   name: decision242,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 242, part := 22, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 242, part := 22, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -3341,7 +3355,7 @@ definition{
   name: decision253,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 253, part := 23, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 253, part := 23, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -3418,7 +3432,7 @@ definition{
   name: decision264,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 264, part := 24, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 264, part := 24, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -3495,7 +3509,7 @@ definition{
   name: decision275,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 275, part := 25, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 275, part := 25, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -3572,7 +3586,7 @@ definition{
   name: decision286,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 286, part := 26, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 286, part := 26, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -3649,7 +3663,7 @@ definition{
   name: decision297,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 297, part := 27, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 297, part := 27, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -3726,7 +3740,7 @@ definition{
   name: decision308,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 308, part := 28, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 308, part := 28, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -3803,7 +3817,7 @@ definition{
   name: decision319,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 319, part := 29, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 319, part := 29, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -3880,7 +3894,7 @@ definition{
   name: decision330,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 330, part := 30, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 330, part := 30, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -3957,7 +3971,7 @@ definition{
   name: decision341,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 341, part := 31, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 341, part := 31, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -4034,7 +4048,7 @@ definition{
   name: decision352,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 352, part := 32, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 352, part := 32, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -4111,7 +4125,7 @@ definition{
   name: decision363,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 363, part := 33, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 363, part := 33, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -4188,7 +4202,7 @@ definition{
   name: decision374,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 374, part := 34, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 374, part := 34, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -4265,7 +4279,7 @@ definition{
   name: decision385,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 385, part := 35, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 385, part := 35, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -4342,7 +4356,7 @@ definition{
   name: decision396,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 396, part := 36, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 396, part := 36, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -4419,7 +4433,7 @@ definition{
   name: decision407,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 407, part := 37, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 407, part := 37, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -4496,7 +4510,7 @@ definition{
   name: decision418,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 418, part := 38, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 418, part := 38, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -4573,7 +4587,7 @@ definition{
   name: decision429,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 429, part := 39, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 429, part := 39, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -4650,7 +4664,7 @@ definition{
   name: decision440,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 440, part := 40, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 440, part := 40, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -4727,7 +4741,7 @@ definition{
   name: decision451,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 451, part := 41, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 451, part := 41, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -4804,7 +4818,7 @@ definition{
   name: decision462,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 462, part := 42, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 462, part := 42, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -4881,7 +4895,7 @@ definition{
   name: decision473,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 473, part := 43, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 473, part := 43, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -4958,7 +4972,7 @@ definition{
   name: decision484,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 484, part := 44, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 484, part := 44, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -5035,7 +5049,7 @@ definition{
   name: decision495,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 495, part := 45, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 495, part := 45, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -5112,7 +5126,7 @@ definition{
   name: decision506,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 506, part := 46, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 506, part := 46, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -5189,7 +5203,7 @@ definition{
   name: decision517,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 517, part := 47, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 517, part := 47, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -5266,7 +5280,7 @@ definition{
   name: decision528,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 528, part := 48, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 528, part := 48, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -5343,7 +5357,7 @@ definition{
   name: decision539,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 539, part := 49, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 539, part := 49, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -5420,7 +5434,7 @@ definition{
   name: decision550,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 550, part := 50, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 550, part := 50, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -5497,7 +5511,7 @@ definition{
   name: decision561,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 561, part := 51, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 561, part := 51, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -5574,7 +5588,7 @@ definition{
   name: decision572,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 572, part := 52, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 572, part := 52, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -5651,7 +5665,7 @@ definition{
   name: decision583,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 583, part := 53, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 583, part := 53, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -5728,7 +5742,7 @@ definition{
   name: decision594,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 594, part := 54, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 594, part := 54, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -5805,7 +5819,7 @@ definition{
   name: decision605,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 605, part := 55, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 605, part := 55, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -5882,7 +5896,7 @@ definition{
   name: decision616,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 616, part := 56, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 616, part := 56, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -5959,7 +5973,7 @@ definition{
   name: decision627,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 627, part := 57, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 627, part := 57, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.no), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.inapplicable), rule := 3, status := (ctor Foundation.Standards.V1.Model::Status.unrated), facet := 8, check := 0})
 }
 
 definition{
@@ -5987,14 +6001,14 @@ definition{
   name: decision631,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 631, part := 58, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 631, part := 58, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision632,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 632, part := 58, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 632, part := 58, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6022,14 +6036,14 @@ definition{
   name: decision636,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 636, part := 59, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 636, part := 59, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision637,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 637, part := 59, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 637, part := 59, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6057,14 +6071,14 @@ definition{
   name: decision641,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 641, part := 60, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 641, part := 60, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision642,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 642, part := 60, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 642, part := 60, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6092,14 +6106,14 @@ definition{
   name: decision646,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 646, part := 61, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 646, part := 61, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision647,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 647, part := 61, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 647, part := 61, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6127,14 +6141,14 @@ definition{
   name: decision651,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 651, part := 62, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 651, part := 62, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision652,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 652, part := 62, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 652, part := 62, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6162,14 +6176,14 @@ definition{
   name: decision656,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 656, part := 63, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 656, part := 63, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision657,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 657, part := 63, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 657, part := 63, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6197,14 +6211,14 @@ definition{
   name: decision661,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 661, part := 64, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 661, part := 64, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision662,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 662, part := 64, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 662, part := 64, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6232,14 +6246,14 @@ definition{
   name: decision666,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 666, part := 65, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 666, part := 65, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision667,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 667, part := 65, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 667, part := 65, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6267,14 +6281,14 @@ definition{
   name: decision671,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 671, part := 66, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 671, part := 66, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision672,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 672, part := 66, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 672, part := 66, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6302,14 +6316,14 @@ definition{
   name: decision676,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 676, part := 67, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 676, part := 67, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision677,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 677, part := 67, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 677, part := 67, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6337,14 +6351,14 @@ definition{
   name: decision681,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 681, part := 68, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 681, part := 68, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision682,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 682, part := 68, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 682, part := 68, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6372,14 +6386,14 @@ definition{
   name: decision686,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 686, part := 69, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 686, part := 69, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision687,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 687, part := 69, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 687, part := 69, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6407,14 +6421,14 @@ definition{
   name: decision691,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 691, part := 70, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 691, part := 70, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision692,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 692, part := 70, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 692, part := 70, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6442,14 +6456,14 @@ definition{
   name: decision696,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 696, part := 71, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 696, part := 71, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision697,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 697, part := 71, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 697, part := 71, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6477,14 +6491,14 @@ definition{
   name: decision701,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 701, part := 72, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 701, part := 72, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision702,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 702, part := 72, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 702, part := 72, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6512,14 +6526,14 @@ definition{
   name: decision706,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 706, part := 73, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 706, part := 73, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision707,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 707, part := 73, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 707, part := 73, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6547,14 +6561,14 @@ definition{
   name: decision711,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 711, part := 74, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 711, part := 74, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision712,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 712, part := 74, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 712, part := 74, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6582,14 +6596,14 @@ definition{
   name: decision716,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 716, part := 75, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 716, part := 75, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision717,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 717, part := 75, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 717, part := 75, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -6617,14 +6631,14 @@ definition{
   name: decision721,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 721, part := 76, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 721, part := 76, standard := 34, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
   name: decision722,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 722, part := 76, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.no), outcome := (ctor Foundation.Standards.V1.Model::Outcome.applicable), rule := 0, status := (ctor Foundation.Standards.V1.Model::Status.unimplemented), facet := 8, check := 0})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 722, part := 76, standard := 35, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 16, check := 11})
 }
 
 definition{
@@ -7576,14 +7590,14 @@ definition{
   name: openClaim117,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 117, decision := 120, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Website and accessibility: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 117, decision := 120, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Website and accessibility: accessibility/register.json cites it; no check of this repository verifies its clauses for Website and accessibility"})
 }
 
 definition{
   name: openClaim118,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 118, decision := 121, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Website and accessibility: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 118, decision := 121, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Website and accessibility: accessibility/register.json cites it; no check of this repository verifies its clauses for Website and accessibility"})
 }
 
 definition{
@@ -10775,14 +10789,14 @@ definition{
   name: openClaim574,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 574, decision := 631, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for About the Foundation: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 574, decision := 631, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for About the Foundation: accessibility/register.json cites it; no check of this repository verifies its clauses for About the Foundation"})
 }
 
 definition{
   name: openClaim575,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 575, decision := 632, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for About the Foundation: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 575, decision := 632, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for About the Foundation: accessibility/register.json cites it; no check of this repository verifies its clauses for About the Foundation"})
 }
 
 definition{
@@ -10803,14 +10817,14 @@ definition{
   name: openClaim578,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 578, decision := 636, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Agent entry point: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 578, decision := 636, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Agent entry point: accessibility/register.json cites it; no check of this repository verifies its clauses for Agent entry point"})
 }
 
 definition{
   name: openClaim579,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 579, decision := 637, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Agent entry point: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 579, decision := 637, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Agent entry point: accessibility/register.json cites it; no check of this repository verifies its clauses for Agent entry point"})
 }
 
 definition{
@@ -10831,14 +10845,14 @@ definition{
   name: openClaim582,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 582, decision := 641, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Foundation blog: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 582, decision := 641, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Foundation blog: accessibility/register.json cites it; no check of this repository verifies its clauses for Foundation blog"})
 }
 
 definition{
   name: openClaim583,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 583, decision := 642, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Foundation blog: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 583, decision := 642, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Foundation blog: accessibility/register.json cites it; no check of this repository verifies its clauses for Foundation blog"})
 }
 
 definition{
@@ -10859,14 +10873,14 @@ definition{
   name: openClaim586,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 586, decision := 646, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Calculator example: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 586, decision := 646, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Calculator example: accessibility/register.json cites it; no check of this repository verifies its clauses for Calculator example"})
 }
 
 definition{
   name: openClaim587,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 587, decision := 647, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Calculator example: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 587, decision := 647, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Calculator example: accessibility/register.json cites it; no check of this repository verifies its clauses for Calculator example"})
 }
 
 definition{
@@ -10887,14 +10901,14 @@ definition{
   name: openClaim590,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 590, decision := 651, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Community health site: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 590, decision := 651, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Community health site: accessibility/register.json cites it; no check of this repository verifies its clauses for Community health site"})
 }
 
 definition{
   name: openClaim591,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 591, decision := 652, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Community health site: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 591, decision := 652, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Community health site: accessibility/register.json cites it; no check of this repository verifies its clauses for Community health site"})
 }
 
 definition{
@@ -10915,14 +10929,14 @@ definition{
   name: openClaim594,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 594, decision := 656, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Dataflow policy site: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 594, decision := 656, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Dataflow policy site: accessibility/register.json cites it; no check of this repository verifies its clauses for Dataflow policy site"})
 }
 
 definition{
   name: openClaim595,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 595, decision := 657, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Dataflow policy site: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 595, decision := 657, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Dataflow policy site: accessibility/register.json cites it; no check of this repository verifies its clauses for Dataflow policy site"})
 }
 
 definition{
@@ -10943,14 +10957,14 @@ definition{
   name: openClaim598,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 598, decision := 661, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Discord posting for agents: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 598, decision := 661, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Discord posting for agents: accessibility/register.json cites it; no check of this repository verifies its clauses for Discord posting for agents"})
 }
 
 definition{
   name: openClaim599,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 599, decision := 662, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Discord posting for agents: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 599, decision := 662, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Discord posting for agents: accessibility/register.json cites it; no check of this repository verifies its clauses for Discord posting for agents"})
 }
 
 definition{
@@ -10971,14 +10985,14 @@ definition{
   name: openClaim602,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 602, decision := 666, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Prism documentation: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 602, decision := 666, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Prism documentation: accessibility/register.json cites it; no check of this repository verifies its clauses for Prism documentation"})
 }
 
 definition{
   name: openClaim603,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 603, decision := 667, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Prism documentation: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 603, decision := 667, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Prism documentation: accessibility/register.json cites it; no check of this repository verifies its clauses for Prism documentation"})
 }
 
 definition{
@@ -10999,14 +11013,14 @@ definition{
   name: openClaim606,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 606, decision := 671, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Docs assistant (DocsGPT API): nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 606, decision := 671, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Docs assistant (DocsGPT API): accessibility/register.json cites it; no check of this repository verifies its clauses for Docs assistant (DocsGPT API)"})
 }
 
 definition{
   name: openClaim607,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 607, decision := 672, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Docs assistant (DocsGPT API): nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 607, decision := 672, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Docs assistant (DocsGPT API): accessibility/register.json cites it; no check of this repository verifies its clauses for Docs assistant (DocsGPT API)"})
 }
 
 definition{
@@ -11027,14 +11041,14 @@ definition{
   name: openClaim610,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 610, decision := 676, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Prism AI Foundry: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 610, decision := 676, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Prism AI Foundry: accessibility/register.json cites it; no check of this repository verifies its clauses for Prism AI Foundry"})
 }
 
 definition{
   name: openClaim611,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 611, decision := 677, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Prism AI Foundry: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 611, decision := 677, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Prism AI Foundry: accessibility/register.json cites it; no check of this repository verifies its clauses for Prism AI Foundry"})
 }
 
 definition{
@@ -11055,14 +11069,14 @@ definition{
   name: openClaim614,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 614, decision := 681, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Foundry Web: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 614, decision := 681, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Foundry Web: accessibility/register.json cites it; no check of this repository verifies its clauses for Foundry Web"})
 }
 
 definition{
   name: openClaim615,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 615, decision := 682, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Foundry Web: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 615, decision := 682, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Foundry Web: accessibility/register.json cites it; no check of this repository verifies its clauses for Foundry Web"})
 }
 
 definition{
@@ -11083,14 +11097,14 @@ definition{
   name: openClaim618,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 618, decision := 686, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for UOR Framework overview: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 618, decision := 686, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for UOR Framework overview: accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework overview"})
 }
 
 definition{
   name: openClaim619,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 619, decision := 687, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for UOR Framework overview: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 619, decision := 687, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for UOR Framework overview: accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework overview"})
 }
 
 definition{
@@ -11111,14 +11125,14 @@ definition{
   name: openClaim622,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 622, decision := 691, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Holo Search: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 622, decision := 691, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Holo Search: accessibility/register.json cites it; no check of this repository verifies its clauses for Holo Search"})
 }
 
 definition{
   name: openClaim623,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 623, decision := 692, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Holo Search: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 623, decision := 692, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Holo Search: accessibility/register.json cites it; no check of this repository verifies its clauses for Holo Search"})
 }
 
 definition{
@@ -11139,14 +11153,14 @@ definition{
   name: openClaim626,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 626, decision := 696, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Kappa registry: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 626, decision := 696, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Kappa registry: accessibility/register.json cites it; no check of this repository verifies its clauses for Kappa registry"})
 }
 
 definition{
   name: openClaim627,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 627, decision := 697, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Kappa registry: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 627, decision := 697, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Kappa registry: accessibility/register.json cites it; no check of this repository verifies its clauses for Kappa registry"})
 }
 
 definition{
@@ -11167,14 +11181,14 @@ definition{
   name: openClaim630,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 630, decision := 701, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Hosted LexLean verifier (MCP server): nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 630, decision := 701, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Hosted LexLean verifier (MCP server): accessibility/register.json cites it; no check of this repository verifies its clauses for Hosted LexLean verifier (MCP server)"})
 }
 
 definition{
   name: openClaim631,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 631, decision := 702, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Hosted LexLean verifier (MCP server): nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 631, decision := 702, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Hosted LexLean verifier (MCP server): accessibility/register.json cites it; no check of this repository verifies its clauses for Hosted LexLean verifier (MCP server)"})
 }
 
 definition{
@@ -11195,14 +11209,14 @@ definition{
   name: openClaim634,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 634, decision := 706, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Prism playground: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 634, decision := 706, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Prism playground: accessibility/register.json cites it; no check of this repository verifies its clauses for Prism playground"})
 }
 
 definition{
   name: openClaim635,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 635, decision := 707, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Prism playground: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 635, decision := 707, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Prism playground: accessibility/register.json cites it; no check of this repository verifies its clauses for Prism playground"})
 }
 
 definition{
@@ -11223,14 +11237,14 @@ definition{
   name: openClaim638,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 638, decision := 711, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Template try page: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 638, decision := 711, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for Template try page: accessibility/register.json cites it; no check of this repository verifies its clauses for Template try page"})
 }
 
 definition{
   name: openClaim639,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 639, decision := 712, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Template try page: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 639, decision := 712, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for Template try page: accessibility/register.json cites it; no check of this repository verifies its clauses for Template try page"})
 }
 
 definition{
@@ -11251,14 +11265,14 @@ definition{
   name: openClaim642,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 642, decision := 716, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for UOR Framework ontology: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 642, decision := 716, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for UOR Framework ontology: accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework ontology"})
 }
 
 definition{
   name: openClaim643,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 643, decision := 717, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for UOR Framework ontology: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 643, decision := 717, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for UOR Framework ontology: accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework ontology"})
 }
 
 definition{
@@ -11279,14 +11293,14 @@ definition{
   name: openClaim646,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 646, decision := 721, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for UOR Foundation website: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 646, decision := 721, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "Web Content Accessibility Guidelines 2.2 (level AA) for UOR Foundation website: accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Foundation website"})
 }
 
 definition{
   name: openClaim647,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 647, decision := 722, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-unimplemented", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for UOR Foundation website: nothing in the Foundation cites or implements it"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 647, decision := 722, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ETSI EN 301 549 Accessibility requirements for ICT products and services for UOR Foundation website: accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Foundation website"})
 }
 
 definition{

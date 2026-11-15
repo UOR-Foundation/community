@@ -129,6 +129,14 @@
       "module": "Foundation.Security.V1",
       "check": "SecurityRegister registerValidHolds (SE-01)",
       "commit": "6360c460d56cb225e8ab172fa4d0b6bfc36b78b7"
+    },
+    {
+      "id": "accessibility",
+      "directory": "accessibility",
+      "register": "accessibility/register.json",
+      "module": "Foundation.Accessibility.V1",
+      "check": "Accessibility registerValidHolds (AX-01)",
+      "commit": ""
     }
   ],
   "domains": [
@@ -287,7 +295,8 @@
       "kind": "website",
       "name": "Website and accessibility",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "webContent",
@@ -336,7 +345,8 @@
     },
     "service": {
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",

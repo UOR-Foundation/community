@@ -1,0 +1,796 @@
+\begin{lexlean}{Foundation.Accessibility.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Accessibility model}
+\begin{semanticmodule}
+inductive{
+  name: Level,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: levelA, fields: []},
+    {name: levelAA, fields: []},
+    {name: levelAAA, fields: []},
+    {name: obsolete, fields: []}
+  ]
+}
+
+inductive{
+  name: OutcomeKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: failed, fields: []},
+    {name: needsReview, fields: []},
+    {name: passed, fields: []},
+    {name: untested, fields: []},
+    {name: uncovered, fields: []}
+  ]
+}
+
+inductive{
+  name: Viewport,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: desktop, fields: []}, {name: phone, fields: []}]
+}
+
+inductive{
+  name: Scheme,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: light, fields: []}, {name: dark, fields: []}]
+}
+
+inductive{
+  name: Discovery,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: sitemap, fields: []}, {name: crawl, fields: []}]
+}
+
+inductive{
+  name: Route,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: rendered, fields: []},
+    {name: redirected, fields: []},
+    {name: unrouted, fields: []}
+  ]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: criteriaCount, type: Nat},
+    {name: requirementsCount, type: Nat},
+    {name: rulesCount, type: Nat},
+    {name: pagesCount, type: Nat},
+    {name: readingsCount, type: Nat},
+    {name: outcomesCount, type: Nat},
+    {name: openClaimsCount, type: Nat},
+    {name: refusalsCount, type: Nat},
+    {name: clausesCount, type: Nat},
+    {name: exclusionsCount, type: Nat},
+    {name: wcagRecommendation, type: String},
+    {name: wcagCommit, type: String},
+    {name: criteriaDigest, type: String},
+    {name: conformanceDigest, type: String},
+    {name: aaaNote, type: String},
+    {name: websiteRoutes, type: String},
+    {name: routesDigest, type: String},
+    {name: inventoryDigest, type: String},
+    {name: snapshotDigest, type: String},
+    {name: takenAt, type: String},
+    {name: sitemapDigest, type: String},
+    {name: axeVersion, type: String},
+    {name: axeIntegrity, type: String},
+    {name: axeScript, type: String},
+    {name: playwright, type: String},
+    {name: browser, type: String},
+    {name: enUrl, type: String},
+    {name: enDigest, type: String},
+    {name: enFetchedAt, type: String},
+    {name: pdftotext, type: String},
+    {name: targetedCount, type: Nat},
+    {name: configurationCount, type: Nat},
+    {name: enRequiredCount, type: Nat},
+    {name: failedCount, type: Nat},
+    {name: needsReviewCount, type: Nat},
+    {name: passedCount, type: Nat},
+    {name: untestedCount, type: Nat},
+    {name: uncoveredCount, type: Nat}
+  ]
+}
+
+structure{
+  name: Criterion,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: num, type: String},
+    {name: handle, type: String},
+    {name: level, type: Level},
+    {name: in21, type: Bool},
+    {name: in22, type: Bool},
+    {name: targeted, type: Bool},
+    {name: slot, type: Nat},
+    {name: axeRules, type: Nat}
+  ]
+}
+
+structure{
+  name: Requirement,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: key, type: String}, {name: title, type: String}]
+}
+
+structure{
+  name: Rule,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: mappedTo, type: String},
+    {name: mapped, type: Nat}
+  ]
+}
+
+structure{
+  name: Page,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: url, type: String},
+    {name: service, type: String},
+    {name: discovery, type: Discovery},
+    {name: route, type: Route},
+    {name: readingsRan, type: Nat}
+  ]
+}
+
+structure{
+  name: Reading,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: page, type: Nat},
+    {name: slot, type: Nat},
+    {name: viewport, type: Viewport},
+    {name: scheme, type: Scheme},
+    {name: status, type: Nat},
+    {name: ran, type: Bool},
+    {name: fetchedAt, type: String},
+    {name: digest, type: String},
+    {name: violations, type: Nat},
+    {name: incomplete, type: Nat},
+    {name: passes, type: Nat},
+    {name: inapplicable, type: Nat}
+  ]
+}
+
+structure{
+  name: Outcome,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: page, type: Nat},
+    {name: criterion, type: Nat},
+    {name: slot, type: Nat},
+    {name: result, type: OutcomeKind},
+    {name: rulesMapped, type: Nat},
+    {name: violated, type: Nat},
+    {name: incomplete, type: Nat},
+    {name: passed, type: Nat},
+    {name: inapplicable, type: Nat},
+    {name: notRun, type: Nat},
+    {name: ruleNames, type: String}
+  ]
+}
+
+structure{
+  name: OpenClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: outcome, type: Nat},
+    {name: kind, type: OutcomeKind},
+    {name: detail, type: String}
+  ]
+}
+
+structure{
+  name: Refusal,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: page, type: String},
+    {name: detail, type: String}
+  ]
+}
+
+structure{
+  name: Clause,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: clause, type: String},
+    {name: title, type: String},
+    {name: void, type: Bool},
+    {name: criterion, type: Nat}
+  ]
+}
+
+structure{
+  name: Exclusion,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: service, type: String},
+    {name: url, type: String},
+    {name: reason, type: String}
+  ]
+}
+
+definition{
+  name: levelTargeted,
+  parameters: [value : Level],
+  result: Bool,
+  body: (match value
+    | Level.levelA => true
+    | Level.levelAA => true
+    | Level.levelAAA => false
+    | Level.obsolete => false)
+}
+
+definition{
+  name: levelRequiredByEn,
+  parameters: [value : Level],
+  result: Bool,
+  body: (match value
+    | Level.levelA => true
+    | Level.levelAA => true
+    | Level.levelAAA => false
+    | Level.obsolete => true)
+}
+
+definition{
+  name: isFailed,
+  parameters: [value : OutcomeKind],
+  result: Bool,
+  body: (match value
+    | OutcomeKind.failed => true
+    | OutcomeKind.needsReview => false
+    | OutcomeKind.passed => false
+    | OutcomeKind.untested => false
+    | OutcomeKind.uncovered => false)
+}
+
+definition{
+  name: isNeedsReview,
+  parameters: [value : OutcomeKind],
+  result: Bool,
+  body: (match value
+    | OutcomeKind.failed => false
+    | OutcomeKind.needsReview => true
+    | OutcomeKind.passed => false
+    | OutcomeKind.untested => false
+    | OutcomeKind.uncovered => false)
+}
+
+definition{
+  name: isPassed,
+  parameters: [value : OutcomeKind],
+  result: Bool,
+  body: (match value
+    | OutcomeKind.failed => false
+    | OutcomeKind.needsReview => false
+    | OutcomeKind.passed => true
+    | OutcomeKind.untested => false
+    | OutcomeKind.uncovered => false)
+}
+
+definition{
+  name: isUntested,
+  parameters: [value : OutcomeKind],
+  result: Bool,
+  body: (match value
+    | OutcomeKind.failed => false
+    | OutcomeKind.needsReview => false
+    | OutcomeKind.passed => false
+    | OutcomeKind.untested => true
+    | OutcomeKind.uncovered => false)
+}
+
+definition{
+  name: isUncovered,
+  parameters: [value : OutcomeKind],
+  result: Bool,
+  body: (match value
+    | OutcomeKind.failed => false
+    | OutcomeKind.needsReview => false
+    | OutcomeKind.passed => false
+    | OutcomeKind.untested => false
+    | OutcomeKind.uncovered => true)
+}
+
+definition{
+  name: agree,
+  parameters: [left : Bool, right : Bool],
+  result: Bool,
+  body: (if left then right else (not right))
+}
+
+definition{
+  name: criterionSound,
+  parameters: [criterion : Criterion],
+  result: Bool,
+  body: ((agree (project criterion targeted) ((project criterion in22) && (levelTargeted (project criterion level)))) && ((project criterion targeted) || ((project criterion slot) =? 0)))
+}
+
+definition{
+  name: outcomeAgrees,
+  parameters: [outcome : Outcome],
+  result: Bool,
+  body: ((((project outcome violated) + ((project outcome incomplete) + ((project outcome passed) + ((project outcome inapplicable) + (project outcome notRun))))) =? (project outcome rulesMapped)) && ((agree (isFailed (project outcome result)) (0 <? (project outcome violated))) && ((agree (isNeedsReview (project outcome result)) (((project outcome violated) =? 0) && (0 <? (project outcome incomplete)))) && ((agree (isPassed (project outcome result)) (((project outcome violated) =? 0) && (((project outcome incomplete) =? 0) && (0 <? (project outcome passed))))) && ((agree (isUntested (project outcome result)) (((project outcome violated) =? 0) && (((project outcome incomplete) =? 0) && (((project outcome passed) =? 0) && (0 <? (project outcome rulesMapped)))))) && (agree (isUncovered (project outcome result)) ((project outcome rulesMapped) =? 0)))))))
+}
+
+definition{
+  name: slotsValid,
+  parameters: [next : Nat, total : Nat, values : (List Criterion)],
+  result: Bool,
+  body: (match values
+    | List.nil => (next =? total)
+    | List.cons criterion rest => (if (project criterion targeted) then (((project criterion slot) =? next) && (slotsValid (next + 1) total rest)) else (slotsValid next total rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: criterionMatches,
+  parameters: [position : Nat, wanted : Nat, mapped : Nat, values : (List Criterion)],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons criterion rest => (if ((project criterion index) =? position) then ((project criterion targeted) && (((project criterion slot) =? wanted) && ((project criterion axeRules) =? mapped))) else (criterionMatches position wanted mapped rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: outcomesCover,
+  parameters: [
+    atPage : Nat,
+    atSlot : Nat,
+    slots : Nat,
+    last : Nat,
+    table : (List Criterion),
+    values : (List Outcome)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => ((atSlot =? 0) && (atPage =? last))
+    | List.cons outcome rest => (((project outcome page) =? atPage) && (((project outcome slot) =? atSlot) && ((criterionMatches (project outcome criterion) atSlot (project outcome rulesMapped) table) && (if ((atSlot + 1) =? slots) then (outcomesCover (atPage + 1) 0 slots last table rest) else (outcomesCover atPage (atSlot + 1) slots last table rest)))))),
+  recursive_argument: values
+}
+
+definition{
+  name: readingsCover,
+  parameters: [atPage : Nat, atSlot : Nat, slots : Nat, last : Nat, values : (List Reading)],
+  result: Bool,
+  body: (match values
+    | List.nil => ((atSlot =? 0) && (atPage =? last))
+    | List.cons reading rest => (((project reading page) =? atPage) && (((project reading slot) =? atSlot) && (if ((atSlot + 1) =? slots) then (readingsCover (atPage + 1) 0 slots last rest) else (readingsCover atPage (atSlot + 1) slots last rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: sameAsFailed,
+  parameters: [value : OutcomeKind],
+  result: Bool,
+  body: (match value
+    | OutcomeKind.failed => true
+    | OutcomeKind.needsReview => false
+    | OutcomeKind.passed => false
+    | OutcomeKind.untested => false
+    | OutcomeKind.uncovered => false)
+}
+
+definition{
+  name: sameAsNeedsReview,
+  parameters: [value : OutcomeKind],
+  result: Bool,
+  body: (match value
+    | OutcomeKind.failed => false
+    | OutcomeKind.needsReview => true
+    | OutcomeKind.passed => false
+    | OutcomeKind.untested => false
+    | OutcomeKind.uncovered => false)
+}
+
+definition{
+  name: sameAsPassed,
+  parameters: [value : OutcomeKind],
+  result: Bool,
+  body: (match value
+    | OutcomeKind.failed => false
+    | OutcomeKind.needsReview => false
+    | OutcomeKind.passed => true
+    | OutcomeKind.untested => false
+    | OutcomeKind.uncovered => false)
+}
+
+definition{
+  name: sameAsUntested,
+  parameters: [value : OutcomeKind],
+  result: Bool,
+  body: (match value
+    | OutcomeKind.failed => false
+    | OutcomeKind.needsReview => false
+    | OutcomeKind.passed => false
+    | OutcomeKind.untested => true
+    | OutcomeKind.uncovered => false)
+}
+
+definition{
+  name: sameAsUncovered,
+  parameters: [value : OutcomeKind],
+  result: Bool,
+  body: (match value
+    | OutcomeKind.failed => false
+    | OutcomeKind.needsReview => false
+    | OutcomeKind.passed => false
+    | OutcomeKind.untested => false
+    | OutcomeKind.uncovered => true)
+}
+
+definition{
+  name: sameKind,
+  parameters: [left : OutcomeKind, right : OutcomeKind],
+  result: Bool,
+  body: (match left
+    | OutcomeKind.failed => (sameAsFailed right)
+    | OutcomeKind.needsReview => (sameAsNeedsReview right)
+    | OutcomeKind.passed => (sameAsPassed right)
+    | OutcomeKind.untested => (sameAsUntested right)
+    | OutcomeKind.uncovered => (sameAsUncovered right))
+}
+
+definition{
+  name: claimNames,
+  parameters: [position : Nat, wanted : OutcomeKind, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons claim rest => (((project claim outcome) =? position) && (sameKind wanted (project claim kind))))
+}
+
+definition{
+  name: claimRest,
+  parameters: [values : (List OpenClaim)],
+  result: (List OpenClaim),
+  body: (match values | List.nil => (nil OpenClaim) | List.cons claim rest => rest)
+}
+
+definition{
+  name: claimsDone,
+  parameters: [values : (List OpenClaim)],
+  result: Bool,
+  body: (match values | List.nil => true | List.cons claim rest => false)
+}
+
+definition{
+  name: claimsAccounted,
+  parameters: [claims : (List OpenClaim), values : (List Outcome)],
+  result: Bool,
+  body: (match values
+    | List.nil => (claimsDone claims)
+    | List.cons outcome rest => (if (isPassed (project outcome result)) then (claimsAccounted claims rest) else ((claimNames (project outcome index) (project outcome result) claims) && (claimsAccounted (claimRest claims) rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: failedOutcomes,
+  parameters: [values : (List Outcome)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons outcome rest => ((if (isFailed (project outcome result)) then 1 else 0) + (failedOutcomes rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: needsReviewOutcomes,
+  parameters: [values : (List Outcome)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons outcome rest => ((if (isNeedsReview (project outcome result)) then 1 else 0) + (needsReviewOutcomes rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: passedOutcomes,
+  parameters: [values : (List Outcome)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons outcome rest => ((if (isPassed (project outcome result)) then 1 else 0) + (passedOutcomes rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: untestedOutcomes,
+  parameters: [values : (List Outcome)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons outcome rest => ((if (isUntested (project outcome result)) then 1 else 0) + (untestedOutcomes rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: uncoveredOutcomes,
+  parameters: [values : (List Outcome)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons outcome rest => ((if (isUncovered (project outcome result)) then 1 else 0) + (uncoveredOutcomes rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: requiredByEn,
+  parameters: [position : Nat, values : (List Criterion)],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons criterion rest => (if ((project criterion index) =? position) then ((project criterion in21) && (levelRequiredByEn (project criterion level))) else (requiredByEn position rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: clausesOrdered,
+  parameters: [next : Nat, table : (List Criterion), values : (List Clause)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons clause rest => (if (project clause void) then (clausesOrdered next table rest) else ((next <=? (project clause criterion)) && ((requiredByEn (project clause criterion) table) && (clausesOrdered ((project clause criterion) + 1) table rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: enRequiredCriteria,
+  parameters: [values : (List Criterion)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons criterion rest => ((if ((project criterion in21) && (levelRequiredByEn (project criterion level))) then 1 else 0) + (enRequiredCriteria rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: enRequiringClauses,
+  parameters: [values : (List Clause)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons clause rest => ((if (not (project clause void)) then 1 else 0) + (enRequiringClauses rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: criteriaValid,
+  parameters: [position : Nat, values : (List Criterion)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons criterion rest => (((project criterion index) =? position) && ((criterionSound criterion) && (criteriaValid (position + 1) rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: criteriaTotal,
+  parameters: [values : (List Criterion)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons criterion rest => (1 + (criteriaTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: requirementsValid,
+  parameters: [position : Nat, values : (List Requirement)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons requirement rest => (((project requirement index) =? position) && (requirementsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: requirementsTotal,
+  parameters: [values : (List Requirement)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons requirement rest => (1 + (requirementsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: rulesValid,
+  parameters: [position : Nat, values : (List Rule)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons rule rest => (((project rule index) =? position) && (rulesValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: rulesTotal,
+  parameters: [values : (List Rule)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons rule rest => (1 + (rulesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: pagesValid,
+  parameters: [position : Nat, values : (List Page)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons page rest => (((project page index) =? position) && (pagesValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: pagesTotal,
+  parameters: [values : (List Page)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons page rest => (1 + (pagesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: readingsValid,
+  parameters: [position : Nat, pagesCount : Nat, values : (List Reading)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons reading rest => (((project reading index) =? position) && (((project reading page) <? pagesCount) && (readingsValid (position + 1) pagesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: readingsTotal,
+  parameters: [values : (List Reading)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons reading rest => (1 + (readingsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: outcomesValid,
+  parameters: [position : Nat, pagesCount : Nat, criteriaCount : Nat, values : (List Outcome)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons outcome rest => (((project outcome index) =? position) && (((project outcome page) <? pagesCount) && (((project outcome criterion) <? criteriaCount) && ((outcomeAgrees outcome) && (outcomesValid (position + 1) pagesCount criteriaCount rest)))))),
+  recursive_argument: values
+}
+
+definition{
+  name: outcomesTotal,
+  parameters: [values : (List Outcome)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons outcome rest => (1 + (outcomesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsValid,
+  parameters: [position : Nat, outcomesCount : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons openClaim rest => (((project openClaim index) =? position) && (((project openClaim outcome) <? outcomesCount) && (openClaimsValid (position + 1) outcomesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsTotal,
+  parameters: [values : (List OpenClaim)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: refusalsValid,
+  parameters: [position : Nat, values : (List Refusal)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons refusal rest => (((project refusal index) =? position) && (refusalsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: refusalsTotal,
+  parameters: [values : (List Refusal)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons refusal rest => (1 + (refusalsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: clausesValid,
+  parameters: [position : Nat, criteriaCount : Nat, values : (List Clause)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons clause rest => (((project clause index) =? position) && (((project clause criterion) <? criteriaCount) && (clausesValid (position + 1) criteriaCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: clausesTotal,
+  parameters: [values : (List Clause)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons clause rest => (1 + (clausesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: exclusionsValid,
+  parameters: [position : Nat, values : (List Exclusion)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons exclusion rest => (((project exclusion index) =? position) && (exclusionsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: exclusionsTotal,
+  parameters: [values : (List Exclusion)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons exclusion rest => (1 + (exclusionsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    criteria : (List Criterion),
+    requirements : (List Requirement),
+    rules : (List Rule),
+    pages : (List Page),
+    readings : (List Reading),
+    outcomes : (List Outcome),
+    openClaims : (List OpenClaim),
+    refusals : (List Refusal),
+    clauses : (List Clause),
+    exclusions : (List Exclusion)
+  ],
+  result: Bool,
+  body: (((criteriaTotal criteria) =? (project release criteriaCount)) && (((requirementsTotal requirements) =? (project release requirementsCount)) && (((rulesTotal rules) =? (project release rulesCount)) && (((pagesTotal pages) =? (project release pagesCount)) && (((readingsTotal readings) =? (project release readingsCount)) && (((outcomesTotal outcomes) =? (project release outcomesCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && (((refusalsTotal refusals) =? (project release refusalsCount)) && (((clausesTotal clauses) =? (project release clausesCount)) && (((exclusionsTotal exclusions) =? (project release exclusionsCount)) && ((criteriaValid 0 criteria) && ((requirementsValid 0 requirements) && ((rulesValid 0 rules) && ((pagesValid 0 pages) && ((readingsValid 0 (pagesTotal pages) readings) && ((outcomesValid 0 (pagesTotal pages) (criteriaTotal criteria) outcomes) && ((openClaimsValid 0 (outcomesTotal outcomes) openClaims) && ((refusalsValid 0 refusals) && ((clausesValid 0 (criteriaTotal criteria) clauses) && ((exclusionsValid 0 exclusions) && ((slotsValid 0 (project release targetedCount) criteria) && ((readingsCover 0 0 (project release configurationCount) (pagesTotal pages) readings) && ((outcomesCover 0 0 (project release targetedCount) (pagesTotal pages) criteria outcomes) && ((claimsAccounted openClaims outcomes) && (((failedOutcomes outcomes) =? (project release failedCount)) && (((needsReviewOutcomes outcomes) =? (project release needsReviewCount)) && (((passedOutcomes outcomes) =? (project release passedCount)) && (((untestedOutcomes outcomes) =? (project release untestedCount)) && (((uncoveredOutcomes outcomes) =? (project release uncoveredCount)) && ((clausesOrdered 0 criteria clauses) && (((enRequiringClauses clauses) =? (project release enRequiredCount)) && ((enRequiredCriteria criteria) =? (project release enRequiredCount)))))))))))))))))))))))))))))))))
+}
+\end{semanticmodule}
+\end{lexlean}

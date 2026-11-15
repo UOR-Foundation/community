@@ -18,6 +18,14 @@ The three honesty levels (R2):
 `cargo xtask audit-limits` fails if any code path returns an error the
 model does not sanction.
 
+## accessibility
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `AX-01` | `build` | The accessibility register is valid: every page of the Foundation's public web content has one reading in each configuration and exactly one outcome for every WCAG 2.2 Level A and AA success criterion, each outcome agrees with what the axe-core rules mapped to the criterion did on the page, a criterion is passed only when a mapped rule ran and passed with none failed or incomplete, every outcome that is not a pass is named by an open claim, and EN 301 549 clause 9 requires every WCAG 2.1 Level A and AA criterion exactly once |
+| `AX-02` | `build` | The accessibility catalog declares every success criterion, axe rule, page, reading and outcome of accessibility/register.json, each reading's URL, fetch time and document digest, the axe-core version and lock integrity, the browser and Playwright versions, and the digests of the WCAG source, the website routes, the sitemap, the EN 301 549 text and the snapshot it was projected from |
+| `AX-03` | `open` | A WCAG 2.2 Level A or AA success criterion that axe-core fails, cannot decide, does not test or finds nothing to test on a page, a conformance requirement no automated rule observes, and a page or EN 301 549 clause the sources cannot settle are carried as open claims, never restated as conformance |
+
 ## assets
 
 | ID | Level | Statement |
