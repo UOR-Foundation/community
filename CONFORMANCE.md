@@ -318,6 +318,14 @@ model does not sanction.
 | `RO-02` | `build` | The reorganization catalog declares every repository of reorg/register.json with the commit its evidence was read at, the snapshot and repository-set digests, the pinned norms, and the digest of the uor-repo-disposition app with the builder commit that checked it |
 | `RO-03` | `open` | A candidate the evidence raises without deciding it, and every norm the reorganization needs that the Foundation's norms do not define, is carried as an open claim, never decided or defaulted |
 
+## standards
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `ST-01` | `build` | The standards register is valid: every part of The UOR Foundation has at least one applicable standard, every candidate pair is decided once by the uor-standard-applicability table, every applicable pair has exactly one status, every implemented pair names an existing facet and a check of it, every pair that is not implemented is an open claim, and every pair the security facet owns carries owner security |
+| `ST-02` | `build` | The standards catalog declares every part, candidate standard, decided pair and open claim of standards/register.json, each standard's issuer page with its sha256 and fetch time, and the digests of the inputs and the security facet table it was projected from |
+| `ST-03` | `open` | A standard that applies to a part of The UOR Foundation but is not implemented there in full, and a candidate whose scope its issuer's page did not yield, are carried as open claims and grouped into workstreams, never dropped or guessed |
+
 ## supply
 
 | ID | Level | Statement |

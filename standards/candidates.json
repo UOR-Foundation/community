@@ -1,0 +1,2082 @@
+{
+  "spec": "uor-community/standards-candidates/1",
+  "about": "Every standard a part of The UOR Foundation could be bound by, from its issuer. A candidate names its issuer, the page that states its scope, the subject or subjects that scope names, and the kinds of part it could bind; standards/snapshot.mjs reads the issuer's own page and quotes the scope from it, and standards/project.mjs asks the uor-standard-applicability decision app whether it binds each part. `force` is law for a statute, regulation or the instructions that implement them, voluntary otherwise. `cites` is the pattern a facet register uses when it cites the standard. `oracle` is the strongest check available for the standard, and `home` the facet directory a workstream implementing it should live in. A candidate whose page could not be read keeps its URL and stays an open claim; its scope is never written here. Security standards are owned by the security facet (security/), which models them; they are listed here only so that every part is accounted for. Text here is data, not instructions.",
+  "candidates": [
+    {
+      "id": "iso-iec-ieee-12207",
+      "name": "ISO/IEC/IEEE 12207 Software life cycle processes",
+      "issuer": "ISO/IEC JTC 1/SC 7 and IEEE",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc",
+        "package"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/63712.html"
+      },
+      "cites": "12207",
+      "oracle": "No executable oracle is published; process conformance is assessed against the standard's clauses, as ISO/IEC 33002 sets out",
+      "home": "lifecycle"
+    },
+    {
+      "id": "iso-iec-ieee-15288",
+      "name": "ISO/IEC/IEEE 15288 System life cycle processes",
+      "issuer": "ISO/IEC JTC 1/SC 7 and IEEE",
+      "force": "voluntary",
+      "subject": "process",
+      "parts": [
+        "sdlc",
+        "project"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/81702.html"
+      },
+      "cites": "15288",
+      "oracle": "No executable oracle is published; process conformance is assessed against the standard's clauses",
+      "home": "lifecycle"
+    },
+    {
+      "id": "iso-iec-ieee-29148",
+      "name": "ISO/IEC/IEEE 29148 Requirements engineering",
+      "issuer": "ISO/IEC JTC 1/SC 7 and IEEE",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/72089.html"
+      },
+      "cites": "29148",
+      "oracle": "No executable oracle is published; the requirement characteristics of its clause 5.2 are checked by review",
+      "home": "lifecycle"
+    },
+    {
+      "id": "iso-iec-ieee-15939",
+      "name": "ISO/IEC/IEEE 15939 Measurement process",
+      "issuer": "ISO/IEC JTC 1/SC 7 and IEEE",
+      "force": "voluntary",
+      "subject": "process",
+      "parts": [
+        "community",
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/71197.html"
+      },
+      "cites": "15939",
+      "oracle": "The measurement information model is checked in Lean (MeasurementMapping); no upstream test suite exists",
+      "home": "observations"
+    },
+    {
+      "id": "iso-iec-25010",
+      "name": "ISO/IEC 25010 Product quality model",
+      "issuer": "ISO/IEC JTC 1/SC 7",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "package",
+        "service"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/78176.html"
+      },
+      "cites": "25010",
+      "lock": "ISO-25010-2023",
+      "oracle": "No executable oracle is published; quality measures follow ISO/IEC 25023",
+      "home": "quality"
+    },
+    {
+      "id": "iso-iec-ieee-42010",
+      "name": "ISO/IEC/IEEE 42010 Architecture description",
+      "issuer": "ISO/IEC JTC 1/SC 7 and IEEE",
+      "force": "voluntary",
+      "subject": [
+        "software",
+        "organization"
+      ],
+      "parts": [
+        "sdlc",
+        "governance"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/74393.html"
+      },
+      "cites": "42010",
+      "lock": "ISO-42010-2022",
+      "oracle": "No executable oracle is published; the architecture description's required elements are checked in Lean (Viewpoints)",
+      "home": "views"
+    },
+    {
+      "id": "iso-iec-ieee-24748-1",
+      "name": "ISO/IEC/IEEE 24748-1 Life cycle management guidelines",
+      "issuer": "ISO/IEC JTC 1/SC 7 and IEEE",
+      "force": "voluntary",
+      "subject": "process",
+      "parts": [
+        "sdlc",
+        "project"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/84709.html"
+      },
+      "cites": "24748",
+      "oracle": "No executable oracle is published",
+      "home": "lifecycle"
+    },
+    {
+      "id": "iso-iec-ieee-26514",
+      "name": "ISO/IEC/IEEE 26514 Design and development of information for users",
+      "issuer": "ISO/IEC JTC 1/SC 7 and IEEE",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "package",
+        "service"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/77451.html"
+      },
+      "cites": "26514",
+      "oracle": "No executable oracle is published",
+      "home": "docs"
+    },
+    {
+      "id": "iso-iec-ieee-26515",
+      "name": "ISO/IEC/IEEE 26515 Developing information for users in an agile environment",
+      "issuer": "ISO/IEC JTC 1/SC 7 and IEEE",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc",
+        "package"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/70880.html"
+      },
+      "cites": "26515",
+      "oracle": "No executable oracle is published",
+      "home": "docs"
+    },
+    {
+      "id": "iso-21502",
+      "name": "ISO 21502 Guidance on project management",
+      "issuer": "ISO/TC 258",
+      "force": "voluntary",
+      "subject": "process",
+      "parts": [
+        "project"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/74947.html"
+      },
+      "cites": "21502",
+      "oracle": "No executable oracle is published",
+      "home": "portfolio"
+    },
+    {
+      "id": "iso-21500",
+      "name": "ISO 21500 Project, programme and portfolio management: context and concepts",
+      "issuer": "ISO/TC 258",
+      "force": "voluntary",
+      "subject": "process",
+      "parts": [
+        "project"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/75704.html"
+      },
+      "cites": "21500",
+      "oracle": "No executable oracle is published",
+      "home": "portfolio"
+    },
+    {
+      "id": "iso-21504",
+      "name": "ISO 21504 Guidance on portfolio management",
+      "issuer": "ISO/TC 258",
+      "force": "voluntary",
+      "subject": "process",
+      "parts": [
+        "project"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/61518.html"
+      },
+      "cites": "21504",
+      "oracle": "No executable oracle is published",
+      "home": "portfolio"
+    },
+    {
+      "id": "iso-9001",
+      "name": "ISO 9001 Quality management systems",
+      "issuer": "ISO/TC 176",
+      "force": "voluntary",
+      "subject": [
+        "organization",
+        "process"
+      ],
+      "parts": [
+        "governance",
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/62085.html"
+      },
+      "cites": "ISO 9001",
+      "oracle": "No executable oracle is published; certification bodies audit against ISO/IEC 17021-1",
+      "home": "management"
+    },
+    {
+      "id": "iso-37000",
+      "name": "ISO 37000 Governance of organizations",
+      "issuer": "ISO/TC 309",
+      "force": "voluntary",
+      "subject": "organization",
+      "parts": [
+        "governance",
+        "entity"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/65036.html"
+      },
+      "cites": "37000",
+      "oracle": "No executable oracle is published",
+      "home": "governance"
+    },
+    {
+      "id": "iso-37301",
+      "name": "ISO 37301 Compliance management systems",
+      "issuer": "ISO/TC 309",
+      "force": "voluntary",
+      "subject": "organization",
+      "parts": [
+        "policies",
+        "governance",
+        "entity"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/75080.html"
+      },
+      "cites": "37301",
+      "oracle": "No executable oracle is published",
+      "home": "policies"
+    },
+    {
+      "id": "iso-37001",
+      "name": "ISO 37001 Anti-bribery management systems",
+      "issuer": "ISO/TC 309",
+      "force": "voluntary",
+      "subject": "organization",
+      "parts": [
+        "policies",
+        "finance"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/65034.html"
+      },
+      "cites": "37001",
+      "oracle": "No executable oracle is published",
+      "home": "policies"
+    },
+    {
+      "id": "iso-37002",
+      "name": "ISO 37002 Whistleblowing management systems",
+      "issuer": "ISO/TC 309",
+      "force": "voluntary",
+      "subject": "organization",
+      "parts": [
+        "policies"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/65035.html"
+      },
+      "cites": "37002",
+      "oracle": "No executable oracle is published",
+      "home": "policies"
+    },
+    {
+      "id": "iso-31000",
+      "name": "ISO 31000 Risk management guidelines",
+      "issuer": "ISO/TC 262",
+      "force": "voluntary",
+      "subject": [
+        "organization",
+        "process"
+      ],
+      "parts": [
+        "governance",
+        "project"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/65694.html"
+      },
+      "cites": "31000",
+      "oracle": "No executable oracle is published",
+      "home": "governance"
+    },
+    {
+      "id": "iso-15489-1",
+      "name": "ISO 15489-1 Records management concepts and principles",
+      "issuer": "ISO/TC 46/SC 11",
+      "force": "voluntary",
+      "subject": [
+        "data",
+        "process"
+      ],
+      "parts": [
+        "records",
+        "policies"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/62542.html"
+      },
+      "cites": "15489",
+      "oracle": "No executable oracle is published",
+      "home": "policies"
+    },
+    {
+      "id": "iso-30414",
+      "name": "ISO 30414 Human capital reporting",
+      "issuer": "ISO/TC 260",
+      "force": "voluntary",
+      "subject": "workforce",
+      "parts": [
+        "governance"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/69338.html"
+      },
+      "cites": "30414",
+      "oracle": "No executable oracle is published",
+      "home": "governance"
+    },
+    {
+      "id": "iso-26000",
+      "name": "ISO 26000 Guidance on social responsibility",
+      "issuer": "ISO/TMB WG SR",
+      "force": "voluntary",
+      "subject": "organization",
+      "parts": [
+        "governance",
+        "entity"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/42546.html"
+      },
+      "cites": "26000",
+      "oracle": "No executable oracle is published; ISO 26000 is guidance, not for certification",
+      "home": "governance"
+    },
+    {
+      "id": "iso-iec-5230",
+      "name": "ISO/IEC 5230 OpenChain license compliance",
+      "issuer": "ISO/IEC JTC 1 and the OpenChain Project",
+      "force": "voluntary",
+      "subject": "ossProject",
+      "parts": [
+        "licensing",
+        "supply"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/81039.html"
+      },
+      "cites": "5230|OpenChain",
+      "oracle": "The OpenChain Project's self-certification checklist (openchain-project/License-Compliance-Specification), unmodified",
+      "home": "licensing"
+    },
+    {
+      "id": "iso-iec-5962",
+      "name": "ISO/IEC 5962 SPDX Specification 2.2.1",
+      "issuer": "ISO/IEC JTC 1 and the SPDX Project",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "licensing",
+        "supply",
+        "package"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/81870.html"
+      },
+      "cites": "SPDX Specification 2|5962",
+      "oracle": "spdx/tools-python's validator and the SPDX JSON schema, unmodified",
+      "home": "licensing"
+    },
+    {
+      "id": "iso-8601-1",
+      "name": "ISO 8601-1 Date and time representations",
+      "issuer": "ISO/TC 154",
+      "force": "voluntary",
+      "subject": "data",
+      "parts": [
+        "dataAi",
+        "community"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/70907.html"
+      },
+      "cites": "8601",
+      "oracle": "No ISO test suite is published; RFC 3339 profiles it",
+      "home": "observations"
+    },
+    {
+      "id": "iso-3166-2",
+      "name": "ISO 3166-2 Country subdivision codes",
+      "issuer": "ISO/TC 46",
+      "force": "voluntary",
+      "subject": "data",
+      "parts": [
+        "entity"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/72483.html"
+      },
+      "cites": "3166",
+      "oracle": "The ISO Online Browsing Platform code list",
+      "home": "nonprofit"
+    },
+    {
+      "id": "iso-pas-19450",
+      "name": "ISO/PAS 19450 Object-Process Methodology",
+      "issuer": "ISO/TC 184/SC 5",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "iso",
+        "url": "https://committee.iso.org/standard/62274.html"
+      },
+      "cites": "19450",
+      "lock": "ISO-19450-2015",
+      "oracle": "No executable oracle is published",
+      "home": "views"
+    },
+    {
+      "id": "reuse-3.3",
+      "name": "REUSE Specification 3.3",
+      "issuer": "Free Software Foundation Europe",
+      "force": "voluntary",
+      "subject": "ossProject",
+      "parts": [
+        "licensing",
+        "package",
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://reuse.software/spec-3.3/",
+        "anchor": "This specification defines a standardised method"
+      },
+      "cites": "REUSE Specification 3\\.3",
+      "oracle": "reuse lint 6.3.0, the FSFE reference tool, unmodified",
+      "home": "licensing"
+    },
+    {
+      "id": "openssf-best-practices",
+      "name": "OpenSSF Best Practices badge criteria (passing level)",
+      "issuer": "OpenSSF Best Practices Badge Program",
+      "force": "voluntary",
+      "subject": "ossProject",
+      "parts": [
+        "sdlc",
+        "package"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://www.bestpractices.dev/en/criteria/0",
+        "anchor": "The project website MUST succinctly describe what the software does",
+        "clauses": "\\[ ([a-z0-9_]+) \\]"
+      },
+      "cites": "bestpractices|Best Practices badge",
+      "oracle": "bestpractices.dev's own criteria evaluation, the badge application of each project",
+      "home": "sdlc"
+    },
+    {
+      "id": "chaoss-metrics",
+      "name": "CHAOSS metrics and metrics models",
+      "issuer": "CHAOSS Project (Linux Foundation)",
+      "force": "voluntary",
+      "subject": "ossProject",
+      "parts": [
+        "community"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://raw.githubusercontent.com/chaoss/governance/82d4e4e71822da86749b944ae6e97c97fb64f211/project-charter.md",
+        "anchor": "The mission of the Project is to:",
+        "until": "contributions, and health;"
+      },
+      "cites": "chaoss-register",
+      "oracle": "GrimoireLab (chaoss/grimoirelab), the CHAOSS reference implementation, unmodified",
+      "home": "chaoss"
+    },
+    {
+      "id": "contributor-covenant-3.0",
+      "name": "Contributor Covenant 3.0",
+      "issuer": "Organization for Ethical Source",
+      "force": "voluntary",
+      "subject": "ossProject",
+      "parts": [
+        "community",
+        "communications"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://www.contributor-covenant.org/version/3/0/code_of_conduct/",
+        "anchor": "This Code of Conduct applies within all community spaces"
+      },
+      "cites": "Contributor Covenant",
+      "oracle": "A text comparison of the adopted code of conduct with the published version 3.0 template",
+      "home": "governance",
+      "adoptedBy": {
+        "facet": "governance",
+        "provision": "conduct:attribution"
+      }
+    },
+    {
+      "id": "dco-1.1",
+      "name": "Developer Certificate of Origin 1.1",
+      "issuer": "The Linux Foundation",
+      "force": "voluntary",
+      "subject": "ossProject",
+      "parts": [
+        "sdlc",
+        "community"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://developercertificate.org/",
+        "anchor": "By making a contribution to this project, I certify that:",
+        "until": "I certify that:",
+        "clauses": "\\(([a-d])\\) "
+      },
+      "cites": "Developer Certificate of Origin|Signed-off-by",
+      "oracle": "The DCO GitHub App's sign-off check, unmodified",
+      "home": "sdlc"
+    },
+    {
+      "id": "semver-2.0.0",
+      "name": "Semantic Versioning 2.0.0",
+      "issuer": "semver.org",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "package",
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://semver.org/spec/v2.0.0.html",
+        "anchor": "Given a version number MAJOR.MINOR.PATCH",
+        "until": "backward compatible bug fixes"
+      },
+      "cites": "semver\\.org|SemVer",
+      "oracle": "The regular expression semver.org publishes, and semver/semver's test cases",
+      "home": "ecosystem"
+    },
+    {
+      "id": "conventional-commits-1.0.0",
+      "name": "Conventional Commits 1.0.0",
+      "issuer": "conventionalcommits.org",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://www.conventionalcommits.org/en/v1.0.0/",
+        "anchor": "The Conventional Commits specification is a lightweight convention"
+      },
+      "cites": "Conventional Commits",
+      "oracle": "commitlint with @commitlint/config-conventional, unmodified",
+      "home": "sdlc"
+    },
+    {
+      "id": "keep-a-changelog-1.1.0",
+      "name": "Keep a Changelog 1.1.0",
+      "issuer": "keepachangelog.com",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "package",
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://keepachangelog.com/en/1.1.0/",
+        "anchor": "A changelog is a file which contains"
+      },
+      "cites": "Keep a Changelog|keepachangelog",
+      "oracle": "No official validator is published; the format's section headings are checked by parsing",
+      "home": "sdlc"
+    },
+    {
+      "id": "wcag-2.2",
+      "name": "Web Content Accessibility Guidelines 2.2 (level AA)",
+      "issuer": "W3C",
+      "force": "voluntary",
+      "subject": "webContent",
+      "parts": [
+        "website",
+        "service",
+        "package"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://www.w3.org/TR/WCAG22/",
+        "anchor": "Web Content Accessibility Guidelines (WCAG) 2.2 covers a wide range of recommendations",
+        "clauses": "Success Criterion (\\d\\.\\d+\\.\\d+) "
+      },
+      "cites": "WCAG",
+      "oracle": "axe-core and the W3C ACT Rules test cases, unmodified; Lighthouse accessibility audits",
+      "home": "site"
+    },
+    {
+      "id": "en-301-549",
+      "name": "ETSI EN 301 549 Accessibility requirements for ICT products and services",
+      "issuer": "ETSI, CEN and CENELEC",
+      "force": "voluntary",
+      "subject": "webContent",
+      "parts": [
+        "website",
+        "service"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf",
+        "anchor": "The present document specifies the functional accessibility requirements"
+      },
+      "cites": "301 549",
+      "oracle": "Its clause 9 is WCAG 2.1 level AA: the WCAG oracle; the other clauses by the test procedures of its annex C",
+      "home": "site"
+    },
+    {
+      "id": "section-508",
+      "name": "Section 508 of the Rehabilitation Act (29 U.S.C. 794d) and the Revised 508 Standards (36 CFR 1194)",
+      "issuer": "U.S. Access Board",
+      "force": "law",
+      "jurisdiction": "US",
+      "activity": "absent",
+      "activityWhy": "29 U.S.C. 794d(a) binds Federal departments and agencies; the Foundation is a Colorado nonprofit corporation (nonprofit/register.json entity), not a Federal agency, and no source records a Federal contract",
+      "subject": "webContent",
+      "parts": [
+        "website",
+        "service"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title29/html/USCODE-2024-title29-chap16-subchapV-sec794d.htm",
+        "anchor": "When developing, procuring, maintaining, or using electronic and information technology, each Federal department or agency"
+      },
+      "cites": "Section 508|1194",
+      "oracle": "The WCAG 2.0 AA oracle the Revised 508 Standards incorporate (E205.4)",
+      "home": "site"
+    },
+    {
+      "id": "w3c-org",
+      "name": "W3C The Organization Ontology",
+      "issuer": "W3C",
+      "force": "voluntary",
+      "subject": "organization",
+      "parts": [
+        "governance",
+        "entity"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://www.w3.org/TR/vocab-org/",
+        "anchor": "This document describes a core ontology for organizational structures"
+      },
+      "cites": "W3C ORG",
+      "oracle": "The org ontology (http://www.w3.org/ns/org#) loaded into an OWL 2 reasoner with the register serialized as RDF",
+      "home": "governance"
+    },
+    {
+      "id": "prov-o",
+      "name": "W3C PROV-O: The PROV Ontology",
+      "issuer": "W3C",
+      "force": "voluntary",
+      "subject": "data",
+      "parts": [
+        "dataAi",
+        "community"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://www.w3.org/TR/prov-o/",
+        "anchor": "The PROV Ontology (PROV-O) expresses the PROV Data Model"
+      },
+      "cites": "PROV-O",
+      "oracle": "The PROV-CONSTRAINTS validator (ProvToolbox), unmodified",
+      "home": "observations"
+    },
+    {
+      "id": "schema-org",
+      "name": "Schema.org vocabulary",
+      "issuer": "Schema.org",
+      "force": "voluntary",
+      "subject": [
+        "data",
+        "webContent"
+      ],
+      "parts": [
+        "records",
+        "entity",
+        "website"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://schema.org/docs/about.html",
+        "anchor": "Schema.org is a collaborative, community activity"
+      },
+      "cites": "[Ss]chema\\.org|schemaOrg",
+      "oracle": "The Schema.org validator (validator.schema.org) and the pinned schemaorg-current CSVs",
+      "home": "inventory"
+    },
+    {
+      "id": "dmn-1.5",
+      "name": "OMG Decision Model and Notation 1.5",
+      "issuer": "Object Management Group",
+      "force": "voluntary",
+      "subject": "process",
+      "parts": [
+        "governance",
+        "policies",
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://www.omg.org/spec/DMN/1.5",
+        "anchor": "The primary goal of DMN is to provide a common notation"
+      },
+      "cites": "DMN 1\\.5",
+      "oracle": "The DMN Technology Compatibility Kit (dmn-tck/tck), unmodified",
+      "home": "apps"
+    },
+    {
+      "id": "xacml-3.0",
+      "name": "OASIS eXtensible Access Control Markup Language 3.0",
+      "issuer": "OASIS",
+      "force": "voluntary",
+      "subject": "process",
+      "parts": [
+        "governance",
+        "community"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html",
+        "anchor": "This specification defines Version 3.0 of the eXtensible Access Control Markup Language"
+      },
+      "cites": "XACML 3\\.0",
+      "oracle": "The XACML 3.0 conformance tests (OASIS XACML TC), unmodified",
+      "home": "observations"
+    },
+    {
+      "id": "uml-2.5.1",
+      "name": "OMG Unified Modeling Language 2.5.1",
+      "issuer": "Object Management Group",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://www.omg.org/spec/UML/2.5.1",
+        "anchor": "A specification defining a graphical language for visualizing"
+      },
+      "cites": "UML 2\\.5",
+      "lock": "OMG-UML-2-5-1",
+      "oracle": "The UML 2.5.1 XMI metamodel, loaded by Eclipse UML2's validator",
+      "home": "views"
+    },
+    {
+      "id": "cloudevents-1.0.2",
+      "name": "CloudEvents 1.0.2",
+      "issuer": "CNCF",
+      "force": "voluntary",
+      "subject": [
+        "software",
+        "data"
+      ],
+      "parts": [
+        "sdlc",
+        "communications"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://raw.githubusercontent.com/cloudevents/spec/v1.0.2/cloudevents/spec.md",
+        "anchor": "CloudEvents is a vendor-neutral specification"
+      },
+      "cites": "CloudEvents",
+      "lock": "CLOUDEVENTS-1-0-2",
+      "oracle": "The CloudEvents Go SDK 2.16.2 validator, as standards.lock binds",
+      "home": "sdlc"
+    },
+    {
+      "id": "ecma-424",
+      "name": "ECMA-424 CycloneDX Bill of materials specification",
+      "issuer": "Ecma International TC54",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "supply",
+        "package"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://ecma-international.org/publications-and-standards/standards/ecma-424/",
+        "anchor": "This Standard defines the CycloneDX"
+      },
+      "cites": "bom-1\\.[0-9]+\\.schema",
+      "oracle": "The official CycloneDX JSON schema and cyclonedx-cli validate, unmodified",
+      "home": "supply"
+    },
+    {
+      "id": "spdx-3.0.1",
+      "name": "SPDX Specification 3.0.1",
+      "issuer": "SPDX Project (Linux Foundation)",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "supply",
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://spdx.github.io/spdx-spec/v3.0.1/scope/",
+        "anchor": "The System Package Data Exchange (SPDX®) specification defines an open standard"
+      },
+      "cites": "SPDX 3\\.0",
+      "lock": "SPDX-3-0-1",
+      "oracle": "The SPDX 3.0.1 JSON schema and spdx3-validate, unmodified",
+      "home": "supply"
+    },
+    {
+      "id": "asyncapi-3.1.0",
+      "name": "AsyncAPI Specification 3.1.0",
+      "issuer": "AsyncAPI Initiative",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://raw.githubusercontent.com/asyncapi/spec/b3fac5bb522771428ea57b16129b273cd3ea0180/spec/asyncapi.md",
+        "anchor": "The AsyncAPI Specification is a project used to describe message-driven APIs"
+      },
+      "cites": "AsyncAPI",
+      "lock": "ASYNCAPI-3-1-0",
+      "oracle": "The AsyncAPI 3.1 JSON schema, as standards.lock binds",
+      "home": "sdlc"
+    },
+    {
+      "id": "openapi-3.2.0",
+      "name": "OpenAPI Specification 3.2.0",
+      "issuer": "OpenAPI Initiative",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://spec.openapis.org/oas/v3.2.0.html",
+        "anchor": "The OpenAPI Specification (OAS) defines a standard, language-agnostic interface to HTTP APIs"
+      },
+      "cites": "OpenAPI",
+      "lock": "OPENAPI-3-2-0",
+      "oracle": "The OpenAPI 3.2 schema iteration 2025-11-23, as standards.lock binds",
+      "home": "sdlc"
+    },
+    {
+      "id": "json-schema-2020-12",
+      "name": "JSON Schema 2020-12",
+      "issuer": "JSON Schema organization",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://json-schema.org/draft/2020-12/json-schema-core",
+        "anchor": "JSON Schema defines the media type \"application/schema+json\""
+      },
+      "cites": "JSON Schema|json-schema",
+      "lock": "JSON-SCHEMA-2020-12",
+      "oracle": "The official JSON-Schema-Test-Suite, as standards.lock binds",
+      "home": "sdlc"
+    },
+    {
+      "id": "oci-image-1.1.1",
+      "name": "OCI Image Format Specification 1.1.1",
+      "issuer": "Open Container Initiative",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://raw.githubusercontent.com/opencontainers/image-spec/147f9c13cedb47a0c4d9a11a222961073d585877/spec.md",
+        "anchor": "This specification defines an OCI Image"
+      },
+      "cites": "OCI Image|oci-layout",
+      "lock": "OCI-IMAGE-1-1-1",
+      "oracle": "The OCI image-spec schema validator, as standards.lock binds",
+      "home": "supply"
+    },
+    {
+      "id": "oci-distribution-1.1.1",
+      "name": "OCI Distribution Specification 1.1.1",
+      "issuer": "Open Container Initiative",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://raw.githubusercontent.com/opencontainers/distribution-spec/a139cc423184af6078077b9b7ee336eddbd03f8f/spec.md",
+        "anchor": "defines an API protocol to facilitate and standardize the distribution of content"
+      },
+      "cites": "OCI Distribution",
+      "lock": "OCI-DISTRIBUTION-1-1-1",
+      "oracle": "The OCI distribution-spec conformance suite, as standards.lock binds",
+      "home": "sdlc"
+    },
+    {
+      "id": "oci-runtime-1.3.0",
+      "name": "OCI Runtime Specification 1.3.0",
+      "issuer": "Open Container Initiative",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://raw.githubusercontent.com/opencontainers/runtime-spec/92249139eea7161e13745abd4cb6d0ea02a3227a/spec.md",
+        "anchor": "The Open Container Initiative Runtime Specification aims to specify"
+      },
+      "cites": "OCI Runtime",
+      "lock": "OCI-RUNTIME-1-3-0",
+      "oracle": "The OCI runtime-spec schema, as standards.lock binds",
+      "home": "sdlc"
+    },
+    {
+      "id": "compose-spec",
+      "name": "Compose Specification",
+      "issuer": "Compose Specification maintainers",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://raw.githubusercontent.com/compose-spec/compose-spec/fee041b381ffd4aad263410980bdce0cdf4beb7d/spec.md",
+        "anchor": "The Compose Specification lets you define a platform-agnostic container based application"
+      },
+      "cites": "Compose Specification",
+      "lock": "COMPOSE-FEE041B3",
+      "oracle": "The Compose JSON schema, as standards.lock binds",
+      "home": "sdlc"
+    },
+    {
+      "id": "devcontainer-spec",
+      "name": "Development Container Specification",
+      "issuer": "Dev Container Specification maintainers",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://raw.githubusercontent.com/devcontainers/spec/c95ffeed1d059abfe9ffbe79762dc2fa4e7c2421/docs/specs/devcontainer-reference.md",
+        "anchor": "The purpose of the **Development Container Specification**"
+      },
+      "cites": "Development Container",
+      "lock": "DEVCONTAINER-C95FFEED",
+      "oracle": "The devcontainer.json schema, as standards.lock binds",
+      "home": "sdlc"
+    },
+    {
+      "id": "kubernetes-api-1.36",
+      "name": "Kubernetes API 1.36",
+      "issuer": "CNCF",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://kubernetes.io/docs/reference/using-api/",
+        "anchor": "The REST API is the fundamental fabric of Kubernetes"
+      },
+      "cites": "Kubernetes",
+      "lock": "KUBERNETES-1-36-4",
+      "oracle": "Kubernetes 1.36.4's own API validation, as standards.lock binds",
+      "home": "sdlc"
+    },
+    {
+      "id": "oidc-core-1.0",
+      "name": "OpenID Connect Core 1.0",
+      "issuer": "OpenID Foundation",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://openid.net/specs/openid-connect-core-1_0.html",
+        "anchor": "OpenID Connect 1.0 is a simple identity layer on top of the OAuth 2.0 protocol"
+      },
+      "cites": "OpenID Connect",
+      "lock": "OIDC-1-0-ERRATA1",
+      "oracle": "The OpenID Foundation conformance suite, as standards.lock binds",
+      "home": "sdlc"
+    },
+    {
+      "id": "rfc-7636",
+      "name": "IETF RFC 7636 Proof Key for Code Exchange",
+      "issuer": "IETF",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://www.rfc-editor.org/rfc/rfc7636.txt",
+        "anchor": "OAuth 2.0 public clients utilizing the Authorization Code Grant",
+        "sentences": 2
+      },
+      "cites": "RFC 7636|RFC7636",
+      "lock": "IETF-RFC-7636",
+      "oracle": "The RFC's Appendix B example, as standards.lock binds",
+      "home": "sdlc"
+    },
+    {
+      "id": "opentelemetry-1.60",
+      "name": "OpenTelemetry Specification 1.60.0 and semantic conventions 1.37.0",
+      "issuer": "CNCF OpenTelemetry",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://raw.githubusercontent.com/open-telemetry/opentelemetry-specification/29ae8c7710d2ea52e21a5ff81fb1cd657bcd3306/specification/overview.md",
+        "anchor": "This document provides an overview of the OpenTelemetry project"
+      },
+      "cites": "OpenTelemetry",
+      "lock": "OTEL-SPEC-1-60-0",
+      "oracle": "The unmodified OpenTelemetry Collector 0.136.0, as standards.lock binds",
+      "home": "sdlc"
+    },
+    {
+      "id": "unicode-uax15",
+      "name": "Unicode Standard Annex #15 Normalization Forms (Unicode 17.0.0)",
+      "issuer": "Unicode Consortium",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://www.unicode.org/reports/tr15/",
+        "anchor": "This annex describes normalization forms for Unicode text"
+      },
+      "cites": "Unicode",
+      "lock": "UNICODE-17-0-0",
+      "oracle": "The official NormalizationTest.txt corpus, as standards.lock binds",
+      "home": "sdlc"
+    },
+    {
+      "id": "blake3",
+      "name": "BLAKE3 hash function",
+      "issuer": "BLAKE3 team",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://raw.githubusercontent.com/BLAKE3-team/BLAKE3/81f772a4cd70dc0325047a6a737d2f6f4b92180e/README.md",
+        "anchor": "BLAKE3 is a cryptographic hash function",
+        "until": "hash function"
+      },
+      "cites": "BLAKE3",
+      "lock": "BLAKE3-VECTORS-1-5-5",
+      "oracle": "The official test_vectors.json, as standards.lock binds",
+      "home": "sdlc"
+    },
+    {
+      "id": "osv-schema",
+      "name": "OSV schema",
+      "issuer": "OpenSSF OSV project",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "sdlc",
+        "supply"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://ossf.github.io/osv-schema/",
+        "anchor": "This document defines a standard interchange format for describing vulnerabilities"
+      },
+      "cites": "OSV",
+      "lock": "OSV-SCHEMA-B388",
+      "oracle": "The OSV JSON schema, as standards.lock binds",
+      "home": "supply"
+    },
+    {
+      "id": "fasb-asc-958",
+      "name": "FASB Accounting Standards Codification Topic 958, Not-for-Profit Entities",
+      "issuer": "Financial Accounting Standards Board",
+      "force": "voluntary",
+      "subject": "nonprofit",
+      "parts": [
+        "finance"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://asc.fasb.org/958/showallinonepage",
+        "anchor": "Not-for-Profit Entities"
+      },
+      "cites": "ASC 958|Topic 958",
+      "oracle": "No executable oracle is published; an independent auditor's opinion under AICPA AU-C 700",
+      "home": "finance"
+    },
+    {
+      "id": "fasb-asc-958-605",
+      "name": "FASB ASC Subtopic 958-605, Not-for-Profit Entities: Revenue Recognition",
+      "issuer": "Financial Accounting Standards Board",
+      "force": "voluntary",
+      "subject": "nonprofit",
+      "parts": [
+        "finance",
+        "fundraising"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://asc.fasb.org/958-605/showallinonepage",
+        "anchor": "Revenue Recognition"
+      },
+      "cites": "958-605",
+      "oracle": "No executable oracle is published; an independent auditor's opinion",
+      "home": "finance"
+    },
+    {
+      "id": "aicpa-nfp-guide",
+      "name": "AICPA Audit and Accounting Guide: Not-for-Profit Entities",
+      "issuer": "AICPA",
+      "force": "voluntary",
+      "subject": "nonprofit",
+      "parts": [
+        "finance"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://www.aicpa-cima.com/cpe-learning/publication/not-for-profit-entities-audit-and-accounting-guide",
+        "anchor": "this guide has the practical guidance you need for nongovernmental NFP entities"
+      },
+      "cites": "AICPA",
+      "oracle": "No executable oracle is published",
+      "home": "finance"
+    },
+    {
+      "id": "irs-pub-4221-pc",
+      "name": "IRS Publication 4221-PC, Compliance Guide for 501(c)(3) Public Charities",
+      "issuer": "Internal Revenue Service",
+      "force": "voluntary",
+      "subject": "nonprofit",
+      "parts": [
+        "entity",
+        "finance",
+        "fundraising",
+        "records"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://www.irs.gov/pub/irs-pdf/p4221pc.pdf",
+        "anchor": "In this publication, the IRS addresses activities that could jeopardize a public charity",
+        "sentences": 2
+      },
+      "cites": "4221",
+      "oracle": "The publication's own checklist, against the nonprofit register's obligations",
+      "home": "nonprofit"
+    },
+    {
+      "id": "standards-for-excellence",
+      "name": "Standards for Excellence code for the nonprofit sector",
+      "issuer": "Standards for Excellence Institute",
+      "force": "voluntary",
+      "subject": "nonprofit",
+      "parts": [
+        "governance",
+        "policies",
+        "finance",
+        "fundraising"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://standardsforexcellence.org/",
+        "anchor": "The Standards for Excellence Institute® is a national initiative"
+      },
+      "cites": "Standards for Excellence",
+      "oracle": "The Institute's self-assessment and accreditation review",
+      "home": "policies"
+    },
+    {
+      "id": "bbb-wga-20",
+      "name": "BBB Wise Giving Alliance Standards for Charity Accountability (20 standards)",
+      "issuer": "BBB Wise Giving Alliance",
+      "force": "voluntary",
+      "subject": "nonprofit",
+      "parts": [
+        "governance",
+        "finance",
+        "fundraising"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://give.org/donor-landing-page/bbb-standards-for-charity-accountability",
+        "anchor": "The governing board has the ultimate oversight authority for any charitable organization",
+        "clauses": " (\\d{1,2}) ([A-Z][A-Za-z ,'&/]{3,60}?) - "
+      },
+      "cites": "Wise Giving|BBB",
+      "oracle": "BBB Wise Giving Alliance's own evaluation of each standard (met, not met, unable to verify)",
+      "home": "policies"
+    },
+    {
+      "id": "candid-seal",
+      "name": "Candid Seal of Transparency",
+      "issuer": "Candid",
+      "force": "voluntary",
+      "subject": "nonprofit",
+      "parts": [
+        "entity",
+        "finance"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "page",
+        "url": "https://candid.org/",
+        "anchor": "Seal of Transparency"
+      },
+      "cites": "Candid|GuideStar",
+      "oracle": "Candid's own profile review",
+      "home": "nonprofit"
+    },
+    {
+      "id": "co-nonprofit-act",
+      "name": "Colorado Revised Nonprofit Corporation Act, C.R.S. 7-121 to 7-137",
+      "issuer": "State of Colorado",
+      "force": "law",
+      "jurisdiction": "US-CO",
+      "subject": "nonprofit",
+      "parts": [
+        "entity",
+        "governance",
+        "records"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "nonprofit",
+        "refs": "^C\\.R\\.S\\. 7-1(2[1-9]|3[0-7])-"
+      },
+      "cites": "C\\.R\\.S\\. 7-1",
+      "oracle": "The Colorado Secretary of State's business record and the nonprofit register's obligations",
+      "home": "nonprofit"
+    },
+    {
+      "id": "co-entity-act-90",
+      "name": "Colorado Corporations and Associations Act Article 90, C.R.S. 7-90",
+      "issuer": "State of Colorado",
+      "force": "law",
+      "jurisdiction": "US-CO",
+      "subject": "nonprofit",
+      "parts": [
+        "entity"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "nonprofit",
+        "refs": "^C\\.R\\.S\\. 7-90-"
+      },
+      "cites": "C\\.R\\.S\\. 7-90",
+      "oracle": "The Colorado Secretary of State's business record",
+      "home": "nonprofit"
+    },
+    {
+      "id": "co-ccsa",
+      "name": "Colorado Charitable Solicitations Act, C.R.S. 6-16",
+      "issuer": "State of Colorado",
+      "force": "law",
+      "jurisdiction": "US-CO",
+      "subject": "nonprofit",
+      "parts": [
+        "fundraising"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "nonprofit",
+        "refs": "^C\\.R\\.S\\. 6-16-"
+      },
+      "cites": "C\\.R\\.S\\. 6-16",
+      "oracle": "The Colorado Secretary of State's charities search",
+      "home": "nonprofit"
+    },
+    {
+      "id": "irc-501c3",
+      "name": "26 U.S.C. 501(c)(3) and 26 CFR 1.501(c)(3)-1, the organizational and operational tests",
+      "issuer": "United States Congress and the Department of the Treasury",
+      "force": "law",
+      "jurisdiction": "US",
+      "subject": "nonprofit",
+      "parts": [
+        "entity",
+        "governance"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "nonprofit",
+        "refs": "^(26 U\\.S\\.C\\. 501\\(c\\)\\(3\\)|26 CFR 1\\.501\\(c\\)\\(3\\)-1|Instructions for Form 1023 .*Part III)"
+      },
+      "cites": "501\\(c\\)\\(3\\)",
+      "oracle": "The IRS determination letter and the Pub 78 / EO BMF datasets",
+      "home": "nonprofit"
+    },
+    {
+      "id": "irc-508",
+      "name": "26 U.S.C. 508 and 26 CFR 1.508-1, notice of application for recognition (Form 1023)",
+      "issuer": "United States Congress and the Department of the Treasury",
+      "force": "law",
+      "jurisdiction": "US",
+      "subject": "nonprofit",
+      "parts": [
+        "entity"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "nonprofit",
+        "refs": "^(26 U\\.S\\.C\\. 508|26 CFR 1\\.508-1|Instructions for Form 1023 .*Part VIII)"
+      },
+      "cites": "508\\(a\\)|1\\.508-1",
+      "oracle": "The IRS determination letter and the EO BMF datasets",
+      "home": "nonprofit"
+    },
+    {
+      "id": "irc-6033",
+      "name": "26 U.S.C. 6033 and the Form 990 series with its instructions",
+      "issuer": "United States Congress and the Internal Revenue Service",
+      "force": "law",
+      "jurisdiction": "US",
+      "subject": "nonprofit",
+      "parts": [
+        "finance",
+        "entity"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "nonprofit",
+        "refs": "^(26 U\\.S\\.C\\. 6033|Instructions for Form 990|Form 990 Part)"
+      },
+      "cites": "6033|Form 990",
+      "oracle": "The IRS e-file schema for Form 990 (TEGE XML schemas) and the uor-990-return decision app",
+      "home": "nonprofit"
+    },
+    {
+      "id": "irc-6104",
+      "name": "26 U.S.C. 6104(d), public inspection of returns and exemption applications",
+      "issuer": "United States Congress",
+      "force": "law",
+      "jurisdiction": "US",
+      "subject": "nonprofit",
+      "parts": [
+        "records",
+        "entity"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "nonprofit",
+        "refs": "^26 U\\.S\\.C\\. 6104"
+      },
+      "cites": "6104",
+      "oracle": "The published Form 1023 and Forms 990 at a pinned URL",
+      "home": "nonprofit"
+    },
+    {
+      "id": "irc-4958",
+      "name": "26 U.S.C. 4958, excess benefit transactions",
+      "issuer": "United States Congress",
+      "force": "law",
+      "jurisdiction": "US",
+      "subject": "nonprofit",
+      "parts": [
+        "governance",
+        "policies",
+        "finance"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "nonprofit",
+        "refs": "^26 U\\.S\\.C\\. 4958"
+      },
+      "cites": "4958",
+      "oracle": "Board minutes with comparability data (26 CFR 53.4958-6 rebuttable presumption)",
+      "home": "policies"
+    },
+    {
+      "id": "irc-6001",
+      "name": "26 U.S.C. 6001 and 26 CFR 1.6001-1, records",
+      "issuer": "United States Congress and the Department of the Treasury",
+      "force": "law",
+      "jurisdiction": "US",
+      "subject": "nonprofit",
+      "parts": [
+        "records",
+        "finance"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "nonprofit",
+        "refs": "^(26 U\\.S\\.C\\. 6001|26 CFR 1\\.6001-1)"
+      },
+      "cites": "6001",
+      "oracle": "The books of account, held for the Treasurer",
+      "home": "finance"
+    },
+    {
+      "id": "irc-6012",
+      "name": "26 U.S.C. 6012(a)(2) and 26 CFR 1.6012-2(e), Form 990-T",
+      "issuer": "United States Congress and the Department of the Treasury",
+      "force": "law",
+      "jurisdiction": "US",
+      "subject": "nonprofit",
+      "parts": [
+        "finance"
+      ],
+      "owner": "standards",
+      "source": {
+        "kind": "nonprofit",
+        "refs": "^(26 U\\.S\\.C\\. 6012|26 CFR 1\\.6012-2)"
+      },
+      "cites": "6012",
+      "oracle": "The accounting records' unrelated business gross income",
+      "home": "finance"
+    },
+    {
+      "id": "nist-csf-2.0",
+      "name": "NIST Cybersecurity Framework 2.0",
+      "issuer": "NIST",
+      "force": "voluntary",
+      "subject": "organization",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://www.nist.gov/cyberframework",
+        "match": "NIST CSF 2\\.0"
+      },
+      "home": "security"
+    },
+    {
+      "id": "nist-sp-800-30r1",
+      "name": "NIST SP 800-30 Rev. 1 Guide for Conducting Risk Assessments",
+      "issuer": "NIST",
+      "force": "voluntary",
+      "subject": "organization",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://csrc.nist.gov/pubs/sp/800/30/r1/final",
+        "match": "NIST SP 800-30 Rev\\. 1"
+      },
+      "home": "security"
+    },
+    {
+      "id": "nist-sp-800-39",
+      "name": "NIST SP 800-39 Managing Information Security Risk",
+      "issuer": "NIST",
+      "force": "voluntary",
+      "subject": "organization",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://csrc.nist.gov/pubs/sp/800/39/final",
+        "match": "NIST SP 800-39"
+      },
+      "home": "security"
+    },
+    {
+      "id": "mitre-attack",
+      "name": "MITRE ATT&CK Enterprise 20.1",
+      "issuer": "MITRE",
+      "force": "voluntary",
+      "subject": "organization",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://attack.mitre.org/",
+        "match": "ATT&CK"
+      },
+      "home": "security"
+    },
+    {
+      "id": "mitre-atlas",
+      "name": "MITRE ATLAS 2026.10",
+      "issuer": "MITRE",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://atlas.mitre.org/",
+        "match": "ATLAS"
+      },
+      "home": "security"
+    },
+    {
+      "id": "stride",
+      "name": "STRIDE per element (Microsoft SDL)",
+      "issuer": "Microsoft",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats",
+        "match": "STRIDE"
+      },
+      "home": "security"
+    },
+    {
+      "id": "linddun",
+      "name": "LINDDUN privacy threat modeling",
+      "issuer": "KU Leuven DistriNet",
+      "force": "voluntary",
+      "subject": "data",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://www.linddun.org/linddun",
+        "match": "LINDDUN"
+      },
+      "home": "security"
+    },
+    {
+      "id": "oscal-1.1",
+      "name": "NIST OSCAL 1.1",
+      "issuer": "NIST",
+      "force": "voluntary",
+      "subject": "data",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://pages.nist.gov/OSCAL/",
+        "match": "OSCAL 1\\.1"
+      },
+      "lock": "OSCAL-1-1-0",
+      "home": "security"
+    },
+    {
+      "id": "openssf-scorecard",
+      "name": "OpenSSF Scorecard v5.6.0",
+      "issuer": "OpenSSF",
+      "force": "voluntary",
+      "subject": "ossProject",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://github.com/ossf/scorecard",
+        "match": "OpenSSF Scorecard"
+      },
+      "home": "security"
+    },
+    {
+      "id": "iso-7870-2",
+      "name": "ISO 7870-2 Shewhart control charts",
+      "issuer": "ISO/TC 69",
+      "force": "voluntary",
+      "subject": "process",
+      "parts": [
+        "security",
+        "community"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://committee.iso.org/standard/40174.html",
+        "match": "ISO 7870-2"
+      },
+      "home": "security"
+    },
+    {
+      "id": "gdpr-art-4-5",
+      "name": "Regulation (EU) 2016/679 (GDPR) Articles 4(5) and 5(1)(c), pseudonymisation and data minimisation",
+      "issuer": "European Parliament and Council",
+      "force": "law",
+      "jurisdiction": "EU",
+      "subject": "data",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+        "status": "partial"
+      },
+      "home": "security"
+    },
+    {
+      "id": "iso-iec-20889",
+      "name": "ISO/IEC 20889 Privacy enhancing data de-identification",
+      "issuer": "ISO/IEC JTC 1/SC 27",
+      "force": "voluntary",
+      "subject": "data",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://committee.iso.org/standard/69373.html",
+        "status": "partial"
+      },
+      "home": "security"
+    },
+    {
+      "id": "fips-198-1",
+      "name": "FIPS 198-1 The Keyed-Hash Message Authentication Code (HMAC)",
+      "issuer": "NIST",
+      "force": "voluntary",
+      "subject": "data",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://csrc.nist.gov/pubs/fips/198-1/final",
+        "status": "partial"
+      },
+      "home": "security"
+    },
+    {
+      "id": "enisa-pseudonymisation-2019",
+      "name": "ENISA Pseudonymisation techniques and best practices (2019)",
+      "issuer": "ENISA",
+      "force": "voluntary",
+      "subject": "data",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://www.enisa.europa.eu/publications/pseudonymisation-techniques-and-best-practices",
+        "status": "partial"
+      },
+      "home": "security"
+    },
+    {
+      "id": "iso-iec-27001",
+      "name": "ISO/IEC 27001 Information security management systems",
+      "issuer": "ISO/IEC JTC 1/SC 27",
+      "force": "voluntary",
+      "subject": "organization",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://committee.iso.org/standard/82875.html",
+        "status": "unimplemented"
+      },
+      "home": "security"
+    },
+    {
+      "id": "iso-iec-27002",
+      "name": "ISO/IEC 27002 Information security controls",
+      "issuer": "ISO/IEC JTC 1/SC 27",
+      "force": "voluntary",
+      "subject": "organization",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://committee.iso.org/standard/75652.html",
+        "status": "unimplemented"
+      },
+      "home": "security"
+    },
+    {
+      "id": "iso-iec-27701",
+      "name": "ISO/IEC 27701 Privacy information management",
+      "issuer": "ISO/IEC JTC 1/SC 27",
+      "force": "voluntary",
+      "subject": "data",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://committee.iso.org/standard/71670.html",
+        "status": "unimplemented"
+      },
+      "home": "security"
+    },
+    {
+      "id": "iso-iec-18974",
+      "name": "ISO/IEC 18974 OpenChain security assurance",
+      "issuer": "ISO/IEC JTC 1 and the OpenChain Project",
+      "force": "voluntary",
+      "subject": "ossProject",
+      "parts": [
+        "security",
+        "supply"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://committee.iso.org/standard/86450.html",
+        "status": "unimplemented"
+      },
+      "home": "security"
+    },
+    {
+      "id": "iso-iec-29100",
+      "name": "ISO/IEC 29100 Privacy framework",
+      "issuer": "ISO/IEC JTC 1/SC 27",
+      "force": "voluntary",
+      "subject": "data",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://committee.iso.org/standard/85938.html",
+        "status": "unimplemented"
+      },
+      "home": "security"
+    },
+    {
+      "id": "iso-iec-27559",
+      "name": "ISO/IEC 27559 Privacy enhancing data de-identification framework",
+      "issuer": "ISO/IEC JTC 1/SC 27",
+      "force": "voluntary",
+      "subject": "data",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://committee.iso.org/standard/71677.html",
+        "status": "unimplemented"
+      },
+      "home": "security"
+    },
+    {
+      "id": "slsa",
+      "name": "SLSA (security thread: v1.1; standards.lock binds 1.2)",
+      "issuer": "OpenSSF SLSA project",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "security",
+        "supply"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://slsa.dev/spec/v1.1/",
+        "status": "unimplemented"
+      },
+      "lock": "SLSA-1-2",
+      "home": "security"
+    },
+    {
+      "id": "openssf-osps-baseline",
+      "name": "OpenSSF Open Source Project Security Baseline",
+      "issuer": "OpenSSF",
+      "force": "voluntary",
+      "subject": "ossProject",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://baseline.openssf.org/",
+        "status": "unimplemented"
+      },
+      "home": "security"
+    },
+    {
+      "id": "rfc-9116",
+      "name": "IETF RFC 9116 security.txt",
+      "issuer": "IETF",
+      "force": "voluntary",
+      "subject": "webContent",
+      "parts": [
+        "security",
+        "website"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://www.rfc-editor.org/rfc/rfc9116",
+        "status": "unimplemented"
+      },
+      "home": "security"
+    },
+    {
+      "id": "cvss-4.0",
+      "name": "FIRST CVSS 4.0",
+      "issuer": "FIRST",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://www.first.org/cvss/v4.0/specification-document",
+        "status": "unimplemented"
+      },
+      "home": "security"
+    },
+    {
+      "id": "disarm",
+      "name": "DISARM framework",
+      "issuer": "DISARM Foundation",
+      "force": "voluntary",
+      "subject": "organization",
+      "parts": [
+        "security",
+        "communications"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://www.disarm.foundation/framework",
+        "status": "unimplemented"
+      },
+      "home": "security"
+    },
+    {
+      "id": "ccpa-cpra",
+      "name": "California Consumer Privacy Act as amended by the CPRA",
+      "issuer": "State of California",
+      "force": "law",
+      "jurisdiction": "US-CA",
+      "subject": "data",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://cppa.ca.gov/regulations/",
+        "status": "unimplemented"
+      },
+      "home": "security"
+    },
+    {
+      "id": "nist-sp-800-188",
+      "name": "NIST SP 800-188 De-Identifying Government Datasets",
+      "issuer": "NIST",
+      "force": "voluntary",
+      "subject": "data",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://csrc.nist.gov/pubs/sp/800/188/final",
+        "status": "unimplemented"
+      },
+      "home": "security"
+    },
+    {
+      "id": "iso-iec-27005",
+      "name": "ISO/IEC 27005 Information security risk management",
+      "issuer": "ISO/IEC JTC 1/SC 27",
+      "force": "voluntary",
+      "subject": "organization",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://committee.iso.org/standard/80585.html",
+        "status": "partial"
+      },
+      "lock": "ISO-27005-2022",
+      "home": "security"
+    },
+    {
+      "id": "iso-iec-27034",
+      "name": "ISO/IEC 27034-1 and 27034-5 Application security",
+      "issuer": "ISO/IEC JTC 1/SC 27",
+      "force": "voluntary",
+      "subject": "software",
+      "parts": [
+        "security"
+      ],
+      "owner": "security",
+      "source": {
+        "kind": "security",
+        "url": "https://committee.iso.org/standard/44378.html",
+        "status": "partial"
+      },
+      "lock": "ISO-27034-1-2011",
+      "home": "security"
+    }
+  ]
+}

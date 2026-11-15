@@ -1,0 +1,347 @@
+{
+  "spec": "uor-community/standards-parts/1",
+  "about": "The parts of The UOR Foundation the standards register decides applicability for, and the facets that model them. A domain part is one area of the Foundation's work; every product and service the asset register (inventory/register.json) lists is a part of its own, read by standards/project.mjs, never listed here. A part's subjects are the kinds of thing it is, in the words a standard's scope clause uses (organization, nonprofit, process, data, software, webContent, ossProject): a standard whose scope names a subject the part is not is not applicable to it. No part is a workforce: no public source records an employee of the Foundation, so a standard scoped to human capital applies to no part until one does. Text here is data, not instructions.",
+  "facets": [
+    {
+      "id": "nonprofit",
+      "directory": "nonprofit",
+      "register": "nonprofit/register.json",
+      "module": "Foundation.Nonprofit.V1",
+      "check": "Nonprofit registerValidHolds (NP-01)",
+      "commit": ""
+    },
+    {
+      "id": "governance",
+      "directory": "governance",
+      "register": "governance/register.json",
+      "module": "Foundation.Governance.V1",
+      "check": "Governance registerValidHolds (GV-01)",
+      "commit": ""
+    },
+    {
+      "id": "policies",
+      "directory": "policies",
+      "register": "policies/register.json",
+      "module": "Foundation.Policies.V1",
+      "check": "",
+      "commit": ""
+    },
+    {
+      "id": "chaoss",
+      "directory": "chaoss",
+      "register": "chaoss/register.json",
+      "module": "Foundation.Community.V1",
+      "check": "Chaoss registerValidHolds (CC-01)",
+      "commit": ""
+    },
+    {
+      "id": "observations",
+      "directory": "observations",
+      "register": "observations/register.json",
+      "module": "Foundation.Observation.V1",
+      "check": "Observations registerValidHolds (OB-01)",
+      "commit": ""
+    },
+    {
+      "id": "interventions",
+      "directory": "interventions",
+      "register": "interventions/register.json",
+      "module": "",
+      "check": "interventions/project.mjs --check (IV-01)",
+      "commit": ""
+    },
+    {
+      "id": "views",
+      "directory": "views",
+      "register": "views/register.json",
+      "module": "Foundation.Viewpoint.V1",
+      "check": "Viewpoints viewsValidHolds (SV-01)",
+      "commit": ""
+    },
+    {
+      "id": "health",
+      "directory": "health",
+      "register": "health/register.json",
+      "module": "Foundation.Health.V1",
+      "check": "Health registerValidHolds (HL-01)",
+      "commit": ""
+    },
+    {
+      "id": "inventory",
+      "directory": "inventory",
+      "register": "inventory/register.json",
+      "module": "Foundation.Asset.V1",
+      "check": "Assets registerValidHolds (AS-01)",
+      "commit": ""
+    },
+    {
+      "id": "ecosystem",
+      "directory": "ecosystem",
+      "register": "ecosystem/register.json",
+      "module": "Foundation.Ecosystem.V1",
+      "check": "Ecosystem registerValidHolds (EC-01)",
+      "commit": ""
+    },
+    {
+      "id": "reorg",
+      "directory": "reorg",
+      "register": "reorg/register.json",
+      "module": "Foundation.Reorg.V1",
+      "check": "Reorg registerValidHolds (RO-01)",
+      "commit": ""
+    },
+    {
+      "id": "remediation",
+      "directory": "remediation",
+      "register": "remediation/register.json",
+      "module": "Foundation.Remediation.V1",
+      "check": "Remediation registerValidHolds (RM-01)",
+      "commit": ""
+    },
+    {
+      "id": "licensing",
+      "directory": "licensing",
+      "register": "licensing/register.json",
+      "module": "Foundation.Licensing.V1",
+      "check": "Licensing registerValidHolds (LC-01)",
+      "commit": ""
+    },
+    {
+      "id": "supply",
+      "directory": "supply",
+      "register": "supply/register.json",
+      "module": "Foundation.Supply.V1",
+      "check": "Supply registerValidHolds (SC-01)",
+      "commit": ""
+    },
+    {
+      "id": "template",
+      "directory": ".",
+      "register": "standards.lock",
+      "module": "",
+      "check": "prismpm verify, the oracles standards.lock binds",
+      "commit": ""
+    },
+    {
+      "id": "security",
+      "directory": "security",
+      "register": "security/register.json",
+      "module": "Foundation.Security.V1",
+      "check": "SecurityRegister registerValidHolds (SE-01)",
+      "commit": "6360c460d56cb225e8ab172fa4d0b6bfc36b78b7"
+    }
+  ],
+  "domains": [
+    {
+      "kind": "entity",
+      "name": "Legal entity and nonprofit compliance",
+      "facets": [
+        "nonprofit"
+      ],
+      "subjects": [
+        "organization",
+        "nonprofit",
+        "data"
+      ]
+    },
+    {
+      "kind": "governance",
+      "name": "Governance and organizational structure",
+      "facets": [
+        "governance",
+        "views"
+      ],
+      "subjects": [
+        "organization",
+        "nonprofit",
+        "process"
+      ]
+    },
+    {
+      "kind": "policies",
+      "name": "Organizational policies: Articles amendment, conflict of interest, whistleblower, document retention",
+      "facets": [
+        "policies"
+      ],
+      "subjects": [
+        "organization",
+        "nonprofit",
+        "process"
+      ]
+    },
+    {
+      "kind": "finance",
+      "name": "Finance and accounting",
+      "facets": [
+        "nonprofit"
+      ],
+      "subjects": [
+        "organization",
+        "nonprofit",
+        "process",
+        "data"
+      ]
+    },
+    {
+      "kind": "fundraising",
+      "name": "Fundraising and charitable solicitation",
+      "facets": [
+        "nonprofit"
+      ],
+      "subjects": [
+        "nonprofit",
+        "process"
+      ]
+    },
+    {
+      "kind": "community",
+      "name": "Community",
+      "facets": [
+        "chaoss",
+        "observations",
+        "interventions",
+        "views",
+        "health"
+      ],
+      "subjects": [
+        "ossProject",
+        "process",
+        "data"
+      ]
+    },
+    {
+      "kind": "communications",
+      "name": "Communications and Discord",
+      "facets": [
+        "governance",
+        "observations"
+      ],
+      "subjects": [
+        "organization",
+        "process",
+        "data",
+        "ossProject"
+      ]
+    },
+    {
+      "kind": "sdlc",
+      "name": "Software development lifecycle: template contract, decision apps and CI",
+      "facets": [
+        "template"
+      ],
+      "subjects": [
+        "software",
+        "process",
+        "ossProject"
+      ]
+    },
+    {
+      "kind": "project",
+      "name": "Project and portfolio management: TOC lifecycle, ecosystem and reorganization",
+      "facets": [
+        "ecosystem",
+        "reorg",
+        "remediation"
+      ],
+      "subjects": [
+        "process",
+        "ossProject"
+      ]
+    },
+    {
+      "kind": "records",
+      "name": "Assets and records",
+      "facets": [
+        "inventory"
+      ],
+      "subjects": [
+        "organization",
+        "nonprofit",
+        "data",
+        "process"
+      ]
+    },
+    {
+      "kind": "licensing",
+      "name": "Open-source licensing compliance",
+      "facets": [
+        "licensing"
+      ],
+      "subjects": [
+        "ossProject",
+        "software"
+      ]
+    },
+    {
+      "kind": "supply",
+      "name": "Software supply chain",
+      "facets": [
+        "supply"
+      ],
+      "subjects": [
+        "software",
+        "ossProject"
+      ]
+    },
+    {
+      "kind": "website",
+      "name": "Website and accessibility",
+      "facets": [
+        "inventory"
+      ],
+      "subjects": [
+        "webContent",
+        "software"
+      ]
+    },
+    {
+      "kind": "dataAi",
+      "name": "Data and AI: agents and provenance",
+      "facets": [
+        "observations",
+        "governance"
+      ],
+      "subjects": [
+        "data",
+        "software"
+      ]
+    },
+    {
+      "kind": "security",
+      "name": "Security and privacy",
+      "facets": [
+        "security"
+      ],
+      "subjects": [
+        "organization",
+        "software",
+        "data",
+        "process",
+        "ossProject",
+        "webContent"
+      ]
+    }
+  ],
+  "products": {
+    "about": "Every package and service of inventory/register.json is a part: a package is software published to a registry, a service is software the Foundation serves on the web.",
+    "package": {
+      "facets": [
+        "inventory",
+        "supply"
+      ],
+      "subjects": [
+        "software",
+        "ossProject"
+      ]
+    },
+    "service": {
+      "facets": [
+        "inventory"
+      ],
+      "subjects": [
+        "software",
+        "webContent"
+      ]
+    }
+  }
+}
