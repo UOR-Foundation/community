@@ -1,0 +1,846 @@
+\begin{lexlean}{Foundation.Reorg.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Reorganization model}
+\begin{semanticmodule}
+inductive{
+  name: Statement,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: superseded, fields: []},
+    {name: deprecated, fields: []},
+    {name: relocated, fields: []},
+    {name: absent, fields: []}
+  ]
+}
+
+inductive{
+  name: Family,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: absent, fields: []}, {name: hub, fields: []}, {name: member, fields: []}]
+}
+
+inductive{
+  name: Consumer,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: absent, fields: []}, {name: sole, fields: []}, {name: shared, fields: []}]
+}
+
+inductive{
+  name: Overlap,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: absent, fields: []}, {name: names, fields: []}]
+}
+
+inductive{
+  name: Activity,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: recent, fields: []}, {name: quiet, fields: []}]
+}
+
+inductive{
+  name: Disposition,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: keep, fields: []},
+    {name: archive, fields: []},
+    {name: fold, fields: []},
+    {name: review, fields: []}
+  ]
+}
+
+inductive{
+  name: Signal,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: archivedFlag, fields: []},
+    {name: deprecation, fields: []},
+    {name: supersession, fields: []},
+    {name: relocation, fields: []},
+    {name: reservedName, fields: []},
+    {name: familyHub, fields: []},
+    {name: familyMember, fields: []},
+    {name: soleConsumer, fields: []},
+    {name: sharedConsumer, fields: []},
+    {name: purposeNames, fields: []},
+    {name: recentActivity, fields: []},
+    {name: quietActivity, fields: []},
+    {name: purpose, fields: []}
+  ]
+}
+
+inductive{
+  name: DependencyKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: crate, fields: []},
+    {name: npm, fields: []},
+    {name: pypi, fields: []},
+    {name: workflow, fields: []},
+    {name: submodule, fields: []}
+  ]
+}
+
+inductive{
+  name: Action,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: tocApplication, fields: []},
+    {name: maintainerNotice, fields: []},
+    {name: subtreeAdd, fields: []},
+    {name: hostPullRequest, fields: []},
+    {name: readmeRedirect, fields: []},
+    {name: transferIssues, fields: []},
+    {name: statusTopic, fields: []},
+    {name: archiveRepository, fields: []}
+  ]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: repositoriesCount, type: Nat},
+    {name: dependenciesCount, type: Nat},
+    {name: citationsCount, type: Nat},
+    {name: candidatesCount, type: Nat},
+    {name: normGapsCount, type: Nat},
+    {name: actsCount, type: Nat},
+    {name: snapshotDigest, type: String},
+    {name: asOf, type: String},
+    {name: windowDays, type: Nat},
+    {name: setDigest, type: String},
+    {name: norms, type: String},
+    {name: platform, type: String},
+    {name: app, type: String},
+    {name: appDigest, type: String},
+    {name: builder, type: String},
+    {name: keepCount, type: Nat},
+    {name: archiveCount, type: Nat},
+    {name: foldCount, type: Nat},
+    {name: reviewCount, type: Nat}
+  ]
+}
+
+structure{
+  name: Repository,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: commit, type: String},
+    {name: lastCommit, type: String},
+    {name: recentCommits, type: Nat},
+    {name: dependents, type: Nat},
+    {name: archived, type: Bool},
+    {name: reserved, type: Bool},
+    {name: statement, type: Statement},
+    {name: family, type: Family},
+    {name: consumer, type: Consumer},
+    {name: overlap, type: Overlap},
+    {name: activity, type: Activity},
+    {name: disposition, type: Disposition},
+    {name: host, type: Nat},
+    {name: hostRefused, type: Bool},
+    {name: ruleId, type: String},
+    {name: purpose, type: String}
+  ]
+}
+
+structure{
+  name: Dependency,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: source, type: Nat},
+    {name: target, type: Nat},
+    {name: kind, type: DependencyKind},
+    {name: file, type: String},
+    {name: line, type: Nat}
+  ]
+}
+
+structure{
+  name: Citation,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: signal, type: Signal},
+    {name: source, type: String},
+    {name: line, type: Nat},
+    {name: text, type: String}
+  ]
+}
+
+structure{
+  name: Candidate,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: host, type: Nat},
+    {name: refusal, type: String},
+    {name: signals, type: String},
+    {name: detail, type: String}
+  ]
+}
+
+structure{
+  name: NormGap,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: norm, type: String},
+    {name: digest, type: String},
+    {name: refusal, type: String},
+    {name: detail, type: String}
+  ]
+}
+
+structure{
+  name: Act,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: host, type: Nat},
+    {name: step, type: Nat},
+    {name: action, type: Action},
+    {name: command, type: String},
+    {name: precondition, type: String},
+    {name: conditional, type: Bool},
+    {name: executed, type: Bool}
+  ]
+}
+
+definition{
+  name: statementIsSuperseded,
+  parameters: [value : Statement],
+  result: Bool,
+  body: (match value
+    | Statement.superseded => true
+    | Statement.deprecated => false
+    | Statement.relocated => false
+    | Statement.absent => false)
+}
+
+definition{
+  name: statementIsDeprecated,
+  parameters: [value : Statement],
+  result: Bool,
+  body: (match value
+    | Statement.superseded => false
+    | Statement.deprecated => true
+    | Statement.relocated => false
+    | Statement.absent => false)
+}
+
+definition{
+  name: statementIsRelocated,
+  parameters: [value : Statement],
+  result: Bool,
+  body: (match value
+    | Statement.superseded => false
+    | Statement.deprecated => false
+    | Statement.relocated => true
+    | Statement.absent => false)
+}
+
+definition{
+  name: statementIsAbsent,
+  parameters: [value : Statement],
+  result: Bool,
+  body: (match value
+    | Statement.superseded => false
+    | Statement.deprecated => false
+    | Statement.relocated => false
+    | Statement.absent => true)
+}
+
+definition{
+  name: familyIsAbsent,
+  parameters: [value : Family],
+  result: Bool,
+  body: (match value | Family.absent => true | Family.hub => false | Family.member => false)
+}
+
+definition{
+  name: familyIsHub,
+  parameters: [value : Family],
+  result: Bool,
+  body: (match value | Family.absent => false | Family.hub => true | Family.member => false)
+}
+
+definition{
+  name: familyIsMember,
+  parameters: [value : Family],
+  result: Bool,
+  body: (match value | Family.absent => false | Family.hub => false | Family.member => true)
+}
+
+definition{
+  name: consumerIsAbsent,
+  parameters: [value : Consumer],
+  result: Bool,
+  body: (match value | Consumer.absent => true | Consumer.sole => false | Consumer.shared => false)
+}
+
+definition{
+  name: consumerIsSole,
+  parameters: [value : Consumer],
+  result: Bool,
+  body: (match value | Consumer.absent => false | Consumer.sole => true | Consumer.shared => false)
+}
+
+definition{
+  name: consumerIsShared,
+  parameters: [value : Consumer],
+  result: Bool,
+  body: (match value | Consumer.absent => false | Consumer.sole => false | Consumer.shared => true)
+}
+
+definition{
+  name: overlapIsAbsent,
+  parameters: [value : Overlap],
+  result: Bool,
+  body: (match value | Overlap.absent => true | Overlap.names => false)
+}
+
+definition{
+  name: overlapIsNames,
+  parameters: [value : Overlap],
+  result: Bool,
+  body: (match value | Overlap.absent => false | Overlap.names => true)
+}
+
+definition{
+  name: activityIsRecent,
+  parameters: [value : Activity],
+  result: Bool,
+  body: (match value | Activity.recent => true | Activity.quiet => false)
+}
+
+definition{
+  name: activityIsQuiet,
+  parameters: [value : Activity],
+  result: Bool,
+  body: (match value | Activity.recent => false | Activity.quiet => true)
+}
+
+definition{
+  name: isKeep,
+  parameters: [value : Disposition],
+  result: Bool,
+  body: (match value
+    | Disposition.keep => true
+    | Disposition.archive => false
+    | Disposition.fold => false
+    | Disposition.review => false)
+}
+
+definition{
+  name: isArchive,
+  parameters: [value : Disposition],
+  result: Bool,
+  body: (match value
+    | Disposition.keep => false
+    | Disposition.archive => true
+    | Disposition.fold => false
+    | Disposition.review => false)
+}
+
+definition{
+  name: isFold,
+  parameters: [value : Disposition],
+  result: Bool,
+  body: (match value
+    | Disposition.keep => false
+    | Disposition.archive => false
+    | Disposition.fold => true
+    | Disposition.review => false)
+}
+
+definition{
+  name: isReview,
+  parameters: [value : Disposition],
+  result: Bool,
+  body: (match value
+    | Disposition.keep => false
+    | Disposition.archive => false
+    | Disposition.fold => false
+    | Disposition.review => true)
+}
+
+definition{
+  name: supportsKeep,
+  parameters: [value : Signal],
+  result: Bool,
+  body: (match value
+    | Signal.archivedFlag => false
+    | Signal.deprecation => false
+    | Signal.supersession => false
+    | Signal.relocation => false
+    | Signal.reservedName => true
+    | Signal.familyHub => false
+    | Signal.familyMember => false
+    | Signal.soleConsumer => false
+    | Signal.sharedConsumer => false
+    | Signal.purposeNames => false
+    | Signal.recentActivity => true
+    | Signal.quietActivity => false
+    | Signal.purpose => false)
+}
+
+definition{
+  name: supportsArchive,
+  parameters: [value : Signal],
+  result: Bool,
+  body: (match value
+    | Signal.archivedFlag => true
+    | Signal.deprecation => true
+    | Signal.supersession => false
+    | Signal.relocation => false
+    | Signal.reservedName => false
+    | Signal.familyHub => false
+    | Signal.familyMember => false
+    | Signal.soleConsumer => false
+    | Signal.sharedConsumer => false
+    | Signal.purposeNames => false
+    | Signal.recentActivity => false
+    | Signal.quietActivity => false
+    | Signal.purpose => false)
+}
+
+definition{
+  name: supportsFold,
+  parameters: [value : Signal],
+  result: Bool,
+  body: (match value
+    | Signal.archivedFlag => false
+    | Signal.deprecation => false
+    | Signal.supersession => true
+    | Signal.relocation => false
+    | Signal.reservedName => false
+    | Signal.familyHub => false
+    | Signal.familyMember => false
+    | Signal.soleConsumer => false
+    | Signal.sharedConsumer => false
+    | Signal.purposeNames => false
+    | Signal.recentActivity => false
+    | Signal.quietActivity => false
+    | Signal.purpose => false)
+}
+
+definition{
+  name: supportsReview,
+  parameters: [value : Signal],
+  result: Bool,
+  body: (match value
+    | Signal.archivedFlag => false
+    | Signal.deprecation => false
+    | Signal.supersession => false
+    | Signal.relocation => true
+    | Signal.reservedName => false
+    | Signal.familyHub => false
+    | Signal.familyMember => true
+    | Signal.soleConsumer => true
+    | Signal.sharedConsumer => false
+    | Signal.purposeNames => true
+    | Signal.recentActivity => false
+    | Signal.quietActivity => true
+    | Signal.purpose => false)
+}
+
+definition{
+  name: supports,
+  parameters: [disposition : Disposition, signal : Signal],
+  result: Bool,
+  body: (match disposition
+    | Disposition.keep => (supportsKeep signal)
+    | Disposition.archive => (supportsArchive signal)
+    | Disposition.fold => (supportsFold signal)
+    | Disposition.review => (supportsReview signal))
+}
+
+definition{
+  name: agree,
+  parameters: [left : Bool, right : Bool],
+  result: Bool,
+  body: (if left then right else (not right))
+}
+
+definition{
+  name: consumerAgrees,
+  parameters: [consumer : Consumer, amount : Nat],
+  result: Bool,
+  body: (match consumer
+    | Consumer.absent => (amount =? 0)
+    | Consumer.sole => (amount =? 1)
+    | Consumer.shared => (1 <? amount))
+}
+
+definition{
+  name: activityAgrees,
+  parameters: [activity : Activity, amount : Nat],
+  result: Bool,
+  body: (match activity | Activity.recent => (0 <? amount) | Activity.quiet => (amount =? 0))
+}
+
+definition{
+  name: firstRule,
+  parameters: [repository : Repository],
+  result: Nat,
+  body: (if (project repository archived) then 1 else (if (project repository reserved) then 2 else (if (statementIsSuperseded (project repository statement)) then 3 else (if (statementIsDeprecated (project repository statement)) then 4 else (if (statementIsRelocated (project repository statement)) then 5 else (if (familyIsMember (project repository family)) then 6 else (if (consumerIsSole (project repository consumer)) then 7 else (if (overlapIsNames (project repository overlap)) then 8 else (if (activityIsQuiet (project repository activity)) then 9 else 0)))))))))
+}
+
+definition{
+  name: ruleGives,
+  parameters: [position : Nat, disposition : Disposition],
+  result: Bool,
+  body: (match disposition
+    | Disposition.keep => ((position =? 2) || (position =? 0))
+    | Disposition.archive => ((position =? 1) || (position =? 4))
+    | Disposition.fold => (position =? 3)
+    | Disposition.review => ((position =? 5) || ((position =? 6) || ((position =? 7) || ((position =? 8) || (position =? 9))))))
+}
+
+definition{
+  name: ruleFolds,
+  parameters: [position : Nat],
+  result: Bool,
+  body: (position =? 3)
+}
+
+definition{
+  name: dispositionFollows,
+  parameters: [repository : Repository],
+  result: Bool,
+  body: (if (project repository hostRefused) then ((ruleFolds (firstRule repository)) && (isReview (project repository disposition))) else (ruleGives (firstRule repository) (project repository disposition)))
+}
+
+definition{
+  name: keptTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => ((if (isKeep (project repository disposition)) then 1 else 0) + (keptTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: archivedTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => ((if (isArchive (project repository disposition)) then 1 else 0) + (archivedTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: foldedTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => ((if (isFold (project repository disposition)) then 1 else 0) + (foldedTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: reviewedTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => ((if (isReview (project repository disposition)) then 1 else 0) + (reviewedTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: keptAt,
+  parameters: [values : (List Repository), at : Nat],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons repository rest => (if ((project repository index) =? at) then (isKeep (project repository disposition)) else (keptAt rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: reviewAt,
+  parameters: [values : (List Repository), at : Nat],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons repository rest => (if ((project repository index) =? at) then (isReview (project repository disposition)) else (reviewAt rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: hostAt,
+  parameters: [values : (List Repository), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => (if ((project repository index) =? at) then (project repository host) else (hostAt rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: foldsSound,
+  parameters: [allRepos : (List Repository), values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => ((if (isFold (project repository disposition)) then ((not ((project repository host) =? (project repository index))) && (keptAt allRepos (project repository host))) else ((project repository host) =? (project repository index))) && (foldsSound allRepos rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: settles,
+  parameters: [allRepos : (List Repository), fuel : (List Repository), at : Nat],
+  result: Bool,
+  body: (match fuel
+    | List.nil => false
+    | List.cons spent rest => (if ((hostAt allRepos at) =? at) then true else (settles allRepos rest (hostAt allRepos at)))),
+  recursive_argument: fuel
+}
+
+definition{
+  name: foldsSettle,
+  parameters: [allRepos : (List Repository), values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => ((settles allRepos allRepos (project repository index)) && (foldsSettle allRepos rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: supportedBy,
+  parameters: [values : (List Citation), at : Nat, disposition : Disposition],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons citation rest => ((((project citation repository) =? at) && (supports disposition (project citation signal))) || (supportedBy rest at disposition))),
+  recursive_argument: values
+}
+
+definition{
+  name: dispositionsCited,
+  parameters: [allCites : (List Citation), values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => ((supportedBy allCites (project repository index) (project repository disposition)) && (dispositionsCited allCites rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: dependentsOf,
+  parameters: [values : (List Dependency), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons dependency rest => ((if ((project dependency target) =? at) then 1 else 0) + (dependentsOf rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: dependentsCounted,
+  parameters: [allDeps : (List Dependency), values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => (((project repository dependents) =? (dependentsOf allDeps (project repository index))) && (dependentsCounted allDeps rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: actsSound,
+  parameters: [allRepos : (List Repository), values : (List Act)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons act rest => (((not (keptAt allRepos (project act repository))) && ((agree (project act conditional) (reviewAt allRepos (project act repository))) && (((project act host) =? (project act repository)) || (keptAt allRepos (project act host))))) && (actsSound allRepos rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: claimedAt,
+  parameters: [values : (List Candidate), at : Nat],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons candidate rest => (((project candidate repository) =? at) || (claimedAt rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: reviewsClaimed,
+  parameters: [allCandidates : (List Candidate), values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => ((if (isReview (project repository disposition)) then (claimedAt allCandidates (project repository index)) else true) && (reviewsClaimed allCandidates rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: candidatesSound,
+  parameters: [allRepos : (List Repository), values : (List Candidate)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons candidate rest => (((reviewAt allRepos (project candidate repository)) && (((project candidate host) =? (project candidate repository)) || (keptAt allRepos (project candidate host)))) && (candidatesSound allRepos rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => (((project repository index) =? position) && (((project repository host) <? repositoriesCount) && ((consumerAgrees (project repository consumer) (project repository dependents)) && ((activityAgrees (project repository activity) (project repository recentCommits)) && ((dispositionFollows repository) && (repositoriesValid (position + 1) repositoriesCount rest))))))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => (1 + (repositoriesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: dependenciesValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List Dependency)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons dependency rest => (((project dependency index) =? position) && (((project dependency source) <? repositoriesCount) && (((project dependency target) <? repositoriesCount) && ((not ((project dependency source) =? (project dependency target))) && (dependenciesValid (position + 1) repositoriesCount rest)))))),
+  recursive_argument: values
+}
+
+definition{
+  name: dependenciesTotal,
+  parameters: [values : (List Dependency)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons dependency rest => (1 + (dependenciesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: citationsValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List Citation)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons citation rest => (((project citation index) =? position) && (((project citation repository) <? repositoriesCount) && (citationsValid (position + 1) repositoriesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: citationsTotal,
+  parameters: [values : (List Citation)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons citation rest => (1 + (citationsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: candidatesValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List Candidate)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons candidate rest => (((project candidate index) =? position) && (((project candidate repository) <? repositoriesCount) && (((project candidate host) <? repositoriesCount) && (candidatesValid (position + 1) repositoriesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: candidatesTotal,
+  parameters: [values : (List Candidate)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons candidate rest => (1 + (candidatesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: normGapsValid,
+  parameters: [position : Nat, values : (List NormGap)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons normGap rest => (((project normGap index) =? position) && (normGapsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: normGapsTotal,
+  parameters: [values : (List NormGap)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons normGap rest => (1 + (normGapsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: actsValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List Act)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons act rest => (((project act index) =? position) && (((project act repository) <? repositoriesCount) && (((project act host) <? repositoriesCount) && ((not (project act executed)) && ((0 <? (project act step)) && (actsValid (position + 1) repositoriesCount rest))))))),
+  recursive_argument: values
+}
+
+definition{
+  name: actsTotal,
+  parameters: [values : (List Act)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons act rest => (1 + (actsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    repositories : (List Repository),
+    dependencies : (List Dependency),
+    citations : (List Citation),
+    candidates : (List Candidate),
+    normGaps : (List NormGap),
+    acts : (List Act)
+  ],
+  result: Bool,
+  body: (((repositoriesTotal repositories) =? (project release repositoriesCount)) && (((dependenciesTotal dependencies) =? (project release dependenciesCount)) && (((citationsTotal citations) =? (project release citationsCount)) && (((candidatesTotal candidates) =? (project release candidatesCount)) && (((normGapsTotal normGaps) =? (project release normGapsCount)) && (((actsTotal acts) =? (project release actsCount)) && ((repositoriesValid 0 (repositoriesTotal repositories) repositories) && ((dependenciesValid 0 (repositoriesTotal repositories) dependencies) && ((citationsValid 0 (repositoriesTotal repositories) citations) && ((candidatesValid 0 (repositoriesTotal repositories) candidates) && ((normGapsValid 0 normGaps) && ((actsValid 0 (repositoriesTotal repositories) acts) && (((keptTotal repositories) =? (project release keepCount)) && (((archivedTotal repositories) =? (project release archiveCount)) && (((foldedTotal repositories) =? (project release foldCount)) && (((reviewedTotal repositories) =? (project release reviewCount)) && (((((keptTotal repositories) + (archivedTotal repositories)) + ((foldedTotal repositories) + (reviewedTotal repositories))) =? (project release repositoriesCount)) && ((foldsSound repositories repositories) && ((foldsSettle repositories repositories) && ((dispositionsCited citations repositories) && ((dependentsCounted dependencies repositories) && ((actsSound repositories acts) && ((reviewsClaimed candidates repositories) && (candidatesSound repositories candidates))))))))))))))))))))))))
+}
+\end{semanticmodule}
+\end{lexlean}

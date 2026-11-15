@@ -278,6 +278,14 @@ model does not sanction.
 | `RM-02` | `build` | The remediation catalog declares every repository of remediation/register.json at the commit it was observed at, every change that applies at every tier, one issue draft per repository, and the digests of the ecosystem register, the observations and every pinned source and decision app |
 | `RM-03` | `open` | A change only a maintainer or owner can decide, and a norm no change can reach, is carried as an open claim with its evidence, never defaulted; no change is applied to another repository until the Foundation's owners approve it |
 
+## reorg
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `RO-01` | `build` | The reorganization register is valid: every public UOR Foundation repository has exactly one disposition, the one the uor-repo-disposition table gives its evidence; every fold names a kept host other than itself and no chain of folds returns to its start; every disposition cites evidence of its kind; and every staged act is unexecuted, references an existing repository, and waits on a TOC decision whenever its repository is under review |
+| `RO-02` | `build` | The reorganization catalog declares every repository of reorg/register.json with the commit its evidence was read at, the snapshot and repository-set digests, the pinned norms, and the digest of the uor-repo-disposition app with the builder commit that checked it |
+| `RO-03` | `open` | A candidate the evidence raises without deciding it, and every norm the reorganization needs that the Foundation's norms do not define, is carried as an open claim, never decided or defaulted |
+
 ## uor_coc_enforcement
 
 | ID | Level | Statement |

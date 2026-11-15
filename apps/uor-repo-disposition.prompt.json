@@ -1,0 +1,487 @@
+{
+  "schema": "prism/prompt/1",
+  "pattern": "decisionTable",
+  "goal": "Give every UOR Foundation repository the one disposition the Foundation lifecycle allows from the evidence of its own repositories: keep, archive, fold into a kept host, or review by the TOC.",
+  "repository": "UOR-Foundation/community",
+  "app": {
+    "name": "uor-repo-disposition",
+    "title": "Repository disposition for the reorganization",
+    "purpose": "Decide whether a UOR Foundation repository is kept, archived, folded into the repository that supersedes it, or put to the TOC for review, from the evidence read from the repositories at a pinned commit and the lifecycle of toc/README.md and GOVERNANCE.md 11.",
+    "fields": [
+      {
+        "name": "archived",
+        "kind": "choice",
+        "values": [
+          "yes",
+          "no"
+        ],
+        "means": "whether GitHub holds the repository archived"
+      },
+      {
+        "name": "reserved",
+        "kind": "choice",
+        "values": [
+          "yes",
+          "no"
+        ],
+        "means": "whether the repository name is one GitHub reserves for the organization, the .github profile and community-health repository"
+      },
+      {
+        "name": "statement",
+        "kind": "choice",
+        "values": [
+          "superseded",
+          "deprecated",
+          "relocated",
+          "none"
+        ],
+        "means": "the strongest statement its README makes about itself: superseded by or moved to a named Foundation repository, deprecated or no longer maintained, part of its content belonging in a named Foundation repository, or none"
+      },
+      {
+        "name": "family",
+        "kind": "choice",
+        "values": [
+          "none",
+          "hub",
+          "member"
+        ],
+        "means": "whether its name shares a word, other than the identity word uor, with another Foundation repository, and if so whether it is the one of that family the most Foundation repositories depend on"
+      },
+      {
+        "name": "consumer",
+        "kind": "choice",
+        "values": [
+          "none",
+          "sole",
+          "shared"
+        ],
+        "means": "how many other Foundation repositories depend on it by a package, workflow or submodule: none, exactly one, or more"
+      },
+      {
+        "name": "overlap",
+        "kind": "choice",
+        "values": [
+          "none",
+          "names"
+        ],
+        "means": "whether its purpose statement names, as GitHub spells it, another Foundation repository outside its dependency closure"
+      },
+      {
+        "name": "activity",
+        "kind": "choice",
+        "values": [
+          "recent",
+          "quiet"
+        ],
+        "means": "whether its default branch has a commit in the evidence window before the snapshot"
+      }
+    ],
+    "outcomes": [
+      "keep",
+      "archive",
+      "fold",
+      "review"
+    ],
+    "meanings": {
+      "keep": "kept as an active or maintenance repository (GOVERNANCE.md 11)",
+      "archive": "archived: the TOC Archived stage, read-only with its context kept in the README",
+      "fold": "folded: its content imported into the kept repository that supersedes it, then archived by TOC vote",
+      "review": "a candidate the evidence raises but does not decide: the TOC must decide it"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "archived",
+            "op": "is",
+            "value": "yes"
+          }
+        ],
+        "then": "archive",
+        "why": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 11: Archived is the read-only historical state; toc/README.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Project Stages: Archived. A repository GitHub already holds archived stays archived"
+      },
+      {
+        "when": [
+          {
+            "field": "reserved",
+            "op": "is",
+            "value": "yes"
+          }
+        ],
+        "then": "keep",
+        "why": "GitHub Docs, Customizing your organization's profile and Creating a default community health file: the organization profile and default health files are read only from the public .github repository, so it is never archived or folded"
+      },
+      {
+        "when": [
+          {
+            "field": "statement",
+            "op": "is",
+            "value": "superseded"
+          }
+        ],
+        "then": "fold",
+        "why": "toc/README.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Project Stages: Archived on supersession, by TOC vote (simple majority); GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 11: archive only when inactive or superseded, and keep context in README. The fold is that archival after the superseding host takes the content"
+      },
+      {
+        "when": [
+          {
+            "field": "statement",
+            "op": "is",
+            "value": "deprecated"
+          }
+        ],
+        "then": "archive",
+        "why": "toc/README.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Project Stages: Archived for a project no longer recommended or on maintainer request, by TOC vote (simple majority); GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 11: archive only when inactive or superseded"
+      },
+      {
+        "when": [
+          {
+            "field": "statement",
+            "op": "is",
+            "value": "relocated"
+          }
+        ],
+        "then": "review",
+        "why": "toc/README.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Project Stages: supersession is a TOC decision; a statement that part of the content lives in another repository is evidence for it, not the decision"
+      },
+      {
+        "when": [
+          {
+            "field": "family",
+            "op": "is",
+            "value": "member"
+          }
+        ],
+        "then": "review",
+        "why": "STANDARDS.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Naming Conventions and GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 11: a shared name is a naming convention, not supersession; it raises a candidate for the TOC"
+      },
+      {
+        "when": [
+          {
+            "field": "consumer",
+            "op": "is",
+            "value": "sole"
+          }
+        ],
+        "then": "review",
+        "why": "toc/README.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Project Stages: Archived needs inactivity, a maintainer request or supersession; a single Foundation consumer is none of these and raises a candidate for the TOC"
+      },
+      {
+        "when": [
+          {
+            "field": "overlap",
+            "op": "is",
+            "value": "names"
+          }
+        ],
+        "then": "review",
+        "why": "toc/README.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Project Stages: supersession is a TOC decision; a purpose statement naming a repository it does not depend on raises a candidate for the TOC"
+      },
+      {
+        "when": [
+          {
+            "field": "activity",
+            "op": "is",
+            "value": "quiet"
+          }
+        ],
+        "then": "review",
+        "why": "toc/README.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) Project Stages: Archived on sustained inactivity, which no Foundation norm quantifies; a quiet window raises a candidate for the TOC"
+      }
+    ],
+    "otherwise": "keep",
+    "otherwiseWhy": "GOVERNANCE.md (UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8) 11: a repository with no archival, supersession or candidate signal stays Active or in Maintenance",
+    "properties": [
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "archived",
+            "op": "is",
+            "value": "yes"
+          }
+        ],
+        "then": "archive",
+        "why": "a repository GitHub holds archived is never reopened by the reorganization"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "statement",
+            "op": "is",
+            "value": "none"
+          }
+        ],
+        "then": "fold",
+        "why": "a fold needs a supersession statement naming its host; no other signal decides one"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "statement",
+            "op": "is",
+            "value": "relocated"
+          }
+        ],
+        "then": "fold",
+        "why": "a statement that part of the content lives elsewhere is not supersession"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "archived",
+            "op": "is",
+            "value": "no"
+          },
+          {
+            "field": "reserved",
+            "op": "is",
+            "value": "no"
+          },
+          {
+            "field": "statement",
+            "op": "is",
+            "value": "none"
+          },
+          {
+            "field": "family",
+            "op": "is",
+            "value": "member"
+          }
+        ],
+        "then": "review",
+        "why": "name similarity alone raises a candidate and never decides one"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "archived",
+            "op": "is",
+            "value": "no"
+          },
+          {
+            "field": "statement",
+            "op": "is",
+            "value": "none"
+          }
+        ],
+        "then": "archive",
+        "why": "nothing but GitHub's own archival or a deprecation statement archives a repository"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "archived",
+            "op": "is",
+            "value": "no"
+          },
+          {
+            "field": "reserved",
+            "op": "is",
+            "value": "yes"
+          }
+        ],
+        "then": "keep",
+        "why": "the organization profile repository is always kept"
+      }
+    ],
+    "examples": [
+      {
+        "request": "yes no none none none none quiet",
+        "response": "archive"
+      },
+      {
+        "request": "yes no superseded member sole names recent",
+        "response": "archive"
+      },
+      {
+        "request": "no yes none none none none quiet",
+        "response": "keep"
+      },
+      {
+        "request": "no no superseded none none none recent",
+        "response": "fold"
+      },
+      {
+        "request": "no no deprecated none shared none recent",
+        "response": "archive"
+      },
+      {
+        "request": "no no relocated member none names recent",
+        "response": "review"
+      },
+      {
+        "request": "no no none member none none recent",
+        "response": "review"
+      },
+      {
+        "request": "no no none hub shared none recent",
+        "response": "keep"
+      },
+      {
+        "request": "no no none none sole none recent",
+        "response": "review"
+      },
+      {
+        "request": "no no none none none names recent",
+        "response": "review"
+      },
+      {
+        "request": "no no none none none none quiet",
+        "response": "review"
+      },
+      {
+        "request": "no no none none shared none recent",
+        "response": "keep"
+      },
+      {
+        "request": "no no none none none none recent",
+        "response": "keep"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Organization Owner",
+      "text": "Holds final governance authority, approves each staged act one by one, and needs every disposition to follow the published lifecycle.",
+      "concerns": [
+        "Proved guarantees"
+      ]
+    },
+    {
+      "name": "TOC Member",
+      "text": "Votes the Archived stage and needs each candidate put to it with its evidence, never decided for it.",
+      "concerns": [
+        "Correct answers"
+      ]
+    },
+    {
+      "name": "Repository Maintainer",
+      "text": "Maintains a repository the reorganization touches and needs a fold or archive to come only from evidence, with notice.",
+      "concerns": [
+        "Correct answers"
+      ]
+    },
+    {
+      "name": "Adopter",
+      "text": "Depends on Foundation repositories and needs to know which are kept, where folded content went, and that nothing moves without a decision.",
+      "concerns": [
+        "Correct answers"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "GitHub repositories",
+      "kind": "externalSystem",
+      "text": "The public UOR-Foundation repositories, read anonymously at their default-branch commits."
+    },
+    {
+      "name": "Reorganization register",
+      "kind": "cliAdapter",
+      "text": "reorg/project.mjs and reorg/register.json in UOR-Foundation/community, which evaluate this app per repository and stage each act unexecuted."
+    }
+  ],
+  "threats": [
+    {
+      "name": "Fold forced by name",
+      "text": "A repository is folded into another because their names look alike, with no statement that one supersedes the other.",
+      "stride": "tampering",
+      "asset": "answer",
+      "likelihood": "medium",
+      "impact": "major",
+      "control": {
+        "name": "Supersession decides",
+        "text": "Only a supersession statement answers fold; a name family answers review.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-002"
+          },
+          {
+            "kind": "proof",
+            "reference": "INV-004"
+          },
+          {
+            "kind": "review",
+            "reference": "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8 toc/README.md Project Stages"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Active work archived",
+      "text": "A repository someone still develops is archived on a weak signal, losing its maintainers their write access.",
+      "stride": "denialOfService",
+      "asset": "answer",
+      "likelihood": "low",
+      "impact": "major",
+      "control": {
+        "name": "Archive needs a statement",
+        "text": "Without GitHub archival or a deprecation statement no repository is archived.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-005"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Organization profile removed",
+      "text": "The .github repository is archived or folded and the organization loses its profile and default health files.",
+      "stride": "denialOfService",
+      "asset": "answer",
+      "likelihood": "low",
+      "impact": "major",
+      "control": {
+        "name": "Reserved repository kept",
+        "text": "The reserved .github repository is always kept.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-006"
+          }
+        ]
+      }
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Functional suitability",
+      "subcharacteristic": "Functional correctness",
+      "requirement": "Every rule cites its norm",
+      "text": "Each rule names the Foundation norm or platform document that allows its answer.",
+      "measure": "Rules without a cited norm",
+      "measureText": "Rules whose why names no norm.",
+      "threshold": 0
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Organization Owner",
+      "steps": [
+        "REQ-001",
+        "REQ-003",
+        "INV-002",
+        "otherwise"
+      ]
+    },
+    {
+      "stakeholder": "TOC Member",
+      "steps": [
+        "REQ-005",
+        "REQ-006",
+        "REQ-009",
+        "INV-004"
+      ]
+    }
+  ],
+  "concerns": [],
+  "license": "MIT OR Apache-2.0"
+}
