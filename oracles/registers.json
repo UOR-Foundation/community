@@ -102,6 +102,16 @@
         ["node", "licensing/project.mjs", "{sources}", "--check"],
         ["node", "licensing/catalog.mjs", "--check"]
       ]
+    },
+    {
+      "area": "policies",
+      "sources": {"kind": "git-urls", "file": "policies/sources.json"},
+      "inputs": ["policies/**", "governance/register.json", "nonprofit/register.json", "nonprofit/snapshot.json", "tools/register-lex.mjs"],
+      "tools": [["pdftotext", "-v"], ["pdftohtml", "-v"]],
+      "check": [
+        ["node", "policies/project.mjs", "{sources}", "--check"],
+        ["node", "policies/catalog.mjs", "--check"]
+      ]
     }
   ]
 }

@@ -29,6 +29,7 @@ on:
       - 'supply/**'
       - 'reorg/**'
       - 'licensing/**'
+      - 'policies/**'
       - 'package-lock.json'
       - 'automation/intervention*'
       - 'apps/**'
@@ -50,6 +51,7 @@ on:
       - 'supply/**'
       - 'reorg/**'
       - 'licensing/**'
+      - 'policies/**'
       - 'package-lock.json'
       - 'automation/intervention*'
       - 'apps/**'
@@ -174,9 +176,9 @@ jobs:
           "$RUNNER_TEMP/reuse/bin/pip" install --require-hashes --no-deps -r licensing/requirements.txt
           echo "$RUNNER_TEMP/reuse/bin" >>"$GITHUB_PATH"
       - name: The PDF reader the nonprofit register reads the Bylaws and IRS forms with
-        # pdftotext is not on the runner image; ubuntu-24.04's poppler-utils is 24.02.0, the
+        # pdftotext and pdftohtml (the policies register) are not on the runner image; ubuntu-24.04's poppler-utils is 24.02.0, the
         # version nonprofit/register.json records, and its -v output is in the cache key.
-        if: matrix.area == 'nonprofit'
+        if: matrix.area == 'nonprofit' || matrix.area == 'policies'
         run: sudo apt-get install -y --no-install-recommends poppler-utils
       - name: Address the inputs
         id: address
