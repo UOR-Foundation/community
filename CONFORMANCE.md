@@ -286,6 +286,14 @@ model does not sanction.
 | `OB-04` | `open` | A released CHAOSS metric the oracle binds no computation to, and a computation whose index, field, query, aggregation or script this corpus and projector cannot evaluate exactly as the oracle defines it, is carried as an open claim, never approximated |
 | `OB-05` | `open` | GitHub issues and pull requests, and the Foundation's Discord, enter the corpus only from responses the observations workflow recorded and replayed offline; a Discord channel is read only where the uor-discord-read app permits it, and the record keeps no message text and no member's name |
 
+## policies
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `PL-01` | `build` | The policy register is valid: every clause of the four drafts cites an authority, every section of each standard model is projected by exactly one clause with its text carried verbatim except named substitutions, every Form 990 Part VI line 12a, 12b, 12c, 13 and 14 requirement and every Bylaws 10.3 requirement is covered by a clause, every record class keeps the longest period its authorities state, every staged act is unexecuted, and the counts reconcile |
+| `PL-02` | `build` | The policy catalog declares every source of policies/register.json with the sha256 digest of the bytes read at its pinned commit or fetch, and every article and section of the IRS Sample Conflict of Interest Policy |
+| `PL-03` | `open` | Every requirement no clause covers, every post a policy names that no one holds, every record class no pinned authority states a retention period for, and every staged act is carried as an open claim, never dropped or presumed done |
+
 ## remediation
 
 | ID | Level | Statement |
