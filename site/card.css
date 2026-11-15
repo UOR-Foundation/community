@@ -29,14 +29,18 @@
 .home-table thead th { color: var(--muted-foreground); }
 .home-table td:nth-child(n+3), .home-table thead th:nth-child(n+3) { text-align: right; font-variant-numeric: tabular-nums; }
 
-.home-cta { display: flex; align-items: center; }
+.home-cta { display: flex; align-items: center; margin-bottom: var(--space-3); }
+.has-card #out.idle { visibility: hidden; }
+.has-card #out { font-size: var(--text-28, 1.75rem); overflow-wrap: normal; }
+.home-start a.home-join { color: var(--primary-foreground); }
 .home-join { display: inline-flex; align-items: center; justify-content: center; min-height: 3rem; padding: 0 var(--space-6); border-radius: var(--radius-control); background: var(--primary); color: var(--primary-foreground); font-weight: 600; text-decoration: none; }
 .home-join:hover { background: var(--primary-hover); }
 .rail .home-start { flex-direction: column; align-items: flex-start; gap: 0; list-style: none; }
 .home-start a { display: inline-flex; align-items: center; min-height: 2rem; color: var(--foreground); }
 
 @media (max-width: 839px) {
-  .rail .home-start { display: none; }
+  .rail .home-start > li:not(.home-cta), .has-card .result:has(#out.idle) { display: none; }
+  .rail .home-cta { margin: 0; }
   .rail .home-cta, .rail .home-join { width: 100%; }
   .home h2 { margin-top: var(--space-6); }
 }
@@ -44,3 +48,7 @@
   .home a { display: inline-flex; align-items: center; min-height: 3rem; }
   .home-table a, .home-lede a, .home-note a, .home p a { display: inline; min-height: 0; }
 }
+/* The decision checker: the frame's display, at a fixed size so nothing moves
+ * when the script counts characters; its answer is the rail's. */
+.home .display { display: block; max-width: 40rem; }
+.home .display input { font-size: var(--text-20); }

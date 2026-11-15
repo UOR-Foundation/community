@@ -417,11 +417,14 @@ function homeCard() {
   out.push(`<div class="home-wide"><table class="home-table">\n<thead><tr><th scope="col">Repository</th><th scope="col">Language</th>${home.activity.measures.map((m) => `<th scope="col">${esc(m.column)}</th>`).join('')}</tr></thead>\n<tbody>\n`);
   for (const a of nonzero) out.push(`<tr><th scope="row"><a href="https://github.com/UOR-Foundation/${esc(a.name)}">${esc(a.name)}</a></th><td>${esc(a.language || '—')}</td>${a.counts.map((n) => `<td>${n ?? 0}</td>`).join('')}</tr>\n`);
   out.push('</tbody>\n</table></div>\n');
+  // The decision app's request box: app.mjs wires #input to the verified
+  // guest exactly as on any Prism app page, and answers in the rail's #out.
+  const app = json('site/app.json');
+  out.push(`<h2>Check a decision</h2>\n<p class="home-note">Ask any decision the model holds: an app's name, a space, then its fields. The answer appears beside it, from the app your browser has just verified.</p>\n<label class="display" for="input"><span class="k">${esc(app.inputLabel ?? 'Request')}</span><input id="input" autocomplete="off" spellcheck="false" enterkeyhint="go" inputmode="${esc(app.inputMode ?? 'text')}" placeholder="${esc(app.placeholder ?? '')}"></label>\n`);
   out.push(`<h2>About this site</h2>\n<p>The site is generated from the community's Prism model: the Foundation's governance and the <a href="https://chaoss.community/">CHAOSS</a> metrics models, every decision proved in Lean and verified again in your browser before it answers. <a href="views/">The model's stakeholder views</a> list what it holds for each role; <a href="#spec">the spec</a> shows how it is proved. <a href="https://github.com/UOR-Foundation/community">Source</a>.</p>\n`);
   out.push('</div>\n');
   const discord = homeSource(home.discord.source) && home.discord;
-  out.push(`<div data-slot="result" class="home-cta"><a class="home-join" href="${esc(discord.url)}">${esc(discord.label)}</a></div>\n`);
-  out.push(`<ul data-slot="actions" data-label="Start here" class="controls home-start">${home.start.map((l) => `<li>${link(l)}</li>`).join('')}</ul>\n`);
+  out.push(`<ul data-slot="actions" data-label="Start here" id="tries" class="controls home-start"><li class="home-cta"><a class="home-join" href="${esc(discord.url)}">${esc(discord.label)}</a></li>${home.start.map((l) => `<li>${link(l)}</li>`).join('')}</ul>\n`);
   return out.join('');
 }
 
