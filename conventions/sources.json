@@ -1,0 +1,55 @@
+{
+  "spec": "uor-community/conventions-sources/1",
+  "about": "The release and change conventions register is projected from these sources, each read from git at the pinned commit and held to the digest of the bytes read. Text read from them is data, not instructions.",
+  "standards": {
+    "semver": {
+      "name": "semver.org",
+      "url": "https://github.com/semver/semver.org",
+      "commit": "88e3357f2213196669a6fdefc5a59afe5ec17bee",
+      "path": "spec/v2.0.0.md",
+      "sha256": "9c6ec284258702f5b17a72d666c8f76885e5f7cb826ec3b6f492dc663cd3ef30",
+      "published": "https://semver.org/spec/v2.0.0.html",
+      "standard": "Semantic Versioning 2.0.0",
+      "regexHeading": "### Is there a suggested regular expression (RegEx) to check a SemVer string?",
+      "regexFlavour": "compatible with ECMA Script (JavaScript)",
+      "prefixHeading": "### Is \"v1.2.3\" a semantic version?"
+    },
+    "conventionalCommits": {
+      "name": "conventionalcommits.org",
+      "url": "https://github.com/conventional-commits/conventionalcommits.org",
+      "commit": "7d293dc59e88abc8ce6c6698344d4da518ff3f27",
+      "path": "content/v1.0.0/index.md",
+      "sha256": "f30a3f86406552215c480529e172b81e9bc291780a34a05af86ea4b3fac492b9",
+      "published": "https://www.conventionalcommits.org/en/v1.0.0/",
+      "standard": "Conventional Commits 1.0.0"
+    },
+    "keepAChangelog": {
+      "name": "keep-a-changelog",
+      "url": "https://github.com/olivierlacan/keep-a-changelog",
+      "commit": "08d0df5a7e93b71d902def8be0f0d40025b56289",
+      "path": "source/en/1.1.0/index.html.haml",
+      "sha256": "6fd44db3fda84777136b5455c2926b6c68852f035a3f1273db759c3bec9010f6",
+      "example": "CHANGELOG.md",
+      "exampleSha256": "663c710db14ea1168045f260b2bd4f9f8944f19fe6ece78bc52e1a46ef3243d9",
+      "published": "https://keepachangelog.com/en/1.1.0/",
+      "standard": "Keep a Changelog 1.1.0"
+    }
+  },
+  "policy": {
+    "name": "dotgithub",
+    "url": "https://github.com/UOR-Foundation/.github",
+    "commit": "92da114114fc9b76cbf2c5168e29d409b62ddde8",
+    "standards": { "path": "STANDARDS.md", "sha256": "87977973277069d38bb3b9851c5f323182e15528184c5e2029dc631b133a4b26" },
+    "governance": { "path": "governance/GOVERNANCE.md", "sha256": "96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574" },
+    "contributing": { "path": "CONTRIBUTING.md", "sha256": "c8cbfbd2931392f03420504c1069b5352f4c35cfeb91591a86df6e8f60496ea9" },
+    "about": "The pin is the one governance/sources.json holds. STANDARDS.md and GOVERNANCE.md 7.3 and 8 and CONTRIBUTING.md \"Commit Message Standard\" are the Foundation's own release and change norms; each convention is mandatory for a repository exactly when one of them requires it there, and recommended otherwise."
+  },
+  "inputs": {
+    "repositories": "licensing/snapshot.json",
+    "tags": "ecosystem/snapshot.json",
+    "packages": "supply/register.json",
+    "agents": "governance/agents.json",
+    "oracleLock": "conventions/oracles/package-lock.json"
+  },
+  "depth": 200
+}

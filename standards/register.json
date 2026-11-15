@@ -8,7 +8,7 @@
     },
     {
       "path": "standards/parts.json",
-      "sha256": "cae99ded77916bfc2401e532fc8522efab2bd5344508e2220d6e32219b3619fb"
+      "sha256": "3f091c07efbc19ff31f374d57e69b23609bbc0d642b5a82cc0f50e87cc8147c2"
     },
     {
       "path": "standards/snapshot.json",
@@ -80,13 +80,13 @@
       "inapplicable": 64,
       "conditional": 2,
       "mandatory": 16,
-      "adopted": 328,
-      "applicable": 275
+      "adopted": 373,
+      "applicable": 230
     },
     "byStatus": {
       "implemented": 12,
-      "partial": 340,
-      "unimplemented": 303
+      "partial": 385,
+      "unimplemented": 258
     },
     "openClaims": 648,
     "workstreams": 94
@@ -234,6 +234,16 @@
     },
     {
       "index": 14,
+      "id": "conventions",
+      "directory": "conventions",
+      "register": "conventions/register.json",
+      "module": "Foundation.Conventions.V1",
+      "check": "Conventions registerValidHolds (CV-01)",
+      "commit": "",
+      "present": true
+    },
+    {
+      "index": 15,
       "id": "template",
       "directory": ".",
       "register": "standards.lock",
@@ -243,7 +253,7 @@
       "present": true
     },
     {
-      "index": 15,
+      "index": 16,
       "id": "security",
       "directory": "security",
       "register": "security/register.json",
@@ -253,7 +263,7 @@
       "present": true
     },
     {
-      "index": 16,
+      "index": 17,
       "id": "accessibility",
       "directory": "accessibility",
       "register": "accessibility/register.json",
@@ -277,7 +287,7 @@
       "name": ""
     },
     {
-      "facet": 14,
+      "facet": 15,
       "name": "prismpm verify, the oracles standards.lock binds"
     },
     {
@@ -293,12 +303,16 @@
       "name": "Chaoss registerValidHolds (CC-01)"
     },
     {
-      "facet": 15,
+      "facet": 16,
       "name": "SecurityRegister registerValidHolds (SE-01)"
     },
     {
       "facet": 12,
       "name": "Licensing registerValidHolds (LC-01)"
+    },
+    {
+      "facet": 14,
+      "name": "Conventions registerValidHolds (CV-01)"
     },
     {
       "facet": 8,
@@ -309,7 +323,7 @@
       "name": "Supply registerValidHolds (SC-01)"
     },
     {
-      "facet": 16,
+      "facet": 17,
       "name": "Accessibility registerValidHolds (AX-01)"
     }
   ],
@@ -425,7 +439,8 @@
       "name": "Software development lifecycle: template contract, decision apps and CI",
       "kind": "sdlc",
       "facets": [
-        "template"
+        "template",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -541,7 +556,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -555,7 +571,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -569,7 +586,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -583,7 +601,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -597,7 +616,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -611,7 +631,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -625,7 +646,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -639,7 +661,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -653,7 +676,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -667,7 +691,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -681,7 +706,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -695,7 +721,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -709,7 +736,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -723,7 +751,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -737,7 +766,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -751,7 +781,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -765,7 +796,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -779,7 +811,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -793,7 +826,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -807,7 +841,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -821,7 +856,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -835,7 +871,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -849,7 +886,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -863,7 +901,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -877,7 +916,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -891,7 +931,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -905,7 +946,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -919,7 +961,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -933,7 +976,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -947,7 +991,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -961,7 +1006,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -975,7 +1021,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -989,7 +1036,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -1003,7 +1051,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -1017,7 +1066,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -1031,7 +1081,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -1045,7 +1096,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -1059,7 +1111,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -1073,7 +1126,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -1087,7 +1141,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -1101,7 +1156,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -1115,7 +1171,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -1129,7 +1186,8 @@
       "kind": "package",
       "facets": [
         "inventory",
-        "supply"
+        "supply",
+        "conventions"
       ],
       "subjects": [
         "software",
@@ -4610,7 +4668,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Governance and organizational structure"
@@ -5527,7 +5585,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "implemented",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": []
     },
@@ -5565,7 +5623,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Communications and Discord"
@@ -5585,7 +5643,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -5605,7 +5663,7 @@
       "outcome": "applicable",
       "rule": 0,
       "status": "unimplemented",
-      "facet": 14,
+      "facet": 15,
       "check": 0,
       "open": [
         "nothing in the Foundation cites or implements it"
@@ -5625,7 +5683,7 @@
       "outcome": "applicable",
       "rule": 0,
       "status": "unimplemented",
-      "facet": 14,
+      "facet": 15,
       "check": 0,
       "open": [
         "nothing in the Foundation cites or implements it"
@@ -5645,7 +5703,7 @@
       "outcome": "applicable",
       "rule": 0,
       "status": "unimplemented",
-      "facet": 14,
+      "facet": 15,
       "check": 0,
       "open": [
         "nothing in the Foundation cites or implements it"
@@ -5685,7 +5743,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "ISO-42010-2022 is binding-only: The lawful scope is a reviewed architecture-description interpretation, not certification or an executable oracle."
@@ -5705,7 +5763,7 @@
       "outcome": "applicable",
       "rule": 0,
       "status": "unimplemented",
-      "facet": 14,
+      "facet": 15,
       "check": 0,
       "open": [
         "nothing in the Foundation cites or implements it"
@@ -5725,7 +5783,7 @@
       "outcome": "applicable",
       "rule": 0,
       "status": "unimplemented",
-      "facet": 14,
+      "facet": 15,
       "check": 0,
       "open": [
         "nothing in the Foundation cites or implements it"
@@ -5745,7 +5803,7 @@
       "outcome": "applicable",
       "rule": 0,
       "status": "unimplemented",
-      "facet": 14,
+      "facet": 15,
       "check": 0,
       "open": [
         "nothing in the Foundation cites or implements it"
@@ -5765,7 +5823,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "ISO-19450-2015 is binding-only: The lawful scope is a reviewed Object-Process Methodology design-view interpretation, not certification or an executable oracle."
@@ -5805,7 +5863,7 @@
       "outcome": "applicable",
       "rule": 0,
       "status": "unimplemented",
-      "facet": 14,
+      "facet": 15,
       "check": 0,
       "open": [
         "nothing in the Foundation cites or implements it"
@@ -5825,7 +5883,7 @@
       "outcome": "applicable",
       "rule": 0,
       "status": "unimplemented",
-      "facet": 14,
+      "facet": 15,
       "check": 0,
       "open": [
         "nothing in the Foundation cites or implements it"
@@ -5845,10 +5903,10 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 8,
+      "facet": 14,
       "check": 9,
       "open": [
-        "inventory/register.json cites it; no check of this repository verifies its clauses for Software development lifecycle: template contract, decision apps and CI"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for Software development lifecycle: template contract, decision apps and CI"
       ]
     },
     {
@@ -5861,14 +5919,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
       "facet": 14,
-      "check": 0,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for Software development lifecycle: template contract, decision apps and CI"
       ]
     },
     {
@@ -5881,14 +5939,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
       "facet": 14,
-      "check": 0,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for Software development lifecycle: template contract, decision apps and CI"
       ]
     },
     {
@@ -5925,7 +5983,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "OMG-UML-2-5-1 is binding-only: The lawful scope is a reviewed UML component, sequence and state machine design-view interpretation, not certification or an executable oracle."
@@ -5945,7 +6003,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "cloudevents-1.0-json does not cover transport delivery guarantees, broker-specific bindings, and consumer application behavior"
@@ -5965,7 +6023,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "spdx-3.0.1-model does not cover truth of submitted checksums and facts omitted by an upstream package manager or image scanner"
@@ -5985,7 +6043,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "asyncapi-3.1-schema does not cover the upstream repository publishes no negative fixture corpus; planted invalid-document rejection is separate evidence, while broker delivery behavior and prose-only interoperability remain outside this oracle"
@@ -6005,7 +6063,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "openapi-3.2-schema does not cover server behavior and prose-only interoperability"
@@ -6025,7 +6083,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "json-schema-2020-12 does not cover the upstream optional directory, application semantics, and requirements absent from a schema are outside this finite profile",
@@ -6047,7 +6105,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "oci-layout-1.1 does not cover registry transport and OCI Runtime behavior are owned by their separate registered conformance oracles"
@@ -6067,7 +6125,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "oci-distribution-1.1.1-conformance does not cover authentication profiles, public registry availability, provider policy, and registry implementations other than the exact tested subjects"
@@ -6087,7 +6145,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "oci-runtime-1.3.0-schema does not cover runtime lifecycle behavior beyond the separately executed unmodified container-engine positive and negative probes"
@@ -6107,7 +6165,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "compose-fee041b3 does not cover service lifecycle, fixture execution, providers, and other implementations require separate deployment evidence"
@@ -6127,7 +6185,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "devcontainer-c95ffeed does not cover container startup, editor-specific extensions, and untested container engines require a separate runtime fixture"
@@ -6147,7 +6205,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "kubernetes-1.36.4 does not cover server admission, rollout, managed-provider extensions, and future Kubernetes minors; those are deployment evidence"
@@ -6167,7 +6225,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "oidc-core-1.0-profile does not cover provider certification profiles, browser flows, external endpoints, and OpenID specifications outside the selected OIDC Core conditions"
@@ -6187,7 +6245,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "IETF-RFC-7636 is normative: Sections 4.1-4.2 and Appendix B define the ST-17 S256 client primitive and imported example, not complete OAuth or mailbox authentication."
@@ -6207,7 +6265,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "otel-collector-0.136.0 does not cover unbounded availability, network losslessness, and external exporter provider behavior"
@@ -6227,7 +6285,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "unicode-normalization-17.0.0 does not cover Unicode properties other than normalization and scalar-safe text handling"
@@ -6247,7 +6305,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "BLAKE3-VECTORS-1-5-5 is normative: All 35 upstream digest vectors qualify hash, keyed-hash, derive-key, extended output and the archive content-identity adapter; not cryptographic proof or durable storage."
@@ -6267,7 +6325,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "osv-schema-snapshot does not cover agreement with the locked advisory snapshot and vulnerabilities published after that snapshot are separate evidence"
@@ -6428,7 +6486,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for Assets and records"
       ]
@@ -6633,7 +6691,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for Software supply chain"
       ]
@@ -6652,7 +6710,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Software supply chain"
@@ -6672,7 +6730,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Software supply chain"
@@ -6692,7 +6750,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -6712,7 +6770,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -6732,8 +6790,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Website and accessibility"
       ]
@@ -6752,8 +6810,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Website and accessibility"
       ]
@@ -6791,7 +6849,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for Website and accessibility"
       ]
@@ -6810,7 +6868,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -6870,7 +6928,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "implemented",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": []
     },
@@ -6888,7 +6946,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "implemented",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": []
     },
@@ -6906,7 +6964,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "implemented",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": []
     },
@@ -6924,7 +6982,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "implemented",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": []
     },
@@ -6942,7 +7000,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "implemented",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": []
     },
@@ -6960,7 +7018,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "implemented",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": []
     },
@@ -6978,7 +7036,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "implemented",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": []
     },
@@ -6996,7 +7054,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "implemented",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": []
     },
@@ -7014,7 +7072,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "implemented",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": []
     },
@@ -7032,7 +7090,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "implemented",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": []
     },
@@ -7050,7 +7108,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "partial",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": [
         "reported partial by the security thread; not yet in security/README.md at the pinned commit"
@@ -7070,7 +7128,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "partial",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": [
         "reported partial by the security thread; not yet in security/README.md at the pinned commit"
@@ -7090,7 +7148,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "partial",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": [
         "reported partial by the security thread; not yet in security/README.md at the pinned commit"
@@ -7110,7 +7168,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "partial",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": [
         "reported partial by the security thread; not yet in security/README.md at the pinned commit"
@@ -7130,7 +7188,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -7150,7 +7208,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -7170,7 +7228,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -7190,7 +7248,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -7210,7 +7268,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -7230,7 +7288,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -7250,7 +7308,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -7270,7 +7328,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -7290,7 +7348,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -7310,7 +7368,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -7330,7 +7388,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -7350,7 +7408,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -7370,7 +7428,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "unimplemented",
-      "facet": 15,
+      "facet": 16,
       "check": 0,
       "open": [
         "reported unimplemented by the security thread; not yet in security/README.md at the pinned commit"
@@ -7390,7 +7448,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "partial",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": [
         "reported partial by the security thread; not yet in security/README.md at the pinned commit"
@@ -7410,7 +7468,7 @@
       "outcome": "secured",
       "rule": 1,
       "status": "partial",
-      "facet": 15,
+      "facet": 16,
       "check": 7,
       "open": [
         "reported partial by the security thread; not yet in security/README.md at the pinned commit"
@@ -7450,7 +7508,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for atlas-embeddings"
@@ -7571,7 +7629,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for atlas-embeddings"
       ]
@@ -7586,14 +7644,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for atlas-embeddings"
       ]
     },
     {
@@ -7629,7 +7687,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for atlas-embeddings"
       ]
@@ -7668,7 +7726,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for lexlean"
@@ -7789,7 +7847,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for lexlean"
       ]
@@ -7804,14 +7862,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for lexlean"
       ]
     },
     {
@@ -7847,7 +7905,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for lexlean"
       ]
@@ -7886,7 +7944,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for prism-code"
@@ -8007,7 +8065,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for prism-code"
       ]
@@ -8022,14 +8080,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for prism-code"
       ]
     },
     {
@@ -8065,7 +8123,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for prism-code"
       ]
@@ -8104,7 +8162,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for uor-addr"
@@ -8225,7 +8283,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for uor-addr"
       ]
@@ -8240,14 +8298,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for uor-addr"
       ]
     },
     {
@@ -8283,7 +8341,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for uor-addr"
       ]
@@ -8322,7 +8380,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for uor-addr-1"
@@ -8443,7 +8501,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for uor-addr-1"
       ]
@@ -8458,14 +8516,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for uor-addr-1"
       ]
     },
     {
@@ -8501,7 +8559,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for uor-addr-1"
       ]
@@ -8540,7 +8598,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for uor-addr-c"
@@ -8661,7 +8719,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for uor-addr-c"
       ]
@@ -8676,14 +8734,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for uor-addr-c"
       ]
     },
     {
@@ -8719,7 +8777,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for uor-addr-c"
       ]
@@ -8758,7 +8816,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for uor-addr-wasm"
@@ -8879,7 +8937,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for uor-addr-wasm"
       ]
@@ -8894,14 +8952,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for uor-addr-wasm"
       ]
     },
     {
@@ -8937,7 +8995,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for uor-addr-wasm"
       ]
@@ -8976,7 +9034,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for uor-foundation"
@@ -9097,7 +9155,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for uor-foundation"
       ]
@@ -9112,14 +9170,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for uor-foundation"
       ]
     },
     {
@@ -9155,7 +9213,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for uor-foundation"
       ]
@@ -9194,7 +9252,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for uor-foundation-macros"
@@ -9315,7 +9373,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for uor-foundation-macros"
       ]
@@ -9330,14 +9388,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for uor-foundation-macros"
       ]
     },
     {
@@ -9373,7 +9431,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for uor-foundation-macros"
       ]
@@ -9412,7 +9470,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for uor-foundation-sdk"
@@ -9533,7 +9591,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for uor-foundation-sdk"
       ]
@@ -9548,14 +9606,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for uor-foundation-sdk"
       ]
     },
     {
@@ -9591,7 +9649,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for uor-foundation-sdk"
       ]
@@ -9630,7 +9688,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for uor-prism"
@@ -9751,7 +9809,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for uor-prism"
       ]
@@ -9766,14 +9824,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for uor-prism"
       ]
     },
     {
@@ -9809,7 +9867,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for uor-prism"
       ]
@@ -9848,7 +9906,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for uor-prism-crypto"
@@ -9969,7 +10027,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for uor-prism-crypto"
       ]
@@ -9984,14 +10042,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for uor-prism-crypto"
       ]
     },
     {
@@ -10027,7 +10085,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for uor-prism-crypto"
       ]
@@ -10066,7 +10124,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for uor-prism-fhe"
@@ -10187,7 +10245,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for uor-prism-fhe"
       ]
@@ -10202,14 +10260,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for uor-prism-fhe"
       ]
     },
     {
@@ -10245,7 +10303,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for uor-prism-fhe"
       ]
@@ -10284,7 +10342,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for uor-prism-numerics"
@@ -10405,7 +10463,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for uor-prism-numerics"
       ]
@@ -10420,14 +10478,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for uor-prism-numerics"
       ]
     },
     {
@@ -10463,7 +10521,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for uor-prism-numerics"
       ]
@@ -10502,7 +10560,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for uor-prism-tensor"
@@ -10623,7 +10681,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for uor-prism-tensor"
       ]
@@ -10638,14 +10696,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for uor-prism-tensor"
       ]
     },
     {
@@ -10681,7 +10739,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for uor-prism-tensor"
       ]
@@ -10720,7 +10778,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for uor-prism-verify"
@@ -10841,7 +10899,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for uor-prism-verify"
       ]
@@ -10856,14 +10914,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for uor-prism-verify"
       ]
     },
     {
@@ -10899,7 +10957,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for uor-prism-verify"
       ]
@@ -10938,7 +10996,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/calculator-system"
@@ -11059,7 +11117,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/calculator-system"
       ]
@@ -11074,14 +11132,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/calculator-system"
       ]
     },
     {
@@ -11117,7 +11175,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/calculator-system"
       ]
@@ -11156,7 +11214,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/dataflow-policy"
@@ -11277,7 +11335,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/dataflow-policy"
       ]
@@ -11292,14 +11350,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/dataflow-policy"
       ]
     },
     {
@@ -11335,7 +11393,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/dataflow-policy"
       ]
@@ -11374,7 +11432,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-compose"
@@ -11495,7 +11553,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-compose"
       ]
@@ -11510,14 +11568,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-compose"
       ]
     },
     {
@@ -11553,7 +11611,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-compose"
       ]
@@ -11592,7 +11650,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-github-pages"
@@ -11713,7 +11771,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-github-pages"
       ]
@@ -11728,14 +11786,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-github-pages"
       ]
     },
     {
@@ -11771,7 +11829,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-github-pages"
       ]
@@ -11810,7 +11868,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-kubernetes"
@@ -11931,7 +11989,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-kubernetes"
       ]
@@ -11946,14 +12004,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-kubernetes"
       ]
     },
     {
@@ -11989,7 +12047,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-kubernetes"
       ]
@@ -12028,7 +12086,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-oracles"
@@ -12149,7 +12207,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-oracles"
       ]
@@ -12164,14 +12222,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-oracles"
       ]
     },
     {
@@ -12207,7 +12265,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-oracles"
       ]
@@ -12246,7 +12304,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-runtime"
@@ -12367,7 +12425,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-runtime"
       ]
@@ -12382,14 +12440,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-runtime"
       ]
     },
     {
@@ -12425,7 +12483,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-runtime"
       ]
@@ -12464,7 +12522,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk"
@@ -12585,7 +12643,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk"
       ]
@@ -12600,14 +12658,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk"
       ]
     },
     {
@@ -12643,7 +12701,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk"
       ]
@@ -12682,7 +12740,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk-build"
@@ -12803,7 +12861,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk-build"
       ]
@@ -12818,14 +12876,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk-build"
       ]
     },
     {
@@ -12861,7 +12919,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk-build"
       ]
@@ -12900,7 +12958,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk-candidate"
@@ -13021,7 +13079,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk-candidate"
       ]
@@ -13036,14 +13094,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk-candidate"
       ]
     },
     {
@@ -13079,7 +13137,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk-candidate"
       ]
@@ -13118,7 +13176,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for @uor-foundation/algebra"
@@ -13239,7 +13297,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/algebra"
       ]
@@ -13254,14 +13312,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/algebra"
       ]
     },
     {
@@ -13297,7 +13355,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/algebra"
       ]
@@ -13336,7 +13394,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for @uor-foundation/calculus"
@@ -13457,7 +13515,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/calculus"
       ]
@@ -13472,14 +13530,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/calculus"
       ]
     },
     {
@@ -13515,7 +13573,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/calculus"
       ]
@@ -13554,7 +13612,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for @uor-foundation/field-substrate"
@@ -13675,7 +13733,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/field-substrate"
       ]
@@ -13690,14 +13748,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/field-substrate"
       ]
     },
     {
@@ -13733,7 +13791,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/field-substrate"
       ]
@@ -13772,7 +13830,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for @uor-foundation/geometry"
@@ -13893,7 +13951,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/geometry"
       ]
@@ -13908,14 +13966,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/geometry"
       ]
     },
     {
@@ -13951,7 +14009,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/geometry"
       ]
@@ -13990,7 +14048,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for @uor-foundation/math-js"
@@ -14111,7 +14169,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/math-js"
       ]
@@ -14126,14 +14184,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/math-js"
       ]
     },
     {
@@ -14169,7 +14227,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/math-js"
       ]
@@ -14208,7 +14266,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for @uor-foundation/math-ts-core"
@@ -14329,7 +14387,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/math-ts-core"
       ]
@@ -14344,14 +14402,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/math-ts-core"
       ]
     },
     {
@@ -14387,7 +14445,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/math-ts-core"
       ]
@@ -14426,7 +14484,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for @uor-foundation/mcp-server"
@@ -14547,7 +14605,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/mcp-server"
       ]
@@ -14562,14 +14620,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/mcp-server"
       ]
     },
     {
@@ -14605,7 +14663,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/mcp-server"
       ]
@@ -14644,7 +14702,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for @uor-foundation/operators"
@@ -14765,7 +14823,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/operators"
       ]
@@ -14780,14 +14838,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/operators"
       ]
     },
     {
@@ -14823,7 +14881,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/operators"
       ]
@@ -14862,7 +14920,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for @uor-foundation/resonance"
@@ -14983,7 +15041,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/resonance"
       ]
@@ -14998,14 +15056,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/resonance"
       ]
     },
     {
@@ -15041,7 +15099,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/resonance"
       ]
@@ -15080,7 +15138,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for @uor-foundation/self-reference"
@@ -15201,7 +15259,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/self-reference"
       ]
@@ -15216,14 +15274,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/self-reference"
       ]
     },
     {
@@ -15259,7 +15317,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/self-reference"
       ]
@@ -15298,7 +15356,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for @uor-foundation/sigmatics"
@@ -15419,7 +15477,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/sigmatics"
       ]
@@ -15434,14 +15492,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/sigmatics"
       ]
     },
     {
@@ -15477,7 +15535,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/sigmatics"
       ]
@@ -15516,7 +15574,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for @uor-foundation/topology"
@@ -15637,7 +15695,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/topology"
       ]
@@ -15652,14 +15710,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/topology"
       ]
     },
     {
@@ -15695,7 +15753,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/topology"
       ]
@@ -15734,7 +15792,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for @uor-foundation/uor-addr"
@@ -15855,7 +15913,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/uor-addr"
       ]
@@ -15870,14 +15928,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/uor-addr"
       ]
     },
     {
@@ -15913,7 +15971,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/uor-addr"
       ]
@@ -15952,7 +16010,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for @uor/prism"
@@ -16073,7 +16131,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for @uor/prism"
       ]
@@ -16088,14 +16146,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for @uor/prism"
       ]
     },
     {
@@ -16131,7 +16189,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for @uor/prism"
       ]
@@ -16170,7 +16228,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for prism-code"
@@ -16291,7 +16349,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for prism-code"
       ]
@@ -16306,14 +16364,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for prism-code"
       ]
     },
     {
@@ -16349,7 +16407,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for prism-code"
       ]
@@ -16388,7 +16446,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for prism-code"
@@ -16509,7 +16567,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for prism-code"
       ]
@@ -16524,14 +16582,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for prism-code"
       ]
     },
     {
@@ -16567,7 +16625,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for prism-code"
       ]
@@ -16606,7 +16664,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for uor-addr"
@@ -16727,7 +16785,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 8,
-      "check": 9,
+      "check": 10,
       "open": [
         "inventory/register.json cites it; no check of this repository verifies its clauses for uor-addr"
       ]
@@ -16742,14 +16800,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 14,
+      "check": 9,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "conventions/register.json cites it; no check of this repository verifies its clauses for uor-addr"
       ]
     },
     {
@@ -16785,7 +16843,7 @@
       "rule": 8,
       "status": "partial",
       "facet": 13,
-      "check": 10,
+      "check": 11,
       "open": [
         "supply/register.json cites it; no check of this repository verifies its clauses for uor-addr"
       ]
@@ -16804,7 +16862,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for About the Foundation"
@@ -16844,8 +16902,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for About the Foundation"
       ]
@@ -16864,8 +16922,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for About the Foundation"
       ]
@@ -16902,7 +16960,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Agent entry point"
@@ -16942,8 +17000,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Agent entry point"
       ]
@@ -16962,8 +17020,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Agent entry point"
       ]
@@ -17000,7 +17058,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Foundation blog"
@@ -17040,8 +17098,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Foundation blog"
       ]
@@ -17060,8 +17118,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Foundation blog"
       ]
@@ -17098,7 +17156,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Calculator example"
@@ -17138,8 +17196,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Calculator example"
       ]
@@ -17158,8 +17216,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Calculator example"
       ]
@@ -17196,7 +17254,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Community health site"
@@ -17236,8 +17294,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Community health site"
       ]
@@ -17256,8 +17314,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Community health site"
       ]
@@ -17294,7 +17352,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Dataflow policy site"
@@ -17334,8 +17392,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Dataflow policy site"
       ]
@@ -17354,8 +17412,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Dataflow policy site"
       ]
@@ -17392,7 +17450,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Discord posting for agents"
@@ -17432,8 +17490,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Discord posting for agents"
       ]
@@ -17452,8 +17510,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Discord posting for agents"
       ]
@@ -17490,7 +17548,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Prism documentation"
@@ -17530,8 +17588,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Prism documentation"
       ]
@@ -17550,8 +17608,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Prism documentation"
       ]
@@ -17588,7 +17646,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Docs assistant (DocsGPT API)"
@@ -17628,8 +17686,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Docs assistant (DocsGPT API)"
       ]
@@ -17648,8 +17706,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Docs assistant (DocsGPT API)"
       ]
@@ -17686,7 +17744,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Prism AI Foundry"
@@ -17726,8 +17784,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Prism AI Foundry"
       ]
@@ -17746,8 +17804,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Prism AI Foundry"
       ]
@@ -17784,7 +17842,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Foundry Web"
@@ -17824,8 +17882,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Foundry Web"
       ]
@@ -17844,8 +17902,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Foundry Web"
       ]
@@ -17882,7 +17940,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for UOR Framework overview"
@@ -17922,8 +17980,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework overview"
       ]
@@ -17942,8 +18000,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework overview"
       ]
@@ -17980,7 +18038,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Holo Search"
@@ -18020,8 +18078,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Holo Search"
       ]
@@ -18040,8 +18098,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Holo Search"
       ]
@@ -18078,7 +18136,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Kappa registry"
@@ -18118,8 +18176,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Kappa registry"
       ]
@@ -18138,8 +18196,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Kappa registry"
       ]
@@ -18176,7 +18234,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Hosted LexLean verifier (MCP server)"
@@ -18216,8 +18274,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Hosted LexLean verifier (MCP server)"
       ]
@@ -18236,8 +18294,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Hosted LexLean verifier (MCP server)"
       ]
@@ -18274,7 +18332,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Prism playground"
@@ -18314,8 +18372,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Prism playground"
       ]
@@ -18334,8 +18392,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Prism playground"
       ]
@@ -18372,7 +18430,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for Template try page"
@@ -18412,8 +18470,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Template try page"
       ]
@@ -18432,8 +18490,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for Template try page"
       ]
@@ -18470,7 +18528,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for UOR Framework ontology"
@@ -18510,8 +18568,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework ontology"
       ]
@@ -18530,8 +18588,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework ontology"
       ]
@@ -18568,7 +18626,7 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 14,
+      "facet": 15,
       "check": 3,
       "open": [
         "standards.lock cites it; no check of this repository verifies its clauses for UOR Foundation website"
@@ -18608,8 +18666,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Foundation website"
       ]
@@ -18628,8 +18686,8 @@
       "outcome": "adopted",
       "rule": 8,
       "status": "partial",
-      "facet": 16,
-      "check": 11,
+      "facet": 17,
+      "check": 12,
       "open": [
         "accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Foundation website"
       ]
@@ -19113,19 +19171,19 @@
       "decision": 76,
       "owner": "standards",
       "refusal": "standard-partial",
-      "detail": "Semantic Versioning 2.0.0 for Software development lifecycle: template contract, decision apps and CI: inventory/register.json cites it; no check of this repository verifies its clauses for Software development lifecycle: template contract, decision apps and CI"
+      "detail": "Semantic Versioning 2.0.0 for Software development lifecycle: template contract, decision apps and CI: conventions/register.json cites it; no check of this repository verifies its clauses for Software development lifecycle: template contract, decision apps and CI"
     },
     {
       "decision": 77,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Conventional Commits 1.0.0 for Software development lifecycle: template contract, decision apps and CI: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Conventional Commits 1.0.0 for Software development lifecycle: template contract, decision apps and CI: conventions/register.json cites it; no check of this repository verifies its clauses for Software development lifecycle: template contract, decision apps and CI"
     },
     {
       "decision": 78,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for Software development lifecycle: template contract, decision apps and CI: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for Software development lifecycle: template contract, decision apps and CI: conventions/register.json cites it; no check of this repository verifies its clauses for Software development lifecycle: template contract, decision apps and CI"
     },
     {
       "decision": 79,
@@ -19574,8 +19632,8 @@
     {
       "decision": 164,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for atlas-embeddings: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for atlas-embeddings: conventions/register.json cites it; no check of this repository verifies its clauses for atlas-embeddings"
     },
     {
       "decision": 166,
@@ -19634,8 +19692,8 @@
     {
       "decision": 175,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for lexlean: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for lexlean: conventions/register.json cites it; no check of this repository verifies its clauses for lexlean"
     },
     {
       "decision": 177,
@@ -19694,8 +19752,8 @@
     {
       "decision": 186,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for prism-code: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for prism-code: conventions/register.json cites it; no check of this repository verifies its clauses for prism-code"
     },
     {
       "decision": 188,
@@ -19754,8 +19812,8 @@
     {
       "decision": 197,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for uor-addr: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for uor-addr: conventions/register.json cites it; no check of this repository verifies its clauses for uor-addr"
     },
     {
       "decision": 199,
@@ -19814,8 +19872,8 @@
     {
       "decision": 208,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for uor-addr-1: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for uor-addr-1: conventions/register.json cites it; no check of this repository verifies its clauses for uor-addr-1"
     },
     {
       "decision": 210,
@@ -19874,8 +19932,8 @@
     {
       "decision": 219,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for uor-addr-c: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for uor-addr-c: conventions/register.json cites it; no check of this repository verifies its clauses for uor-addr-c"
     },
     {
       "decision": 221,
@@ -19934,8 +19992,8 @@
     {
       "decision": 230,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for uor-addr-wasm: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for uor-addr-wasm: conventions/register.json cites it; no check of this repository verifies its clauses for uor-addr-wasm"
     },
     {
       "decision": 232,
@@ -19994,8 +20052,8 @@
     {
       "decision": 241,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for uor-foundation: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for uor-foundation: conventions/register.json cites it; no check of this repository verifies its clauses for uor-foundation"
     },
     {
       "decision": 243,
@@ -20054,8 +20112,8 @@
     {
       "decision": 252,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for uor-foundation-macros: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for uor-foundation-macros: conventions/register.json cites it; no check of this repository verifies its clauses for uor-foundation-macros"
     },
     {
       "decision": 254,
@@ -20114,8 +20172,8 @@
     {
       "decision": 263,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for uor-foundation-sdk: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for uor-foundation-sdk: conventions/register.json cites it; no check of this repository verifies its clauses for uor-foundation-sdk"
     },
     {
       "decision": 265,
@@ -20174,8 +20232,8 @@
     {
       "decision": 274,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for uor-prism: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for uor-prism: conventions/register.json cites it; no check of this repository verifies its clauses for uor-prism"
     },
     {
       "decision": 276,
@@ -20234,8 +20292,8 @@
     {
       "decision": 285,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for uor-prism-crypto: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for uor-prism-crypto: conventions/register.json cites it; no check of this repository verifies its clauses for uor-prism-crypto"
     },
     {
       "decision": 287,
@@ -20294,8 +20352,8 @@
     {
       "decision": 296,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for uor-prism-fhe: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for uor-prism-fhe: conventions/register.json cites it; no check of this repository verifies its clauses for uor-prism-fhe"
     },
     {
       "decision": 298,
@@ -20354,8 +20412,8 @@
     {
       "decision": 307,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for uor-prism-numerics: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for uor-prism-numerics: conventions/register.json cites it; no check of this repository verifies its clauses for uor-prism-numerics"
     },
     {
       "decision": 309,
@@ -20414,8 +20472,8 @@
     {
       "decision": 318,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for uor-prism-tensor: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for uor-prism-tensor: conventions/register.json cites it; no check of this repository verifies its clauses for uor-prism-tensor"
     },
     {
       "decision": 320,
@@ -20474,8 +20532,8 @@
     {
       "decision": 329,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for uor-prism-verify: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for uor-prism-verify: conventions/register.json cites it; no check of this repository verifies its clauses for uor-prism-verify"
     },
     {
       "decision": 331,
@@ -20534,8 +20592,8 @@
     {
       "decision": 340,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/calculator-system: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/calculator-system: conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/calculator-system"
     },
     {
       "decision": 342,
@@ -20594,8 +20652,8 @@
     {
       "decision": 351,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/dataflow-policy: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/dataflow-policy: conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/dataflow-policy"
     },
     {
       "decision": 353,
@@ -20654,8 +20712,8 @@
     {
       "decision": 362,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-adapter-compose: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-adapter-compose: conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-compose"
     },
     {
       "decision": 364,
@@ -20714,8 +20772,8 @@
     {
       "decision": 373,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-adapter-github-pages: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-adapter-github-pages: conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-github-pages"
     },
     {
       "decision": 375,
@@ -20774,8 +20832,8 @@
     {
       "decision": 384,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-adapter-kubernetes: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-adapter-kubernetes: conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-kubernetes"
     },
     {
       "decision": 386,
@@ -20834,8 +20892,8 @@
     {
       "decision": 395,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-oracles: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-oracles: conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-oracles"
     },
     {
       "decision": 397,
@@ -20894,8 +20952,8 @@
     {
       "decision": 406,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-runtime: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-runtime: conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-runtime"
     },
     {
       "decision": 408,
@@ -20954,8 +21012,8 @@
     {
       "decision": 417,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-sdk: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-sdk: conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk"
     },
     {
       "decision": 419,
@@ -21014,8 +21072,8 @@
     {
       "decision": 428,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-sdk-build: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-sdk-build: conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk-build"
     },
     {
       "decision": 430,
@@ -21074,8 +21132,8 @@
     {
       "decision": 439,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-sdk-candidate: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for ghcr.io/uor-foundation/prismpm-sdk-candidate: conventions/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk-candidate"
     },
     {
       "decision": 441,
@@ -21134,8 +21192,8 @@
     {
       "decision": 450,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/algebra: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/algebra: conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/algebra"
     },
     {
       "decision": 452,
@@ -21194,8 +21252,8 @@
     {
       "decision": 461,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/calculus: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/calculus: conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/calculus"
     },
     {
       "decision": 463,
@@ -21254,8 +21312,8 @@
     {
       "decision": 472,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/field-substrate: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/field-substrate: conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/field-substrate"
     },
     {
       "decision": 474,
@@ -21314,8 +21372,8 @@
     {
       "decision": 483,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/geometry: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/geometry: conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/geometry"
     },
     {
       "decision": 485,
@@ -21374,8 +21432,8 @@
     {
       "decision": 494,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/math-js: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/math-js: conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/math-js"
     },
     {
       "decision": 496,
@@ -21434,8 +21492,8 @@
     {
       "decision": 505,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/math-ts-core: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/math-ts-core: conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/math-ts-core"
     },
     {
       "decision": 507,
@@ -21494,8 +21552,8 @@
     {
       "decision": 516,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/mcp-server: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/mcp-server: conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/mcp-server"
     },
     {
       "decision": 518,
@@ -21554,8 +21612,8 @@
     {
       "decision": 527,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/operators: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/operators: conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/operators"
     },
     {
       "decision": 529,
@@ -21614,8 +21672,8 @@
     {
       "decision": 538,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/resonance: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/resonance: conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/resonance"
     },
     {
       "decision": 540,
@@ -21674,8 +21732,8 @@
     {
       "decision": 549,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/self-reference: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/self-reference: conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/self-reference"
     },
     {
       "decision": 551,
@@ -21734,8 +21792,8 @@
     {
       "decision": 560,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/sigmatics: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/sigmatics: conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/sigmatics"
     },
     {
       "decision": 562,
@@ -21794,8 +21852,8 @@
     {
       "decision": 571,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/topology: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/topology: conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/topology"
     },
     {
       "decision": 573,
@@ -21854,8 +21912,8 @@
     {
       "decision": 582,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/uor-addr: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for @uor-foundation/uor-addr: conventions/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/uor-addr"
     },
     {
       "decision": 584,
@@ -21914,8 +21972,8 @@
     {
       "decision": 593,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for @uor/prism: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for @uor/prism: conventions/register.json cites it; no check of this repository verifies its clauses for @uor/prism"
     },
     {
       "decision": 595,
@@ -21974,8 +22032,8 @@
     {
       "decision": 604,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for prism-code: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for prism-code: conventions/register.json cites it; no check of this repository verifies its clauses for prism-code"
     },
     {
       "decision": 606,
@@ -22034,8 +22092,8 @@
     {
       "decision": 615,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for prism-code: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for prism-code: conventions/register.json cites it; no check of this repository verifies its clauses for prism-code"
     },
     {
       "decision": 617,
@@ -22094,8 +22152,8 @@
     {
       "decision": 626,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Keep a Changelog 1.1.0 for uor-addr: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Keep a Changelog 1.1.0 for uor-addr: conventions/register.json cites it; no check of this repository verifies its clauses for uor-addr"
     },
     {
       "decision": 628,
@@ -23293,7 +23351,7 @@
       "owner": "standards",
       "mandatory": false,
       "outcomes": [
-        "applicable"
+        "adopted"
       ],
       "undecided": false,
       "parts": [
@@ -23343,7 +23401,7 @@
         "uor-addr"
       ],
       "statuses": [
-        "unimplemented"
+        "partial"
       ],
       "clauses": [],
       "oracle": "No official validator is published; the format's section headings are checked by parsing",
@@ -24432,14 +24490,14 @@
       "owner": "standards",
       "mandatory": false,
       "outcomes": [
-        "applicable"
+        "adopted"
       ],
       "undecided": false,
       "parts": [
         "Software development lifecycle: template contract, decision apps and CI"
       ],
       "statuses": [
-        "unimplemented"
+        "partial"
       ],
       "clauses": [],
       "oracle": "commitlint with @commitlint/config-conventional, unmodified",

@@ -32,6 +32,7 @@ on:
       - 'policies/**'
       - 'standards/**'
       - 'accessibility/**'
+      - 'conventions/**'
       - 'standards.lock'
       - 'package-lock.json'
       - 'automation/intervention*'
@@ -57,6 +58,7 @@ on:
       - 'policies/**'
       - 'standards/**'
       - 'accessibility/**'
+      - 'conventions/**'
       - 'standards.lock'
       - 'package-lock.json'
       - 'automation/intervention*'
@@ -228,6 +230,15 @@ jobs:
         # package-lock.json pins; the supply entry's cache key hashes package-lock.json.
         if: steps.reuse.outputs.reuse != 'true' && matrix.area == 'supply'
         run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: The pinned convention parsers the conventions register runs
+        # conventions/oracles/package-lock.json pins semver, conventional-commits-parser, commitlint
+        # and keep-a-changelog; the conventions entry's cache key hashes conventions/**.
+        if: steps.reuse.outputs.reuse != 'true' && matrix.area == 'conventions'
+        run: |
+          mkdir -p "$RUNNER_TEMP/conv"
+          cp conventions/oracles/package.json conventions/oracles/package-lock.json "$RUNNER_TEMP/conv/"
+          npm ci --prefix "$RUNNER_TEMP/conv" --ignore-scripts --no-audit --no-fund
+          echo "ORACLES=$RUNNER_TEMP/conv" >>"$GITHUB_ENV"
       - name: Re-project with --check
         if: steps.reuse.outputs.reuse != 'true'
         env:

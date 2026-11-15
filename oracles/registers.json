@@ -132,6 +132,17 @@
         ["node", "accessibility/project.mjs", "{sources}", "--check"],
         ["node", "accessibility/catalog.mjs", "--check"]
       ]
+    },
+    {
+      "area": "conventions",
+      "sources": {"kind": "git-urls", "file": "conventions/sources.json"},
+      "inputs": ["conventions/**", "licensing/snapshot.json", "ecosystem/snapshot.json", "ecosystem/register.json", "supply/register.json", "governance/agents.json", "tools/register-lex.mjs"],
+      "tools": [["npm", "--version"]],
+      "check": [
+        ["node", "conventions/scan.mjs", "{sources}/conventions-work", "{sources}", "--check"],
+        ["node", "conventions/project.mjs", "{sources}", "--check"],
+        ["node", "conventions/catalog.mjs", "--check"]
+      ]
     }
   ]
 }
