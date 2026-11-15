@@ -268,6 +268,14 @@ model does not sanction.
 | `IV-04` | `build` | Every enacted intervention's effect, and every untreated signal onset in each chart's history, is the uor-intervention-effect answer over the first nine complete weeks after it against the limits frozen at its signal, so an intervention's effect is read against what untreated signals did |
 | `IV-05` | `open` | The three intervention apps are re-checked by the pinned builder on every run but are not yet in apps/set.json, so no Lean proof covers them; a chart of an average or a ratio with a week of no value, and the Discord guild until a chat computation is bound, are carried as refusals, never charted |
 
+## nonprofit
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `NP-01` | `build` | The nonprofit register is valid: every obligation cites the authority it names and is assigned to a governance post by a Bylaws provision, every authority is the law of the entity's jurisdiction or of the nation containing it, every open claim names a subject that exists, and the entity is recorded as IRS-recognized exactly when IRS recognition data matched it |
+| `NP-02` | `build` | The nonprofit catalog declares every source of nonprofit/register.json with the sha256 digest of the bytes read at its pinned commit or fetch |
+| `NP-03` | `open` | Every obligation not observed discharged, every Form 990 Part VI line no public source answers, every financial figure the returns need, and every status statement no authority confirms is carried as an open claim, never dropped or presumed |
+
 ## observations
 
 | ID | Level | Statement |
