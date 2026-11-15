@@ -15,44 +15,87 @@
   },
   "tools": {
     "syft": {
-      "version": "1.38.0",
-      "gitCommit": "a033ae525f6c7ef937c6f49513e3403f07a1d6c0",
-      "url": "https://github.com/anchore/syft/releases/download/v1.38.0/syft_1.38.0_linux_amd64.tar.gz",
-      "sha256": "bc664debb00db1b9b4b9dae4ba1a29d99621e33b641b94b78b9048374b812a3d",
-      "checksumsSha256": "e44431d1962b0a131d24968417e327f6b8ecaee1c0d95de91d5c515155a714f0",
-      "binarySha256": "6d380157a79f5e9114c98df5a2ea22cb06e04d8b37343a6f638f12f4775ac180",
+      "version": "1.55.0",
+      "gitCommit": "f15c3343e29dfb20cf6d82c820e7090b49808c96",
+      "url": "https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_linux_amd64.tar.gz",
+      "sha256": "bb65249542db5fedeeb4d3f9b018b75e7264dbfbbb10486f044581a92f90490d",
+      "checksumsSha256": "aba5ac8ee870bb93fd3b2058471ffe7e57492ba673b5e0bcbfca92006c2f4dc7",
+      "binarySha256": "64c9631c3560336c55c549df0de08cd577d02399c9de807ac390960a4ed5c351",
       "args": [
         "-q",
-        "-o",
-        "cyclonedx-json@1.6",
         "--exclude",
         "./.git/**"
-      ]
+      ],
+      "outputs": {
+        "cyclonedx": "cyclonedx-json@1.7",
+        "spdx": "spdx-json@2.3",
+        "spdx3": "spdx-json@3.0"
+      },
+      "config": {
+        "path": "supply/syft.yaml",
+        "sha256": "93e0bae460995028c6d5e46440465212710996b4d50ff57817ceae91ddeaa5ee"
+      }
     },
     "ajv": {
       "version": "8.17.1",
       "ajvFormats": "3.0.1",
-      "dialect": "http://json-schema.org/draft-07/schema#",
-      "formatsNotAsserted": [
-        "idn-email",
-        "iri-reference"
-      ]
+      "dialects": {
+        "cyclonedx-1.7": {
+          "dialect": "http://json-schema.org/draft-07/schema#",
+          "formatsNotAsserted": [
+            "idn-email",
+            "iri-reference"
+          ]
+        },
+        "spdx-2.3": {
+          "dialect": "https://json-schema.org/draft/2019-09/schema",
+          "formatsNotAsserted": []
+        },
+        "spdx-3.0.1": {
+          "dialect": "https://json-schema.org/draft/2020-12/schema",
+          "formatsNotAsserted": []
+        }
+      }
+    },
+    "spdxTools": {
+      "version": "0.8.5",
+      "requirements": "supply/spdx-tools.requirements.txt",
+      "requirementsSha256": "b4af76b4f2be5e94792ed6ae212e63d581bbb8426a3affd3ebfdb9b8ecffb0b3"
     }
   },
   "standards": [
     {
-      "path": "specification@8a27bfd1be5be0dcb2c208a34d2f4fa0b6d75bd7:schema/bom-1.6.schema.json",
-      "sha256": "efc54d749e32a6e16abd19394b80b4c67d846e12c782e04505130375f94ea541"
+      "title": "CycloneDX 1.7 JSON schema (ECMA-424, 2nd edition)",
+      "path": "specification@349314a9d7671d7d2ca5b711a725f49a73979da6:schema/bom-1.7.schema.json",
+      "sha256": "73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce"
     },
     {
-      "path": "specification@8a27bfd1be5be0dcb2c208a34d2f4fa0b6d75bd7:schema/spdx.schema.json",
-      "sha256": "c41917196639055e9f9670811bac23ef777732144f3ff5a2f39686f61580dbe6"
+      "title": "CycloneDX 1.7 JSON schema (ECMA-424, 2nd edition)",
+      "path": "specification@349314a9d7671d7d2ca5b711a725f49a73979da6:schema/spdx.schema.json",
+      "sha256": "4b345e2329f209f34e960ae2a8e7cb46a166907e6a45e94978565925dc47b359"
     },
     {
-      "path": "specification@8a27bfd1be5be0dcb2c208a34d2f4fa0b6d75bd7:schema/jsf-0.82.schema.json",
+      "title": "CycloneDX 1.7 JSON schema (ECMA-424, 2nd edition)",
+      "path": "specification@349314a9d7671d7d2ca5b711a725f49a73979da6:schema/jsf-0.82.schema.json",
       "sha256": "8bae002c25e723db7ee1f26afde680ae1a2b1a8f6b4b4b0fd65dc3becb090aae"
     },
     {
+      "title": "CycloneDX 1.7 JSON schema (ECMA-424, 2nd edition)",
+      "path": "specification@349314a9d7671d7d2ca5b711a725f49a73979da6:schema/cryptography-defs.schema.json",
+      "sha256": "027b059a729a06d591bac79a584ef04f83fc32d91a826fdba6ad3c98a10e5b44"
+    },
+    {
+      "title": "SPDX 2.3 JSON schema, spdx-spec v2.3.1 (SPDX 2.3 with errata; ISO/IEC 5962:2021 is SPDX 2.2.1, which SPDX 2.3 extends)",
+      "path": "spdx-spec@6f2cb47d13db19b12c23885573b22ef32ec1ada5:schemas/spdx-schema.json",
+      "sha256": "4126dc29f15e92feec92e9622f4939131ad58b125d6f578aa93e980a6e6f3212"
+    },
+    {
+      "title": "SPDX 3.0.1 JSON schema (standards.lock SPDX-SCHEMA-3-0-1)",
+      "path": "https://spdx.org/schema/3.0.1/spdx-json-schema.json",
+      "sha256": "582c64e809d5b3ef9bd0c4de13a32391b47b0284a3e8d199569fb96f649234b1"
+    },
+    {
+      "title": "Package-URL specification, registered types (ECMA-427)",
       "path": "purl-spec@26671718c3da7225c582a94da319c0c6c3a60cf7:purl-types-index.json",
       "sha256": "b9fe4ac32bfac3f978f3c969d4538172c5f5c55cf273ea3457a026899ccd7fe6"
     }
@@ -101,8 +144,8 @@
     "vscode-extension",
     "yocto"
   ],
-  "sbomBytes": 15473294,
-  "componentTotal": 13292,
+  "sbomBytes": 21060667,
+  "componentTotal": 16750,
   "repositories": [
     {
       "index": 0,
@@ -110,9 +153,38 @@
       "commit": "92da114114fc9b76cbf2c5168e29d409b62ddde8",
       "sbom": {
         "path": "supply/sboms/.github.cdx.json",
-        "sha256": "fcf5ebf7056d2ca58ae307b05631b682c7aa2140d14fba4ed4aec36e6edb8e61",
+        "sha256": "9e549f0cbd00e7a4d7f6cc2072081b1adfed174a80e2ea1e8faa7180931330b7",
         "bytes": 397
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/.github.cdx.json",
+          "sha256": "9e549f0cbd00e7a4d7f6cc2072081b1adfed174a80e2ea1e8faa7180931330b7",
+          "bytes": 397,
+          "elements": 0
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "5f92fe49100446b99b50baba794ae317d007a6e8c5a82a7b26d8029b8f846588",
+          "bytes": 736,
+          "elements": 1
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 2326,
+          "elements": 9
+        }
+      ],
       "components": 0,
       "purlTypes": {},
       "licensedComponents": 0,
@@ -125,9 +197,38 @@
       "commit": "86dde40a976d2a7a7be16b31b6a509698e8eb5bb",
       "sbom": {
         "path": "supply/sboms/5-Levels-of-UOR.cdx.json",
-        "sha256": "a4c16238dd79267d3b86a3ee918185c6aae272688dfa62abb1c7762eb48563c8",
+        "sha256": "cb18ff3252e1069d5c06b1177cead269e2e6c71bd77f6e1cccb7b4c114daf67e",
         "bytes": 397
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/5-Levels-of-UOR.cdx.json",
+          "sha256": "cb18ff3252e1069d5c06b1177cead269e2e6c71bd77f6e1cccb7b4c114daf67e",
+          "bytes": 397,
+          "elements": 0
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "2470be754286a8c795b5672549ca0d852d0b884a2f23e860c8c772840e3f2348",
+          "bytes": 736,
+          "elements": 1
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 2326,
+          "elements": 9
+        }
+      ],
       "components": 0,
       "purlTypes": {},
       "licensedComponents": 0,
@@ -140,15 +241,44 @@
       "commit": "aef42a6fd5c323373222b6362050b439690136a1",
       "sbom": {
         "path": "supply/sboms/atlas-12288.cdx.json",
-        "sha256": "6a8d4a501b47a140a682c78ba23c080553f3b4126a8de2b4a9bfb8e2a47eb7c5",
-        "bytes": 33089
+        "sha256": "04dd27aff86ced7f702e1db5dbeb9e18dfc600eb730e0a14b130f433baf6b29c",
+        "bytes": 528104
       },
-      "components": 39,
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/atlas-12288.cdx.json",
+          "sha256": "04dd27aff86ced7f702e1db5dbeb9e18dfc600eb730e0a14b130f433baf6b29c",
+          "bytes": 528104,
+          "elements": 466
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "90f0bf97b26f3525e73863d60245d3a4905c060c563d952efb7ad97abcd97242",
+          "bytes": 983735,
+          "elements": 470
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 1194336,
+          "elements": 2158
+        }
+      ],
+      "components": 466,
       "purlTypes": {
         "github": 19,
         "golang": 6,
         "none": 8,
-        "npm": 6
+        "npm": 433
       },
       "licensedComponents": 2,
       "licenseEntries": 2,
@@ -166,19 +296,74 @@
       "commit": "5051dc6adb18e9ca2b6ae4ca7090e638329831ef",
       "sbom": {
         "path": "supply/sboms/calculator-example.cdx.json",
-        "sha256": "2bae5ad1e8309163e909097873b710cff1ba592d91c1f918b4ed6a29901de204",
-        "bytes": 52282
+        "sha256": "907f8a5d8af3432a18e2af880ebae117858a1cba5d1210471b27c6e78531ac5a",
+        "bytes": 108045
       },
-      "components": 46,
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/calculator-example.cdx.json",
+          "sha256": "907f8a5d8af3432a18e2af880ebae117858a1cba5d1210471b27c6e78531ac5a",
+          "bytes": 108045,
+          "elements": 100
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "1157301a81269034de9af1e9090e11ca4a71ba8258f49ffef532670c88dcda3b",
+          "bytes": 185345,
+          "elements": 101
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 262233,
+          "elements": 549
+        }
+      ],
+      "components": 100,
       "purlTypes": {
-        "cargo": 3,
+        "cargo": 2,
         "github": 31,
-        "none": 11,
-        "npm": 1
+        "none": 12,
+        "npm": 55
       },
-      "licensedComponents": 0,
-      "licenseEntries": 0,
-      "licenses": []
+      "licensedComponents": 53,
+      "licenseEntries": 53,
+      "licenses": [
+        {
+          "form": "expression",
+          "license": "WTFPL OR MIT",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "Apache-2.0",
+          "count": 3
+        },
+        {
+          "form": "id",
+          "license": "BSD-3-Clause",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "MIT",
+          "count": 46
+        },
+        {
+          "form": "id",
+          "license": "MPL-2.0",
+          "count": 2
+        }
+      ]
     },
     {
       "index": 4,
@@ -186,20 +371,70 @@
       "commit": "1ef75b03a425abf09064f92db4fed0dd6bb23f62",
       "sbom": {
         "path": "supply/sboms/community.cdx.json",
-        "sha256": "f1307b86c579f7e8890664ae3e4a451704ef456248ee8a814d056ad16dc5efa9",
-        "bytes": 90912
+        "sha256": "6f9c4af172e1f059bd1b2dfae284bb37d335fe2c11372bf9ae4520bbd54e5930",
+        "bytes": 110381
       },
-      "components": 97,
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/community.cdx.json",
+          "sha256": "6f9c4af172e1f059bd1b2dfae284bb37d335fe2c11372bf9ae4520bbd54e5930",
+          "bytes": 110381,
+          "elements": 111
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "8b6f54a4dfb2b39f2f137f275b53283d25b83c753f15012bb4c8e6d2ce88b687",
+          "bytes": 186918,
+          "elements": 112
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 270319,
+          "elements": 565
+        }
+      ],
+      "components": 111,
       "purlTypes": {
-        "cargo": 33,
+        "cargo": 30,
         "github": 44,
-        "none": 18,
-        "npm": 1,
+        "none": 21,
+        "npm": 15,
         "pypi": 1
       },
-      "licensedComponents": 0,
-      "licenseEntries": 0,
-      "licenses": []
+      "licensedComponents": 14,
+      "licenseEntries": 14,
+      "licenses": [
+        {
+          "form": "id",
+          "license": "Apache-2.0",
+          "count": 2
+        },
+        {
+          "form": "id",
+          "license": "BSD-2-Clause",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "BSD-3-Clause",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "MIT",
+          "count": 10
+        }
+      ]
     },
     {
       "index": 5,
@@ -207,14 +442,43 @@
       "commit": "c416f7f5f43e53f6888395e0b927041648b30f8f",
       "sbom": {
         "path": "supply/sboms/compression.cdx.json",
-        "sha256": "4e14588892ac01435daf88f4cd98fa2302d1177559ac61610f8d557a25d3b5fa",
-        "bytes": 143243
+        "sha256": "fc83b4c8d031a48a7c73bf42f2c63f1e32a3d5a1e4aa3cb0de13ec6935f920ca",
+        "bytes": 158162
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/compression.cdx.json",
+          "sha256": "fc83b4c8d031a48a7c73bf42f2c63f1e32a3d5a1e4aa3cb0de13ec6935f920ca",
+          "bytes": 158162,
+          "elements": 137
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "f903c311bf0d0949b9400f08bf864e8fe448081aee586f2a6f7fbfc45c332884",
+          "bytes": 264758,
+          "elements": 139
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 348072,
+          "elements": 662
+        }
+      ],
       "components": 137,
       "purlTypes": {
-        "cargo": 101,
+        "cargo": 90,
         "github": 26,
-        "none": 10
+        "none": 21
       },
       "licensedComponents": 0,
       "licenseEntries": 0,
@@ -226,9 +490,38 @@
       "commit": "d45fe9f54eafbc86b5060efcaf604681482469c0",
       "sbom": {
         "path": "supply/sboms/F1.cdx.json",
-        "sha256": "e4a9b6ca5fe85609128aedead9b39ec3951939e8a3063da011f85c23f7f3c512",
+        "sha256": "3ddbcd1073360a9ecca5e1a60dd78a1b7e5800a09292ddea601ab48e7e801133",
         "bytes": 2286
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/F1.cdx.json",
+          "sha256": "3ddbcd1073360a9ecca5e1a60dd78a1b7e5800a09292ddea601ab48e7e801133",
+          "bytes": 2286,
+          "elements": 3
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "3bb4a92770c4fecdaca2859a28662f80ddf505b777259c8c2a17552ba6d7ca3f",
+          "bytes": 4384,
+          "elements": 4
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 8648,
+          "elements": 25
+        }
+      ],
       "components": 3,
       "purlTypes": {
         "github": 2,
@@ -244,19 +537,48 @@
       "commit": "9ccde14c10202a7c67cdc63e539918cfdc10a428",
       "sbom": {
         "path": "supply/sboms/foundry.cdx.json",
-        "sha256": "f351c392f8c362936b354707df2d0379d44cebfeffdb96563e1372d15cf0d35a",
-        "bytes": 2445701
+        "sha256": "f589287c6b421abc7a867dc2ecde20cbe2c36bc057d6e1d1c455ebd71a803b17",
+        "bytes": 4146393
       },
-      "components": 1816,
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/foundry.cdx.json",
+          "sha256": "f589287c6b421abc7a867dc2ecde20cbe2c36bc057d6e1d1c455ebd71a803b17",
+          "bytes": 4146393,
+          "elements": 3153
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "e030ee2c6bd1dd353aca5feaad9a48b2bbaec13b12ade86343d3c188d20eaea9",
+          "bytes": 7308746,
+          "elements": 3156
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 9006201,
+          "elements": 16692
+        }
+      ],
+      "components": 3153,
       "purlTypes": {
-        "cargo": 172,
+        "cargo": 166,
         "github": 57,
-        "none": 26,
-        "npm": 1560,
+        "none": 32,
+        "npm": 2897,
         "pypi": 1
       },
-      "licensedComponents": 1105,
-      "licenseEntries": 1105,
+      "licensedComponents": 2441,
+      "licenseEntries": 2441,
       "licenses": [
         {
           "form": "expression",
@@ -285,33 +607,43 @@
         },
         {
           "form": "expression",
+          "license": "MIT OR CC0-1.0",
+          "count": 6
+        },
+        {
+          "form": "expression",
           "license": "MIT OR WTFPL",
           "count": 1
         },
         {
           "form": "id",
           "license": "0BSD",
-          "count": 3
+          "count": 4
         },
         {
           "form": "id",
           "license": "Apache-2.0",
-          "count": 83
+          "count": 127
         },
         {
           "form": "id",
           "license": "BSD-2-Clause",
-          "count": 11
+          "count": 42
         },
         {
           "form": "id",
           "license": "BSD-3-Clause",
-          "count": 12
+          "count": 29
         },
         {
           "form": "id",
           "license": "BlueOak-1.0.0",
-          "count": 15
+          "count": 21
+        },
+        {
+          "form": "id",
+          "license": "CC-BY-3.0",
+          "count": 1
         },
         {
           "form": "id",
@@ -320,8 +652,13 @@
         },
         {
           "form": "id",
+          "license": "CC0-1.0",
+          "count": 1
+        },
+        {
+          "form": "id",
           "license": "ISC",
-          "count": 60
+          "count": 153
         },
         {
           "form": "id",
@@ -331,12 +668,17 @@
         {
           "form": "id",
           "license": "MIT",
-          "count": 879
+          "count": 2000
         },
         {
           "form": "id",
           "license": "MPL-2.0",
-          "count": 11
+          "count": 23
+        },
+        {
+          "form": "id",
+          "license": "Python-2.0",
+          "count": 3
         },
         {
           "form": "id",
@@ -361,19 +703,69 @@
       "commit": "e8373c7c953bae6153fba7082c2b6c50f2f77392",
       "sbom": {
         "path": "supply/sboms/foundry-web.cdx.json",
-        "sha256": "6d427b9e9b17fe0771fad52db43acc144eaf06574309f10ee8f2728f8a5ce1a8",
-        "bytes": 54661
+        "sha256": "2802ae96626f7ff68d7dd683fed0b0c088033203d829976783f8495b7c242fcb",
+        "bytes": 66266
       },
-      "components": 54,
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/foundry-web.cdx.json",
+          "sha256": "2802ae96626f7ff68d7dd683fed0b0c088033203d829976783f8495b7c242fcb",
+          "bytes": 66266,
+          "elements": 62
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "9c3dd4f4888f8f81b04d4af37a89e4868586be2ff02288a48c01c6fb9a203484",
+          "bytes": 109960,
+          "elements": 63
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 152846,
+          "elements": 312
+        }
+      ],
+      "components": 62,
       "purlTypes": {
-        "cargo": 33,
+        "cargo": 30,
         "github": 14,
-        "none": 6,
-        "npm": 1
+        "none": 9,
+        "npm": 9
       },
-      "licensedComponents": 0,
-      "licenseEntries": 0,
-      "licenses": []
+      "licensedComponents": 8,
+      "licenseEntries": 8,
+      "licenses": [
+        {
+          "form": "id",
+          "license": "Apache-2.0",
+          "count": 4
+        },
+        {
+          "form": "id",
+          "license": "ISC",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "MIT",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "MPL-2.0",
+          "count": 2
+        }
+      ]
     },
     {
       "index": 9,
@@ -381,14 +773,43 @@
       "commit": "c477b69c0e3f95658aedecaeb2fa9c057d9b58a6",
       "sbom": {
         "path": "supply/sboms/holo-search.cdx.json",
-        "sha256": "553602dbaecd834b2d45b4c20420ac8c08c1149a34ebf42db7f136903f6495b8",
-        "bytes": 46394
+        "sha256": "3e98199e091895c9736c416b3fbd1262bca1b63c77603b7a184c3ac3229c83e5",
+        "bytes": 50581
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/holo-search.cdx.json",
+          "sha256": "3e98199e091895c9736c416b3fbd1262bca1b63c77603b7a184c3ac3229c83e5",
+          "bytes": 50581,
+          "elements": 47
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "d9632259d5512a0786ae6e1ddac7b0bc926590132f21665585fc6f0c015b7519",
+          "bytes": 84217,
+          "elements": 48
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 115391,
+          "elements": 236
+        }
+      ],
       "components": 47,
       "purlTypes": {
-        "cargo": 33,
+        "cargo": 30,
         "github": 10,
-        "none": 4
+        "none": 7
       },
       "licensedComponents": 0,
       "licenseEntries": 0,
@@ -400,9 +821,38 @@
       "commit": "2475e701f25ed5887aba8b68a39ecc0f87faad6f",
       "sbom": {
         "path": "supply/sboms/kappa-distribution.cdx.json",
-        "sha256": "e7e2ab67c2205aa6bbf925e3c7e37e794e9d13e44832f10726d77f5bbadbc9c4",
+        "sha256": "60b62fdbf0387d52f4e33f74d7f2d688b5dd0bd79b0f506c59038d3fc047be6f",
         "bytes": 397
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/kappa-distribution.cdx.json",
+          "sha256": "60b62fdbf0387d52f4e33f74d7f2d688b5dd0bd79b0f506c59038d3fc047be6f",
+          "bytes": 397,
+          "elements": 0
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "b77cebef28dfebb4e1d5da307b1518a4aa02e53f4f476b95f08ec413b9aa1b30",
+          "bytes": 736,
+          "elements": 1
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 2326,
+          "elements": 9
+        }
+      ],
       "components": 0,
       "purlTypes": {},
       "licensedComponents": 0,
@@ -415,14 +865,43 @@
       "commit": "bd231d0cc315d56e51369aff299f6741b8d8ce04",
       "sbom": {
         "path": "supply/sboms/kappa-registry.cdx.json",
-        "sha256": "7b5b5c7d55592c60939ce1884b71a5246313a02869cf0b9084d63a4a8b1304f0",
-        "bytes": 932887
+        "sha256": "7b458dca277e828b4733d232ec31c3a6dd5c7e11e458358429e4b1f90aba52ae",
+        "bytes": 1054259
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/kappa-registry.cdx.json",
+          "sha256": "7b458dca277e828b4733d232ec31c3a6dd5c7e11e458358429e4b1f90aba52ae",
+          "bytes": 1054259,
+          "elements": 771
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "0cde39291575eb9f948c2121238a7068ddddc521b06dbb8ed4892a4ec385fd80",
+          "bytes": 1843221,
+          "elements": 772
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 2089343,
+          "elements": 3668
+        }
+      ],
       "components": 771,
       "purlTypes": {
-        "cargo": 765,
+        "cargo": 749,
         "github": 4,
-        "none": 2
+        "none": 18
       },
       "licensedComponents": 0,
       "licenseEntries": 0,
@@ -434,14 +913,43 @@
       "commit": "71defb4c663aaec5b9a3aab04cbc6a03e7106227",
       "sbom": {
         "path": "supply/sboms/LexLean.cdx.json",
-        "sha256": "2c1fc319bcf30572fa04fc0634f259d7177903453522c9f5dc429600b4bc1a7e",
-        "bytes": 138487
+        "sha256": "bfb0795cd171ff1a2406acb8990549c3e1169d91d16bd01817df6793b652b011",
+        "bytes": 155084
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/LexLean.cdx.json",
+          "sha256": "bfb0795cd171ff1a2406acb8990549c3e1169d91d16bd01817df6793b652b011",
+          "bytes": 155084,
+          "elements": 132
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "8a6f30a48ecc789e4b9ac07a15c9c6eae636d9e516ed8e3915b63fae66005751",
+          "bytes": 260388,
+          "elements": 133
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 333618,
+          "elements": 627
+        }
+      ],
       "components": 132,
       "purlTypes": {
-        "cargo": 111,
+        "cargo": 107,
         "github": 14,
-        "none": 7
+        "none": 11
       },
       "licensedComponents": 0,
       "licenseEntries": 0,
@@ -453,14 +961,43 @@
       "commit": "ece9ef390260479edbad69c3a9d9f51edc16c885",
       "sbom": {
         "path": "supply/sboms/lexlean-mcp.cdx.json",
-        "sha256": "043609902406e246eca34c6e0b22fe504094c2b526c91f09da09f453ba22b7c5",
-        "bytes": 247701
+        "sha256": "2f12b64636a01334741b18857dc9411331335e3f9762f4f2a3d5ff645818454b",
+        "bytes": 277841
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/lexlean-mcp.cdx.json",
+          "sha256": "2f12b64636a01334741b18857dc9411331335e3f9762f4f2a3d5ff645818454b",
+          "bytes": 277841,
+          "elements": 231
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "0eef5e4509d7a09e64b53946dd8ab0d865524daa02b354a10cd90c68099f766d",
+          "bytes": 468453,
+          "elements": 232
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 590288,
+          "elements": 1083
+        }
+      ],
       "components": 231,
       "purlTypes": {
-        "cargo": 205,
+        "cargo": 187,
         "github": 18,
-        "none": 8
+        "none": 26
       },
       "licensedComponents": 0,
       "licenseEntries": 0,
@@ -472,9 +1009,38 @@
       "commit": "23431008f0ccc2899c3a1ecb9243a2578d5c7156",
       "sbom": {
         "path": "supply/sboms/malachite-usdc.cdx.json",
-        "sha256": "f74e528edf4352b42872ac095816c69f12fccb0c3e0b78204d20bbbbfac5e11e",
+        "sha256": "6fe5e0d6d99c91eba6fce1be344d266fb8d2ce34930b73c3fcab91351c6b2518",
         "bytes": 397
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/malachite-usdc.cdx.json",
+          "sha256": "6fe5e0d6d99c91eba6fce1be344d266fb8d2ce34930b73c3fcab91351c6b2518",
+          "bytes": 397,
+          "elements": 0
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "94290dd39edb42f15247a8066ad55048759dcac184a65e8b491d0af8c1d8cd18",
+          "bytes": 736,
+          "elements": 1
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 2326,
+          "elements": 9
+        }
+      ],
       "components": 0,
       "purlTypes": {},
       "licensedComponents": 0,
@@ -487,14 +1053,43 @@
       "commit": "5b34b2633e2707993221019b81fae2bf9c4103d6",
       "sbom": {
         "path": "supply/sboms/MCP.cdx.json",
-        "sha256": "60d6347206087bc2ef5efd4f5d6b3eb649e85fa8be33d573dcf9ee200fc417e2",
-        "bytes": 112728
+        "sha256": "615e63d471448407a61d30ba7dfe2f37857ae85c28d6ae7b2af89cb2e837c998",
+        "bytes": 125646
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/MCP.cdx.json",
+          "sha256": "615e63d471448407a61d30ba7dfe2f37857ae85c28d6ae7b2af89cb2e837c998",
+          "bytes": 125646,
+          "elements": 107
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "e9763cf2e294fb7c2adc9869b3aa8198bd2d379b2180c05882722f4253f0b213",
+          "bytes": 212769,
+          "elements": 108
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 271907,
+          "elements": 516
+        }
+      ],
       "components": 107,
       "purlTypes": {
-        "cargo": 88,
+        "cargo": 79,
         "github": 13,
-        "none": 6
+        "none": 15
       },
       "licensedComponents": 0,
       "licenseEntries": 0,
@@ -506,14 +1101,43 @@
       "commit": "515f75f9f01470df8cac095cdc22f5aebcc252c7",
       "sbom": {
         "path": "supply/sboms/MNIST.cdx.json",
-        "sha256": "e39b9038f82fab75b38295519ece1e0775bf85ff406080661eb639dcbc510c89",
-        "bytes": 64334
+        "sha256": "39eb66b030b4b53cfece31410ce2a3e1440288df149dd8a4141d1d5ec9af8e31",
+        "bytes": 70945
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/MNIST.cdx.json",
+          "sha256": "39eb66b030b4b53cfece31410ce2a3e1440288df149dd8a4141d1d5ec9af8e31",
+          "bytes": 70945,
+          "elements": 67
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "b7a0f761cde050dd698960c018bfd35478c2995c5221a2c67941641aabe44e2b",
+          "bytes": 118797,
+          "elements": 68
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 160662,
+          "elements": 327
+        }
+      ],
       "components": 67,
       "purlTypes": {
-        "cargo": 50,
+        "cargo": 47,
         "github": 12,
-        "none": 5
+        "none": 8
       },
       "licensedComponents": 0,
       "licenseEntries": 0,
@@ -525,9 +1149,38 @@
       "commit": "5a469e7d207af7dcca54df0de39e38c54c953569",
       "sbom": {
         "path": "supply/sboms/nest-uor.cdx.json",
-        "sha256": "d1e1dbfd460b56ed7dcbaba7bba4d77cc8b2e9b96bd6747e6a0c61ce85a02083",
+        "sha256": "d1642bf51202926b739b8c9a3d5ee50309d9fac792c7ca78477a4db8685c1348",
         "bytes": 397
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/nest-uor.cdx.json",
+          "sha256": "d1642bf51202926b739b8c9a3d5ee50309d9fac792c7ca78477a4db8685c1348",
+          "bytes": 397,
+          "elements": 0
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "7ad17b2ffa868cb0e080924c5b4c9c50194dc6f6bcc871ddd276d2cf6f285394",
+          "bytes": 736,
+          "elements": 1
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 2326,
+          "elements": 9
+        }
+      ],
       "components": 0,
       "purlTypes": {},
       "licensedComponents": 0,
@@ -540,9 +1193,38 @@
       "commit": "d0bdb29bdfeba50590bf42b4f9071e0d4bbc2dc6",
       "sbom": {
         "path": "supply/sboms/OOO.cdx.json",
-        "sha256": "9a271766bf77bf5bb5d55fb2074f751ec7470ea3e2bcd0ed381f7a369e9ac512",
+        "sha256": "f117351cb41adde2cfd3b3f366ea314b69e210f6e0bf963ee94ea8da543067a1",
         "bytes": 2306
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/OOO.cdx.json",
+          "sha256": "f117351cb41adde2cfd3b3f366ea314b69e210f6e0bf963ee94ea8da543067a1",
+          "bytes": 2306,
+          "elements": 3
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "507f3f17ec3dfdfe2b131eea6be233a27f28bd997495d1f450d53f09e0462963",
+          "bytes": 4407,
+          "elements": 4
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 8683,
+          "elements": 25
+        }
+      ],
       "components": 3,
       "purlTypes": {
         "github": 2,
@@ -558,14 +1240,43 @@
       "commit": "507995bab43c0cb06ec244c96e6fc25b3f502204",
       "sbom": {
         "path": "supply/sboms/prism.cdx.json",
-        "sha256": "64f726acd04783a4b3ed37d49b9a5fc61424e7b1442efa02ab4782172656c924",
-        "bytes": 50157
+        "sha256": "e4a8bf9be969f7cef5a78ded598e4ebe916af23ed5ce9ce6005150dc20295ebf",
+        "bytes": 54144
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/prism.cdx.json",
+          "sha256": "e4a8bf9be969f7cef5a78ded598e4ebe916af23ed5ce9ce6005150dc20295ebf",
+          "bytes": 54144,
+          "elements": 51
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "a21bfd3f0734f74842b1dc2fedf358a0003835de7117146977e5a85e21e1311d",
+          "bytes": 94294,
+          "elements": 52
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 128457,
+          "elements": 256
+        }
+      ],
       "components": 51,
       "purlTypes": {
-        "cargo": 33,
+        "cargo": 26,
         "github": 13,
-        "none": 5
+        "none": 12
       },
       "licensedComponents": 0,
       "licenseEntries": 0,
@@ -577,14 +1288,43 @@
       "commit": "67ab3e8b2092ad5812b0c34fd074cb33762366aa",
       "sbom": {
         "path": "supply/sboms/prism-code.cdx.json",
-        "sha256": "2971ffaea29a80446dd6073f024ef4554b26ffe9765d1f9be4186df365e880c7",
-        "bytes": 60245
+        "sha256": "af6b8ace7a233427d15e1dce69860abe6e1b6d30f380855426087f95761f4d60",
+        "bytes": 64432
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/prism-code.cdx.json",
+          "sha256": "af6b8ace7a233427d15e1dce69860abe6e1b6d30f380855426087f95761f4d60",
+          "bytes": 64432,
+          "elements": 60
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "b247c867da2c98786dfae35e15438c7bb50dd6548332aa21413468fc8136153d",
+          "bytes": 107289,
+          "elements": 61
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 149568,
+          "elements": 305
+        }
+      ],
       "components": 60,
       "purlTypes": {
-        "cargo": 33,
+        "cargo": 30,
         "github": 20,
-        "none": 7
+        "none": 10
       },
       "licensedComponents": 0,
       "licenseEntries": 0,
@@ -596,41 +1336,85 @@
       "commit": "ece658394448f09a5760fb0bec9b1fa8f065ed0e",
       "sbom": {
         "path": "supply/sboms/PrismPM.cdx.json",
-        "sha256": "bd0c59eb76756f58d877a9890954c9a8053bca2535353f7e00c613ed11614f93",
-        "bytes": 6778490
+        "sha256": "7a58795803f1e6cfa0455c335366192ccb3d90dc2d4a9d0f3357c9060c41d547",
+        "bytes": 8413449
       },
-      "components": 5933,
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/PrismPM.cdx.json",
+          "sha256": "7a58795803f1e6cfa0455c335366192ccb3d90dc2d4a9d0f3357c9060c41d547",
+          "bytes": 8413449,
+          "elements": 6763
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": false,
+          "reproducible": true,
+          "path": null,
+          "sha256": "",
+          "bytes": 13883841,
+          "elements": 6766
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 17665393,
+          "elements": 33420
+        }
+      ],
+      "components": 6763,
       "purlTypes": {
-        "cargo": 3343,
+        "cargo": 3200,
         "gem": 89,
-        "github": 202,
-        "golang": 1492,
+        "github": 201,
+        "golang": 1435,
         "maven": 49,
-        "none": 177,
-        "npm": 581
+        "none": 321,
+        "npm": 1468
       },
-      "licensedComponents": 1752,
-      "licenseEntries": 1933,
+      "licensedComponents": 2398,
+      "licenseEntries": 2579,
       "licenses": [
         {
           "form": "expression",
+          "license": "MIT AND Zlib",
+          "count": 1
+        },
+        {
+          "form": "expression",
           "license": "MIT OR CC0-1.0",
-          "count": 4
+          "count": 6
+        },
+        {
+          "form": "expression",
+          "license": "MPL-2.0 OR Apache-2.0",
+          "count": 1
+        },
+        {
+          "form": "expression",
+          "license": "WTFPL OR MIT",
+          "count": 1
         },
         {
           "form": "id",
           "license": "0BSD",
-          "count": 4
+          "count": 7
         },
         {
           "form": "id",
           "license": "Apache-2.0",
-          "count": 601
+          "count": 641
         },
         {
           "form": "id",
           "license": "BSD-2-Clause",
-          "count": 41
+          "count": 53
         },
         {
           "form": "id",
@@ -640,17 +1424,17 @@
         {
           "form": "id",
           "license": "BSD-3-Clause",
-          "count": 348
+          "count": 366
         },
         {
           "form": "id",
           "license": "BlueOak-1.0.0",
-          "count": 1
+          "count": 2
         },
         {
           "form": "id",
           "license": "CC-BY-3.0",
-          "count": 1
+          "count": 2
         },
         {
           "form": "id",
@@ -660,7 +1444,7 @@
         {
           "form": "id",
           "license": "CC0-1.0",
-          "count": 1
+          "count": 2
         },
         {
           "form": "id",
@@ -670,22 +1454,22 @@
         {
           "form": "id",
           "license": "ISC",
-          "count": 67
+          "count": 95
         },
         {
           "form": "id",
           "license": "MIT",
-          "count": 752
+          "count": 1275
         },
         {
           "form": "id",
           "license": "MPL-2.0",
-          "count": 41
+          "count": 54
         },
         {
           "form": "id",
           "license": "Python-2.0",
-          "count": 2
+          "count": 3
         },
         {
           "form": "id",
@@ -780,9 +1564,38 @@
       "commit": "bfccda396aab1aea5dee649fbe5180499d236cec",
       "sbom": {
         "path": "supply/sboms/research.cdx.json",
-        "sha256": "1709ff293ea87ffc009175d08e6e90ff3a068ff1b89b43925680210f0181ff8f",
+        "sha256": "bf555dea6aaf5d57e2fba32da229fc4ee058cd285b414910a43a1d9911696b0b",
         "bytes": 15504
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/research.cdx.json",
+          "sha256": "bf555dea6aaf5d57e2fba32da229fc4ee058cd285b414910a43a1d9911696b0b",
+          "bytes": 15504,
+          "elements": 19
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "2a6c2377c36aad6be6451e1c105b20f9974506691dec3e65092822c170da8cd6",
+          "bytes": 29284,
+          "elements": 20
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 47449,
+          "elements": 112
+        }
+      ],
       "components": 19,
       "purlTypes": {
         "github": 15,
@@ -798,20 +1611,70 @@
       "commit": "0851bb41138041f0f75118135fd8a342109c2d73",
       "sbom": {
         "path": "supply/sboms/template.cdx.json",
-        "sha256": "9cee6d7e18ea8b5d5eec4e0ef7b13f43d12e98487e9d804814e8d2f1294e3a24",
-        "bytes": 80713
+        "sha256": "7ae993b645a2ed13f4509fa6f59c329188a1cf1e52ddf1e151109a2c43436903",
+        "bytes": 101032
       },
-      "components": 79,
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/template.cdx.json",
+          "sha256": "7ae993b645a2ed13f4509fa6f59c329188a1cf1e52ddf1e151109a2c43436903",
+          "bytes": 101032,
+          "elements": 93
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "0c47ddcbb50be8bda860b3cfb087755d0059af4ce932e3c19f432c1d246bb1b0",
+          "bytes": 168380,
+          "elements": 94
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 234253,
+          "elements": 473
+        }
+      ],
+      "components": 93,
       "purlTypes": {
-        "cargo": 40,
+        "cargo": 37,
         "github": 27,
-        "none": 10,
-        "npm": 1,
+        "none": 13,
+        "npm": 15,
         "pypi": 1
       },
-      "licensedComponents": 0,
-      "licenseEntries": 0,
-      "licenses": []
+      "licensedComponents": 14,
+      "licenseEntries": 14,
+      "licenses": [
+        {
+          "form": "id",
+          "license": "Apache-2.0",
+          "count": 2
+        },
+        {
+          "form": "id",
+          "license": "BSD-2-Clause",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "BSD-3-Clause",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "MIT",
+          "count": 10
+        }
+      ]
     },
     {
       "index": 24,
@@ -819,14 +1682,43 @@
       "commit": "20a1c5723fc8f5d645972c8d6f5c57459846302e",
       "sbom": {
         "path": "supply/sboms/uor-addr.cdx.json",
-        "sha256": "5833087c7a115baf85475ba124d9e2820c98e36f8883ac4966f10c1b06cb15c0",
-        "bytes": 207729
+        "sha256": "4939c62050ec0760ec616fda63296a40d012fb93628140b90f1f90fa765fbd12",
+        "bytes": 231224
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/uor-addr.cdx.json",
+          "sha256": "4939c62050ec0760ec616fda63296a40d012fb93628140b90f1f90fa765fbd12",
+          "bytes": 231224,
+          "elements": 189
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "466ed0d406c48634b79c0910270ee186425c427aa9311208a73c156e2ae99c4d",
+          "bytes": 394427,
+          "elements": 190
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 488442,
+          "elements": 904
+        }
+      ],
       "components": 189,
       "purlTypes": {
-        "cargo": 156,
+        "cargo": 153,
         "github": 23,
-        "none": 10
+        "none": 13
       },
       "licensedComponents": 0,
       "licenseEntries": 0,
@@ -838,19 +1730,64 @@
       "commit": "fdab06c9ab30d594c917040908485068ea6f9c9f",
       "sbom": {
         "path": "supply/sboms/uor-foundry.cdx.json",
-        "sha256": "a9cb7620450f2ccb22b61aae3f0b1742a2bd0cf7e7e725da18def0660cd3a9b3",
-        "bytes": 48802
+        "sha256": "902d5008934413e220daab22805823f5d44a3b85acb26ebc3908781fdaec03ac",
+        "bytes": 59853
       },
-      "components": 49,
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/uor-foundry.cdx.json",
+          "sha256": "902d5008934413e220daab22805823f5d44a3b85acb26ebc3908781fdaec03ac",
+          "bytes": 59853,
+          "elements": 56
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "a4190b19dbf704ce3720c9e59820f926d37566396dde61354c24961373d8766c",
+          "bytes": 99512,
+          "elements": 57
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 137173,
+          "elements": 280
+        }
+      ],
+      "components": 56,
       "purlTypes": {
-        "cargo": 33,
+        "cargo": 30,
         "github": 10,
-        "none": 5,
-        "npm": 1
+        "none": 8,
+        "npm": 8
       },
-      "licensedComponents": 0,
-      "licenseEntries": 0,
-      "licenses": []
+      "licensedComponents": 7,
+      "licenseEntries": 7,
+      "licenses": [
+        {
+          "form": "id",
+          "license": "Apache-2.0",
+          "count": 4
+        },
+        {
+          "form": "id",
+          "license": "MIT",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "MPL-2.0",
+          "count": 2
+        }
+      ]
     },
     {
       "index": 26,
@@ -858,14 +1795,43 @@
       "commit": "51c01382200b0179d6640b07e9c8119364ab69a1",
       "sbom": {
         "path": "supply/sboms/UOR-Framework.cdx.json",
-        "sha256": "15bd5cebc4ce5fab4f63cc48512d0393cd02d1e5914c02a0a355459561714fa2",
-        "bytes": 110531
+        "sha256": "92458754b4c7016846633aa3a67f4114ad75becdfe79467045b196d45f41b8d8",
+        "bytes": 122747
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/UOR-Framework.cdx.json",
+          "sha256": "92458754b4c7016846633aa3a67f4114ad75becdfe79467045b196d45f41b8d8",
+          "bytes": 122747,
+          "elements": 105
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "120e445d0d4a3eee759ba250aa49f7a218694c3ba104aa3641ce4edf8bec9770",
+          "bytes": 214231,
+          "elements": 106
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 269243,
+          "elements": 508
+        }
+      ],
       "components": 105,
       "purlTypes": {
-        "cargo": 91,
+        "cargo": 77,
         "github": 11,
-        "none": 3
+        "none": 17
       },
       "licensedComponents": 0,
       "licenseEntries": 0,
@@ -877,9 +1843,38 @@
       "commit": "303591128094362857791930fdc12b73875d1ff6",
       "sbom": {
         "path": "supply/sboms/uor-jcs-nfc.cdx.json",
-        "sha256": "77b71a95b994ceaf477928db7c5d7a3ec4866d0b99b63f30ab85983e0bdede26",
+        "sha256": "a07217f9433cf36e95087fb5d0f5bb8ef2839e036fb93dcf900b3c232df8e1c6",
         "bytes": 397
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/uor-jcs-nfc.cdx.json",
+          "sha256": "a07217f9433cf36e95087fb5d0f5bb8ef2839e036fb93dcf900b3c232df8e1c6",
+          "bytes": 397,
+          "elements": 0
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "34513b2dc5480966325444416a3b6ba33d79f69bb3d842a56b5b25fb82f74f15",
+          "bytes": 736,
+          "elements": 1
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 2326,
+          "elements": 9
+        }
+      ],
       "components": 0,
       "purlTypes": {},
       "licensedComponents": 0,
@@ -892,14 +1887,43 @@
       "commit": "3cc5882f210667f9ac00fd8c02c5b5957b493f5d",
       "sbom": {
         "path": "supply/sboms/uor-matmul.cdx.json",
-        "sha256": "827fc6063bc75f9c12212f35674c890d59b4f33d196b6ca698f108e641d9963f",
-        "bytes": 298200
+        "sha256": "4b65f18e55d84642848e57d2ea2d3a4f2f21e2da0f31efce930c0582533919f2",
+        "bytes": 333034
       },
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/uor-matmul.cdx.json",
+          "sha256": "4b65f18e55d84642848e57d2ea2d3a4f2f21e2da0f31efce930c0582533919f2",
+          "bytes": 333034,
+          "elements": 277
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "8c1e926547045d28885bc6310db7bfb1b6e464bedfd6f0ee398cb0b2f5ea81ab",
+          "bytes": 574749,
+          "elements": 278
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 711415,
+          "elements": 1319
+        }
+      ],
       "components": 277,
       "purlTypes": {
-        "cargo": 243,
+        "cargo": 227,
         "github": 27,
-        "none": 7
+        "none": 23
       },
       "licensedComponents": 0,
       "licenseEntries": 0,
@@ -911,24 +1935,98 @@
       "commit": "44e2a6f062e9196fe68291259bff459dde0bde44",
       "sbom": {
         "path": "supply/sboms/uor-r4.cdx.json",
-        "sha256": "1c00fbb2a8d925cc79a24b2933d0747796a7e434e387405dc8beac8b4d4091f8",
-        "bytes": 3444766
+        "sha256": "84b1318d486813308653efed64c65d362f197540bef3eaf9c5b5fd975c58fb3e",
+        "bytes": 4099792
       },
-      "components": 2970,
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/uor-r4.cdx.json",
+          "sha256": "84b1318d486813308653efed64c65d362f197540bef3eaf9c5b5fd975c58fb3e",
+          "bytes": 4099792,
+          "elements": 3160
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "1073fde56a1743db6cfe261906d1f0f604ba7e240a0c450b964728578be7534a",
+          "bytes": 6971964,
+          "elements": 3161
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 8462495,
+          "elements": 14794
+        }
+      ],
+      "components": 3160,
       "purlTypes": {
-        "cargo": 2754,
+        "cargo": 2546,
         "github": 94,
-        "none": 77,
-        "npm": 4,
+        "none": 288,
+        "npm": 191,
         "pypi": 41
       },
-      "licensedComponents": 3,
-      "licenseEntries": 3,
+      "licensedComponents": 190,
+      "licenseEntries": 190,
       "licenses": [
         {
           "form": "id",
-          "license": "MIT",
+          "license": "Apache-2.0",
+          "count": 28
+        },
+        {
+          "form": "id",
+          "license": "BSD-2-Clause",
+          "count": 9
+        },
+        {
+          "form": "id",
+          "license": "BSD-3-Clause",
           "count": 3
+        },
+        {
+          "form": "id",
+          "license": "BlueOak-1.0.0",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "CC-BY-4.0",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "CC0-1.0",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "ISC",
+          "count": 7
+        },
+        {
+          "form": "id",
+          "license": "MIT",
+          "count": 126
+        },
+        {
+          "form": "id",
+          "license": "MIT-0",
+          "count": 2
+        },
+        {
+          "form": "id",
+          "license": "MPL-2.0",
+          "count": 12
         }
       ]
     },
@@ -938,13 +2036,43 @@
       "commit": "e82ffdedc5d85ebd0bde239d50d4651005045d31",
       "sbom": {
         "path": "supply/sboms/website.cdx.json",
-        "sha256": "984ec62a2ffb11ab320dc217ed4afd5a8ba52230a45e00e7ebadbebc54bf40c9",
-        "bytes": 8764
+        "sha256": "e5cebab0bc0b5f0fb55c7e258bcfdcf7e9bfdf11b47f89540e1cdf9cf71de268",
+        "bytes": 706775
       },
-      "components": 10,
+      "serializations": [
+        {
+          "format": "cyclonedx-1.7",
+          "valid": true,
+          "reproducible": true,
+          "path": "supply/sboms/website.cdx.json",
+          "sha256": "e5cebab0bc0b5f0fb55c7e258bcfdcf7e9bfdf11b47f89540e1cdf9cf71de268",
+          "bytes": 706775,
+          "elements": 587
+        },
+        {
+          "format": "spdx-2.3",
+          "valid": true,
+          "reproducible": true,
+          "path": null,
+          "sha256": "ee5cbd5f97151511fe519ae3503922101e382d4b7cf80d189a91abc7b263e462",
+          "bytes": 1292769,
+          "elements": 588
+        },
+        {
+          "format": "spdx-3.0.1",
+          "valid": true,
+          "reproducible": false,
+          "path": null,
+          "sha256": "",
+          "bytes": 1489168,
+          "elements": 2555
+        }
+      ],
+      "components": 587,
       "purlTypes": {
         "github": 8,
-        "none": 2
+        "none": 3,
+        "npm": 576
       },
       "licensedComponents": 0,
       "licenseEntries": 0,
@@ -2570,12 +3698,12 @@
     {
       "repository": 0,
       "refusal": "sbom-empty",
-      "detail": ".github: syft 1.38.0 catalogues no component in the tree at 92da114114fc9b76cbf2c5168e29d409b62ddde8"
+      "detail": ".github: syft 1.55.0 catalogues no component in the tree at 92da114114fc9b76cbf2c5168e29d409b62ddde8"
     },
     {
       "repository": 1,
       "refusal": "sbom-empty",
-      "detail": "5-Levels-of-UOR: syft 1.38.0 catalogues no component in the tree at 86dde40a976d2a7a7be16b31b6a509698e8eb5bb"
+      "detail": "5-Levels-of-UOR: syft 1.55.0 catalogues no component in the tree at 86dde40a976d2a7a7be16b31b6a509698e8eb5bb"
     },
     {
       "repository": 2,
@@ -2615,7 +3743,7 @@
     {
       "repository": 10,
       "refusal": "sbom-empty",
-      "detail": "kappa-distribution: syft 1.38.0 catalogues no component in the tree at 2475e701f25ed5887aba8b68a39ecc0f87faad6f"
+      "detail": "kappa-distribution: syft 1.55.0 catalogues no component in the tree at 2475e701f25ed5887aba8b68a39ecc0f87faad6f"
     },
     {
       "repository": 11,
@@ -2640,7 +3768,7 @@
     {
       "repository": 14,
       "refusal": "sbom-empty",
-      "detail": "malachite-usdc: syft 1.38.0 catalogues no component in the tree at 23431008f0ccc2899c3a1ecb9243a2578d5c7156"
+      "detail": "malachite-usdc: syft 1.55.0 catalogues no component in the tree at 23431008f0ccc2899c3a1ecb9243a2578d5c7156"
     },
     {
       "repository": 15,
@@ -2655,7 +3783,7 @@
     {
       "repository": 17,
       "refusal": "sbom-empty",
-      "detail": "nest-uor: syft 1.38.0 catalogues no component in the tree at 5a469e7d207af7dcca54df0de39e38c54c953569"
+      "detail": "nest-uor: syft 1.55.0 catalogues no component in the tree at 5a469e7d207af7dcca54df0de39e38c54c953569"
     },
     {
       "repository": 20,
@@ -2703,9 +3831,14 @@
       "detail": "PrismPM: 19 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"
     },
     {
+      "repository": 21,
+      "refusal": "spdx-invalid",
+      "detail": "PrismPM: syft's spdx-2.3 SBOM is not valid (schemas/spdx-schema.json: valid; pyspdxtools 0.8.5: exit 1, ERROR:root:The document is invalid. The following issues have been found: did not find the referenced spdx_id \"SPDXRef-Package-java-archive-conformance-suite-faa965fb1cd22239\" in the SPDX document did not find the referenced spdx_id \"SPDXRef-Package-java-archive-conformance-suite-faa965fb1cd22239\" in the SPDX document did not find the referenced spdx_id \"SPDXRef-Package-java-archive-conformance-suite-faa965fb1cd22239\" in the SPDX document)"
+    },
+    {
       "repository": 27,
       "refusal": "sbom-empty",
-      "detail": "uor-jcs-nfc: syft 1.38.0 catalogues no component in the tree at 303591128094362857791930fdc12b73875d1ff6"
+      "detail": "uor-jcs-nfc: syft 1.55.0 catalogues no component in the tree at 303591128094362857791930fdc12b73875d1ff6"
     },
     {
       "repository": 29,
@@ -2778,6 +3911,18 @@
       "package": 43,
       "refusal": "unpublished",
       "detail": "cargo uor-foundation-verify (uor-foundation-verify/Cargo.toml:2) is declared for publication and crates.io has no package of that name"
+    }
+  ],
+  "formatClaims": [
+    {
+      "format": "spdx-2.3",
+      "refusal": "not-committed",
+      "detail": "spdx-2.3 is reproducible and each document is addressed by its sha256 and size, which --check re-derives, but its bytes are not committed: supply/sboms is held under 40 MB, and with development dependencies the CycloneDX 1.7 documents take 21.1 MB and the SPDX 2.3 documents 22.0 MB"
+    },
+    {
+      "format": "spdx-3.0.1",
+      "refusal": "not-reproducible",
+      "detail": "syft 1.55.0 (spdx-json@3.0) orders the @graph and numbers the local identifiers of its SPDX 3.0.1 document differently on each run of the same tree, so its bytes are validated and counted but cannot be committed as a reproducible projection"
     }
   ]
 }

@@ -4,8 +4,10 @@
  * tools/register-lex.mjs:
  *
  *   app/src/Foundation/Supply/V1/Model.lex.tex  its types, whose Package-URL types are the purl-spec type
- *     index, whose license forms are CycloneDX's licenseChoice, and registerValid;
- *   app/src/Supply.lex.tex  every repository with its SBOM digest, every component and license count,
+ *     index, whose license forms are CycloneDX's licenseChoice, whose SBOM formats are the editions syft
+ *     writes (CycloneDX 1.7, SPDX 2.3, SPDX 3.0.1), and registerValid;
+ *   app/src/Supply.lex.tex  every repository with its SBOM digest, every serialization of it in each format
+ *     with its validity and committed digest, every component and license count,
  *     every Foundation package and what its registry publishes, every intra-Foundation dependency edge,
  *     every open claim, and the theorem that the register is valid;
  *   the two lexicon entries that title them.
@@ -17,7 +19,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { typesModule, catalogModule, def, match, camel } from '../tools/register-lex.mjs';
+import { typesModule, catalogModule, def, match, camel, pascal } from '../tools/register-lex.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const r = JSON.parse(readFileSync(join(here, 'register.json'), 'utf8'));
@@ -28,8 +30,10 @@ const R = { ref: 'Repository' };
 const enums = {
   // ECMA-427 Package-URL types as purl-spec registers them, and a word for a component without a purl.
   PurlType: [...r.purlTypes, NONE],
-  // CycloneDX 1.6 licenseChoice: a license by SPDX id or by name, or an SPDX license expression.
+  // CycloneDX 1.7 licenseChoice: a license by SPDX id or by name, or an SPDX license expression.
   LicenseForm: ['license.id', 'license.name', 'expression'],
+  // The SBOM editions syft writes for each repository: ECMA-424 2nd edition, SPDX 2.3 and SPDX 3.0.1.
+  SbomFormat: ['cyclonedx-1.7', 'spdx-2.3', 'spdx-3.0.1'],
   EdgeKind: ['package', 'git', 'submodule', 'action', 'image', 'vendored'],
   RegistryStatus: ['published', 'absent', 'elsewhere', 'unread'],
 };
@@ -65,6 +69,14 @@ const decl = {
     },
     { name: 'ComponentCount', list: 'componentCounts', fields: [['repository', R], ['purlType', { enum: 'PurlType' }], ['count', 'Nat']], checks: ['(0 <? (project $ count))'] },
     { name: 'LicenseCount', list: 'licenseCounts', fields: [['repository', R], ['form', { enum: 'LicenseForm' }], ['license', 'String'], ['count', 'Nat']], checks: ['(0 <? (project $ count))'] },
+    // One SBOM of a repository in one format. Only a valid, reproducible serialization is committed; a reproducible one
+    // has a digest whether or not its bytes are committed.
+    {
+      name: 'Serialization',
+      list: 'serializations',
+      fields: [['repository', R], ['format', { enum: 'SbomFormat' }], ['valid', 'Bool'], ['committed', 'Bool'], ['reproducible', 'Bool'], ['digest', 'String'], ['bytes', 'Nat'], ['elements', 'Nat']],
+      checks: ['((not (project $ committed)) || ((project $ valid) && (project $ reproducible)))'],
+    },
     {
       name: 'Package',
       list: 'packages',
@@ -77,10 +89,12 @@ const decl = {
     { name: 'Edge', list: 'edges', fields: [['dependent', R], ['dependency', R], ['kind', { enum: 'EdgeKind' }], ['evidence', 'String']], checks: ['(not ((project $ dependent) =? (project $ dependency)))'] },
     { name: 'RepositoryClaim', list: 'repositoryClaims', fields: [['repository', R], ['refusal', 'String'], ['detail', 'String']] },
     { name: 'PackageClaim', list: 'packageClaims', fields: [['subject', { ref: 'Package' }], ['refusal', 'String'], ['detail', 'String']] },
+    { name: 'FormatClaim', list: 'formatClaims', fields: [['format', { enum: 'SbomFormat' }], ['refusal', 'String'], ['detail', 'String']] },
   ],
   release: [
     ['componentTotal', 'Nat'], ['snapshotDigest', 'String'], ['ecosystemDigest', 'String'], ['registriesDigest', 'String'], ['registriesFetchedAt', 'String'],
     ['syft', 'String'], ['syftDigest', 'String'], ['syftBinaryDigest', 'String'], ['standards', 'String'], ['validator', 'String'],
+    ['formats', 'Nat'], ['sbomBytes', 'Nat'],
   ],
   definitions: [
     sumWhere('componentsOf', 'ComponentCount', 'count'),
@@ -99,12 +113,32 @@ const decl = {
       match('status', [['RegistryStatus.published', 'true'], ['RegistryStatus.absent', 'isPrivate'], ['RegistryStatus.elsewhere', 'false'], ['RegistryStatus.unread', 'false']])),
     def('packagesAccounted', ['claims : (List PackageClaim)', 'values : (List Package)'], 'Bool',
       match('values', [['List.nil', 'true'], ['List.cons item rest', '(((registryAccepted (project item registry) (project item declaredPrivate)) || (packageClaimed (project item index) claims)) && (packagesAccounted claims rest))']]), 'values'),
+    // Format equality, one match per side, since a match is never nested inside a term.
+    ...enums.SbomFormat.map((f) => def(`is${pascal(f)}`, ['value : SbomFormat'], 'Bool',
+      match('value', enums.SbomFormat.map((g) => [`SbomFormat.${camel(g)}`, String(f === g)])))),
+    def('sameFormat', ['left : SbomFormat', 'right : SbomFormat'], 'Bool',
+      match('left', enums.SbomFormat.map((f) => [`SbomFormat.${camel(f)}`, `(is${pascal(f)} right)`]))),
+    def('formatClaimed', ['wanted : SbomFormat', 'claims : (List FormatClaim)'], 'Bool',
+      match('claims', [['List.nil', 'false'], ['List.cons claim rest', '((sameFormat (project claim format) wanted) || (formatClaimed wanted rest))']]), 'claims'),
+    def('serializationsOf', ['position : Nat', 'values : (List Serialization)'], 'Nat',
+      match('values', [['List.nil', '0'], ['List.cons item rest', '(if ((project item repository) =? position) then (1 + (serializationsOf position rest)) else (serializationsOf position rest))']]), 'values'),
+    // Every repository is serialized once in each format.
+    def('formatsCovered', ['formats : Nat', 'held : (List Serialization)', 'values : (List Repository)'], 'Bool',
+      match('values', [['List.nil', 'true'], ['List.cons repository rest', '(((serializationsOf (project repository index) held) =? formats) && (formatsCovered formats held rest))']]), 'values'),
+    // A serialization that does not validate is a repository claim; a valid one that is not committed is a format claim.
+    def('serializationsAccounted', ['claims : (List RepositoryClaim)', 'held : (List FormatClaim)', 'values : (List Serialization)'], 'Bool',
+      match('values', [['List.nil', 'true'], ['List.cons item rest', '((((project item valid) || (repositoryClaimed (project item repository) claims)) && (((project item committed) || (not (project item valid))) || (formatClaimed (project item format) held))) && (serializationsAccounted claims held rest))']]), 'values'),
+    def('committedBytes', ['values : (List Serialization)'], 'Nat',
+      match('values', [['List.nil', '0'], ['List.cons item rest', '(if (project item committed) then ((project item bytes) + (committedBytes rest)) else (committedBytes rest))']]), 'values'),
   ],
   checks: [
     '((componentSum repositories) =? (project release componentTotal))',
     '(countsReconcile componentCounts licenseCounts repositories)',
     '(sbomsAccounted repositoryClaims repositories)',
     '(packagesAccounted packageClaims packages)',
+    '(formatsCovered (project release formats) serializations repositories)',
+    '(serializationsAccounted repositoryClaims formatClaims serializations)',
+    '((committedBytes serializations) =? (project release sbomBytes))',
   ],
 };
 
@@ -124,6 +158,10 @@ const records = {
   edges: r.edges.map((e) => ({ dependent: position.get(e.from), dependency: position.get(e.to), kind: e.kind, evidence: e.evidence.join(' ') })),
   repositoryClaims: r.refusals.map((c) => ({ repository: c.repository, refusal: c.refusal, detail: c.detail })),
   packageClaims: r.packageClaims.map((c) => ({ subject: c.package, refusal: c.refusal, detail: c.detail })),
+  serializations: r.repositories.flatMap((x) => x.serializations.map((z) => ({
+    repository: x.index, format: z.format, valid: z.valid, committed: Boolean(z.path), reproducible: z.reproducible, digest: z.sha256 ? `sha256:${z.sha256}` : '', bytes: z.bytes, elements: z.elements,
+  }))),
+  formatClaims: r.formatClaims.map((c) => ({ format: c.format, refusal: c.refusal, detail: c.detail })),
 };
 const t = r.tools;
 const release = {
@@ -132,11 +170,13 @@ const release = {
   ecosystemDigest: `sha256:${r.ecosystem.sha256}`,
   registriesDigest: `sha256:${r.registries.sha256}`,
   registriesFetchedAt: r.registries.fetchedAt,
-  syft: `syft ${t.syft.version} (${t.syft.gitCommit}) ${t.syft.args.join(' ')}`,
+  syft: `syft ${t.syft.version} (${t.syft.gitCommit}) -c ${t.syft.config.path}#sha256:${t.syft.config.sha256} ${t.syft.args.join(' ')} ${Object.values(t.syft.outputs).map((o) => `-o ${o}`).join(' ')}`,
   syftDigest: `sha256:${t.syft.sha256}`,
   syftBinaryDigest: `sha256:${t.syft.binarySha256}`,
   standards: r.standards.map((s) => `${s.path}#sha256:${s.sha256}`).join(' '),
-  validator: `ajv ${t.ajv.version} ajv-formats ${t.ajv.ajvFormats} ${t.ajv.dialect}; formats not asserted: ${t.ajv.formatsNotAsserted.join(' ') || 'none'}`,
+  validator: `ajv ${t.ajv.version} ajv-formats ${t.ajv.ajvFormats}; ${Object.entries(t.ajv.dialects).map(([f, d]) => `${f}: ${d.dialect}, formats not asserted: ${d.formatsNotAsserted.join(' ') || 'none'}`).join('; ')}; spdx-tools ${t.spdxTools.version} pyspdxtools (${t.spdxTools.requirements}#sha256:${t.spdxTools.requirementsSha256})`,
+  formats: enums.SbomFormat.length,
+  sbomBytes: r.sbomBytes,
 };
 
 const entry = (id, surface, module, component) =>

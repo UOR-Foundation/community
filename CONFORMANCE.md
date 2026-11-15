@@ -330,9 +330,11 @@ model does not sanction.
 
 | ID | Level | Statement |
 | --- | --- | --- |
-| `SC-01` | `build` | The supply register is valid: every dependency edge joins two different repositories of the ecosystem register, every repository has a valid CycloneDX 1.6 SBOM that catalogues a component or an open claim, its component and license counts reconcile with its totals and the release, and every package not published as the Foundation's is named by an open claim |
-| `SC-02` | `build` | The supply catalog declares every repository of supply/register.json at its pinned commit with the digest of its committed SBOM, the syft release and binary digests, and the digests of the CycloneDX schema and purl type index it was validated against |
+| `SC-01` | `build` | The supply register is valid: every dependency edge joins two different repositories of the ecosystem register, every repository has a valid CycloneDX 1.7 SBOM that catalogues a component or an open claim, its component and license counts reconcile with its totals and the release, every package not published as the Foundation's is named by an open claim, and every repository is serialized once in each SBOM format with every invalid serialization and every valid one left uncommitted named by an open claim |
+| `SC-02` | `build` | The supply catalog declares every repository of supply/register.json at its pinned commit with the digest of its committed SBOM, the syft release and binary digests, and the digests of the CycloneDX, SPDX 2.3 and SPDX 3.0.1 schemas and purl type index it was validated against |
 | `SC-03` | `open` | A repository without a valid SBOM or with nothing catalogued in it, a reference the register cannot resolve, and a package declared for publication that its registry does not publish as the Foundation's are carried as open claims, never dropped or defaulted |
+| `SC-04` | `build` | Every repository is serialized by the pinned syft as CycloneDX 1.7, SPDX 2.3 and SPDX 3.0.1, each validated against its official schema and SPDX 2.3 also by the pinned spdx/tools-python, every committed CycloneDX 1.7 file has the digest and size the catalog declares, and every reproducible serialization is addressed by its digest |
+| `SC-05` | `open` | An SBOM format whose valid serializations are not committed, SPDX 3.0.1 because syft 1.55.0 does not reproduce its bytes and SPDX 2.3 because the committed SBOMs are held under 40 MB, is validated and counted on every run and carried as an open format claim, never dropped |
 
 ## uor_990_return
 

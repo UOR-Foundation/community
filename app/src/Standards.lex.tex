@@ -9,7 +9,7 @@ definition{
   name: release,
   parameters: [],
   result: Foundation.Standards.V1.Model::Release,
-  body: (record Foundation.Standards.V1.Model::Release {facetsCount := 16, checksCount := 11, partsCount := 77, standardsCount := 107, decisionsCount := 724, openClaimsCount := 648, scopeClaimsCount := 3, inputs := "standards/candidates.json#sha256:ca14cf3be7165d0c9f822365743905d11eff9268b9d9fceb5b766ecb07854083 standards/parts.json#sha256:d30f1ab309121b3cb38dc05c67d401bd4b01d002a336a3f78c7bc2fffebbec9f standards/snapshot.json#sha256:160f08ba9fdbec07f873a9b0528baab60f69b87a5d4aa8d7a24b0212f9952098 apps/uor-standard-applicability.prompt.json#sha256:1076e946a3cf7fe6b69f10723817e64c63d426533a7497921072f54b5f4fa1d4 inventory/register.json#sha256:9ee0034b56d6951e5c14b310607e702a8388cad1faf055ffeb431df88bf51621 nonprofit/register.json#sha256:6093a5c17de804464ae904ce9465037540569ca23ef65e3ca9b45eadd0c49883 governance/register.json#sha256:d042b7bb0a87843c38d0bcfd6dde0ec1eb983aafd6e64340e180fc552bdcb77b standards.lock#sha256:c7a9312edbb964ed6f275fdf7f4c25a759676a2fd695ef9df0e84dec4ef414f7", app := "apps/uor-standard-applicability.prompt.json", security := "https://raw.githubusercontent.com/UOR-Foundation/community/6360c460d56cb225e8ab172fa4d0b6bfc36b78b7/security/README.md#sha256:1ce9f12088bbda70afcc79e8011d355493981782f99c54f693e6ddd3b17b38e7", implementedCount := 12, partialCount := 300, unimplementedCount := 343, applicableCount := 655})
+  body: (record Foundation.Standards.V1.Model::Release {facetsCount := 16, checksCount := 11, partsCount := 77, standardsCount := 107, decisionsCount := 724, openClaimsCount := 648, scopeClaimsCount := 3, inputs := "standards/candidates.json#sha256:ca14cf3be7165d0c9f822365743905d11eff9268b9d9fceb5b766ecb07854083 standards/parts.json#sha256:86c9aaedcf7b9bb08e6cfe25d5793e30a2cf9d48e648dcd7603ae71b77def359 standards/snapshot.json#sha256:160f08ba9fdbec07f873a9b0528baab60f69b87a5d4aa8d7a24b0212f9952098 apps/uor-standard-applicability.prompt.json#sha256:1076e946a3cf7fe6b69f10723817e64c63d426533a7497921072f54b5f4fa1d4 inventory/register.json#sha256:9ee0034b56d6951e5c14b310607e702a8388cad1faf055ffeb431df88bf51621 nonprofit/register.json#sha256:6093a5c17de804464ae904ce9465037540569ca23ef65e3ca9b45eadd0c49883 governance/register.json#sha256:d042b7bb0a87843c38d0bcfd6dde0ec1eb983aafd6e64340e180fc552bdcb77b standards.lock#sha256:c7a9312edbb964ed6f275fdf7f4c25a759676a2fd695ef9df0e84dec4ef414f7", app := "apps/uor-standard-applicability.prompt.json", security := "https://raw.githubusercontent.com/UOR-Foundation/community/6360c460d56cb225e8ab172fa4d0b6bfc36b78b7/security/README.md#sha256:1ce9f12088bbda70afcc79e8011d355493981782f99c54f693e6ddd3b17b38e7", implementedCount := 12, partialCount := 300, unimplementedCount := 343, applicableCount := 655})
 }
 
 definition{
@@ -107,7 +107,7 @@ definition{
   name: facet13,
   parameters: [],
   result: Foundation.Standards.V1.Model::Facet,
-  body: (record Foundation.Standards.V1.Model::Facet {index := 13, identifier := "supply", directory := "supply", present := true, commit := "", checkName := "Supply registerValidHolds (SC-01)"})
+  body: (record Foundation.Standards.V1.Model::Facet {index := 13, identifier := "supply", directory := "supply", present := true, commit := "", checkName := "Supply registerValidHolds (SC-01); CycloneDX 1.7, SPDX 2.3 and SPDX 3.0.1 schema and spdx-tools validation (SC-04)"})
 }
 
 definition{
@@ -212,7 +212,7 @@ definition{
   name: check10,
   parameters: [],
   result: Foundation.Standards.V1.Model::Check,
-  body: (record Foundation.Standards.V1.Model::Check {index := 10, facet := 13, name := "Supply registerValidHolds (SC-01)"})
+  body: (record Foundation.Standards.V1.Model::Check {index := 10, facet := 13, name := "Supply registerValidHolds (SC-01); CycloneDX 1.7, SPDX 2.3 and SPDX 3.0.1 schema and spdx-tools validation (SC-04)"})
 }
 
 definition{
@@ -2368,7 +2368,7 @@ definition{
   name: decision114,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 114, part := 11, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 114, part := 11, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -2382,7 +2382,7 @@ definition{
   name: decision116,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 116, part := 11, standard := 45, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 14, check := 3})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 116, part := 11, standard := 45, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -2690,7 +2690,7 @@ definition{
   name: decision160,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 160, part := 15, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 160, part := 15, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -2767,7 +2767,7 @@ definition{
   name: decision171,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 171, part := 16, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 171, part := 16, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -2844,7 +2844,7 @@ definition{
   name: decision182,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 182, part := 17, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 182, part := 17, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -2921,7 +2921,7 @@ definition{
   name: decision193,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 193, part := 18, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 193, part := 18, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -2998,7 +2998,7 @@ definition{
   name: decision204,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 204, part := 19, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 204, part := 19, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -3075,7 +3075,7 @@ definition{
   name: decision215,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 215, part := 20, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 215, part := 20, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -3152,7 +3152,7 @@ definition{
   name: decision226,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 226, part := 21, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 226, part := 21, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -3229,7 +3229,7 @@ definition{
   name: decision237,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 237, part := 22, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 237, part := 22, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -3306,7 +3306,7 @@ definition{
   name: decision248,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 248, part := 23, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 248, part := 23, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -3383,7 +3383,7 @@ definition{
   name: decision259,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 259, part := 24, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 259, part := 24, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -3460,7 +3460,7 @@ definition{
   name: decision270,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 270, part := 25, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 270, part := 25, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -3537,7 +3537,7 @@ definition{
   name: decision281,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 281, part := 26, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 281, part := 26, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -3614,7 +3614,7 @@ definition{
   name: decision292,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 292, part := 27, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 292, part := 27, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -3691,7 +3691,7 @@ definition{
   name: decision303,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 303, part := 28, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 303, part := 28, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -3768,7 +3768,7 @@ definition{
   name: decision314,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 314, part := 29, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 314, part := 29, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -3845,7 +3845,7 @@ definition{
   name: decision325,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 325, part := 30, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 325, part := 30, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -3922,7 +3922,7 @@ definition{
   name: decision336,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 336, part := 31, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 336, part := 31, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -3999,7 +3999,7 @@ definition{
   name: decision347,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 347, part := 32, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 347, part := 32, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -4076,7 +4076,7 @@ definition{
   name: decision358,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 358, part := 33, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 358, part := 33, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -4153,7 +4153,7 @@ definition{
   name: decision369,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 369, part := 34, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 369, part := 34, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -4230,7 +4230,7 @@ definition{
   name: decision380,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 380, part := 35, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 380, part := 35, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -4307,7 +4307,7 @@ definition{
   name: decision391,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 391, part := 36, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 391, part := 36, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -4384,7 +4384,7 @@ definition{
   name: decision402,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 402, part := 37, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 402, part := 37, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -4461,7 +4461,7 @@ definition{
   name: decision413,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 413, part := 38, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 413, part := 38, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -4538,7 +4538,7 @@ definition{
   name: decision424,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 424, part := 39, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 424, part := 39, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -4615,7 +4615,7 @@ definition{
   name: decision435,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 435, part := 40, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 435, part := 40, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -4692,7 +4692,7 @@ definition{
   name: decision446,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 446, part := 41, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 446, part := 41, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -4769,7 +4769,7 @@ definition{
   name: decision457,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 457, part := 42, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 457, part := 42, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -4846,7 +4846,7 @@ definition{
   name: decision468,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 468, part := 43, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 468, part := 43, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -4923,7 +4923,7 @@ definition{
   name: decision479,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 479, part := 44, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 479, part := 44, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -5000,7 +5000,7 @@ definition{
   name: decision490,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 490, part := 45, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 490, part := 45, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -5077,7 +5077,7 @@ definition{
   name: decision501,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 501, part := 46, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 501, part := 46, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -5154,7 +5154,7 @@ definition{
   name: decision512,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 512, part := 47, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 512, part := 47, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -5231,7 +5231,7 @@ definition{
   name: decision523,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 523, part := 48, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 523, part := 48, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -5308,7 +5308,7 @@ definition{
   name: decision534,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 534, part := 49, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 534, part := 49, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -5385,7 +5385,7 @@ definition{
   name: decision545,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 545, part := 50, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 545, part := 50, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -5462,7 +5462,7 @@ definition{
   name: decision556,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 556, part := 51, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 556, part := 51, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -5539,7 +5539,7 @@ definition{
   name: decision567,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 567, part := 52, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 567, part := 52, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -5616,7 +5616,7 @@ definition{
   name: decision578,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 578, part := 53, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 578, part := 53, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -5693,7 +5693,7 @@ definition{
   name: decision589,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 589, part := 54, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 589, part := 54, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -5770,7 +5770,7 @@ definition{
   name: decision600,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 600, part := 55, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 600, part := 55, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -5847,7 +5847,7 @@ definition{
   name: decision611,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 611, part := 56, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 611, part := 56, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -5924,7 +5924,7 @@ definition{
   name: decision622,
   parameters: [],
   result: Foundation.Standards.V1.Model::Decision,
-  body: (record Foundation.Standards.V1.Model::Decision {index := 622, part := 57, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 12, check := 8})
+  body: (record Foundation.Standards.V1.Model::Decision {index := 622, part := 57, standard := 22, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), scope := (ctor Foundation.Standards.V1.Model::Scope.quoted), inscope := (ctor Foundation.Standards.V1.Model::YesNo.yes), force := (ctor Foundation.Standards.V1.Model::Force.voluntary), jurisdiction := (ctor Foundation.Standards.V1.Model::Jurisdiction.unbound), activity := (ctor Foundation.Standards.V1.Model::Activity.present), adopted := (ctor Foundation.Standards.V1.Model::YesNo.yes), outcome := (ctor Foundation.Standards.V1.Model::Outcome.adopted), rule := 8, status := (ctor Foundation.Standards.V1.Model::Status.partiallyImplemented), facet := 13, check := 10})
 }
 
 definition{
@@ -7534,7 +7534,7 @@ definition{
   name: openClaim111,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 111, decision := 114, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for Software supply chain: licensing/register.json cites it; no check of this repository verifies its clauses for Software supply chain"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 111, decision := 114, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for Software supply chain: supply/register.json cites it; no check of this repository verifies its clauses for Software supply chain"})
 }
 
 definition{
@@ -7548,7 +7548,7 @@ definition{
   name: openClaim113,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 113, decision := 116, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "SPDX Specification 3.0.1 for Software supply chain: standards.lock cites it; no check of this repository verifies its clauses for Software supply chain"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 113, decision := 116, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "SPDX Specification 3.0.1 for Software supply chain: supply/register.json cites it; no check of this repository verifies its clauses for Software supply chain"})
 }
 
 definition{
@@ -7779,7 +7779,7 @@ definition{
   name: openClaim146,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 146, decision := 160, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for atlas-embeddings: licensing/register.json cites it; no check of this repository verifies its clauses for atlas-embeddings"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 146, decision := 160, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for atlas-embeddings: supply/register.json cites it; no check of this repository verifies its clauses for atlas-embeddings"})
 }
 
 definition{
@@ -7849,7 +7849,7 @@ definition{
   name: openClaim156,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 156, decision := 171, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for lexlean: licensing/register.json cites it; no check of this repository verifies its clauses for lexlean"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 156, decision := 171, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for lexlean: supply/register.json cites it; no check of this repository verifies its clauses for lexlean"})
 }
 
 definition{
@@ -7919,7 +7919,7 @@ definition{
   name: openClaim166,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 166, decision := 182, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for prism-code: licensing/register.json cites it; no check of this repository verifies its clauses for prism-code"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 166, decision := 182, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for prism-code: supply/register.json cites it; no check of this repository verifies its clauses for prism-code"})
 }
 
 definition{
@@ -7989,7 +7989,7 @@ definition{
   name: openClaim176,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 176, decision := 193, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-addr: licensing/register.json cites it; no check of this repository verifies its clauses for uor-addr"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 176, decision := 193, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-addr: supply/register.json cites it; no check of this repository verifies its clauses for uor-addr"})
 }
 
 definition{
@@ -8059,7 +8059,7 @@ definition{
   name: openClaim186,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 186, decision := 204, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-addr-1: licensing/register.json cites it; no check of this repository verifies its clauses for uor-addr-1"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 186, decision := 204, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-addr-1: supply/register.json cites it; no check of this repository verifies its clauses for uor-addr-1"})
 }
 
 definition{
@@ -8129,7 +8129,7 @@ definition{
   name: openClaim196,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 196, decision := 215, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-addr-c: licensing/register.json cites it; no check of this repository verifies its clauses for uor-addr-c"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 196, decision := 215, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-addr-c: supply/register.json cites it; no check of this repository verifies its clauses for uor-addr-c"})
 }
 
 definition{
@@ -8199,7 +8199,7 @@ definition{
   name: openClaim206,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 206, decision := 226, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-addr-wasm: licensing/register.json cites it; no check of this repository verifies its clauses for uor-addr-wasm"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 206, decision := 226, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-addr-wasm: supply/register.json cites it; no check of this repository verifies its clauses for uor-addr-wasm"})
 }
 
 definition{
@@ -8269,7 +8269,7 @@ definition{
   name: openClaim216,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 216, decision := 237, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-foundation: licensing/register.json cites it; no check of this repository verifies its clauses for uor-foundation"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 216, decision := 237, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-foundation: supply/register.json cites it; no check of this repository verifies its clauses for uor-foundation"})
 }
 
 definition{
@@ -8339,7 +8339,7 @@ definition{
   name: openClaim226,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 226, decision := 248, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-foundation-macros: licensing/register.json cites it; no check of this repository verifies its clauses for uor-foundation-macros"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 226, decision := 248, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-foundation-macros: supply/register.json cites it; no check of this repository verifies its clauses for uor-foundation-macros"})
 }
 
 definition{
@@ -8409,7 +8409,7 @@ definition{
   name: openClaim236,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 236, decision := 259, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-foundation-sdk: licensing/register.json cites it; no check of this repository verifies its clauses for uor-foundation-sdk"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 236, decision := 259, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-foundation-sdk: supply/register.json cites it; no check of this repository verifies its clauses for uor-foundation-sdk"})
 }
 
 definition{
@@ -8479,7 +8479,7 @@ definition{
   name: openClaim246,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 246, decision := 270, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-prism: licensing/register.json cites it; no check of this repository verifies its clauses for uor-prism"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 246, decision := 270, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-prism: supply/register.json cites it; no check of this repository verifies its clauses for uor-prism"})
 }
 
 definition{
@@ -8549,7 +8549,7 @@ definition{
   name: openClaim256,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 256, decision := 281, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-prism-crypto: licensing/register.json cites it; no check of this repository verifies its clauses for uor-prism-crypto"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 256, decision := 281, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-prism-crypto: supply/register.json cites it; no check of this repository verifies its clauses for uor-prism-crypto"})
 }
 
 definition{
@@ -8619,7 +8619,7 @@ definition{
   name: openClaim266,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 266, decision := 292, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-prism-fhe: licensing/register.json cites it; no check of this repository verifies its clauses for uor-prism-fhe"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 266, decision := 292, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-prism-fhe: supply/register.json cites it; no check of this repository verifies its clauses for uor-prism-fhe"})
 }
 
 definition{
@@ -8689,7 +8689,7 @@ definition{
   name: openClaim276,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 276, decision := 303, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-prism-numerics: licensing/register.json cites it; no check of this repository verifies its clauses for uor-prism-numerics"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 276, decision := 303, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-prism-numerics: supply/register.json cites it; no check of this repository verifies its clauses for uor-prism-numerics"})
 }
 
 definition{
@@ -8759,7 +8759,7 @@ definition{
   name: openClaim286,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 286, decision := 314, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-prism-tensor: licensing/register.json cites it; no check of this repository verifies its clauses for uor-prism-tensor"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 286, decision := 314, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-prism-tensor: supply/register.json cites it; no check of this repository verifies its clauses for uor-prism-tensor"})
 }
 
 definition{
@@ -8829,7 +8829,7 @@ definition{
   name: openClaim296,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 296, decision := 325, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-prism-verify: licensing/register.json cites it; no check of this repository verifies its clauses for uor-prism-verify"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 296, decision := 325, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-prism-verify: supply/register.json cites it; no check of this repository verifies its clauses for uor-prism-verify"})
 }
 
 definition{
@@ -8899,7 +8899,7 @@ definition{
   name: openClaim306,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 306, decision := 336, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/calculator-system: licensing/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/calculator-system"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 306, decision := 336, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/calculator-system: supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/calculator-system"})
 }
 
 definition{
@@ -8969,7 +8969,7 @@ definition{
   name: openClaim316,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 316, decision := 347, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/dataflow-policy: licensing/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/dataflow-policy"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 316, decision := 347, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/dataflow-policy: supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/dataflow-policy"})
 }
 
 definition{
@@ -9039,7 +9039,7 @@ definition{
   name: openClaim326,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 326, decision := 358, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-adapter-compose: licensing/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-compose"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 326, decision := 358, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-adapter-compose: supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-compose"})
 }
 
 definition{
@@ -9109,7 +9109,7 @@ definition{
   name: openClaim336,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 336, decision := 369, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-adapter-github-pages: licensing/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-github-pages"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 336, decision := 369, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-adapter-github-pages: supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-github-pages"})
 }
 
 definition{
@@ -9179,7 +9179,7 @@ definition{
   name: openClaim346,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 346, decision := 380, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-adapter-kubernetes: licensing/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-kubernetes"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 346, decision := 380, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-adapter-kubernetes: supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-adapter-kubernetes"})
 }
 
 definition{
@@ -9249,7 +9249,7 @@ definition{
   name: openClaim356,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 356, decision := 391, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-oracles: licensing/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-oracles"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 356, decision := 391, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-oracles: supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-oracles"})
 }
 
 definition{
@@ -9319,7 +9319,7 @@ definition{
   name: openClaim366,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 366, decision := 402, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-runtime: licensing/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-runtime"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 366, decision := 402, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-runtime: supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-runtime"})
 }
 
 definition{
@@ -9389,7 +9389,7 @@ definition{
   name: openClaim376,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 376, decision := 413, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-sdk: licensing/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 376, decision := 413, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-sdk: supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk"})
 }
 
 definition{
@@ -9459,7 +9459,7 @@ definition{
   name: openClaim386,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 386, decision := 424, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-sdk-build: licensing/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk-build"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 386, decision := 424, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-sdk-build: supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk-build"})
 }
 
 definition{
@@ -9529,7 +9529,7 @@ definition{
   name: openClaim396,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 396, decision := 435, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-sdk-candidate: licensing/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk-candidate"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 396, decision := 435, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for ghcr.io/uor-foundation/prismpm-sdk-candidate: supply/register.json cites it; no check of this repository verifies its clauses for ghcr.io/uor-foundation/prismpm-sdk-candidate"})
 }
 
 definition{
@@ -9599,7 +9599,7 @@ definition{
   name: openClaim406,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 406, decision := 446, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/algebra: licensing/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/algebra"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 406, decision := 446, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/algebra: supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/algebra"})
 }
 
 definition{
@@ -9669,7 +9669,7 @@ definition{
   name: openClaim416,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 416, decision := 457, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/calculus: licensing/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/calculus"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 416, decision := 457, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/calculus: supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/calculus"})
 }
 
 definition{
@@ -9739,7 +9739,7 @@ definition{
   name: openClaim426,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 426, decision := 468, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/field-substrate: licensing/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/field-substrate"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 426, decision := 468, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/field-substrate: supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/field-substrate"})
 }
 
 definition{
@@ -9809,7 +9809,7 @@ definition{
   name: openClaim436,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 436, decision := 479, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/geometry: licensing/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/geometry"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 436, decision := 479, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/geometry: supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/geometry"})
 }
 
 definition{
@@ -9879,7 +9879,7 @@ definition{
   name: openClaim446,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 446, decision := 490, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/math-js: licensing/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/math-js"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 446, decision := 490, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/math-js: supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/math-js"})
 }
 
 definition{
@@ -9949,7 +9949,7 @@ definition{
   name: openClaim456,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 456, decision := 501, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/math-ts-core: licensing/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/math-ts-core"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 456, decision := 501, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/math-ts-core: supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/math-ts-core"})
 }
 
 definition{
@@ -10019,7 +10019,7 @@ definition{
   name: openClaim466,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 466, decision := 512, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/mcp-server: licensing/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/mcp-server"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 466, decision := 512, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/mcp-server: supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/mcp-server"})
 }
 
 definition{
@@ -10089,7 +10089,7 @@ definition{
   name: openClaim476,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 476, decision := 523, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/operators: licensing/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/operators"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 476, decision := 523, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/operators: supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/operators"})
 }
 
 definition{
@@ -10159,7 +10159,7 @@ definition{
   name: openClaim486,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 486, decision := 534, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/resonance: licensing/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/resonance"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 486, decision := 534, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/resonance: supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/resonance"})
 }
 
 definition{
@@ -10229,7 +10229,7 @@ definition{
   name: openClaim496,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 496, decision := 545, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/self-reference: licensing/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/self-reference"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 496, decision := 545, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/self-reference: supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/self-reference"})
 }
 
 definition{
@@ -10299,7 +10299,7 @@ definition{
   name: openClaim506,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 506, decision := 556, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/sigmatics: licensing/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/sigmatics"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 506, decision := 556, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/sigmatics: supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/sigmatics"})
 }
 
 definition{
@@ -10369,7 +10369,7 @@ definition{
   name: openClaim516,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 516, decision := 567, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/topology: licensing/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/topology"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 516, decision := 567, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/topology: supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/topology"})
 }
 
 definition{
@@ -10439,7 +10439,7 @@ definition{
   name: openClaim526,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 526, decision := 578, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/uor-addr: licensing/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/uor-addr"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 526, decision := 578, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor-foundation/uor-addr: supply/register.json cites it; no check of this repository verifies its clauses for @uor-foundation/uor-addr"})
 }
 
 definition{
@@ -10509,7 +10509,7 @@ definition{
   name: openClaim536,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 536, decision := 589, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor/prism: licensing/register.json cites it; no check of this repository verifies its clauses for @uor/prism"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 536, decision := 589, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for @uor/prism: supply/register.json cites it; no check of this repository verifies its clauses for @uor/prism"})
 }
 
 definition{
@@ -10579,7 +10579,7 @@ definition{
   name: openClaim546,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 546, decision := 600, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for prism-code: licensing/register.json cites it; no check of this repository verifies its clauses for prism-code"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 546, decision := 600, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for prism-code: supply/register.json cites it; no check of this repository verifies its clauses for prism-code"})
 }
 
 definition{
@@ -10649,7 +10649,7 @@ definition{
   name: openClaim556,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 556, decision := 611, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for prism-code: licensing/register.json cites it; no check of this repository verifies its clauses for prism-code"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 556, decision := 611, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for prism-code: supply/register.json cites it; no check of this repository verifies its clauses for prism-code"})
 }
 
 definition{
@@ -10719,7 +10719,7 @@ definition{
   name: openClaim566,
   parameters: [],
   result: Foundation.Standards.V1.Model::OpenClaim,
-  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 566, decision := 622, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-addr: licensing/register.json cites it; no check of this repository verifies its clauses for uor-addr"})
+  body: (record Foundation.Standards.V1.Model::OpenClaim {index := 566, decision := 622, owner := (ctor Foundation.Standards.V1.Model::Owner.standards), refusal := "standard-partial", detail := "ISO/IEC 5962 SPDX Specification 2.2.1 for uor-addr: supply/register.json cites it; no check of this repository verifies its clauses for uor-addr"})
 }
 
 definition{
