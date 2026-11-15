@@ -158,6 +158,11 @@ jobs:
         id: node
         with:
           node-version: 22
+      - name: The PDF reader the nonprofit register reads the Bylaws and IRS forms with
+        # pdftotext is not on the runner image; ubuntu-24.04's poppler-utils is 24.02.0, the
+        # version nonprofit/register.json records, and its -v output is in the cache key.
+        if: matrix.area == 'nonprofit'
+        run: sudo apt-get install -y --no-install-recommends poppler-utils
       - name: Address the inputs
         id: address
         # A register reads its own files (its entry's `inputs`), the
