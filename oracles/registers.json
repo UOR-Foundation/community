@@ -33,6 +33,15 @@
       ]
     },
     {
+      "area": "deidentification",
+      "sources": { "kind": "pinned", "file": "observations/deidentification.json" },
+      "inputs": ["observations/deidentification.json", "observations/collect.py"],
+      "tools": [["python3", "--version"]],
+      "check": [
+        ["python3", "observations/collect.py", "vectors", "{sources}/rfc4231.txt", "--check"]
+      ]
+    },
+    {
       "area": "interventions",
       "sources": { "kind": "committed", "file": "observations/corpus.json" },
       "inputs": ["interventions/**", "observations/**", "chaoss/register.json", "chaoss/oracle-methods.json", "apps/uor-observation-admission.prompt.json", "apps/uor-contribution-attribution.prompt.json", "governance/agents.json", "automation/intervention-*.json", "automation/intervention-*.prompt.json", "automation/interventions.json"],

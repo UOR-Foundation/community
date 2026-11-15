@@ -1809,7 +1809,7 @@
   {
    "id": "T09",
    "name": "Re-identification of published community activity",
-   "text": "The public corpus keeps Discord message and channel ids, times and an unsalted sha256 of each Discord user id. Anyone in the guild can open a message id and see its author, and anyone with a user id can compute its pseudonym, so every member's activity timeline is linkable and identifiable (LINDDUN Linking, Identifying, Detecting).",
+   "text": "A corpus that kept Discord message and thread ids or an unkeyed hash of a user id would let anyone in the guild open a message id and see its author, and anyone with a user id compute its pseudonym, so every member's activity timeline would be linkable and identifiable (LINDDUN Linking, Identifying, Detecting). The corpus committed before 2026-11-15 did, and its history is purged.",
    "source": 2,
    "initiation": 2,
    "adverse": 4,
@@ -2688,9 +2688,22 @@
   {
    "id": "C21",
    "name": "Keyed pseudonyms and aggregate publication",
-   "text": "Publish Discord activity only as aggregates, or replace ids and hashes with keyed pseudonyms (ISO/IEC 20889) whose key never leaves the collection run, and honor deletions in the next collection.",
-   "status": "planned",
-   "evidence": [],
+   "text": "The uor-deidentification app decides each recorded field's ISO/IEC 20889 technique: content is suppressed, and every identifier Discord shows only to members (user, message and thread ids) is replaced by its HMAC-SHA-256 pseudonym (FIPS 198-1, checked against RFC 4231) under a key only the collection run holds; without the key nothing is published (GDPR Article 4(5)). Deletions are not yet honored in the next collection.",
+   "status": "partial",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "apps/uor-deidentification.prompt.json"
+    },
+    {
+     "kind": "path",
+     "reference": "observations/deidentification.json"
+    },
+    {
+     "kind": "path",
+     "reference": "observations/collect.py"
+    }
+   ],
    "outcomes": [
     60,
     2

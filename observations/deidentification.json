@@ -1,0 +1,154 @@
+{
+ "spec": "uor-community/deidentification-fields/1",
+ "about": "Every field the community collector records or publishes, with its ISO/IEC 20889 attribute class (role) and where its subject published it (origin). observations/collect.py asks the uor-deidentification app for each field's technique before it records anything and applies exactly that technique; a field not listed here is never recorded. A pseudonym is HMAC-SHA-256 (FIPS 198-1) under the DISCORD_PSEUDONYM_KEY secret, which only the collection run holds; `pseudonym` gives its form. The vectors are RFC 4231 section 4, re-derived from the pinned RFC by `collect.py vectors <rfc4231.txt> --check`, and the collector checks Python's hmac against them before it uses the key.",
+ "forms": {
+  "hex": "HMAC-SHA-256(key, 'discord-user:' + sha256('discord:' + id)) in hex. The input is the digest the record held before the key existed, so that record is re-keyed without any Discord id.",
+  "snowflake": "The snowflake's 42 bits of milliseconds, which the record publishes anyway as discord.message.time, above the first 22 bits of HMAC-SHA-256(key, 'discord-snowflake:' + id) in place of Discord's worker, process and increment bits. Perceval's discord backend orders messages and pages by the integer snowflake, so the pseudonym keeps the order across milliseconds."
+ },
+ "files": [
+  {
+   "name": "rfc4231.txt",
+   "standard": "RFC 4231, Identifiers and Test Vectors for HMAC-SHA-224, HMAC-SHA-256, HMAC-SHA-384, and HMAC-SHA-512",
+   "url": "https://www.rfc-editor.org/rfc/rfc4231.txt",
+   "sha256": "72178527ce93500e730bc8eb182b857e583096d652b64ece0879c52ba1df973b"
+  }
+ ],
+ "fields": [
+  {
+   "field": "discord.user.id",
+   "role": "direct",
+   "origin": "restricted",
+   "why": "A Discord user id finds the member's profile in any server they share.",
+   "pseudonym": "hex"
+  },
+  {
+   "field": "discord.user.name",
+   "role": "content",
+   "origin": "restricted",
+   "why": "The username and display name the member chose."
+  },
+  {
+   "field": "discord.user.bot",
+   "role": "structural",
+   "origin": "restricted",
+   "why": "Discord's own flag that the account is software."
+  },
+  {
+   "field": "discord.message.id",
+   "role": "direct",
+   "origin": "restricted",
+   "why": "Any guild member who opens a message id sees its author.",
+   "pseudonym": "snowflake"
+  },
+  {
+   "field": "discord.message.content",
+   "role": "content",
+   "origin": "restricted",
+   "why": "What the member wrote."
+  },
+  {
+   "field": "discord.message.time",
+   "role": "quasi",
+   "origin": "restricted",
+   "why": "When the member posted or edited; the metrics count by period."
+  },
+  {
+   "field": "discord.message.kind",
+   "role": "structural",
+   "origin": "restricted",
+   "why": "Discord's message type, pinned flag and flags."
+  },
+  {
+   "field": "discord.channel.kind",
+   "role": "structural",
+   "origin": "restricted",
+   "why": "Discord's channel type, which names no member."
+  },
+  {
+   "field": "discord.thread.id",
+   "role": "direct",
+   "origin": "restricted",
+   "why": "A thread opened from a message has that message's id, so it finds its owner.",
+   "pseudonym": "snowflake"
+  },
+  {
+   "field": "discord.thread.name",
+   "role": "content",
+   "origin": "restricted",
+   "why": "The title the member gave the thread."
+  },
+  {
+   "field": "discord.guild.id",
+   "role": "structural",
+   "origin": "restricted",
+   "why": "The Foundation's guild; it names no member."
+  },
+  {
+   "field": "discord.channel.id",
+   "role": "structural",
+   "origin": "restricted",
+   "why": "A channel the guild's administrators made; it names no member."
+  },
+  {
+   "field": "discord.channel.name",
+   "role": "structural",
+   "origin": "restricted",
+   "why": "The name the administrators gave a channel."
+  },
+  {
+   "field": "discord.reaction",
+   "role": "structural",
+   "origin": "restricted",
+   "why": "A reaction's count and emoji, which name no member."
+  },
+  {
+   "field": "git.author.email",
+   "role": "direct",
+   "origin": "public",
+   "why": "The address the author wrote into public git commit metadata; the corpus keeps its sha256."
+  },
+  {
+   "field": "github.user.login",
+   "role": "direct",
+   "origin": "public",
+   "why": "The login of a public GitHub account."
+  }
+ ],
+ "vectors": [
+  {
+   "key": "0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b",
+   "data": "4869205468657265",
+   "mac": "b0344c61d8db38535ca8afceaf0bf12b881dc200c9833da726e9376c2e32cff7"
+  },
+  {
+   "key": "4a656665",
+   "data": "7768617420646f2079612077616e7420666f72206e6f7468696e673f",
+   "mac": "5bdcc146bf60754e6a042426089575c75a003f089d2739839dec58b964ec3843"
+  },
+  {
+   "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "data": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+   "mac": "773ea91e36800e46854db8ebd09181a72959098b3ef8c122d9635514ced565fe"
+  },
+  {
+   "key": "0102030405060708090a0b0c0d0e0f10111213141516171819",
+   "data": "cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd",
+   "mac": "82558a389a443c0ea4cc819899f2083a85f0faa3e578f8077a2e3ff46729665b"
+  },
+  {
+   "key": "0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c",
+   "data": "546573742057697468205472756e636174696f6e",
+   "mac": "a3b6167473100ee06e0c796c2955552b"
+  },
+  {
+   "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "data": "54657374205573696e67204c6172676572205468616e20426c6f636b2d53697a65204b6579202d2048617368204b6579204669727374",
+   "mac": "60e431591ee0b67f0d8a26aacbf5b77f8e0bc6213728c5140546040f0ee37f54"
+  },
+  {
+   "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "data": "5468697320697320612074657374207573696e672061206c6172676572207468616e20626c6f636b2d73697a65206b657920616e642061206c6172676572207468616e20626c6f636b2d73697a6520646174612e20546865206b6579206e6565647320746f20626520686173686564206265666f7265206265696e6720757365642062792074686520484d414320616c676f726974686d2e",
+   "mac": "9b09ffa71b942fcb27635fbcd5b0e944bfdc63644f0713938a7f51535c3a35e2"
+  }
+ ]
+}
