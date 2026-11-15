@@ -522,12 +522,7 @@ definition{
     | Disposition.review => ((position =? 5) || ((position =? 6) || ((position =? 7) || ((position =? 8) || (position =? 9))))))
 }
 
-definition{
-  name: ruleFolds,
-  parameters: [position : Nat],
-  result: Bool,
-  body: (position =? 3)
-}
+definition{name: ruleFolds, parameters: [position : Nat], result: Bool, body: (position =? 3)}
 
 definition{
   name: dispositionFollows,

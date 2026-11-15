@@ -208,6 +208,150 @@ suite = "remediation"
 statement = "A change only a maintainer or owner can decide, and a norm no change can reach, is carried as an open claim with its evidence, never defaulted; no change is applied to another repository until the Foundation's owners approve it"
 
 [[id]]
+id = "HL-01"
+level = "build"
+suite = "health"
+statement = "Every health assessment's answer is its metrics model's indicator answer: the compiled judge of that model's decision app, applied to the assessment's admitted and refused counts"
+
+[[id]]
+id = "HL-02"
+level = "build"
+suite = "health"
+statement = "Every health assessment's counts are exactly what its evidence rows admit and refuse, plus the members the CHAOSS register carries as open claims; each row is a distinct observable base measure of the indicator, and a row with a computed value has a permitted observation"
+
+[[id]]
+id = "HL-03"
+level = "build"
+suite = "health"
+statement = "The health register is the projection of the CHAOSS, ecosystem and observation registers and the indicator prompts, evaluated as DMN 1.5 first-hit decision tables that answer every example their prompts state, and the Health catalog is its catalog; a register or catalog that differs fails the gate"
+
+[[id]]
+id = "HL-04"
+level = "build"
+suite = "health"
+statement = "Every stakeholder view shows the current health of each metrics model it holds, and the health page, its Markdown twin and the Discord digest carry every indicator's answers, all generated from the health register"
+
+[[id]]
+id = "HL-05"
+level = "open"
+suite = "health"
+statement = "A registered repository the observation corpus never reached, a metrics model with no indicator app, and an observation of a subject outside the ecosystem register are carried as open claims, never assessed by default"
+
+[[id]]
+id = "OB-01"
+level = "build"
+suite = "observations"
+statement = "The observation register is valid: every observation's admission is what the uor-observation-admission app's first-applicable rules decide on its recorded fields, and every metric value refers to a permitted observation of its own metric, so every value is a function of admitted observations"
+
+[[id]]
+id = "OB-02"
+level = "build"
+suite = "observations"
+statement = "The observation corpus is frozen and replayable: every subject is pinned by the commits of its refs, every corpus file is pinned by the sha256 of its bytes, an independent run from the same pins reproduces each file, and the register and its catalog declare the corpus digest"
+
+[[id]]
+id = "OB-03"
+level = "build"
+suite = "observations"
+statement = "Every contribution is credited through the uor-contribution-attribution app as W3C PROV-O: a person is credited for their own work, a software agent's work is credited to a person only through a Co-authored-by delegation naming exactly one person, and no name or email enters the corpus"
+
+[[id]]
+id = "OB-04"
+level = "open"
+suite = "observations"
+statement = "A released CHAOSS metric the oracle binds no computation to, and a computation whose index, field, query, aggregation or script this corpus and projector cannot evaluate exactly as the oracle defines it, is carried as an open claim, never approximated"
+
+[[id]]
+id = "OB-05"
+level = "open"
+suite = "observations"
+statement = "GitHub issues and pull requests, and the Foundation's Discord, enter the corpus only from responses the observations workflow recorded and replayed offline; a Discord channel is read only where the uor-discord-read app permits it, and the record keeps no message text and no member's name"
+
+[[id]]
+id = "IV-01"
+level = "build"
+suite = "interventions"
+statement = "The interventions register is the projection of the observation corpus evaluated at the ISO 8601 week grain, the intervention catalog, the approvals and the three intervention prompts, each prompt answering every example it states and holding every property over its whole request space; a register that differs fails the gate"
+
+[[id]]
+id = "IV-02"
+level = "build"
+suite = "interventions"
+statement = "Every chart's signal is the uor-intervention-signal answer on its ISO 7870-2:2023 individuals chart: limits are the mean of the weeks before the nine-week window plus or minus 2.66 times their mean moving range, test 1 is on the latest complete week, test 2 is over the window, and fewer than 20 baseline weeks is insufficient"
+
+[[id]]
+id = "IV-03"
+level = "build"
+suite = "interventions"
+statement = "No intervention reaches a contributor, participant or partner without a human: every proposal that reaches people is denied and only drafted, an agent task opens only in UOR-Foundation/community for a proposal the trust-root approvals file approves by id, and the runner refuses a run whose register or decisions it cannot re-derive"
+
+[[id]]
+id = "IV-04"
+level = "build"
+suite = "interventions"
+statement = "Every enacted intervention's effect, and every untreated signal onset in each chart's history, is the uor-intervention-effect answer over the first nine complete weeks after it against the limits frozen at its signal, so an intervention's effect is read against what untreated signals did"
+
+[[id]]
+id = "IV-05"
+level = "open"
+suite = "interventions"
+statement = "The three intervention apps are re-checked by the pinned builder on every run but are not yet in apps/set.json, so no Lean proof covers them; a chart of an average or a ratio with a week of no value, and the Discord guild until a chat computation is bound, are carried as refusals, never charted"
+
+[[id]]
+id = "SC-01"
+level = "build"
+suite = "supply"
+statement = "The supply register is valid: every dependency edge joins two different repositories of the ecosystem register, every repository has a valid CycloneDX 1.6 SBOM that catalogues a component or an open claim, its component and license counts reconcile with its totals and the release, and every package not published as the Foundation's is named by an open claim"
+
+[[id]]
+id = "SC-02"
+level = "build"
+suite = "supply"
+statement = "The supply catalog declares every repository of supply/register.json at its pinned commit with the digest of its committed SBOM, the syft release and binary digests, and the digests of the CycloneDX schema and purl type index it was validated against"
+
+[[id]]
+id = "SC-03"
+level = "open"
+suite = "supply"
+statement = "A repository without a valid SBOM or with nothing catalogued in it, a reference the register cannot resolve, and a package declared for publication that its registry does not publish as the Foundation's are carried as open claims, never dropped or defaulted"
+
+[[id]]
+id = "AS-01"
+level = "build"
+suite = "assets"
+statement = "The asset register is valid: every asset id is unique, every package, service and document resolves to a repository asset or is an open claim, every domain has an RDAP observation, and every organization the sources name has a stated relation or is an open claim"
+
+[[id]]
+id = "AS-02"
+level = "build"
+suite = "assets"
+statement = "The asset catalog declares every asset of inventory/register.json under its id, and the digests of the snapshot, the pinned sources and the standards it was projected from"
+
+[[id]]
+id = "AS-03"
+level = "open"
+suite = "assets"
+statement = "An asset that does not resolve, a service with no repository or no deployment, a host or registration RDAP and DNS cannot vouch for, and a relationship whose relation the source does not state, is carried as an open claim, never dropped or guessed"
+
+[[id]]
+id = "NP-01"
+level = "build"
+suite = "nonprofit"
+statement = "The nonprofit register is valid: every obligation cites the authority it names and is assigned to a governance post by a Bylaws provision, every authority is the law of the entity's jurisdiction or of the nation containing it, every open claim names a subject that exists, and the entity is recorded as IRS-recognized exactly when IRS recognition data matched it"
+
+[[id]]
+id = "NP-02"
+level = "build"
+suite = "nonprofit"
+statement = "The nonprofit catalog declares every source of nonprofit/register.json with the sha256 digest of the bytes read at its pinned commit or fetch"
+
+[[id]]
+id = "NP-03"
+level = "open"
+suite = "nonprofit"
+statement = "Every obligation not observed discharged, every Form 990 Part VI line no public source answers, every financial figure the returns need, and every status statement no authority bears out is carried as an open claim, never dropped or presumed"
+
+[[id]]
 id = "CAACATF-01"
 level = "build"
 suite = "chaoss_ai_alignment_community_aligned_training_feedback"
@@ -664,6 +808,42 @@ suite = "chaoss_starter_project_health"
 statement = "The app never answers unmeasured when admitted is at least 1 and refused equals 0"
 
 [[id]]
+id = "U9R-01"
+level = "build"
+suite = "uor_990_return"
+statement = "The app never answers form990n when normally is large"
+
+[[id]]
+id = "U9R-02"
+level = "build"
+suite = "uor_990_return"
+statement = "The app never answers form990n when kind is supporting"
+
+[[id]]
+id = "U9R-03"
+level = "build"
+suite = "uor_990_return"
+statement = "The app always answers form990 when normally is large and receipts is large"
+
+[[id]]
+id = "U9R-04"
+level = "build"
+suite = "uor_990_return"
+statement = "The app always answers form990 when normally is large and assets is large"
+
+[[id]]
+id = "U9R-05"
+level = "build"
+suite = "uor_990_return"
+statement = "The app always answers form990ez when normally is large and receipts is small and assets is small and kind is public"
+
+[[id]]
+id = "U9R-06"
+level = "build"
+suite = "uor_990_return"
+statement = "The app never answers form990ez when normally is large and kind is sponsor"
+
+[[id]]
 id = "UCE-01"
 level = "build"
 suite = "uor_coc_enforcement"
@@ -874,6 +1054,42 @@ suite = "uor_remediation_write"
 statement = "The app always answers permit when actor is agent and change is file and repository is live and approval is given and route is pull-request"
 
 [[id]]
+id = "URD-01"
+level = "build"
+suite = "uor_repo_disposition"
+statement = "The app always answers archive when archived is yes"
+
+[[id]]
+id = "URD-02"
+level = "build"
+suite = "uor_repo_disposition"
+statement = "The app never answers fold when statement is none"
+
+[[id]]
+id = "URD-03"
+level = "build"
+suite = "uor_repo_disposition"
+statement = "The app never answers fold when statement is relocated"
+
+[[id]]
+id = "URD-04"
+level = "build"
+suite = "uor_repo_disposition"
+statement = "The app always answers review when archived is no and reserved is no and statement is none and family is member"
+
+[[id]]
+id = "URD-05"
+level = "build"
+suite = "uor_repo_disposition"
+statement = "The app never answers archive when archived is no and statement is none"
+
+[[id]]
+id = "URD-06"
+level = "build"
+suite = "uor_repo_disposition"
+statement = "The app always answers keep when archived is no and reserved is yes"
+
+[[id]]
 id = "URF-01"
 level = "build"
 suite = "uor_repo_files"
@@ -1070,147 +1286,3 @@ id = "UCD-04"
 level = "build"
 suite = "uor_community_decisions"
 statement = "Every compliance obligation is numbered in order and names its evidence"
-
-[[id]]
-id = "HL-01"
-level = "build"
-suite = "health"
-statement = "Every health assessment's answer is its metrics model's indicator answer: the compiled judge of that model's decision app, applied to the assessment's admitted and refused counts"
-
-[[id]]
-id = "HL-02"
-level = "build"
-suite = "health"
-statement = "Every health assessment's counts are exactly what its evidence rows admit and refuse, plus the members the CHAOSS register carries as open claims; each row is a distinct observable base measure of the indicator, and a row with a computed value has a permitted observation"
-
-[[id]]
-id = "HL-03"
-level = "build"
-suite = "health"
-statement = "The health register is the projection of the CHAOSS, ecosystem and observation registers and the indicator prompts, evaluated as DMN 1.5 first-hit decision tables that answer every example their prompts state, and the Health catalog is its catalog; a register or catalog that differs fails the gate"
-
-[[id]]
-id = "HL-04"
-level = "build"
-suite = "health"
-statement = "Every stakeholder view shows the current health of each metrics model it holds, and the health page, its Markdown twin and the Discord digest carry every indicator's answers, all generated from the health register"
-
-[[id]]
-id = "HL-05"
-level = "open"
-suite = "health"
-statement = "A registered repository the observation corpus never reached, a metrics model with no indicator app, and an observation of a subject outside the ecosystem register are carried as open claims, never assessed by default"
-
-[[id]]
-id = "OB-01"
-level = "build"
-suite = "observations"
-statement = "The observation register is valid: every observation's admission is what the uor-observation-admission app's first-applicable rules decide on its recorded fields, and every metric value refers to a permitted observation of its own metric, so every value is a function of admitted observations"
-
-[[id]]
-id = "OB-02"
-level = "build"
-suite = "observations"
-statement = "The observation corpus is frozen and replayable: every subject is pinned by the commits of its refs, every corpus file is pinned by the sha256 of its bytes, an independent run from the same pins reproduces each file, and the register and its catalog declare the corpus digest"
-
-[[id]]
-id = "OB-03"
-level = "build"
-suite = "observations"
-statement = "Every contribution is credited through the uor-contribution-attribution app as W3C PROV-O: a person is credited for their own work, a software agent's work is credited to a person only through a Co-authored-by delegation naming exactly one person, and no name or email enters the corpus"
-
-[[id]]
-id = "OB-04"
-level = "open"
-suite = "observations"
-statement = "A released CHAOSS metric the oracle binds no computation to, and a computation whose index, field, query, aggregation or script this corpus and projector cannot evaluate exactly as the oracle defines it, is carried as an open claim, never approximated"
-
-[[id]]
-id = "OB-05"
-level = "open"
-suite = "observations"
-statement = "GitHub issues and pull requests, and the Foundation's Discord, enter the corpus only from responses the observations workflow recorded and replayed offline; a Discord channel is read only where the uor-discord-read app permits it, and the record keeps no message text and no member's name"
-
-[[id]]
-id = "IV-01"
-level = "build"
-suite = "interventions"
-statement = "The interventions register is the projection of the observation corpus evaluated at the ISO 8601 week grain, the intervention catalog, the approvals and the three intervention prompts, each prompt answering every example it states and holding every property over its whole request space; a register that differs fails the gate"
-
-[[id]]
-id = "IV-02"
-level = "build"
-suite = "interventions"
-statement = "Every chart's signal is the uor-intervention-signal answer on its ISO 7870-2:2023 individuals chart: limits are the mean of the weeks before the nine-week window plus or minus 2.66 times their mean moving range, test 1 is on the latest complete week, test 2 is over the window, and fewer than 20 baseline weeks is insufficient"
-
-[[id]]
-id = "IV-03"
-level = "build"
-suite = "interventions"
-statement = "No intervention reaches a contributor, participant or partner without a human: every proposal that reaches people is denied and only drafted, an agent task opens only in UOR-Foundation/community for a proposal the trust-root approvals file approves by id, and the runner refuses a run whose register or decisions it cannot re-derive"
-
-[[id]]
-id = "IV-04"
-level = "build"
-suite = "interventions"
-statement = "Every enacted intervention's effect, and every untreated signal onset in each chart's history, is the uor-intervention-effect answer over the first nine complete weeks after it against the limits frozen at its signal, so an intervention's effect is read against what untreated signals did"
-
-[[id]]
-id = "IV-05"
-level = "open"
-suite = "interventions"
-statement = "The three intervention apps are re-checked by the pinned builder on every run but are not yet in apps/set.json, so no Lean proof covers them; a chart of an average or a ratio with a week of no value, and the Discord guild until a chat computation is bound, are carried as refusals, never charted"
-
-[[id]]
-id = "SC-01"
-level = "build"
-suite = "supply"
-statement = "The supply register is valid: every dependency edge joins two different repositories of the ecosystem register, every repository has a valid CycloneDX 1.6 SBOM that catalogues a component or an open claim, its component and license counts reconcile with its totals and the release, and every package not published as the Foundation's is named by an open claim"
-
-[[id]]
-id = "SC-02"
-level = "build"
-suite = "supply"
-statement = "The supply catalog declares every repository of supply/register.json at its pinned commit with the digest of its committed SBOM, the syft release and binary digests, and the digests of the CycloneDX schema and purl type index it was validated against"
-
-[[id]]
-id = "SC-03"
-level = "open"
-suite = "supply"
-statement = "A repository without a valid SBOM or with nothing catalogued in it, a reference the register cannot resolve, and a package declared for publication that its registry does not publish as the Foundation's are carried as open claims, never dropped or defaulted"
-
-[[id]]
-id = "AS-01"
-level = "build"
-suite = "assets"
-statement = "The asset register is valid: every asset id is unique, every package, service and document resolves to a repository asset or is an open claim, every domain has an RDAP observation, and every organization the sources name has a stated relation or is an open claim"
-
-[[id]]
-id = "AS-02"
-level = "build"
-suite = "assets"
-statement = "The asset catalog declares every asset of inventory/register.json under its id, and the digests of the snapshot, the pinned sources and the standards it was projected from"
-
-[[id]]
-id = "AS-03"
-level = "open"
-suite = "assets"
-statement = "An asset that does not resolve, a service with no repository or no deployment, a host or registration RDAP and DNS cannot vouch for, and a relationship whose relation the source does not state, is carried as an open claim, never dropped or guessed"
-
-[[id]]
-id = "NP-01"
-level = "build"
-suite = "nonprofit"
-statement = "The nonprofit register is valid: every obligation cites the authority it names and is assigned to a governance post by a Bylaws provision, every authority is the law of the entity's jurisdiction or of the nation containing it, every open claim names a subject that exists, and the entity is recorded as IRS-recognized exactly when IRS recognition data matched it"
-
-[[id]]
-id = "NP-02"
-level = "build"
-suite = "nonprofit"
-statement = "The nonprofit catalog declares every source of nonprofit/register.json with the sha256 digest of the bytes read at its pinned commit or fetch"
-
-[[id]]
-id = "NP-03"
-level = "open"
-suite = "nonprofit"
-statement = "Every obligation not observed discharged, every Form 990 Part VI line no public source answers, every financial figure the returns need, and every status statement no authority confirms is carried as an open claim, never dropped or presumed"

@@ -51,6 +51,46 @@
         ["node", "chaoss/measurement.mjs", "--check"],
         ["node", "chaoss/upstream.mjs", "{sources}", "--check"]
       ]
+    },
+    {
+      "area": "nonprofit",
+      "sources": {"kind": "git-urls", "file": "nonprofit/sources.json"},
+      "inputs": ["nonprofit/**", "governance/register.json", "apps/uor-990-return.prompt.json", "tools/register-lex.mjs"],
+      "tools": [["pdftotext", "-v"]],
+      "check": [
+        ["node", "nonprofit/project.mjs", "{sources}", "--check"],
+        ["node", "nonprofit/catalog.mjs", "--check"]
+      ]
+    },
+    {
+      "area": "inventory",
+      "sources": {"kind": "git-urls", "file": "inventory/sources.json"},
+      "inputs": ["inventory/**", "ecosystem/register.json", "governance/discord.json", "observations/responses/discord/guild.json", "tools/register-lex.mjs"],
+      "tools": [],
+      "check": [
+        ["node", "inventory/project.mjs", "{sources}", "--check"],
+        ["node", "inventory/catalog.mjs", "--check"]
+      ]
+    },
+    {
+      "area": "supply",
+      "sources": {"kind": "git-urls", "file": ["supply/snapshot.json", "supply/sources.json"]},
+      "inputs": ["supply/**", "ecosystem/snapshot.json", "tools/register-lex.mjs", "package-lock.json"],
+      "tools": [],
+      "check": [
+        ["node", "supply/project.mjs", "{sources}", "--check"],
+        ["node", "supply/catalog.mjs", "--check"]
+      ]
+    },
+    {
+      "area": "reorg",
+      "sources": {"kind": "git-urls", "file": "reorg/sources.json"},
+      "inputs": ["reorg/**", "ecosystem/snapshot.json", "apps/uor-repo-disposition.prompt.json", "apps/set.json", "tools/register-lex.mjs"],
+      "tools": [],
+      "check": [
+        ["node", "reorg/project.mjs", "{sources}", "--check"],
+        ["node", "reorg/catalog.mjs", "--check"]
+      ]
     }
   ]
 }

@@ -24,6 +24,11 @@ on:
       - 'remediation/**'
       - 'observations/**'
       - 'interventions/**'
+      - 'nonprofit/**'
+      - 'inventory/**'
+      - 'supply/**'
+      - 'reorg/**'
+      - 'package-lock.json'
       - 'automation/intervention*'
       - 'apps/**'
       - 'tools/**'
@@ -39,6 +44,11 @@ on:
       - 'remediation/**'
       - 'observations/**'
       - 'interventions/**'
+      - 'nonprofit/**'
+      - 'inventory/**'
+      - 'supply/**'
+      - 'reorg/**'
+      - 'package-lock.json'
       - 'automation/intervention*'
       - 'apps/**'
       - 'tools/**'
@@ -185,6 +195,11 @@ jobs:
           # every checkout's commit on read and refetches any that differs.
           path: ${{ runner.temp }}/sources/${{ matrix.area }}
           key: sources-${{ matrix.area }}-${{ hashFiles(matrix.sources) }}
+      - name: The locked node packages the supply register validates SBOMs with
+        # supply/project.mjs checks every SBOM against the CycloneDX 1.6 schema with ajv, which
+        # package-lock.json pins; the supply entry's cache key hashes package-lock.json.
+        if: steps.reuse.outputs.reuse != 'true' && matrix.area == 'supply'
+        run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Re-project with --check
         if: steps.reuse.outputs.reuse != 'true'
         env:

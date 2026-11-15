@@ -83,7 +83,7 @@ fn assets_as_01() {
         // Resolution: a package, service or document names a repository asset, or is claimed.
         "(assetsResolved openClaims assets assets)",
         "(((project asset linked) && (repositoryAt allAssets (project asset repository))) || (claimed (project asset index) claims))",
-        "(linksAreRepositories assets assets)",
+        "(linksAreRepositories (assetsTotal assets) assets)",
         // Every domain has an RDAP observation, and a failed or expiring one is claimed.
         "(domainsObserved domains assets)",
         "(rdapAccounted openClaims domains)",

@@ -422,11 +422,11 @@ definition{
 
 definition{
   name: linksAreRepositories,
-  parameters: [allAssets : (List Asset), values : (List Asset)],
+  parameters: [total : Nat, values : (List Asset)],
   result: Bool,
   body: (match values
     | List.nil => true
-    | List.cons asset rest => (((not (project asset linked)) || ((project asset needsRepository) && ((project asset repository) <? (assetsTotal allAssets)))) && (linksAreRepositories allAssets rest))),
+    | List.cons asset rest => (((not (project asset linked)) || ((project asset needsRepository) && ((project asset repository) <? total))) && (linksAreRepositories total rest))),
   recursive_argument: values
 }
 
@@ -752,7 +752,7 @@ definition{
     openClaims : (List OpenClaim)
   ],
   result: Bool,
-  body: (((assetsTotal assets) =? (project release assetsCount)) && (((communitiesTotal communities) =? (project release communitiesCount)) && (((domainsTotal domains) =? (project release domainsCount)) && (((packagesTotal packages) =? (project release packagesCount)) && (((servicesTotal services) =? (project release servicesCount)) && (((relationshipsTotal relationships) =? (project release relationshipsCount)) && (((documentsTotal documents) =? (project release documentsCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && ((assetsValid 0 assets) && ((communitiesValid 0 (assetsTotal assets) communities) && ((domainsValid 0 (assetsTotal assets) domains) && ((packagesValid 0 (assetsTotal assets) packages) && ((servicesValid 0 (assetsTotal assets) services) && ((relationshipsValid 0 (assetsTotal assets) relationships) && ((documentsValid 0 (assetsTotal assets) documents) && ((openClaimsValid 0 (assetsTotal assets) openClaims) && ((organizationAt assets (project release foundation)) && ((linksAreRepositories assets assets) && ((assetsResolved openClaims assets assets) && ((domainsObserved domains assets) && ((organizationsRelated relationships (project release foundation) assets) && ((rdapAccounted openClaims domains) && ((resolutionAccounted openClaims domains) && ((expiryAccounted (project release expiryDays) openClaims domains) && ((deploymentsAccounted openClaims services) && ((publicationsAccounted openClaims packages) && ((relationsAccounted openClaims relationships) && ((domainsTyped assets domains) && ((packagesTyped assets packages) && ((servicesTyped assets services) && ((relationshipsTyped assets relationships) && ((documentsTyped assets documents) && (communitiesTyped assets communities)))))))))))))))))))))))))))))))))
+  body: (((assetsTotal assets) =? (project release assetsCount)) && (((communitiesTotal communities) =? (project release communitiesCount)) && (((domainsTotal domains) =? (project release domainsCount)) && (((packagesTotal packages) =? (project release packagesCount)) && (((servicesTotal services) =? (project release servicesCount)) && (((relationshipsTotal relationships) =? (project release relationshipsCount)) && (((documentsTotal documents) =? (project release documentsCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && ((assetsValid 0 assets) && ((communitiesValid 0 (assetsTotal assets) communities) && ((domainsValid 0 (assetsTotal assets) domains) && ((packagesValid 0 (assetsTotal assets) packages) && ((servicesValid 0 (assetsTotal assets) services) && ((relationshipsValid 0 (assetsTotal assets) relationships) && ((documentsValid 0 (assetsTotal assets) documents) && ((openClaimsValid 0 (assetsTotal assets) openClaims) && ((organizationAt assets (project release foundation)) && ((linksAreRepositories (assetsTotal assets) assets) && ((assetsResolved openClaims assets assets) && ((domainsObserved domains assets) && ((organizationsRelated relationships (project release foundation) assets) && ((rdapAccounted openClaims domains) && ((resolutionAccounted openClaims domains) && ((expiryAccounted (project release expiryDays) openClaims domains) && ((deploymentsAccounted openClaims services) && ((publicationsAccounted openClaims packages) && ((relationsAccounted openClaims relationships) && ((domainsTyped assets domains) && ((packagesTyped assets packages) && ((servicesTyped assets services) && ((relationshipsTyped assets relationships) && ((documentsTyped assets documents) && (communitiesTyped assets communities)))))))))))))))))))))))))))))))))
 }
 \end{semanticmodule}
 \end{lexlean}

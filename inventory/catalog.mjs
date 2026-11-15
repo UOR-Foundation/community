@@ -109,8 +109,8 @@ const decl = {
     // A package, service or document resolves to an asset of kind repository, or is an open claim.
     def('assetsResolved', ['claims : (List OpenClaim)', 'allAssets : (List Asset)', 'values : (List Asset)'], 'Bool',
       match('values', [['List.nil', 'true'], ['List.cons asset rest', '(((not (project asset needsRepository)) || (((project asset linked) && (repositoryAt allAssets (project asset repository))) || (claimed (project asset index) claims))) && (assetsResolved claims allAssets rest))']]), 'values'),
-    def('linksAreRepositories', ['allAssets : (List Asset)', 'values : (List Asset)'], 'Bool',
-      match('values', [['List.nil', 'true'], ['List.cons asset rest', '(((not (project asset linked)) || ((project asset needsRepository) && ((project asset repository) <? (assetsTotal allAssets)))) && (linksAreRepositories allAssets rest))']]), 'values'),
+    def('linksAreRepositories', ['total : Nat', 'values : (List Asset)'], 'Bool',
+      match('values', [['List.nil', 'true'], ['List.cons asset rest', '(((not (project asset linked)) || ((project asset needsRepository) && ((project asset repository) <? total))) && (linksAreRepositories total rest))']]), 'values'),
     def('observedAt', ['position : Nat', 'observations : (List DomainObservation)'], 'Bool',
       match('observations', [['List.nil', 'false'], ['List.cons item rest', '(((project item asset) =? position) || (observedAt position rest))']]), 'observations'),
     def('domainsObserved', ['observations : (List DomainObservation)', 'values : (List Asset)'], 'Bool',
@@ -135,7 +135,7 @@ const decl = {
   ],
   checks: [
     '(organizationAt assets (project release foundation))',
-    '(linksAreRepositories assets assets)',
+    '(linksAreRepositories (assetsTotal assets) assets)',
     '(assetsResolved openClaims assets assets)',
     '(domainsObserved domains assets)',
     '(organizationsRelated relationships (project release foundation) assets)',

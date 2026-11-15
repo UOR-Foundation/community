@@ -21,12 +21,14 @@
 \importmodule{ChaossProjectViabilityStarter}
 \importmodule{ChaossSafety}
 \importmodule{ChaossStarterProjectHealth}
+\importmodule{Uor990Return}
 \importmodule{UorCocEnforcement}
 \importmodule{UorContributionAttribution}
 \importmodule{UorDiscordRead}
 \importmodule{UorObservationAdmission}
 \importmodule{UorRemediationLifecycle}
 \importmodule{UorRemediationWrite}
+\importmodule{UorRepoDisposition}
 \importmodule{UorRepoFiles}
 \importmodule{UorRepoNaming}
 \importmodule{UorRepoProtection}
@@ -570,6 +572,48 @@ definition{
 }
 
 definition{
+  name: acceptUor990ReturnINV001,
+  parameters: [],
+  result: String,
+  body: "Uor990ReturnProofs::inv001Holds"
+}
+
+definition{
+  name: acceptUor990ReturnINV002,
+  parameters: [],
+  result: String,
+  body: "Uor990ReturnProofs::inv002Holds"
+}
+
+definition{
+  name: acceptUor990ReturnINV003,
+  parameters: [],
+  result: String,
+  body: "Uor990ReturnProofs::inv003Holds"
+}
+
+definition{
+  name: acceptUor990ReturnINV004,
+  parameters: [],
+  result: String,
+  body: "Uor990ReturnProofs::inv004Holds"
+}
+
+definition{
+  name: acceptUor990ReturnINV005,
+  parameters: [],
+  result: String,
+  body: "Uor990ReturnProofs::inv005Holds"
+}
+
+definition{
+  name: acceptUor990ReturnINV006,
+  parameters: [],
+  result: String,
+  body: "Uor990ReturnProofs::inv006Holds"
+}
+
+definition{
   name: acceptUorCocEnforcementINV001,
   parameters: [],
   result: String,
@@ -812,6 +856,48 @@ definition{
   parameters: [],
   result: String,
   body: "UorRemediationWriteProofs::inv004Holds"
+}
+
+definition{
+  name: acceptUorRepoDispositionINV001,
+  parameters: [],
+  result: String,
+  body: "UorRepoDispositionProofs::inv001Holds"
+}
+
+definition{
+  name: acceptUorRepoDispositionINV002,
+  parameters: [],
+  result: String,
+  body: "UorRepoDispositionProofs::inv002Holds"
+}
+
+definition{
+  name: acceptUorRepoDispositionINV003,
+  parameters: [],
+  result: String,
+  body: "UorRepoDispositionProofs::inv003Holds"
+}
+
+definition{
+  name: acceptUorRepoDispositionINV004,
+  parameters: [],
+  result: String,
+  body: "UorRepoDispositionProofs::inv004Holds"
+}
+
+definition{
+  name: acceptUorRepoDispositionINV005,
+  parameters: [],
+  result: String,
+  body: "UorRepoDispositionProofs::inv005Holds"
+}
+
+definition{
+  name: acceptUorRepoDispositionINV006,
+  parameters: [],
+  result: String,
+  body: "UorRepoDispositionProofs::inv006Holds"
 }
 
 definition{
@@ -2215,6 +2301,111 @@ definition{
 }
 
 definition{
+  name: featureUor990ReturnRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When normally is small and kind is public, the answer is form990n.", calls := (cons "Uor990Return::uor990ReturnRule1" (cons "Uor990Return::uor990ReturnJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUor990ReturnRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When normally is small and kind is sponsor, the answer is form990n.", calls := (cons "Uor990Return::uor990ReturnRule2" (cons "Uor990Return::uor990ReturnJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUor990ReturnRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When normally is small and kind is controlling, the answer is form990n.", calls := (cons "Uor990Return::uor990ReturnRule3" (cons "Uor990Return::uor990ReturnJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUor990ReturnRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When receipts is large, the answer is form990.", calls := (cons "Uor990Return::uor990ReturnRule4" (cons "Uor990Return::uor990ReturnJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUor990ReturnRule5,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When assets is large, the answer is form990.", calls := (cons "Uor990Return::uor990ReturnRule5" (cons "Uor990Return::uor990ReturnJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUor990ReturnRule6,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When kind is sponsor, the answer is form990.", calls := (cons "Uor990Return::uor990ReturnRule6" (cons "Uor990Return::uor990ReturnJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUor990ReturnRule7,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When kind is controlling, the answer is form990.", calls := (cons "Uor990Return::uor990ReturnRule7" (cons "Uor990Return::uor990ReturnJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUor990ReturnOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is form990ez.", calls := (cons "Uor990Return::uor990ReturnJudge" (nil String)), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUor990ReturnRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not normally, receipts, assets, kind in order, separated by single spaces, or is over 112 bytes, is answered invalid.", calls := (cons "Uor990Return::uor990ReturnDispatch" (cons "Uor990Return::uor990ReturnDecodeField1" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUor990ReturnINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers form990n when normally is large.", calls := (cons "Uor990Return::uor990ReturnJudge" (nil String)), acceptance := (cons "Features::acceptUor990ReturnINV001" (nil String))})
+}
+
+definition{
+  name: featureUor990ReturnINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers form990n when kind is supporting.", calls := (cons "Uor990Return::uor990ReturnJudge" (nil String)), acceptance := (cons "Features::acceptUor990ReturnINV002" (nil String))})
+}
+
+definition{
+  name: featureUor990ReturnINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers form990 when normally is large and receipts is large.", calls := (cons "Uor990Return::uor990ReturnJudge" (nil String)), acceptance := (cons "Features::acceptUor990ReturnINV003" (nil String))})
+}
+
+definition{
+  name: featureUor990ReturnINV004,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers form990 when normally is large and assets is large.", calls := (cons "Uor990Return::uor990ReturnJudge" (nil String)), acceptance := (cons "Features::acceptUor990ReturnINV004" (nil String))})
+}
+
+definition{
+  name: featureUor990ReturnINV005,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers form990ez when normally is large and receipts is small and assets is small and kind is public.", calls := (cons "Uor990Return::uor990ReturnJudge" (nil String)), acceptance := (cons "Features::acceptUor990ReturnINV005" (nil String))})
+}
+
+definition{
+  name: featureUor990ReturnINV006,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers form990ez when normally is large and kind is sponsor.", calls := (cons "Uor990Return::uor990ReturnJudge" (nil String)), acceptance := (cons "Features::acceptUor990ReturnINV006" (nil String))})
+}
+
+definition{
   name: featureUorCocEnforcementRule1,
   parameters: [],
   result: Foundation.Arch::Feature,
@@ -2919,6 +3110,125 @@ definition{
   parameters: [],
   result: Foundation.Arch::Feature,
   body: (record Foundation.Arch::Feature {statement := "It always answers permit when actor is agent and change is file and repository is live and approval is given and route is pull-request.", calls := (cons "UorRemediationWrite::uorRemediationWriteJudge" (nil String)), acceptance := (cons "Features::acceptUorRemediationWriteINV004" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When archived is yes, the answer is archive.", calls := (cons "UorRepoDisposition::uorRepoDispositionRule1" (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When reserved is yes, the answer is keep.", calls := (cons "UorRepoDisposition::uorRepoDispositionRule2" (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When statement is superseded, the answer is fold.", calls := (cons "UorRepoDisposition::uorRepoDispositionRule3" (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When statement is deprecated, the answer is archive.", calls := (cons "UorRepoDisposition::uorRepoDispositionRule4" (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionRule5,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When statement is relocated, the answer is review.", calls := (cons "UorRepoDisposition::uorRepoDispositionRule5" (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionRule6,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When family is member, the answer is review.", calls := (cons "UorRepoDisposition::uorRepoDispositionRule6" (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionRule7,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When consumer is sole, the answer is review.", calls := (cons "UorRepoDisposition::uorRepoDispositionRule7" (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionRule8,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When overlap is names, the answer is review.", calls := (cons "UorRepoDisposition::uorRepoDispositionRule8" (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionRule9,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When activity is quiet, the answer is review.", calls := (cons "UorRepoDisposition::uorRepoDispositionRule9" (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is keep.", calls := (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String)), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not archived, reserved, statement, family, consumer, overlap, activity in order, separated by single spaces, or is over 184 bytes, is answered invalid.", calls := (cons "UorRepoDisposition::uorRepoDispositionDispatch" (cons "UorRepoDisposition::uorRepoDispositionDecodeField1" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers archive when archived is yes.", calls := (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String)), acceptance := (cons "Features::acceptUorRepoDispositionINV001" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers fold when statement is none.", calls := (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String)), acceptance := (cons "Features::acceptUorRepoDispositionINV002" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers fold when statement is relocated.", calls := (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String)), acceptance := (cons "Features::acceptUorRepoDispositionINV003" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionINV004,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers review when archived is no and reserved is no and statement is none and family is member.", calls := (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String)), acceptance := (cons "Features::acceptUorRepoDispositionINV004" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionINV005,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers archive when archived is no and statement is none.", calls := (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String)), acceptance := (cons "Features::acceptUorRepoDispositionINV005" (nil String))})
+}
+
+definition{
+  name: featureUorRepoDispositionINV006,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It always answers keep when archived is no and reserved is yes.", calls := (cons "UorRepoDisposition::uorRepoDispositionJudge" (nil String)), acceptance := (cons "Features::acceptUorRepoDispositionINV006" (nil String))})
 }
 
 definition{
@@ -3790,6 +4100,34 @@ definition{
 }
 
 definition{
+  name: journeyUor990ReturnBoardOfDirectors,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderBoardOfDirectors", steps := (cons "Features::featureUor990ReturnINV003" (cons "Features::featureUor990ReturnINV005" (cons "Features::featureUor990ReturnRefuseMalformed" (nil String))))})
+}
+
+definition{
+  name: journeyUor990ReturnPublic,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderPublic", steps := (cons "Features::featureUor990ReturnRule1" (cons "Features::featureUor990ReturnRule2" (cons "Features::featureUor990ReturnRule3" (cons "Features::featureUor990ReturnRule4" (cons "Features::featureUor990ReturnRule5" (cons "Features::featureUor990ReturnRule6" (cons "Features::featureUor990ReturnRule7" (cons "Features::featureUor990ReturnOtherwise" (nil String)))))))))})
+}
+
+definition{
+  name: journeyUor990ReturnTreasurer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderTreasurer", steps := (cons "Features::featureUor990ReturnRule1" (cons "Features::featureUor990ReturnRule4" (cons "Features::featureUor990ReturnOtherwise" (nil String))))})
+}
+
+definition{
+  name: journeyUor990ReturnVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureUor990ReturnRefuseMalformed" (cons "Features::featureUor990ReturnINV001" (cons "Features::featureUor990ReturnINV002" (cons "Features::featureUor990ReturnINV003" (cons "Features::featureUor990ReturnINV004" (cons "Features::featureUor990ReturnINV005" (cons "Features::featureUor990ReturnINV006" (nil String))))))))})
+}
+
+definition{
   name: journeyUorCocEnforcementBoardOfDirectors,
   parameters: [],
   result: Foundation.Arch::Journey,
@@ -3962,6 +4300,41 @@ definition{
   parameters: [],
   result: Foundation.Arch::Journey,
   body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureUorRemediationWriteRefuseMalformed" (cons "Features::featureUorRemediationWriteINV001" (cons "Features::featureUorRemediationWriteINV002" (cons "Features::featureUorRemediationWriteINV003" (cons "Features::featureUorRemediationWriteINV004" (nil String))))))})
+}
+
+definition{
+  name: journeyUorRepoDispositionAdopter,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderAdopter", steps := (cons "Features::featureUorRepoDispositionRule1" (cons "Features::featureUorRepoDispositionRule2" (cons "Features::featureUorRepoDispositionRule3" (cons "Features::featureUorRepoDispositionRule4" (cons "Features::featureUorRepoDispositionRule5" (cons "Features::featureUorRepoDispositionRule6" (cons "Features::featureUorRepoDispositionRule7" (cons "Features::featureUorRepoDispositionRule8" (cons "Features::featureUorRepoDispositionRule9" (cons "Features::featureUorRepoDispositionOtherwise" (nil String)))))))))))})
+}
+
+definition{
+  name: journeyUorRepoDispositionOrganizationOwner,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderOrganizationOwner", steps := (cons "Features::featureUorRepoDispositionRule1" (cons "Features::featureUorRepoDispositionRule3" (cons "Features::featureUorRepoDispositionINV002" (cons "Features::featureUorRepoDispositionOtherwise" (nil String)))))})
+}
+
+definition{
+  name: journeyUorRepoDispositionRepositoryMaintainer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRepositoryMaintainer", steps := (cons "Features::featureUorRepoDispositionRule1" (cons "Features::featureUorRepoDispositionRule2" (cons "Features::featureUorRepoDispositionRule3" (cons "Features::featureUorRepoDispositionRule4" (cons "Features::featureUorRepoDispositionRule5" (cons "Features::featureUorRepoDispositionRule6" (cons "Features::featureUorRepoDispositionRule7" (cons "Features::featureUorRepoDispositionRule8" (cons "Features::featureUorRepoDispositionRule9" (cons "Features::featureUorRepoDispositionOtherwise" (nil String)))))))))))})
+}
+
+definition{
+  name: journeyUorRepoDispositionTOCMember,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderTOCMember", steps := (cons "Features::featureUorRepoDispositionRule5" (cons "Features::featureUorRepoDispositionRule6" (cons "Features::featureUorRepoDispositionRule9" (cons "Features::featureUorRepoDispositionINV004" (nil String)))))})
+}
+
+definition{
+  name: journeyUorRepoDispositionVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureUorRepoDispositionRefuseMalformed" (cons "Features::featureUorRepoDispositionINV001" (cons "Features::featureUorRepoDispositionINV002" (cons "Features::featureUorRepoDispositionINV003" (cons "Features::featureUorRepoDispositionINV004" (cons "Features::featureUorRepoDispositionINV005" (cons "Features::featureUorRepoDispositionINV006" (nil String))))))))})
 }
 
 definition{

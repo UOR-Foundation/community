@@ -274,7 +274,7 @@ model does not sanction.
 | --- | --- | --- |
 | `NP-01` | `build` | The nonprofit register is valid: every obligation cites the authority it names and is assigned to a governance post by a Bylaws provision, every authority is the law of the entity's jurisdiction or of the nation containing it, every open claim names a subject that exists, and the entity is recorded as IRS-recognized exactly when IRS recognition data matched it |
 | `NP-02` | `build` | The nonprofit catalog declares every source of nonprofit/register.json with the sha256 digest of the bytes read at its pinned commit or fetch |
-| `NP-03` | `open` | Every obligation not observed discharged, every Form 990 Part VI line no public source answers, every financial figure the returns need, and every status statement no authority confirms is carried as an open claim, never dropped or presumed |
+| `NP-03` | `open` | Every obligation not observed discharged, every Form 990 Part VI line no public source answers, every financial figure the returns need, and every status statement no authority bears out is carried as an open claim, never dropped or presumed |
 
 ## observations
 
@@ -301,6 +301,25 @@ model does not sanction.
 | `RO-01` | `build` | The reorganization register is valid: every public UOR Foundation repository has exactly one disposition, the one the uor-repo-disposition table gives its evidence; every fold names a kept host other than itself and no chain of folds returns to its start; every disposition cites evidence of its kind; and every staged act is unexecuted, references an existing repository, and waits on a TOC decision whenever its repository is under review |
 | `RO-02` | `build` | The reorganization catalog declares every repository of reorg/register.json with the commit its evidence was read at, the snapshot and repository-set digests, the pinned norms, and the digest of the uor-repo-disposition app with the builder commit that checked it |
 | `RO-03` | `open` | A candidate the evidence raises without deciding it, and every norm the reorganization needs that the Foundation's norms do not define, is carried as an open claim, never decided or defaulted |
+
+## supply
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `SC-01` | `build` | The supply register is valid: every dependency edge joins two different repositories of the ecosystem register, every repository has a valid CycloneDX 1.6 SBOM that catalogues a component or an open claim, its component and license counts reconcile with its totals and the release, and every package not published as the Foundation's is named by an open claim |
+| `SC-02` | `build` | The supply catalog declares every repository of supply/register.json at its pinned commit with the digest of its committed SBOM, the syft release and binary digests, and the digests of the CycloneDX schema and purl type index it was validated against |
+| `SC-03` | `open` | A repository without a valid SBOM or with nothing catalogued in it, a reference the register cannot resolve, and a package declared for publication that its registry does not publish as the Foundation's are carried as open claims, never dropped or defaulted |
+
+## uor_990_return
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `U9R-01` | `build` | The app never answers form990n when normally is large |
+| `U9R-02` | `build` | The app never answers form990n when kind is supporting |
+| `U9R-03` | `build` | The app always answers form990 when normally is large and receipts is large |
+| `U9R-04` | `build` | The app always answers form990 when normally is large and assets is large |
+| `U9R-05` | `build` | The app always answers form990ez when normally is large and receipts is small and assets is small and kind is public |
+| `U9R-06` | `build` | The app never answers form990ez when normally is large and kind is sponsor |
 
 ## uor_coc_enforcement
 
@@ -375,6 +394,17 @@ model does not sanction.
 | `URW-02` | `build` | The app never answers permit when change is file and route is direct |
 | `URW-03` | `build` | The app never answers permit when change is ruleset and actor is agent |
 | `URW-04` | `build` | The app always answers permit when actor is agent and change is file and repository is live and approval is given and route is pull-request |
+
+## uor_repo_disposition
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `URD-01` | `build` | The app always answers archive when archived is yes |
+| `URD-02` | `build` | The app never answers fold when statement is none |
+| `URD-03` | `build` | The app never answers fold when statement is relocated |
+| `URD-04` | `build` | The app always answers review when archived is no and reserved is no and statement is none and family is member |
+| `URD-05` | `build` | The app never answers archive when archived is no and statement is none |
+| `URD-06` | `build` | The app always answers keep when archived is no and reserved is yes |
 
 ## uor_repo_files
 

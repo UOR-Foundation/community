@@ -37,8 +37,11 @@ const bodyLine = (body, tail) => {
   return one.length <= WIDTH ? one : `  body: (match ${body.scrutinee}\n${arms.map((a) => `    ${a}`).join('\n')})${tail}`;
 };
 /** One LexLean definition, laid out as `lexlean fmt` writes it. `params` is a list of `name : Type`. */
-export const def = (name, params, type, body, rec) =>
-  `definition{\n  name: ${name},\n${bracket('  parameters: ', params, ',')}\n  result: ${type},\n${bodyLine(body, rec ? ',' : '')}${rec ? `\n  recursive_argument: ${rec}` : ''}\n}\n`;
+export const def = (name, params, type, body, rec) => {
+  const one = `definition{name: ${name}, parameters: [${params.join(', ')}], result: ${type}, body: ${typeof body === 'string' ? body : ''}}`;
+  if (!rec && typeof body === 'string' && one.length <= WIDTH) return `${one}\n`;
+  return `definition{\n  name: ${name},\n${bracket('  parameters: ', params, ',')}\n  result: ${type},\n${bodyLine(body, rec ? ',' : '')}${rec ? `\n  recursive_argument: ${rec}` : ''}\n}\n`;
+};
 const and = (xs) => xs.reduceRight((rest, x) => (rest === null ? x : `(${x} && ${rest})`), null) ?? 'true';
 const CHUNK = 48;
 const countOf = (kind) => `${camel(kind.list)}Count`;

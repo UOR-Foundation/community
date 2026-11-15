@@ -22,7 +22,7 @@ Feature: nonprofit
     Then every source digest of the register, and every snapshot fetch digest, is declared
 
   @NP-03 @open
-  Scenario: Every obligation not observed discharged, every Form 990 Part VI line no public source answers, every financial figure the returns need, and every status statement no authority confirms is carried as an open claim, never dropped or presumed
+  Scenario: Every obligation not observed discharged, every Form 990 Part VI line no public source answers, every financial figure the returns need, and every status statement no authority bears out is carried as an open claim, never dropped or presumed
     Given the obligations, Part VI lines, needs, statements and claims in nonprofit/register.json
     When the catalog is read
     Then each of them that is not discharged or evidenced is one OpenClaim naming it, and the release counts every claim

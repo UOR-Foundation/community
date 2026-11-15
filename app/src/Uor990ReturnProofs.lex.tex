@@ -1,0 +1,248 @@
+\begin{lexlean}{Uor990ReturnProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Uor990Return}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : Uor990Return::Uor990ReturnRequest],
+  result: Bool,
+  body: (((((((project request normally) <? 2) && ((project request receipts) <? 2)) && ((project request assets) <? 2)) && ((project request kind) <? 4)) && ((project request normally) =? (Uor990Return::uor990ReturnNormallyLarge))) && ((Uor990Return::uor990ReturnJudge request) =? (Uor990Return::uor990ReturnAnswerForm990n)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : Uor990Return::Uor990ReturnRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      Uor990Return::uor990ReturnAnswerForm990,
+      Uor990Return::uor990ReturnAnswerForm990ez,
+      Uor990Return::uor990ReturnAnswerForm990n,
+      Uor990Return::uor990ReturnAssetsLarge,
+      Uor990Return::uor990ReturnAssetsSmall,
+      Uor990Return::uor990ReturnJudge,
+      Uor990Return::uor990ReturnKindControlling,
+      Uor990Return::uor990ReturnKindPublic,
+      Uor990Return::uor990ReturnKindSponsor,
+      Uor990Return::uor990ReturnKindSupporting,
+      Uor990Return::uor990ReturnNormallyLarge,
+      Uor990Return::uor990ReturnNormallySmall,
+      Uor990Return::uor990ReturnReceiptsLarge,
+      Uor990Return::uor990ReturnReceiptsSmall,
+      Uor990Return::uor990ReturnRule1,
+      Uor990Return::uor990ReturnRule2,
+      Uor990Return::uor990ReturnRule3,
+      Uor990Return::uor990ReturnRule4,
+      Uor990Return::uor990ReturnRule5,
+      Uor990Return::uor990ReturnRule6,
+      Uor990Return::uor990ReturnRule7,
+      breaksInv001
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : Uor990Return::Uor990ReturnRequest],
+  result: Bool,
+  body: (((((((project request normally) <? 2) && ((project request receipts) <? 2)) && ((project request assets) <? 2)) && ((project request kind) <? 4)) && ((project request kind) =? (Uor990Return::uor990ReturnKindSupporting))) && ((Uor990Return::uor990ReturnJudge request) =? (Uor990Return::uor990ReturnAnswerForm990n)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : Uor990Return::Uor990ReturnRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      Uor990Return::uor990ReturnAnswerForm990,
+      Uor990Return::uor990ReturnAnswerForm990ez,
+      Uor990Return::uor990ReturnAnswerForm990n,
+      Uor990Return::uor990ReturnAssetsLarge,
+      Uor990Return::uor990ReturnAssetsSmall,
+      Uor990Return::uor990ReturnJudge,
+      Uor990Return::uor990ReturnKindControlling,
+      Uor990Return::uor990ReturnKindPublic,
+      Uor990Return::uor990ReturnKindSponsor,
+      Uor990Return::uor990ReturnKindSupporting,
+      Uor990Return::uor990ReturnNormallyLarge,
+      Uor990Return::uor990ReturnNormallySmall,
+      Uor990Return::uor990ReturnReceiptsLarge,
+      Uor990Return::uor990ReturnReceiptsSmall,
+      Uor990Return::uor990ReturnRule1,
+      Uor990Return::uor990ReturnRule2,
+      Uor990Return::uor990ReturnRule3,
+      Uor990Return::uor990ReturnRule4,
+      Uor990Return::uor990ReturnRule5,
+      Uor990Return::uor990ReturnRule6,
+      Uor990Return::uor990ReturnRule7,
+      breaksInv002
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : Uor990Return::Uor990ReturnRequest],
+  result: Bool,
+  body: ((((((((project request normally) <? 2) && ((project request receipts) <? 2)) && ((project request assets) <? 2)) && ((project request kind) <? 4)) && ((project request normally) =? (Uor990Return::uor990ReturnNormallyLarge))) && ((project request receipts) =? (Uor990Return::uor990ReturnReceiptsLarge))) && (not ((Uor990Return::uor990ReturnJudge request) =? (Uor990Return::uor990ReturnAnswerForm990))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : Uor990Return::Uor990ReturnRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      Uor990Return::uor990ReturnAnswerForm990,
+      Uor990Return::uor990ReturnAnswerForm990ez,
+      Uor990Return::uor990ReturnAnswerForm990n,
+      Uor990Return::uor990ReturnAssetsLarge,
+      Uor990Return::uor990ReturnAssetsSmall,
+      Uor990Return::uor990ReturnJudge,
+      Uor990Return::uor990ReturnKindControlling,
+      Uor990Return::uor990ReturnKindPublic,
+      Uor990Return::uor990ReturnKindSponsor,
+      Uor990Return::uor990ReturnKindSupporting,
+      Uor990Return::uor990ReturnNormallyLarge,
+      Uor990Return::uor990ReturnNormallySmall,
+      Uor990Return::uor990ReturnReceiptsLarge,
+      Uor990Return::uor990ReturnReceiptsSmall,
+      Uor990Return::uor990ReturnRule1,
+      Uor990Return::uor990ReturnRule2,
+      Uor990Return::uor990ReturnRule3,
+      Uor990Return::uor990ReturnRule4,
+      Uor990Return::uor990ReturnRule5,
+      Uor990Return::uor990ReturnRule6,
+      Uor990Return::uor990ReturnRule7,
+      breaksInv003
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : Uor990Return::Uor990ReturnRequest],
+  result: Bool,
+  body: ((((((((project request normally) <? 2) && ((project request receipts) <? 2)) && ((project request assets) <? 2)) && ((project request kind) <? 4)) && ((project request normally) =? (Uor990Return::uor990ReturnNormallyLarge))) && ((project request assets) =? (Uor990Return::uor990ReturnAssetsLarge))) && (not ((Uor990Return::uor990ReturnJudge request) =? (Uor990Return::uor990ReturnAnswerForm990))))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : Uor990Return::Uor990ReturnRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      Uor990Return::uor990ReturnAnswerForm990,
+      Uor990Return::uor990ReturnAnswerForm990ez,
+      Uor990Return::uor990ReturnAnswerForm990n,
+      Uor990Return::uor990ReturnAssetsLarge,
+      Uor990Return::uor990ReturnAssetsSmall,
+      Uor990Return::uor990ReturnJudge,
+      Uor990Return::uor990ReturnKindControlling,
+      Uor990Return::uor990ReturnKindPublic,
+      Uor990Return::uor990ReturnKindSponsor,
+      Uor990Return::uor990ReturnKindSupporting,
+      Uor990Return::uor990ReturnNormallyLarge,
+      Uor990Return::uor990ReturnNormallySmall,
+      Uor990Return::uor990ReturnReceiptsLarge,
+      Uor990Return::uor990ReturnReceiptsSmall,
+      Uor990Return::uor990ReturnRule1,
+      Uor990Return::uor990ReturnRule2,
+      Uor990Return::uor990ReturnRule3,
+      Uor990Return::uor990ReturnRule4,
+      Uor990Return::uor990ReturnRule5,
+      Uor990Return::uor990ReturnRule6,
+      Uor990Return::uor990ReturnRule7,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv005,
+  parameters: [request : Uor990Return::Uor990ReturnRequest],
+  result: Bool,
+  body: ((((((((((project request normally) <? 2) && ((project request receipts) <? 2)) && ((project request assets) <? 2)) && ((project request kind) <? 4)) && ((project request normally) =? (Uor990Return::uor990ReturnNormallyLarge))) && ((project request receipts) =? (Uor990Return::uor990ReturnReceiptsSmall))) && ((project request assets) =? (Uor990Return::uor990ReturnAssetsSmall))) && ((project request kind) =? (Uor990Return::uor990ReturnKindPublic))) && (not ((Uor990Return::uor990ReturnJudge request) =? (Uor990Return::uor990ReturnAnswerForm990ez))))
+}
+
+theorem{
+  name: inv005Holds,
+  parameters: [request : Uor990Return::Uor990ReturnRequest],
+  statement: ((breaksInv005 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      Uor990Return::uor990ReturnAnswerForm990,
+      Uor990Return::uor990ReturnAnswerForm990ez,
+      Uor990Return::uor990ReturnAnswerForm990n,
+      Uor990Return::uor990ReturnAssetsLarge,
+      Uor990Return::uor990ReturnAssetsSmall,
+      Uor990Return::uor990ReturnJudge,
+      Uor990Return::uor990ReturnKindControlling,
+      Uor990Return::uor990ReturnKindPublic,
+      Uor990Return::uor990ReturnKindSponsor,
+      Uor990Return::uor990ReturnKindSupporting,
+      Uor990Return::uor990ReturnNormallyLarge,
+      Uor990Return::uor990ReturnNormallySmall,
+      Uor990Return::uor990ReturnReceiptsLarge,
+      Uor990Return::uor990ReturnReceiptsSmall,
+      Uor990Return::uor990ReturnRule1,
+      Uor990Return::uor990ReturnRule2,
+      Uor990Return::uor990ReturnRule3,
+      Uor990Return::uor990ReturnRule4,
+      Uor990Return::uor990ReturnRule5,
+      Uor990Return::uor990ReturnRule6,
+      Uor990Return::uor990ReturnRule7,
+      breaksInv005
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv006,
+  parameters: [request : Uor990Return::Uor990ReturnRequest],
+  result: Bool,
+  body: ((((((((project request normally) <? 2) && ((project request receipts) <? 2)) && ((project request assets) <? 2)) && ((project request kind) <? 4)) && ((project request normally) =? (Uor990Return::uor990ReturnNormallyLarge))) && ((project request kind) =? (Uor990Return::uor990ReturnKindSponsor))) && ((Uor990Return::uor990ReturnJudge request) =? (Uor990Return::uor990ReturnAnswerForm990ez)))
+}
+
+theorem{
+  name: inv006Holds,
+  parameters: [request : Uor990Return::Uor990ReturnRequest],
+  statement: ((breaksInv006 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      Uor990Return::uor990ReturnAnswerForm990,
+      Uor990Return::uor990ReturnAnswerForm990ez,
+      Uor990Return::uor990ReturnAnswerForm990n,
+      Uor990Return::uor990ReturnAssetsLarge,
+      Uor990Return::uor990ReturnAssetsSmall,
+      Uor990Return::uor990ReturnJudge,
+      Uor990Return::uor990ReturnKindControlling,
+      Uor990Return::uor990ReturnKindPublic,
+      Uor990Return::uor990ReturnKindSponsor,
+      Uor990Return::uor990ReturnKindSupporting,
+      Uor990Return::uor990ReturnNormallyLarge,
+      Uor990Return::uor990ReturnNormallySmall,
+      Uor990Return::uor990ReturnReceiptsLarge,
+      Uor990Return::uor990ReturnReceiptsSmall,
+      Uor990Return::uor990ReturnRule1,
+      Uor990Return::uor990ReturnRule2,
+      Uor990Return::uor990ReturnRule3,
+      Uor990Return::uor990ReturnRule4,
+      Uor990Return::uor990ReturnRule5,
+      Uor990Return::uor990ReturnRule6,
+      Uor990Return::uor990ReturnRule7,
+      breaksInv006
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}
