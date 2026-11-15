@@ -145,6 +145,7 @@ fn views_sv_03() {
             "ecosystem/register.json",
             "app/src/Viewpoints.lex.tex",
             "site/card.html",
+            "site/app.json",
         ] {
             std::fs::copy(root().join(file), scratch.join(file)).expect("a copied input");
         }
