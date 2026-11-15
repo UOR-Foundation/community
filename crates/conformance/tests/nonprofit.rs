@@ -125,12 +125,12 @@ fn nonprofit_np_03() {
     let statuses = values(&register, "status");
     let undischarged = statuses
         .iter()
-        .filter(|s| ["undischarged", "unobservable", "undetermined"].contains(&s.as_str()))
+        .filter(|s| ["undischarged", "unobservable", "undetermined", "active"].contains(&s.as_str()))
         .count();
     let open_lines = statuses.iter().filter(|s| *s == "open").count();
     let unverified = values(&register, "consistency")
         .iter()
-        .filter(|c| *c == "unverified")
+        .filter(|c| *c == "unverified" || *c == "pending")
         .count();
     assert!(
         undischarged > 0,

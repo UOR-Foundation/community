@@ -52,7 +52,8 @@ inductive{
     {name: discharged, fields: []},
     {name: undischarged, fields: []},
     {name: unobservable, fields: []},
-    {name: undetermined, fields: []}
+    {name: undetermined, fields: []},
+    {name: active, fields: []}
   ]
 }
 
@@ -67,7 +68,11 @@ inductive{
   name: Consistency,
   type_parameters: [],
   parameters: [],
-  constructors: [{name: verified, fields: []}, {name: unverified, fields: []}]
+  constructors: [
+    {name: verified, fields: []},
+    {name: unverified, fields: []},
+    {name: pending, fields: []}
+  ]
 }
 
 inductive{
@@ -309,7 +314,8 @@ definition{
     | ObligationStatus.discharged => true
     | ObligationStatus.undischarged => false
     | ObligationStatus.unobservable => false
-    | ObligationStatus.undetermined => false)
+    | ObligationStatus.undetermined => false
+    | ObligationStatus.active => false)
 }
 
 definition{
@@ -323,7 +329,10 @@ definition{
   name: isVerified,
   parameters: [value : Consistency],
   result: Bool,
-  body: (match value | Consistency.verified => true | Consistency.unverified => false)
+  body: (match value
+    | Consistency.verified => true
+    | Consistency.unverified => false
+    | Consistency.pending => false)
 }
 
 definition{

@@ -9,7 +9,7 @@ definition{
   name: release,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Release,
-  body: (record Foundation.Nonprofit.V1.Model::Release {sourcesCount := 41, authoritiesCount := 55, postsCount := 14, obligationsCount := 20, citationsCount := 52, filingsCount := 5, observationsCount := 9, statementsCount := 2, linesCount := 31, needsCount := 9, openClaimsCount := 67, legalName := "The UOR Foundation", coloradoId := "20251193974", foundingDate := "2025-02-21", standing := "Good Standing", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), nonprofitStatusClaimed := "Nonprofit501c3", recognitionObserved := false, governanceDigest := "sha256:d042b7bb0a87843c38d0bcfd6dde0ec1eb983aafd6e64340e180fc552bdcb77b", appDigest := "sha256:609eaafc908d9b8e511ec056b0a470dece602679aaad8137a3506d9b37cf1b20", snapshotDigest := "sha256:bb2f0e291d3f79dc57189f70ebf0f146ee7a25bf4a3beab9bf188d98423f0f5f", pdftotext := "24.02.0"})
+  body: (record Foundation.Nonprofit.V1.Model::Release {sourcesCount := 42, authoritiesCount := 55, postsCount := 14, obligationsCount := 20, citationsCount := 52, filingsCount := 5, observationsCount := 9, statementsCount := 2, linesCount := 31, needsCount := 9, openClaimsCount := 67, legalName := "The UOR Foundation", coloradoId := "20251193974", foundingDate := "2025-02-21", standing := "Good Standing", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), nonprofitStatusClaimed := "Nonprofit501c3", recognitionObserved := false, governanceDigest := "sha256:d042b7bb0a87843c38d0bcfd6dde0ec1eb983aafd6e64340e180fc552bdcb77b", appDigest := "sha256:609eaafc908d9b8e511ec056b0a470dece602679aaad8137a3506d9b37cf1b20", snapshotDigest := "sha256:bb2f0e291d3f79dc57189f70ebf0f146ee7a25bf4a3beab9bf188d98423f0f5f", pdftotext := "24.02.0"})
 }
 
 definition{
@@ -58,252 +58,259 @@ definition{
   name: source6,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 6, key := "nonprofit/snapshot.json", url := "nonprofit/snapshot.json", fetchedAt := "", digest := "sha256:bb2f0e291d3f79dc57189f70ebf0f146ee7a25bf4a3beab9bf188d98423f0f5f"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 6, key := "nonprofit/attestations.json", url := "nonprofit/attestations.json", fetchedAt := "", digest := "sha256:618cf7d4822293ec298b461079abdf179ec25151b523808e5aec088d9c8c45dd"})
 }
 
 definition{
   name: source7,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 7, key := "sos-entity", url := "https://www.coloradosos.gov/biz/BusinessEntityDetail.do?quitButtonDestination=BusinessEntityResults&masterFileId=20251193974", fetchedAt := "2026-11-15T19:01:10.112Z", digest := "sha256:8604b716548dd2229eb3706828272e2e7ea8ae2d64519ac7ecac55dcd5253fbc"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 7, key := "nonprofit/snapshot.json", url := "nonprofit/snapshot.json", fetchedAt := "", digest := "sha256:bb2f0e291d3f79dc57189f70ebf0f146ee7a25bf4a3beab9bf188d98423f0f5f"})
 }
 
 definition{
   name: source8,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 8, key := "sos-history", url := "https://www.coloradosos.gov/biz/BusinessEntityHistory.do?quitButtonDestination=BusinessEntityDetail&pi1=1&masterFileId=20251193974&entityId2=&srchTyp=", fetchedAt := "2026-11-15T19:01:10.401Z", digest := "sha256:28a5fe2b19e8d95126f786baada91fb539ddfe54a17475e9f6264a7021485fc2"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 8, key := "sos-entity", url := "https://www.coloradosos.gov/biz/BusinessEntityDetail.do?quitButtonDestination=BusinessEntityResults&masterFileId=20251193974", fetchedAt := "2026-11-15T19:01:10.112Z", digest := "sha256:8604b716548dd2229eb3706828272e2e7ea8ae2d64519ac7ecac55dcd5253fbc"})
 }
 
 definition{
   name: source9,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 9, key := "sos-history:20251193974", url := "https://www.coloradosos.gov/biz/ViewImage.do?masterFileId=20251193974&fileId=20251193974", fetchedAt := "2026-11-15T19:01:10.541Z", digest := "sha256:0730ef5d1fcf5bf3fde6ad284b8daaff9e135e81f49a3b0bfe90af92719299ef"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 9, key := "sos-history", url := "https://www.coloradosos.gov/biz/BusinessEntityHistory.do?quitButtonDestination=BusinessEntityDetail&pi1=1&masterFileId=20251193974&entityId2=&srchTyp=", fetchedAt := "2026-11-15T19:01:10.401Z", digest := "sha256:28a5fe2b19e8d95126f786baada91fb539ddfe54a17475e9f6264a7021485fc2"})
 }
 
 definition{
   name: source10,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 10, key := "sos-history:20258114259", url := "https://www.coloradosos.gov/biz/ViewImage.do?masterFileId=20251193974&fileId=20258114259", fetchedAt := "2026-11-15T19:01:10.945Z", digest := "sha256:10c91a7114126a8a90ff32b3360ee05b7008fb9f608404207c556061443677ad"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 10, key := "sos-history:20251193974", url := "https://www.coloradosos.gov/biz/ViewImage.do?masterFileId=20251193974&fileId=20251193974", fetchedAt := "2026-11-15T19:01:10.541Z", digest := "sha256:0730ef5d1fcf5bf3fde6ad284b8daaff9e135e81f49a3b0bfe90af92719299ef"})
 }
 
 definition{
   name: source11,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 11, key := "sos-history:20261517577", url := "https://www.coloradosos.gov/biz/ViewImage.do?masterFileId=20251193974&fileId=20261517577", fetchedAt := "2026-11-15T19:01:11.122Z", digest := "sha256:48bd9b8d0584c29449f39b48088e3c7eedc90ddedbac247f8ae0f46f85374d90"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 11, key := "sos-history:20258114259", url := "https://www.coloradosos.gov/biz/ViewImage.do?masterFileId=20251193974&fileId=20258114259", fetchedAt := "2026-11-15T19:01:10.945Z", digest := "sha256:10c91a7114126a8a90ff32b3360ee05b7008fb9f608404207c556061443677ad"})
 }
 
 definition{
   name: source12,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 12, key := "sos-faq-reports", url := "https://www.coloradosos.gov/pubs/business/FAQs/reports.html", fetchedAt := "2026-11-15T19:01:11.223Z", digest := "sha256:4ecdba5d06c62d925a6c9e43eff64bcd6e22a3ae23f7d29e252a58f874d769f4"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 12, key := "sos-history:20261517577", url := "https://www.coloradosos.gov/biz/ViewImage.do?masterFileId=20251193974&fileId=20261517577", fetchedAt := "2026-11-15T19:01:11.122Z", digest := "sha256:48bd9b8d0584c29449f39b48088e3c7eedc90ddedbac247f8ae0f46f85374d90"})
 }
 
 definition{
   name: source13,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 13, key := "sos-faq-agent", url := "https://www.coloradosos.gov/pubs/business/FAQs/regAgent.html", fetchedAt := "2026-11-15T19:01:11.311Z", digest := "sha256:ab74d7251f7d49a97ec46514a86b8b510a7587c24ed30c919254cb7890877656"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 13, key := "sos-faq-reports", url := "https://www.coloradosos.gov/pubs/business/FAQs/reports.html", fetchedAt := "2026-11-15T19:01:11.223Z", digest := "sha256:4ecdba5d06c62d925a6c9e43eff64bcd6e22a3ae23f7d29e252a58f874d769f4"})
 }
 
 definition{
   name: source14,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 14, key := "ccsa-search:The UOR Foundation", url := "https://www.coloradosos.gov/ccsa/pages/search/basic.xhtml", fetchedAt := "2026-11-15T19:01:13.767Z", digest := "sha256:36ce835cbd2b11c4f4f7348d1373b062ceeb0d44f41958334abef9e0c8e7eb13"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 14, key := "sos-faq-agent", url := "https://www.coloradosos.gov/pubs/business/FAQs/regAgent.html", fetchedAt := "2026-11-15T19:01:11.311Z", digest := "sha256:ab74d7251f7d49a97ec46514a86b8b510a7587c24ed30c919254cb7890877656"})
 }
 
 definition{
   name: source15,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 15, key := "ccsa-search:UOR", url := "https://www.coloradosos.gov/ccsa/pages/search/basic.xhtml", fetchedAt := "2026-11-15T19:01:14.056Z", digest := "sha256:3181a8f400b550f25c1c19701f70f9a2d37f91e3455d03fe45b96248ba821ab3"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 15, key := "ccsa-search:The UOR Foundation", url := "https://www.coloradosos.gov/ccsa/pages/search/basic.xhtml", fetchedAt := "2026-11-15T19:01:13.767Z", digest := "sha256:36ce835cbd2b11c4f4f7348d1373b062ceeb0d44f41958334abef9e0c8e7eb13"})
 }
 
 definition{
   name: source16,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 16, key := "crs-title-7", url := "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-07.pdf", fetchedAt := "2026-11-15T19:01:15.030Z", digest := "sha256:3537780f7869a03699e24ba9ad9769ec9885dd8bcb7f524a0e28e70e6bebff5f"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 16, key := "ccsa-search:UOR", url := "https://www.coloradosos.gov/ccsa/pages/search/basic.xhtml", fetchedAt := "2026-11-15T19:01:14.056Z", digest := "sha256:3181a8f400b550f25c1c19701f70f9a2d37f91e3455d03fe45b96248ba821ab3"})
 }
 
 definition{
   name: source17,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 17, key := "crs-title-6", url := "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-06.pdf", fetchedAt := "2026-11-15T19:01:16.431Z", digest := "sha256:560ff6d64b5afdf2a3bc5ac917a392269d16270a029b252ff8f7957deb38b423"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 17, key := "crs-title-7", url := "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-07.pdf", fetchedAt := "2026-11-15T19:01:15.030Z", digest := "sha256:3537780f7869a03699e24ba9ad9769ec9885dd8bcb7f524a0e28e70e6bebff5f"})
 }
 
 definition{
   name: source18,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 18, key := "usc-26-501", url := "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapF-partI-sec501.htm", fetchedAt := "2026-11-15T19:01:17.437Z", digest := "sha256:c43a0c1870410831e8772fa4cd7f03793450d08404121e7db9c27922495fc38a"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 18, key := "crs-title-6", url := "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-06.pdf", fetchedAt := "2026-11-15T19:01:16.431Z", digest := "sha256:560ff6d64b5afdf2a3bc5ac917a392269d16270a029b252ff8f7957deb38b423"})
 }
 
 definition{
   name: source19,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 19, key := "usc-26-508", url := "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapF-partII-sec508.htm", fetchedAt := "2026-11-15T19:01:17.502Z", digest := "sha256:4498a3b7656a0b8a3febde6e14de5bfc31423f986148214e208b543bae31e94c"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 19, key := "usc-26-501", url := "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapF-partI-sec501.htm", fetchedAt := "2026-11-15T19:01:17.437Z", digest := "sha256:c43a0c1870410831e8772fa4cd7f03793450d08404121e7db9c27922495fc38a"})
 }
 
 definition{
   name: source20,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 20, key := "usc-26-6001", url := "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapA-partI-sec6001.htm", fetchedAt := "2026-11-15T19:01:17.555Z", digest := "sha256:2ea58aa27fc3f344f8396a8da99f6a59b5df07784fc61126435a8ee12ce4495b"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 20, key := "usc-26-508", url := "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapF-partII-sec508.htm", fetchedAt := "2026-11-15T19:01:17.502Z", digest := "sha256:4498a3b7656a0b8a3febde6e14de5bfc31423f986148214e208b543bae31e94c"})
 }
 
 definition{
   name: source21,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 21, key := "usc-26-6012", url := "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapA-partII-subpartB-sec6012.htm", fetchedAt := "2026-11-15T19:01:17.613Z", digest := "sha256:64434529f8f0342eacbbc96177ed94c9a506bcbd1011897e9d49184ad85fc9d3"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 21, key := "usc-26-6001", url := "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapA-partI-sec6001.htm", fetchedAt := "2026-11-15T19:01:17.555Z", digest := "sha256:2ea58aa27fc3f344f8396a8da99f6a59b5df07784fc61126435a8ee12ce4495b"})
 }
 
 definition{
   name: source22,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 22, key := "usc-26-6033", url := "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapA-partIII-subpartA-sec6033.htm", fetchedAt := "2026-11-15T19:01:17.677Z", digest := "sha256:6bc6b6a34ff69f4f18afb56dc76424f47e63690d0aa5010ef3d56b068595e0c7"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 22, key := "usc-26-6012", url := "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapA-partII-subpartB-sec6012.htm", fetchedAt := "2026-11-15T19:01:17.613Z", digest := "sha256:64434529f8f0342eacbbc96177ed94c9a506bcbd1011897e9d49184ad85fc9d3"})
 }
 
 definition{
   name: source23,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 23, key := "usc-26-6104", url := "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapB-sec6104.htm", fetchedAt := "2026-11-15T19:01:17.745Z", digest := "sha256:6a2750905dde7899996eacfbd2cd91bc6ccb6a3456c0cf3bbb00911f6552d2a3"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 23, key := "usc-26-6033", url := "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapA-partIII-subpartA-sec6033.htm", fetchedAt := "2026-11-15T19:01:17.677Z", digest := "sha256:6bc6b6a34ff69f4f18afb56dc76424f47e63690d0aa5010ef3d56b068595e0c7"})
 }
 
 definition{
   name: source24,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 24, key := "usc-26-4958", url := "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleD-chap42-subchapD-sec4958.htm", fetchedAt := "2026-11-15T19:01:17.802Z", digest := "sha256:d1a1d17f6664d3914a6d84af3fe8a89480895fb2ffd9d818f0c5620af9be47f8"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 24, key := "usc-26-6104", url := "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapB-sec6104.htm", fetchedAt := "2026-11-15T19:01:17.745Z", digest := "sha256:6a2750905dde7899996eacfbd2cd91bc6ccb6a3456c0cf3bbb00911f6552d2a3"})
 }
 
 definition{
   name: source25,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 25, key := "cfr-26-1.501(c)(3)-1", url := "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.501(c)(3)-1", fetchedAt := "2026-11-15T19:01:18.111Z", digest := "sha256:1a03dff1b983886ac7d178d60827e11c30da938e7bc0297d8064be352b9862fb"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 25, key := "usc-26-4958", url := "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleD-chap42-subchapD-sec4958.htm", fetchedAt := "2026-11-15T19:01:17.802Z", digest := "sha256:d1a1d17f6664d3914a6d84af3fe8a89480895fb2ffd9d818f0c5620af9be47f8"})
 }
 
 definition{
   name: source26,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 26, key := "cfr-26-1.508-1", url := "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.508-1", fetchedAt := "2026-11-15T19:01:18.176Z", digest := "sha256:ed72261f2fdafd08191dc22ae1e696c8f69f54486ec96996c17d04c91e3bafa6"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 26, key := "cfr-26-1.501(c)(3)-1", url := "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.501(c)(3)-1", fetchedAt := "2026-11-15T19:01:18.111Z", digest := "sha256:1a03dff1b983886ac7d178d60827e11c30da938e7bc0297d8064be352b9862fb"})
 }
 
 definition{
   name: source27,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 27, key := "cfr-26-1.6001-1", url := "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.6001-1", fetchedAt := "2026-11-15T19:01:23.186Z", digest := "sha256:2514ea0ff5ee736f88b462184dc825add07ecbfac66bdd5b6271afb3d5884d9b"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 27, key := "cfr-26-1.508-1", url := "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.508-1", fetchedAt := "2026-11-15T19:01:18.176Z", digest := "sha256:ed72261f2fdafd08191dc22ae1e696c8f69f54486ec96996c17d04c91e3bafa6"})
 }
 
 definition{
   name: source28,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 28, key := "cfr-26-1.6012-2", url := "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.6012-2", fetchedAt := "2026-11-15T19:01:23.240Z", digest := "sha256:f25def4d5d03bbfbda4efb307bcd130385dbe69b01c0d13ea2c47da42ed500aa"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 28, key := "cfr-26-1.6001-1", url := "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.6001-1", fetchedAt := "2026-11-15T19:01:23.186Z", digest := "sha256:2514ea0ff5ee736f88b462184dc825add07ecbfac66bdd5b6271afb3d5884d9b"})
 }
 
 definition{
   name: source29,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 29, key := "f990", url := "https://www.irs.gov/pub/irs-pdf/f990.pdf", fetchedAt := "2026-11-15T19:01:23.620Z", digest := "sha256:0b715d2790691ca6d4fb16ba0923e3cdf1d0e04cd26ea48788d41a708e945533"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 29, key := "cfr-26-1.6012-2", url := "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.6012-2", fetchedAt := "2026-11-15T19:01:23.240Z", digest := "sha256:f25def4d5d03bbfbda4efb307bcd130385dbe69b01c0d13ea2c47da42ed500aa"})
 }
 
 definition{
   name: source30,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 30, key := "i990", url := "https://www.irs.gov/pub/irs-pdf/i990.pdf", fetchedAt := "2026-11-15T19:01:23.978Z", digest := "sha256:ae9f947383cd7393e3359ff7977b4c7665e21496df592a5fd1f8e4efed3acebf"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 30, key := "f990", url := "https://www.irs.gov/pub/irs-pdf/f990.pdf", fetchedAt := "2026-11-15T19:01:23.620Z", digest := "sha256:0b715d2790691ca6d4fb16ba0923e3cdf1d0e04cd26ea48788d41a708e945533"})
 }
 
 definition{
   name: source31,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 31, key := "i1023", url := "https://www.irs.gov/pub/irs-pdf/i1023.pdf", fetchedAt := "2026-11-15T19:01:24.554Z", digest := "sha256:63eb528189ab4a042d227a77ed1f358368488227e294f98d1d845b5700dbd041"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 31, key := "i990", url := "https://www.irs.gov/pub/irs-pdf/i990.pdf", fetchedAt := "2026-11-15T19:01:23.978Z", digest := "sha256:ae9f947383cd7393e3359ff7977b4c7665e21496df592a5fd1f8e4efed3acebf"})
 }
 
 definition{
   name: source32,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 32, key := "bmf-eo1", url := "https://www.irs.gov/pub/irs-soi/eo1.csv", fetchedAt := "2026-11-15T19:01:25.481Z", digest := "sha256:5d1047c15cb6109b73ed244da97961b92a3ec122ac4419f354d248dc059df4e6"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 32, key := "i1023", url := "https://www.irs.gov/pub/irs-pdf/i1023.pdf", fetchedAt := "2026-11-15T19:01:24.554Z", digest := "sha256:63eb528189ab4a042d227a77ed1f358368488227e294f98d1d845b5700dbd041"})
 }
 
 definition{
   name: source33,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 33, key := "bmf-eo2", url := "https://www.irs.gov/pub/irs-soi/eo2.csv", fetchedAt := "2026-11-15T19:01:27.959Z", digest := "sha256:46db809791e9cfe785c74fd6028ed18612f8a639edf763142c017cce3446ccfa"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 33, key := "bmf-eo1", url := "https://www.irs.gov/pub/irs-soi/eo1.csv", fetchedAt := "2026-11-15T19:01:25.481Z", digest := "sha256:5d1047c15cb6109b73ed244da97961b92a3ec122ac4419f354d248dc059df4e6"})
 }
 
 definition{
   name: source34,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 34, key := "bmf-eo3", url := "https://www.irs.gov/pub/irs-soi/eo3.csv", fetchedAt := "2026-11-15T19:01:32.346Z", digest := "sha256:4902eab594c4be7312192bb03ee5082580ca208bd4f6b9b5a6bcfc009c8f27f4"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 34, key := "bmf-eo2", url := "https://www.irs.gov/pub/irs-soi/eo2.csv", fetchedAt := "2026-11-15T19:01:27.959Z", digest := "sha256:46db809791e9cfe785c74fd6028ed18612f8a639edf763142c017cce3446ccfa"})
 }
 
 definition{
   name: source35,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 35, key := "bmf-eo4", url := "https://www.irs.gov/pub/irs-soi/eo4.csv", fetchedAt := "2026-11-15T19:01:36.165Z", digest := "sha256:3c161b91056ea9291723aa608e40fe093a605238866e4ef8de8d6d9e26ce325c"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 35, key := "bmf-eo3", url := "https://www.irs.gov/pub/irs-soi/eo3.csv", fetchedAt := "2026-11-15T19:01:32.346Z", digest := "sha256:4902eab594c4be7312192bb03ee5082580ca208bd4f6b9b5a6bcfc009c8f27f4"})
 }
 
 definition{
   name: source36,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 36, key := "bmf-eo-co", url := "https://www.irs.gov/pub/irs-soi/eo_co.csv", fetchedAt := "2026-11-15T19:01:36.339Z", digest := "sha256:3eba46611cc074045b4bbb732d8990db6a21671cc35061144d0ad6bd2ed69421"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 36, key := "bmf-eo4", url := "https://www.irs.gov/pub/irs-soi/eo4.csv", fetchedAt := "2026-11-15T19:01:36.165Z", digest := "sha256:3c161b91056ea9291723aa608e40fe093a605238866e4ef8de8d6d9e26ce325c"})
 }
 
 definition{
   name: source37,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 37, key := "pub78", url := "https://apps.irs.gov/pub/epostcard/data-download-pub78.zip", fetchedAt := "2026-11-15T19:01:37.109Z", digest := "sha256:8a6fc43fad5bd9324209ccd58e671e4ea8db9a5b8029b8ac4ec621d6c61c62bf"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 37, key := "bmf-eo-co", url := "https://www.irs.gov/pub/irs-soi/eo_co.csv", fetchedAt := "2026-11-15T19:01:36.339Z", digest := "sha256:3eba46611cc074045b4bbb732d8990db6a21671cc35061144d0ad6bd2ed69421"})
 }
 
 definition{
   name: source38,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 38, key := "epostcard", url := "https://apps.irs.gov/pub/epostcard/data-download-epostcard.zip", fetchedAt := "2026-11-15T19:01:41.664Z", digest := "sha256:aa901cf860f000f7910ba5b26b249a4534003d69b4924563838285d755ba47db"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 38, key := "pub78", url := "https://apps.irs.gov/pub/epostcard/data-download-pub78.zip", fetchedAt := "2026-11-15T19:01:37.109Z", digest := "sha256:8a6fc43fad5bd9324209ccd58e671e4ea8db9a5b8029b8ac4ec621d6c61c62bf"})
 }
 
 definition{
   name: source39,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 39, key := "efile-index-2025", url := "https://apps.irs.gov/pub/epostcard/990/xml/2025/index_2025.csv", fetchedAt := "2026-11-15T19:01:48.581Z", digest := "sha256:e54ba6938d98b1746f2fd464a0f77e520efd956dc3da737d73843dc0013c6770"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 39, key := "epostcard", url := "https://apps.irs.gov/pub/epostcard/data-download-epostcard.zip", fetchedAt := "2026-11-15T19:01:41.664Z", digest := "sha256:aa901cf860f000f7910ba5b26b249a4534003d69b4924563838285d755ba47db"})
 }
 
 definition{
   name: source40,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Source,
-  body: (record Foundation.Nonprofit.V1.Model::Source {index := 40, key := "efile-index-2026", url := "https://apps.irs.gov/pub/epostcard/990/xml/2026/index_2026.csv", fetchedAt := "2026-11-15T19:01:52.035Z", digest := "sha256:4e100f04b85fbaed4940581f8bbb7cd47eb33ee200a93334018b98542ae323e7"})
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 40, key := "efile-index-2025", url := "https://apps.irs.gov/pub/epostcard/990/xml/2025/index_2025.csv", fetchedAt := "2026-11-15T19:01:48.581Z", digest := "sha256:e54ba6938d98b1746f2fd464a0f77e520efd956dc3da737d73843dc0013c6770"})
+}
+
+definition{
+  name: source41,
+  parameters: [],
+  result: Foundation.Nonprofit.V1.Model::Source,
+  body: (record Foundation.Nonprofit.V1.Model::Source {index := 41, key := "efile-index-2026", url := "https://apps.irs.gov/pub/epostcard/990/xml/2026/index_2026.csv", fetchedAt := "2026-11-15T19:01:52.035Z", digest := "sha256:4e100f04b85fbaed4940581f8bbb7cd47eb33ee200a93334018b98542ae323e7"})
 }
 
 definition{
   name: sourcesFrom0,
   parameters: [],
   result: (List Foundation.Nonprofit.V1.Model::Source),
-  body: (cons (source0) (cons (source1) (cons (source2) (cons (source3) (cons (source4) (cons (source5) (cons (source6) (cons (source7) (cons (source8) (cons (source9) (cons (source10) (cons (source11) (cons (source12) (cons (source13) (cons (source14) (cons (source15) (cons (source16) (cons (source17) (cons (source18) (cons (source19) (cons (source20) (cons (source21) (cons (source22) (cons (source23) (cons (source24) (cons (source25) (cons (source26) (cons (source27) (cons (source28) (cons (source29) (cons (source30) (cons (source31) (cons (source32) (cons (source33) (cons (source34) (cons (source35) (cons (source36) (cons (source37) (cons (source38) (cons (source39) (cons (source40) (nil Foundation.Nonprofit.V1.Model::Source))))))))))))))))))))))))))))))))))))))))))
+  body: (cons (source0) (cons (source1) (cons (source2) (cons (source3) (cons (source4) (cons (source5) (cons (source6) (cons (source7) (cons (source8) (cons (source9) (cons (source10) (cons (source11) (cons (source12) (cons (source13) (cons (source14) (cons (source15) (cons (source16) (cons (source17) (cons (source18) (cons (source19) (cons (source20) (cons (source21) (cons (source22) (cons (source23) (cons (source24) (cons (source25) (cons (source26) (cons (source27) (cons (source28) (cons (source29) (cons (source30) (cons (source31) (cons (source32) (cons (source33) (cons (source34) (cons (source35) (cons (source36) (cons (source37) (cons (source38) (cons (source39) (cons (source40) (cons (source41) (nil Foundation.Nonprofit.V1.Model::Source)))))))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
@@ -324,35 +331,35 @@ definition{
   name: authority1,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 1, key := "crs:7-90-501", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-90-501", title := "Periodic reports", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 16, digest := "sha256:5eeddb6fbbe4dacfc9272986fca5925d878654d4d56f220f251d8581f65319d0"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 1, key := "crs:7-90-501", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-90-501", title := "Periodic reports", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 17, digest := "sha256:5eeddb6fbbe4dacfc9272986fca5925d878654d4d56f220f251d8581f65319d0"})
 }
 
 definition{
   name: authority2,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 2, key := "crs:7-136-107", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-136-107", title := "Periodic report to secretary of state", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 16, digest := "sha256:6cccec0a1f498196d0000b37b1280cf24b13da5d808206ab71d5fe2aca7294f2"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 2, key := "crs:7-136-107", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-136-107", title := "Periodic report to secretary of state", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 17, digest := "sha256:6cccec0a1f498196d0000b37b1280cf24b13da5d808206ab71d5fe2aca7294f2"})
 }
 
 definition{
   name: authority3,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 3, key := "sos-faq-reports:annual", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.agencyGuidance), ref := "Colorado Secretary of State, Business FAQs, Periodic reports Q1", title := "Reporting entities, such as limited liability companies, corporations, nonprofit corporations, and foreign entities, are", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 12, digest := "sha256:7f1d5ad946359257da8b4fa92564cdaeb82dcbd154cd9e4489eccdf7f9a67eaf"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 3, key := "sos-faq-reports:annual", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.agencyGuidance), ref := "Colorado Secretary of State, Business FAQs, Periodic reports Q1", title := "Reporting entities, such as limited liability companies, corporations, nonprofit corporations, and foreign entities, are", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 13, digest := "sha256:7f1d5ad946359257da8b4fa92564cdaeb82dcbd154cd9e4489eccdf7f9a67eaf"})
 }
 
 definition{
   name: authority4,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 4, key := "sos-faq-reports:window", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.agencyGuidance), ref := "Colorado Secretary of State, Business FAQs, Periodic reports Q4", title := "The Periodic Report can be filed two months prior to the Periodic Report month or two months after without any penalty.", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 12, digest := "sha256:676197a56b36a16537d40c09437b768527ec23b7df7041827e0c5754ad6f0e49"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 4, key := "sos-faq-reports:window", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.agencyGuidance), ref := "Colorado Secretary of State, Business FAQs, Periodic reports Q4", title := "The Periodic Report can be filed two months prior to the Periodic Report month or two months after without any penalty.", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 13, digest := "sha256:676197a56b36a16537d40c09437b768527ec23b7df7041827e0c5754ad6f0e49"})
 }
 
 definition{
   name: authority5,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 5, key := "crs:7-90-701", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-90-701", title := "Registered agent - definition", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 16, digest := "sha256:fdfe7491171a9ae7c2da60c2482ec6889ed5e9f266cc63487f0ab9b32e0e97f4"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 5, key := "crs:7-90-701", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-90-701", title := "Registered agent - definition", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 17, digest := "sha256:fdfe7491171a9ae7c2da60c2482ec6889ed5e9f266cc63487f0ab9b32e0e97f4"})
 }
 
 definition{
@@ -366,21 +373,21 @@ definition{
   name: authority7,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 7, key := "sos-faq-agent:required", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.agencyGuidance), ref := "Colorado Secretary of State, Business FAQs, Registered agent Q3", title := "Almost all entities on record with the Secretary of State must have a registered agent listed with a Colorado address, e", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 13, digest := "sha256:b5e2d2e4a01bb471749ebb8732ea46bd9339f291b38cece09b58f16be7bf30f5"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 7, key := "sos-faq-agent:required", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.agencyGuidance), ref := "Colorado Secretary of State, Business FAQs, Registered agent Q3", title := "Almost all entities on record with the Secretary of State must have a registered agent listed with a Colorado address, e", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 14, digest := "sha256:b5e2d2e4a01bb471749ebb8732ea46bd9339f291b38cece09b58f16be7bf30f5"})
 }
 
 definition{
   name: authority8,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 8, key := "crs:7-90-901", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-90-901", title := "Grounds for delinquency", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 16, digest := "sha256:f88820b0488407a024f61f58f34673163320865e07bc13fcd29c5453b8e6cc92"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 8, key := "crs:7-90-901", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-90-901", title := "Grounds for delinquency", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 17, digest := "sha256:f88820b0488407a024f61f58f34673163320865e07bc13fcd29c5453b8e6cc92"})
 }
 
 definition{
   name: authority9,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 9, key := "crs:7-136-101", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-136-101", title := "Corporate records", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 16, digest := "sha256:c69e04d81475e10b617e5df8afa972894f49acb61a8a508782ade4ccf75ab25e"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 9, key := "crs:7-136-101", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-136-101", title := "Corporate records", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 17, digest := "sha256:c69e04d81475e10b617e5df8afa972894f49acb61a8a508782ade4ccf75ab25e"})
 }
 
 definition{
@@ -408,14 +415,14 @@ definition{
   name: authority13,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 13, key := "usc-26-6001:records", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 6001", title := "Every person liable for any tax imposed by this title, or for the collection thereof, shall keep such records, render su", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 20, digest := "sha256:86ed17643e2e4a7ed2e078857c61de3c2eb3415a4e51fafa99b82b0cc3f56c75"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 13, key := "usc-26-6001:records", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 6001", title := "Every person liable for any tax imposed by this title, or for the collection thereof, shall keep such records, render su", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 21, digest := "sha256:86ed17643e2e4a7ed2e078857c61de3c2eb3415a4e51fafa99b82b0cc3f56c75"})
 }
 
 definition{
   name: authority14,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 14, key := "cfr-26-1.6001-1:c", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.regulation), ref := "26 CFR 1.6001-1(c)", title := "every organization exempt from tax under section 501(a) shall keep such permanent books of account or records", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 27, digest := "sha256:6f470f51b7594ddea119b7ec49dc6d1c70536c225fe3cbfee47453d5fb004d45"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 14, key := "cfr-26-1.6001-1:c", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.regulation), ref := "26 CFR 1.6001-1(c)", title := "every organization exempt from tax under section 501(a) shall keep such permanent books of account or records", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 28, digest := "sha256:6f470f51b7594ddea119b7ec49dc6d1c70536c225fe3cbfee47453d5fb004d45"})
 }
 
 definition{
@@ -436,133 +443,133 @@ definition{
   name: authority17,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 17, key := "crs:7-130-101", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-130-101", title := "Authority to amend articles of incorporation", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 16, digest := "sha256:df91061d29168a2e689175fd23b2bf2787fa34699bbcedfa8372c0a30f1854a0"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 17, key := "crs:7-130-101", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-130-101", title := "Authority to amend articles of incorporation", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 17, digest := "sha256:df91061d29168a2e689175fd23b2bf2787fa34699bbcedfa8372c0a30f1854a0"})
 }
 
 definition{
   name: authority18,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 18, key := "crs:7-130-105", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-130-105", title := "Articles of amendment to articles of incorporation", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 16, digest := "sha256:94e7da24f96be92dc502199eb32b5426436d7dab6532d88dd6831a3b10996ed7"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 18, key := "crs:7-130-105", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-130-105", title := "Articles of amendment to articles of incorporation", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 17, digest := "sha256:94e7da24f96be92dc502199eb32b5426436d7dab6532d88dd6831a3b10996ed7"})
 }
 
 definition{
   name: authority19,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 19, key := "crs:7-122-102", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-122-102", title := "Articles of incorporation", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 16, digest := "sha256:57f50abb385231422fd5d1b69c6b757f38402674d4323c66acc52a5ad5d99ccd"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 19, key := "crs:7-122-102", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-122-102", title := "Articles of incorporation", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 17, digest := "sha256:57f50abb385231422fd5d1b69c6b757f38402674d4323c66acc52a5ad5d99ccd"})
 }
 
 definition{
   name: authority20,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 20, key := "cfr-26-1.501(c)(3)-1:b1", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.regulation), ref := "26 CFR 1.501(c)(3)-1(b)(1)(i)", title := "Organizational test —(1) In general. (i) An organization is organized exclusively for one or more exempt purposes only i", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 25, digest := "sha256:f7a72e5a22c0e20e94e8aa5169502fa90526b35000c60c7ae78dec6688a73fda"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 20, key := "cfr-26-1.501(c)(3)-1:b1", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.regulation), ref := "26 CFR 1.501(c)(3)-1(b)(1)(i)", title := "Organizational test —(1) In general. (i) An organization is organized exclusively for one or more exempt purposes only i", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 26, digest := "sha256:f7a72e5a22c0e20e94e8aa5169502fa90526b35000c60c7ae78dec6688a73fda"})
 }
 
 definition{
   name: authority21,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 21, key := "i1023:purpose", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.instructions), ref := "Instructions for Form 1023 (Rev. December 2024), Part III line 1, Purpose clause", title := "Line 1. Purpose clause. Your organizing document must limit your purposes to those described in section 501(c)(3).", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 31, digest := "sha256:2fba4483412069a3ee3af0df70b911821f8db83e9a609ab4a8f83d4a8635bcd2"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 21, key := "i1023:purpose", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.instructions), ref := "Instructions for Form 1023 (Rev. December 2024), Part III line 1, Purpose clause", title := "Line 1. Purpose clause. Your organizing document must limit your purposes to those described in section 501(c)(3).", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 32, digest := "sha256:2fba4483412069a3ee3af0df70b911821f8db83e9a609ab4a8f83d4a8635bcd2"})
 }
 
 definition{
   name: authority22,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 22, key := "cfr-26-1.501(c)(3)-1:b4", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.regulation), ref := "26 CFR 1.501(c)(3)-1(b)(4)", title := "(4) Distribution of assets on dissolution. An organization is not organized exclusively for one or more exempt purposes ", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 25, digest := "sha256:01316823251faa143ec409030a69da2eee9e66a1f401cfd84000134c5cc498ed"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 22, key := "cfr-26-1.501(c)(3)-1:b4", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.regulation), ref := "26 CFR 1.501(c)(3)-1(b)(4)", title := "(4) Distribution of assets on dissolution. An organization is not organized exclusively for one or more exempt purposes ", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 26, digest := "sha256:01316823251faa143ec409030a69da2eee9e66a1f401cfd84000134c5cc498ed"})
 }
 
 definition{
   name: authority23,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 23, key := "i1023:dissolution", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.instructions), ref := "Instructions for Form 1023 (Rev. December 2024), Part III line 2, Dissolution clause", title := "Line 2. Dissolution clause. Your organizing document must provide for the permanent dedication of your assets to a secti", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 31, digest := "sha256:9dd3d3eee54917d9325776b2f50a7caf0e37a2805da9488ce1b6709dcc83cc0f"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 23, key := "i1023:dissolution", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.instructions), ref := "Instructions for Form 1023 (Rev. December 2024), Part III line 2, Dissolution clause", title := "Line 2. Dissolution clause. Your organizing document must provide for the permanent dedication of your assets to a secti", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 32, digest := "sha256:9dd3d3eee54917d9325776b2f50a7caf0e37a2805da9488ce1b6709dcc83cc0f"})
 }
 
 definition{
   name: authority24,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 24, key := "usc-26-508:a", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 508(a)", title := "(a) New organizations must notify Secretary that they are applying for recognition of section 501(c)(3) status Except as", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 19, digest := "sha256:fd0437facf9ff9829db8364fddfd8aa193b7b2eab24ac084939136bb9a1c34cd"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 24, key := "usc-26-508:a", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 508(a)", title := "(a) New organizations must notify Secretary that they are applying for recognition of section 501(c)(3) status Except as", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 20, digest := "sha256:fd0437facf9ff9829db8364fddfd8aa193b7b2eab24ac084939136bb9a1c34cd"})
 }
 
 definition{
   name: authority25,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 25, key := "cfr-26-1.508-1:a2", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.regulation), ref := "26 CFR 1.508-1(a)(2)(i)", title := "within 15 months from the end of the month in which the organization was organized. Such notice is filed by submitting a", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 26, digest := "sha256:f08f34ef14934ea90ef0c997b09108093f15f269abe90b737e31963778a8399e"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 25, key := "cfr-26-1.508-1:a2", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.regulation), ref := "26 CFR 1.508-1(a)(2)(i)", title := "within 15 months from the end of the month in which the organization was organized. Such notice is filed by submitting a", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 27, digest := "sha256:f08f34ef14934ea90ef0c997b09108093f15f269abe90b737e31963778a8399e"})
 }
 
 definition{
   name: authority26,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 26, key := "i1023:effective", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.instructions), ref := "Instructions for Form 1023 (Rev. December 2024), Part VIII line 2", title := "Generally, if you didn’t file Form 1023 within 27 months of formation, the effective date of your exempt status will be ", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 31, digest := "sha256:a83d3e0a18ebaa4f9c70734036fbabb46245d5f7ec8a78659692054d9c418c18"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 26, key := "i1023:effective", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.instructions), ref := "Instructions for Form 1023 (Rev. December 2024), Part VIII line 2", title := "Generally, if you didn’t file Form 1023 within 27 months of formation, the effective date of your exempt status will be ", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 32, digest := "sha256:a83d3e0a18ebaa4f9c70734036fbabb46245d5f7ec8a78659692054d9c418c18"})
 }
 
 definition{
   name: authority27,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 27, key := "usc-26-6033:a1", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 6033(a)(1)", title := "(a) Organizations required to file (1) In general Except as provided in paragraph (3), every organization exempt from ta", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 22, digest := "sha256:47d06904d0f55880645799d01869c8210a5c43c61d04a7a12711a50c7cc647ee"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 27, key := "usc-26-6033:a1", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 6033(a)(1)", title := "(a) Organizations required to file (1) In general Except as provided in paragraph (3), every organization exempt from ta", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 23, digest := "sha256:47d06904d0f55880645799d01869c8210a5c43c61d04a7a12711a50c7cc647ee"})
 }
 
 definition{
   name: authority28,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 28, key := "usc-26-6033:i", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 6033(i)", title := "(i) Additional notification requirements Any organization the gross receipts of which in any taxable year result in such", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 22, digest := "sha256:25081268a926aa2d5d368c64a10bfdfe7b220a2bf9c7c26987d8cf8e587d188c"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 28, key := "usc-26-6033:i", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 6033(i)", title := "(i) Additional notification requirements Any organization the gross receipts of which in any taxable year result in such", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 23, digest := "sha256:25081268a926aa2d5d368c64a10bfdfe7b220a2bf9c7c26987d8cf8e587d188c"})
 }
 
 definition{
   name: authority29,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 29, key := "usc-26-6033:j", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 6033(j)", title := "for 3 consecutive years, such organization's status as an organization exempt from tax under section 501(a) shall be con", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 22, digest := "sha256:ecee81c6d8e7a22a63be28c292a4ca1d9a04beda77b64bc88349d357f6c32987"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 29, key := "usc-26-6033:j", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 6033(j)", title := "for 3 consecutive years, such organization's status as an organization exempt from tax under section 501(a) shall be con", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 23, digest := "sha256:ecee81c6d8e7a22a63be28c292a4ca1d9a04beda77b64bc88349d357f6c32987"})
 }
 
 definition{
   name: authority30,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 30, key := "i990:due", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.instructions), ref := "Instructions for Form 990 (2025), General Instructions, Section E. When, Where, and How To File", title := "File Form 990 by the 15th day of the 5th month after the organization’s accounting period ends", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 30, digest := "sha256:6a859d0ce1b091a05721c5fe9d6d768f1500e5b06c7ce52fbe41efbe55263337"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 30, key := "i990:due", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.instructions), ref := "Instructions for Form 990 (2025), General Instructions, Section E. When, Where, and How To File", title := "File Form 990 by the 15th day of the 5th month after the organization’s accounting period ends", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 31, digest := "sha256:6a859d0ce1b091a05721c5fe9d6d768f1500e5b06c7ce52fbe41efbe55263337"})
 }
 
 definition{
   name: authority31,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 31, key := "i990:form990", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.instructions), ref := "Instructions for Form 990 (2025), General Instructions, Section A. Who Must File", title := "Form 990 must be filed by an organization exempt from income tax under section 501(a) (including an organization that ha", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 30, digest := "sha256:f038c51596ff3607be3002e18661345f7e5edaa6dc882877b2bd244e8f9f47ba"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 31, key := "i990:form990", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.instructions), ref := "Instructions for Form 990 (2025), General Instructions, Section A. Who Must File", title := "Form 990 must be filed by an organization exempt from income tax under section 501(a) (including an organization that ha", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 31, digest := "sha256:f038c51596ff3607be3002e18661345f7e5edaa6dc882877b2bd244e8f9f47ba"})
 }
 
 definition{
   name: authority32,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 32, key := "i990:form990ez", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.instructions), ref := "Instructions for Form 990 (2025), General Instructions, Section A. Who Must File, Form 990-EZ", title := "If an organization has gross receipts less than $200,000 and total assets at the end of the tax year less than $500,000,", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 30, digest := "sha256:257f9994c07972fa644be8863e941c492fdb8d0edc90c3a2b0c52b3f88c06560"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 32, key := "i990:form990ez", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.instructions), ref := "Instructions for Form 990 (2025), General Instructions, Section A. Who Must File, Form 990-EZ", title := "If an organization has gross receipts less than $200,000 and total assets at the end of the tax year less than $500,000,", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 31, digest := "sha256:257f9994c07972fa644be8863e941c492fdb8d0edc90c3a2b0c52b3f88c06560"})
 }
 
 definition{
   name: authority33,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 33, key := "i990:form990n", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.instructions), ref := "Instructions for Form 990 (2025), General Instructions, Section A. Who Must File, Form 990-N", title := "If an organization normally has gross receipts of $50,000 or less, it must submit Form 990-N, if it chooses not to file ", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 30, digest := "sha256:b90e80042a050b53eebf604e96c7720c5f28e131bfd1b799a49f6decb7cc08a8"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 33, key := "i990:form990n", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.instructions), ref := "Instructions for Form 990 (2025), General Instructions, Section A. Who Must File, Form 990-N", title := "If an organization normally has gross receipts of $50,000 or less, it must submit Form 990-N, if it chooses not to file ", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 31, digest := "sha256:b90e80042a050b53eebf604e96c7720c5f28e131bfd1b799a49f6decb7cc08a8"})
 }
 
 definition{
   name: authority34,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 34, key := "usc-26-6104:d", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 6104(d)", title := "(d) Public inspection of certain annual returns, reports, applications for exemption, and notices of status (1) In gener", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 23, digest := "sha256:e8fc271d69e1e245f8d41cf52a0d57efceed0eccbc267a5236672d344cde2edd"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 34, key := "usc-26-6104:d", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 6104(d)", title := "(d) Public inspection of certain annual returns, reports, applications for exemption, and notices of status (1) In gener", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 24, digest := "sha256:e8fc271d69e1e245f8d41cf52a0d57efceed0eccbc267a5236672d344cde2edd"})
 }
 
 definition{
   name: authority35,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 35, key := "usc-26-4958:a", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 4958(a)", title := "(a) Initial taxes (1) On the disqualified person There is hereby imposed on each excess benefit transaction a tax equal ", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 24, digest := "sha256:036a75dd22d735a4e89ea49afe50f0cfa206d8e351a65b312b97e5a910b9ac4c"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 35, key := "usc-26-4958:a", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 4958(a)", title := "(a) Initial taxes (1) On the disqualified person There is hereby imposed on each excess benefit transaction a tax equal ", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 25, digest := "sha256:036a75dd22d735a4e89ea49afe50f0cfa206d8e351a65b312b97e5a910b9ac4c"})
 }
 
 definition{
@@ -583,7 +590,7 @@ definition{
   name: authority38,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 38, key := "usc-26-501:c3", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 501(c)(3)", title := "(3) Corporations, and any community chest, fund, or foundation, organized and operated exclusively for religious, charit", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 18, digest := "sha256:c48766ac5e2726a7a1f3a42ef862c96c830ca30e1bf99753180e188812a7b0d3"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 38, key := "usc-26-501:c3", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 501(c)(3)", title := "(3) Corporations, and any community chest, fund, or foundation, organized and operated exclusively for religious, charit", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 19, digest := "sha256:c48766ac5e2726a7a1f3a42ef862c96c830ca30e1bf99753180e188812a7b0d3"})
 }
 
 definition{
@@ -611,14 +618,14 @@ definition{
   name: authority42,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 42, key := "crs:7-128-501", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-128-501", title := "Conflicting interest transaction", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 16, digest := "sha256:5229fd43ba19da9a13913338a3a323f3181dab76e7e6d86dff5874159e6722d4"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 42, key := "crs:7-128-501", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-128-501", title := "Conflicting interest transaction", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 17, digest := "sha256:5229fd43ba19da9a13913338a3a323f3181dab76e7e6d86dff5874159e6722d4"})
 }
 
 definition{
   name: authority43,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 43, key := "crs:7-128-401", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-128-401", title := "General standards of conduct for directors and officers", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 16, digest := "sha256:2ba43b94db573d7160134956f8f74d3a11fd64a8f20e846fb9651166500aac79"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 43, key := "crs:7-128-401", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 7-128-401", title := "General standards of conduct for directors and officers", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 17, digest := "sha256:2ba43b94db573d7160134956f8f74d3a11fd64a8f20e846fb9651166500aac79"})
 }
 
 definition{
@@ -646,49 +653,49 @@ definition{
   name: authority47,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 47, key := "crs:6-16-104", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 6-16-104", title := "Charitable organizations - initial registration - annual filing - fees", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 17, digest := "sha256:07e062c1ef76e7a8fea3cae2b356ebf89952290ef192316f0f1f1c0466819d92"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 47, key := "crs:6-16-104", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "C.R.S. 6-16-104", title := "Charitable organizations - initial registration - annual filing - fees", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.usCo), source := 18, digest := "sha256:07e062c1ef76e7a8fea3cae2b356ebf89952290ef192316f0f1f1c0466819d92"})
 }
 
 definition{
   name: authority48,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 48, key := "cfr-26-1.6012-2:e", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.regulation), ref := "26 CFR 1.6012-2(e)", title := "shall make a return on Form 990-T for each taxable year if it has gross income, included in computing unrelated business", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 28, digest := "sha256:e7228251faf8e8e4818abf1586509698f05cbfb7b67423f2bab4b556b3f47639"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 48, key := "cfr-26-1.6012-2:e", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.regulation), ref := "26 CFR 1.6012-2(e)", title := "shall make a return on Form 990-T for each taxable year if it has gross income, included in computing unrelated business", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 29, digest := "sha256:e7228251faf8e8e4818abf1586509698f05cbfb7b67423f2bab4b556b3f47639"})
 }
 
 definition{
   name: authority49,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 49, key := "usc-26-6012:a2", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 6012(a)(2)", title := "(2) Every corporation subject to taxation under subtitle A;", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 21, digest := "sha256:dfe0f967e8eeb74dbd64dcc0c61c21099be81ac1cbb5605814edf068e84f5575"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 49, key := "usc-26-6012:a2", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.statute), ref := "26 U.S.C. 6012(a)(2)", title := "(2) Every corporation subject to taxation under subtitle A;", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 22, digest := "sha256:dfe0f967e8eeb74dbd64dcc0c61c21099be81ac1cbb5605814edf068e84f5575"})
 }
 
 definition{
   name: authority50,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 50, key := "f990:VIII", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.form), ref := "Form 990 Part VIII", title := "Part VIII Statement of Revenue", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 29, digest := "sha256:95c07dfe112dc0eeec35d4780b76119c3ffc2e21199b7e6fca0ccad9ab1b7579"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 50, key := "f990:VIII", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.form), ref := "Form 990 Part VIII", title := "Part VIII Statement of Revenue", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 30, digest := "sha256:95c07dfe112dc0eeec35d4780b76119c3ffc2e21199b7e6fca0ccad9ab1b7579"})
 }
 
 definition{
   name: authority51,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 51, key := "f990:IX", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.form), ref := "Form 990 Part IX", title := "Part IX Statement of Functional Expenses", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 29, digest := "sha256:25ce177cbf4a2b1dfacb73e777cdb78673b0ba5316af1c744ab0eb9d3e2a0522"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 51, key := "f990:IX", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.form), ref := "Form 990 Part IX", title := "Part IX Statement of Functional Expenses", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 30, digest := "sha256:25ce177cbf4a2b1dfacb73e777cdb78673b0ba5316af1c744ab0eb9d3e2a0522"})
 }
 
 definition{
   name: authority52,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 52, key := "f990:X", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.form), ref := "Form 990 Part X", title := "Part X Balance Sheet", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 29, digest := "sha256:f53d0614711c997e7029f3fb8084bf5337f6904de965f90de7af0ac9f77ec281"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 52, key := "f990:X", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.form), ref := "Form 990 Part X", title := "Part X Balance Sheet", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 30, digest := "sha256:f53d0614711c997e7029f3fb8084bf5337f6904de965f90de7af0ac9f77ec281"})
 }
 
 definition{
   name: authority53,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Authority,
-  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 53, key := "f990:I", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.form), ref := "Form 990 Part I", title := "Part I Summary", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 29, digest := "sha256:3b64cc640392fbf90f298377c12fe4f3512652d6e06baeb765edc67c5e925679"})
+  body: (record Foundation.Nonprofit.V1.Model::Authority {index := 53, key := "f990:I", instrument := (ctor Foundation.Nonprofit.V1.Model::Instrument.form), ref := "Form 990 Part I", title := "Part I Summary", jurisdiction := (ctor Foundation.Nonprofit.V1.Model::Jurisdiction.us), source := 30, digest := "sha256:3b64cc640392fbf90f298377c12fe4f3512652d6e06baeb765edc67c5e925679"})
 }
 
 definition{
@@ -898,7 +905,7 @@ definition{
   name: obligation9,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Obligation,
-  body: (record Foundation.Nonprofit.V1.Model::Obligation {index := 9, name := "Apply to the IRS for recognition of exemption on Form 1023 or Form 1023-EZ", authority := 24, post := 0, basis := 0, cadence := (ctor Foundation.Nonprofit.V1.Model::Cadence.once), applicability := (ctor Foundation.Nonprofit.V1.Model::Applicability.standing), status := (ctor Foundation.Nonprofit.V1.Model::ObligationStatus.unobservable), due := "2026-05-31 (15 months, 26 CFR 1.508-1(a)(2)(i)); 2027-05-31 (27 months, Instructions for Form 1023 Part VIII)", evidence := "An IRS determination letter, or the Foundation in the Exempt Organizations Business Master File or the Publication 78 data", observed := "IRS recognition is not observable in IRS public data: bmf-eo1 0/281266, bmf-eo2 0/728633, bmf-eo3 0/969932, bmf-eo4 0/5060, bmf-eo-co 0/36654, pub78 0/1437288; a pending application is not public"})
+  body: (record Foundation.Nonprofit.V1.Model::Obligation {index := 9, name := "Apply to the IRS for recognition of exemption on Form 1023 or Form 1023-EZ", authority := 24, post := 0, basis := 0, cadence := (ctor Foundation.Nonprofit.V1.Model::Cadence.once), applicability := (ctor Foundation.Nonprofit.V1.Model::Applicability.standing), status := (ctor Foundation.Nonprofit.V1.Model::ObligationStatus.active), due := "2026-05-31 (15 months, 26 CFR 1.508-1(a)(2)(i)); 2027-05-31 (27 months, Instructions for Form 1023 Part VIII)", evidence := "An IRS determination letter, or the Foundation in the Exempt Organizations Business Master File or the Publication 78 data", observed := "The Foundation's Form 1023 application for recognition of exemption is in preparation and has not been filed. (Alex Flom, Director (governance/register.json people), 2026-11-15T19:29:26Z, nonprofit/attestations.json); deadline 2027-05-31: 27 months from formation on 2025-02-21, the extended period the Instructions for Form 1023 Part VIII state for recognition from the date of formation. IRS recognition is not observable in IRS public data: bmf-eo1 0/281266, bmf-eo2 0/728633, bmf-eo3 0/969932, bmf-eo4 0/5060, bmf-eo-co 0/36654, pub78 0/1437288; a pending application is not public"})
 }
 
 definition{
@@ -1423,63 +1430,63 @@ definition{
   name: observation0,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Observation,
-  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 0, dataset := "bmf-eo1", source := 32, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.recognition), rows := 281266, matched := 0, near := 0})
+  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 0, dataset := "bmf-eo1", source := 33, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.recognition), rows := 281266, matched := 0, near := 0})
 }
 
 definition{
   name: observation1,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Observation,
-  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 1, dataset := "bmf-eo2", source := 33, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.recognition), rows := 728633, matched := 0, near := 0})
+  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 1, dataset := "bmf-eo2", source := 34, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.recognition), rows := 728633, matched := 0, near := 0})
 }
 
 definition{
   name: observation2,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Observation,
-  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 2, dataset := "bmf-eo3", source := 34, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.recognition), rows := 969932, matched := 0, near := 0})
+  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 2, dataset := "bmf-eo3", source := 35, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.recognition), rows := 969932, matched := 0, near := 0})
 }
 
 definition{
   name: observation3,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Observation,
-  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 3, dataset := "bmf-eo4", source := 35, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.recognition), rows := 5060, matched := 0, near := 0})
+  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 3, dataset := "bmf-eo4", source := 36, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.recognition), rows := 5060, matched := 0, near := 0})
 }
 
 definition{
   name: observation4,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Observation,
-  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 4, dataset := "bmf-eo-co", source := 36, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.recognition), rows := 36654, matched := 0, near := 0})
+  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 4, dataset := "bmf-eo-co", source := 37, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.recognition), rows := 36654, matched := 0, near := 0})
 }
 
 definition{
   name: observation5,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Observation,
-  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 5, dataset := "pub78", source := 37, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.recognition), rows := 1437288, matched := 0, near := 0})
+  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 5, dataset := "pub78", source := 38, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.recognition), rows := 1437288, matched := 0, near := 0})
 }
 
 definition{
   name: observation6,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Observation,
-  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 6, dataset := "epostcard", source := 38, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.filing), rows := 1552842, matched := 0, near := 1})
+  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 6, dataset := "epostcard", source := 39, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.filing), rows := 1552842, matched := 0, near := 1})
 }
 
 definition{
   name: observation7,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Observation,
-  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 7, dataset := "efile-index-2025", source := 39, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.filing), rows := 748906, matched := 0, near := 0})
+  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 7, dataset := "efile-index-2025", source := 40, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.filing), rows := 748906, matched := 0, near := 0})
 }
 
 definition{
   name: observation8,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Observation,
-  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 8, dataset := "efile-index-2026", source := 40, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.filing), rows := 472357, matched := 0, near := 0})
+  body: (record Foundation.Nonprofit.V1.Model::Observation {index := 8, dataset := "efile-index-2026", source := 41, shows := (ctor Foundation.Nonprofit.V1.Model::Shows.filing), rows := 472357, matched := 0, near := 0})
 }
 
 definition{
@@ -1500,14 +1507,14 @@ definition{
   name: statement0,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Statement,
-  body: (record Foundation.Nonprofit.V1.Model::Statement {index := 0, path := "src/about/content.ts", line := 6, text := "line: \"A 501(c)(3) nonprofit maintaining the UOR specification and the projects built on it.\",", claim := "Nonprofit501c3", consistency := (ctor Foundation.Nonprofit.V1.Model::Consistency.unverified), source := 1})
+  body: (record Foundation.Nonprofit.V1.Model::Statement {index := 0, path := "src/about/content.ts", line := 6, text := "line: \"A 501(c)(3) nonprofit maintaining the UOR specification and the projects built on it.\",", claim := "Nonprofit501c3", consistency := (ctor Foundation.Nonprofit.V1.Model::Consistency.pending), source := 1})
 }
 
 definition{
   name: statement1,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::Statement,
-  body: (record Foundation.Nonprofit.V1.Model::Statement {index := 1, path := "src/site/copy.ts", line := 28, text := "steward: \"Stewarded by an independent 501(c)(3).\",", claim := "Nonprofit501c3", consistency := (ctor Foundation.Nonprofit.V1.Model::Consistency.unverified), source := 2})
+  body: (record Foundation.Nonprofit.V1.Model::Statement {index := 1, path := "src/site/copy.ts", line := 28, text := "steward: \"Stewarded by an independent 501(c)(3).\",", claim := "Nonprofit501c3", consistency := (ctor Foundation.Nonprofit.V1.Model::Consistency.pending), source := 2})
 }
 
 definition{
@@ -1871,7 +1878,7 @@ definition{
   name: openClaim5,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::OpenClaim,
-  body: (record Foundation.Nonprofit.V1.Model::OpenClaim {index := 5, area := "obligation", subjectKind := (ctor Foundation.Nonprofit.V1.Model::SubjectKind.obligation), subject := 9, refusal := "obligation-unobservable", detail := "Apply to the IRS for recognition of exemption on Form 1023 or Form 1023-EZ: IRS recognition is not observable in IRS public data: bmf-eo1 0/281266, bmf-eo2 0/728633, bmf-eo3 0/969932, bmf-eo4 0/5060, bmf-eo-co 0/36654, pub78 0/1437288; a pending application is not public", closes := "An IRS determination letter, or the Foundation in the Exempt Organizations Business Master File or the Publication 78 data"})
+  body: (record Foundation.Nonprofit.V1.Model::OpenClaim {index := 5, area := "obligation", subjectKind := (ctor Foundation.Nonprofit.V1.Model::SubjectKind.obligation), subject := 9, refusal := "obligation-active", detail := "Apply to the IRS for recognition of exemption on Form 1023 or Form 1023-EZ: The Foundation's Form 1023 application for recognition of exemption is in preparation and has not been filed. (Alex Flom, Director (governance/register.json people), 2026-11-15T19:29:26Z, nonprofit/attestations.json); deadline 2027-05-31: 27 months from formation on 2025-02-21, the extended period the Instructions for Form 1023 Part VIII state for recognition from the date of formation. IRS recognition is not observable in IRS public data: bmf-eo1 0/281266, bmf-eo2 0/728633, bmf-eo3 0/969932, bmf-eo4 0/5060, bmf-eo-co 0/36654, pub78 0/1437288; a pending application is not public", closes := "An IRS determination letter, or the Foundation in the Exempt Organizations Business Master File or the Publication 78 data"})
 }
 
 definition{
@@ -2221,14 +2228,14 @@ definition{
   name: openClaim55,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::OpenClaim,
-  body: (record Foundation.Nonprofit.V1.Model::OpenClaim {index := 55, area := "statement", subjectKind := (ctor Foundation.Nonprofit.V1.Model::SubjectKind.statement), subject := 0, refusal := "statement-unverified", detail := "src/about/content.ts:6 states \"line: \"A 501(c)(3) nonprofit maintaining the UOR specification and the projects built on it.\",\"; IRS recognition of 501(c)(3) status is not observable in IRS public data (bmf-eo1 0/281266, bmf-eo2 0/728633, bmf-eo3 0/969932, bmf-eo4 0/5060, bmf-eo-co 0/36654, pub78 0/1437288)", closes := "an IRS determination letter, or the Foundation in the Business Master File or the Publication 78 data"})
+  body: (record Foundation.Nonprofit.V1.Model::OpenClaim {index := 55, area := "statement", subjectKind := (ctor Foundation.Nonprofit.V1.Model::SubjectKind.statement), subject := 0, refusal := "statement-pending", detail := "src/about/content.ts:6 states \"line: \"A 501(c)(3) nonprofit maintaining the UOR specification and the projects built on it.\",\"; the Foundation states its Form 1023 is in preparation (nonprofit/attestations.json), so the statement is pending until a determination; IRS recognition of 501(c)(3) status is not observable in IRS public data (bmf-eo1 0/281266, bmf-eo2 0/728633, bmf-eo3 0/969932, bmf-eo4 0/5060, bmf-eo-co 0/36654, pub78 0/1437288)", closes := "an IRS determination letter, or the Foundation in the Business Master File or the Publication 78 data"})
 }
 
 definition{
   name: openClaim56,
   parameters: [],
   result: Foundation.Nonprofit.V1.Model::OpenClaim,
-  body: (record Foundation.Nonprofit.V1.Model::OpenClaim {index := 56, area := "statement", subjectKind := (ctor Foundation.Nonprofit.V1.Model::SubjectKind.statement), subject := 1, refusal := "statement-unverified", detail := "src/site/copy.ts:28 states \"steward: \"Stewarded by an independent 501(c)(3).\",\"; IRS recognition of 501(c)(3) status is not observable in IRS public data (bmf-eo1 0/281266, bmf-eo2 0/728633, bmf-eo3 0/969932, bmf-eo4 0/5060, bmf-eo-co 0/36654, pub78 0/1437288)", closes := "an IRS determination letter, or the Foundation in the Business Master File or the Publication 78 data"})
+  body: (record Foundation.Nonprofit.V1.Model::OpenClaim {index := 56, area := "statement", subjectKind := (ctor Foundation.Nonprofit.V1.Model::SubjectKind.statement), subject := 1, refusal := "statement-pending", detail := "src/site/copy.ts:28 states \"steward: \"Stewarded by an independent 501(c)(3).\",\"; the Foundation states its Form 1023 is in preparation (nonprofit/attestations.json), so the statement is pending until a determination; IRS recognition of 501(c)(3) status is not observable in IRS public data (bmf-eo1 0/281266, bmf-eo2 0/728633, bmf-eo3 0/969932, bmf-eo4 0/5060, bmf-eo-co 0/36654, pub78 0/1437288)", closes := "an IRS determination letter, or the Foundation in the Business Master File or the Publication 78 data"})
 }
 
 definition{

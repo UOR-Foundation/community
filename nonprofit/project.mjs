@@ -37,6 +37,7 @@ const repoRoot = join(here, '..');
 const bytesOf = (p) => readFileSync(join(repoRoot, p));
 const json = (p) => JSON.parse(bytesOf(p).toString('utf8'));
 const sources = json('nonprofit/sources.json');
+const attested = (kind) => json('nonprofit/attestations.json').attestations.find((a) => a.discharge === kind);
 const declared = json('nonprofit/obligations.json');
 const snapshot = json('nonprofit/snapshot.json');
 const governance = json(sources.governance);
@@ -66,7 +67,7 @@ for (const repo of sources.repositories) {
     sourceList.push({ key, url: `${repo.url}/blob/${repo.commit}/${path}`, fetchedAt: '', digest: `sha256:${sha256(bytes)}` });
   }
 }
-for (const path of [sources.governance, sources.app, 'nonprofit/obligations.json', 'nonprofit/snapshot.json']) sourceList.push({ key: path, url: path, fetchedAt: '', digest: `sha256:${sha256(bytesOf(path))}` });
+for (const path of [sources.governance, sources.app, 'nonprofit/obligations.json', 'nonprofit/attestations.json', 'nonprofit/snapshot.json']) sourceList.push({ key: path, url: path, fetchedAt: '', digest: `sha256:${sha256(bytesOf(path))}` });
 for (const s of snapshot.sources) {
   if (s.kind === 'ccsa-search') { for (const q of s.queries) sourceList.push({ key: `${s.key}:${q.query}`, url: s.url, fetchedAt: q.fetchedAt, digest: `sha256:${q.sha256}` }); continue; }
   sourceList.push({ key: s.key, url: s.url, fetchedAt: s.fetchedAt, digest: `sha256:${s.sha256}` });
@@ -167,7 +168,7 @@ for (const line of grep) {
   const m = line.match(/^[0-9a-f]+:([^:]+):(\d+):(.*)$/);
   const key = Object.keys(website.documents).find((k) => website.documents[k] === m[1]);
   if (!key) throw new Error(`the website states 501(c)(3) in ${m[1]}, which sources.json does not pin`);
-  statements.push({ repository: website.url, commit: website.commit, path: m[1], line: Number(m[2]), text: squash(m[3]), claim: 'Nonprofit501c3', consistency: recognitionMatched > 0 ? 'verified' : 'unverified', source: sourceIndex(key) });
+  statements.push({ repository: website.url, commit: website.commit, path: m[1], line: Number(m[2]), text: squash(m[3]), claim: 'Nonprofit501c3', consistency: recognitionMatched > 0 ? 'verified' : attested('irs-recognition') ? 'pending' : 'unverified', source: sourceIndex(key) });
 }
 
 // ---- Obligations, each evaluated from the snapshot.
@@ -195,10 +196,10 @@ const DISCHARGE = {
   'articles-fact': (d) => (articlesDoc.facts[d.fact]
     ? { status: 'discharged', due: '', why: `the Articles (document ${articlesDoc.document}) state: ${articlesDoc.facts[d.fact] === true ? 'purposes' : articlesDoc.facts[d.fact]}` }
     : { status: 'undischarged', due: '', why: `the Articles (document ${articlesDoc.document}, sha256:${articlesDoc.sha256}) state no ${d.fact === 'statesPurposes' ? 'purposes; the purposes are stated in Bylaws 1.2, which are not the articles of organization 26 CFR 1.501(c)(3)-1(b)(2) names' : d.fact}; no Articles of Amendment are on file` }),
-  'irs-recognition': () => ({
-    status: recognitionMatched > 0 ? 'discharged' : 'unobservable',
+  'irs-recognition': (d, a = attested('irs-recognition')) => ({
+    status: recognitionMatched > 0 ? 'discharged' : a ? 'active' : 'unobservable',
     due: `${iso(endOfMonthAfter(15))} (15 months, 26 CFR 1.508-1(a)(2)(i)); ${iso(endOfMonthAfter(27))} (27 months, Instructions for Form 1023 Part VIII)`,
-    why: recognitionMatched > 0 ? `matched in ${searched('recognition')}` : `IRS recognition is not observable in IRS public data: ${searched('recognition')}; a pending application is not public`,
+    why: recognitionMatched > 0 ? `matched in ${searched('recognition')}` : `${a ? `${a.meaning} (${a.attributedTo}, ${a.at}, nonprofit/attestations.json); deadline ${a.deadline}: ${a.deadlineBasis}. ` : ''}IRS recognition is not observable in IRS public data: ${searched('recognition')}; a pending application is not public`,
   }),
   'irs-filing': () => ({
     status: filingMatched > 0 ? 'discharged' : 'unobservable',
@@ -268,7 +269,7 @@ const needs = declared.needs.map((n) => ({ name: n.name, part: authority(n.part)
 needs.forEach((n, i) => claim('finance', 'need', i, 'financial-figures-not-public', `${n.name} (${authorities[n.part].ref}; ${authorities[n.provision].ref})`, 'the Foundation’s accounting records, or a filed return that states the figure'));
 
 // ---- The entity's status as the website states it, and as IRS public data shows it.
-statements.forEach((s, i) => { if (s.consistency !== 'verified') claim('statement', 'statement', i, 'statement-unverified', `${s.path}:${s.line} states "${s.text}"; IRS recognition of 501(c)(3) status is not observable in IRS public data (${searched('recognition')})`, 'an IRS determination letter, or the Foundation in the Business Master File or the Publication 78 data'); });
+statements.forEach((s, i) => { if (s.consistency !== 'verified') claim('statement', 'statement', i, `statement-${s.consistency}`, `${s.path}:${s.line} states "${s.text}";${s.consistency === 'pending' ? ' the Foundation states its Form 1023 is in preparation (nonprofit/attestations.json), so the statement is pending until a determination;' : ''} IRS recognition of 501(c)(3) status is not observable in IRS public data (${searched('recognition')})`, 'an IRS determination letter, or the Foundation in the Business Master File or the Publication 78 data'); });
 if (recognitionMatched === 0) claim('entity', 'entity', 0, 'irs-recognition-unobserved', `IRS recognition of 501(c)(3) status is not observable in IRS public data. ${method} ${searched('recognition')}.`, 'an IRS determination letter, or the Foundation in the Business Master File or the Publication 78 data');
 observations.forEach((o, i) => { if (o.matched === 0) claim('irs-data', 'observation', i, 'name-not-found', `${o.dataset}: 0 of ${o.rows} records match (${o.near} carry the token UOR); fetched ${o.fetchedAt}`, o.shows === 'recognition' ? 'the Foundation in this dataset' : 'a return of the Foundation in this dataset'); });
 

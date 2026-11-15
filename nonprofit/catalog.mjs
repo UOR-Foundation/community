@@ -36,9 +36,10 @@ const enums = {
   Instrument: ['statute', 'regulation', 'instructions', 'agencyGuidance', 'form', 'bylaws'],
   Cadence: ['once', 'annual', 'continuous', 'onEvent'],
   Applicability: ['standing', 'conditional'],
-  ObligationStatus: ['discharged', 'undischarged', 'unobservable', 'undetermined'],
+  // active and pending: Schema.org ActionStatusType ActiveActionStatus, an act the Foundation states is under way.
+  ObligationStatus: ['discharged', 'undischarged', 'unobservable', 'undetermined', 'active'],
   Shows: ['recognition', 'filing'],
-  Consistency: ['verified', 'unverified'],
+  Consistency: ['verified', 'unverified', 'pending'],
   LineStatus: ['evidenced', 'open'],
   SubjectKind: ['entity', 'obligation', 'line', 'statement', 'need', 'observation'],
 };
