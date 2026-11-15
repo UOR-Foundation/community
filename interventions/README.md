@@ -36,11 +36,17 @@ min_doc_count 0 draws it; an average or a ratio with such a week is refused,
 never filled. The window is the last nine complete weeks, the baseline every
 week before it. Limits are the baseline mean plus or minus 2.66 times its mean
 moving range. Test 1 is the latest week beyond a limit, test 2 the nine
-window weeks all on one side of the centre line.
+window weeks all on one side of the centre line. Test 2 is set at the rate
+(1/2)^9, which holds only where a week lies on that side with probability at
+most one half; where more than half the baseline weeks already lie on the
+run's side, as in a series of mostly empty weeks whose mean is above zero,
+nine such weeks in a row are ordinary and no signal is claimed. A signal's
+`since` is the first week of the run, on the signalled side of the centre
+line, that the latest week ends.
 
 ## Planted defects
 
 | Planted defect | Gate | Diagnostic | Restored |
 | --- | --- | --- | --- |
 | One proposal's `"admission": "deny"` in a copy of `interventions/register.json` edited to `permit` | `cargo test --test interventions interventions_iv_01` | `interventions/register.json is not the projection of the observations and the intervention policy` | passes |
-| One chart's `"signal": "fall"` in `interventions/register.json` edited to `steady` | `cargo test --test interventions interventions_iv_02` | `UOR-Foundation/.github\|[null,[["git","cardinality","hash",""]]]: signal` | passes |
+| One chart's `"signal": "fall"` in `interventions/register.json` edited to `steady` | `cargo test --test interventions interventions_iv_02` | `UOR-Foundation/UOR-Framework\|[null,[["git","cardinality","author_uuid",""]]]: signal` | passes |
