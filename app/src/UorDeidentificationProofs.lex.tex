@@ -1,0 +1,116 @@
+\begin{lexlean}{UorDeidentificationProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{UorDeidentification}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : UorDeidentification::UorDeidentificationRequest],
+  result: Bool,
+  body: ((((((project request role) <? 4) && ((project request origin) <? 2)) && ((project request key) <? 2)) && ((project request role) =? (UorDeidentification::uorDeidentificationRoleContent))) && ((UorDeidentification::uorDeidentificationJudge request) =? (UorDeidentification::uorDeidentificationAnswerRetain)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : UorDeidentification::UorDeidentificationRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorDeidentification::uorDeidentificationAnswerIndeterminate,
+      UorDeidentification::uorDeidentificationAnswerPseudonymize,
+      UorDeidentification::uorDeidentificationAnswerRetain,
+      UorDeidentification::uorDeidentificationAnswerSuppress,
+      UorDeidentification::uorDeidentificationJudge,
+      UorDeidentification::uorDeidentificationKeyHeld,
+      UorDeidentification::uorDeidentificationKeyMissing,
+      UorDeidentification::uorDeidentificationOriginPublic,
+      UorDeidentification::uorDeidentificationOriginRestricted,
+      UorDeidentification::uorDeidentificationRoleContent,
+      UorDeidentification::uorDeidentificationRoleDirect,
+      UorDeidentification::uorDeidentificationRoleQuasi,
+      UorDeidentification::uorDeidentificationRoleStructural,
+      UorDeidentification::uorDeidentificationRule1,
+      UorDeidentification::uorDeidentificationRule2,
+      UorDeidentification::uorDeidentificationRule3,
+      UorDeidentification::uorDeidentificationRule4,
+      breaksInv001
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : UorDeidentification::UorDeidentificationRequest],
+  result: Bool,
+  body: (((((((project request role) <? 4) && ((project request origin) <? 2)) && ((project request key) <? 2)) && ((project request role) =? (UorDeidentification::uorDeidentificationRoleDirect))) && ((project request origin) =? (UorDeidentification::uorDeidentificationOriginRestricted))) && ((UorDeidentification::uorDeidentificationJudge request) =? (UorDeidentification::uorDeidentificationAnswerRetain)))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : UorDeidentification::UorDeidentificationRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorDeidentification::uorDeidentificationAnswerIndeterminate,
+      UorDeidentification::uorDeidentificationAnswerPseudonymize,
+      UorDeidentification::uorDeidentificationAnswerRetain,
+      UorDeidentification::uorDeidentificationAnswerSuppress,
+      UorDeidentification::uorDeidentificationJudge,
+      UorDeidentification::uorDeidentificationKeyHeld,
+      UorDeidentification::uorDeidentificationKeyMissing,
+      UorDeidentification::uorDeidentificationOriginPublic,
+      UorDeidentification::uorDeidentificationOriginRestricted,
+      UorDeidentification::uorDeidentificationRoleContent,
+      UorDeidentification::uorDeidentificationRoleDirect,
+      UorDeidentification::uorDeidentificationRoleQuasi,
+      UorDeidentification::uorDeidentificationRoleStructural,
+      UorDeidentification::uorDeidentificationRule1,
+      UorDeidentification::uorDeidentificationRule2,
+      UorDeidentification::uorDeidentificationRule3,
+      UorDeidentification::uorDeidentificationRule4,
+      breaksInv002
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : UorDeidentification::UorDeidentificationRequest],
+  result: Bool,
+  body: ((((((((project request role) <? 4) && ((project request origin) <? 2)) && ((project request key) <? 2)) && ((project request key) =? (UorDeidentification::uorDeidentificationKeyMissing))) && ((project request role) =? (UorDeidentification::uorDeidentificationRoleDirect))) && ((project request origin) =? (UorDeidentification::uorDeidentificationOriginRestricted))) && ((UorDeidentification::uorDeidentificationJudge request) =? (UorDeidentification::uorDeidentificationAnswerPseudonymize)))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : UorDeidentification::UorDeidentificationRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorDeidentification::uorDeidentificationAnswerIndeterminate,
+      UorDeidentification::uorDeidentificationAnswerPseudonymize,
+      UorDeidentification::uorDeidentificationAnswerRetain,
+      UorDeidentification::uorDeidentificationAnswerSuppress,
+      UorDeidentification::uorDeidentificationJudge,
+      UorDeidentification::uorDeidentificationKeyHeld,
+      UorDeidentification::uorDeidentificationKeyMissing,
+      UorDeidentification::uorDeidentificationOriginPublic,
+      UorDeidentification::uorDeidentificationOriginRestricted,
+      UorDeidentification::uorDeidentificationRoleContent,
+      UorDeidentification::uorDeidentificationRoleDirect,
+      UorDeidentification::uorDeidentificationRoleQuasi,
+      UorDeidentification::uorDeidentificationRoleStructural,
+      UorDeidentification::uorDeidentificationRule1,
+      UorDeidentification::uorDeidentificationRule2,
+      UorDeidentification::uorDeidentificationRule3,
+      UorDeidentification::uorDeidentificationRule4,
+      breaksInv003
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

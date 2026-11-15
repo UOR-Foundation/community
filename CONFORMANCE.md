@@ -317,6 +317,14 @@ model does not sanction.
 | `UCA-04` | `build` | The app never answers permit when identity is unresolved |
 | `UCA-05` | `build` | The app always answers permit when agent is person and identity is resolved |
 
+## uor_deidentification
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `UD-01` | `build` | The app never answers retain when role is content |
+| `UD-02` | `build` | The app never answers retain when role is direct and origin is restricted |
+| `UD-03` | `build` | The app never answers pseudonymize when key is missing and role is direct and origin is restricted |
+
 ## uor_discord_read
 
 | ID | Level | Statement |

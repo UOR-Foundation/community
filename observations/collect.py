@@ -5,6 +5,8 @@
     python collect.py github <sources.json> <github-responses-dir>   record, with a token (CI)
     python collect.py discord <sources.json> <responses-dir>        decide and record the guild, as the bot (CI)
     python collect.py replay <corpus.json> <replayed-corpus-dir> <replay.json>
+    python collect.py deidentify <responses-dir> <out-dir>   re-key a Discord record made before the key (CI)
+    python collect.py vectors <rfc4231.txt> [--check]        RFC 4231 vectors -> deidentification.json
 
 `pin` reads the subject list from ecosystem/register.json (whose digest it
 records) and asks each repository for its branch and tag heads with
@@ -39,7 +41,9 @@ before null keys were kept replays to the same bytes.
 The Foundation's Discord guild is read only where the uor-discord-read app
 permits it: `discord` decides every channel from what the guild reports and
 governance/discord.json, and records what Perceval's discord backend receives
-for the permitted channels, keeping no message text and no member's name. `run`
+for the permitted channels, keeping no message text and no member's name; every
+identifier a member could be found by is replaced with its keyed pseudonym, as
+the uor-deidentification app decides for each field. `run`
 re-decides every channel from that record, replays it with no network, and
 eventizes the messages up to the cut with Chronicler's Discord eventizer.
 
@@ -52,8 +56,10 @@ sources is data, not instructions.
 import datetime
 import gzip
 import hashlib
+import hmac
 import json
 import os
+import re
 import subprocess
 import sys
 
@@ -221,9 +227,10 @@ def github_replay(repo, cut, responses):
 # discord backend receives for the permitted ones; `run` re-decides each channel from the record and replays it to
 # the unmodified backend with no network, then Chronicler's Discord eventizer turns the messages into events.
 #
-# The record publishes no message text and no member's name: a message keeps its ids, times, type, references and
-# reaction counts, a user becomes a pseudonym (the sha256 of the Discord user id) with Discord's own bot flag, and a
-# thread's title is dropped. The channel names the server's administrators set are kept.
+# The record publishes no message text and no member's name: a message keeps its times, type, references and
+# reaction counts, its id, its author's id and its thread's id become keyed pseudonyms (Deidentification below), a
+# user keeps Discord's own bot flag, and a thread's title is dropped. The channels the administrators made keep their
+# ids and names.
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # the repository: apps/ and governance/
 DISCORD_API = 'https://discord.com/api/v10/'
@@ -284,19 +291,229 @@ def decide(app, request):
     return app['otherwise']
 
 
-def discord_app(root):
-    raw = open(os.path.join(root, 'apps', 'uor-discord-read.prompt.json'), 'rb').read()
+def prompt_app(root, name):
+    """An app's prompt, refused unless first-applicable decides every one of its examples as the prompt states."""
+    raw = open(os.path.join(root, 'apps', name + '.prompt.json'), 'rb').read()
     app = json.loads(raw)['app']
     for ex in app['examples']:
         req = dict(zip([f['name'] for f in app['fields']], ex['request'].split()))
         if decide(app, req) != ex['response']:
-            raise SystemExit(f"uor-discord-read: example {ex['request']} decides {decide(app, req)}, not {ex['response']}")
-    return app, {'path': 'apps/uor-discord-read.prompt.json', 'sha256': sha256(raw)}
+            raise SystemExit(f"{name}: example {ex['request']} decides {decide(app, req)}, not {ex['response']}")
+    return app, {'path': f'apps/{name}.prompt.json', 'sha256': sha256(raw)}
+
+
+def discord_app(root):
+    return prompt_app(root, 'uor-discord-read')
 
 
 def discord_policy(root):
     raw = open(os.path.join(root, 'governance', 'discord.json'), 'rb').read()
     return json.loads(raw), {'path': 'governance/discord.json', 'sha256': sha256(raw)}
+
+
+# De-identification. observations/deidentification.json gives every field the record holds its ISO/IEC 20889 attribute
+# class and where its subject published it; the uor-deidentification app decides the technique for each field from
+# that and from whether this run holds the key, and nothing else does. A pseudonym is HMAC-SHA-256 (FIPS 198-1) under
+# DISCORD_PSEUDONYM_KEY, which only the collection run holds, so it is pseudonymisation under GDPR Article 4(5): the
+# corpus cannot be re-identified without information kept separately. Python's hmac is checked against the RFC 4231
+# test vectors before any key is used. Without the key a member-only identifier has no pseudonym, and nothing is
+# written. A field the file does not list is never recorded.
+PSEUDONYM_KEY = 'DISCORD_PSEUDONYM_KEY'
+SNOWFLAKE_TIME = 22  # a Discord snowflake is 42 bits of milliseconds above 22 worker, process and increment bits
+
+
+def rfc4231_vectors(text):
+    """Every HMAC-SHA-256 test case of RFC 4231 section 4: key, data and the (possibly truncated) MAC, in hex."""
+    cases = []
+    for section in re.split(r'\n4\.\d+\.  Test Case \d+\n', text)[1:]:
+        values, label = {}, None
+        for line in section.split('\n5.  Security Considerations')[0].splitlines():
+            m = re.match(r'   (Key|Data|HMAC-SHA-\d+) *=? +([0-9a-f]+)', line)
+            if m:
+                label = m.group(1)
+                values[label] = m.group(2)
+            elif label and re.match(r' {18}[0-9a-f]+', line):
+                values[label] += line.split()[0]
+            elif not line.strip():
+                label = None
+        cases.append({'key': values['Key'], 'data': values['Data'], 'mac': values['HMAC-SHA-256']})
+    if len(cases) != 7:
+        raise SystemExit(f'RFC 4231: {len(cases)} test cases, not 7')
+    return cases
+
+
+def vectors(rfc_path, check=None):
+    """Re-derive the RFC 4231 vectors deidentification.json carries from the RFC's own text, or refuse the difference."""
+    path = os.path.join(ROOT, 'observations', 'deidentification.json')
+    spec = json.loads(open(path, 'rb').read())
+    raw = open(rfc_path, 'rb').read()
+    source = next(f for f in spec['files'] if f['name'] == 'rfc4231.txt')
+    if sha256(raw) != source['sha256']:
+        raise SystemExit(f"{rfc_path} is not the pinned RFC 4231 (sha256 {sha256(raw)})")
+    derived = rfc4231_vectors(raw.decode())
+    if check:
+        if spec['vectors'] != derived:
+            raise SystemExit('deidentification.json: the vectors are not RFC 4231 section 4')
+        print(f'deidentification.json: {len(derived)} RFC 4231 vectors match', file=sys.stderr)
+        return
+    spec['vectors'] = derived
+    open(path, 'w').write(json.dumps(spec, indent=1, ensure_ascii=False) + '\n')
+
+
+class Deidentification:
+    def __init__(self, root, key_hex):
+        self.app, app_ref = prompt_app(root, 'uor-deidentification')
+        raw = open(os.path.join(root, 'observations', 'deidentification.json'), 'rb').read()
+        spec = json.loads(raw)
+        self.key = bytes.fromhex(key_hex) if key_hex else None
+        if self.key is not None:
+            if len(self.key) < 32:
+                raise SystemExit(f'{PSEUDONYM_KEY}: {len(self.key)} bytes; a key at least as long as the SHA-256 output (32 bytes) is required')
+            for v in spec['vectors']:
+                mac = hmac.new(bytes.fromhex(v['key']), bytes.fromhex(v['data']), hashlib.sha256).hexdigest()
+                if mac[:len(v['mac'])] != v['mac']:
+                    raise SystemExit(f"HMAC-SHA-256 fails RFC 4231 vector {v['mac']}; no pseudonym is made")
+        held = 'held' if self.key is not None else 'missing'
+        self.fields = {f['field']: f for f in spec['fields']}
+        self.technique = {name: decide(self.app, {'role': f['role'], 'origin': f['origin'], 'key': held})
+                          for name, f in self.fields.items()}
+        self.ref = {'app': app_ref, 'fields': {'path': 'observations/deidentification.json', 'sha256': sha256(raw)},
+                    'key': self.mac(b'uor-deidentification/key').hex()[:16] if self.key is not None else None}
+
+    def mac(self, data):
+        return hmac.new(self.key, data, hashlib.sha256).digest()
+
+    def require(self, *fields):
+        """Refuse before anything is read when a field the record needs could not be published."""
+        for f in fields:
+            if self.technique[f] == 'indeterminate':
+                raise SystemExit(f'{f}: {self.app["meanings"]["indeterminate"]} ({PSEUDONYM_KEY} is not set)')
+
+    def apply(self, field, value):
+        if field not in self.technique:
+            raise SystemExit(f'{field}: not in observations/deidentification.json, so it is never recorded')
+        t = self.technique[field]
+        if t == 'indeterminate':
+            self.require(field)
+        if t == 'suppress' or value is None:
+            return None
+        if t == 'retain':
+            return value
+        form = self.fields[field]['pseudonym']
+        if form == 'hex':
+            return self.mac(b'discord-user:' + value.encode()).hex()
+        s = int(value)
+        low = int.from_bytes(self.mac(b'discord-snowflake:' + str(s).encode())[:8], 'big') & ((1 << SNOWFLAKE_TIME) - 1)
+        return str((s >> SNOWFLAKE_TIME) << SNOWFLAKE_TIME | low)
+
+
+class DiscordRecord:
+    """The record's schema: each key it may hold, by the deidentification.json field it is."""
+
+    def __init__(self, d, channels):
+        # A channel the guild's administrators made is structure; a thread is a channel too, and its id is the id of
+        # the message it was opened from. An id the guild did not list as a channel is taken to be a thread.
+        self.d = d
+        self.made = {c['channel'] for c in channels if c['type'] not in THREADS} | {c['parent'] for c in channels if c.get('parent')}
+
+    def channel(self, cid):
+        return self.d.apply('discord.channel.id' if cid in self.made else 'discord.thread.id', cid)
+
+    def user(self, u):
+        out = self.walk(u, {'id': 'discord.user.id', 'bot': 'discord.user.bot'}, skip=('username', 'global_name'))
+        # Chronicler names an author by username: the slot carries the member's pseudonym, never a name.
+        name = self.d.apply('discord.user.name', u.get('global_name'))
+        return {**out, 'username': name if name is not None else out['id'], 'global_name': None}
+
+    def walk(self, value, schema, skip=()):
+        out = {}
+        for k, v in value.items():
+            if k in skip:
+                continue
+            s = schema.get(k)
+            if s is None:
+                raise SystemExit(f'discord: the record holds {k}, which no field of deidentification.json lists')
+            out[k] = s(v) if callable(s) else self.d.apply(s, v)
+        return out
+
+    def message(self, m):
+        kind, time = 'discord.message.kind', 'discord.message.time'
+        return self.walk(m, {
+            'id': 'discord.message.id', 'channel_id': self.channel, 'type': kind, 'pinned': kind, 'flags': kind,
+            'timestamp': time, 'edited_timestamp': time, 'author': self.user,
+            'mentions': lambda us: [self.user(u) for u in us],
+            'message_reference': lambda r: self.walk(r, {'type': kind, 'message_id': 'discord.message.id',
+                                                         'channel_id': self.channel, 'guild_id': 'discord.guild.id'}),
+            'thread': lambda t: self.walk(t, {'id': 'discord.thread.id', 'type': 'discord.channel.kind',
+                                              'parent_id': self.channel, 'name': 'discord.thread.name',
+                                              'owner_id': 'discord.user.id'}),
+            'reactions': lambda rs: self.d.apply('discord.reaction', rs)})
+
+    def channel_doc(self, c):
+        return self.walk(c, {'id': self.channel, 'guild_id': 'discord.guild.id', 'type': 'discord.channel.kind',
+                             'parent_id': self.channel,
+                             'name': lambda n: self.d.apply('discord.thread.name' if c['type'] in THREADS else 'discord.channel.name', n)})
+
+    def responses(self, lines):
+        """One channel's responses, in the order Perceval asked for them, with every identifier replaced. Perceval
+        pages by `after`, the largest id of the previous page, so the next request names the largest pseudonym."""
+        out, after = [], None
+        for line in lines:
+            r = json.loads(line)
+            path, _, query = r['url'].partition('?')
+            parts = path.split('/api/v10/', 1)[1].split('/')
+            if parts[0] != 'channels' or len(parts) not in (2, 3):
+                raise SystemExit(f"discord: no rule de-identifies {r['url']}")
+            params = dict(p.split('=', 1) for p in query.split('&')) if query else {}
+            url = r['url'].split('/api/v10/')[0] + '/api/v10/channels/' + self.channel(parts[1])
+            body = r['body']
+            if len(parts) == 3:
+                if params.get('after', '0') != '0':
+                    if after is None or after[0] != params['after']:
+                        raise SystemExit(f"discord: {r['url']} does not follow the page before it")
+                    params['after'] = after[1]
+                url += '/messages?' + '&'.join(f'{k}={v}' for k, v in params.items())
+                if r['status'] == 200:
+                    page = json.loads(body)
+                    new = [self.message(m) for m in page]
+                    if page:
+                        floor = int(params.get('after', '0'))
+                        if min(int(m['id']) for m in new) <= floor:
+                            raise SystemExit(f"discord: a pseudonym in {url} is not after the cursor; Perceval would refuse the page")
+                        after = (str(max(int(m['id']) for m in page)), str(max(int(m['id']) for m in new)))
+                    body = canon(new)
+            elif r['status'] == 200:
+                body = canon(self.channel_doc(json.loads(body)))
+            out.append(canon({**r, 'url': url, 'body': body}))
+        return out
+
+    def decisions(self, doc):
+        return {**doc, 'deidentification': self.d.ref,
+                'channels': [{**c, 'channel': self.channel(c['channel']),
+                              **({'parent': self.channel(c['parent'])} if c.get('parent') else {})} for c in doc['channels']]}
+
+
+def deidentify(responses, out):
+    """Re-key a Discord record written before de-identification: every member-only identifier becomes its keyed
+    pseudonym. A member was recorded as sha256('discord:' + id), which the keyed pseudonym takes as its input, so
+    no Discord id is needed to re-key it."""
+    d = Deidentification(ROOT, os.environ.get(PSEUDONYM_KEY))
+    d.require(*[f for f, t in d.technique.items() if d.fields[f]['origin'] == 'restricted'])
+    src = os.path.join(responses, 'discord')
+    doc = json.loads(open(os.path.join(src, 'guild.json'), 'rb').read())
+    if 'deidentification' in doc:
+        raise SystemExit('discord: the record is already de-identified')
+    rec = DiscordRecord(d, doc['channels'])
+    os.makedirs(os.path.join(out, 'discord'), exist_ok=True)
+    for c in doc['channels']:
+        path = os.path.join(src, c['channel'] + '.jsonl.gz')
+        if not os.path.exists(path):
+            continue
+        lines = rec.responses(gzip.decompress(open(path, 'rb').read()).decode().splitlines())
+        with open(os.path.join(out, 'discord', rec.channel(c['channel']) + '.jsonl.gz'), 'wb') as f:
+            f.write(gzip.compress(('\n'.join(lines) + '\n').encode(), mtime=0))
+    open(os.path.join(out, 'discord', 'guild.json'), 'w').write(json.dumps(rec.decisions(doc), indent=1) + '\n')
+    print(f"discord: {len(doc['channels'])} channels de-identified with key {d.ref['key']}", file=sys.stderr)
 
 
 def discord_channels(guild, roles, listed, intent, policy):
@@ -347,6 +564,8 @@ def discord(sources_path, out):
     token, guild = os.environ['DISCORD_BOT_TOKEN'], os.environ['DISCORD_GUILD_ID']
     app, app_ref = discord_app(root)
     policy, policy_ref = discord_policy(root)
+    d = Deidentification(root, os.environ.get(PSEUDONYM_KEY))
+    d.require(*[f for f in d.technique if d.fields[f]['origin'] == 'restricted'])
 
     client = DiscordClient(token, sleep_for_rate=True)
     ask = lambda *p, **q: client.fetch(DISCORD_API + '/'.join(p), payload=q or None).json()
@@ -371,6 +590,10 @@ def discord(sources_path, out):
             before = page['threads'][-1]['thread_metadata']['archive_timestamp']
     listed = list({c['id']: c for c in listed}.values())
     channels = discord_channels(guild, roles, listed, intent, policy)
+    threads = {c['channel'] for c in channels if c['type'] in THREADS}
+    if threads & set(policy['labels']['channels']):
+        raise SystemExit('governance/discord.json labels a thread; a label names a channel the administrators made')
+    rec = DiscordRecord(d, channels)
     for c in channels:
         c['decision'] = decide(app, c['request'])
         if c['channel'] in unlisted:
@@ -398,16 +621,16 @@ def discord(sources_path, out):
             except requests.HTTPError as e:
                 # Permitted, but Discord refuses the bot: the refusal is the record, and no message is read.
                 c['refused'] = e.response.status_code
-                print(f"discord {c['channel']}: refused with {c['refused']}", file=sys.stderr)
+                print(f"discord {rec.channel(c['channel'])}: refused with {c['refused']}", file=sys.stderr)
                 continue
-            with open(os.path.join(out, 'discord', c['channel'] + '.jsonl.gz'), 'wb') as f:
-                f.write(gzip.compress(('\n'.join(record) + '\n').encode(), mtime=0))
-            print(f"discord {c['channel']}: {n} messages, {len(record)} responses", file=sys.stderr)
+            with open(os.path.join(out, 'discord', rec.channel(c['channel']) + '.jsonl.gz'), 'wb') as f:
+                f.write(gzip.compress(('\n'.join(rec.responses(record)) + '\n').encode(), mtime=0))
+            print(f"discord {rec.channel(c['channel'])}: {n} messages, {len(record)} responses", file=sys.stderr)
     finally:
         requests.Session.send = send
     decisions = {'spec': 'uor-community/discord-decisions/1', 'guild': guild, 'cut': sources['cut'], 'app': app_ref,
                  'policy': policy_ref, 'intent': 'granted' if intent else 'missing', 'channels': channels}
-    open(os.path.join(out, 'discord', 'guild.json'), 'w').write(json.dumps(decisions, indent=1) + '\n')
+    open(os.path.join(out, 'discord', 'guild.json'), 'w').write(json.dumps(rec.decisions(decisions), indent=1) + '\n')
     counts = {}
     for c in channels:
         counts[c['decision']] = counts.get(c['decision'], 0) + 1
@@ -433,6 +656,9 @@ def discord_replay(root, responses, cut):
     policy, policy_ref = discord_policy(root)
     if decisions['app'] != app_ref:
         raise SystemExit('discord: the record was decided by another uor-discord-read app; record again')
+    deid = Deidentification(root, None).ref
+    if {k: v for k, v in decisions.get('deidentification', {}).items() if k != 'key'} != {k: v for k, v in deid.items() if k != 'key'}:
+        raise SystemExit('discord: the record was not de-identified by this uor-deidentification app and field list; run collect.py deidentify')
     items, permitted, refs = [], [], {'decisions': {'path': 'responses/discord/guild.json', 'sha256': sha256(raw)}}
     for c in decisions['channels']:
         label = policy['labels']['channels'].get(c['channel'], policy['labels']['default'])
@@ -702,5 +928,9 @@ if __name__ == '__main__':
         discord(*sys.argv[2:4])
     elif sys.argv[1] == 'replay':
         replay(*sys.argv[2:5])
+    elif sys.argv[1] == 'deidentify':
+        deidentify(*sys.argv[2:4])
+    elif sys.argv[1] == 'vectors':
+        vectors(sys.argv[2], '--check' in sys.argv[3:])
     else:
         raise SystemExit(__doc__)

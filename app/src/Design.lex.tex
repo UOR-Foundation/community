@@ -1547,6 +1547,83 @@ definition{
 }
 
 definition{
+  name: processUorDeidentificationSendRequest,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentBrowser"})
+}
+
+definition{
+  name: processUorDeidentificationDecide,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: processUorDeidentificationParseRequest,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: processUorDeidentificationJudge,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: processUorDeidentificationEncodeAnswer,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: processUorDeidentificationBuildAndVerify,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentPrismBuild"})
+}
+
+definition{
+  name: processUorDeidentificationRule1,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: processUorDeidentificationRule2,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: processUorDeidentificationRule3,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: processUorDeidentificationRule4,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: processUorDeidentificationOtherwise,
+  parameters: [],
+  result: Foundation.Arch::SystemProcess,
+  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
   name: processUorDiscordReadSendRequest,
   parameters: [],
   result: Foundation.Arch::SystemProcess,
@@ -3689,6 +3766,55 @@ definition{
 }
 
 definition{
+  name: stateUorDeidentificationIdle,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: stateUorDeidentificationDeciding,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: stateUorDeidentificationRefused,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: stateUorDeidentificationAnsweredPseudonymize,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: stateUorDeidentificationAnsweredSuppress,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: stateUorDeidentificationAnsweredRetain,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: stateUorDeidentificationAnsweredIndeterminate,
+  parameters: [],
+  result: Foundation.Arch::SystemState,
+  body: (record Foundation.Arch::SystemState {owner := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
   name: stateUorDiscordReadIdle,
   parameters: [],
   result: Foundation.Arch::SystemState,
@@ -4848,6 +4974,34 @@ definition{
   parameters: [],
   result: Foundation.Arch::DesignView,
   body: (record Foundation.Arch::DesignView {title := "States of the Contribution attribution guest", viewpoint := "Architecture::viewpointUorContributionAttributionCommunityAndOutreachCommitteeRefusedMalformedRequests", diagram := (ctor Foundation.Arch::DesignDiagram.umlStateMachine)})
+}
+
+definition{
+  name: viewUorDeidentificationOpmDecide,
+  parameters: [],
+  result: Foundation.Arch::DesignView,
+  body: (record Foundation.Arch::DesignView {title := "Deciding a Observation de-identification policy request", viewpoint := "Architecture::viewpointUorDeidentificationCommunityAndOutreachCommitteeCorrectAnswers", diagram := (ctor Foundation.Arch::DesignDiagram.opmObjectProcess)})
+}
+
+definition{
+  name: viewUorDeidentificationUmlComponents,
+  parameters: [],
+  result: Foundation.Arch::DesignView,
+  body: (record Foundation.Arch::DesignView {title := "Components of Observation de-identification policy", viewpoint := "Architecture::viewpointUorDeidentificationVerifierIntegrityOfThePublishedApp", diagram := (ctor Foundation.Arch::DesignDiagram.umlComponent)})
+}
+
+definition{
+  name: viewUorDeidentificationUmlRequest,
+  parameters: [],
+  result: Foundation.Arch::DesignView,
+  body: (record Foundation.Arch::DesignView {title := "Answering a Observation de-identification policy request", viewpoint := "Architecture::viewpointUorDeidentificationCommunityAndOutreachCommitteeCorrectAnswers", diagram := (ctor Foundation.Arch::DesignDiagram.umlSequence)})
+}
+
+definition{
+  name: viewUorDeidentificationUmlStates,
+  parameters: [],
+  result: Foundation.Arch::DesignView,
+  body: (record Foundation.Arch::DesignView {title := "States of the Observation de-identification policy guest", viewpoint := "Architecture::viewpointUorDeidentificationDataProtectionReviewerRefusedMalformedRequests", diagram := (ctor Foundation.Arch::DesignDiagram.umlStateMachine)})
 }
 
 definition{
@@ -6027,6 +6181,48 @@ definition{
 }
 
 definition{
+  name: opmUorDeidentificationBrowser,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewUorDeidentificationOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.object), subject := "Architecture::componentBrowser"})
+}
+
+definition{
+  name: opmUorDeidentificationGuest,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewUorDeidentificationOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.object), subject := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: opmUorDeidentificationDecide,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewUorDeidentificationOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.process), subject := "Design::processUorDeidentificationDecide"})
+}
+
+definition{
+  name: opmUorDeidentificationParseRequest,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewUorDeidentificationOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.process), subject := "Design::processUorDeidentificationParseRequest"})
+}
+
+definition{
+  name: opmUorDeidentificationJudge,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewUorDeidentificationOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.process), subject := "Design::processUorDeidentificationJudge"})
+}
+
+definition{
+  name: opmUorDeidentificationEncodeAnswer,
+  parameters: [],
+  result: Foundation.Arch::OpmThing,
+  body: (record Foundation.Arch::OpmThing {view := "Design::viewUorDeidentificationOpmDecide", kind := (ctor Foundation.Arch::OpmThingKind.process), subject := "Design::processUorDeidentificationEncodeAnswer"})
+}
+
+definition{
   name: opmUorDiscordReadBrowser,
   parameters: [],
   result: Foundation.Arch::OpmThing,
@@ -6738,6 +6934,20 @@ definition{
   parameters: [],
   result: Foundation.Arch::OpmState,
   body: (record Foundation.Arch::OpmState {view := "Design::viewUorContributionAttributionOpmDecide", thing := "Architecture::componentUorContributionAttributionContributionAttributionGuest", state := "Design::stateUorContributionAttributionDeciding"})
+}
+
+definition{
+  name: opmUorDeidentificationGuestIdle,
+  parameters: [],
+  result: Foundation.Arch::OpmState,
+  body: (record Foundation.Arch::OpmState {view := "Design::viewUorDeidentificationOpmDecide", thing := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest", state := "Design::stateUorDeidentificationIdle"})
+}
+
+definition{
+  name: opmUorDeidentificationGuestDeciding,
+  parameters: [],
+  result: Foundation.Arch::OpmState,
+  body: (record Foundation.Arch::OpmState {view := "Design::viewUorDeidentificationOpmDecide", thing := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest", state := "Design::stateUorDeidentificationDeciding"})
 }
 
 definition{
@@ -7616,6 +7826,41 @@ definition{
 }
 
 definition{
+  name: opmUorDeidentificationGuestAgent,
+  parameters: [],
+  result: Foundation.Arch::OpmLink,
+  body: (record Foundation.Arch::OpmLink {view := "Design::viewUorDeidentificationOpmDecide", kind := (ctor Foundation.Arch::OpmLinkKind.agent), source := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest", target := "Design::processUorDeidentificationDecide"})
+}
+
+definition{
+  name: opmUorDeidentificationBrowserInstrument,
+  parameters: [],
+  result: Foundation.Arch::OpmLink,
+  body: (record Foundation.Arch::OpmLink {view := "Design::viewUorDeidentificationOpmDecide", kind := (ctor Foundation.Arch::OpmLinkKind.instrument), source := "Architecture::componentBrowser", target := "Design::processUorDeidentificationParseRequest"})
+}
+
+definition{
+  name: opmUorDeidentificationParseInvokesJudge,
+  parameters: [],
+  result: Foundation.Arch::OpmLink,
+  body: (record Foundation.Arch::OpmLink {view := "Design::viewUorDeidentificationOpmDecide", kind := (ctor Foundation.Arch::OpmLinkKind.invocation), source := "Design::processUorDeidentificationParseRequest", target := "Design::processUorDeidentificationJudge"})
+}
+
+definition{
+  name: opmUorDeidentificationJudgeInvokesEncode,
+  parameters: [],
+  result: Foundation.Arch::OpmLink,
+  body: (record Foundation.Arch::OpmLink {view := "Design::viewUorDeidentificationOpmDecide", kind := (ctor Foundation.Arch::OpmLinkKind.invocation), source := "Design::processUorDeidentificationJudge", target := "Design::processUorDeidentificationEncodeAnswer"})
+}
+
+definition{
+  name: opmUorDeidentificationEncodeAffectsBrowser,
+  parameters: [],
+  result: Foundation.Arch::OpmLink,
+  body: (record Foundation.Arch::OpmLink {view := "Design::viewUorDeidentificationOpmDecide", kind := (ctor Foundation.Arch::OpmLinkKind.effect), source := "Architecture::componentBrowser", target := "Design::processUorDeidentificationEncodeAnswer"})
+}
+
+definition{
   name: opmUorDiscordReadGuestAgent,
   parameters: [],
   result: Foundation.Arch::OpmLink,
@@ -8404,6 +8649,27 @@ definition{
   parameters: [],
   result: Foundation.Arch::OpmZoom,
   body: (record Foundation.Arch::OpmZoom {view := "Design::viewUorContributionAttributionOpmDecide", process := "Design::processUorContributionAttributionDecide", subprocess := "Design::processUorContributionAttributionEncodeAnswer", order := 2})
+}
+
+definition{
+  name: opmUorDeidentificationZoomParseRequest,
+  parameters: [],
+  result: Foundation.Arch::OpmZoom,
+  body: (record Foundation.Arch::OpmZoom {view := "Design::viewUorDeidentificationOpmDecide", process := "Design::processUorDeidentificationDecide", subprocess := "Design::processUorDeidentificationParseRequest", order := 0})
+}
+
+definition{
+  name: opmUorDeidentificationZoomJudge,
+  parameters: [],
+  result: Foundation.Arch::OpmZoom,
+  body: (record Foundation.Arch::OpmZoom {view := "Design::viewUorDeidentificationOpmDecide", process := "Design::processUorDeidentificationDecide", subprocess := "Design::processUorDeidentificationJudge", order := 1})
+}
+
+definition{
+  name: opmUorDeidentificationZoomEncodeAnswer,
+  parameters: [],
+  result: Foundation.Arch::OpmZoom,
+  body: (record Foundation.Arch::OpmZoom {view := "Design::viewUorDeidentificationOpmDecide", process := "Design::processUorDeidentificationDecide", subprocess := "Design::processUorDeidentificationEncodeAnswer", order := 2})
 }
 
 definition{
@@ -9650,6 +9916,62 @@ definition{
   parameters: [],
   result: Foundation.Arch::UmlComponent,
   body: (record Foundation.Arch::UmlComponent {view := "Design::viewUorContributionAttributionUmlComponents", component := "Architecture::componentSourceRepository"})
+}
+
+definition{
+  name: umlUorDeidentificationBrowser,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUorDeidentificationUmlComponents", component := "Architecture::componentBrowser"})
+}
+
+definition{
+  name: umlUorDeidentificationCommunityCollector,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUorDeidentificationUmlComponents", component := "Architecture::componentCommunityCollector"})
+}
+
+definition{
+  name: umlUorDeidentificationGitHubPages,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUorDeidentificationUmlComponents", component := "Architecture::componentGitHubPages"})
+}
+
+definition{
+  name: umlUorDeidentificationObservationDeIdentificationPolicyGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUorDeidentificationUmlComponents", component := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: umlUorDeidentificationObservationDeIdentificationPolicyPage,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUorDeidentificationUmlComponents", component := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyPage"})
+}
+
+definition{
+  name: umlUorDeidentificationPrismBuild,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUorDeidentificationUmlComponents", component := "Architecture::componentPrismBuild"})
+}
+
+definition{
+  name: umlUorDeidentificationPseudonymisationKey,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUorDeidentificationUmlComponents", component := "Architecture::componentPseudonymisationKey"})
+}
+
+definition{
+  name: umlUorDeidentificationSourceRepository,
+  parameters: [],
+  result: Foundation.Arch::UmlComponent,
+  body: (record Foundation.Arch::UmlComponent {view := "Design::viewUorDeidentificationUmlComponents", component := "Architecture::componentSourceRepository"})
 }
 
 definition{
@@ -11557,6 +11879,83 @@ definition{
 }
 
 definition{
+  name: umlUorDeidentificationBrowserToObservationDeIdentificationPolicyGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUorDeidentificationUmlComponents", edge := "Architecture::edgeUorDeidentificationBrowserToObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: umlUorDeidentificationCommunityCollectorToObservationDeIdentificationPolicyGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUorDeidentificationUmlComponents", edge := "Architecture::edgeUorDeidentificationCommunityCollectorToObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: umlUorDeidentificationGitHubPagesToBrowser,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUorDeidentificationUmlComponents", edge := "Architecture::edgeGitHubPagesToBrowser"})
+}
+
+definition{
+  name: umlUorDeidentificationObservationDeIdentificationPolicyGuestToBrowser,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUorDeidentificationUmlComponents", edge := "Architecture::edgeUorDeidentificationObservationDeIdentificationPolicyGuestToBrowser"})
+}
+
+definition{
+  name: umlUorDeidentificationObservationDeIdentificationPolicyGuestToCommunityCollector,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUorDeidentificationUmlComponents", edge := "Architecture::edgeUorDeidentificationObservationDeIdentificationPolicyGuestToCommunityCollector"})
+}
+
+definition{
+  name: umlUorDeidentificationObservationDeIdentificationPolicyGuestToPseudonymisationKey,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUorDeidentificationUmlComponents", edge := "Architecture::edgeUorDeidentificationObservationDeIdentificationPolicyGuestToPseudonymisationKey"})
+}
+
+definition{
+  name: umlUorDeidentificationObservationDeIdentificationPolicyPageToGitHubPages,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUorDeidentificationUmlComponents", edge := "Architecture::edgeUorDeidentificationObservationDeIdentificationPolicyPageToGitHubPages"})
+}
+
+definition{
+  name: umlUorDeidentificationPrismBuildToObservationDeIdentificationPolicyGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUorDeidentificationUmlComponents", edge := "Architecture::edgeUorDeidentificationPrismBuildToObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: umlUorDeidentificationPrismBuildToObservationDeIdentificationPolicyPage,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUorDeidentificationUmlComponents", edge := "Architecture::edgeUorDeidentificationPrismBuildToObservationDeIdentificationPolicyPage"})
+}
+
+definition{
+  name: umlUorDeidentificationPseudonymisationKeyToObservationDeIdentificationPolicyGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUorDeidentificationUmlComponents", edge := "Architecture::edgeUorDeidentificationPseudonymisationKeyToObservationDeIdentificationPolicyGuest"})
+}
+
+definition{
+  name: umlUorDeidentificationSourceRepositoryToPrismBuild,
+  parameters: [],
+  result: Foundation.Arch::UmlConnector,
+  body: (record Foundation.Arch::UmlConnector {view := "Design::viewUorDeidentificationUmlComponents", edge := "Architecture::edgeSourceRepositoryToPrismBuild"})
+}
+
+definition{
   name: umlUorDiscordReadBrowserToDiscordChannelReadPolicyGuest,
   parameters: [],
   result: Foundation.Arch::UmlConnector,
@@ -12635,6 +13034,20 @@ definition{
 }
 
 definition{
+  name: seqUorDeidentificationBrowser,
+  parameters: [],
+  result: Foundation.Arch::UmlLifeline,
+  body: (record Foundation.Arch::UmlLifeline {view := "Design::viewUorDeidentificationUmlRequest", component := "Architecture::componentBrowser", order := 0})
+}
+
+definition{
+  name: seqUorDeidentificationObservationDeIdentificationPolicyGuest,
+  parameters: [],
+  result: Foundation.Arch::UmlLifeline,
+  body: (record Foundation.Arch::UmlLifeline {view := "Design::viewUorDeidentificationUmlRequest", component := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest", order := 1})
+}
+
+definition{
   name: seqUorDiscordReadBrowser,
   parameters: [],
   result: Foundation.Arch::UmlLifeline,
@@ -13066,6 +13479,20 @@ definition{
   parameters: [],
   result: Foundation.Arch::UmlMessage,
   body: (record Foundation.Arch::UmlMessage {view := "Design::viewUorContributionAttributionUmlRequest", kind := (ctor Foundation.Arch::UmlMessageKind.reply), order := 1, source := "Architecture::componentUorContributionAttributionContributionAttributionGuest", target := "Architecture::componentBrowser", process := "Design::processUorContributionAttributionDecide"})
+}
+
+definition{
+  name: seqUorDeidentificationRequest,
+  parameters: [],
+  result: Foundation.Arch::UmlMessage,
+  body: (record Foundation.Arch::UmlMessage {view := "Design::viewUorDeidentificationUmlRequest", kind := (ctor Foundation.Arch::UmlMessageKind.synchronous), order := 0, source := "Architecture::componentBrowser", target := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest", process := "Design::processUorDeidentificationDecide"})
+}
+
+definition{
+  name: seqUorDeidentificationReply,
+  parameters: [],
+  result: Foundation.Arch::UmlMessage,
+  body: (record Foundation.Arch::UmlMessage {view := "Design::viewUorDeidentificationUmlRequest", kind := (ctor Foundation.Arch::UmlMessageKind.reply), order := 1, source := "Architecture::componentUorDeidentificationObservationDeIdentificationPolicyGuest", target := "Architecture::componentBrowser", process := "Design::processUorDeidentificationDecide"})
 }
 
 definition{
@@ -14277,6 +14704,55 @@ definition{
   parameters: [],
   result: Foundation.Arch::UmlState,
   body: (record Foundation.Arch::UmlState {view := "Design::viewUorContributionAttributionUmlStates", state := "Design::stateUorContributionAttributionAnsweredIndeterminate", initial := false})
+}
+
+definition{
+  name: stUorDeidentificationIdle,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUorDeidentificationUmlStates", state := "Design::stateUorDeidentificationIdle", initial := true})
+}
+
+definition{
+  name: stUorDeidentificationDeciding,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUorDeidentificationUmlStates", state := "Design::stateUorDeidentificationDeciding", initial := false})
+}
+
+definition{
+  name: stUorDeidentificationRefused,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUorDeidentificationUmlStates", state := "Design::stateUorDeidentificationRefused", initial := false})
+}
+
+definition{
+  name: stUorDeidentificationAnsweredPseudonymize,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUorDeidentificationUmlStates", state := "Design::stateUorDeidentificationAnsweredPseudonymize", initial := false})
+}
+
+definition{
+  name: stUorDeidentificationAnsweredSuppress,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUorDeidentificationUmlStates", state := "Design::stateUorDeidentificationAnsweredSuppress", initial := false})
+}
+
+definition{
+  name: stUorDeidentificationAnsweredRetain,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUorDeidentificationUmlStates", state := "Design::stateUorDeidentificationAnsweredRetain", initial := false})
+}
+
+definition{
+  name: stUorDeidentificationAnsweredIndeterminate,
+  parameters: [],
+  result: Foundation.Arch::UmlState,
+  body: (record Foundation.Arch::UmlState {view := "Design::viewUorDeidentificationUmlStates", state := "Design::stateUorDeidentificationAnsweredIndeterminate", initial := false})
 }
 
 definition{
@@ -16664,6 +17140,90 @@ definition{
   parameters: [],
   result: Foundation.Arch::UmlTransition,
   body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorContributionAttributionUmlStates", order := 12, source := "Design::stateUorContributionAttributionRefused", target := "Design::stateUorContributionAttributionIdle", trigger := "Design::processUorContributionAttributionEncodeAnswer"})
+}
+
+definition{
+  name: trUorDeidentificationAccept,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorDeidentificationUmlStates", order := 0, source := "Design::stateUorDeidentificationIdle", target := "Design::stateUorDeidentificationDeciding", trigger := "Design::processUorDeidentificationParseRequest"})
+}
+
+definition{
+  name: trUorDeidentificationRefuse,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorDeidentificationUmlStates", order := 1, source := "Design::stateUorDeidentificationIdle", target := "Design::stateUorDeidentificationRefused", trigger := "Design::processUorDeidentificationParseRequest"})
+}
+
+definition{
+  name: trUorDeidentificationRule1,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorDeidentificationUmlStates", order := 2, source := "Design::stateUorDeidentificationDeciding", target := "Design::stateUorDeidentificationAnsweredSuppress", trigger := "Design::processUorDeidentificationRule1"})
+}
+
+definition{
+  name: trUorDeidentificationRule2,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorDeidentificationUmlStates", order := 3, source := "Design::stateUorDeidentificationDeciding", target := "Design::stateUorDeidentificationAnsweredIndeterminate", trigger := "Design::processUorDeidentificationRule2"})
+}
+
+definition{
+  name: trUorDeidentificationRule3,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorDeidentificationUmlStates", order := 4, source := "Design::stateUorDeidentificationDeciding", target := "Design::stateUorDeidentificationAnsweredPseudonymize", trigger := "Design::processUorDeidentificationRule3"})
+}
+
+definition{
+  name: trUorDeidentificationRule4,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorDeidentificationUmlStates", order := 5, source := "Design::stateUorDeidentificationDeciding", target := "Design::stateUorDeidentificationAnsweredRetain", trigger := "Design::processUorDeidentificationRule4"})
+}
+
+definition{
+  name: trUorDeidentificationOtherwise,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorDeidentificationUmlStates", order := 6, source := "Design::stateUorDeidentificationDeciding", target := "Design::stateUorDeidentificationAnsweredRetain", trigger := "Design::processUorDeidentificationOtherwise"})
+}
+
+definition{
+  name: trUorDeidentificationResetPseudonymize,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorDeidentificationUmlStates", order := 7, source := "Design::stateUorDeidentificationAnsweredPseudonymize", target := "Design::stateUorDeidentificationIdle", trigger := "Design::processUorDeidentificationEncodeAnswer"})
+}
+
+definition{
+  name: trUorDeidentificationResetSuppress,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorDeidentificationUmlStates", order := 8, source := "Design::stateUorDeidentificationAnsweredSuppress", target := "Design::stateUorDeidentificationIdle", trigger := "Design::processUorDeidentificationEncodeAnswer"})
+}
+
+definition{
+  name: trUorDeidentificationResetRetain,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorDeidentificationUmlStates", order := 9, source := "Design::stateUorDeidentificationAnsweredRetain", target := "Design::stateUorDeidentificationIdle", trigger := "Design::processUorDeidentificationEncodeAnswer"})
+}
+
+definition{
+  name: trUorDeidentificationResetIndeterminate,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorDeidentificationUmlStates", order := 10, source := "Design::stateUorDeidentificationAnsweredIndeterminate", target := "Design::stateUorDeidentificationIdle", trigger := "Design::processUorDeidentificationEncodeAnswer"})
+}
+
+definition{
+  name: trUorDeidentificationResetRefused,
+  parameters: [],
+  result: Foundation.Arch::UmlTransition,
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorDeidentificationUmlStates", order := 11, source := "Design::stateUorDeidentificationRefused", target := "Design::stateUorDeidentificationIdle", trigger := "Design::processUorDeidentificationEncodeAnswer"})
 }
 
 definition{

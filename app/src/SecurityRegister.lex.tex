@@ -9,7 +9,7 @@ definition{
   name: release,
   parameters: [],
   result: Foundation.Security.V1.Model::Release,
-  body: (record Foundation.Security.V1.Model::Release {csfFunctionsCount := 6, csfCategoriesCount := 22, subcategoriesCount := 106, cellsCount := 50, techniquesCount := 32, scorecardChecksCount := 20, threatSourcesCount := 9, elementsCount := 31, controlsCount := 51, threatsCount := 34, threatControlsCount := 60, threatTechniquesCount := 42, evidenceCount := 64, outcomesCount := 128, gapsCount := 37, strideSlotsCount := 186, linddunSlotsCount := 217, indicatorsCount := 8, openClaimsCount := 10, assessed := "2026-11-15", sources := "csf-2.0.json#sha256:de36759d2f3f70a0f28ab9a95505259e568467923295a13d510a068939773e5a sp800-30r1.pdf#sha256:f214087f0bdb35932a28c16eb93932a33c67a6edfb5e6f1638866bd201c98e04 enterprise-attack-20.1.json#sha256:539a843a7b53ed9749740b2123dddae3726b1a4831841c32aca740b011b910b5 ATLAS-2026.10.yaml#sha256:ac41ee9f99a47084ba5fdfc77ae83a28687e12390240fffeb37df7914ffe142d scorecard-checks.yaml#sha256:78f9f9131b44fec0115cdf7124d8738d5a412deeb204662ca384bdfe8eabb952 linddun.html#sha256:728c60453d035cc7fbf6c0351d8a26541c7069332ae0f32d5ff8db7f20aca849 https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8 https://github.com/UOR-Foundation/website@e82ffdedc5d85ebd0bde239d50d4651005045d31", pdftotext := "pdftotext version 24.02.0"})
+  body: (record Foundation.Security.V1.Model::Release {csfFunctionsCount := 6, csfCategoriesCount := 22, subcategoriesCount := 106, cellsCount := 50, techniquesCount := 32, scorecardChecksCount := 20, threatSourcesCount := 9, elementsCount := 31, controlsCount := 51, threatsCount := 34, threatControlsCount := 60, threatTechniquesCount := 42, evidenceCount := 67, outcomesCount := 128, gapsCount := 37, strideSlotsCount := 186, linddunSlotsCount := 217, indicatorsCount := 8, openClaimsCount := 10, assessed := "2026-11-15", sources := "csf-2.0.json#sha256:de36759d2f3f70a0f28ab9a95505259e568467923295a13d510a068939773e5a sp800-30r1.pdf#sha256:f214087f0bdb35932a28c16eb93932a33c67a6edfb5e6f1638866bd201c98e04 enterprise-attack-20.1.json#sha256:539a843a7b53ed9749740b2123dddae3726b1a4831841c32aca740b011b910b5 ATLAS-2026.10.yaml#sha256:ac41ee9f99a47084ba5fdfc77ae83a28687e12390240fffeb37df7914ffe142d scorecard-checks.yaml#sha256:78f9f9131b44fec0115cdf7124d8738d5a412deeb204662ca384bdfe8eabb952 linddun.html#sha256:728c60453d035cc7fbf6c0351d8a26541c7069332ae0f32d5ff8db7f20aca849 https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8 https://github.com/UOR-Foundation/website@e82ffdedc5d85ebd0bde239d50d4651005045d31", pdftotext := "pdftotext version 24.02.0"})
 }
 
 definition{
@@ -2221,7 +2221,7 @@ definition{
   name: control20,
   parameters: [],
   result: Foundation.Security.V1.Model::Control,
-  body: (record Foundation.Security.V1.Model::Control {index := 20, code := "C21", name := "Keyed pseudonyms and aggregate publication", status := (ctor Foundation.Security.V1.Model::Status.planned), evidenceCount := 0})
+  body: (record Foundation.Security.V1.Model::Control {index := 20, code := "C21", name := "Keyed pseudonyms and aggregate publication", status := (ctor Foundation.Security.V1.Model::Status.partlyImplemented), evidenceCount := 3})
 }
 
 definition{
@@ -3691,224 +3691,245 @@ definition{
   name: evidence33,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 33, control := 21, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:drizzle/migrations/0000_restrict_agent_tables_read.sql"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 33, control := 20, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "apps/uor-deidentification.prompt.json"})
 }
 
 definition{
   name: evidence34,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 34, control := 21, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:drizzle/migrations/0001_remove_open_access_rules.sql"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 34, control := 20, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "observations/deidentification.json"})
 }
 
 definition{
   name: evidence35,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 35, control := 25, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "prismpm.lock"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 35, control := 20, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "observations/collect.py"})
 }
 
 definition{
   name: evidence36,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 36, control := 26, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.scorecard), reference := "Signed-Releases"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 36, control := 21, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:drizzle/migrations/0000_restrict_agent_tables_read.sql"})
 }
 
 definition{
   name: evidence37,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 37, control := 26, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.scorecard), reference := "Packaging"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 37, control := 21, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:drizzle/migrations/0001_remove_open_access_rules.sql"})
 }
 
 definition{
   name: evidence38,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 38, control := 27, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "oracles/grimoirelab/oracle.lock.json"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 38, control := 25, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "prismpm.lock"})
 }
 
 definition{
   name: evidence39,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 39, control := 28, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := ".github/workflows/oracles.yml"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 39, control := 26, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.scorecard), reference := "Signed-Releases"})
 }
 
 definition{
   name: evidence40,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 40, control := 29, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "remediation/apply-settings.sh"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 40, control := 26, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.scorecard), reference := "Packaging"})
 }
 
 definition{
   name: evidence41,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 41, control := 29, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := ".github/workflows/apply-settings.yml"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 41, control := 27, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "oracles/grimoirelab/oracle.lock.json"})
 }
 
 definition{
   name: evidence42,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 42, control := 31, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "AGENTS.md"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 42, control := 28, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := ".github/workflows/oracles.yml"})
 }
 
 definition{
   name: evidence43,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 43, control := 31, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "prismpm.lock"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 43, control := 29, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "remediation/apply-settings.sh"})
 }
 
 definition{
   name: evidence44,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 44, control := 32, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "AGENTS.md"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 44, control := 29, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := ".github/workflows/apply-settings.yml"})
 }
 
 definition{
   name: evidence45,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 45, control := 32, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "CONFORMANCE.md"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 45, control := 31, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "AGENTS.md"})
 }
 
 definition{
   name: evidence46,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 46, control := 33, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.scorecard), reference := "Code-Review"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 46, control := 31, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "prismpm.lock"})
 }
 
 definition{
   name: evidence47,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 47, control := 33, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "dotgithub@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 47, control := 32, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "AGENTS.md"})
 }
 
 definition{
   name: evidence48,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 48, control := 35, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:public/CNAME"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 48, control := 32, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "CONFORMANCE.md"})
 }
 
 definition{
   name: evidence49,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 49, control := 37, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "observations/corpus.json"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 49, control := 33, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.scorecard), reference := "Code-Review"})
 }
 
 definition{
   name: evidence50,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 50, control := 37, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "observations/replay.json"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 50, control := 33, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "dotgithub@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md"})
 }
 
 definition{
   name: evidence51,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 51, control := 39, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "dotgithub@92da114114fc9b76cbf2c5168e29d409b62ddde8:SECURITY.md"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 51, control := 35, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:public/CNAME"})
 }
 
 definition{
   name: evidence52,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 52, control := 39, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.scorecard), reference := "Security-Policy"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 52, control := 37, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "observations/corpus.json"})
 }
 
 definition{
   name: evidence53,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 53, control := 40, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "security/model.json"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 53, control := 37, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "observations/replay.json"})
 }
 
 definition{
   name: evidence54,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 54, control := 40, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "security/sources.json"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 54, control := 39, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "dotgithub@92da114114fc9b76cbf2c5168e29d409b62ddde8:SECURITY.md"})
 }
 
 definition{
   name: evidence55,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 55, control := 41, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "security/telemetry.json"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 55, control := 39, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.scorecard), reference := "Security-Policy"})
 }
 
 definition{
   name: evidence56,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 56, control := 41, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "security/observe.mjs"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 56, control := 40, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "security/model.json"})
 }
 
 definition{
   name: evidence57,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 57, control := 42, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "dotgithub@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 57, control := 40, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "security/sources.json"})
 }
 
 definition{
   name: evidence58,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 58, control := 42, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "governance/register.json"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 58, control := 41, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "security/telemetry.json"})
 }
 
 definition{
   name: evidence59,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 59, control := 43, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "dotgithub@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 59, control := 41, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "security/observe.mjs"})
 }
 
 definition{
   name: evidence60,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 60, control := 43, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "dotgithub@92da114114fc9b76cbf2c5168e29d409b62ddde8:SECURITY.md"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 60, control := 42, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "dotgithub@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md"})
 }
 
 definition{
   name: evidence61,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 61, control := 44, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "ecosystem/register.json"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 61, control := 42, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "governance/register.json"})
 }
 
 definition{
   name: evidence62,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 62, control := 44, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "remediation/register.json"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 62, control := 43, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "dotgithub@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md"})
 }
 
 definition{
   name: evidence63,
   parameters: [],
   result: Foundation.Security.V1.Model::Evidence,
-  body: (record Foundation.Security.V1.Model::Evidence {index := 63, control := 45, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.scorecard), reference := "SAST"})
+  body: (record Foundation.Security.V1.Model::Evidence {index := 63, control := 43, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.pinned), reference := "dotgithub@92da114114fc9b76cbf2c5168e29d409b62ddde8:SECURITY.md"})
+}
+
+definition{
+  name: evidence64,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Evidence,
+  body: (record Foundation.Security.V1.Model::Evidence {index := 64, control := 44, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "ecosystem/register.json"})
+}
+
+definition{
+  name: evidence65,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Evidence,
+  body: (record Foundation.Security.V1.Model::Evidence {index := 65, control := 44, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.path), reference := "remediation/register.json"})
+}
+
+definition{
+  name: evidence66,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Evidence,
+  body: (record Foundation.Security.V1.Model::Evidence {index := 66, control := 45, kind := (ctor Foundation.Security.V1.Model::EvidenceKind.scorecard), reference := "SAST"})
 }
 
 definition{
   name: evidenceFrom48,
   parameters: [],
   result: (List Foundation.Security.V1.Model::Evidence),
-  body: (cons (evidence48) (cons (evidence49) (cons (evidence50) (cons (evidence51) (cons (evidence52) (cons (evidence53) (cons (evidence54) (cons (evidence55) (cons (evidence56) (cons (evidence57) (cons (evidence58) (cons (evidence59) (cons (evidence60) (cons (evidence61) (cons (evidence62) (cons (evidence63) (nil Foundation.Security.V1.Model::Evidence)))))))))))))))))
+  body: (cons (evidence48) (cons (evidence49) (cons (evidence50) (cons (evidence51) (cons (evidence52) (cons (evidence53) (cons (evidence54) (cons (evidence55) (cons (evidence56) (cons (evidence57) (cons (evidence58) (cons (evidence59) (cons (evidence60) (cons (evidence61) (cons (evidence62) (cons (evidence63) (cons (evidence64) (cons (evidence65) (cons (evidence66) (nil Foundation.Security.V1.Model::Evidence))))))))))))))))))))
 }
 
 definition{

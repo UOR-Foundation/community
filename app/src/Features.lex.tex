@@ -23,6 +23,7 @@
 \importmodule{ChaossStarterProjectHealth}
 \importmodule{UorCocEnforcement}
 \importmodule{UorContributionAttribution}
+\importmodule{UorDeidentification}
 \importmodule{UorDiscordRead}
 \importmodule{UorObservationAdmission}
 \importmodule{UorRemediationLifecycle}
@@ -651,6 +652,27 @@ definition{
   parameters: [],
   result: String,
   body: "UorContributionAttributionProofs::inv005Holds"
+}
+
+definition{
+  name: acceptUorDeidentificationINV001,
+  parameters: [],
+  result: String,
+  body: "UorDeidentificationProofs::inv001Holds"
+}
+
+definition{
+  name: acceptUorDeidentificationINV002,
+  parameters: [],
+  result: String,
+  body: "UorDeidentificationProofs::inv002Holds"
+}
+
+definition{
+  name: acceptUorDeidentificationINV003,
+  parameters: [],
+  result: String,
+  body: "UorDeidentificationProofs::inv003Holds"
 }
 
 definition{
@@ -2439,6 +2461,69 @@ definition{
 }
 
 definition{
+  name: featureUorDeidentificationRule1,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When role is content, the answer is suppress.", calls := (cons "UorDeidentification::uorDeidentificationRule1" (cons "UorDeidentification::uorDeidentificationJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorDeidentificationRule2,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When role is direct and origin is restricted and key is missing, the answer is indeterminate.", calls := (cons "UorDeidentification::uorDeidentificationRule2" (cons "UorDeidentification::uorDeidentificationJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorDeidentificationRule3,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When role is direct and origin is restricted, the answer is pseudonymize.", calls := (cons "UorDeidentification::uorDeidentificationRule3" (cons "UorDeidentification::uorDeidentificationJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorDeidentificationRule4,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When role is direct and origin is public, the answer is retain.", calls := (cons "UorDeidentification::uorDeidentificationRule4" (cons "UorDeidentification::uorDeidentificationJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorDeidentificationOtherwise,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "When no rule matches, the answer is retain.", calls := (cons "UorDeidentification::uorDeidentificationJudge" (nil String)), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorDeidentificationRefuseMalformed,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "A request that is not role, origin, key in order, separated by single spaces, or is over 88 bytes, is answered invalid.", calls := (cons "UorDeidentification::uorDeidentificationDispatch" (cons "UorDeidentification::uorDeidentificationDecodeField1" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+}
+
+definition{
+  name: featureUorDeidentificationINV001,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers retain when role is content.", calls := (cons "UorDeidentification::uorDeidentificationJudge" (nil String)), acceptance := (cons "Features::acceptUorDeidentificationINV001" (nil String))})
+}
+
+definition{
+  name: featureUorDeidentificationINV002,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers retain when role is direct and origin is restricted.", calls := (cons "UorDeidentification::uorDeidentificationJudge" (nil String)), acceptance := (cons "Features::acceptUorDeidentificationINV002" (nil String))})
+}
+
+definition{
+  name: featureUorDeidentificationINV003,
+  parameters: [],
+  result: Foundation.Arch::Feature,
+  body: (record Foundation.Arch::Feature {statement := "It never answers pseudonymize when key is missing and role is direct and origin is restricted.", calls := (cons "UorDeidentification::uorDeidentificationJudge" (nil String)), acceptance := (cons "Features::acceptUorDeidentificationINV003" (nil String))})
+}
+
+definition{
   name: featureUorDiscordReadRule1,
   parameters: [],
   result: Foundation.Arch::Feature,
@@ -3843,6 +3928,34 @@ definition{
   parameters: [],
   result: Foundation.Arch::Journey,
   body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureUorContributionAttributionRefuseMalformed" (cons "Features::featureUorContributionAttributionINV001" (cons "Features::featureUorContributionAttributionINV002" (cons "Features::featureUorContributionAttributionINV003" (cons "Features::featureUorContributionAttributionINV004" (cons "Features::featureUorContributionAttributionINV005" (nil String)))))))})
+}
+
+definition{
+  name: journeyUorDeidentificationCommunityAndOutreachCommittee,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderCommunityAndOutreachCommittee", steps := (cons "Features::featureUorDeidentificationOtherwise" (cons "Features::featureUorDeidentificationRule4" (nil String)))})
+}
+
+definition{
+  name: journeyUorDeidentificationDataProtectionReviewer,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderDataProtectionReviewer", steps := (cons "Features::featureUorDeidentificationRule2" (cons "Features::featureUorDeidentificationINV003" (cons "Features::featureUorDeidentificationRefuseMalformed" (nil String))))})
+}
+
+definition{
+  name: journeyUorDeidentificationDiscordMember,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderDiscordMember", steps := (cons "Features::featureUorDeidentificationRule1" (cons "Features::featureUorDeidentificationRule3" (cons "Features::featureUorDeidentificationINV002" (nil String))))})
+}
+
+definition{
+  name: journeyUorDeidentificationVerifier,
+  parameters: [],
+  result: Foundation.Arch::Journey,
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureUorDeidentificationRefuseMalformed" (cons "Features::featureUorDeidentificationINV001" (cons "Features::featureUorDeidentificationINV002" (cons "Features::featureUorDeidentificationINV003" (nil String)))))})
 }
 
 definition{
