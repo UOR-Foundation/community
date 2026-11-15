@@ -1551,6 +1551,20 @@
    "personal": true
   },
   {
+   "id": "D7",
+   "name": "Domains and DNS",
+   "text": "uor.foundation, its subdomains and their DNS records at the registrar.",
+   "kind": "dataStore",
+   "personal": false
+  },
+  {
+   "id": "D8",
+   "name": "Package namespaces",
+   "text": "The crate, npm, PyPI and container names the Foundation publishes under or tells people to install, including names it has not claimed.",
+   "kind": "dataStore",
+   "personal": false
+  },
+  {
    "id": "F1",
    "name": "Contribution",
    "text": "An issue or pull request from a contributor into a repository and its CI.",
@@ -1875,7 +1889,7 @@
   {
    "id": "T13",
    "name": "Tampered SDK image or release",
-   "text": "A published SDK image or package is replaced or a malicious one is published under the Foundation's name; every Prism project builds through the SDK.",
+   "text": "A published SDK image or package is replaced or a malicious one is published under the Foundation's name; every Prism project builds through the SDK. The community and foundry repositories pin the SDK image from the personal ghcr.io/afflom namespace, so the release identity is one person's account.",
    "source": 1,
    "initiation": 1,
    "adverse": 2,
@@ -1886,7 +1900,8 @@
    "rationale": "",
    "controls": [
     25,
-    26
+    26,
+    49
    ],
    "techniques": [
     8
@@ -2215,6 +2230,84 @@
     20
    ],
    "techniques": []
+  },
+  {
+   "id": "T33",
+   "name": "Domain registration lapse",
+   "text": "uor.foundation expires on 2027-01-21 (observed 2026-11-15 by the asset register); if it lapses, anyone can register it and receive the Foundation's mail, links and install instructions.",
+   "source": 6,
+   "initiation": 2,
+   "adverse": 3,
+   "impact": 4,
+   "overall": 2,
+   "risk": 3,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    24,
+    46
+   ],
+   "techniques": [
+    22
+   ]
+  },
+  {
+   "id": "T34",
+   "name": "Name squatting and dependency confusion",
+   "text": "Install names the website tells people to use (crates.io prism-code, PyPI prism-code, npm @uor/prism) are unclaimed, and private crate names in compression (figures, frontier) are already taken on crates.io by other publishers, so an install or build can fetch someone else's package.",
+   "source": 1,
+   "initiation": 2,
+   "adverse": 3,
+   "impact": 3,
+   "overall": 2,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    47
+   ],
+   "techniques": [
+    7
+   ]
+  },
+  {
+   "id": "T35",
+   "name": "Credentials committed to a public repository",
+   "text": "The website repository commits .env (a Supabase publishable key, public by design) and a DocsGPT agent API key in src/docsgpt.ts, which anyone can use against the Foundation's DocsGPT quota.",
+   "source": 6,
+   "initiation": 3,
+   "adverse": 2,
+   "impact": 2,
+   "overall": 2,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    10,
+    48
+   ],
+   "techniques": [
+    17
+   ]
+  },
+  {
+   "id": "T37",
+   "name": "Subdomain takeover",
+   "text": "app.uor.foundation and schemas.uor.foundation are referenced but do not resolve; a record later pointed at a third-party service the Foundation does not hold could be claimed by someone else.",
+   "source": 3,
+   "initiation": 1,
+   "adverse": 2,
+   "impact": 3,
+   "overall": 1,
+   "risk": 1,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    50
+   ],
+   "techniques": [
+    24
+   ]
   }
  ],
  "controls": [
@@ -3040,6 +3133,61 @@
     69,
     38
    ]
+  },
+  {
+   "id": "C47",
+   "name": "Domain renewal and ownership record",
+   "text": "Auto-renewal with a recorded expiry, held by the Foundation's registrar account with more than one owner.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    37,
+    27
+   ]
+  },
+  {
+   "id": "C48",
+   "name": "Claim every published name",
+   "text": "Register every crate, npm and PyPI name the Foundation documents, rename private crates whose names others hold, and resolve private dependencies only from the Foundation's own sources.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    27,
+    46
+   ]
+  },
+  {
+   "id": "C49",
+   "name": "Rotate and move the exposed key",
+   "text": "Rotate the DocsGPT key and serve it through a server-side proxy with a rate limit; keep .env out of the repository except for public values.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    52,
+    96
+   ]
+  },
+  {
+   "id": "C50",
+   "name": "Publish the SDK from the organization namespace",
+   "text": "Publish and pin the SDK image under ghcr.io/uor-foundation, with more than one owner, so no release depends on a personal account.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    22,
+    56
+   ]
+  },
+  {
+   "id": "C51",
+   "name": "No dangling DNS",
+   "text": "Review every DNS record for targets the Foundation does not hold, and create a referenced subdomain only together with the service it points at.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    64,
+    84
+   ]
   }
  ],
  "gaps": [
@@ -3102,11 +3250,6 @@
    "subcategory": 21,
    "status": "planned",
    "rationale": "no supply chain risk management program."
-  },
-  {
-   "subcategory": 22,
-   "status": "planned",
-   "rationale": "supplier security roles are not set."
   },
   {
    "subcategory": 23,
@@ -3304,6 +3447,10 @@
    "subcategory": 17
   },
   {
+   "control": 49,
+   "subcategory": 22
+  },
+  {
    "control": 7,
    "subcategory": 24
   },
@@ -3317,6 +3464,14 @@
   },
   {
    "control": 23,
+   "subcategory": 27
+  },
+  {
+   "control": 46,
+   "subcategory": 27
+  },
+  {
+   "control": 47,
    "subcategory": 27
   },
   {
@@ -3349,6 +3504,10 @@
   },
   {
    "control": 44,
+   "subcategory": 37
+  },
+  {
+   "control": 46,
    "subcategory": 37
   },
   {
@@ -3416,6 +3575,10 @@
    "subcategory": 46
   },
   {
+   "control": 47,
+   "subcategory": 46
+  },
+  {
    "control": 41,
    "subcategory": 48
   },
@@ -3429,6 +3592,10 @@
   },
   {
    "control": 9,
+   "subcategory": 52
+  },
+  {
+   "control": 48,
    "subcategory": 52
   },
   {
@@ -3481,6 +3648,10 @@
   },
   {
    "control": 23,
+   "subcategory": 56
+  },
+  {
+   "control": 49,
    "subcategory": 56
   },
   {
@@ -3545,6 +3716,10 @@
   },
   {
    "control": 29,
+   "subcategory": 64
+  },
+  {
+   "control": 50,
    "subcategory": 64
   },
   {
@@ -3640,6 +3815,10 @@
    "subcategory": 84
   },
   {
+   "control": 50,
+   "subcategory": 84
+  },
+  {
    "control": 43,
    "subcategory": 85
   },
@@ -3681,6 +3860,10 @@
   },
   {
    "control": 43,
+   "subcategory": 96
+  },
+  {
+   "control": 48,
    "subcategory": 96
   },
   {
@@ -4518,410 +4701,494 @@
    "element": 19,
    "category": 1,
    "state": "answered",
-   "threat": 20,
+   "threat": 33,
    "rationale": ""
   },
   {
    "element": 19,
+   "category": 2,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "the registrar keeps the record of every change to the registration and zone (open claim OC-DOMAIN)."
+  },
+  {
+   "element": 19,
+   "category": 3,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "DNS records are public by design."
+  },
+  {
+   "element": 19,
+   "category": 4,
+   "state": "answered",
+   "threat": 30,
+   "rationale": ""
+  },
+  {
+   "element": 19,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 1,
+   "state": "answered",
+   "threat": 31,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 2,
+   "state": "answered",
+   "threat": 12,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 3,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "package names and metadata are public by design."
+  },
+  {
+   "element": 20,
+   "category": 4,
+   "state": "answered",
+   "threat": 31,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 21,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 21,
+   "category": 1,
+   "state": "answered",
+   "threat": 20,
+   "rationale": ""
+  },
+  {
+   "element": 21,
    "category": 2,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 19,
+   "element": 21,
    "category": 3,
    "state": "stated",
    "threat": 0,
    "rationale": "issues and pull requests are public by design."
   },
   {
-   "element": 19,
+   "element": 21,
    "category": 4,
    "state": "answered",
    "threat": 14,
    "rationale": ""
   },
   {
-   "element": 19,
+   "element": 21,
    "category": 5,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 20,
+   "element": 22,
    "category": 0,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 20,
+   "element": 22,
    "category": 1,
    "state": "answered",
    "threat": 4,
    "rationale": ""
   },
   {
-   "element": 20,
+   "element": 22,
    "category": 2,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 20,
+   "element": 22,
    "category": 3,
    "state": "answered",
-   "threat": 4,
+   "threat": 32,
    "rationale": ""
   },
   {
-   "element": 20,
+   "element": 22,
    "category": 4,
    "state": "answered",
    "threat": 18,
    "rationale": ""
   },
   {
-   "element": 20,
+   "element": 22,
    "category": 5,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 21,
+   "element": 23,
    "category": 0,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 21,
+   "element": 23,
    "category": 1,
    "state": "answered",
    "threat": 1,
    "rationale": ""
   },
   {
-   "element": 21,
+   "element": 23,
    "category": 2,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 21,
+   "element": 23,
    "category": 3,
    "state": "answered",
    "threat": 3,
    "rationale": ""
   },
   {
-   "element": 21,
+   "element": 23,
    "category": 4,
    "state": "answered",
    "threat": 16,
    "rationale": ""
   },
   {
-   "element": 21,
+   "element": 23,
    "category": 5,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 22,
+   "element": 24,
    "category": 0,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 22,
+   "element": 24,
    "category": 1,
    "state": "answered",
    "threat": 26,
    "rationale": ""
   },
   {
-   "element": 22,
+   "element": 24,
    "category": 2,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 22,
+   "element": 24,
    "category": 3,
    "state": "answered",
    "threat": 8,
    "rationale": ""
   },
   {
-   "element": 22,
+   "element": 24,
    "category": 4,
    "state": "answered",
    "threat": 18,
    "rationale": ""
   },
   {
-   "element": 22,
+   "element": 24,
    "category": 5,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 23,
+   "element": 25,
    "category": 0,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 23,
+   "element": 25,
    "category": 1,
    "state": "answered",
    "threat": 23,
    "rationale": ""
   },
   {
-   "element": 23,
+   "element": 25,
    "category": 2,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 23,
+   "element": 25,
    "category": 3,
    "state": "answered",
    "threat": 23,
    "rationale": ""
   },
   {
-   "element": 23,
+   "element": 25,
    "category": 4,
    "state": "answered",
    "threat": 25,
    "rationale": ""
   },
   {
-   "element": 23,
+   "element": 25,
    "category": 5,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 24,
+   "element": 26,
    "category": 0,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 24,
+   "element": 26,
    "category": 1,
    "state": "answered",
    "threat": 23,
    "rationale": ""
   },
   {
-   "element": 24,
+   "element": 26,
    "category": 2,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 24,
+   "element": 26,
    "category": 3,
    "state": "answered",
    "threat": 9,
    "rationale": ""
   },
   {
-   "element": 24,
+   "element": 26,
    "category": 4,
    "state": "answered",
    "threat": 18,
    "rationale": ""
   },
   {
-   "element": 24,
+   "element": 26,
    "category": 5,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 25,
+   "element": 27,
    "category": 0,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 25,
+   "element": 27,
    "category": 1,
    "state": "answered",
    "threat": 2,
    "rationale": ""
   },
   {
-   "element": 25,
+   "element": 27,
    "category": 2,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 25,
+   "element": 27,
    "category": 3,
    "state": "stated",
    "threat": 0,
    "rationale": "the inputs are public packages."
   },
   {
-   "element": 25,
+   "element": 27,
    "category": 4,
    "state": "answered",
    "threat": 18,
    "rationale": ""
   },
   {
-   "element": 25,
+   "element": 27,
    "category": 5,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 26,
+   "element": 28,
    "category": 0,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 26,
+   "element": 28,
    "category": 1,
    "state": "answered",
    "threat": 12,
    "rationale": ""
   },
   {
-   "element": 26,
+   "element": 28,
    "category": 2,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 26,
+   "element": 28,
    "category": 3,
    "state": "answered",
    "threat": 3,
    "rationale": ""
   },
   {
-   "element": 26,
+   "element": 28,
    "category": 4,
    "state": "answered",
    "threat": 18,
    "rationale": ""
   },
   {
-   "element": 26,
+   "element": 28,
    "category": 5,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 27,
+   "element": 29,
    "category": 0,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 27,
+   "element": 29,
    "category": 1,
    "state": "answered",
    "threat": 6,
    "rationale": ""
   },
   {
-   "element": 27,
+   "element": 29,
    "category": 2,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 27,
+   "element": 29,
    "category": 3,
    "state": "answered",
    "threat": 6,
    "rationale": ""
   },
   {
-   "element": 27,
+   "element": 29,
    "category": 4,
    "state": "answered",
    "threat": 15,
    "rationale": ""
   },
   {
-   "element": 27,
+   "element": 29,
    "category": 5,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 28,
+   "element": 30,
    "category": 0,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 28,
+   "element": 30,
    "category": 1,
    "state": "answered",
    "threat": 4,
    "rationale": ""
   },
   {
-   "element": 28,
+   "element": 30,
    "category": 2,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 28,
+   "element": 30,
    "category": 3,
    "state": "answered",
    "threat": 4,
    "rationale": ""
   },
   {
-   "element": 28,
+   "element": 30,
    "category": 4,
    "state": "answered",
    "threat": 14,
    "rationale": ""
   },
   {
-   "element": 28,
+   "element": 30,
    "category": 5,
    "state": "notApplicable",
    "threat": 0,
@@ -6010,341 +6277,439 @@
   {
    "element": 22,
    "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 24,
+   "category": 0,
    "state": "answered",
    "threat": 8,
    "rationale": ""
   },
   {
-   "element": 22,
+   "element": 24,
    "category": 1,
    "state": "answered",
    "threat": 8,
    "rationale": ""
   },
   {
-   "element": 22,
+   "element": 24,
    "category": 2,
    "state": "answered",
    "threat": 29,
    "rationale": ""
   },
   {
-   "element": 22,
+   "element": 24,
    "category": 3,
    "state": "answered",
    "threat": 8,
    "rationale": ""
   },
   {
-   "element": 22,
+   "element": 24,
    "category": 4,
    "state": "answered",
    "threat": 13,
    "rationale": ""
   },
   {
-   "element": 22,
+   "element": 24,
    "category": 5,
    "state": "answered",
    "threat": 27,
    "rationale": ""
   },
   {
-   "element": 22,
+   "element": 24,
    "category": 6,
    "state": "answered",
    "threat": 28,
    "rationale": ""
   },
   {
-   "element": 23,
+   "element": 25,
    "category": 0,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 23,
+   "element": 25,
    "category": 1,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 23,
+   "element": 25,
    "category": 2,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 23,
+   "element": 25,
    "category": 3,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 23,
+   "element": 25,
    "category": 4,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 23,
+   "element": 25,
    "category": 5,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 23,
+   "element": 25,
    "category": 6,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 24,
+   "element": 26,
    "category": 0,
    "state": "answered",
    "threat": 9,
    "rationale": ""
   },
   {
-   "element": 24,
+   "element": 26,
    "category": 1,
    "state": "answered",
    "threat": 9,
    "rationale": ""
   },
   {
-   "element": 24,
+   "element": 26,
    "category": 2,
    "state": "stated",
    "threat": 0,
    "rationale": "a call records nothing a person could need to deny beyond what they store."
   },
   {
-   "element": 24,
+   "element": 26,
    "category": 3,
    "state": "answered",
    "threat": 9,
    "rationale": ""
   },
   {
-   "element": 24,
+   "element": 26,
    "category": 4,
    "state": "answered",
    "threat": 9,
    "rationale": ""
   },
   {
-   "element": 24,
+   "element": 26,
    "category": 5,
    "state": "answered",
    "threat": 28,
    "rationale": ""
   },
   {
-   "element": 24,
+   "element": 26,
    "category": 6,
    "state": "answered",
    "threat": 28,
    "rationale": ""
   },
   {
-   "element": 25,
+   "element": 27,
    "category": 0,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 25,
+   "element": 27,
    "category": 1,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 25,
+   "element": 27,
    "category": 2,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 25,
+   "element": 27,
    "category": 3,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 25,
+   "element": 27,
    "category": 4,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 25,
+   "element": 27,
    "category": 5,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 25,
+   "element": 27,
    "category": 6,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 26,
+   "element": 28,
    "category": 0,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 26,
+   "element": 28,
    "category": 1,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 26,
+   "element": 28,
    "category": 2,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 26,
+   "element": 28,
    "category": 3,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 26,
+   "element": 28,
    "category": 4,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 26,
+   "element": 28,
    "category": 5,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 26,
+   "element": 28,
    "category": 6,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 27,
+   "element": 29,
    "category": 0,
    "state": "answered",
    "threat": 8,
    "rationale": ""
   },
   {
-   "element": 27,
+   "element": 29,
    "category": 1,
    "state": "answered",
    "threat": 8,
    "rationale": ""
   },
   {
-   "element": 27,
+   "element": 29,
    "category": 2,
    "state": "answered",
    "threat": 29,
    "rationale": ""
   },
   {
-   "element": 27,
+   "element": 29,
    "category": 3,
    "state": "answered",
    "threat": 8,
    "rationale": ""
   },
   {
-   "element": 27,
+   "element": 29,
    "category": 4,
    "state": "answered",
    "threat": 6,
    "rationale": ""
   },
   {
-   "element": 27,
+   "element": 29,
    "category": 5,
    "state": "answered",
    "threat": 27,
    "rationale": ""
   },
   {
-   "element": 27,
+   "element": 29,
    "category": 6,
    "state": "answered",
    "threat": 28,
    "rationale": ""
   },
   {
-   "element": 28,
+   "element": 30,
    "category": 0,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 28,
+   "element": 30,
    "category": 1,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 28,
+   "element": 30,
    "category": 2,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 28,
+   "element": 30,
    "category": 3,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 28,
+   "element": 30,
    "category": 4,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 28,
+   "element": 30,
    "category": 5,
    "state": "notApplicable",
    "threat": 0,
    "rationale": ""
   },
   {
-   "element": 28,
+   "element": 30,
    "category": 6,
    "state": "notApplicable",
    "threat": 0,

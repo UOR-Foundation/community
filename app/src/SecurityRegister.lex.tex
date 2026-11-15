@@ -9,7 +9,7 @@ definition{
   name: release,
   parameters: [],
   result: Foundation.Security.V1.Model::Release,
-  body: (record Foundation.Security.V1.Model::Release {csfFunctionsCount := 6, csfCategoriesCount := 22, subcategoriesCount := 106, cellsCount := 50, techniquesCount := 32, scorecardChecksCount := 20, threatSourcesCount := 9, elementsCount := 29, controlsCount := 46, threatsCount := 30, threatControlsCount := 53, threatTechniquesCount := 38, evidenceCount := 64, outcomesCount := 118, gapsCount := 38, strideSlotsCount := 174, linddunSlotsCount := 203, indicatorsCount := 8, openClaimsCount := 10, assessed := "2026-11-15", sources := "csf-2.0.json#sha256:de36759d2f3f70a0f28ab9a95505259e568467923295a13d510a068939773e5a sp800-30r1.pdf#sha256:f214087f0bdb35932a28c16eb93932a33c67a6edfb5e6f1638866bd201c98e04 enterprise-attack-20.1.json#sha256:539a843a7b53ed9749740b2123dddae3726b1a4831841c32aca740b011b910b5 ATLAS-2026.10.yaml#sha256:ac41ee9f99a47084ba5fdfc77ae83a28687e12390240fffeb37df7914ffe142d scorecard-checks.yaml#sha256:78f9f9131b44fec0115cdf7124d8738d5a412deeb204662ca384bdfe8eabb952 linddun.html#sha256:728c60453d035cc7fbf6c0351d8a26541c7069332ae0f32d5ff8db7f20aca849 https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8 https://github.com/UOR-Foundation/website@e82ffdedc5d85ebd0bde239d50d4651005045d31", pdftotext := "pdftotext version 24.02.0"})
+  body: (record Foundation.Security.V1.Model::Release {csfFunctionsCount := 6, csfCategoriesCount := 22, subcategoriesCount := 106, cellsCount := 50, techniquesCount := 32, scorecardChecksCount := 20, threatSourcesCount := 9, elementsCount := 31, controlsCount := 51, threatsCount := 34, threatControlsCount := 60, threatTechniquesCount := 42, evidenceCount := 64, outcomesCount := 128, gapsCount := 37, strideSlotsCount := 186, linddunSlotsCount := 217, indicatorsCount := 8, openClaimsCount := 10, assessed := "2026-11-15", sources := "csf-2.0.json#sha256:de36759d2f3f70a0f28ab9a95505259e568467923295a13d510a068939773e5a sp800-30r1.pdf#sha256:f214087f0bdb35932a28c16eb93932a33c67a6edfb5e6f1638866bd201c98e04 enterprise-attack-20.1.json#sha256:539a843a7b53ed9749740b2123dddae3726b1a4831841c32aca740b011b910b5 ATLAS-2026.10.yaml#sha256:ac41ee9f99a47084ba5fdfc77ae83a28687e12390240fffeb37df7914ffe142d scorecard-checks.yaml#sha256:78f9f9131b44fec0115cdf7124d8738d5a412deeb204662ca384bdfe8eabb952 linddun.html#sha256:728c60453d035cc7fbf6c0351d8a26541c7069332ae0f32d5ff8db7f20aca849 https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8 https://github.com/UOR-Foundation/website@e82ffdedc5d85ebd0bde239d50d4651005045d31", pdftotext := "pdftotext version 24.02.0"})
 }
 
 definition{
@@ -1983,77 +1983,91 @@ definition{
   name: element19,
   parameters: [],
   result: Foundation.Security.V1.Model::Element,
-  body: (record Foundation.Security.V1.Model::Element {index := 19, code := "F1", name := "Contribution", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := false})
+  body: (record Foundation.Security.V1.Model::Element {index := 19, code := "D7", name := "Domains and DNS", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataStore), personal := false})
 }
 
 definition{
   name: element20,
   parameters: [],
   result: Foundation.Security.V1.Model::Element,
-  body: (record Foundation.Security.V1.Model::Element {index := 20, code := "F2", name := "Agent push", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := false})
+  body: (record Foundation.Security.V1.Model::Element {index := 20, code := "D8", name := "Package namespaces", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataStore), personal := false})
 }
 
 definition{
   name: element21,
   parameters: [],
   result: Foundation.Security.V1.Model::Element,
-  body: (record Foundation.Security.V1.Model::Element {index := 21, code := "F3", name := "Secret use", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := false})
+  body: (record Foundation.Security.V1.Model::Element {index := 21, code := "F1", name := "Contribution", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := false})
 }
 
 definition{
   name: element22,
   parameters: [],
   result: Foundation.Security.V1.Model::Element,
-  body: (record Foundation.Security.V1.Model::Element {index := 22, code := "F4", name := "Corpus publication", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := true})
+  body: (record Foundation.Security.V1.Model::Element {index := 22, code := "F2", name := "Agent push", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := false})
 }
 
 definition{
   name: element23,
   parameters: [],
   result: Foundation.Security.V1.Model::Element,
-  body: (record Foundation.Security.V1.Model::Element {index := 23, code := "F5", name := "Website traffic", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := false})
+  body: (record Foundation.Security.V1.Model::Element {index := 23, code := "F3", name := "Secret use", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := false})
 }
 
 definition{
   name: element24,
   parameters: [],
   result: Foundation.Security.V1.Model::Element,
-  body: (record Foundation.Security.V1.Model::Element {index := 24, code := "F6", name := "Website data access", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := true})
+  body: (record Foundation.Security.V1.Model::Element {index := 24, code := "F4", name := "Corpus publication", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := true})
 }
 
 definition{
   name: element25,
   parameters: [],
   result: Foundation.Security.V1.Model::Element,
-  body: (record Foundation.Security.V1.Model::Element {index := 25, code := "F7", name := "Upstream inputs", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := false})
+  body: (record Foundation.Security.V1.Model::Element {index := 25, code := "F5", name := "Website traffic", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := false})
 }
 
 definition{
   name: element26,
   parameters: [],
   result: Foundation.Security.V1.Model::Element,
-  body: (record Foundation.Security.V1.Model::Element {index := 26, code := "F8", name := "Release publication", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := false})
+  body: (record Foundation.Security.V1.Model::Element {index := 26, code := "F6", name := "Website data access", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := true})
 }
 
 definition{
   name: element27,
   parameters: [],
   result: Foundation.Security.V1.Model::Element,
-  body: (record Foundation.Security.V1.Model::Element {index := 27, code := "F9", name := "Discord conversation", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := true})
+  body: (record Foundation.Security.V1.Model::Element {index := 27, code := "F7", name := "Upstream inputs", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := false})
 }
 
 definition{
   name: element28,
   parameters: [],
   result: Foundation.Security.V1.Model::Element,
-  body: (record Foundation.Security.V1.Model::Element {index := 28, code := "F10", name := "Untrusted text to agents", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := false})
+  body: (record Foundation.Security.V1.Model::Element {index := 28, code := "F8", name := "Release publication", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := false})
+}
+
+definition{
+  name: element29,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Element,
+  body: (record Foundation.Security.V1.Model::Element {index := 29, code := "F9", name := "Discord conversation", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := true})
+}
+
+definition{
+  name: element30,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Element,
+  body: (record Foundation.Security.V1.Model::Element {index := 30, code := "F10", name := "Untrusted text to agents", kind := (ctor Foundation.Security.V1.Model::ElementKind.dataFlow), personal := false})
 }
 
 definition{
   name: elementsFrom0,
   parameters: [],
   result: (List Foundation.Security.V1.Model::Element),
-  body: (cons (element0) (cons (element1) (cons (element2) (cons (element3) (cons (element4) (cons (element5) (cons (element6) (cons (element7) (cons (element8) (cons (element9) (cons (element10) (cons (element11) (cons (element12) (cons (element13) (cons (element14) (cons (element15) (cons (element16) (cons (element17) (cons (element18) (cons (element19) (cons (element20) (cons (element21) (cons (element22) (cons (element23) (cons (element24) (cons (element25) (cons (element26) (cons (element27) (cons (element28) (nil Foundation.Security.V1.Model::Element))))))))))))))))))))))))))))))
+  body: (cons (element0) (cons (element1) (cons (element2) (cons (element3) (cons (element4) (cons (element5) (cons (element6) (cons (element7) (cons (element8) (cons (element9) (cons (element10) (cons (element11) (cons (element12) (cons (element13) (cons (element14) (cons (element15) (cons (element16) (cons (element17) (cons (element18) (cons (element19) (cons (element20) (cons (element21) (cons (element22) (cons (element23) (cons (element24) (cons (element25) (cons (element26) (cons (element27) (cons (element28) (cons (element29) (cons (element30) (nil Foundation.Security.V1.Model::Element))))))))))))))))))))))))))))))))
 }
 
 definition{
@@ -2386,10 +2400,52 @@ definition{
 }
 
 definition{
+  name: control46,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Control,
+  body: (record Foundation.Security.V1.Model::Control {index := 46, code := "C47", name := "Domain renewal and ownership record", status := (ctor Foundation.Security.V1.Model::Status.planned), evidenceCount := 0})
+}
+
+definition{
+  name: control47,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Control,
+  body: (record Foundation.Security.V1.Model::Control {index := 47, code := "C48", name := "Claim every published name", status := (ctor Foundation.Security.V1.Model::Status.planned), evidenceCount := 0})
+}
+
+definition{
+  name: control48,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Control,
+  body: (record Foundation.Security.V1.Model::Control {index := 48, code := "C49", name := "Rotate and move the exposed key", status := (ctor Foundation.Security.V1.Model::Status.planned), evidenceCount := 0})
+}
+
+definition{
+  name: control49,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Control,
+  body: (record Foundation.Security.V1.Model::Control {index := 49, code := "C50", name := "Publish the SDK from the organization namespace", status := (ctor Foundation.Security.V1.Model::Status.planned), evidenceCount := 0})
+}
+
+definition{
+  name: control50,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Control,
+  body: (record Foundation.Security.V1.Model::Control {index := 50, code := "C51", name := "No dangling DNS", status := (ctor Foundation.Security.V1.Model::Status.planned), evidenceCount := 0})
+}
+
+definition{
+  name: controlsFrom48,
+  parameters: [],
+  result: (List Foundation.Security.V1.Model::Control),
+  body: (cons (control48) (cons (control49) (cons (control50) (nil Foundation.Security.V1.Model::Control))))
+}
+
+definition{
   name: controlsFrom0,
   parameters: [],
   result: (List Foundation.Security.V1.Model::Control),
-  body: (cons (control0) (cons (control1) (cons (control2) (cons (control3) (cons (control4) (cons (control5) (cons (control6) (cons (control7) (cons (control8) (cons (control9) (cons (control10) (cons (control11) (cons (control12) (cons (control13) (cons (control14) (cons (control15) (cons (control16) (cons (control17) (cons (control18) (cons (control19) (cons (control20) (cons (control21) (cons (control22) (cons (control23) (cons (control24) (cons (control25) (cons (control26) (cons (control27) (cons (control28) (cons (control29) (cons (control30) (cons (control31) (cons (control32) (cons (control33) (cons (control34) (cons (control35) (cons (control36) (cons (control37) (cons (control38) (cons (control39) (cons (control40) (cons (control41) (cons (control42) (cons (control43) (cons (control44) (cons (control45) (nil Foundation.Security.V1.Model::Control)))))))))))))))))))))))))))))))))))))))))))))))
+  body: (cons (control0) (cons (control1) (cons (control2) (cons (control3) (cons (control4) (cons (control5) (cons (control6) (cons (control7) (cons (control8) (cons (control9) (cons (control10) (cons (control11) (cons (control12) (cons (control13) (cons (control14) (cons (control15) (cons (control16) (cons (control17) (cons (control18) (cons (control19) (cons (control20) (cons (control21) (cons (control22) (cons (control23) (cons (control24) (cons (control25) (cons (control26) (cons (control27) (cons (control28) (cons (control29) (cons (control30) (cons (control31) (cons (control32) (cons (control33) (cons (control34) (cons (control35) (cons (control36) (cons (control37) (cons (control38) (cons (control39) (cons (control40) (cons (control41) (cons (control42) (cons (control43) (cons (control44) (cons (control45) (cons (control46) (cons (control47) (controlsFrom48)))))))))))))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
@@ -2487,7 +2543,7 @@ definition{
   name: threat12,
   parameters: [],
   result: Foundation.Security.V1.Model::Threat,
-  body: (record Foundation.Security.V1.Model::Threat {index := 12, code := "T13", name := "Tampered SDK image or release", source := 1, initiation := 1, adverse := 2, impact := 4, overall := 1, risk := 2, response := (ctor Foundation.Security.V1.Model::Response.mitigate), controlCount := 2, techniqueCount := 1})
+  body: (record Foundation.Security.V1.Model::Threat {index := 12, code := "T13", name := "Tampered SDK image or release", source := 1, initiation := 1, adverse := 2, impact := 4, overall := 1, risk := 2, response := (ctor Foundation.Security.V1.Model::Response.mitigate), controlCount := 3, techniqueCount := 1})
 }
 
 definition{
@@ -2610,10 +2666,38 @@ definition{
 }
 
 definition{
+  name: threat30,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Threat,
+  body: (record Foundation.Security.V1.Model::Threat {index := 30, code := "T33", name := "Domain registration lapse", source := 6, initiation := 2, adverse := 3, impact := 4, overall := 2, risk := 3, response := (ctor Foundation.Security.V1.Model::Response.mitigate), controlCount := 2, techniqueCount := 1})
+}
+
+definition{
+  name: threat31,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Threat,
+  body: (record Foundation.Security.V1.Model::Threat {index := 31, code := "T34", name := "Name squatting and dependency confusion", source := 1, initiation := 2, adverse := 3, impact := 3, overall := 2, risk := 2, response := (ctor Foundation.Security.V1.Model::Response.mitigate), controlCount := 1, techniqueCount := 1})
+}
+
+definition{
+  name: threat32,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Threat,
+  body: (record Foundation.Security.V1.Model::Threat {index := 32, code := "T35", name := "Credentials committed to a public repository", source := 6, initiation := 3, adverse := 2, impact := 2, overall := 2, risk := 2, response := (ctor Foundation.Security.V1.Model::Response.mitigate), controlCount := 2, techniqueCount := 1})
+}
+
+definition{
+  name: threat33,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Threat,
+  body: (record Foundation.Security.V1.Model::Threat {index := 33, code := "T37", name := "Subdomain takeover", source := 3, initiation := 1, adverse := 2, impact := 3, overall := 1, risk := 1, response := (ctor Foundation.Security.V1.Model::Response.mitigate), controlCount := 1, techniqueCount := 1})
+}
+
+definition{
   name: threatsFrom0,
   parameters: [],
   result: (List Foundation.Security.V1.Model::Threat),
-  body: (cons (threat0) (cons (threat1) (cons (threat2) (cons (threat3) (cons (threat4) (cons (threat5) (cons (threat6) (cons (threat7) (cons (threat8) (cons (threat9) (cons (threat10) (cons (threat11) (cons (threat12) (cons (threat13) (cons (threat14) (cons (threat15) (cons (threat16) (cons (threat17) (cons (threat18) (cons (threat19) (cons (threat20) (cons (threat21) (cons (threat22) (cons (threat23) (cons (threat24) (cons (threat25) (cons (threat26) (cons (threat27) (cons (threat28) (cons (threat29) (nil Foundation.Security.V1.Model::Threat)))))))))))))))))))))))))))))))
+  body: (cons (threat0) (cons (threat1) (cons (threat2) (cons (threat3) (cons (threat4) (cons (threat5) (cons (threat6) (cons (threat7) (cons (threat8) (cons (threat9) (cons (threat10) (cons (threat11) (cons (threat12) (cons (threat13) (cons (threat14) (cons (threat15) (cons (threat16) (cons (threat17) (cons (threat18) (cons (threat19) (cons (threat20) (cons (threat21) (cons (threat22) (cons (threat23) (cons (threat24) (cons (threat25) (cons (threat26) (cons (threat27) (cons (threat28) (cons (threat29) (cons (threat30) (cons (threat31) (cons (threat32) (cons (threat33) (nil Foundation.Security.V1.Model::Threat)))))))))))))))))))))))))))))))))))
 }
 
 definition{
@@ -2837,168 +2921,217 @@ definition{
   name: threatControl30,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 30, threat := 13, control := 27})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 30, threat := 12, control := 49})
 }
 
 definition{
   name: threatControl31,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 31, threat := 14, control := 4})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 31, threat := 13, control := 27})
 }
 
 definition{
   name: threatControl32,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 32, threat := 14, control := 28})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 32, threat := 14, control := 4})
 }
 
 definition{
   name: threatControl33,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 33, threat := 15, control := 16})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 33, threat := 14, control := 28})
 }
 
 definition{
   name: threatControl34,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 34, threat := 16, control := 29})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 34, threat := 15, control := 16})
 }
 
 definition{
   name: threatControl35,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 35, threat := 16, control := 15})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 35, threat := 16, control := 29})
 }
 
 definition{
   name: threatControl36,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 36, threat := 17, control := 1})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 36, threat := 16, control := 15})
 }
 
 definition{
   name: threatControl37,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 37, threat := 17, control := 30})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 37, threat := 17, control := 1})
 }
 
 definition{
   name: threatControl38,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 38, threat := 18, control := 30})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 38, threat := 17, control := 30})
 }
 
 definition{
   name: threatControl39,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 39, threat := 18, control := 31})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 39, threat := 18, control := 30})
 }
 
 definition{
   name: threatControl40,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 40, threat := 19, control := 32})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 40, threat := 18, control := 31})
 }
 
 definition{
   name: threatControl41,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 41, threat := 19, control := 26})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 41, threat := 19, control := 32})
 }
 
 definition{
   name: threatControl42,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 42, threat := 20, control := 1})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 42, threat := 19, control := 26})
 }
 
 definition{
   name: threatControl43,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 43, threat := 20, control := 12})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 43, threat := 20, control := 1})
 }
 
 definition{
   name: threatControl44,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 44, threat := 20, control := 33})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 44, threat := 20, control := 12})
 }
 
 definition{
   name: threatControl45,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 45, threat := 22, control := 34})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 45, threat := 20, control := 33})
 }
 
 definition{
   name: threatControl46,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 46, threat := 23, control := 35})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 46, threat := 22, control := 34})
 }
 
 definition{
   name: threatControl47,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 47, threat := 24, control := 36})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 47, threat := 23, control := 35})
 }
 
 definition{
   name: threatControl48,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 48, threat := 25, control := 31})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 48, threat := 24, control := 36})
 }
 
 definition{
   name: threatControl49,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 49, threat := 26, control := 37})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 49, threat := 25, control := 31})
 }
 
 definition{
   name: threatControl50,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 50, threat := 27, control := 38})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 50, threat := 26, control := 37})
 }
 
 definition{
   name: threatControl51,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 51, threat := 28, control := 38})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 51, threat := 27, control := 38})
 }
 
 definition{
   name: threatControl52,
   parameters: [],
   result: Foundation.Security.V1.Model::ThreatControl,
-  body: (record Foundation.Security.V1.Model::ThreatControl {index := 52, threat := 29, control := 20})
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 52, threat := 28, control := 38})
+}
+
+definition{
+  name: threatControl53,
+  parameters: [],
+  result: Foundation.Security.V1.Model::ThreatControl,
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 53, threat := 29, control := 20})
+}
+
+definition{
+  name: threatControl54,
+  parameters: [],
+  result: Foundation.Security.V1.Model::ThreatControl,
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 54, threat := 30, control := 24})
+}
+
+definition{
+  name: threatControl55,
+  parameters: [],
+  result: Foundation.Security.V1.Model::ThreatControl,
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 55, threat := 30, control := 46})
+}
+
+definition{
+  name: threatControl56,
+  parameters: [],
+  result: Foundation.Security.V1.Model::ThreatControl,
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 56, threat := 31, control := 47})
+}
+
+definition{
+  name: threatControl57,
+  parameters: [],
+  result: Foundation.Security.V1.Model::ThreatControl,
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 57, threat := 32, control := 10})
+}
+
+definition{
+  name: threatControl58,
+  parameters: [],
+  result: Foundation.Security.V1.Model::ThreatControl,
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 58, threat := 32, control := 48})
+}
+
+definition{
+  name: threatControl59,
+  parameters: [],
+  result: Foundation.Security.V1.Model::ThreatControl,
+  body: (record Foundation.Security.V1.Model::ThreatControl {index := 59, threat := 33, control := 50})
 }
 
 definition{
   name: threatControlsFrom48,
   parameters: [],
   result: (List Foundation.Security.V1.Model::ThreatControl),
-  body: (cons (threatControl48) (cons (threatControl49) (cons (threatControl50) (cons (threatControl51) (cons (threatControl52) (nil Foundation.Security.V1.Model::ThreatControl))))))
+  body: (cons (threatControl48) (cons (threatControl49) (cons (threatControl50) (cons (threatControl51) (cons (threatControl52) (cons (threatControl53) (cons (threatControl54) (cons (threatControl55) (cons (threatControl56) (cons (threatControl57) (cons (threatControl58) (cons (threatControl59) (nil Foundation.Security.V1.Model::ThreatControl)))))))))))))
 }
 
 definition{
@@ -3282,10 +3415,38 @@ definition{
 }
 
 definition{
+  name: threatTechnique38,
+  parameters: [],
+  result: Foundation.Security.V1.Model::ThreatTechnique,
+  body: (record Foundation.Security.V1.Model::ThreatTechnique {index := 38, threat := 30, technique := 22})
+}
+
+definition{
+  name: threatTechnique39,
+  parameters: [],
+  result: Foundation.Security.V1.Model::ThreatTechnique,
+  body: (record Foundation.Security.V1.Model::ThreatTechnique {index := 39, threat := 31, technique := 7})
+}
+
+definition{
+  name: threatTechnique40,
+  parameters: [],
+  result: Foundation.Security.V1.Model::ThreatTechnique,
+  body: (record Foundation.Security.V1.Model::ThreatTechnique {index := 40, threat := 32, technique := 17})
+}
+
+definition{
+  name: threatTechnique41,
+  parameters: [],
+  result: Foundation.Security.V1.Model::ThreatTechnique,
+  body: (record Foundation.Security.V1.Model::ThreatTechnique {index := 41, threat := 33, technique := 24})
+}
+
+definition{
   name: threatTechniquesFrom0,
   parameters: [],
   result: (List Foundation.Security.V1.Model::ThreatTechnique),
-  body: (cons (threatTechnique0) (cons (threatTechnique1) (cons (threatTechnique2) (cons (threatTechnique3) (cons (threatTechnique4) (cons (threatTechnique5) (cons (threatTechnique6) (cons (threatTechnique7) (cons (threatTechnique8) (cons (threatTechnique9) (cons (threatTechnique10) (cons (threatTechnique11) (cons (threatTechnique12) (cons (threatTechnique13) (cons (threatTechnique14) (cons (threatTechnique15) (cons (threatTechnique16) (cons (threatTechnique17) (cons (threatTechnique18) (cons (threatTechnique19) (cons (threatTechnique20) (cons (threatTechnique21) (cons (threatTechnique22) (cons (threatTechnique23) (cons (threatTechnique24) (cons (threatTechnique25) (cons (threatTechnique26) (cons (threatTechnique27) (cons (threatTechnique28) (cons (threatTechnique29) (cons (threatTechnique30) (cons (threatTechnique31) (cons (threatTechnique32) (cons (threatTechnique33) (cons (threatTechnique34) (cons (threatTechnique35) (cons (threatTechnique36) (cons (threatTechnique37) (nil Foundation.Security.V1.Model::ThreatTechnique)))))))))))))))))))))))))))))))))))))))
+  body: (cons (threatTechnique0) (cons (threatTechnique1) (cons (threatTechnique2) (cons (threatTechnique3) (cons (threatTechnique4) (cons (threatTechnique5) (cons (threatTechnique6) (cons (threatTechnique7) (cons (threatTechnique8) (cons (threatTechnique9) (cons (threatTechnique10) (cons (threatTechnique11) (cons (threatTechnique12) (cons (threatTechnique13) (cons (threatTechnique14) (cons (threatTechnique15) (cons (threatTechnique16) (cons (threatTechnique17) (cons (threatTechnique18) (cons (threatTechnique19) (cons (threatTechnique20) (cons (threatTechnique21) (cons (threatTechnique22) (cons (threatTechnique23) (cons (threatTechnique24) (cons (threatTechnique25) (cons (threatTechnique26) (cons (threatTechnique27) (cons (threatTechnique28) (cons (threatTechnique29) (cons (threatTechnique30) (cons (threatTechnique31) (cons (threatTechnique32) (cons (threatTechnique33) (cons (threatTechnique34) (cons (threatTechnique35) (cons (threatTechnique36) (cons (threatTechnique37) (cons (threatTechnique38) (cons (threatTechnique39) (cons (threatTechnique40) (cons (threatTechnique41) (nil Foundation.Security.V1.Model::ThreatTechnique)))))))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
@@ -3887,714 +4048,784 @@ definition{
   name: outcome17,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 17, control := 7, subcategory := 24})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 17, control := 49, subcategory := 22})
 }
 
 definition{
   name: outcome18,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 18, control := 40, subcategory := 24})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 18, control := 7, subcategory := 24})
 }
 
 definition{
   name: outcome19,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 19, control := 6, subcategory := 27})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 19, control := 40, subcategory := 24})
 }
 
 definition{
   name: outcome20,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 20, control := 23, subcategory := 27})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 20, control := 6, subcategory := 27})
 }
 
 definition{
   name: outcome21,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 21, control := 8, subcategory := 29})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 21, control := 23, subcategory := 27})
 }
 
 definition{
   name: outcome22,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 22, control := 7, subcategory := 32})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 22, control := 46, subcategory := 27})
 }
 
 definition{
   name: outcome23,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 23, control := 24, subcategory := 32})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 23, control := 47, subcategory := 27})
 }
 
 definition{
   name: outcome24,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 24, control := 44, subcategory := 32})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 24, control := 8, subcategory := 29})
 }
 
 definition{
   name: outcome25,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 25, control := 40, subcategory := 33})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 25, control := 7, subcategory := 32})
 }
 
 definition{
   name: outcome26,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 26, control := 40, subcategory := 35})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 26, control := 24, subcategory := 32})
 }
 
 definition{
   name: outcome27,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 27, control := 19, subcategory := 36})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 27, control := 44, subcategory := 32})
 }
 
 definition{
   name: outcome28,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 28, control := 44, subcategory := 37})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 28, control := 40, subcategory := 33})
 }
 
 definition{
   name: outcome29,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 29, control := 8, subcategory := 38})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 29, control := 40, subcategory := 35})
 }
 
 definition{
   name: outcome30,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 30, control := 22, subcategory := 38})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 30, control := 19, subcategory := 36})
 }
 
 definition{
   name: outcome31,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 31, control := 27, subcategory := 38})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 31, control := 44, subcategory := 37})
 }
 
 definition{
   name: outcome32,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 32, control := 45, subcategory := 38})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 32, control := 46, subcategory := 37})
 }
 
 definition{
   name: outcome33,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 33, control := 40, subcategory := 39})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 33, control := 8, subcategory := 38})
 }
 
 definition{
   name: outcome34,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 34, control := 40, subcategory := 40})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 34, control := 22, subcategory := 38})
 }
 
 definition{
   name: outcome35,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 35, control := 40, subcategory := 41})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 35, control := 27, subcategory := 38})
 }
 
 definition{
   name: outcome36,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 36, control := 40, subcategory := 42})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 36, control := 45, subcategory := 38})
 }
 
 definition{
   name: outcome37,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 37, control := 40, subcategory := 43})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 37, control := 40, subcategory := 39})
 }
 
 definition{
   name: outcome38,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 38, control := 29, subcategory := 44})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 38, control := 40, subcategory := 40})
 }
 
 definition{
   name: outcome39,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 39, control := 27, subcategory := 45})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 39, control := 40, subcategory := 41})
 }
 
 definition{
   name: outcome40,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 40, control := 39, subcategory := 45})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 40, control := 40, subcategory := 42})
 }
 
 definition{
   name: outcome41,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 41, control := 6, subcategory := 46})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 41, control := 40, subcategory := 43})
 }
 
 definition{
   name: outcome42,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 42, control := 7, subcategory := 46})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 42, control := 29, subcategory := 44})
 }
 
 definition{
   name: outcome43,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 43, control := 25, subcategory := 46})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 43, control := 27, subcategory := 45})
 }
 
 definition{
   name: outcome44,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 44, control := 26, subcategory := 46})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 44, control := 39, subcategory := 45})
 }
 
 definition{
   name: outcome45,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 45, control := 41, subcategory := 48})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 45, control := 6, subcategory := 46})
 }
 
 definition{
   name: outcome46,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 46, control := 12, subcategory := 49})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 46, control := 7, subcategory := 46})
 }
 
 definition{
   name: outcome47,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 47, control := 0, subcategory := 52})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 47, control := 25, subcategory := 46})
 }
 
 definition{
   name: outcome48,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 48, control := 9, subcategory := 52})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 48, control := 26, subcategory := 46})
 }
 
 definition{
   name: outcome49,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 49, control := 14, subcategory := 53})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 49, control := 47, subcategory := 46})
 }
 
 definition{
   name: outcome50,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 50, control := 0, subcategory := 54})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 50, control := 41, subcategory := 48})
 }
 
 definition{
   name: outcome51,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 51, control := 16, subcategory := 54})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 51, control := 12, subcategory := 49})
 }
 
 definition{
   name: outcome52,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 52, control := 34, subcategory := 54})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 52, control := 0, subcategory := 52})
 }
 
 definition{
   name: outcome53,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 53, control := 36, subcategory := 55})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 53, control := 9, subcategory := 52})
 }
 
 definition{
   name: outcome54,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 54, control := 1, subcategory := 56})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 54, control := 48, subcategory := 52})
 }
 
 definition{
   name: outcome55,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 55, control := 2, subcategory := 56})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 55, control := 14, subcategory := 53})
 }
 
 definition{
   name: outcome56,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 56, control := 4, subcategory := 56})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 56, control := 0, subcategory := 54})
 }
 
 definition{
   name: outcome57,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 57, control := 9, subcategory := 56})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 57, control := 16, subcategory := 54})
 }
 
 definition{
   name: outcome58,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 58, control := 13, subcategory := 56})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 58, control := 34, subcategory := 54})
 }
 
 definition{
   name: outcome59,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 59, control := 18, subcategory := 56})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 59, control := 36, subcategory := 55})
 }
 
 definition{
   name: outcome60,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 60, control := 21, subcategory := 56})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 60, control := 1, subcategory := 56})
 }
 
 definition{
   name: outcome61,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 61, control := 23, subcategory := 56})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 61, control := 2, subcategory := 56})
 }
 
 definition{
   name: outcome62,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 62, control := 11, subcategory := 59})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 62, control := 4, subcategory := 56})
 }
 
 definition{
   name: outcome63,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 63, control := 1, subcategory := 60})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 63, control := 9, subcategory := 56})
 }
 
 definition{
   name: outcome64,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 64, control := 9, subcategory := 60})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 64, control := 13, subcategory := 56})
 }
 
 definition{
   name: outcome65,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 65, control := 10, subcategory := 60})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 65, control := 18, subcategory := 56})
 }
 
 definition{
   name: outcome66,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 66, control := 19, subcategory := 60})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 66, control := 21, subcategory := 56})
 }
 
 definition{
   name: outcome67,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 67, control := 20, subcategory := 60})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 67, control := 23, subcategory := 56})
 }
 
 definition{
   name: outcome68,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 68, control := 21, subcategory := 60})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 68, control := 49, subcategory := 56})
 }
 
 definition{
   name: outcome69,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 69, control := 25, subcategory := 60})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 69, control := 11, subcategory := 59})
 }
 
 definition{
   name: outcome70,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 70, control := 36, subcategory := 60})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 70, control := 1, subcategory := 60})
 }
 
 definition{
   name: outcome71,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 71, control := 37, subcategory := 60})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 71, control := 9, subcategory := 60})
 }
 
 definition{
   name: outcome72,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 72, control := 35, subcategory := 61})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 72, control := 10, subcategory := 60})
 }
 
 definition{
   name: outcome73,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 73, control := 30, subcategory := 63})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 73, control := 19, subcategory := 60})
 }
 
 definition{
   name: outcome74,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 74, control := 1, subcategory := 64})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 74, control := 20, subcategory := 60})
 }
 
 definition{
   name: outcome75,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 75, control := 4, subcategory := 64})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 75, control := 21, subcategory := 60})
 }
 
 definition{
   name: outcome76,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 76, control := 24, subcategory := 64})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 76, control := 25, subcategory := 60})
 }
 
 definition{
   name: outcome77,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 77, control := 29, subcategory := 64})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 77, control := 36, subcategory := 60})
 }
 
 definition{
   name: outcome78,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 78, control := 6, subcategory := 65})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 78, control := 37, subcategory := 60})
 }
 
 definition{
   name: outcome79,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 79, control := 8, subcategory := 65})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 79, control := 35, subcategory := 61})
 }
 
 definition{
   name: outcome80,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 80, control := 44, subcategory := 65})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 80, control := 30, subcategory := 63})
 }
 
 definition{
   name: outcome81,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 81, control := 15, subcategory := 67})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 81, control := 1, subcategory := 64})
 }
 
 definition{
   name: outcome82,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 82, control := 3, subcategory := 68})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 82, control := 4, subcategory := 64})
 }
 
 definition{
   name: outcome83,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 83, control := 5, subcategory := 68})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 83, control := 24, subcategory := 64})
 }
 
 definition{
   name: outcome84,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 84, control := 3, subcategory := 69})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 84, control := 29, subcategory := 64})
 }
 
 definition{
   name: outcome85,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 85, control := 11, subcategory := 69})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 85, control := 50, subcategory := 64})
 }
 
 definition{
   name: outcome86,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 86, control := 12, subcategory := 69})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 86, control := 6, subcategory := 65})
 }
 
 definition{
   name: outcome87,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 87, control := 26, subcategory := 69})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 87, control := 8, subcategory := 65})
 }
 
 definition{
   name: outcome88,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 88, control := 33, subcategory := 69})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 88, control := 44, subcategory := 65})
 }
 
 definition{
   name: outcome89,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 89, control := 45, subcategory := 69})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 89, control := 15, subcategory := 67})
 }
 
 definition{
   name: outcome90,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 90, control := 31, subcategory := 72})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 90, control := 3, subcategory := 68})
 }
 
 definition{
   name: outcome91,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 91, control := 28, subcategory := 73})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 91, control := 5, subcategory := 68})
 }
 
 definition{
   name: outcome92,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 92, control := 41, subcategory := 74})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 92, control := 3, subcategory := 69})
 }
 
 definition{
   name: outcome93,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 93, control := 15, subcategory := 75})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 93, control := 11, subcategory := 69})
 }
 
 definition{
   name: outcome94,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 94, control := 40, subcategory := 78})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 94, control := 12, subcategory := 69})
 }
 
 definition{
   name: outcome95,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 95, control := 41, subcategory := 80})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 95, control := 26, subcategory := 69})
 }
 
 definition{
   name: outcome96,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 96, control := 16, subcategory := 82})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 96, control := 33, subcategory := 69})
 }
 
 definition{
   name: outcome97,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 97, control := 41, subcategory := 83})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 97, control := 45, subcategory := 69})
 }
 
 definition{
   name: outcome98,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 98, control := 10, subcategory := 84})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 98, control := 31, subcategory := 72})
 }
 
 definition{
   name: outcome99,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 99, control := 12, subcategory := 84})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 99, control := 28, subcategory := 73})
 }
 
 definition{
   name: outcome100,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 100, control := 22, subcategory := 84})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 100, control := 41, subcategory := 74})
 }
 
 definition{
   name: outcome101,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 101, control := 43, subcategory := 85})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 101, control := 15, subcategory := 75})
 }
 
 definition{
   name: outcome102,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 102, control := 39, subcategory := 86})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 102, control := 40, subcategory := 78})
 }
 
 definition{
   name: outcome103,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 103, control := 39, subcategory := 87})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 103, control := 41, subcategory := 80})
 }
 
 definition{
   name: outcome104,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 104, control := 43, subcategory := 88})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 104, control := 16, subcategory := 82})
 }
 
 definition{
   name: outcome105,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 105, control := 43, subcategory := 90})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 105, control := 41, subcategory := 83})
 }
 
 definition{
   name: outcome106,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 106, control := 14, subcategory := 91})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 106, control := 10, subcategory := 84})
 }
 
 definition{
   name: outcome107,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 107, control := 15, subcategory := 92})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 107, control := 12, subcategory := 84})
 }
 
 definition{
   name: outcome108,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 108, control := 37, subcategory := 92})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 108, control := 22, subcategory := 84})
 }
 
 definition{
   name: outcome109,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 109, control := 39, subcategory := 94})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 109, control := 50, subcategory := 84})
 }
 
 definition{
   name: outcome110,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 110, control := 27, subcategory := 95})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 110, control := 43, subcategory := 85})
 }
 
 definition{
   name: outcome111,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 111, control := 43, subcategory := 96})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 111, control := 39, subcategory := 86})
 }
 
 definition{
   name: outcome112,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 112, control := 43, subcategory := 97})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 112, control := 39, subcategory := 87})
 }
 
 definition{
   name: outcome113,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 113, control := 43, subcategory := 98})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 113, control := 43, subcategory := 88})
 }
 
 definition{
   name: outcome114,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 114, control := 43, subcategory := 99})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 114, control := 43, subcategory := 90})
 }
 
 definition{
   name: outcome115,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 115, control := 30, subcategory := 100})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 115, control := 14, subcategory := 91})
 }
 
 definition{
   name: outcome116,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 116, control := 31, subcategory := 102})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 116, control := 15, subcategory := 92})
 }
 
 definition{
   name: outcome117,
   parameters: [],
   result: Foundation.Security.V1.Model::Outcome,
-  body: (record Foundation.Security.V1.Model::Outcome {index := 117, control := 17, subcategory := 105})
+  body: (record Foundation.Security.V1.Model::Outcome {index := 117, control := 37, subcategory := 92})
+}
+
+definition{
+  name: outcome118,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Outcome,
+  body: (record Foundation.Security.V1.Model::Outcome {index := 118, control := 39, subcategory := 94})
+}
+
+definition{
+  name: outcome119,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Outcome,
+  body: (record Foundation.Security.V1.Model::Outcome {index := 119, control := 27, subcategory := 95})
+}
+
+definition{
+  name: outcome120,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Outcome,
+  body: (record Foundation.Security.V1.Model::Outcome {index := 120, control := 43, subcategory := 96})
+}
+
+definition{
+  name: outcome121,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Outcome,
+  body: (record Foundation.Security.V1.Model::Outcome {index := 121, control := 48, subcategory := 96})
+}
+
+definition{
+  name: outcome122,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Outcome,
+  body: (record Foundation.Security.V1.Model::Outcome {index := 122, control := 43, subcategory := 97})
+}
+
+definition{
+  name: outcome123,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Outcome,
+  body: (record Foundation.Security.V1.Model::Outcome {index := 123, control := 43, subcategory := 98})
+}
+
+definition{
+  name: outcome124,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Outcome,
+  body: (record Foundation.Security.V1.Model::Outcome {index := 124, control := 43, subcategory := 99})
+}
+
+definition{
+  name: outcome125,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Outcome,
+  body: (record Foundation.Security.V1.Model::Outcome {index := 125, control := 30, subcategory := 100})
+}
+
+definition{
+  name: outcome126,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Outcome,
+  body: (record Foundation.Security.V1.Model::Outcome {index := 126, control := 31, subcategory := 102})
+}
+
+definition{
+  name: outcome127,
+  parameters: [],
+  result: Foundation.Security.V1.Model::Outcome,
+  body: (record Foundation.Security.V1.Model::Outcome {index := 127, control := 17, subcategory := 105})
 }
 
 definition{
   name: outcomesFrom96,
   parameters: [],
   result: (List Foundation.Security.V1.Model::Outcome),
-  body: (cons (outcome96) (cons (outcome97) (cons (outcome98) (cons (outcome99) (cons (outcome100) (cons (outcome101) (cons (outcome102) (cons (outcome103) (cons (outcome104) (cons (outcome105) (cons (outcome106) (cons (outcome107) (cons (outcome108) (cons (outcome109) (cons (outcome110) (cons (outcome111) (cons (outcome112) (cons (outcome113) (cons (outcome114) (cons (outcome115) (cons (outcome116) (cons (outcome117) (nil Foundation.Security.V1.Model::Outcome)))))))))))))))))))))))
+  body: (cons (outcome96) (cons (outcome97) (cons (outcome98) (cons (outcome99) (cons (outcome100) (cons (outcome101) (cons (outcome102) (cons (outcome103) (cons (outcome104) (cons (outcome105) (cons (outcome106) (cons (outcome107) (cons (outcome108) (cons (outcome109) (cons (outcome110) (cons (outcome111) (cons (outcome112) (cons (outcome113) (cons (outcome114) (cons (outcome115) (cons (outcome116) (cons (outcome117) (cons (outcome118) (cons (outcome119) (cons (outcome120) (cons (outcome121) (cons (outcome122) (cons (outcome123) (cons (outcome124) (cons (outcome125) (cons (outcome126) (cons (outcome127) (nil Foundation.Security.V1.Model::Outcome)))))))))))))))))))))))))))))))))
 }
 
 definition{
@@ -4706,189 +4937,182 @@ definition{
   name: gap12,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 12, subcategory := 22, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "supplier security roles are not set."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 12, subcategory := 23, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "supply chain risk is not part of risk management beyond this model."})
 }
 
 definition{
   name: gap13,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 13, subcategory := 23, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "supply chain risk is not part of risk management beyond this model."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 13, subcategory := 25, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no supplier agreement carries security requirements."})
 }
 
 definition{
   name: gap14,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 14, subcategory := 25, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no supplier agreement carries security requirements."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 14, subcategory := 26, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no due diligence before a new integration."})
 }
 
 definition{
   name: gap15,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 15, subcategory := 26, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no due diligence before a new integration."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 15, subcategory := 28, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "suppliers are not part of incident planning."})
 }
 
 definition{
   name: gap16,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 16, subcategory := 28, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "suppliers are not part of incident planning."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 16, subcategory := 30, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no off-boarding provision for integrations."})
 }
 
 definition{
   name: gap17,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 17, subcategory := 30, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no off-boarding provision for integrations."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 17, subcategory := 31, status := (ctor Foundation.Security.V1.Model::GapStatus.notApplicable), rationale := "the Foundation manages no hardware; every service is hosted by a provider."})
 }
 
 definition{
   name: gap18,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 18, subcategory := 31, status := (ctor Foundation.Security.V1.Model::GapStatus.notApplicable), rationale := "the Foundation manages no hardware; every service is hosted by a provider."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 18, subcategory := 34, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "the inventory of supplier services comes with the Foundation asset register."})
 }
 
 definition{
   name: gap19,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 19, subcategory := 34, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "the inventory of supplier services comes with the Foundation asset register."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 19, subcategory := 47, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "critical suppliers are not assessed before use."})
 }
 
 definition{
   name: gap20,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 20, subcategory := 47, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "critical suppliers are not assessed before use."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 20, subcategory := 50, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "improvements from operations are not yet drawn from the decision telemetry."})
 }
 
 definition{
   name: gap21,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 21, subcategory := 50, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "improvements from operations are not yet drawn from the decision telemetry."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 21, subcategory := 51, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no incident response plan."})
 }
 
 definition{
   name: gap22,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 22, subcategory := 51, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no incident response plan."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 22, subcategory := 57, status := (ctor Foundation.Security.V1.Model::GapStatus.notApplicable), rationale := "the Foundation has no physical premises or hardware."})
 }
 
 definition{
   name: gap23,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 23, subcategory := 57, status := (ctor Foundation.Security.V1.Model::GapStatus.notApplicable), rationale := "the Foundation has no physical premises or hardware."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 23, subcategory := 58, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no security awareness for contributors."})
 }
 
 definition{
   name: gap24,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 24, subcategory := 58, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no security awareness for contributors."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 24, subcategory := 62, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "data in use is not protected beyond the providers' own controls."})
 }
 
 definition{
   name: gap25,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 25, subcategory := 62, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "data in use is not protected beyond the providers' own controls."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 25, subcategory := 66, status := (ctor Foundation.Security.V1.Model::GapStatus.notApplicable), rationale := "the Foundation manages no hardware."})
 }
 
 definition{
   name: gap26,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 26, subcategory := 66, status := (ctor Foundation.Security.V1.Model::GapStatus.notApplicable), rationale := "the Foundation manages no hardware."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 26, subcategory := 70, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "the Supabase project's network restrictions are not established."})
 }
 
 definition{
   name: gap27,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 27, subcategory := 70, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "the Supabase project's network restrictions are not established."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 27, subcategory := 71, status := (ctor Foundation.Security.V1.Model::GapStatus.notApplicable), rationale := "the Foundation operates no equipment exposed to environmental threats."})
 }
 
 definition{
   name: gap28,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 28, subcategory := 71, status := (ctor Foundation.Security.V1.Model::GapStatus.notApplicable), rationale := "the Foundation operates no equipment exposed to environmental threats."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 28, subcategory := 76, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no method estimates an adverse event's impact and scope."})
 }
 
 definition{
   name: gap29,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 29, subcategory := 76, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no method estimates an adverse event's impact and scope."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 29, subcategory := 77, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no alert reaches a maintainer when telemetry shows an adverse event."})
 }
 
 definition{
   name: gap30,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 30, subcategory := 77, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no alert reaches a maintainer when telemetry shows an adverse event."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 30, subcategory := 79, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no incident criteria are defined."})
 }
 
 definition{
   name: gap31,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 31, subcategory := 79, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no incident criteria are defined."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 31, subcategory := 81, status := (ctor Foundation.Security.V1.Model::GapStatus.notApplicable), rationale := "the Foundation has no physical environment."})
 }
 
 definition{
   name: gap32,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 32, subcategory := 81, status := (ctor Foundation.Security.V1.Model::GapStatus.notApplicable), rationale := "the Foundation has no physical environment."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 32, subcategory := 89, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no recovery criteria are defined."})
 }
 
 definition{
   name: gap33,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 33, subcategory := 89, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no recovery criteria are defined."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 33, subcategory := 93, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no method estimates an incident's magnitude."})
 }
 
 definition{
   name: gap34,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 34, subcategory := 93, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no method estimates an incident's magnitude."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 34, subcategory := 101, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "post-incident norms are not set."})
 }
 
 definition{
   name: gap35,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 35, subcategory := 101, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "post-incident norms are not set."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 35, subcategory := 103, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no criteria declare the end of recovery."})
 }
 
 definition{
   name: gap36,
   parameters: [],
   result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 36, subcategory := 103, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "no criteria declare the end of recovery."})
-}
-
-definition{
-  name: gap37,
-  parameters: [],
-  result: Foundation.Security.V1.Model::Gap,
-  body: (record Foundation.Security.V1.Model::Gap {index := 37, subcategory := 104, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "recovery communication is not set."})
+  body: (record Foundation.Security.V1.Model::Gap {index := 36, subcategory := 104, status := (ctor Foundation.Security.V1.Model::GapStatus.planned), rationale := "recovery communication is not set."})
 }
 
 definition{
   name: gapsFrom0,
   parameters: [],
   result: (List Foundation.Security.V1.Model::Gap),
-  body: (cons (gap0) (cons (gap1) (cons (gap2) (cons (gap3) (cons (gap4) (cons (gap5) (cons (gap6) (cons (gap7) (cons (gap8) (cons (gap9) (cons (gap10) (cons (gap11) (cons (gap12) (cons (gap13) (cons (gap14) (cons (gap15) (cons (gap16) (cons (gap17) (cons (gap18) (cons (gap19) (cons (gap20) (cons (gap21) (cons (gap22) (cons (gap23) (cons (gap24) (cons (gap25) (cons (gap26) (cons (gap27) (cons (gap28) (cons (gap29) (cons (gap30) (cons (gap31) (cons (gap32) (cons (gap33) (cons (gap34) (cons (gap35) (cons (gap36) (cons (gap37) (nil Foundation.Security.V1.Model::Gap)))))))))))))))))))))))))))))))))))))))
+  body: (cons (gap0) (cons (gap1) (cons (gap2) (cons (gap3) (cons (gap4) (cons (gap5) (cons (gap6) (cons (gap7) (cons (gap8) (cons (gap9) (cons (gap10) (cons (gap11) (cons (gap12) (cons (gap13) (cons (gap14) (cons (gap15) (cons (gap16) (cons (gap17) (cons (gap18) (cons (gap19) (cons (gap20) (cons (gap21) (cons (gap22) (cons (gap23) (cons (gap24) (cons (gap25) (cons (gap26) (cons (gap27) (cons (gap28) (cons (gap29) (cons (gap30) (cons (gap31) (cons (gap32) (cons (gap33) (cons (gap34) (cons (gap35) (cons (gap36) (nil Foundation.Security.V1.Model::Gap))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
@@ -5707,28 +5931,28 @@ definition{
   name: strideSlot115,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 115, element := 19, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 20, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 115, element := 19, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 33, rationale := ""})
 }
 
 definition{
   name: strideSlot116,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 116, element := 19, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 116, element := 19, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.stated), threat := 0, rationale := "the registrar keeps the record of every change to the registration and zone (open claim OC-DOMAIN)."})
 }
 
 definition{
   name: strideSlot117,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 117, element := 19, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.stated), threat := 0, rationale := "issues and pull requests are public by design."})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 117, element := 19, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.stated), threat := 0, rationale := "DNS records are public by design."})
 }
 
 definition{
   name: strideSlot118,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 118, element := 19, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 14, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 118, element := 19, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 30, rationale := ""})
 }
 
 definition{
@@ -5749,28 +5973,28 @@ definition{
   name: strideSlot121,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 121, element := 20, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 4, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 121, element := 20, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 31, rationale := ""})
 }
 
 definition{
   name: strideSlot122,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 122, element := 20, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 122, element := 20, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 12, rationale := ""})
 }
 
 definition{
   name: strideSlot123,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 123, element := 20, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 4, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 123, element := 20, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.stated), threat := 0, rationale := "package names and metadata are public by design."})
 }
 
 definition{
   name: strideSlot124,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 124, element := 20, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 18, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 124, element := 20, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 31, rationale := ""})
 }
 
 definition{
@@ -5791,7 +6015,7 @@ definition{
   name: strideSlot127,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 127, element := 21, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 1, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 127, element := 21, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 20, rationale := ""})
 }
 
 definition{
@@ -5805,14 +6029,14 @@ definition{
   name: strideSlot129,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 129, element := 21, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 3, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 129, element := 21, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.stated), threat := 0, rationale := "issues and pull requests are public by design."})
 }
 
 definition{
   name: strideSlot130,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 130, element := 21, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 16, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 130, element := 21, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 14, rationale := ""})
 }
 
 definition{
@@ -5833,7 +6057,7 @@ definition{
   name: strideSlot133,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 133, element := 22, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 26, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 133, element := 22, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 4, rationale := ""})
 }
 
 definition{
@@ -5847,7 +6071,7 @@ definition{
   name: strideSlot135,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 135, element := 22, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 8, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 135, element := 22, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 32, rationale := ""})
 }
 
 definition{
@@ -5875,7 +6099,7 @@ definition{
   name: strideSlot139,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 139, element := 23, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 23, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 139, element := 23, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 1, rationale := ""})
 }
 
 definition{
@@ -5889,14 +6113,14 @@ definition{
   name: strideSlot141,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 141, element := 23, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 23, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 141, element := 23, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 3, rationale := ""})
 }
 
 definition{
   name: strideSlot142,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 142, element := 23, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 25, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 142, element := 23, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 16, rationale := ""})
 }
 
 definition{
@@ -5917,7 +6141,7 @@ definition{
   name: strideSlot145,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 145, element := 24, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 23, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 145, element := 24, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 26, rationale := ""})
 }
 
 definition{
@@ -5931,7 +6155,7 @@ definition{
   name: strideSlot147,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 147, element := 24, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 9, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 147, element := 24, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 8, rationale := ""})
 }
 
 definition{
@@ -5959,7 +6183,7 @@ definition{
   name: strideSlot151,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 151, element := 25, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 2, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 151, element := 25, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 23, rationale := ""})
 }
 
 definition{
@@ -5973,14 +6197,14 @@ definition{
   name: strideSlot153,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 153, element := 25, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.stated), threat := 0, rationale := "the inputs are public packages."})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 153, element := 25, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 23, rationale := ""})
 }
 
 definition{
   name: strideSlot154,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 154, element := 25, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 18, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 154, element := 25, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 25, rationale := ""})
 }
 
 definition{
@@ -6001,7 +6225,7 @@ definition{
   name: strideSlot157,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 157, element := 26, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 12, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 157, element := 26, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 23, rationale := ""})
 }
 
 definition{
@@ -6015,7 +6239,7 @@ definition{
   name: strideSlot159,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 159, element := 26, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 3, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 159, element := 26, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 9, rationale := ""})
 }
 
 definition{
@@ -6043,7 +6267,7 @@ definition{
   name: strideSlot163,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 163, element := 27, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 6, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 163, element := 27, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 2, rationale := ""})
 }
 
 definition{
@@ -6057,14 +6281,14 @@ definition{
   name: strideSlot165,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 165, element := 27, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 6, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 165, element := 27, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.stated), threat := 0, rationale := "the inputs are public packages."})
 }
 
 definition{
   name: strideSlot166,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 166, element := 27, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 15, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 166, element := 27, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 18, rationale := ""})
 }
 
 definition{
@@ -6085,7 +6309,7 @@ definition{
   name: strideSlot169,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 169, element := 28, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 4, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 169, element := 28, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 12, rationale := ""})
 }
 
 definition{
@@ -6099,14 +6323,14 @@ definition{
   name: strideSlot171,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 171, element := 28, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 4, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 171, element := 28, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 3, rationale := ""})
 }
 
 definition{
   name: strideSlot172,
   parameters: [],
   result: Foundation.Security.V1.Model::StrideSlot,
-  body: (record Foundation.Security.V1.Model::StrideSlot {index := 172, element := 28, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 14, rationale := ""})
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 172, element := 28, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 18, rationale := ""})
 }
 
 definition{
@@ -6117,10 +6341,94 @@ definition{
 }
 
 definition{
+  name: strideSlot174,
+  parameters: [],
+  result: Foundation.Security.V1.Model::StrideSlot,
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 174, element := 29, category := 0, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+}
+
+definition{
+  name: strideSlot175,
+  parameters: [],
+  result: Foundation.Security.V1.Model::StrideSlot,
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 175, element := 29, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 6, rationale := ""})
+}
+
+definition{
+  name: strideSlot176,
+  parameters: [],
+  result: Foundation.Security.V1.Model::StrideSlot,
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 176, element := 29, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+}
+
+definition{
+  name: strideSlot177,
+  parameters: [],
+  result: Foundation.Security.V1.Model::StrideSlot,
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 177, element := 29, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 6, rationale := ""})
+}
+
+definition{
+  name: strideSlot178,
+  parameters: [],
+  result: Foundation.Security.V1.Model::StrideSlot,
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 178, element := 29, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 15, rationale := ""})
+}
+
+definition{
+  name: strideSlot179,
+  parameters: [],
+  result: Foundation.Security.V1.Model::StrideSlot,
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 179, element := 29, category := 5, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+}
+
+definition{
+  name: strideSlot180,
+  parameters: [],
+  result: Foundation.Security.V1.Model::StrideSlot,
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 180, element := 30, category := 0, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+}
+
+definition{
+  name: strideSlot181,
+  parameters: [],
+  result: Foundation.Security.V1.Model::StrideSlot,
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 181, element := 30, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 4, rationale := ""})
+}
+
+definition{
+  name: strideSlot182,
+  parameters: [],
+  result: Foundation.Security.V1.Model::StrideSlot,
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 182, element := 30, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+}
+
+definition{
+  name: strideSlot183,
+  parameters: [],
+  result: Foundation.Security.V1.Model::StrideSlot,
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 183, element := 30, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 4, rationale := ""})
+}
+
+definition{
+  name: strideSlot184,
+  parameters: [],
+  result: Foundation.Security.V1.Model::StrideSlot,
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 184, element := 30, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 14, rationale := ""})
+}
+
+definition{
+  name: strideSlot185,
+  parameters: [],
+  result: Foundation.Security.V1.Model::StrideSlot,
+  body: (record Foundation.Security.V1.Model::StrideSlot {index := 185, element := 30, category := 5, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+}
+
+definition{
   name: strideSlotsFrom144,
   parameters: [],
   result: (List Foundation.Security.V1.Model::StrideSlot),
-  body: (cons (strideSlot144) (cons (strideSlot145) (cons (strideSlot146) (cons (strideSlot147) (cons (strideSlot148) (cons (strideSlot149) (cons (strideSlot150) (cons (strideSlot151) (cons (strideSlot152) (cons (strideSlot153) (cons (strideSlot154) (cons (strideSlot155) (cons (strideSlot156) (cons (strideSlot157) (cons (strideSlot158) (cons (strideSlot159) (cons (strideSlot160) (cons (strideSlot161) (cons (strideSlot162) (cons (strideSlot163) (cons (strideSlot164) (cons (strideSlot165) (cons (strideSlot166) (cons (strideSlot167) (cons (strideSlot168) (cons (strideSlot169) (cons (strideSlot170) (cons (strideSlot171) (cons (strideSlot172) (cons (strideSlot173) (nil Foundation.Security.V1.Model::StrideSlot)))))))))))))))))))))))))))))))
+  body: (cons (strideSlot144) (cons (strideSlot145) (cons (strideSlot146) (cons (strideSlot147) (cons (strideSlot148) (cons (strideSlot149) (cons (strideSlot150) (cons (strideSlot151) (cons (strideSlot152) (cons (strideSlot153) (cons (strideSlot154) (cons (strideSlot155) (cons (strideSlot156) (cons (strideSlot157) (cons (strideSlot158) (cons (strideSlot159) (cons (strideSlot160) (cons (strideSlot161) (cons (strideSlot162) (cons (strideSlot163) (cons (strideSlot164) (cons (strideSlot165) (cons (strideSlot166) (cons (strideSlot167) (cons (strideSlot168) (cons (strideSlot169) (cons (strideSlot170) (cons (strideSlot171) (cons (strideSlot172) (cons (strideSlot173) (cons (strideSlot174) (cons (strideSlot175) (cons (strideSlot176) (cons (strideSlot177) (cons (strideSlot178) (cons (strideSlot179) (cons (strideSlot180) (cons (strideSlot181) (cons (strideSlot182) (cons (strideSlot183) (cons (strideSlot184) (cons (strideSlot185) (nil Foundation.Security.V1.Model::StrideSlot)))))))))))))))))))))))))))))))))))))))))))
 }
 
 definition{
@@ -7233,49 +7541,49 @@ definition{
   name: linddunSlot154,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 154, element := 22, category := 0, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 8, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 154, element := 22, category := 0, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
 }
 
 definition{
   name: linddunSlot155,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 155, element := 22, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 8, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 155, element := 22, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
 }
 
 definition{
   name: linddunSlot156,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 156, element := 22, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 29, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 156, element := 22, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
 }
 
 definition{
   name: linddunSlot157,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 157, element := 22, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 8, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 157, element := 22, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
 }
 
 definition{
   name: linddunSlot158,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 158, element := 22, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 13, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 158, element := 22, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
 }
 
 definition{
   name: linddunSlot159,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 159, element := 22, category := 5, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 27, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 159, element := 22, category := 5, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
 }
 
 definition{
   name: linddunSlot160,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 160, element := 22, category := 6, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 28, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 160, element := 22, category := 6, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
 }
 
 definition{
@@ -7331,42 +7639,42 @@ definition{
   name: linddunSlot168,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 168, element := 24, category := 0, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 9, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 168, element := 24, category := 0, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 8, rationale := ""})
 }
 
 definition{
   name: linddunSlot169,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 169, element := 24, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 9, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 169, element := 24, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 8, rationale := ""})
 }
 
 definition{
   name: linddunSlot170,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 170, element := 24, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.stated), threat := 0, rationale := "a call records nothing a person could need to deny beyond what they store."})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 170, element := 24, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 29, rationale := ""})
 }
 
 definition{
   name: linddunSlot171,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 171, element := 24, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 9, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 171, element := 24, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 8, rationale := ""})
 }
 
 definition{
   name: linddunSlot172,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 172, element := 24, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 9, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 172, element := 24, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 13, rationale := ""})
 }
 
 definition{
   name: linddunSlot173,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 173, element := 24, category := 5, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 28, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 173, element := 24, category := 5, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 27, rationale := ""})
 }
 
 definition{
@@ -7429,98 +7737,98 @@ definition{
   name: linddunSlot182,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 182, element := 26, category := 0, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 182, element := 26, category := 0, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 9, rationale := ""})
 }
 
 definition{
   name: linddunSlot183,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 183, element := 26, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 183, element := 26, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 9, rationale := ""})
 }
 
 definition{
   name: linddunSlot184,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 184, element := 26, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 184, element := 26, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.stated), threat := 0, rationale := "a call records nothing a person could need to deny beyond what they store."})
 }
 
 definition{
   name: linddunSlot185,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 185, element := 26, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 185, element := 26, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 9, rationale := ""})
 }
 
 definition{
   name: linddunSlot186,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 186, element := 26, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 186, element := 26, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 9, rationale := ""})
 }
 
 definition{
   name: linddunSlot187,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 187, element := 26, category := 5, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 187, element := 26, category := 5, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 28, rationale := ""})
 }
 
 definition{
   name: linddunSlot188,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 188, element := 26, category := 6, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 188, element := 26, category := 6, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 28, rationale := ""})
 }
 
 definition{
   name: linddunSlot189,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 189, element := 27, category := 0, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 8, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 189, element := 27, category := 0, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
 }
 
 definition{
   name: linddunSlot190,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 190, element := 27, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 8, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 190, element := 27, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
 }
 
 definition{
   name: linddunSlot191,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 191, element := 27, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 29, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 191, element := 27, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
 }
 
 definition{
   name: linddunSlot192,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 192, element := 27, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 8, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 192, element := 27, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
 }
 
 definition{
   name: linddunSlot193,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 193, element := 27, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 6, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 193, element := 27, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
 }
 
 definition{
   name: linddunSlot194,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 194, element := 27, category := 5, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 27, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 194, element := 27, category := 5, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
 }
 
 definition{
   name: linddunSlot195,
   parameters: [],
   result: Foundation.Security.V1.Model::LinddunSlot,
-  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 195, element := 27, category := 6, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 28, rationale := ""})
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 195, element := 27, category := 6, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
 }
 
 definition{
@@ -7573,10 +7881,108 @@ definition{
 }
 
 definition{
+  name: linddunSlot203,
+  parameters: [],
+  result: Foundation.Security.V1.Model::LinddunSlot,
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 203, element := 29, category := 0, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 8, rationale := ""})
+}
+
+definition{
+  name: linddunSlot204,
+  parameters: [],
+  result: Foundation.Security.V1.Model::LinddunSlot,
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 204, element := 29, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 8, rationale := ""})
+}
+
+definition{
+  name: linddunSlot205,
+  parameters: [],
+  result: Foundation.Security.V1.Model::LinddunSlot,
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 205, element := 29, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 29, rationale := ""})
+}
+
+definition{
+  name: linddunSlot206,
+  parameters: [],
+  result: Foundation.Security.V1.Model::LinddunSlot,
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 206, element := 29, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 8, rationale := ""})
+}
+
+definition{
+  name: linddunSlot207,
+  parameters: [],
+  result: Foundation.Security.V1.Model::LinddunSlot,
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 207, element := 29, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 6, rationale := ""})
+}
+
+definition{
+  name: linddunSlot208,
+  parameters: [],
+  result: Foundation.Security.V1.Model::LinddunSlot,
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 208, element := 29, category := 5, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 27, rationale := ""})
+}
+
+definition{
+  name: linddunSlot209,
+  parameters: [],
+  result: Foundation.Security.V1.Model::LinddunSlot,
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 209, element := 29, category := 6, state := (ctor Foundation.Security.V1.Model::SlotState.answered), threat := 28, rationale := ""})
+}
+
+definition{
+  name: linddunSlot210,
+  parameters: [],
+  result: Foundation.Security.V1.Model::LinddunSlot,
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 210, element := 30, category := 0, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+}
+
+definition{
+  name: linddunSlot211,
+  parameters: [],
+  result: Foundation.Security.V1.Model::LinddunSlot,
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 211, element := 30, category := 1, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+}
+
+definition{
+  name: linddunSlot212,
+  parameters: [],
+  result: Foundation.Security.V1.Model::LinddunSlot,
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 212, element := 30, category := 2, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+}
+
+definition{
+  name: linddunSlot213,
+  parameters: [],
+  result: Foundation.Security.V1.Model::LinddunSlot,
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 213, element := 30, category := 3, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+}
+
+definition{
+  name: linddunSlot214,
+  parameters: [],
+  result: Foundation.Security.V1.Model::LinddunSlot,
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 214, element := 30, category := 4, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+}
+
+definition{
+  name: linddunSlot215,
+  parameters: [],
+  result: Foundation.Security.V1.Model::LinddunSlot,
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 215, element := 30, category := 5, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+}
+
+definition{
+  name: linddunSlot216,
+  parameters: [],
+  result: Foundation.Security.V1.Model::LinddunSlot,
+  body: (record Foundation.Security.V1.Model::LinddunSlot {index := 216, element := 30, category := 6, state := (ctor Foundation.Security.V1.Model::SlotState.notApplicable), threat := 0, rationale := ""})
+}
+
+definition{
   name: linddunSlotsFrom192,
   parameters: [],
   result: (List Foundation.Security.V1.Model::LinddunSlot),
-  body: (cons (linddunSlot192) (cons (linddunSlot193) (cons (linddunSlot194) (cons (linddunSlot195) (cons (linddunSlot196) (cons (linddunSlot197) (cons (linddunSlot198) (cons (linddunSlot199) (cons (linddunSlot200) (cons (linddunSlot201) (cons (linddunSlot202) (nil Foundation.Security.V1.Model::LinddunSlot))))))))))))
+  body: (cons (linddunSlot192) (cons (linddunSlot193) (cons (linddunSlot194) (cons (linddunSlot195) (cons (linddunSlot196) (cons (linddunSlot197) (cons (linddunSlot198) (cons (linddunSlot199) (cons (linddunSlot200) (cons (linddunSlot201) (cons (linddunSlot202) (cons (linddunSlot203) (cons (linddunSlot204) (cons (linddunSlot205) (cons (linddunSlot206) (cons (linddunSlot207) (cons (linddunSlot208) (cons (linddunSlot209) (cons (linddunSlot210) (cons (linddunSlot211) (cons (linddunSlot212) (cons (linddunSlot213) (cons (linddunSlot214) (cons (linddunSlot215) (cons (linddunSlot216) (nil Foundation.Security.V1.Model::LinddunSlot))))))))))))))))))))))))))
 }
 
 definition{
