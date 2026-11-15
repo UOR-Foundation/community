@@ -11,6 +11,7 @@ decides, and Lean checks.
 | Replay | `python collect.py run …` again in a fresh work directory and database, then `python collect.py replay corpus.json <replayed> replay.json` | `replay.json`: the digest of every file an independent run wrote |
 | Project | `node project.mjs [--check]` | `register.json`: periods, observations, values and open claims |
 | Catalog | `node catalog.mjs [--check]` | `app/src/Foundation/Observation/V1/Model.lex.tex`, `app/src/Observations.lex.tex` |
+| Front page | `node ../views/catalog.mjs [--check]` | `site/card.html`: the site's activity table, aggregate counts from `register.json` |
 
 `oracle.sh <work>` installs the Python the collector runs: the set GrimoireLab
 1.23.0's `poetry.lock` pins, hash-checked. SortingHat runs in process on
