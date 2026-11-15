@@ -37,8 +37,6 @@ import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const sources = JSON.parse(readFileSync(join(here, 'sources.json'), 'utf8'));
-/** The repositories whose merges Alex alone decides; their rulesets require the controller's gate, not a human count. */
-const OWNED = new Set(JSON.parse(readFileSync(join(here, '..', 'automation', 'repos.json'), 'utf8')).owned.filter((o) => o.repository.startsWith('UOR-Foundation/')).map((o) => o.repository.split('/')[1].toLowerCase()));
 const [root, flag] = process.argv.slice(2);
 if (!root) {
   process.stderr.write('usage: project.mjs <checkouts-dir> [--check]\n');
@@ -517,11 +515,10 @@ const settings = [
     if (!own.length) return [];
     const t = r.tiers[0];
     const rename = own.find((c) => c.kind === 'rename');
-    // In a repository whose merges Alex alone decides (automation/repos.json), the merge controller's gate is
-    // the requirement: a pull request is still required, with no human approval count. Every ruleset lets an
-    // Organization Owner bypass it (GitHub REST, rulesets: bypass_actors, OrganizationAdmin, always).
-    const solo = OWNED.has(r.name.toLowerCase());
-    const rules = t.ruleset.rules.filter((x) => x.type !== 'required_status_checks').map((x) => (x.type === 'pull_request' ? { ...x, parameters: { ...x.parameters, required_approving_review_count: solo ? 0 : Math.min(1, x.parameters.required_approving_review_count) } } : x));
+    // Alex, 2026-11-15: no ruleset requires a human approving review. A pull request and the required status checks
+    // still gate every merge (the merge controller's gate in owned repositories). Every ruleset lets an Organization
+    // Owner bypass it (GitHub REST, rulesets: bypass_actors, OrganizationAdmin, always).
+    const rules = t.ruleset.rules.filter((x) => x.type !== 'required_status_checks').map((x) => (x.type === 'pull_request' ? { ...x, parameters: { ...x.parameters, required_approving_review_count: 0 } } : x));
     const needsChecks = t.ruleset.rules.some((x) => x.type === 'required_status_checks');
     const body = { ...t.ruleset, bypass_actors: [{ actor_id: 1, actor_type: 'OrganizationAdmin', bypass_mode: 'always' }], rules };
     const lines = [`if want ${q(r.name)}; then`, `  echo "== UOR-Foundation/${r.name} (${tierOf(r)})" >&2`];
