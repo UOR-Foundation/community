@@ -194,6 +194,13 @@ const scan = {
 const text = `${JSON.stringify(scan, null, 1)}\n`;
 const target = join(here, 'scan.json');
 if (flag === '--check') {
-  if (!existsSync(target) || readFileSync(target, 'utf8') !== text) { process.stderr.write('conventions/scan.json is not what the pinned commits and oracles observe now\n'); process.exit(1); }
+  const kept = existsSync(target) ? readFileSync(target, 'utf8') : '';
+  if (kept !== text) {
+    // Name the first line that differs, so a drift is diagnosable from the log alone.
+    const a = kept.split('\n'), b = text.split('\n');
+    const at = a.findIndex((line, i) => line !== b[i]);
+    process.stderr.write(`conventions/scan.json is not what the pinned commits and oracles observe now: line ${at + 1}\n- ${a[at]}\n+ ${b[at]}\n`);
+    process.exit(1);
+  }
 } else writeFileSync(target, text);
 process.stdout.write(`${repositories.length} repositories observed\n`);
