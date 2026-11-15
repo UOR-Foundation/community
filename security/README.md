@@ -80,4 +80,4 @@ with, never attributions:
    not open a data flow to. Lean refused it with the same diagnostic.
 
 With `register.json` restored, both `--check` runs passed and
-`lexlean verify` passed again; with the telemetry collected the same day it passes with attestation `38598fb2…`.
+`lexlean verify` passed again; with the telemetry collected the same day it passes with attestation `8a4dbb7c…`.
