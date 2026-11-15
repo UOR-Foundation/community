@@ -170,11 +170,13 @@ class FakeDiscord(BaseHTTPRequestHandler):
     def log_message(self, *args):
         pass
 
-    def reply(self, status, body):
+    # Discord's channel bucket reports a remaining far above its message bucket's
+    # (999 against 4 in tick 4 on telemetry/discord), above Perceval's 500 cap.
+    def reply(self, status, body, remaining="4"):
         data = json.dumps(body).encode()
         self.send_response(status)
         self.send_header("Content-Type", "application/json")
-        self.send_header("X-RateLimit-Remaining", "4")
+        self.send_header("X-RateLimit-Remaining", remaining)
         self.send_header("X-RateLimit-Reset-After", "0.01")
         self.send_header("X-RateLimit-Bucket", "fake")
         self.end_headers()
@@ -191,7 +193,7 @@ class FakeDiscord(BaseHTTPRequestHandler):
             return self.reply(200, {"threads": [{"id": THREAD, "type": 11}], "members": []})
         if parts[0] == "channels" and parts[1] in (TEXT, NEWS, THREAD):
             if len(parts) == 2:
-                return self.reply(200, {"id": parts[1], "guild_id": GUILD, "type": 0, "name": "general"})
+                return self.reply(200, {"id": parts[1], "guild_id": GUILD, "type": 0, "name": "general"}, "999")
             q = parse_qs(url.query)
             after, limit = int(q["after"][0]), int(q["limit"][0])
             newer = sorted((m for m in self.messages if int(m["id"]) > after), key=lambda m: int(m["id"]))
