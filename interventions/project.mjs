@@ -81,15 +81,20 @@ function chart(xs) {
   const mr = base.slice(1).reduce((s, x, i) => s + Math.abs(x - base[i]), 0) / (base.length - 1);
   const ucl = cl + E2 * mr;
   const lcl = cl - E2 * mr;
-  return { baseline: 'enough', n: base.length, cl, mr, ucl, lcl, ...tests(win, cl, ucl, lcl) };
+  const below = base.filter((x) => x < cl).length / base.length; // the share of baseline weeks strictly on each side
+  const above = base.filter((x) => x > cl).length / base.length;
+  const l = { cl, ucl, lcl, below, above };
+  return { baseline: 'enough', n: base.length, mr, ...l, ...tests(win, l) };
 }
-/** ISO 7870-2:2023 tests 1 (on the latest point) and 2 (nine points on one side), against fixed limits. */
-function tests(win, cl, ucl, lcl) {
+/** ISO 7870-2:2023 tests 1 (on the latest point) and 2 (nine points on one side, and whether the baseline gives it its rate), against fixed limits. */
+function tests(win, { cl, ucl, lcl, below, above }) {
   const last = win[win.length - 1];
   const latest = last > ucl ? 'high' : last < lcl ? 'low' : 'inside';
   const run = win.length < WINDOW ? 'none' : win.every((x) => x > cl) ? 'high' : win.every((x) => x < cl) ? 'low' : 'none';
-  return { latest, run };
+  return { latest, run, runrate: (run === 'high' ? above : run === 'low' ? below : 0) > 0.5 ? 'fails' : 'holds' };
 }
+/** The first week of the trailing run of weeks strictly on the signalled side of the centre line: the signal's onset. */
+const onset = (weeks, xs, cl, side) => { let k = xs.length; while (k > 0 && (side === 'rise' ? xs[k - 1] > cl : xs[k - 1] < cl)) k--; return weeks[Math.min(k, xs.length - 1)].period.split('/')[0]; };
 
 // One series per subject and computation, over the subject's complete weeks.
 const series = new Map();
@@ -115,12 +120,14 @@ for (const subject of ev.subjects) {
     if (gap) { refuse('chart', id, 'gapped', `${c.label}: ${c.series[0].aggregation} of no items has no value, and ${gap.period} has none`); continue; }
     const xs = weeks.map((p) => got.get(p.period) ?? 0);
     const ch = chart(xs);
-    const request = { baseline: ch.baseline, latest: ch.latest ?? 'inside', run: ch.run ?? 'none' };
+    const request = { baseline: ch.baseline, latest: ch.latest ?? 'inside', run: ch.run ?? 'none', runrate: ch.runrate ?? 'holds' };
+    const sig = signalApp.decide(request);
     charts.push({
       id, subject, computation: ci, key: keyOf(c), label: c.label, metrics,
       from: weeks[0].period.split('/')[0], window: weeks[Math.max(0, weeks.length - WINDOW)].period.split('/')[0], week: weeks[weeks.length - 1].period, values: xs,
-      limits: ch.baseline === 'enough' ? { n: ch.n, cl: round(ch.cl), mr: round(ch.mr), ucl: round(ch.ucl), lcl: round(ch.lcl) } : { n: ch.n },
-      request, signal: signalApp.decide(request),
+      since: sig === 'rise' || sig === 'fall' ? onset(weeks, xs, ch.cl, sig) : null,
+      limits: ch.baseline === 'enough' ? { n: ch.n, cl: round(ch.cl), mr: round(ch.mr), ucl: round(ch.ucl), lcl: round(ch.lcl), below: round(ch.below), above: round(ch.above) } : { n: ch.n },
+      request, signal: sig,
     });
   }
 }
@@ -134,7 +141,7 @@ const fill = (text, ch, cs) => {
   const metric = cs === 'any' ? null : chaoss.get(cs.find((c) => named(c, ch)).metric);
   const t = [ch.request.latest !== 'inside' && `test 1, the latest week is ${ch.request.latest === 'high' ? 'above the upper' : 'below the lower'} control limit`, ch.request.run !== 'none' && `test 2, nine weeks ${ch.request.run === 'high' ? 'above' : 'below'} the centre line`].filter(Boolean).join('; ');
   const sub = {
-    label: ch.label, subject: ch.subject, week: ch.week.split('/')[0], since: ch.request.latest !== 'inside' ? ch.week.split('/')[0] : ch.window, moved: ch.signal === 'rise' ? 'rose' : 'fell', tests: `ISO 7870-2 ${t}`,
+    label: ch.label, subject: ch.subject, week: ch.week.split('/')[0], since: ch.since, moved: ch.signal === 'rise' ? 'rose' : 'fell', tests: `ISO 7870-2 ${t}`,
     cl: ch.limits.cl, ucl: ch.limits.ucl, lcl: ch.limits.lcl, latest: ch.values[ch.values.length - 1],
     metrics: ch.metrics.map((m) => chaoss.get(m)?.title ?? m).join(', '),
     metric: metric?.title, question: metric?.question,
@@ -155,7 +162,7 @@ for (const ch of charts) {
 // ---- Effects: each approval Alex records as enacted, judged against the limits frozen at its signal, over the
 // first WINDOW complete weeks from enactment.
 function effectRequest(signal, frozen, post) {
-  const t = tests(post.slice(0, WINDOW), frozen.cl, frozen.ucl, frozen.lcl);
+  const t = tests(post.slice(0, WINDOW), frozen);
   return { signal, after: signalApp.decide({ baseline: 'enough', ...t }), span: post.length >= WINDOW ? 'full' : 'partial' };
 }
 const effects = [];
@@ -183,7 +190,7 @@ for (const ch of charts) {
   let before = null;
   for (let t = BASELINE + WINDOW - 1; t < ch.values.length - 1; t++) {
     const at = chart(ch.values.slice(0, t + 1));
-    const s = signalApp.decide({ baseline: at.baseline, latest: at.latest ?? 'inside', run: at.run ?? 'none' });
+    const s = signalApp.decide({ baseline: at.baseline, latest: at.latest ?? 'inside', run: at.run ?? 'none', runrate: at.runrate ?? 'holds' });
     const onset = (s === 'rise' || s === 'fall') && s !== before;
     before = s;
     if (!onset) continue;
