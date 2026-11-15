@@ -1,0 +1,54 @@
+/* The front page (site/card.html, written by views/catalog.mjs). It reads as a
+ * page, not a square board: the stage scrolls, the surface takes its width,
+ * and the decision app's own lede gives way to the Foundation's. */
+.has-card #lede { display: none; }
+.has-card .stage { display: block; overflow-y: auto; container-type: normal; scrollbar-width: thin; }
+.has-card .board-fit { display: block; height: auto; container-type: normal; place-items: normal; }
+.stage .board-fit > .home { width: auto; max-width: none; margin: 0; }
+.home-roles, .home-wide { max-width: 60rem; }
+
+.home { color: var(--foreground); font-size: var(--text-16); line-height: 1.55; }
+.home a { color: var(--link); text-underline-offset: 0.15em; }
+.home a:hover { color: var(--link-hover); }
+.home h2 { margin: var(--space-8) 0 var(--space-3); font-family: var(--font-display); font-size: var(--text-20); letter-spacing: var(--tracking-display); }
+.home h3 { margin: 0; font-family: var(--font-display); font-size: var(--text-16); }
+.home-lede { margin: 0; max-width: 40rem; font-size: var(--text-18, 1.125rem); color: var(--foreground); }
+.home-note, .home-who, .home-view { color: var(--muted-foreground); font-size: var(--text-14); }
+.home-note { margin: 0 0 var(--space-3); max-width: 40rem; }
+.home-who { margin: var(--space-1) 0 var(--space-3); }
+.home-view { margin: var(--space-3) 0 0; }
+
+.home-roles { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+.home-roles > li { padding: var(--space-4); border: var(--border-width) solid var(--border); border-radius: var(--radius); background: var(--card); }
+.home-links { margin: 0; padding: 0; list-style: none; }
+.home-links li { margin: var(--space-1) 0; }
+
+.home-wide { overflow-x: auto; }
+.home-table { width: 100%; border-collapse: collapse; font-size: var(--text-14); }
+.home-table th, .home-table td { padding: var(--space-2) var(--space-3) var(--space-2) 0; border-bottom: var(--border-width) solid var(--border); text-align: left; font-weight: 400; }
+.home-table thead th { color: var(--muted-foreground); }
+.home-table td:nth-child(n+3), .home-table thead th:nth-child(n+3) { text-align: right; font-variant-numeric: tabular-nums; }
+
+.home-cta { display: flex; align-items: center; margin-bottom: var(--space-3); }
+.has-card #out.idle { visibility: hidden; }
+.has-card #out { font-size: var(--text-28, 1.75rem); overflow-wrap: normal; }
+.home-start a.home-join { color: var(--primary-foreground); }
+.home-join { display: inline-flex; align-items: center; justify-content: center; min-height: 3rem; padding: 0 var(--space-6); border-radius: var(--radius-control); background: var(--primary); color: var(--primary-foreground); font-weight: 600; text-decoration: none; }
+.home-join:hover { background: var(--primary-hover); }
+.rail .home-start { flex-direction: column; align-items: flex-start; gap: 0; list-style: none; }
+.home-start a { display: inline-flex; align-items: center; min-height: 2rem; color: var(--foreground); }
+
+@media (max-width: 839px) {
+  .rail .home-start > li:not(.home-cta), .has-card .result:has(#out.idle) { display: none; }
+  .rail .home-cta { margin: 0; }
+  .rail .home-cta, .rail .home-join { width: 100%; }
+  .home h2 { margin-top: var(--space-6); }
+}
+@media (pointer: coarse) {
+  .home a { display: inline-flex; align-items: center; min-height: 3rem; }
+  .home-table a, .home-lede a, .home-note a, .home p a { display: inline; min-height: 0; }
+}
+/* The decision checker: the frame's display, at a fixed size so nothing moves
+ * when the script counts characters; its answer is the rail's. */
+.home .display { display: block; max-width: 40rem; }
+.home .display input { font-size: var(--text-20); }

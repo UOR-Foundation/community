@@ -5,6 +5,7 @@
  *
  *   app/src/Viewpoints.lex.tex  ISO/IEC/IEEE 42010 stakeholders, concerns,
  *                               viewpoints and views, and viewsValidHolds;
+ *   site/card.html              the front page, from views/home.json;
  *   site/views/                 one HTML page and one Markdown twin per view,
  *                               an index, and llms.txt;
  *   views/discord.json          the read-only Discord digest: Discord API v10
@@ -254,7 +255,7 @@ function twin(v) {
 
 function index() {
   const out = [head('Community model views', 'Every stakeholder view of the UOR Foundation community model: ISO/IEC/IEEE 42010 viewpoints generated from the Prism model.')];
-  out.push('<nav><a href="../">App</a></nav>\n<h1>Community model views</h1>\n');
+  out.push('<nav><a href="../">Home</a></nav>\n<h1>Community model views</h1>\n');
   out.push(`<p>One ISO/IEC/IEEE 42010 view per stakeholder the Foundation's governance names. Each holds the CHAOSS metrics models and decisions that address that stakeholder's concerns, and the claims still open about them.</p>\n<table>\n<thead><tr><th scope="col">Stakeholder</th><th scope="col">Models</th><th scope="col">Decisions</th><th scope="col">Open</th></tr></thead>\n<tbody>\n`);
   for (const v of views) out.push(`<tr><th scope="row"><a href="${v.stakeholder.slug}.html">${esc(v.stakeholder.name)}</a></th><td>${v.models.length}</td><td>${v.decisions.length}</td><td>${v.registerClaims.length + v.claims.length}</td></tr>\n`);
   out.push('</tbody>\n</table>\n');
@@ -366,9 +367,71 @@ for (const m of messages) {
 }
 const discord = { spec: 'uor-community/discord-digest/1', api: 'discord/v10/execute-webhook', digest: `sha256:${digest}`, messages: messages.map(({ content, embeds: e, allowed_mentions }) => ({ content, embeds: e, allowed_mentions })) };
 
+// ---------------------------------------------------------------- home
+// The site's front page: site/card.html, the surface bootstrap/page.mjs puts
+// in the app page's workspace. It orients anyone who arrives: what the
+// Foundation is, a way in for each stakeholder a visitor can be, and where
+// work is happening. Activity is aggregate counts only; no repository or
+// person is judged here (interventions and health stay in their own views).
+const home = json('views/home.json');
+const observations = json('observations/register.json');
+const ecosystem = json('ecosystem/register.json');
+const homeSource = (id) => {
+  const src = home.sources.find((x) => x.id === id);
+  if (!src) throw new Error(`views/home.json cites ${id}, which it does not declare`);
+  return src;
+};
+const cut = observations.corpus.cut;
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const since = (() => {
+  const d = new Date(`${cut.slice(0, 7)}-01T00:00:00Z`);
+  d.setUTCMonth(d.getUTCMonth() - (home.activity.months - 1));
+  return d.toISOString().slice(0, 10);
+})();
+const dayText = (iso) => `${Number(iso.slice(8, 10))} ${MONTHS[Number(iso.slice(5, 7)) - 1]} ${iso.slice(0, 4)}`;
+const activity = ecosystem.repositories
+  .filter((r) => !r.archived)
+  .map((r) => {
+    const subject = `UOR-Foundation/${r.name}`;
+    const counts = home.activity.measures.map((m) => {
+      const xs = observations.values.filter((v) => v.subject === subject && v.metric === m.metric && v.label === m.label && v.period >= since);
+      return xs.length ? xs.reduce((n, v) => n + v.value, 0) : null;
+    });
+    return { name: r.name, language: r.language, counts };
+  })
+  .sort((a, b) => (b.counts[0] ?? -1) - (a.counts[0] ?? -1) || a.name.localeCompare(b.name));
+const link = (l) => `<a href="${esc(l.url)}">${esc(l.label)}</a>`;
+function homeCard() {
+  homeSource(home.lede.source);
+  const out = ['<div data-slot="surface" class="home">\n'];
+  out.push(`<p class="home-lede">${esc(home.lede.text)} <a href="https://github.com/UOR-Foundation/.github#readme">More about the Foundation</a>.</p>\n`);
+  out.push('<h2>Find your way in</h2>\n<ul class="home-roles">\n');
+  for (const r of home.roles) {
+    if (!sIndex.has(r.stakeholder)) throw new Error(`views/home.json names stakeholder ${r.stakeholder}, which views/register.json does not declare`);
+    const s = stakeholders[sIndex.get(r.stakeholder)];
+    out.push(`<li><h3>${esc(r.title)}</h3><p class="home-who">${esc(s.name)}</p><ul class="home-links">${r.links.map((l) => `<li>${link(l)}</li>`).join('')}</ul><p class="home-view"><a href="views/${s.slug}.html">Your view of the community model</a></p></li>\n`);
+  }
+  out.push('</ul>\n');
+  const nonzero = activity.filter((a) => a.counts.some((n) => n));
+  out.push(`<h2>Where work is happening</h2>\n<p class="home-note">Commits and pull requests in each public repository from ${dayText(since)} to ${dayText(cut.slice(0, 10))}, counted by GrimoireLab. ${activity.length - nonzero.length} more repositories had none in that time; <a href="https://github.com/orgs/UOR-Foundation/repositories">every repository</a> is on GitHub.</p>\n`);
+  out.push(`<div class="home-wide"><table class="home-table">\n<thead><tr><th scope="col">Repository</th><th scope="col">Language</th>${home.activity.measures.map((m) => `<th scope="col">${esc(m.column)}</th>`).join('')}</tr></thead>\n<tbody>\n`);
+  for (const a of nonzero) out.push(`<tr><th scope="row"><a href="https://github.com/UOR-Foundation/${esc(a.name)}">${esc(a.name)}</a></th><td>${esc(a.language || '—')}</td>${a.counts.map((n) => `<td>${n ?? 0}</td>`).join('')}</tr>\n`);
+  out.push('</tbody>\n</table></div>\n');
+  // The decision app's request box: app.mjs wires #input to the verified
+  // guest exactly as on any Prism app page, and answers in the rail's #out.
+  const app = json('site/app.json');
+  out.push(`<h2>Check a decision</h2>\n<p class="home-note">Ask any decision the model holds: an app's name, a space, then its fields. The answer appears beside it, from the app your browser has just verified.</p>\n<label class="display" for="input"><span class="k">${esc(app.inputLabel ?? 'Request')}</span><input id="input" autocomplete="off" spellcheck="false" enterkeyhint="go" inputmode="${esc(app.inputMode ?? 'text')}" placeholder="${esc(app.placeholder ?? '')}"></label>\n`);
+  out.push(`<h2>About this site</h2>\n<p>The site is generated from the community's Prism model: the Foundation's governance and the <a href="https://chaoss.community/">CHAOSS</a> metrics models, every decision proved in Lean and verified again in your browser before it answers. <a href="views/">The model's stakeholder views</a> list what it holds for each role; <a href="#spec">the spec</a> shows how it is proved. <a href="https://github.com/UOR-Foundation/community">Source</a>.</p>\n`);
+  out.push('</div>\n');
+  const discord = homeSource(home.discord.source) && home.discord;
+  out.push(`<ul data-slot="actions" data-label="Start here" id="tries" class="controls home-start"><li class="home-cta"><a class="home-join" href="${esc(discord.url)}">${esc(discord.label)}</a></li>${home.start.map((l) => `<li>${link(l)}</li>`).join('')}</ul>\n`);
+  return out.join('');
+}
+
 // ---------------------------------------------------------------- write
 const outputs = new Map([
   ['app/src/Viewpoints.lex.tex', lean.join('\n')],
+  ['site/card.html', homeCard()],
   ['site/views/index.html', index()],
   ['site/views/views.css', css],
   ['site/views/llms.txt', llms.join('')],
