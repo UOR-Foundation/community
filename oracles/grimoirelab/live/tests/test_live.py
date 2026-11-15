@@ -44,7 +44,7 @@ def trace(root, requests):
 
 
 ROOT = {"discord.probe.trace": "t", "discord.probe.strategy": "full", "discord.guild_id": GUILD,
-        "discord.channel.id": TEXT, "discord.channel.family": "text", "perceval.max_items": 2,
+        "discord.channel.family": "text", "perceval.max_items": 2,
         "perceval.min_rate_to_sleep": 1, "perceval.sleep_for_rate": True}
 CHANNEL = {"url.template": "/channels/{channel}", "http.response.status_code": 200,
            "discord.channel.guild_id": GUILD, "discord.ratelimit.remaining": 4}
@@ -52,8 +52,8 @@ CHANNEL = {"url.template": "/channels/{channel}", "http.response.status_code": 2
 
 def page(after, ids):
     return {"url.template": "/channels/{channel}/messages", "http.response.status_code": 200,
-            "discord.cursor.after": after, "discord.page.returned": len(ids),
-            "discord.page.first_id": str(min(ids)) if ids else None, "discord.ratelimit.remaining": 4}
+            "discord.page.returned": len(ids),
+            "discord.page.past_cursor": min(ids) > after if ids else None, "discord.ratelimit.remaining": 4}
 
 
 class TestModel(unittest.TestCase):

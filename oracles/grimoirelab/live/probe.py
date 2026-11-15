@@ -85,14 +85,14 @@ class Recorder:
             body = response.json()
             if messages:
                 query = parse_qs(url.query)
-                ids = sorted(int(m["id"]) for m in body)
+                # No message, thread or member id is published (observations/deidentification.json): only
+                # whether the page's first message lies past the cursor, which the paging model checks.
+                after, ids = int(query["after"][0]), sorted(int(m["id"]) for m in body)
                 text = [m for m in body if m.get("type") in TEXT_TYPES]
                 a.update({
-                    "discord.cursor.after": int(query["after"][0]),
                     "discord.page.limit": int(query["limit"][0]),
                     "discord.page.returned": len(body),
-                    "discord.page.first_id": str(ids[0]) if ids else None,
-                    "discord.page.last_id": str(ids[-1]) if ids else None,
+                    "discord.page.past_cursor": ids[0] > after if ids else None,
                     "discord.page.text_messages": len(text),
                     "discord.page.content_empty": sum(
                         1 for m in text if not m.get("content") and not any(m.get(c) for c in CARRIERS)),
@@ -152,11 +152,11 @@ def run(strategy, guild, channel, family, token, tick, now=None, max_pages=50):
     now = now or datetime.now(timezone.utc)
     p = strategy_params(strategy, now)
     guild_arg, channel_arg = p["guild"] or guild, p["channel"] or channel
-    trace = _id(str(tick), strategy, channel, size=32)
+    trace = _id(str(tick), strategy, family, size=32)
     recorder = Recorder()
     root = {
         "discord.probe.trace": trace, "discord.probe.strategy": strategy,
-        "discord.guild_id": guild_arg, "discord.channel.id": channel_arg,
+        "discord.guild_id": guild_arg,
         "discord.channel.family": family,
         "perceval.max_items": p["max_items"], "perceval.min_rate_to_sleep": p["min_rate_to_sleep"],
         "perceval.sleep_for_rate": p["sleep_for_rate"],
