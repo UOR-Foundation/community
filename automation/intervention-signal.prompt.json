@@ -6,11 +6,12 @@
   "app": {
     "name": "uor-intervention-signal",
     "title": "Intervention signal",
-    "purpose": "Decide, for one oracle computation of one subject at the ISO 8601 week grain, whether its individuals control chart (ISO 7870-2:2023) shows the series rising, falling, steady, or too short to have control limits, from the size of its baseline and the two tests for special causes over the latest complete weeks.",
+    "purpose": "Decide, for one oracle computation of one subject at the ISO 8601 week grain, whether its individuals control chart (ISO 7870-2:2023) shows the series rising, falling, steady, or too short to have control limits, from the size of its baseline and the two tests for special causes over the latest complete weeks, test 2 counting only where the baseline gives it its stated rate.",
     "fields": [
       { "name": "baseline", "kind": "choice", "values": ["enough", "short"], "means": "enough: at least 20 complete weeks precede the nine-week test window, the fewest subgroups ISO 7870-2:2023 computes preliminary control limits from; short: fewer" },
       { "name": "latest", "kind": "choice", "values": ["high", "low", "inside"], "means": "ISO 7870-2:2023 test 1 on the latest complete week: high: its value is above the upper control limit; low: below the lower one; inside: neither; limits are the baseline mean plus or minus 2.66 times its mean moving range" },
-      { "name": "run", "kind": "choice", "values": ["high", "low", "none"], "means": "ISO 7870-2:2023 test 2: the nine complete weeks ending at the latest high: all lie above the centre line; low: all below it; none: neither" }
+      { "name": "run", "kind": "choice", "values": ["high", "low", "none"], "means": "ISO 7870-2:2023 test 2: the nine complete weeks ending at the latest high: all lie above the centre line; low: all below it; none: neither" },
+      { "name": "runrate", "kind": "choice", "values": ["holds", "fails"], "means": "whether the baseline gives test 2 the rate it claims: holds: at most half the baseline weeks lie strictly on the side of the centre line the run is on, so nine in a row has probability at most one in 512, or there is no run; fails: more than half do, as in a series of mostly empty weeks whose mean is above zero" }
     ],
     "outcomes": ["rise", "fall", "steady", "insufficient"],
     "meanings": {
@@ -23,8 +24,8 @@
       { "when": [{ "field": "baseline", "op": "is", "value": "short" }], "then": "insufficient", "why": "ISO 7870-2:2023: control limits are computed from 20 to 25 subgroups of preliminary data; with fewer, no point can be judged against them" },
       { "when": [{ "field": "latest", "op": "is", "value": "high" }], "then": "rise", "why": "ISO 7870-2:2023 test 1: one point beyond the upper control limit signals a special cause" },
       { "when": [{ "field": "latest", "op": "is", "value": "low" }], "then": "fall", "why": "ISO 7870-2:2023 test 1: one point beyond the lower control limit signals a special cause" },
-      { "when": [{ "field": "run", "op": "is", "value": "high" }], "then": "rise", "why": "ISO 7870-2:2023 test 2: nine points in a row on one side of the centre line signal a shift" },
-      { "when": [{ "field": "run", "op": "is", "value": "low" }], "then": "fall", "why": "ISO 7870-2:2023 test 2: nine points in a row on one side of the centre line signal a shift" }
+      { "when": [{ "field": "run", "op": "is", "value": "high" }, { "field": "runrate", "op": "is", "value": "holds" }], "then": "rise", "why": "ISO 7870-2:2023 test 2: nine points in a row on one side of the centre line signal a shift, where a point lies on that side with probability at most one half, the rate (1/2)^9 the test is set at" },
+      { "when": [{ "field": "run", "op": "is", "value": "low" }, { "field": "runrate", "op": "is", "value": "holds" }], "then": "fall", "why": "ISO 7870-2:2023 test 2: nine points in a row on one side of the centre line signal a shift, where a point lies on that side with probability at most one half, the rate (1/2)^9 the test is set at" }
     ],
     "otherwise": "steady",
     "otherwiseWhy": "ISO 7870-2:2023: a process with no point beyond its limits and no run is in statistical control, and its variation has common causes only",
@@ -32,15 +33,18 @@
       { "kind": "always", "when": [{ "field": "baseline", "op": "is", "value": "short" }], "then": "insufficient", "why": "no signal is claimed without control limits" },
       { "kind": "never", "when": [{ "field": "latest", "op": "is", "value": "inside" }, { "field": "run", "op": "is", "value": "none" }], "then": "rise", "why": "a series inside its limits with no run never signals" },
       { "kind": "never", "when": [{ "field": "latest", "op": "is", "value": "inside" }, { "field": "run", "op": "is", "value": "none" }], "then": "fall", "why": "a series inside its limits with no run never signals" },
-      { "kind": "always", "when": [{ "field": "baseline", "op": "is", "value": "enough" }, { "field": "latest", "op": "is", "value": "high" }], "then": "rise", "why": "a point above the limit always signals a rise" }
+      { "kind": "always", "when": [{ "field": "baseline", "op": "is", "value": "enough" }, { "field": "latest", "op": "is", "value": "high" }], "then": "rise", "why": "a point above the limit always signals a rise" },
+      { "kind": "never", "when": [{ "field": "latest", "op": "is", "value": "inside" }, { "field": "runrate", "op": "is", "value": "fails" }], "then": "fall", "why": "a run on a side most baseline weeks already lie on is ordinary variation, not a shift" },
+      { "kind": "never", "when": [{ "field": "latest", "op": "is", "value": "inside" }, { "field": "runrate", "op": "is", "value": "fails" }], "then": "rise", "why": "a run on a side most baseline weeks already lie on is ordinary variation, not a shift" }
     ],
     "examples": [
-      { "request": "short high high", "response": "insufficient" },
-      { "request": "enough high low", "response": "rise" },
-      { "request": "enough low none", "response": "fall" },
-      { "request": "enough inside high", "response": "rise" },
-      { "request": "enough inside low", "response": "fall" },
-      { "request": "enough inside none", "response": "steady" }
+      { "request": "short high high holds", "response": "insufficient" },
+      { "request": "enough high low fails", "response": "rise" },
+      { "request": "enough low none holds", "response": "fall" },
+      { "request": "enough inside high holds", "response": "rise" },
+      { "request": "enough inside low holds", "response": "fall" },
+      { "request": "enough inside none holds", "response": "steady" },
+      { "request": "enough inside low fails", "response": "steady" }
     ]
   }
 }

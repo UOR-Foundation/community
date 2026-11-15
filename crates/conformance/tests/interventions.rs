@@ -61,12 +61,13 @@ const limits = (xs) => {
   const cl = b.reduce((s, x) => s + x, 0) / b.length;
   let mr = 0; for (let i = 1; i < b.length; i++) mr += Math.abs(b[i] - b[i - 1]);
   mr /= b.length - 1;
-  return { cl, ucl: cl + E2 * mr, lcl: cl - E2 * mr };
+  return { cl, ucl: cl + E2 * mr, lcl: cl - E2 * mr, below: b.filter((x) => x < cl).length / b.length, above: b.filter((x) => x > cl).length / b.length };
 };
-const test = (w, l) => ({
-  latest: w[w.length - 1] > l.ucl ? 'high' : w[w.length - 1] < l.lcl ? 'low' : 'inside',
-  run: w.length < W ? 'none' : w.every((x) => x > l.cl) ? 'high' : w.every((x) => x < l.cl) ? 'low' : 'none',
-});
+const test = (w, l) => {
+  const run = w.length < W ? 'none' : w.every((x) => x > l.cl) ? 'high' : w.every((x) => x < l.cl) ? 'low' : 'none';
+  const side = run === 'high' ? l.above : run === 'low' ? l.below : 0;
+  return { latest: w[w.length - 1] > l.ucl ? 'high' : w[w.length - 1] < l.lcl ? 'low' : 'inside', run, runrate: side * 2 > 1 ? 'fails' : 'holds' };
+};
 const fail = (m) => { console.log(m); process.exit(1); };
 "#;
 
@@ -122,7 +123,7 @@ for (const ch of reg.charts) {{
   if (!l) {{ if (ch.request.baseline !== 'short' || ch.signal !== 'insufficient') fail(`${{ch.id}}: a short baseline is insufficient`); continue; }}
   if (!near(l.cl, ch.limits.cl) || !near(l.ucl, ch.limits.ucl) || !near(l.lcl, ch.limits.lcl)) fail(`${{ch.id}}: limits`);
   const t = test(ch.values.slice(-W), l);
-  if (ch.request.baseline !== 'enough' || t.latest !== ch.request.latest || t.run !== ch.request.run) fail(`${{ch.id}}: tests`);
+  if (ch.request.baseline !== 'enough' || t.latest !== ch.request.latest || t.run !== ch.request.run || t.runrate !== ch.request.runrate) fail(`${{ch.id}}: tests`);
   if (signal(ch.request) !== ch.signal) fail(`${{ch.id}}: signal`);
 }}
 if (!reg.charts.length) fail('no chart');
