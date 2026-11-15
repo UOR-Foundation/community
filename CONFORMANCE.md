@@ -268,6 +268,14 @@ model does not sanction.
 | `IV-04` | `build` | Every enacted intervention's effect, and every untreated signal onset in each chart's history, is the uor-intervention-effect answer over the first nine complete weeks after it against the limits frozen at its signal, so an intervention's effect is read against what untreated signals did |
 | `IV-05` | `open` | The three intervention apps are re-checked by the pinned builder on every run but are not yet in apps/set.json, so no Lean proof covers them; a chart of an average or a ratio with a week of no value, and the Discord guild until a chat computation is bound, are carried as refusals, never charted |
 
+## licensing
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `LC-01` | `build` | The licensing register is valid: every declared license identifier is a License record taken from the pinned SPDX License List, a repository is REUSE compliant exactly when every count the REUSE tool holds against compliance is zero and every file carries copyright and licensing information, every non-compliant repository is named by an open claim, and the counts reconcile with the release |
+| `LC-02` | `build` | The licensing catalog declares the REUSE tool version and wheel digest, the SPDX License List version and digests, the digests of the scan, snapshot and policy sources, and the commit of every repository it observed |
+| `LC-03` | `open` | A repository the REUSE tool does not find compliant, a declaration the Foundation's license policy or website does not allow, a missing or unidentified LICENSE text, and an identifier off the SPDX License List are carried as open claims citing both sources, never dropped or guessed |
+
 ## nonprofit
 
 | ID | Level | Statement |
@@ -301,6 +309,14 @@ model does not sanction.
 | `RO-01` | `build` | The reorganization register is valid: every public UOR Foundation repository has exactly one disposition, the one the uor-repo-disposition table gives its evidence; every fold names a kept host other than itself and no chain of folds returns to its start; every disposition cites evidence of its kind; and every staged act is unexecuted, references an existing repository, and waits on a TOC decision whenever its repository is under review |
 | `RO-02` | `build` | The reorganization catalog declares every repository of reorg/register.json with the commit its evidence was read at, the snapshot and repository-set digests, the pinned norms, and the digest of the uor-repo-disposition app with the builder commit that checked it |
 | `RO-03` | `open` | A candidate the evidence raises without deciding it, and every norm the reorganization needs that the Foundation's norms do not define, is carried as an open claim, never decided or defaulted |
+
+## standards
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `ST-01` | `build` | The standards register is valid: every part of The UOR Foundation has at least one applicable standard, every candidate pair is decided once by the uor-standard-applicability table, every applicable pair has exactly one status, every implemented pair names an existing facet and a check of it, every pair that is not implemented is an open claim, and every pair the security facet owns carries owner security |
+| `ST-02` | `build` | The standards catalog declares every part, candidate standard, decided pair and open claim of standards/register.json, each standard's issuer page with its sha256 and fetch time, and the digests of the inputs and the security facet table it was projected from |
+| `ST-03` | `open` | A standard that applies to a part of The UOR Foundation but is not implemented there in full, and a candidate whose scope its issuer's page did not yield, are carried as open claims and grouped into workstreams, never dropped or guessed |
 
 ## supply
 
