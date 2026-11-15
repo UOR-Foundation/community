@@ -28,7 +28,7 @@
  */
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, rmSync, statSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, rmSync, statSync, realpathSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
@@ -138,9 +138,11 @@ const repositories = pins.map((pin, index) => {
   const raw = run(syft.bin, [`dir:.`, ...sources.syft.args], { cwd: d });
   const committed = Number(run('git', ['-C', d, 'show', '-s', '--format=%ct', 'HEAD']).trim());
   const timestamp = new Date(committed * 1000).toISOString().replace(/\.\d+Z$/, 'Z');
-  // The two values syft draws from the run, replaced in syft's own bytes so its layout is kept.
+  // The three values syft draws from the run, replaced in syft's own bytes so its layout is kept. syft names
+  // a file component by its absolute path, so the checkout's own location is cut to the repository root.
+  const rooted = raw.split(`${realpathSync(d)}/`).join('/');
   const serial = `urn:uuid:${uuidV5(`${pin.url}@${pin.commit}`)}`;
-  let text = raw.replace(/("serialNumber":\s*")urn:uuid:[0-9a-f-]+(")/, `$1${serial}$2`).replace(/("metadata":\s*\{\s*"timestamp":\s*")[^"]+(")/, `$1${timestamp}$2`);
+  let text = rooted.replace(/("serialNumber":\s*")urn:uuid:[0-9a-f-]+(")/, `$1${serial}$2`).replace(/("metadata":\s*\{\s*"timestamp":\s*")[^"]+(")/, `$1${timestamp}$2`);
   if (!text.endsWith('\n')) text += '\n';
   const bom = JSON.parse(text);
   if (bom.serialNumber !== serial || bom.metadata?.timestamp !== timestamp) throw new Error(`${pin.name}: syft's serialNumber or timestamp was not where CycloneDX puts it`);
