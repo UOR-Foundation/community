@@ -124,7 +124,8 @@ fn licensing_lc_02() {
     let version = values(&sources, "version")[1].clone();
     let wheel = values(&sources, "sha256")[1].clone();
     assert!(
-        catalog.contains(&format!("reuse {version} ")) && catalog.contains(&format!("sha256:{wheel}")),
+        catalog.contains(&format!("reuse {version} "))
+            && catalog.contains(&format!("sha256:{wheel}")),
         "the REUSE tool is declared by version and wheel digest"
     );
     for digest in values(&register, "sha256")
@@ -138,7 +139,8 @@ fn licensing_lc_02() {
         );
     }
     assert!(
-        catalog.contains("SPDX License List 3.29.0 v3.29.0@31ba1a50e5397e00a304dbadc76531740e89ee48"),
+        catalog
+            .contains("SPDX License List 3.29.0 v3.29.0@31ba1a50e5397e00a304dbadc76531740e89ee48"),
         "the pinned SPDX License List is declared"
     );
 }
@@ -153,7 +155,10 @@ fn licensing_lc_03() {
         .iter()
         .filter(|c| !**c)
         .count();
-    let noncompliant = refusals.iter().filter(|r| *r == "reuse-noncompliant").count();
+    let noncompliant = refusals
+        .iter()
+        .filter(|r| *r == "reuse-noncompliant")
+        .count();
     assert_eq!(
         noncompliant, failing,
         "every non-compliant repository is one reuse-noncompliant claim"
@@ -172,7 +177,11 @@ fn licensing_lc_03() {
         + catalog
             .matches(&format!("(record {M}::PolicyClaim {{"))
             .count();
-    assert_eq!(declared, refusals.len(), "every refusal is one claim record");
+    assert_eq!(
+        declared,
+        refusals.len(),
+        "every refusal is one claim record"
+    );
     assert!(
         catalog.contains(&format!("(ctor {M}::Refusal.reuseNoncompliant)")) || failing == 0,
         "the non-compliant repositories are declared by kind"

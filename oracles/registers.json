@@ -91,6 +91,17 @@
         ["node", "reorg/project.mjs", "{sources}", "--check"],
         ["node", "reorg/catalog.mjs", "--check"]
       ]
+    },
+    {
+      "area": "licensing",
+      "sources": {"kind": "git-urls", "file": "licensing/sources.json"},
+      "inputs": ["licensing/**", "ecosystem/snapshot.json", "tools/register-lex.mjs"],
+      "tools": [["reuse", "--version"]],
+      "check": [
+        ["node", "licensing/scan.mjs", "{sources}", "--prune", "--check"],
+        ["node", "licensing/project.mjs", "{sources}", "--check"],
+        ["node", "licensing/catalog.mjs", "--check"]
+      ]
     }
   ]
 }

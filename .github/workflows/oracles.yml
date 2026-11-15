@@ -28,6 +28,7 @@ on:
       - 'inventory/**'
       - 'supply/**'
       - 'reorg/**'
+      - 'licensing/**'
       - 'package-lock.json'
       - 'automation/intervention*'
       - 'apps/**'
@@ -48,6 +49,7 @@ on:
       - 'inventory/**'
       - 'supply/**'
       - 'reorg/**'
+      - 'licensing/**'
       - 'package-lock.json'
       - 'automation/intervention*'
       - 'apps/**'
@@ -158,6 +160,19 @@ jobs:
         id: node
         with:
           node-version: 22
+      - name: The REUSE tool the licensing register lints every repository with
+        # licensing/requirements.txt pins reuse and every package it installs by version and wheel
+        # sha256; `reuse --version` is in the cache key. The wheels are CPython 3.13 manylinux x86_64.
+        if: matrix.area == 'licensing'
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+      - name: Install the pinned REUSE tool
+        if: matrix.area == 'licensing'
+        run: |
+          python3 -m venv "$RUNNER_TEMP/reuse"
+          "$RUNNER_TEMP/reuse/bin/pip" install --require-hashes --no-deps -r licensing/requirements.txt
+          echo "$RUNNER_TEMP/reuse/bin" >>"$GITHUB_PATH"
       - name: The PDF reader the nonprofit register reads the Bylaws and IRS forms with
         # pdftotext is not on the runner image; ubuntu-24.04's poppler-utils is 24.02.0, the
         # version nonprofit/register.json records, and its -v output is in the cache key.
