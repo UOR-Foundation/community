@@ -175,7 +175,8 @@ jobs:
       - name: The REUSE tool the licensing register lints every repository with
         # licensing/requirements.txt pins reuse and every package it installs by version and wheel
         # sha256; `reuse --version` is in the cache key. The wheels are CPython 3.13 manylinux x86_64.
-        if: matrix.area == 'licensing' || matrix.area == 'bestpractices'
+        # supply installs spdx/tools-python into its own venv from supply/spdx-tools.requirements.txt by hash.
+        if: matrix.area == 'licensing' || matrix.area == 'bestpractices' || matrix.area == 'supply'
         uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.13'
@@ -235,7 +236,7 @@ jobs:
           path: ${{ runner.temp }}/sources/${{ matrix.area }}
           key: sources-${{ matrix.area }}-${{ hashFiles(matrix.sources) }}
       - name: The locked node packages the supply register validates SBOMs with
-        # supply/project.mjs checks every SBOM against the CycloneDX 1.6 schema with ajv, which
+        # supply/project.mjs checks every SBOM against the CycloneDX 1.7, SPDX 2.3 and SPDX 3.0.1 schemas with ajv, which
         # package-lock.json pins; the supply entry's cache key hashes package-lock.json.
         if: steps.reuse.outputs.reuse != 'true' && matrix.area == 'supply'
         run: npm ci --ignore-scripts --no-audit --no-fund

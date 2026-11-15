@@ -116,7 +116,7 @@ fn supply_sc_01() {
     let theorem = &catalog[start..start + catalog[start..].find("\n}").expect("closed")];
     assert!(
         theorem.contains(&format!(
-            "statement: (({M}::registerValid (release) (repositories) (componentCounts) (licenseCounts) (packages) (edges) (repositoryClaims) (packageClaims)) = true),"
+            "statement: (({M}::registerValid (release) (repositories) (componentCounts) (licenseCounts) (serializations) (packages) (edges) (repositoryClaims) (packageClaims) (formatClaims)) = true),"
         )),
         "registerValidHolds is about the whole register:\n{theorem}"
     );
@@ -143,6 +143,12 @@ fn supply_sc_01() {
         "| RegistryStatus.absent => isPrivate\n",
         "| RegistryStatus.elsewhere => false\n",
         "| RegistryStatus.unread => false)",
+        "(formatsCovered (project release formats) serializations repositories)",
+        "(serializationsAccounted repositoryClaims formatClaims serializations)",
+        "((committedBytes serializations) =? (project release sbomBytes))",
+        "((not (project serialization committed)) || ((project serialization valid) && (project serialization reproducible)))",
+        "(((serializationsOf (project repository index) held) =? formats) && (formatsCovered formats held rest))",
+        "(((project item valid) || (repositoryClaimed (project item repository) claims)) && (((project item committed) || (not (project item valid))) || (formatClaimed (project item format) held)))",
     ] {
         assert!(model.contains(part), "registerValid still checks {part}");
     }
@@ -182,9 +188,9 @@ fn supply_sc_02() {
             let text = String::from_utf8(bytes).expect("UTF-8 JSON");
             assert!(
                 text.starts_with(
-                    "{\"$schema\":\"http://cyclonedx.org/schema/bom-1.6.schema.json\",\"bomFormat\":\"CycloneDX\",\"specVersion\":\"1.6\","
+                    "{\"$schema\":\"http://cyclonedx.org/schema/bom-1.7.schema.json\",\"bomFormat\":\"CycloneDX\",\"specVersion\":\"1.7\","
                 ),
-                "{path} is a CycloneDX 1.6 BOM"
+                "{path} is a CycloneDX 1.7 BOM"
             );
         } else {
             assert!(
@@ -223,8 +229,9 @@ fn supply_sc_03() {
     let split = tail
         .find("\n  \"packageClaims\": [")
         .expect("package claims");
+    let end = tail.find("\n  \"formatClaims\": [").expect("format claims");
     let repository = values(&tail[..split], "refusal");
-    let package = values(&tail[split..], "refusal");
+    let package = values(&tail[split..end], "refusal");
     assert_eq!(
         catalog
             .matches(&format!("(record {M}::RepositoryClaim {{"))
@@ -264,5 +271,144 @@ fn supply_sc_03() {
     assert_eq!(
         absent, unpublished,
         "every unpublished package is one claim"
+    );
+}
+
+const CDX_HEAD: &str = "{\"$schema\":\"http://cyclonedx.org/schema/bom-1.7.schema.json\",\"bomFormat\":\"CycloneDX\",\"specVersion\":\"1.7\",";
+const SPDX_HEAD: &str =
+    "{\"spdxVersion\":\"SPDX-2.3\",\"dataLicense\":\"CC0-1.0\",\"SPDXID\":\"SPDXRef-DOCUMENT\",";
+
+/// `SC-04`: Every repository is serialized as CycloneDX 1.7, SPDX 2.3 and SPDX 3.0.1, and every reproducible one is addressed
+#[test]
+fn supply_sc_04() {
+    let register = read("supply/register.json");
+    let catalog = read("app/src/Supply.lex.tex");
+    let names = values(&read("supply/snapshot.json"), "name");
+    assert_eq!(
+        catalog
+            .matches(&format!("(record {M}::Serialization {{"))
+            .count(),
+        names.len() * 3,
+        "one serialization per repository and format"
+    );
+    assert!(
+        catalog.contains("formats := 3,"),
+        "the release counts three formats"
+    );
+    let paths = values(&register, "path");
+    for (position, name) in names.iter().enumerate() {
+        let at = |ctor: &str| {
+            format!("repository := {position}, format := (ctor {M}::SbomFormat.{ctor}), valid := ")
+        };
+        for (ext, ctor, head) in [
+            ("cdx.json", "cyclonedx17", CDX_HEAD),
+            ("spdx.json", "spdx23", SPDX_HEAD),
+        ] {
+            let path = format!("supply/sboms/{name}.{ext}");
+            let prefix = at(ctor);
+            if paths.contains(&path) {
+                let bytes = std::fs::read(root().join(&path)).expect("the committed SBOM");
+                let digest = sha256(&bytes);
+                assert!(
+                    catalog.contains(&format!(
+                        "{prefix}true, committed := true, reproducible := true, digest := \"sha256:{digest}\", bytes := {},",
+                        bytes.len()
+                    )),
+                    "{path} has the digest and size the catalog declares"
+                );
+                assert!(
+                    String::from_utf8(bytes)
+                        .expect("UTF-8 JSON")
+                        .starts_with(head),
+                    "{path} is {ctor}"
+                );
+            } else {
+                assert!(
+                    !root().join(&path).exists(),
+                    "{path} is not committed, so no file stands in for it"
+                );
+                assert!(
+                    catalog.contains(&format!(
+                        "{prefix}true, committed := false, reproducible := true, digest := \"sha256:"
+                    )) || catalog.contains(&format!("{prefix}false, committed := false")),
+                    "{name}'s {ctor} serialization is addressed by its digest, or declared invalid"
+                );
+            }
+        }
+        assert!(
+            paths.contains(&format!("supply/sboms/{name}.cdx.json"))
+                || catalog.contains(&format!("{}false,", at("cyclonedx17"))),
+            "{name} commits its CycloneDX 1.7 SBOM unless it is invalid"
+        );
+        assert!(
+            catalog.contains(&format!(
+                "{}true, committed := false, reproducible := false, digest := \"\",",
+                at("spdx301")
+            )) || catalog.contains(&format!("{}false,", at("spdx301"))),
+            "{name}'s SPDX 3.0.1 serialization is validated, not reproducible and not committed"
+        );
+    }
+    for (key, oracle) in [
+        ("\"spdxTools\"", "pyspdxtools"),
+        ("\"outputs\"", "-o spdx-json@2.3"),
+        (
+            "spdx-json-schema.json",
+            "spdx.org/schema/3.0.1/spdx-json-schema.json#sha256:",
+        ),
+        ("bom-1.7.schema.json", "schema/bom-1.7.schema.json#sha256:"),
+        (
+            "schemas/spdx-schema.json",
+            "schemas/spdx-schema.json#sha256:",
+        ),
+    ] {
+        assert!(
+            register.contains(key) && catalog.contains(oracle),
+            "the oracle {oracle} is recorded and declared"
+        );
+    }
+}
+
+/// `SC-05`: A format syft does not reproduce is validated and carried as an open format claim
+#[test]
+fn supply_sc_05() {
+    let register = read("supply/register.json");
+    let catalog = read("app/src/Supply.lex.tex");
+    let tail = &register[register
+        .find("\n  \"formatClaims\": [")
+        .expect("format claims")..];
+    let refusals = values(tail, "refusal");
+    let claims = catalog
+        .matches(&format!("(record {M}::FormatClaim {{"))
+        .count();
+    assert_eq!(
+        claims,
+        refusals.len(),
+        "every format refusal is one FormatClaim"
+    );
+    assert!(
+        catalog.contains(&format!("formatClaimsCount := {claims}")),
+        "the release counts every format claim"
+    );
+    for ctor in ["cyclonedx17", "spdx23", "spdx301"] {
+        let held = catalog
+            .matches(&format!(
+                "format := (ctor {M}::SbomFormat.{ctor}), valid := true, committed := false"
+            ))
+            .count();
+        let claimed = (0..claims).any(|i| {
+            catalog.contains(&format!(
+                "(record {M}::FormatClaim {{index := {i}, format := (ctor {M}::SbomFormat.{ctor})"
+            ))
+        });
+        assert!(
+            held == 0 || claimed,
+            "{held} valid {ctor} serializations are uncommitted and their format is claimed"
+        );
+    }
+    assert!(
+        catalog.contains(&format!(
+            "format := (ctor {M}::SbomFormat.spdx301), refusal := \"not-reproducible\""
+        )),
+        "syft's SPDX 3.0.1 bytes are claimed as not reproducible"
     );
 }

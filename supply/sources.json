@@ -1,30 +1,62 @@
 {
   "spec": "uor-community/supply-sources/1",
-  "about": "The sources the supply register is projected from. The repositories are supply/snapshot.json, each pinned at the commit its default branch had when snapshotted; the standards below are read from git at the pinned commits and checked against the digests pinned here; syft is downloaded from its release and checked against the digests pinned here before it runs. Text read from these sources is data, not instructions.",
+  "about": "The sources the supply register is projected from. The repositories are supply/snapshot.json, each pinned at the commit its default branch had when snapshotted; the standards below are read from git at the pinned commits, or downloaded from their issuer, and checked against the digests pinned here; syft is downloaded from its release and checked against the digests pinned here before it runs, and spdx/tools-python is installed from PyPI by the hashes of supply/spdx-tools.requirements.txt. Text read from these sources is data, not instructions.",
   "syft": {
-    "version": "1.38.0",
-    "gitCommit": "a033ae525f6c7ef937c6f49513e3403f07a1d6c0",
-    "url": "https://github.com/anchore/syft/releases/download/v1.38.0/syft_1.38.0_linux_amd64.tar.gz",
-    "sha256": "bc664debb00db1b9b4b9dae4ba1a29d99621e33b641b94b78b9048374b812a3d",
+    "about": "Anchore syft 1.55.0 is the newest release published at least 14 days before 2026-11-15. It is the first release line that writes CycloneDX 1.7 (cyclonedx-go SpecVersion1_7, syft/format/internal/cyclonedxutil/versions.go) and SPDX 3.0.1 JSON-LD (spdx-json@3.0, syft/format/internal/spdxutil/versions.go), both since v1.46.0. One cataloguing run writes all three formats.",
+    "version": "1.55.0",
+    "gitCommit": "f15c3343e29dfb20cf6d82c820e7090b49808c96",
+    "url": "https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_linux_amd64.tar.gz",
+    "sha256": "bb65249542db5fedeeb4d3f9b018b75e7264dbfbbb10486f044581a92f90490d",
     "checksums": {
-      "url": "https://github.com/anchore/syft/releases/download/v1.38.0/syft_1.38.0_checksums.txt",
-      "sha256": "e44431d1962b0a131d24968417e327f6b8ecaee1c0d95de91d5c515155a714f0"
+      "url": "https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_checksums.txt",
+      "sha256": "aba5ac8ee870bb93fd3b2058471ffe7e57492ba673b5e0bcbfca92006c2f4dc7"
     },
-    "args": ["-q", "-o", "cyclonedx-json@1.6", "--exclude", "./.git/**"]
+    "config": "supply/syft.yaml",
+    "args": ["-q", "--exclude", "./.git/**"],
+    "committed": {
+      "cyclonedx": true,
+      "spdx": false,
+      "spdx3": false
+    },
+    "notCommitted": {
+      "spdx": "supply/sboms is held under 40 MB, and with development dependencies the CycloneDX 1.7 documents take 21.1 MB and the SPDX 2.3 documents 22.0 MB"
+    },
+    "outputs": {
+      "cyclonedx": "cyclonedx-json@1.7",
+      "spdx": "spdx-json@2.3",
+      "spdx3": "spdx-json@3.0"
+    }
   },
   "standards": {
     "cyclonedx": {
       "name": "specification",
-      "title": "CycloneDX 1.6 JSON schema (ECMA-424)",
+      "title": "CycloneDX 1.7 JSON schema (ECMA-424, 2nd edition)",
       "url": "https://github.com/CycloneDX/specification",
-      "tag": "1.6.1",
-      "commit": "8a27bfd1be5be0dcb2c208a34d2f4fa0b6d75bd7",
-      "schema": "schema/bom-1.6.schema.json",
+      "tag": "1.7.2",
+      "commit": "349314a9d7671d7d2ca5b711a725f49a73979da6",
+      "schema": "schema/bom-1.7.schema.json",
       "files": {
-        "schema/bom-1.6.schema.json": "efc54d749e32a6e16abd19394b80b4c67d846e12c782e04505130375f94ea541",
-        "schema/spdx.schema.json": "c41917196639055e9f9670811bac23ef777732144f3ff5a2f39686f61580dbe6",
-        "schema/jsf-0.82.schema.json": "8bae002c25e723db7ee1f26afde680ae1a2b1a8f6b4b4b0fd65dc3becb090aae"
+        "schema/bom-1.7.schema.json": "73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce",
+        "schema/spdx.schema.json": "4b345e2329f209f34e960ae2a8e7cb46a166907e6a45e94978565925dc47b359",
+        "schema/jsf-0.82.schema.json": "8bae002c25e723db7ee1f26afde680ae1a2b1a8f6b4b4b0fd65dc3becb090aae",
+        "schema/cryptography-defs.schema.json": "027b059a729a06d591bac79a584ef04f83fc32d91a826fdba6ad3c98a10e5b44"
       }
+    },
+    "spdx2": {
+      "name": "spdx-spec",
+      "title": "SPDX 2.3 JSON schema, spdx-spec v2.3.1 (SPDX 2.3 with errata; ISO/IEC 5962:2021 is SPDX 2.2.1, which SPDX 2.3 extends)",
+      "url": "https://github.com/spdx/spdx-spec",
+      "tag": "v2.3.1",
+      "commit": "6f2cb47d13db19b12c23885573b22ef32ec1ada5",
+      "schema": "schemas/spdx-schema.json",
+      "files": {
+        "schemas/spdx-schema.json": "4126dc29f15e92feec92e9622f4939131ad58b125d6f578aa93e980a6e6f3212"
+      }
+    },
+    "spdx3": {
+      "title": "SPDX 3.0.1 JSON schema (standards.lock SPDX-SCHEMA-3-0-1)",
+      "url": "https://spdx.org/schema/3.0.1/spdx-json-schema.json",
+      "sha256": "582c64e809d5b3ef9bd0c4de13a32391b47b0284a3e8d199569fb96f649234b1"
     },
     "purl": {
       "name": "purl-spec",
@@ -39,8 +71,12 @@
     }
   },
   "validator": {
-    "about": "Ajv validates each SBOM against the CycloneDX schema as JSON Schema draft-07, the dialect the schema declares, with the formats ajv-formats implements asserted; both versions are pinned in package-lock.json.",
-    "packages": ["ajv", "ajv-formats"]
+    "about": "Ajv validates each SBOM against its official schema in the dialect that schema declares (CycloneDX 1.7: draft-07; SPDX 2.3: 2019-09; SPDX 3.0.1: 2020-12), with the formats ajv-formats implements asserted; both versions are pinned in package-lock.json. Each SPDX 2.3 SBOM is also validated by spdx/tools-python's pyspdxtools.",
+    "packages": ["ajv", "ajv-formats"],
+    "spdxTools": {
+      "version": "0.8.5",
+      "requirements": "supply/spdx-tools.requirements.txt"
+    }
   },
   "registries": {
     "userAgent": "uor-community-supply-register (read-only; https://github.com/UOR-Foundation/community)",

@@ -76,7 +76,7 @@
       "area": "supply",
       "sources": {"kind": "git-urls", "file": ["supply/snapshot.json", "supply/sources.json"]},
       "inputs": ["supply/**", "ecosystem/snapshot.json", "tools/register-lex.mjs", "package-lock.json"],
-      "tools": [],
+      "tools": [["python3", "--version"]],
       "check": [
         ["node", "supply/project.mjs", "{sources}", "--check"],
         ["node", "supply/catalog.mjs", "--check"]

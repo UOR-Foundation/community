@@ -1,0 +1,10 @@
+# The syft configuration supply/project.mjs passes with -c, so no configuration file in a checkout or home directory
+# and no SYFT_* variable (project.mjs removes them) changes what is catalogued.
+#
+# include-dev-dependencies: a repository's development dependencies are part of its supply chain, and syft 1.55.0
+# reads a bun.lock reproducibly only with them included: it marks a package dev-only through a graph keyed by package
+# name, so when a lockfile holds two versions of one name the result depends on Go map order
+# (syft/pkg/cataloger/javascript/parse_bun_lock.go, findDevOnlyBunPkgs).
+check-for-app-update: false
+javascript:
+  include-dev-dependencies: true

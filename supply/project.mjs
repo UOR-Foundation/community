@@ -2,13 +2,25 @@
 /**
  * Project the supply register of the whole Foundation from its pinned sources.
  *
- * For every repository of supply/snapshot.json, checked out at its pinned commit, Anchore syft (pinned by
- * version and download digest) writes a CycloneDX 1.6 JSON SBOM, which Ajv validates against the official
- * CycloneDX 1.6 schema read from git at the pinned commit. The SBOM's two run-dependent values are fixed
- * so the same tree always gives the same bytes: serialNumber becomes the RFC 9562 name-based (v5) UUID of
- * `<repository url>@<commit>` in the URL namespace, and metadata.timestamp the commit's committer time.
- * Each SBOM is counted by Package-URL type (checked against the purl-spec type index) and by declared
- * license (CycloneDX licenseChoice: an SPDX id, a name, or an SPDX expression).
+ * For every repository of supply/snapshot.json, checked out at its pinned commit, one run of Anchore syft
+ * (pinned by version and download digest) writes three SBOMs of the tree:
+ *
+ *   CycloneDX 1.7 JSON (ECMA-424, 2nd edition), validated by Ajv against the official 1.7 schema;
+ *   SPDX 2.3 JSON, validated by Ajv against the official SPDX 2.3 schema and by spdx/tools-python's
+ *     pyspdxtools, installed from PyPI by pinned hashes;
+ *   SPDX 3.0.1 JSON-LD, validated by Ajv against the published SPDX 3.0.1 JSON schema.
+ *
+ * Each schema is read from git at its pinned commit, or downloaded from its issuer, and held to its pinned
+ * digest. The values syft draws from the run are fixed so the same tree always gives the same bytes: a file
+ * path is cut to the repository root, the CycloneDX serialNumber and the SPDX 2.3 documentNamespace take
+ * the RFC 9562 name-based (v5) UUID of `<repository url>@<commit>` in the URL namespace, and the CycloneDX
+ * metadata.timestamp and SPDX 2.3 creationInfo.created the commit's committer time. The CycloneDX 1.7 and
+ * SPDX 2.3 bytes are committed under supply/sboms/. syft orders the SPDX 3.0.1 @graph and numbers its local
+ * identifiers differently on each run, so those bytes cannot be reproduced: each is validated and counted,
+ * and the register carries an open claim that it is not committed.
+ *
+ * Each CycloneDX SBOM is counted by Package-URL type (checked against the purl-spec type index) and by
+ * declared license (CycloneDX licenseChoice: an SPDX id, a name, or an SPDX expression).
  *
  * The manifests of each checkout (supply/manifests.mjs) give the intra-Foundation dependency graph: an
  * edge A -> B for a package B publishes that A depends on, a git URL, submodule or GitHub Action into B,
@@ -21,13 +33,15 @@
  * dependency name two repositories declare, and a package that is not published as the Foundation's are
  * typed refusals carried into the register as open claims.
  *
- *   node supply/project.mjs <sources-dir> [--check]
+ *   node supply/project.mjs <sources-dir> [--check] [--fetch]
  *
- * <sources-dir> holds each repository and standard checked out at its pinned commit under its name.
- * syft is fetched into <sources-dir>/.supply-tools when it is not there at its pinned digest.
+ * <sources-dir> holds each repository and standard checked out at its pinned commit under its name. With
+ * --fetch, a repository that is not there at its pinned commit is fetched at that commit just before it is
+ * read and removed after it, so one repository is on disk at a time. syft, the SPDX 3.0.1 schema and
+ * spdx/tools-python are fetched into <sources-dir>/.supply-tools when they are not there at their digests.
  */
 import { createHash } from 'node:crypto';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, rmSync, statSync, realpathSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -37,12 +51,13 @@ import { readManifests, foundationRepo, keyOf } from './manifests.mjs';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
 const require = createRequire(import.meta.url);
-const [dir, flag] = process.argv.slice(2);
-if (!dir) {
-  process.stderr.write('usage: project.mjs <sources-dir> [--check]\n');
+const [dir, ...flags] = process.argv.slice(2);
+if (!dir || flags.some((f) => f !== '--check' && f !== '--fetch')) {
+  process.stderr.write('usage: project.mjs <sources-dir> [--check] [--fetch]\n');
   process.exit(64);
 }
-const check = flag === '--check';
+const check = flags.includes('--check');
+const fetchEach = flags.includes('--fetch');
 const sha256 = (b) => createHash('sha256').update(b).digest('hex');
 const run = (cmd, args, opts = {}) => execFileSync(cmd, args, { encoding: 'utf8', maxBuffer: 1 << 30, ...opts });
 const json = (path) => JSON.parse(readFileSync(path, 'utf8'));
@@ -71,6 +86,8 @@ function pinnedFiles(standard) {
 }
 const cdx = sources.standards.cyclonedx;
 const cdxFile = pinnedFiles(cdx);
+const spdx2 = sources.standards.spdx2;
+const spdx2File = pinnedFiles(spdx2);
 const purl = sources.standards.purl;
 const purlTypes = JSON.parse(pinnedFiles(purl)(purl.types));
 
@@ -98,19 +115,60 @@ function syftBinary() {
 }
 const syft = syftBinary();
 
-// Ajv, as JSON Schema draft-07 (the schema's $schema). Unknown keywords are ignored, as draft-07 requires;
+// The SPDX 3.0.1 JSON schema, downloaded from spdx.org and held to the digest standards.lock also pins.
+function spdx3Schema() {
+  const s = sources.standards.spdx3;
+  const file = join(dir, '.supply-tools', 'spdx3', s.url.split('/').pop());
+  if (!existsSync(file) || sha256(readFileSync(file)) !== s.sha256) {
+    mkdirSync(dirname(file), { recursive: true });
+    run('curl', ['-sSfL', '-o', file, s.url]);
+  }
+  if (sha256(readFileSync(file)) !== s.sha256) throw new Error(`${s.url} does not have the pinned sha256`);
+  return readFileSync(file, 'utf8');
+}
+
+// spdx/tools-python in its own venv, installed only from the hashes the requirements file pins and only from
+// wheels, so no build step runs; the venv is rebuilt whenever the requirements bytes change.
+function spdxTools() {
+  const t = sources.validator.spdxTools;
+  const requirements = readFileSync(join(root, t.requirements));
+  const venv = join(dir, '.supply-tools', `spdx-tools-${t.version}`);
+  const marker = join(venv, 'requirements.sha256');
+  if (!existsSync(marker) || readFileSync(marker, 'utf8') !== sha256(requirements)) {
+    rmSync(venv, { recursive: true, force: true });
+    run('python3', ['-m', 'venv', venv]);
+    run(join(venv, 'bin', 'pip'), ['install', '-q', '--disable-pip-version-check', '--no-input', '--require-hashes', '--only-binary=:all:', '-r', join(root, t.requirements)]);
+    writeFileSync(marker, sha256(requirements));
+  }
+  const version = run(join(venv, 'bin', 'python'), ['-I', '-c', 'import importlib.metadata as m; print(m.version("spdx-tools"))']).trim();
+  if (version !== t.version) throw new Error(`spdx-tools reports ${version}, not ${t.version}`);
+  return { bin: join(venv, 'bin', 'pyspdxtools'), version, requirementsSha256: sha256(requirements) };
+}
+const pyspdx = spdxTools();
+
+// Ajv, in the dialect each schema declares ($schema). Unknown keywords are ignored, as the dialects require;
 // formats ajv-formats does not implement are annotations only, and are named in the register.
 const Ajv = require('ajv');
+const Ajv2019 = require('ajv/dist/2019');
+const Ajv2020 = require('ajv/dist/2020');
 const addFormats = require('ajv-formats');
 const ajvVersion = json(require.resolve('ajv/package.json')).version;
 const formatsVersion = json(require.resolve('ajv-formats/package.json')).version;
-const ajv = new Ajv({ strict: false, allErrors: false, logger: false, validateFormats: true });
-addFormats(ajv);
-const schemaText = Object.keys(cdx.files).map((p) => [p, cdxFile(p)]);
-for (const [, text] of schemaText) ajv.addSchema(JSON.parse(text));
-const validate = ajv.getSchema(JSON.parse(cdxFile(cdx.schema)).$id);
 const asserted = new Set(Object.keys(require('ajv-formats/dist/formats').fullFormats));
-const formatsNotAsserted = [...new Set(schemaText.flatMap(([, t]) => [...t.matchAll(/"format"\s*:\s*"([^"]+)"/g)].map((m) => m[1])))].filter((f) => !asserted.has(f)).sort();
+function validator(Class, texts, main) {
+  const ajv = new Class({ strict: false, allErrors: false, logger: false, validateFormats: true });
+  addFormats(ajv);
+  for (const text of texts) ajv.addSchema(JSON.parse(text));
+  const fn = ajv.getSchema(JSON.parse(main).$id ?? '') ?? ajv.compile(JSON.parse(main));
+  const dialect = JSON.parse(main).$schema;
+  const notAsserted = [...new Set(texts.flatMap((t) => [...t.matchAll(/"format"\s*:\s*"([^"]+)"/g)].map((m) => m[1])))].filter((f) => !asserted.has(f)).sort();
+  return { check: (doc) => fn(doc), errors: () => ajv.errorsText(fn.errors), dialect, formatsNotAsserted: notAsserted };
+}
+const validators = {
+  cyclonedx: validator(Ajv, Object.keys(cdx.files).map((p) => cdxFile(p)), cdxFile(cdx.schema)),
+  spdx: validator(Ajv2019, [spdx2File(spdx2.schema)], spdx2File(spdx2.schema)),
+  spdx3: (() => { const t = spdx3Schema(); return validator(Ajv2020, [], t); })(),
+};
 
 // RFC 9562 section 5.5, name-based UUID with SHA-1, in the URL namespace of its Appendix A.
 function uuidV5(name) {
@@ -131,33 +189,88 @@ if (!check) {
 }
 const stale = [];
 const manifests = [];
-const repositories = pins.map((pin, index) => {
+// A repository that is not at its pinned commit is fetched there with --fetch, as oracles/reproject.mjs fetches
+// it, and removed after it is read; any other state is an error.
+function checkout(pin) {
   const d = join(dir, pin.name);
-  const at = headOf(d);
-  if (at !== pin.commit) throw new Error(`${pin.name} is at ${at}, not the pinned ${pin.commit}`);
-  const raw = run(syft.bin, [`dir:.`, ...sources.syft.args], { cwd: d });
+  if (existsSync(join(d, '.git')) && headOf(d) === pin.commit) return { d, fetched: false };
+  if (!fetchEach) throw new Error(`${pin.name} is not checked out at the pinned ${pin.commit} under ${dir}`);
+  rmSync(d, { recursive: true, force: true });
+  run('git', ['init', '-q', d]);
+  run('git', ['-C', d, 'fetch', '-q', '--depth', '1', pin.url, pin.commit]);
+  run('git', ['-C', d, 'checkout', '-q', '--detach', 'FETCH_HEAD']);
+  if (headOf(d) !== pin.commit) throw new Error(`${pin.name} is at ${headOf(d)}, not the pinned ${pin.commit}`);
+  return { d, fetched: true };
+}
+const scratch = join(dir, '.supply-tools', 'out');
+// syft reads only the committed configuration: every SYFT_* variable is removed, and -c names supply/syft.yaml, so a
+// .syft.yaml inside a checkout cannot change what is catalogued.
+const syftConfig = join(root, sources.syft.config);
+const syftEnv = { ...Object.fromEntries(Object.entries(process.env).filter(([k]) => !k.startsWith('SYFT_'))), SYFT_CHECK_FOR_APP_UPDATE: 'false' };
+// Each format: its key in sources.json, its name in the register, its file suffix when committed, and its refusal.
+const FORMATS = [['cyclonedx', 'cyclonedx-1.7', 'cdx.json', 'sbom-invalid'], ['spdx', 'spdx-2.3', 'spdx.json', 'spdx-invalid'], ['spdx3', 'spdx-3.0.1', 'spdx3.json', 'spdx3-invalid']];
+const committing = sources.syft.committed;
+const syftRun = (d, keys) => {
+  rmSync(scratch, { recursive: true, force: true });
+  mkdirSync(scratch, { recursive: true });
+  const out = Object.fromEntries(keys.map((k) => [k, join(scratch, `${k}.json`)]));
+  run(syft.bin, ['-c', syftConfig, 'dir:.', ...sources.syft.args, ...keys.flatMap((k) => ['-o', `${sources.syft.outputs[k]}=${out[k]}`])], { cwd: d, env: syftEnv });
+  // syft names a file by its absolute path, so the checkout's own location is cut to the repository root.
+  return Object.fromEntries(keys.map((k) => [k, readFileSync(out[k], 'utf8').split(`${realpathSync(d)}/`).join('/')]));
+};
+const UUID = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
+const spdx3Unreproduced = [];
+const repositories = pins.map((pin, index) => {
+  const { d, fetched } = checkout(pin);
+  const raw = syftRun(d, FORMATS.map(([k]) => k));
   const committed = Number(run('git', ['-C', d, 'show', '-s', '--format=%ct', 'HEAD']).trim());
   const timestamp = new Date(committed * 1000).toISOString().replace(/\.\d+Z$/, 'Z');
-  // The three values syft draws from the run, replaced in syft's own bytes so its layout is kept. syft names
-  // a file component by its absolute path, so the checkout's own location is cut to the repository root.
-  const rooted = raw.split(`${realpathSync(d)}/`).join('/');
-  const serial = `urn:uuid:${uuidV5(`${pin.url}@${pin.commit}`)}`;
-  let text = rooted.replace(/("serialNumber":\s*")urn:uuid:[0-9a-f-]+(")/, `$1${serial}$2`).replace(/("metadata":\s*\{\s*"timestamp":\s*")[^"]+(")/, `$1${timestamp}$2`);
-  if (!text.endsWith('\n')) text += '\n';
+  const uuid = uuidV5(`${pin.url}@${pin.commit}`);
+  const serial = `urn:uuid:${uuid}`;
+  const line = (t) => (t.endsWith('\n') ? t : `${t}\n`);
+  // The values syft draws from the run, replaced in syft's own bytes so its layout is kept.
+  const text = line(raw.cyclonedx.replace(/("serialNumber":\s*")urn:uuid:[0-9a-f-]+(")/, `$1${serial}$2`).replace(/("metadata":\s*\{\s*"timestamp":\s*")[^"]+(")/, `$1${timestamp}$2`));
   const bom = JSON.parse(text);
   if (bom.serialNumber !== serial || bom.metadata?.timestamp !== timestamp) throw new Error(`${pin.name}: syft's serialNumber or timestamp was not where CycloneDX puts it`);
-  const valid = validate(bom) && bom.bomFormat === 'CycloneDX' && bom.specVersion === '1.6';
-  const file = `supply/sboms/${pin.name}.cdx.json`;
-  const target = join(root, file);
-  if (valid) {
-    if (check) { if (!existsSync(target) || readFileSync(target, 'utf8') !== text) stale.push(file); }
-    else writeFileSync(target, text);
-  } else {
-    refuse(index, 'sbom-invalid', `${pin.name}: syft's SBOM does not validate against ${cdx.schema}: ${ajv.errorsText(validate.errors)}`);
-  }
+  const spdxText = line(raw.spdx.replace(new RegExp(`("documentNamespace":\\s*"[^"]*)${UUID}(")`), `$1${uuid}$2`).replace(/("creationInfo":\s*\{[^{}]*?"created":\s*")[^"]+(")/, `$1${timestamp}$2`));
+  const spdxDoc = JSON.parse(spdxText);
+  if (!spdxDoc.documentNamespace?.endsWith(uuid) || spdxDoc.creationInfo?.created !== timestamp) throw new Error(`${pin.name}: syft's documentNamespace or created was not where SPDX 2.3 puts it`);
+  const spdx3Doc = JSON.parse(raw.spdx3);
+  // A second run tells whether syft's SPDX 3.0.1 bytes are a function of the tree.
+  const again = syftRun(d, ['spdx3']).spdx3;
+  const runValue = (t) => t.replace(new RegExp(`https://anchore\\.com/syft/dir/${UUID}`, 'g'), '').replace(/"created":"[^"]+"/g, '');
+  if (runValue(again) !== runValue(raw.spdx3)) spdx3Unreproduced.push(pin.name);
+  const spdxFile = join(scratch, 'spdx.json');
+  writeFileSync(spdxFile, spdxText);
+  const tools = spawnSync(pyspdx.bin, ['-i', spdxFile], { encoding: 'utf8', maxBuffer: 1 << 30 });
+  const checks = {
+    cyclonedx: [validators.cyclonedx.check(bom) && bom.bomFormat === 'CycloneDX' && bom.specVersion === '1.7', () => `${cdx.schema}: ${validators.cyclonedx.errors()}`],
+    spdx: [validators.spdx.check(spdxDoc) && spdxDoc.spdxVersion === 'SPDX-2.3' && tools.status === 0, () => `${spdx2.schema}: ${validators.spdx.check(spdxDoc) ? 'valid' : validators.spdx.errors()}; pyspdxtools ${pyspdx.version}: exit ${tools.status}, ${`${tools.stderr}${tools.stdout}`.trim().split('\n').slice(0, 4).join(' ')}`],
+    spdx3: [validators.spdx3.check(spdx3Doc) && spdx3Doc['@graph']?.some((e) => e.type === 'CreationInfo' && e.specVersion === '3.0.1'), () => `${sources.standards.spdx3.url}: ${validators.spdx3.errors()}`],
+  };
+  const elements = {
+    cyclonedx: null,
+    spdx: (spdxDoc.packages?.length ?? 0) + (spdxDoc.files?.length ?? 0) + (spdxDoc.snippets?.length ?? 0),
+    spdx3: (spdx3Doc['@graph'] ?? []).filter((e) => e.spdxId).length,
+  };
+  const bytes = { cyclonedx: text, spdx: spdxText, spdx3: raw.spdx3 };
+  const serializations = FORMATS.map(([k, format, ext, refusal]) => {
+    const [valid, why] = checks[k];
+    if (!valid) refuse(index, refusal, `${pin.name}: syft's ${format} SBOM is not valid (${why()})`);
+    // A reproducible format is addressed by its digest whether or not its bytes are committed; --check re-derives both.
+    const reproducible = k !== 'spdx3';
+    const file = committing[k] && reproducible && valid ? `supply/sboms/${pin.name}.${ext}` : null;
+    if (file) {
+      const target = join(root, file);
+      if (check) { if (!existsSync(target) || readFileSync(target, 'utf8') !== bytes[k]) stale.push(file); }
+      else writeFileSync(target, bytes[k]);
+    }
+    return { format, valid, reproducible, path: file, sha256: reproducible && valid ? sha256(bytes[k]) : '', bytes: Buffer.byteLength(bytes[k]), elements: elements[k] };
+  });
   const all = [];
   const walk = (cs) => { for (const c of cs ?? []) { all.push(c); walk(c.components); } };
   walk(bom.components);
+  serializations[0].elements = all.length;
   const purlTypeCounts = {};
   const licenses = {};
   let licensed = 0;
@@ -179,11 +292,14 @@ const repositories = pins.map((pin, index) => {
   }
   if (all.length === 0) refuse(index, 'sbom-empty', `${pin.name}: syft ${sources.syft.version} catalogues no component in the tree at ${pin.commit}`);
   manifests.push(readManifests(d));
+  if (fetched) rmSync(d, { recursive: true, force: true });
+  const [own] = serializations;
   return {
     index,
     name: pin.name,
     commit: pin.commit,
-    sbom: valid ? { path: file, sha256: sha256(text), bytes: Buffer.byteLength(text) } : null,
+    sbom: own.path ? { path: own.path, sha256: own.sha256, bytes: own.bytes } : null,
+    serializations,
     components: all.length,
     purlTypes: Object.fromEntries(Object.entries(purlTypeCounts).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))),
     licensedComponents: licensed,
@@ -191,7 +307,14 @@ const repositories = pins.map((pin, index) => {
     licenses: Object.entries(licenses).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)).map(([k, count]) => { const [form, license] = k.split('\t'); return { form, license, count }; }),
   };
 });
-if (check) for (const f of readdirSync(sbomDir)) if (!repositories.some((r) => r.sbom && r.sbom.path === `supply/sboms/${f}`)) stale.push(`supply/sboms/${f}`);
+rmSync(scratch, { recursive: true, force: true });
+if (check) for (const f of readdirSync(sbomDir)) if (!repositories.some((r) => r.serializations.some((x) => x.path === `supply/sboms/${f}`))) stale.push(`supply/sboms/${f}`);
+// syft 1.55.0 writes SPDX 3.0.1 with its @graph order and local identifiers drawn from the run, so two runs on one
+// tree differ; those bytes are validated and counted, never committed, and the register says so.
+if (spdx3Unreproduced.length === 0) throw new Error(`syft ${sources.syft.version} wrote the same SPDX 3.0.1 bytes twice for every repository; commit them and retire the not-reproducible claim`);
+const formatClaims = FORMATS.filter(([k]) => !committing[k]).map(([k, format]) => (k === 'spdx3'
+  ? { format, refusal: 'not-reproducible', detail: `syft ${sources.syft.version} (${sources.syft.outputs.spdx3}) orders the @graph and numbers the local identifiers of its SPDX 3.0.1 document differently on each run of the same tree, so its bytes are validated and counted but cannot be committed as a reproducible projection` }
+  : { format, refusal: 'not-committed', detail: `${format} is reproducible and each document is addressed by its sha256 and size, which --check re-derives, but its bytes are not committed: ${sources.syft.notCommitted[k]}` }));
 
 // A package is a repository's own when its manifest is in that repository and names it as its repository.
 // A manifest in A that names B is a copy of B's package inside A.
@@ -307,19 +430,23 @@ const packageRecords = packages.map((p, index) => {
 });
 
 const edgeList = [...edges.values()].sort((x, y) => (x.from.toLowerCase() < y.from.toLowerCase() ? -1 : x.from.toLowerCase() > y.from.toLowerCase() ? 1 : 0) || (x.to.toLowerCase() < y.to.toLowerCase() ? -1 : x.to.toLowerCase() > y.to.toLowerCase() ? 1 : 0) || (x.kind < y.kind ? -1 : x.kind > y.kind ? 1 : 0));
-const sbomBytes = repositories.reduce((n, r) => n + (r.sbom?.bytes ?? 0), 0);
+// Every committed SBOM byte, in every format.
+const sbomBytes = repositories.reduce((n, r) => n + r.serializations.reduce((m, x) => m + (x.path ? x.bytes : 0), 0), 0);
 const register = {
   spec: 'uor-community/supply-register/1',
   snapshot: { path: 'supply/snapshot.json', sha256: sha256(snapshotBytes) },
   ecosystem: { path: 'ecosystem/snapshot.json', sha256: sha256(ecosystemBytes) },
   registries: { path: 'supply/registries.json', sha256: sha256(registriesBytes), fetchedAt: registries.fetchedAt },
   tools: {
-    syft: { version: sources.syft.version, gitCommit: sources.syft.gitCommit, url: sources.syft.url, sha256: sources.syft.sha256, checksumsSha256: sources.syft.checksums.sha256, binarySha256: syft.digest, args: sources.syft.args },
-    ajv: { version: ajvVersion, ajvFormats: formatsVersion, dialect: 'http://json-schema.org/draft-07/schema#', formatsNotAsserted },
+    syft: { version: sources.syft.version, gitCommit: sources.syft.gitCommit, url: sources.syft.url, sha256: sources.syft.sha256, checksumsSha256: sources.syft.checksums.sha256, binarySha256: syft.digest, args: sources.syft.args, outputs: sources.syft.outputs, config: { path: sources.syft.config, sha256: sha256(readFileSync(syftConfig)) } },
+    ajv: { version: ajvVersion, ajvFormats: formatsVersion, dialects: Object.fromEntries(FORMATS.map(([k, format]) => [format, { dialect: validators[k].dialect, formatsNotAsserted: validators[k].formatsNotAsserted }])) },
+    spdxTools: { version: pyspdx.version, requirements: sources.validator.spdxTools.requirements, requirementsSha256: pyspdx.requirementsSha256 },
   },
   standards: [
-    ...Object.entries(cdx.files).map(([path, digest]) => ({ path: `${cdx.name}@${cdx.commit}:${path}`, sha256: digest })),
-    ...Object.entries(purl.files).map(([path, digest]) => ({ path: `${purl.name}@${purl.commit}:${path}`, sha256: digest })),
+    ...Object.entries(cdx.files).map(([path, digest]) => ({ title: cdx.title, path: `${cdx.name}@${cdx.commit}:${path}`, sha256: digest })),
+    ...Object.entries(spdx2.files).map(([path, digest]) => ({ title: spdx2.title, path: `${spdx2.name}@${spdx2.commit}:${path}`, sha256: digest })),
+    { title: sources.standards.spdx3.title, path: sources.standards.spdx3.url, sha256: sources.standards.spdx3.sha256 },
+    ...Object.entries(purl.files).map(([path, digest]) => ({ title: purl.title, path: `${purl.name}@${purl.commit}:${path}`, sha256: digest })),
   ],
   purlTypes,
   sbomBytes,
@@ -329,6 +456,7 @@ const register = {
   packages: packageRecords,
   refusals,
   packageClaims,
+  formatClaims,
 };
 const text = `${JSON.stringify(register, null, 2)}\n`;
 const target = join(here, 'register.json');
@@ -339,4 +467,4 @@ if (check) {
     process.exit(1);
   }
 } else writeFileSync(target, text);
-process.stdout.write(`${repositories.length} repositories, ${register.componentTotal} components, ${edgeList.length} edges, ${packageRecords.length} packages, ${refusals.length + packageClaims.length} open claims, SBOMs ${sbomBytes} bytes\n`);
+process.stdout.write(`${repositories.length} repositories, ${register.componentTotal} components, ${edgeList.length} edges, ${packageRecords.length} packages, ${refusals.length + packageClaims.length + formatClaims.length} open claims, committed SBOMs ${sbomBytes} bytes\n`);

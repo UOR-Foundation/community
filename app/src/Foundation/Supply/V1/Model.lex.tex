@@ -67,6 +67,17 @@ inductive{
 }
 
 inductive{
+  name: SbomFormat,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: cyclonedx17, fields: []},
+    {name: spdx23, fields: []},
+    {name: spdx301, fields: []}
+  ]
+}
+
+inductive{
   name: EdgeKind,
   type_parameters: [],
   parameters: [],
@@ -100,10 +111,12 @@ structure{
     {name: repositoriesCount, type: Nat},
     {name: componentCountsCount, type: Nat},
     {name: licenseCountsCount, type: Nat},
+    {name: serializationsCount, type: Nat},
     {name: packagesCount, type: Nat},
     {name: edgesCount, type: Nat},
     {name: repositoryClaimsCount, type: Nat},
     {name: packageClaimsCount, type: Nat},
+    {name: formatClaimsCount, type: Nat},
     {name: componentTotal, type: Nat},
     {name: snapshotDigest, type: String},
     {name: ecosystemDigest, type: String},
@@ -113,7 +126,9 @@ structure{
     {name: syftDigest, type: String},
     {name: syftBinaryDigest, type: String},
     {name: standards, type: String},
-    {name: validator, type: String}
+    {name: validator, type: String},
+    {name: formats, type: Nat},
+    {name: sbomBytes, type: Nat}
   ]
 }
 
@@ -155,6 +170,23 @@ structure{
     {name: form, type: LicenseForm},
     {name: license, type: String},
     {name: count, type: Nat}
+  ]
+}
+
+structure{
+  name: Serialization,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: format, type: SbomFormat},
+    {name: valid, type: Bool},
+    {name: committed, type: Bool},
+    {name: reproducible, type: Bool},
+    {name: digest, type: String},
+    {name: bytes, type: Nat},
+    {name: elements, type: Nat}
   ]
 }
 
@@ -211,6 +243,18 @@ structure{
   fields: [
     {name: index, type: Nat},
     {name: subject, type: Nat},
+    {name: refusal, type: String},
+    {name: detail, type: String}
+  ]
+}
+
+structure{
+  name: FormatClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: format, type: SbomFormat},
     {name: refusal, type: String},
     {name: detail, type: String}
   ]
@@ -312,6 +356,100 @@ definition{
 }
 
 definition{
+  name: isCyclonedx17,
+  parameters: [value : SbomFormat],
+  result: Bool,
+  body: (match value
+    | SbomFormat.cyclonedx17 => true
+    | SbomFormat.spdx23 => false
+    | SbomFormat.spdx301 => false)
+}
+
+definition{
+  name: isSpdx23,
+  parameters: [value : SbomFormat],
+  result: Bool,
+  body: (match value
+    | SbomFormat.cyclonedx17 => false
+    | SbomFormat.spdx23 => true
+    | SbomFormat.spdx301 => false)
+}
+
+definition{
+  name: isSpdx301,
+  parameters: [value : SbomFormat],
+  result: Bool,
+  body: (match value
+    | SbomFormat.cyclonedx17 => false
+    | SbomFormat.spdx23 => false
+    | SbomFormat.spdx301 => true)
+}
+
+definition{
+  name: sameFormat,
+  parameters: [left : SbomFormat, right : SbomFormat],
+  result: Bool,
+  body: (match left
+    | SbomFormat.cyclonedx17 => (isCyclonedx17 right)
+    | SbomFormat.spdx23 => (isSpdx23 right)
+    | SbomFormat.spdx301 => (isSpdx301 right))
+}
+
+definition{
+  name: formatClaimed,
+  parameters: [wanted : SbomFormat, claims : (List FormatClaim)],
+  result: Bool,
+  body: (match claims
+    | List.nil => false
+    | List.cons claim rest => ((sameFormat (project claim format) wanted) || (formatClaimed wanted rest))),
+  recursive_argument: claims
+}
+
+definition{
+  name: serializationsOf,
+  parameters: [position : Nat, values : (List Serialization)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => (if ((project item repository) =? position) then (1 + (serializationsOf position rest)) else (serializationsOf position rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: formatsCovered,
+  parameters: [formats : Nat, held : (List Serialization), values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => (((serializationsOf (project repository index) held) =? formats) && (formatsCovered formats held rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: serializationsAccounted,
+  parameters: [
+    claims : (List RepositoryClaim),
+    held : (List FormatClaim),
+    values : (List Serialization)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => ((((project item valid) || (repositoryClaimed (project item repository) claims)) && (((project item committed) || (not (project item valid))) || (formatClaimed (project item format) held))) && (serializationsAccounted claims held rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: committedBytes,
+  parameters: [values : (List Serialization)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => (if (project item committed) then ((project item bytes) + (committedBytes rest)) else (committedBytes rest))),
+  recursive_argument: values
+}
+
+definition{
   name: repositoriesValid,
   parameters: [position : Nat, values : (List Repository)],
   result: Bool,
@@ -368,6 +506,26 @@ definition{
   body: (match values
     | List.nil => 0
     | List.cons licenseCount rest => (1 + (licenseCountsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: serializationsValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List Serialization)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons serialization rest => (((project serialization index) =? position) && (((project serialization repository) <? repositoriesCount) && (((not (project serialization committed)) || ((project serialization valid) && (project serialization reproducible))) && (serializationsValid (position + 1) repositoriesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: serializationsTotal,
+  parameters: [values : (List Serialization)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons serialization rest => (1 + (serializationsTotal rest))),
   recursive_argument: values
 }
 
@@ -448,19 +606,41 @@ definition{
 }
 
 definition{
+  name: formatClaimsValid,
+  parameters: [position : Nat, values : (List FormatClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons formatClaim rest => (((project formatClaim index) =? position) && (formatClaimsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: formatClaimsTotal,
+  parameters: [values : (List FormatClaim)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons formatClaim rest => (1 + (formatClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
   name: registerValid,
   parameters: [
     release : Release,
     repositories : (List Repository),
     componentCounts : (List ComponentCount),
     licenseCounts : (List LicenseCount),
+    serializations : (List Serialization),
     packages : (List Package),
     edges : (List Edge),
     repositoryClaims : (List RepositoryClaim),
-    packageClaims : (List PackageClaim)
+    packageClaims : (List PackageClaim),
+    formatClaims : (List FormatClaim)
   ],
   result: Bool,
-  body: (((repositoriesTotal repositories) =? (project release repositoriesCount)) && (((componentCountsTotal componentCounts) =? (project release componentCountsCount)) && (((licenseCountsTotal licenseCounts) =? (project release licenseCountsCount)) && (((packagesTotal packages) =? (project release packagesCount)) && (((edgesTotal edges) =? (project release edgesCount)) && (((repositoryClaimsTotal repositoryClaims) =? (project release repositoryClaimsCount)) && (((packageClaimsTotal packageClaims) =? (project release packageClaimsCount)) && ((repositoriesValid 0 repositories) && ((componentCountsValid 0 (repositoriesTotal repositories) componentCounts) && ((licenseCountsValid 0 (repositoriesTotal repositories) licenseCounts) && ((packagesValid 0 (repositoriesTotal repositories) packages) && ((edgesValid 0 (repositoriesTotal repositories) edges) && ((repositoryClaimsValid 0 (repositoriesTotal repositories) repositoryClaims) && ((packageClaimsValid 0 (packagesTotal packages) packageClaims) && (((componentSum repositories) =? (project release componentTotal)) && ((countsReconcile componentCounts licenseCounts repositories) && ((sbomsAccounted repositoryClaims repositories) && (packagesAccounted packageClaims packages))))))))))))))))))
+  body: (((repositoriesTotal repositories) =? (project release repositoriesCount)) && (((componentCountsTotal componentCounts) =? (project release componentCountsCount)) && (((licenseCountsTotal licenseCounts) =? (project release licenseCountsCount)) && (((serializationsTotal serializations) =? (project release serializationsCount)) && (((packagesTotal packages) =? (project release packagesCount)) && (((edgesTotal edges) =? (project release edgesCount)) && (((repositoryClaimsTotal repositoryClaims) =? (project release repositoryClaimsCount)) && (((packageClaimsTotal packageClaims) =? (project release packageClaimsCount)) && (((formatClaimsTotal formatClaims) =? (project release formatClaimsCount)) && ((repositoriesValid 0 repositories) && ((componentCountsValid 0 (repositoriesTotal repositories) componentCounts) && ((licenseCountsValid 0 (repositoriesTotal repositories) licenseCounts) && ((serializationsValid 0 (repositoriesTotal repositories) serializations) && ((packagesValid 0 (repositoriesTotal repositories) packages) && ((edgesValid 0 (repositoriesTotal repositories) edges) && ((repositoryClaimsValid 0 (repositoriesTotal repositories) repositoryClaims) && ((packageClaimsValid 0 (packagesTotal packages) packageClaims) && ((formatClaimsValid 0 formatClaims) && (((componentSum repositories) =? (project release componentTotal)) && ((countsReconcile componentCounts licenseCounts repositories) && ((sbomsAccounted repositoryClaims repositories) && ((packagesAccounted packageClaims packages) && ((formatsCovered (project release formats) serializations repositories) && ((serializationsAccounted repositoryClaims formatClaims serializations) && ((committedBytes serializations) =? (project release sbomBytes))))))))))))))))))))))))))
 }
 \end{semanticmodule}
 \end{lexlean}
