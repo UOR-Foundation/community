@@ -13,6 +13,7 @@
  * refetched. Nothing is fetched by branch or tag.
  */
 import { execFileSync, spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -72,8 +73,19 @@ const pinsOf = (kind, files) => {
   for (const f of [].concat(files)) walk(JSON.parse(readFileSync(join(root, f), 'utf8')));
   return [...found.values()];
 };
-if (register.sources.kind === 'git-commits' || register.sources.kind === 'git-urls') {
-  for (const { name, commit, url, history } of pinsOf(register.sources.kind, register.sources.file)) {
+// pinned: git-urls for the {name, url, commit} objects, plus `files`, each {name, url, sha256}, fetched from its
+// publisher and kept only when its bytes have the pinned digest; a stored file is re-hashed before it is reused.
+if (register.sources.kind === 'pinned') {
+  for (const f of [].concat(register.sources.file).flatMap((p) => JSON.parse(readFileSync(join(root, p), 'utf8')).files ?? [])) {
+    const target = join(sources, f.name);
+    const digest = () => createHash('sha256').update(readFileSync(target)).digest('hex');
+    if (existsSync(target) && digest() === f.sha256) continue;
+    run('curl', ['-fsSL', '--retry', '4', '-o', target, f.url]);
+    if (digest() !== f.sha256) throw new Error(`${f.url} is not the pinned ${f.name} (sha256 ${digest()})`);
+  }
+}
+if (['git-commits', 'git-urls', 'pinned'].includes(register.sources.kind)) {
+  for (const { name, commit, url, history } of pinsOf(register.sources.kind === 'pinned' ? 'git-urls' : register.sources.kind, register.sources.file)) {
     const dir = join(sources, name);
     const at = () => run('git', ['-C', dir, 'rev-parse', 'HEAD']).trim();
     if (existsSync(join(dir, '.git')) && at() === commit) continue;

@@ -1,0 +1,6472 @@
+{
+ "spec": "uor-community/security-register/1",
+ "about": "Foundation.Security.V1, projected by security/project.mjs from security/model.json, security/telemetry.json, the observation corpus and the standards security/sources.json pins. Never edited by hand.",
+ "assessed": "2026-11-15",
+ "mission": "The UOR Foundation is a nonprofit that implements, maintains and publishes the UOR Framework and Prism as free public-benefit services and resources, for the democratization of technology. Its work is public by design: every repository, proof, corpus and decision record is published, its development is driven by AI agents acting for its maintainers, and its novel claims draw public scrutiny.",
+ "standards": [
+  {
+   "name": "csf-2.0.json",
+   "standard": "NIST Cybersecurity Framework 2.0 (NIST CSWP 29), the Cybersecurity and Privacy Reference Tool export",
+   "url": "https://csrc.nist.gov/extensions/nudp/services/json/nudp/framework/version/csf_2_0_0/export/json?element=all",
+   "sha256": "de36759d2f3f70a0f28ab9a95505259e568467923295a13d510a068939773e5a"
+  },
+  {
+   "name": "sp800-30r1.pdf",
+   "standard": "NIST SP 800-30 Rev. 1, Guide for Conducting Risk Assessments",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-30r1.pdf",
+   "sha256": "f214087f0bdb35932a28c16eb93932a33c67a6edfb5e6f1638866bd201c98e04"
+  },
+  {
+   "name": "enterprise-attack-20.1.json",
+   "standard": "MITRE ATT&CK Enterprise 20.1 (STIX 2.1), mitre-attack/attack-stix-data",
+   "url": "https://raw.githubusercontent.com/mitre-attack/attack-stix-data/a8db2f52eb933c9c99060c123e088b3326d3a607/enterprise-attack/enterprise-attack-20.1.json",
+   "sha256": "539a843a7b53ed9749740b2123dddae3726b1a4831841c32aca740b011b910b5"
+  },
+  {
+   "name": "ATLAS-2026.10.yaml",
+   "standard": "MITRE ATLAS 2026.10, mitre-atlas/atlas-data",
+   "url": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/f56c1468731d6428e5bf875263b4643b46d67437/dist/v6/ATLAS-2026.10.yaml",
+   "sha256": "ac41ee9f99a47084ba5fdfc77ae83a28687e12390240fffeb37df7914ffe142d"
+  },
+  {
+   "name": "scorecard-checks.yaml",
+   "standard": "OpenSSF Scorecard v5.6.0 check definitions, ossf/scorecard",
+   "url": "https://raw.githubusercontent.com/ossf/scorecard/61e84743356275f6ffca23b1b2f2cb945e19eb96/docs/checks/internal/checks.yaml",
+   "sha256": "78f9f9131b44fec0115cdf7124d8738d5a412deeb204662ca384bdfe8eabb952"
+  },
+  {
+   "name": "linddun.html",
+   "standard": "LINDDUN privacy threat modeling framework (KU Leuven DistriNet), the framework page that names its seven threat categories",
+   "url": "https://www.linddun.org/linddun",
+   "sha256": "728c60453d035cc7fbf6c0351d8a26541c7069332ae0f32d5ff8db7f20aca849"
+  }
+ ],
+ "repositories": [
+  {
+   "name": "dotgithub",
+   "url": "https://github.com/UOR-Foundation/.github",
+   "commit": "92da114114fc9b76cbf2c5168e29d409b62ddde8"
+  },
+  {
+   "name": "website",
+   "url": "https://github.com/UOR-Foundation/website",
+   "commit": "e82ffdedc5d85ebd0bde239d50d4651005045d31"
+  }
+ ],
+ "tools": {
+  "pdftotext": "pdftotext version 24.02.0"
+ },
+ "csf": {
+  "functions": [
+   {
+    "id": "GV",
+    "name": "GOVERN",
+    "text": "The organization's cybersecurity risk management strategy, expectations, and policy are established, communicated, and monitored"
+   },
+   {
+    "id": "ID",
+    "name": "IDENTIFY",
+    "text": "The organization's current cybersecurity risks are understood"
+   },
+   {
+    "id": "PR",
+    "name": "PROTECT",
+    "text": "Safeguards to manage the organization's cybersecurity risks are used"
+   },
+   {
+    "id": "DE",
+    "name": "DETECT",
+    "text": "Possible cybersecurity attacks and compromises are found and analyzed"
+   },
+   {
+    "id": "RS",
+    "name": "RESPOND",
+    "text": "Actions regarding a detected cybersecurity incident are taken"
+   },
+   {
+    "id": "RC",
+    "name": "RECOVER",
+    "text": "Assets and operations affected by a cybersecurity incident are restored"
+   }
+  ],
+  "categories": [
+   {
+    "id": "GV.OC",
+    "name": "Organizational Context",
+    "function": 0
+   },
+   {
+    "id": "GV.RM",
+    "name": "Risk Management Strategy",
+    "function": 0
+   },
+   {
+    "id": "GV.RR",
+    "name": "Roles, Responsibilities, and Authorities",
+    "function": 0
+   },
+   {
+    "id": "GV.PO",
+    "name": "Policy",
+    "function": 0
+   },
+   {
+    "id": "GV.OV",
+    "name": "Oversight",
+    "function": 0
+   },
+   {
+    "id": "GV.SC",
+    "name": "Cybersecurity Supply Chain Risk Management",
+    "function": 0
+   },
+   {
+    "id": "ID.AM",
+    "name": "Asset Management",
+    "function": 1
+   },
+   {
+    "id": "ID.RA",
+    "name": "Risk Assessment",
+    "function": 1
+   },
+   {
+    "id": "ID.IM",
+    "name": "Improvement",
+    "function": 1
+   },
+   {
+    "id": "PR.AA",
+    "name": "Identity Management, Authentication, and Access Control",
+    "function": 2
+   },
+   {
+    "id": "PR.AT",
+    "name": "Awareness and Training",
+    "function": 2
+   },
+   {
+    "id": "PR.DS",
+    "name": "Data Security",
+    "function": 2
+   },
+   {
+    "id": "PR.PS",
+    "name": "Platform Security",
+    "function": 2
+   },
+   {
+    "id": "PR.IR",
+    "name": "Technology Infrastructure Resilience",
+    "function": 2
+   },
+   {
+    "id": "DE.AE",
+    "name": "Adverse Event Analysis",
+    "function": 3
+   },
+   {
+    "id": "DE.CM",
+    "name": "Continuous Monitoring",
+    "function": 3
+   },
+   {
+    "id": "RS.MA",
+    "name": "Incident Management",
+    "function": 4
+   },
+   {
+    "id": "RS.AN",
+    "name": "Incident Analysis",
+    "function": 4
+   },
+   {
+    "id": "RS.CO",
+    "name": "Incident Response Reporting and Communication",
+    "function": 4
+   },
+   {
+    "id": "RS.MI",
+    "name": "Incident Mitigation",
+    "function": 4
+   },
+   {
+    "id": "RC.RP",
+    "name": "Incident Recovery Plan Execution",
+    "function": 5
+   },
+   {
+    "id": "RC.CO",
+    "name": "Incident Recovery Communication",
+    "function": 5
+   }
+  ],
+  "subcategories": [
+   {
+    "id": "GV.OC-01",
+    "text": "The organizational mission is understood and informs cybersecurity risk management",
+    "category": 0
+   },
+   {
+    "id": "GV.OC-02",
+    "text": "Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered",
+    "category": 0
+   },
+   {
+    "id": "GV.OC-03",
+    "text": "Legal, regulatory, and contractual requirements regarding cybersecurity - including privacy and civil liberties obligations - are understood and managed",
+    "category": 0
+   },
+   {
+    "id": "GV.OC-04",
+    "text": "Critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization are understood and communicated",
+    "category": 0
+   },
+   {
+    "id": "GV.OC-05",
+    "text": "Outcomes, capabilities, and services that the organization depends on are understood and communicated",
+    "category": 0
+   },
+   {
+    "id": "GV.RM-01",
+    "text": "Risk management objectives are established and agreed to by organizational stakeholders",
+    "category": 1
+   },
+   {
+    "id": "GV.RM-02",
+    "text": "Risk appetite and risk tolerance statements are established, communicated, and maintained",
+    "category": 1
+   },
+   {
+    "id": "GV.RM-03",
+    "text": "Cybersecurity risk management activities and outcomes are included in enterprise risk management processes",
+    "category": 1
+   },
+   {
+    "id": "GV.RM-04",
+    "text": "Strategic direction that describes appropriate risk response options is established and communicated",
+    "category": 1
+   },
+   {
+    "id": "GV.RM-05",
+    "text": "Lines of communication across the organization are established for cybersecurity risks, including risks from suppliers and other third parties",
+    "category": 1
+   },
+   {
+    "id": "GV.RM-06",
+    "text": "A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated",
+    "category": 1
+   },
+   {
+    "id": "GV.RM-07",
+    "text": "Strategic opportunities (i.e., positive risks) are characterized and are included in organizational cybersecurity risk discussions",
+    "category": 1
+   },
+   {
+    "id": "GV.RR-01",
+    "text": "Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving",
+    "category": 2
+   },
+   {
+    "id": "GV.RR-02",
+    "text": "Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced",
+    "category": 2
+   },
+   {
+    "id": "GV.RR-03",
+    "text": "Adequate resources are allocated commensurate with the cybersecurity risk strategy, roles, responsibilities, and policies",
+    "category": 2
+   },
+   {
+    "id": "GV.RR-04",
+    "text": "Cybersecurity is included in human resources practices",
+    "category": 2
+   },
+   {
+    "id": "GV.PO-01",
+    "text": "Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced",
+    "category": 3
+   },
+   {
+    "id": "GV.PO-02",
+    "text": "Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission",
+    "category": 3
+   },
+   {
+    "id": "GV.OV-01",
+    "text": "Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction",
+    "category": 4
+   },
+   {
+    "id": "GV.OV-02",
+    "text": "The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks",
+    "category": 4
+   },
+   {
+    "id": "GV.OV-03",
+    "text": "Organizational cybersecurity risk management performance is evaluated and reviewed for adjustments needed",
+    "category": 4
+   },
+   {
+    "id": "GV.SC-01",
+    "text": "A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders",
+    "category": 5
+   },
+   {
+    "id": "GV.SC-02",
+    "text": "Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally",
+    "category": 5
+   },
+   {
+    "id": "GV.SC-03",
+    "text": "Cybersecurity supply chain risk management is integrated into cybersecurity and enterprise risk management, risk assessment, and improvement processes",
+    "category": 5
+   },
+   {
+    "id": "GV.SC-04",
+    "text": "Suppliers are known and prioritized by criticality",
+    "category": 5
+   },
+   {
+    "id": "GV.SC-05",
+    "text": "Requirements to address cybersecurity risks in supply chains are established, prioritized, and integrated into contracts and other types of agreements with suppliers and other relevant third parties",
+    "category": 5
+   },
+   {
+    "id": "GV.SC-06",
+    "text": "Planning and due diligence are performed to reduce risks before entering into formal supplier or other third-party relationships",
+    "category": 5
+   },
+   {
+    "id": "GV.SC-07",
+    "text": "The risks posed by a supplier, their products and services, and other third parties are understood, recorded, prioritized, assessed, responded to, and monitored over the course of the relationship",
+    "category": 5
+   },
+   {
+    "id": "GV.SC-08",
+    "text": "Relevant suppliers and other third parties are included in incident planning, response, and recovery activities",
+    "category": 5
+   },
+   {
+    "id": "GV.SC-09",
+    "text": "Supply chain security practices are integrated into cybersecurity and enterprise risk management programs, and their performance is monitored throughout the technology product and service life cycle",
+    "category": 5
+   },
+   {
+    "id": "GV.SC-10",
+    "text": "Cybersecurity supply chain risk management plans include provisions for activities that occur after the conclusion of a partnership or service agreement",
+    "category": 5
+   },
+   {
+    "id": "ID.AM-01",
+    "text": "Inventories of hardware managed by the organization are maintained",
+    "category": 6
+   },
+   {
+    "id": "ID.AM-02",
+    "text": "Inventories of software, services, and systems managed by the organization are maintained",
+    "category": 6
+   },
+   {
+    "id": "ID.AM-03",
+    "text": "Representations of the organization's authorized network communication and internal and external network data flows are maintained",
+    "category": 6
+   },
+   {
+    "id": "ID.AM-04",
+    "text": "Inventories of services provided by suppliers are maintained",
+    "category": 6
+   },
+   {
+    "id": "ID.AM-05",
+    "text": "Assets are prioritized based on classification, criticality, resources, and impact on the mission",
+    "category": 6
+   },
+   {
+    "id": "ID.AM-07",
+    "text": "Inventories of data and corresponding metadata for designated data types are maintained",
+    "category": 6
+   },
+   {
+    "id": "ID.AM-08",
+    "text": "Systems, hardware, software, services, and data are managed throughout their life cycles",
+    "category": 6
+   },
+   {
+    "id": "ID.RA-01",
+    "text": "Vulnerabilities in assets are identified, validated, and recorded",
+    "category": 7
+   },
+   {
+    "id": "ID.RA-02",
+    "text": "Cyber threat intelligence is received from information sharing forums and sources",
+    "category": 7
+   },
+   {
+    "id": "ID.RA-03",
+    "text": "Internal and external threats to the organization are identified and recorded",
+    "category": 7
+   },
+   {
+    "id": "ID.RA-04",
+    "text": "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified and recorded",
+    "category": 7
+   },
+   {
+    "id": "ID.RA-05",
+    "text": "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response prioritization",
+    "category": 7
+   },
+   {
+    "id": "ID.RA-06",
+    "text": "Risk responses are chosen, prioritized, planned, tracked, and communicated",
+    "category": 7
+   },
+   {
+    "id": "ID.RA-07",
+    "text": "Changes and exceptions are managed, assessed for risk impact, recorded, and tracked",
+    "category": 7
+   },
+   {
+    "id": "ID.RA-08",
+    "text": "Processes for receiving, analyzing, and responding to vulnerability disclosures are established",
+    "category": 7
+   },
+   {
+    "id": "ID.RA-09",
+    "text": "The authenticity and integrity of hardware and software are assessed prior to acquisition and use",
+    "category": 7
+   },
+   {
+    "id": "ID.RA-10",
+    "text": "Critical suppliers are assessed prior to acquisition",
+    "category": 7
+   },
+   {
+    "id": "ID.IM-01",
+    "text": "Improvements are identified from evaluations",
+    "category": 8
+   },
+   {
+    "id": "ID.IM-02",
+    "text": "Improvements are identified from security tests and exercises, including those done in coordination with suppliers and relevant third parties",
+    "category": 8
+   },
+   {
+    "id": "ID.IM-03",
+    "text": "Improvements are identified from execution of operational processes, procedures, and activities",
+    "category": 8
+   },
+   {
+    "id": "ID.IM-04",
+    "text": "Incident response plans and other cybersecurity plans that affect operations are established, communicated, maintained, and improved",
+    "category": 8
+   },
+   {
+    "id": "PR.AA-01",
+    "text": "Identities and credentials for authorized users, services, and hardware are managed by the organization",
+    "category": 9
+   },
+   {
+    "id": "PR.AA-02",
+    "text": "Identities are proofed and bound to credentials based on the context of interactions",
+    "category": 9
+   },
+   {
+    "id": "PR.AA-03",
+    "text": "Users, services, and hardware are authenticated",
+    "category": 9
+   },
+   {
+    "id": "PR.AA-04",
+    "text": "Identity assertions are protected, conveyed, and verified",
+    "category": 9
+   },
+   {
+    "id": "PR.AA-05",
+    "text": "Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties",
+    "category": 9
+   },
+   {
+    "id": "PR.AA-06",
+    "text": "Physical access to assets is managed, monitored, and enforced commensurate with risk",
+    "category": 9
+   },
+   {
+    "id": "PR.AT-01",
+    "text": "Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind",
+    "category": 10
+   },
+   {
+    "id": "PR.AT-02",
+    "text": "Individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind",
+    "category": 10
+   },
+   {
+    "id": "PR.DS-01",
+    "text": "The confidentiality, integrity, and availability of data-at-rest are protected",
+    "category": 11
+   },
+   {
+    "id": "PR.DS-02",
+    "text": "The confidentiality, integrity, and availability of data-in-transit are protected",
+    "category": 11
+   },
+   {
+    "id": "PR.DS-10",
+    "text": "The confidentiality, integrity, and availability of data-in-use are protected",
+    "category": 11
+   },
+   {
+    "id": "PR.DS-11",
+    "text": "Backups of data are created, protected, maintained, and tested",
+    "category": 11
+   },
+   {
+    "id": "PR.PS-01",
+    "text": "Configuration management practices are established and applied",
+    "category": 12
+   },
+   {
+    "id": "PR.PS-02",
+    "text": "Software is maintained, replaced, and removed commensurate with risk",
+    "category": 12
+   },
+   {
+    "id": "PR.PS-03",
+    "text": "Hardware is maintained, replaced, and removed commensurate with risk",
+    "category": 12
+   },
+   {
+    "id": "PR.PS-04",
+    "text": "Log records are generated and made available for continuous monitoring",
+    "category": 12
+   },
+   {
+    "id": "PR.PS-05",
+    "text": "Installation and execution of unauthorized software are prevented",
+    "category": 12
+   },
+   {
+    "id": "PR.PS-06",
+    "text": "Secure software development practices are integrated, and their performance is monitored throughout the software development life cycle",
+    "category": 12
+   },
+   {
+    "id": "PR.IR-01",
+    "text": "Networks and environments are protected from unauthorized logical access and usage",
+    "category": 13
+   },
+   {
+    "id": "PR.IR-02",
+    "text": "The organization's technology assets are protected from environmental threats",
+    "category": 13
+   },
+   {
+    "id": "PR.IR-03",
+    "text": "Mechanisms are implemented to achieve resilience requirements in normal and adverse situations",
+    "category": 13
+   },
+   {
+    "id": "PR.IR-04",
+    "text": "Adequate resource capacity to ensure availability is maintained",
+    "category": 13
+   },
+   {
+    "id": "DE.AE-02",
+    "text": "Potentially adverse events are analyzed to better understand associated activities",
+    "category": 14
+   },
+   {
+    "id": "DE.AE-03",
+    "text": "Information is correlated from multiple sources",
+    "category": 14
+   },
+   {
+    "id": "DE.AE-04",
+    "text": "The estimated impact and scope of adverse events are understood",
+    "category": 14
+   },
+   {
+    "id": "DE.AE-06",
+    "text": "Information on adverse events is provided to authorized staff and tools",
+    "category": 14
+   },
+   {
+    "id": "DE.AE-07",
+    "text": "Cyber threat intelligence and other contextual information are integrated into the analysis",
+    "category": 14
+   },
+   {
+    "id": "DE.AE-08",
+    "text": "Incidents are declared when adverse events meet the defined incident criteria",
+    "category": 14
+   },
+   {
+    "id": "DE.CM-01",
+    "text": "Networks and network services are monitored to find potentially adverse events",
+    "category": 15
+   },
+   {
+    "id": "DE.CM-02",
+    "text": "The physical environment is monitored to find potentially adverse events",
+    "category": 15
+   },
+   {
+    "id": "DE.CM-03",
+    "text": "Personnel activity and technology usage are monitored to find potentially adverse events",
+    "category": 15
+   },
+   {
+    "id": "DE.CM-06",
+    "text": "External service provider activities and services are monitored to find potentially adverse events",
+    "category": 15
+   },
+   {
+    "id": "DE.CM-09",
+    "text": "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events",
+    "category": 15
+   },
+   {
+    "id": "RS.MA-01",
+    "text": "The incident response plan is executed in coordination with relevant third parties once an incident is declared",
+    "category": 16
+   },
+   {
+    "id": "RS.MA-02",
+    "text": "Incident reports are triaged and validated",
+    "category": 16
+   },
+   {
+    "id": "RS.MA-03",
+    "text": "Incidents are categorized and prioritized",
+    "category": 16
+   },
+   {
+    "id": "RS.MA-04",
+    "text": "Incidents are escalated or elevated as needed",
+    "category": 16
+   },
+   {
+    "id": "RS.MA-05",
+    "text": "The criteria for initiating incident recovery are applied",
+    "category": 16
+   },
+   {
+    "id": "RS.AN-03",
+    "text": "Analysis is performed to establish what has taken place during an incident and the root cause of the incident",
+    "category": 17
+   },
+   {
+    "id": "RS.AN-06",
+    "text": "Actions performed during an investigation are recorded, and the records' integrity and provenance are preserved",
+    "category": 17
+   },
+   {
+    "id": "RS.AN-07",
+    "text": "Incident data and metadata are collected, and their integrity and provenance are preserved",
+    "category": 17
+   },
+   {
+    "id": "RS.AN-08",
+    "text": "An incident's magnitude is estimated and validated",
+    "category": 17
+   },
+   {
+    "id": "RS.CO-02",
+    "text": "Internal and external stakeholders are notified of incidents",
+    "category": 18
+   },
+   {
+    "id": "RS.CO-03",
+    "text": "Information is shared with designated internal and external stakeholders",
+    "category": 18
+   },
+   {
+    "id": "RS.MI-01",
+    "text": "Incidents are contained",
+    "category": 19
+   },
+   {
+    "id": "RS.MI-02",
+    "text": "Incidents are eradicated",
+    "category": 19
+   },
+   {
+    "id": "RC.RP-01",
+    "text": "The recovery portion of the incident response plan is executed once initiated from the incident response process",
+    "category": 20
+   },
+   {
+    "id": "RC.RP-02",
+    "text": "Recovery actions are selected, scoped, prioritized, and performed",
+    "category": 20
+   },
+   {
+    "id": "RC.RP-03",
+    "text": "The integrity of backups and other restoration assets is verified before using them for restoration",
+    "category": 20
+   },
+   {
+    "id": "RC.RP-04",
+    "text": "Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms",
+    "category": 20
+   },
+   {
+    "id": "RC.RP-05",
+    "text": "The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed",
+    "category": 20
+   },
+   {
+    "id": "RC.RP-06",
+    "text": "The end of incident recovery is declared based on criteria, and incident-related documentation is completed",
+    "category": 20
+   },
+   {
+    "id": "RC.CO-03",
+    "text": "Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders",
+    "category": 21
+   },
+   {
+    "id": "RC.CO-04",
+    "text": "Public updates on incident recovery are shared using approved methods and messaging",
+    "category": 21
+   }
+  ]
+ },
+ "tables": {
+  "G5": [
+   {
+    "row": 0,
+    "column": 0,
+    "level": 0
+   },
+   {
+    "row": 0,
+    "column": 1,
+    "level": 0
+   },
+   {
+    "row": 0,
+    "column": 2,
+    "level": 1
+   },
+   {
+    "row": 0,
+    "column": 3,
+    "level": 1
+   },
+   {
+    "row": 0,
+    "column": 4,
+    "level": 1
+   },
+   {
+    "row": 1,
+    "column": 0,
+    "level": 0
+   },
+   {
+    "row": 1,
+    "column": 1,
+    "level": 1
+   },
+   {
+    "row": 1,
+    "column": 2,
+    "level": 1
+   },
+   {
+    "row": 1,
+    "column": 3,
+    "level": 2
+   },
+   {
+    "row": 1,
+    "column": 4,
+    "level": 2
+   },
+   {
+    "row": 2,
+    "column": 0,
+    "level": 1
+   },
+   {
+    "row": 2,
+    "column": 1,
+    "level": 1
+   },
+   {
+    "row": 2,
+    "column": 2,
+    "level": 2
+   },
+   {
+    "row": 2,
+    "column": 3,
+    "level": 2
+   },
+   {
+    "row": 2,
+    "column": 4,
+    "level": 3
+   },
+   {
+    "row": 3,
+    "column": 0,
+    "level": 1
+   },
+   {
+    "row": 3,
+    "column": 1,
+    "level": 2
+   },
+   {
+    "row": 3,
+    "column": 2,
+    "level": 2
+   },
+   {
+    "row": 3,
+    "column": 3,
+    "level": 3
+   },
+   {
+    "row": 3,
+    "column": 4,
+    "level": 4
+   },
+   {
+    "row": 4,
+    "column": 0,
+    "level": 1
+   },
+   {
+    "row": 4,
+    "column": 1,
+    "level": 2
+   },
+   {
+    "row": 4,
+    "column": 2,
+    "level": 3
+   },
+   {
+    "row": 4,
+    "column": 3,
+    "level": 4
+   },
+   {
+    "row": 4,
+    "column": 4,
+    "level": 4
+   }
+  ],
+  "I2": [
+   {
+    "row": 0,
+    "column": 0,
+    "level": 0
+   },
+   {
+    "row": 0,
+    "column": 1,
+    "level": 0
+   },
+   {
+    "row": 0,
+    "column": 2,
+    "level": 0
+   },
+   {
+    "row": 0,
+    "column": 3,
+    "level": 1
+   },
+   {
+    "row": 0,
+    "column": 4,
+    "level": 1
+   },
+   {
+    "row": 1,
+    "column": 0,
+    "level": 0
+   },
+   {
+    "row": 1,
+    "column": 1,
+    "level": 1
+   },
+   {
+    "row": 1,
+    "column": 2,
+    "level": 1
+   },
+   {
+    "row": 1,
+    "column": 3,
+    "level": 1
+   },
+   {
+    "row": 1,
+    "column": 4,
+    "level": 2
+   },
+   {
+    "row": 2,
+    "column": 0,
+    "level": 0
+   },
+   {
+    "row": 2,
+    "column": 1,
+    "level": 1
+   },
+   {
+    "row": 2,
+    "column": 2,
+    "level": 2
+   },
+   {
+    "row": 2,
+    "column": 3,
+    "level": 2
+   },
+   {
+    "row": 2,
+    "column": 4,
+    "level": 3
+   },
+   {
+    "row": 3,
+    "column": 0,
+    "level": 0
+   },
+   {
+    "row": 3,
+    "column": 1,
+    "level": 1
+   },
+   {
+    "row": 3,
+    "column": 2,
+    "level": 2
+   },
+   {
+    "row": 3,
+    "column": 3,
+    "level": 3
+   },
+   {
+    "row": 3,
+    "column": 4,
+    "level": 4
+   },
+   {
+    "row": 4,
+    "column": 0,
+    "level": 0
+   },
+   {
+    "row": 4,
+    "column": 1,
+    "level": 1
+   },
+   {
+    "row": 4,
+    "column": 2,
+    "level": 2
+   },
+   {
+    "row": 4,
+    "column": 3,
+    "level": 3
+   },
+   {
+    "row": 4,
+    "column": 4,
+    "level": 4
+   }
+  ]
+ },
+ "stride": [
+  "Spoofing",
+  "Tampering",
+  "Repudiation",
+  "Information disclosure",
+  "Denial of service",
+  "Elevation of privilege"
+ ],
+ "linddun": [
+  "Linking",
+  "Identifying",
+  "Non-repudiation",
+  "Detecting",
+  "Data Disclosure",
+  "Unawareness",
+  "Non-compliance"
+ ],
+ "scorecard": [
+  {
+   "name": "Maintained",
+   "risk": "High"
+  },
+  {
+   "name": "Dependency-Update-Tool",
+   "risk": "High"
+  },
+  {
+   "name": "Binary-Artifacts",
+   "risk": "High"
+  },
+  {
+   "name": "Branch-Protection",
+   "risk": "High"
+  },
+  {
+   "name": "CI-Tests",
+   "risk": "Low"
+  },
+  {
+   "name": "CII-Best-Practices",
+   "risk": "Low"
+  },
+  {
+   "name": "Code-Review",
+   "risk": "High"
+  },
+  {
+   "name": "Contributors",
+   "risk": "Low"
+  },
+  {
+   "name": "Fuzzing",
+   "risk": "Medium"
+  },
+  {
+   "name": "Packaging",
+   "risk": "Medium"
+  },
+  {
+   "name": "Pinned-Dependencies",
+   "risk": "Medium"
+  },
+  {
+   "name": "SAST",
+   "risk": "Medium"
+  },
+  {
+   "name": "SBOM",
+   "risk": "Medium"
+  },
+  {
+   "name": "Security-Policy",
+   "risk": "Medium"
+  },
+  {
+   "name": "Signed-Releases",
+   "risk": "High"
+  },
+  {
+   "name": "Token-Permissions",
+   "risk": "High"
+  },
+  {
+   "name": "Vulnerabilities",
+   "risk": "High"
+  },
+  {
+   "name": "Dangerous-Workflow",
+   "risk": "Critical"
+  },
+  {
+   "name": "License",
+   "risk": "Low"
+  },
+  {
+   "name": "Webhooks",
+   "risk": "Critical"
+  }
+ ],
+ "techniques": [
+  {
+   "id": "AML.T0051.001",
+   "catalog": "atlas",
+   "name": "Indirect",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "AML.T0053",
+   "catalog": "atlas",
+   "name": "AI Agent Tool Invocation",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "AML.T0086",
+   "catalog": "atlas",
+   "name": "Exfiltration via AI Agent Tool Invocation",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1036",
+   "catalog": "attack",
+   "name": "Masquerading",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1078.004",
+   "catalog": "attack",
+   "name": "Cloud Accounts",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1110.003",
+   "catalog": "attack",
+   "name": "Password Spraying",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1110.004",
+   "catalog": "attack",
+   "name": "Credential Stuffing",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1195.001",
+   "catalog": "attack",
+   "name": "Compromise Software Dependencies and Development Tools",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1195.002",
+   "catalog": "attack",
+   "name": "Compromise Software Supply Chain",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1199",
+   "catalog": "attack",
+   "name": "Trusted Relationship",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1485",
+   "catalog": "attack",
+   "name": "Data Destruction",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1496",
+   "catalog": "attack",
+   "name": "Resource Hijacking",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1498",
+   "catalog": "attack",
+   "name": "Network Denial of Service",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1499.002",
+   "catalog": "attack",
+   "name": "Service Exhaustion Flood",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1528",
+   "catalog": "attack",
+   "name": "Steal Application Access Token",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1530",
+   "catalog": "attack",
+   "name": "Data from Cloud Storage",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1531",
+   "catalog": "attack",
+   "name": "Account Access Removal",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1552.001",
+   "catalog": "attack",
+   "name": "Credentials In Files",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1557",
+   "catalog": "attack",
+   "name": "Adversary-in-the-Middle",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1565.001",
+   "catalog": "attack",
+   "name": "Stored Data Manipulation",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1566.002",
+   "catalog": "attack",
+   "name": "Spearphishing Link",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1566.003",
+   "catalog": "attack",
+   "name": "Spearphishing via Service",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1583.001",
+   "catalog": "attack",
+   "name": "Domains",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1583.006",
+   "catalog": "attack",
+   "name": "Web Services",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1584.001",
+   "catalog": "attack",
+   "name": "Domains",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1585.001",
+   "catalog": "attack",
+   "name": "Social Media Accounts",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1589",
+   "catalog": "attack",
+   "name": "Gather Victim Identity Information",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1593.003",
+   "catalog": "attack",
+   "name": "Code Repositories",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1594",
+   "catalog": "attack",
+   "name": "Search Victim-Owned Websites",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1621",
+   "catalog": "attack",
+   "name": "Multi-Factor Authentication Request Generation",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1677",
+   "catalog": "attack",
+   "name": "Poisoned Pipeline Execution",
+   "revoked": false,
+   "deprecated": false
+  },
+  {
+   "id": "T1684.001",
+   "catalog": "attack",
+   "name": "Impersonation",
+   "revoked": false,
+   "deprecated": false
+  }
+ ],
+ "sources": [
+  {
+   "id": "TS1",
+   "name": "Opportunistic outsider",
+   "type": "Individual - Outsider",
+   "kind": "adversarial",
+   "rated": true,
+   "capability": 1,
+   "intent": 2,
+   "targeting": 1,
+   "text": "Spammers, scammers and drive-by attackers who find the Foundation's public repositories, CI, website and Discord through search and automation."
+  },
+  {
+   "id": "TS2",
+   "name": "Software supply chain attackers",
+   "type": "Group - Established",
+   "kind": "adversarial",
+   "rated": true,
+   "capability": 3,
+   "intent": 3,
+   "targeting": 2,
+   "text": "Groups that compromise maintainers, CI actions, packages and registries to reach every downstream user, as in the 2025 tj-actions and npm package-worm incidents. The Foundation's SDK images and crates are pinned by every Prism project, so they are a multiplier target."
+  },
+  {
+   "id": "TS3",
+   "name": "Hostile scrutinizer",
+   "type": "Individual - Outsider",
+   "kind": "adversarial",
+   "rated": true,
+   "capability": 2,
+   "intent": 2,
+   "targeting": 3,
+   "text": "Individuals drawn by the Foundation's public novel claims who seek to discredit, misrepresent, harass or deanonymize the Foundation and its people, using everything the Foundation publishes."
+  },
+  {
+   "id": "TS4",
+   "name": "Crypto and impersonation scam operators",
+   "type": "Group - Ad hoc",
+   "kind": "adversarial",
+   "rated": true,
+   "capability": 2,
+   "intent": 3,
+   "targeting": 2,
+   "text": "Ad hoc groups that impersonate open-source foundations and their maintainers on Discord, lookalike domains and repositories to defraud members, drawn by crypto-adjacent names in the ecosystem."
+  },
+  {
+   "id": "TS5",
+   "name": "State-sponsored actor",
+   "type": "Nation-State",
+   "kind": "adversarial",
+   "rated": true,
+   "capability": 4,
+   "intent": 1,
+   "targeting": 1,
+   "text": "A state actor with interest in addressing, verification and AI-assurance technology. No observation in this assessment points to one; the source is recorded so that Table D-2 is answered in full."
+  },
+  {
+   "id": "TS6",
+   "name": "Instructed agent",
+   "type": "Individual - Privileged Insider",
+   "kind": "adversarial",
+   "rated": true,
+   "capability": 2,
+   "intent": 2,
+   "targeting": 3,
+   "text": "An AI agent acting with a maintainer's credentials whose instructions an outsider controls through text it reads: an issue, a pull request, a comment, a Discord message or a fetched page."
+  },
+  {
+   "id": "TS7",
+   "name": "Maintainer or agent error",
+   "type": "Privileged User/Administrator",
+   "kind": "accidental",
+   "rated": false,
+   "capability": 0,
+   "intent": 0,
+   "targeting": 0,
+   "text": "A maintainer, or an agent acting for one, who misconfigures an organization setting, ruleset, workflow or data store, as on 2026-11-14 when the first rulesets blocked pull requests organization-wide."
+  },
+  {
+   "id": "TS8",
+   "name": "Upstream software defect",
+   "type": "Software",
+   "kind": "structural",
+   "rated": false,
+   "capability": 0,
+   "intent": 0,
+   "targeting": 0,
+   "text": "A defect in software the Foundation runs, such as the credential leak in Perceval archives the Foundation found and reported in November 2026."
+  },
+  {
+   "id": "TS9",
+   "name": "Provider outage or account action",
+   "type": "Infrastructure Failure/Outage",
+   "kind": "environmental",
+   "rated": false,
+   "capability": 0,
+   "intent": 0,
+   "targeting": 0,
+   "text": "An outage of, or an account action by, GitHub, Discord, Supabase, Lovable or the domain registrar, on which every Foundation service depends."
+  }
+ ],
+ "elements": [
+  {
+   "id": "E1",
+   "name": "Contributor",
+   "text": "A person outside the maintainers who opens an issue or pull request.",
+   "kind": "externalEntity",
+   "personal": false
+  },
+  {
+   "id": "E2",
+   "name": "Maintainer",
+   "text": "An Organization Owner or Maintainer under GOVERNANCE.md, whose GitHub account holds the organization's administrative rights.",
+   "kind": "externalEntity",
+   "personal": false
+  },
+  {
+   "id": "E3",
+   "name": "AI agent",
+   "text": "Claude, Cursor, Lovable and other agents that commit and act as a maintainer's delegate (W3C PROV-O actedOnBehalfOf, governance/agents.json).",
+   "kind": "externalEntity",
+   "personal": false
+  },
+  {
+   "id": "E4",
+   "name": "Discord member",
+   "text": "A member of the Foundation's Discord guild.",
+   "kind": "externalEntity",
+   "personal": true
+  },
+  {
+   "id": "E5",
+   "name": "Website visitor",
+   "text": "A person using uor.foundation, signed in or not.",
+   "kind": "externalEntity",
+   "personal": true
+  },
+  {
+   "id": "E6",
+   "name": "Upstream supplier",
+   "text": "GitHub Actions authors, crate and npm registries, CHAOSS and other upstream projects the Foundation's builds read.",
+   "kind": "externalEntity",
+   "personal": false
+  },
+  {
+   "id": "E7",
+   "name": "Public and press",
+   "text": "Anyone reading the Foundation's claims, including people scrutinizing them.",
+   "kind": "externalEntity",
+   "personal": false
+  },
+  {
+   "id": "P1",
+   "name": "GitHub organization and CI",
+   "text": "The UOR-Foundation organization's repositories, rulesets and GitHub Actions, including the merge controller and the apply-settings run.",
+   "kind": "process",
+   "personal": false
+  },
+  {
+   "id": "P2",
+   "name": "Agent loop",
+   "text": "Claude sessions and the scheduled agent task that read issues, pull requests, CI output and Discord and push as a maintainer.",
+   "kind": "process",
+   "personal": false
+  },
+  {
+   "id": "P3",
+   "name": "Website",
+   "text": "The uor.foundation single-page application built from UOR-Foundation/website, including commits Lovable makes to it.",
+   "kind": "process",
+   "personal": false
+  },
+  {
+   "id": "P4",
+   "name": "Supabase backend",
+   "text": "The Supabase project behind the website: Auth, PostgREST over Postgres, storage and edge functions.",
+   "kind": "process",
+   "personal": true
+  },
+  {
+   "id": "P5",
+   "name": "Discord guild and Foundation bot",
+   "text": "The Foundation's Discord guild, its moderation, and the read-only bot that the discord-live and observation runs use.",
+   "kind": "process",
+   "personal": true
+  },
+  {
+   "id": "P6",
+   "name": "Release pipeline",
+   "text": "The runs that publish SDK images to ghcr.io, crates, npm packages and GitHub Pages sites.",
+   "kind": "process",
+   "personal": false
+  },
+  {
+   "id": "D1",
+   "name": "Git repositories",
+   "text": "The 31 public repositories of the ecosystem register, the Foundation's source of truth.",
+   "kind": "dataStore",
+   "personal": false
+  },
+  {
+   "id": "D2",
+   "name": "Actions secrets",
+   "text": "ORG_ADMIN_TOKEN, DISCORD_BOT_TOKEN and the other repository secrets.",
+   "kind": "dataStore",
+   "personal": false
+  },
+  {
+   "id": "D3",
+   "name": "Supabase database",
+   "text": "The website's Postgres: 87 tables, among them contacts, calendar events, AI conversations, agent memories and encrypted messages.",
+   "kind": "dataStore",
+   "personal": true
+  },
+  {
+   "id": "D4",
+   "name": "Published corpora",
+   "text": "The GrimoireLab observation corpus, the recorded Discord responses and the telemetry branch, in the public community repository.",
+   "kind": "dataStore",
+   "personal": true
+  },
+  {
+   "id": "D5",
+   "name": "Container registry",
+   "text": "The PrismPM SDK images on ghcr.io that every Prism project pins by digest.",
+   "kind": "dataStore",
+   "personal": false
+  },
+  {
+   "id": "D6",
+   "name": "Discord message history",
+   "text": "The guild's messages as Discord stores them.",
+   "kind": "dataStore",
+   "personal": true
+  },
+  {
+   "id": "F1",
+   "name": "Contribution",
+   "text": "An issue or pull request from a contributor into a repository and its CI.",
+   "kind": "dataFlow",
+   "personal": false
+  },
+  {
+   "id": "F2",
+   "name": "Agent push",
+   "text": "Commits, pull requests and comments an agent makes as a maintainer.",
+   "kind": "dataFlow",
+   "personal": false
+  },
+  {
+   "id": "F3",
+   "name": "Secret use",
+   "text": "A workflow run reading a secret and calling an API with it.",
+   "kind": "dataFlow",
+   "personal": false
+  },
+  {
+   "id": "F4",
+   "name": "Corpus publication",
+   "text": "A collection run writing Discord and GitHub activity into the public corpus.",
+   "kind": "dataFlow",
+   "personal": true
+  },
+  {
+   "id": "F5",
+   "name": "Website traffic",
+   "text": "HTTPS between a visitor's browser and the website.",
+   "kind": "dataFlow",
+   "personal": false
+  },
+  {
+   "id": "F6",
+   "name": "Website data access",
+   "text": "supabase-js calls from the browser to the Supabase API with the publishable key and a user session.",
+   "kind": "dataFlow",
+   "personal": true
+  },
+  {
+   "id": "F7",
+   "name": "Upstream inputs",
+   "text": "Actions, crates, packages and images a build fetches.",
+   "kind": "dataFlow",
+   "personal": false
+  },
+  {
+   "id": "F8",
+   "name": "Release publication",
+   "text": "A release run pushing an image or package to a registry.",
+   "kind": "dataFlow",
+   "personal": false
+  },
+  {
+   "id": "F9",
+   "name": "Discord conversation",
+   "text": "Messages and direct messages between members, maintainers and the bot.",
+   "kind": "dataFlow",
+   "personal": true
+  },
+  {
+   "id": "F10",
+   "name": "Untrusted text to agents",
+   "text": "Issue, pull request, comment, CI log, web page and Discord text an agent reads as input.",
+   "kind": "dataFlow",
+   "personal": false
+  }
+ ],
+ "threats": [
+  {
+   "id": "T01",
+   "name": "Maintainer account takeover",
+   "text": "A maintainer's GitHub account is phished or its session stolen, and the attacker changes rulesets, secrets or code with organization-owner rights.",
+   "source": 1,
+   "initiation": 2,
+   "adverse": 3,
+   "impact": 4,
+   "overall": 2,
+   "risk": 3,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    0,
+    1,
+    2
+   ],
+   "techniques": [
+    20,
+    29,
+    4
+   ]
+  },
+  {
+   "id": "T02",
+   "name": "Poisoned pipeline execution",
+   "text": "A pull request from a fork runs attacker code in a privileged workflow (pull_request_target, workflow_run or script injection) and gains its token or secrets.",
+   "source": 0,
+   "initiation": 2,
+   "adverse": 2,
+   "impact": 3,
+   "overall": 2,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    3,
+    4,
+    5
+   ],
+   "techniques": [
+    30
+   ]
+  },
+  {
+   "id": "T03",
+   "name": "Compromised action or dependency",
+   "text": "A third-party GitHub Action, crate or npm package the builds fetch is replaced with a malicious version.",
+   "source": 1,
+   "initiation": 3,
+   "adverse": 2,
+   "impact": 3,
+   "overall": 2,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    6,
+    7,
+    8
+   ],
+   "techniques": [
+    7
+   ]
+  },
+  {
+   "id": "T04",
+   "name": "Secret exfiltration from CI",
+   "text": "A workflow, action or log leaks ORG_ADMIN_TOKEN, DISCORD_BOT_TOKEN or a webhook URL; ORG_ADMIN_TOKEN can rewrite every repository's settings.",
+   "source": 1,
+   "initiation": 2,
+   "adverse": 2,
+   "impact": 4,
+   "overall": 2,
+   "risk": 3,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    4,
+    9,
+    10
+   ],
+   "techniques": [
+    14,
+    17
+   ]
+  },
+  {
+   "id": "T05",
+   "name": "Agent prompt injection",
+   "text": "Text an agent reads (an issue, a comment, a CI log, a page, a Discord message) instructs it, and it pushes, comments, posts or discloses with the maintainer's credentials.",
+   "source": 5,
+   "initiation": 2,
+   "adverse": 3,
+   "impact": 3,
+   "overall": 2,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    11,
+    12,
+    13
+   ],
+   "techniques": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "T06",
+   "name": "Unattributable agent acts",
+   "text": "Agents push as a maintainer's account, so a commit, review or setting change cannot be told apart from the maintainer's own without the delegation record.",
+   "source": 6,
+   "initiation": 3,
+   "adverse": 2,
+   "impact": 2,
+   "overall": 2,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    14,
+    15
+   ],
+   "techniques": []
+  },
+  {
+   "id": "T07",
+   "name": "Discord impersonation and scam messages",
+   "text": "Accounts posing as maintainers, support or the Foundation message members with fake airdrops, tokens, jobs or verification links.",
+   "source": 3,
+   "initiation": 3,
+   "adverse": 2,
+   "impact": 2,
+   "overall": 2,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    16,
+    17
+   ],
+   "techniques": [
+    21,
+    25,
+    31
+   ]
+  },
+  {
+   "id": "T08",
+   "name": "Discord bot token compromise",
+   "text": "The Foundation bot's token leaks, and its holder reads every channel the bot can see or acts as the bot.",
+   "source": 0,
+   "initiation": 1,
+   "adverse": 3,
+   "impact": 2,
+   "overall": 2,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    9,
+    18
+   ],
+   "techniques": [
+    14
+   ]
+  },
+  {
+   "id": "T09",
+   "name": "Re-identification of published community activity",
+   "text": "The public corpus keeps Discord message and channel ids, times and an unsalted sha256 of each Discord user id. Anyone in the guild can open a message id and see its author, and anyone with a user id can compute its pseudonym, so every member's activity timeline is linkable and identifiable (LINDDUN Linking, Identifying, Detecting).",
+   "source": 2,
+   "initiation": 2,
+   "adverse": 4,
+   "impact": 1,
+   "overall": 3,
+   "risk": 1,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    19,
+    20
+   ],
+   "techniques": [
+    26
+   ]
+  },
+  {
+   "id": "T10",
+   "name": "Website data store exposure",
+   "text": "A missing or permissive row-level security policy lets anyone with the publishable key read or write personal data in the Supabase tables.",
+   "source": 0,
+   "initiation": 2,
+   "adverse": 2,
+   "impact": 3,
+   "overall": 2,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    21,
+    22
+   ],
+   "techniques": [
+    15
+   ]
+  },
+  {
+   "id": "T11",
+   "name": "Website tampering through an integration",
+   "text": "An integration with write access to the website repository (Lovable's app, an agent) is compromised or misled and publishes altered content or code.",
+   "source": 1,
+   "initiation": 1,
+   "adverse": 2,
+   "impact": 3,
+   "overall": 1,
+   "risk": 1,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    1,
+    23
+   ],
+   "techniques": [
+    9
+   ]
+  },
+  {
+   "id": "T12",
+   "name": "Domain hijack or lookalike domain",
+   "text": "uor.foundation's registration or DNS is taken over, or a lookalike domain serves a fake Foundation site.",
+   "source": 3,
+   "initiation": 1,
+   "adverse": 2,
+   "impact": 3,
+   "overall": 1,
+   "risk": 1,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    24
+   ],
+   "techniques": [
+    24,
+    22
+   ]
+  },
+  {
+   "id": "T13",
+   "name": "Tampered SDK image or release",
+   "text": "A published SDK image or package is replaced or a malicious one is published under the Foundation's name; every Prism project builds through the SDK.",
+   "source": 1,
+   "initiation": 1,
+   "adverse": 2,
+   "impact": 4,
+   "overall": 1,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    25,
+    26
+   ],
+   "techniques": [
+    8
+   ]
+  },
+  {
+   "id": "T14",
+   "name": "Credentials in tool archives",
+   "text": "Perceval archives pickle the HTTP response with its request headers, so an archive shared for replay carries the token that fetched it (found by the Foundation in 15 backends at 1.6.2, reported to CHAOSS on 2026-11-14).",
+   "source": 7,
+   "initiation": 2,
+   "adverse": 2,
+   "impact": 3,
+   "overall": 2,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    27
+   ],
+   "techniques": [
+    17
+   ]
+  },
+  {
+   "id": "T15",
+   "name": "CI resource abuse",
+   "text": "Fork pull requests or comment triggers run cryptominers or exhaust Actions minutes and agent time.",
+   "source": 0,
+   "initiation": 2,
+   "adverse": 1,
+   "impact": 1,
+   "overall": 1,
+   "risk": 1,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    4,
+    28
+   ],
+   "techniques": [
+    11
+   ]
+  },
+  {
+   "id": "T16",
+   "name": "Discord raid or spam flood",
+   "text": "A burst of new accounts joins and floods channels with spam or harassment.",
+   "source": 3,
+   "initiation": 2,
+   "adverse": 1,
+   "impact": 2,
+   "overall": 1,
+   "risk": 1,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    16
+   ],
+   "techniques": [
+    25
+   ]
+  },
+  {
+   "id": "T17",
+   "name": "Organization misconfiguration",
+   "text": "A ruleset, workflow or setting change by a maintainer or agent blocks work or weakens a control across the organization.",
+   "source": 6,
+   "initiation": 3,
+   "adverse": 2,
+   "impact": 2,
+   "overall": 2,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    29,
+    15
+   ],
+   "techniques": []
+  },
+  {
+   "id": "T18",
+   "name": "Repository loss",
+   "text": "Repositories, history or the organization itself are deleted, force-pushed or suspended.",
+   "source": 1,
+   "initiation": 1,
+   "adverse": 2,
+   "impact": 4,
+   "overall": 1,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    1,
+    30
+   ],
+   "techniques": [
+    10,
+    16
+   ]
+  },
+  {
+   "id": "T19",
+   "name": "Provider outage or suspension",
+   "text": "GitHub, Discord, Supabase, Lovable or the registrar is down or acts on the Foundation's account.",
+   "source": 8,
+   "initiation": 2,
+   "adverse": 1,
+   "impact": 2,
+   "overall": 1,
+   "risk": 1,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    30,
+    31
+   ],
+   "techniques": []
+  },
+  {
+   "id": "T20",
+   "name": "Impersonation of the Foundation and misrepresented claims",
+   "text": "Lookalike accounts, repositories or tokens speak as the Foundation, or the Foundation's claims are restated as more or less than its evidence shows, and a reader cannot check which statement is the Foundation's.",
+   "source": 2,
+   "initiation": 2,
+   "adverse": 2,
+   "impact": 2,
+   "overall": 2,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    32,
+    26
+   ],
+   "techniques": [
+    31,
+    23
+   ]
+  },
+  {
+   "id": "T21",
+   "name": "Malicious contribution",
+   "text": "A contributor, possibly after building trust over time, lands a backdoor or weakened gate in a pull request.",
+   "source": 1,
+   "initiation": 1,
+   "adverse": 2,
+   "impact": 4,
+   "overall": 1,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    1,
+    12,
+    33
+   ],
+   "techniques": [
+    8,
+    9
+   ]
+  },
+  {
+   "id": "T23",
+   "name": "Reconnaissance of public repositories",
+   "text": "Automated clients clone and scrape the repositories and site to map the Foundation's people, systems and dependencies.",
+   "source": 0,
+   "initiation": 4,
+   "adverse": 0,
+   "impact": 1,
+   "overall": 1,
+   "risk": 1,
+   "response": "accept",
+   "rationale": "Publishing everything is the mission; what reconnaissance reads is public by design, and no secret is kept in a repository (Scorecard and secret scanning check that).",
+   "controls": [],
+   "techniques": [
+    27,
+    28
+   ]
+  },
+  {
+   "id": "T24",
+   "name": "Website account attacks",
+   "text": "Password spraying or credential stuffing against Supabase Auth sign-in.",
+   "source": 0,
+   "initiation": 2,
+   "adverse": 1,
+   "impact": 2,
+   "overall": 1,
+   "risk": 1,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    34
+   ],
+   "techniques": [
+    5,
+    6
+   ]
+  },
+  {
+   "id": "T25",
+   "name": "Traffic interception",
+   "text": "A network attacker reads or alters website or API traffic.",
+   "source": 0,
+   "initiation": 0,
+   "adverse": 0,
+   "impact": 2,
+   "overall": 0,
+   "risk": 0,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    35
+   ],
+   "techniques": [
+    18
+   ]
+  },
+  {
+   "id": "T27",
+   "name": "Forged or repudiated authorship",
+   "text": "Git author fields are free text, so an unsigned commit can claim any author, and an author can deny an unsigned commit.",
+   "source": 1,
+   "initiation": 1,
+   "adverse": 2,
+   "impact": 2,
+   "overall": 1,
+   "risk": 1,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    36
+   ],
+   "techniques": [
+    3
+   ]
+  },
+  {
+   "id": "T28",
+   "name": "Website denial of service",
+   "text": "Floods make the website or its backend unavailable.",
+   "source": 0,
+   "initiation": 1,
+   "adverse": 1,
+   "impact": 2,
+   "overall": 1,
+   "risk": 1,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    31
+   ],
+   "techniques": [
+    12,
+    13
+   ]
+  },
+  {
+   "id": "T29",
+   "name": "Falsified measurement corpus",
+   "text": "The published corpus or telemetry is altered to change the Foundation's community metrics.",
+   "source": 2,
+   "initiation": 1,
+   "adverse": 1,
+   "impact": 2,
+   "overall": 1,
+   "risk": 1,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    37
+   ],
+   "techniques": [
+    19
+   ]
+  },
+  {
+   "id": "T30",
+   "name": "Members unaware of measurement",
+   "text": "Discord members are not told that their activity metadata is collected, pseudonymized and published, or how to object (LINDDUN Unawareness and Unintervenability).",
+   "source": 6,
+   "initiation": 3,
+   "adverse": 2,
+   "impact": 1,
+   "overall": 2,
+   "risk": 1,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    38
+   ],
+   "techniques": []
+  },
+  {
+   "id": "T31",
+   "name": "Privacy obligations not documented",
+   "text": "The website and Discord process personal data of people in many jurisdictions, and no privacy notice states the purposes, lawful basis, retention or data-subject rights (LINDDUN Non-compliance).",
+   "source": 6,
+   "initiation": 3,
+   "adverse": 2,
+   "impact": 2,
+   "overall": 2,
+   "risk": 2,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    38
+   ],
+   "techniques": []
+  },
+  {
+   "id": "T32",
+   "name": "Deleted activity retained",
+   "text": "The corpus keeps the ids and times of messages a member later deletes, so the member cannot withdraw them (LINDDUN Non-repudiation).",
+   "source": 6,
+   "initiation": 2,
+   "adverse": 2,
+   "impact": 1,
+   "overall": 2,
+   "risk": 1,
+   "response": "mitigate",
+   "rationale": "",
+   "controls": [
+    20
+   ],
+   "techniques": []
+  }
+ ],
+ "controls": [
+  {
+   "id": "C01",
+   "name": "Two-factor authentication for every member",
+   "text": "GitHub accounts with organization rights use phishing-resistant two-factor authentication. Whether the organization requires it is open claim OC-2FA.",
+   "status": "partial",
+   "evidence": [
+    {
+     "kind": "scorecard",
+     "reference": "Branch-Protection"
+    }
+   ],
+   "outcomes": [
+    52,
+    54
+   ]
+  },
+  {
+   "id": "C02",
+   "name": "Repository rulesets",
+   "text": "Every repository's default branch requires a pull request and passing checks and blocks force-pushes and deletion, applied by apply-settings from the remediation register.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "remediation/project.mjs"
+    },
+    {
+     "kind": "path",
+     "reference": "remediation/apply-settings.sh"
+    },
+    {
+     "kind": "scorecard",
+     "reference": "Branch-Protection"
+    }
+   ],
+   "outcomes": [
+    64,
+    56,
+    60
+   ]
+  },
+  {
+   "id": "C03",
+   "name": "Human gates on the merge controller",
+   "text": "Outside, secrets, trust-root and shared-repository changes (H1 to H4) need a human; the controller decides with a proved XACML policy.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "automation/AUTOMATION.md"
+    },
+    {
+     "kind": "path",
+     "reference": "automation/merge-admission.prompt.json"
+    },
+    {
+     "kind": "path",
+     "reference": "automation/repos.json"
+    }
+   ],
+   "outcomes": [
+    56,
+    13
+   ]
+  },
+  {
+   "id": "C04",
+   "name": "No privileged workflow runs fork code",
+   "text": "No workflow checks out fork code under pull_request_target or workflow_run, or interpolates untrusted event text into a script. Scorecard's Dangerous-Workflow check measures it on every repository.",
+   "status": "partial",
+   "evidence": [
+    {
+     "kind": "scorecard",
+     "reference": "Dangerous-Workflow"
+    }
+   ],
+   "outcomes": [
+    69,
+    68
+   ]
+  },
+  {
+   "id": "C05",
+   "name": "Least-privilege workflow tokens",
+   "text": "Workflows declare read-only top-level permissions and do not persist checkout credentials.",
+   "status": "partial",
+   "evidence": [
+    {
+     "kind": "scorecard",
+     "reference": "Token-Permissions"
+    },
+    {
+     "kind": "path",
+     "reference": ".github/workflows/oracles.yml"
+    }
+   ],
+   "outcomes": [
+    56,
+    64
+   ]
+  },
+  {
+   "id": "C06",
+   "name": "Fork pull request approval",
+   "text": "Workflows from first-time contributors' forks wait for a maintainer's approval before they run; the organization setting is open claim OC-FORKAPPROVAL.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    68
+   ]
+  },
+  {
+   "id": "C07",
+   "name": "Actions pinned by commit",
+   "text": "Every third-party action is pinned by full commit SHA; Scorecard's Pinned-Dependencies check measures it.",
+   "status": "partial",
+   "evidence": [
+    {
+     "kind": "scorecard",
+     "reference": "Pinned-Dependencies"
+    },
+    {
+     "kind": "path",
+     "reference": ".github/workflows/oracles.yml"
+    }
+   ],
+   "outcomes": [
+    27,
+    46,
+    65
+   ]
+  },
+  {
+   "id": "C08",
+   "name": "Locked production dependencies",
+   "text": "AGENTS.md R6: shipped outputs use only locked production dependencies; cargo-deny checks licenses, sources and advisories.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "AGENTS.md"
+    },
+    {
+     "kind": "path",
+     "reference": "deny.toml"
+    },
+    {
+     "kind": "path",
+     "reference": "Cargo.lock"
+    },
+    {
+     "kind": "path",
+     "reference": "package-lock.json"
+    }
+   ],
+   "outcomes": [
+    46,
+    24,
+    32
+   ]
+  },
+  {
+   "id": "C09",
+   "name": "Dependency update and vulnerability alerts",
+   "text": "Dependency updates and known-vulnerability alerts are raised for every repository; Scorecard measures both.",
+   "status": "partial",
+   "evidence": [
+    {
+     "kind": "scorecard",
+     "reference": "Dependency-Update-Tool"
+    },
+    {
+     "kind": "scorecard",
+     "reference": "Vulnerabilities"
+    }
+   ],
+   "outcomes": [
+    38,
+    65,
+    29
+   ]
+  },
+  {
+   "id": "C10",
+   "name": "Secrets confined to gated runs",
+   "text": "A diff that touches a secret reference is decided as H2 and needs a human; ORG_ADMIN_TOKEN is read only by the label-triggered apply-settings job.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "automation/controller.mjs"
+    },
+    {
+     "kind": "path",
+     "reference": ".github/workflows/apply-settings.yml"
+    }
+   ],
+   "outcomes": [
+    52,
+    60,
+    56
+   ]
+  },
+  {
+   "id": "C11",
+   "name": "Secret scanning and push protection",
+   "text": "GitHub secret scanning with push protection is enabled on every repository; the setting is open claim OC-SECRETSCAN.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    84,
+    60
+   ]
+  },
+  {
+   "id": "C12",
+   "name": "Fetched text is data, never instructions",
+   "text": "Agents treat issue, comment, CI, page and Discord text as data and act only on their maintainer's own words; the agent loop never skips a check or touches H1 to H3.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "automation/AUTOMATION.md"
+    }
+   ],
+   "outcomes": [
+    69,
+    59
+   ]
+  },
+  {
+   "id": "C13",
+   "name": "Proved gates on every merge",
+   "text": "Every merge passes just vv in the pinned SDK, with Lean-checked models and planted-defect gates, so an injected or malicious change must also defeat the proofs.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "AGENTS.md"
+    },
+    {
+     "kind": "path",
+     "reference": "VERIFICATION.md"
+    },
+    {
+     "kind": "scorecard",
+     "reference": "CI-Tests"
+    }
+   ],
+   "outcomes": [
+    69,
+    49,
+    84
+   ]
+  },
+  {
+   "id": "C14",
+   "name": "People-reach gate",
+   "text": "Any act a contributor, participant or partner would see is denied unless Alex approves that exact act.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "automation/intervention-admission.prompt.json"
+    },
+    {
+     "kind": "path",
+     "reference": "automation/intervention-approvals.json"
+    }
+   ],
+   "outcomes": [
+    13,
+    56
+   ]
+  },
+  {
+   "id": "C15",
+   "name": "Agent delegation record",
+   "text": "Each agent is a Schema.org SoftwareApplication with a PROV-O actedOnBehalfOf delegation to the person it works for, read from Co-Authored-By trailers.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "governance/agents.json"
+    },
+    {
+     "kind": "path",
+     "reference": "governance/register.json"
+    }
+   ],
+   "outcomes": [
+    53,
+    91
+   ]
+  },
+  {
+   "id": "C16",
+   "name": "Decision telemetry",
+   "text": "Every automated decision is a CloudEvents 1.0 record in the run's artifact and job summary.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "automation/AUTOMATION.md"
+    },
+    {
+     "kind": "path",
+     "reference": "automation/controller.mjs"
+    }
+   ],
+   "outcomes": [
+    67,
+    75,
+    92
+   ]
+  },
+  {
+   "id": "C17",
+   "name": "Discord moderation and verification",
+   "text": "The Code of Conduct enforcement ladder is a proved decision app; the guild's verification level and AutoMod rules are open claim OC-DISCORDMOD, and the corpus holds no AutoMod action (message type 24).",
+   "status": "partial",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "apps/uor-coc-enforcement.prompt.json"
+    }
+   ],
+   "outcomes": [
+    82,
+    54
+   ]
+  },
+  {
+   "id": "C18",
+   "name": "Official channels statement",
+   "text": "A published list of the Foundation's official accounts, domains and the fact that the Foundation never sends direct messages asking for keys, payments or sign-ins.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    1,
+    105
+   ]
+  },
+  {
+   "id": "C19",
+   "name": "Least-privilege bot",
+   "text": "The bot reads only the channels the proved discord-read app permits and holds no moderation rights.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "apps/uor-discord-read.prompt.json"
+    }
+   ],
+   "outcomes": [
+    56
+   ]
+  },
+  {
+   "id": "C20",
+   "name": "Corpus minimization",
+   "text": "The corpus drops message text, names, emails and thread titles; it still keeps message ids and an unsalted user-id hash (T09).",
+   "status": "partial",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "observations/collect.py"
+    }
+   ],
+   "outcomes": [
+    60,
+    36
+   ]
+  },
+  {
+   "id": "C21",
+   "name": "Keyed pseudonyms and aggregate publication",
+   "text": "Publish Discord activity only as aggregates, or replace ids and hashes with keyed pseudonyms (ISO/IEC 20889) whose key never leaves the collection run, and honor deletions in the next collection.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    60,
+    2
+   ]
+  },
+  {
+   "id": "C22",
+   "name": "Row-level security on every table",
+   "text": "Open and signed-in-only policies were removed on 2026-11-12; the full policy set lives only in the Supabase project (open claim OC-RLS).",
+   "status": "partial",
+   "evidence": [
+    {
+     "kind": "pinned",
+     "reference": "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:drizzle/migrations/0000_restrict_agent_tables_read.sql"
+    },
+    {
+     "kind": "pinned",
+     "reference": "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:drizzle/migrations/0001_remove_open_access_rules.sql"
+    }
+   ],
+   "outcomes": [
+    56,
+    60
+   ]
+  },
+  {
+   "id": "C23",
+   "name": "Supabase database linter",
+   "text": "Run Supabase's own linter (splinter) against the database on every migration; it is the oracle for row-level security and exposed functions.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    38,
+    84
+   ]
+  },
+  {
+   "id": "C24",
+   "name": "Integration access review",
+   "text": "Review the GitHub Apps and integrations installed on the organization and the website repository, and grant each only the repositories it needs.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    27,
+    56
+   ]
+  },
+  {
+   "id": "C25",
+   "name": "Domain protection",
+   "text": "Registrar lock, DNSSEC and CAA records for uor.foundation; the current state is open claim OC-DOMAIN.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    64,
+    32
+   ]
+  },
+  {
+   "id": "C26",
+   "name": "Digest-pinned SDK",
+   "text": "Every Prism project selects the SDK by image digest, so a replaced tag changes nothing it builds.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "prismpm.lock"
+    }
+   ],
+   "outcomes": [
+    46,
+    60
+   ]
+  },
+  {
+   "id": "C27",
+   "name": "Signed releases with provenance",
+   "text": "Releases and images carry signatures and build provenance; Scorecard's Signed-Releases and Packaging checks measure it.",
+   "status": "planned",
+   "evidence": [
+    {
+     "kind": "scorecard",
+     "reference": "Signed-Releases"
+    },
+    {
+     "kind": "scorecard",
+     "reference": "Packaging"
+    }
+   ],
+   "outcomes": [
+    46,
+    69
+   ]
+  },
+  {
+   "id": "C28",
+   "name": "Archive credential audit",
+   "text": "The Discord backend strips Authorization before archiving, the leak audit runs over upstream's own archive tests, and the finding was reported to CHAOSS privately.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "oracles/grimoirelab/oracle.lock.json"
+    }
+   ],
+   "outcomes": [
+    38,
+    45,
+    95
+   ]
+  },
+  {
+   "id": "C29",
+   "name": "Path-filtered, cancellable CI",
+   "text": "Workflows filter by path, reuse results by content address and cancel superseded runs.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": ".github/workflows/oracles.yml"
+    }
+   ],
+   "outcomes": [
+    73
+   ]
+  },
+  {
+   "id": "C30",
+   "name": "Settings applied from a reviewed register",
+   "text": "Organization settings change only through apply-settings, which dry-runs on every pull request and stops on any failed read.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "remediation/apply-settings.sh"
+    },
+    {
+     "kind": "path",
+     "reference": ".github/workflows/apply-settings.yml"
+    }
+   ],
+   "outcomes": [
+    64,
+    44,
+    17
+   ]
+  },
+  {
+   "id": "C31",
+   "name": "Off-platform repository backup",
+   "text": "Mirror every repository's history and the published corpora outside GitHub, and test a restore.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    63,
+    100
+   ]
+  },
+  {
+   "id": "C32",
+   "name": "Reproducible, content-addressed builds",
+   "text": "Every output is rebuilt from pinned inputs to the same bytes, so a service can be restored on another host and checked by its address.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "AGENTS.md"
+    },
+    {
+     "kind": "path",
+     "reference": "prismpm.lock"
+    }
+   ],
+   "outcomes": [
+    72,
+    102
+   ]
+  },
+  {
+   "id": "C33",
+   "name": "Claims at their evidence level",
+   "text": "AGENTS.md R2: every claim is published as imported, built or open, with the proof or measurement behind it, so anyone can check what the Foundation actually claims.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "AGENTS.md"
+    },
+    {
+     "kind": "path",
+     "reference": "CONFORMANCE.md"
+    }
+   ],
+   "outcomes": [
+    0,
+    3
+   ]
+  },
+  {
+   "id": "C34",
+   "name": "Code owners and review",
+   "text": "GOVERNANCE.md 6.2 review, with the controller reviewing as the Owner's agent; Scorecard's Code-Review check measures it.",
+   "status": "partial",
+   "evidence": [
+    {
+     "kind": "scorecard",
+     "reference": "Code-Review"
+    },
+    {
+     "kind": "pinned",
+     "reference": "dotgithub@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md"
+    }
+   ],
+   "outcomes": [
+    69,
+    13
+   ]
+  },
+  {
+   "id": "C35",
+   "name": "Auth rate limits and leaked-password protection",
+   "text": "Supabase Auth rate limits, CAPTCHA and leaked-password protection; the project's settings are open claim OC-AUTHLOG.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    54
+   ]
+  },
+  {
+   "id": "C36",
+   "name": "HTTPS with HSTS",
+   "text": "The site and Supabase API are served only over HTTPS; HSTS preload is not established.",
+   "status": "partial",
+   "evidence": [
+    {
+     "kind": "pinned",
+     "reference": "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:public/CNAME"
+    }
+   ],
+   "outcomes": [
+    61
+   ]
+  },
+  {
+   "id": "C37",
+   "name": "Signed commits",
+   "text": "Require verified signatures on default branches and sign agent commits with a key bound to the delegation.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    55,
+    60
+   ]
+  },
+  {
+   "id": "C38",
+   "name": "Digest-pinned corpus with replay",
+   "text": "Every corpus file is pinned by sha256 and replay re-derives it from the recorded responses.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "observations/corpus.json"
+    },
+    {
+     "kind": "path",
+     "reference": "observations/replay.json"
+    }
+   ],
+   "outcomes": [
+    60,
+    92
+   ]
+  },
+  {
+   "id": "C39",
+   "name": "Privacy notice",
+   "text": "A privacy notice for the website and Discord measurement: purposes, lawful basis, retention, data-subject rights and how to object, in the Discord rules channel and on the site.",
+   "status": "planned",
+   "evidence": [],
+   "outcomes": [
+    2,
+    16
+   ]
+  },
+  {
+   "id": "C40",
+   "name": "Vulnerability disclosure policy",
+   "text": "SECURITY.md sets private reporting, response timelines and a post-incident review; the site publishes no RFC 9116 security.txt.",
+   "status": "partial",
+   "evidence": [
+    {
+     "kind": "pinned",
+     "reference": "dotgithub@92da114114fc9b76cbf2c5168e29d409b62ddde8:SECURITY.md"
+    },
+    {
+     "kind": "scorecard",
+     "reference": "Security-Policy"
+    }
+   ],
+   "outcomes": [
+    45,
+    86,
+    94,
+    87
+   ]
+  },
+  {
+   "id": "C41",
+   "name": "This security model",
+   "text": "This register: the mission, the data flows, the threat sources and events with their ATT&CK and ATLAS techniques, risk computed by SP 800-30, and the response chosen for each.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "security/model.json"
+    },
+    {
+     "kind": "path",
+     "reference": "security/sources.json"
+    }
+   ],
+   "outcomes": [
+    0,
+    1,
+    4,
+    10,
+    33,
+    35,
+    39,
+    40,
+    41,
+    42,
+    43,
+    78,
+    24
+   ]
+  },
+  {
+   "id": "C42",
+   "name": "Telemetry review",
+   "text": "Traffic, clone, fork and workflow telemetry is collected and compared with the Foundation's own activity, so what remains is visible; the organization audit log is not yet read (OC-AUDITLOG).",
+   "status": "partial",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "security/telemetry.json"
+    },
+    {
+     "kind": "path",
+     "reference": "security/observe.mjs"
+    }
+   ],
+   "outcomes": [
+    80,
+    74,
+    83,
+    48
+   ]
+  },
+  {
+   "id": "C43",
+   "name": "Governance and roles",
+   "text": "The Bylaws and GOVERNANCE.md name the Board, the Organization Owner, Maintainers and the TOC, projected into Foundation.Governance.V1.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "pinned",
+     "reference": "dotgithub@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md"
+    },
+    {
+     "kind": "path",
+     "reference": "governance/register.json"
+    }
+   ],
+   "outcomes": [
+    12,
+    13,
+    16
+   ]
+  },
+  {
+   "id": "C44",
+   "name": "Emergency and hotfix procedure",
+   "text": "GOVERNANCE.md 7.4 sets the emergency procedure and SECURITY.md the remediation, release, disclosure and review steps; no incident response plan beyond them names roles, criteria or exercises.",
+   "status": "partial",
+   "evidence": [
+    {
+     "kind": "pinned",
+     "reference": "dotgithub@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md"
+    },
+    {
+     "kind": "pinned",
+     "reference": "dotgithub@92da114114fc9b76cbf2c5168e29d409b62ddde8:SECURITY.md"
+    }
+   ],
+   "outcomes": [
+    85,
+    88,
+    96,
+    97,
+    90,
+    98,
+    99
+   ]
+  },
+  {
+   "id": "C45",
+   "name": "Repository standards and inventory",
+   "text": "Every public repository is registered with its tier, status and lifecycle, and archived or folded when it ends.",
+   "status": "implemented",
+   "evidence": [
+    {
+     "kind": "path",
+     "reference": "ecosystem/register.json"
+    },
+    {
+     "kind": "path",
+     "reference": "remediation/register.json"
+    }
+   ],
+   "outcomes": [
+    32,
+    37,
+    65
+   ]
+  },
+  {
+   "id": "C46",
+   "name": "Static analysis",
+   "text": "CodeQL or an equivalent runs on every pull request; Scorecard's SAST check measures it.",
+   "status": "planned",
+   "evidence": [
+    {
+     "kind": "scorecard",
+     "reference": "SAST"
+    }
+   ],
+   "outcomes": [
+    69,
+    38
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "subcategory": 5,
+   "status": "planned",
+   "rationale": "the Board has not adopted security risk management objectives."
+  },
+  {
+   "subcategory": 6,
+   "status": "planned",
+   "rationale": "no risk appetite or tolerance statement; this model's accept responses are its first draft."
+  },
+  {
+   "subcategory": 7,
+   "status": "planned",
+   "rationale": "the Foundation has no enterprise risk register beyond this model."
+  },
+  {
+   "subcategory": 8,
+   "status": "planned",
+   "rationale": "the SP 800-39 response options this model uses are not adopted as policy."
+  },
+  {
+   "subcategory": 9,
+   "status": "planned",
+   "rationale": "security reporting lines to the Board are not established."
+  },
+  {
+   "subcategory": 11,
+   "status": "planned",
+   "rationale": "positive risks are not characterized."
+  },
+  {
+   "subcategory": 14,
+   "status": "planned",
+   "rationale": "no resources are allocated to security."
+  },
+  {
+   "subcategory": 15,
+   "status": "not-applicable",
+   "rationale": "the Foundation has no employees; contributors are volunteers and agents."
+  },
+  {
+   "subcategory": 18,
+   "status": "planned",
+   "rationale": "no strategy review is scheduled."
+  },
+  {
+   "subcategory": 19,
+   "status": "planned",
+   "rationale": "no strategy review is scheduled."
+  },
+  {
+   "subcategory": 20,
+   "status": "planned",
+   "rationale": "no performance review is scheduled."
+  },
+  {
+   "subcategory": 21,
+   "status": "planned",
+   "rationale": "no supply chain risk management program."
+  },
+  {
+   "subcategory": 22,
+   "status": "planned",
+   "rationale": "supplier security roles are not set."
+  },
+  {
+   "subcategory": 23,
+   "status": "planned",
+   "rationale": "supply chain risk is not part of risk management beyond this model."
+  },
+  {
+   "subcategory": 25,
+   "status": "planned",
+   "rationale": "no supplier agreement carries security requirements."
+  },
+  {
+   "subcategory": 26,
+   "status": "planned",
+   "rationale": "no due diligence before a new integration."
+  },
+  {
+   "subcategory": 28,
+   "status": "planned",
+   "rationale": "suppliers are not part of incident planning."
+  },
+  {
+   "subcategory": 30,
+   "status": "planned",
+   "rationale": "no off-boarding provision for integrations."
+  },
+  {
+   "subcategory": 31,
+   "status": "not-applicable",
+   "rationale": "the Foundation manages no hardware; every service is hosted by a provider."
+  },
+  {
+   "subcategory": 34,
+   "status": "planned",
+   "rationale": "the inventory of supplier services comes with the Foundation asset register."
+  },
+  {
+   "subcategory": 47,
+   "status": "planned",
+   "rationale": "critical suppliers are not assessed before use."
+  },
+  {
+   "subcategory": 50,
+   "status": "planned",
+   "rationale": "improvements from operations are not yet drawn from the decision telemetry."
+  },
+  {
+   "subcategory": 51,
+   "status": "planned",
+   "rationale": "no incident response plan."
+  },
+  {
+   "subcategory": 57,
+   "status": "not-applicable",
+   "rationale": "the Foundation has no physical premises or hardware."
+  },
+  {
+   "subcategory": 58,
+   "status": "planned",
+   "rationale": "no security awareness for contributors."
+  },
+  {
+   "subcategory": 62,
+   "status": "planned",
+   "rationale": "data in use is not protected beyond the providers' own controls."
+  },
+  {
+   "subcategory": 66,
+   "status": "not-applicable",
+   "rationale": "the Foundation manages no hardware."
+  },
+  {
+   "subcategory": 70,
+   "status": "planned",
+   "rationale": "the Supabase project's network restrictions are not established."
+  },
+  {
+   "subcategory": 71,
+   "status": "not-applicable",
+   "rationale": "the Foundation operates no equipment exposed to environmental threats."
+  },
+  {
+   "subcategory": 76,
+   "status": "planned",
+   "rationale": "no method estimates an adverse event's impact and scope."
+  },
+  {
+   "subcategory": 77,
+   "status": "planned",
+   "rationale": "no alert reaches a maintainer when telemetry shows an adverse event."
+  },
+  {
+   "subcategory": 79,
+   "status": "planned",
+   "rationale": "no incident criteria are defined."
+  },
+  {
+   "subcategory": 81,
+   "status": "not-applicable",
+   "rationale": "the Foundation has no physical environment."
+  },
+  {
+   "subcategory": 89,
+   "status": "planned",
+   "rationale": "no recovery criteria are defined."
+  },
+  {
+   "subcategory": 93,
+   "status": "planned",
+   "rationale": "no method estimates an incident's magnitude."
+  },
+  {
+   "subcategory": 101,
+   "status": "planned",
+   "rationale": "post-incident norms are not set."
+  },
+  {
+   "subcategory": 103,
+   "status": "planned",
+   "rationale": "no criteria declare the end of recovery."
+  },
+  {
+   "subcategory": 104,
+   "status": "planned",
+   "rationale": "recovery communication is not set."
+  }
+ ],
+ "outcomes": [
+  {
+   "control": 32,
+   "subcategory": 0
+  },
+  {
+   "control": 40,
+   "subcategory": 0
+  },
+  {
+   "control": 17,
+   "subcategory": 1
+  },
+  {
+   "control": 40,
+   "subcategory": 1
+  },
+  {
+   "control": 20,
+   "subcategory": 2
+  },
+  {
+   "control": 38,
+   "subcategory": 2
+  },
+  {
+   "control": 32,
+   "subcategory": 3
+  },
+  {
+   "control": 40,
+   "subcategory": 4
+  },
+  {
+   "control": 40,
+   "subcategory": 10
+  },
+  {
+   "control": 42,
+   "subcategory": 12
+  },
+  {
+   "control": 2,
+   "subcategory": 13
+  },
+  {
+   "control": 13,
+   "subcategory": 13
+  },
+  {
+   "control": 33,
+   "subcategory": 13
+  },
+  {
+   "control": 42,
+   "subcategory": 13
+  },
+  {
+   "control": 38,
+   "subcategory": 16
+  },
+  {
+   "control": 42,
+   "subcategory": 16
+  },
+  {
+   "control": 29,
+   "subcategory": 17
+  },
+  {
+   "control": 7,
+   "subcategory": 24
+  },
+  {
+   "control": 40,
+   "subcategory": 24
+  },
+  {
+   "control": 6,
+   "subcategory": 27
+  },
+  {
+   "control": 23,
+   "subcategory": 27
+  },
+  {
+   "control": 8,
+   "subcategory": 29
+  },
+  {
+   "control": 7,
+   "subcategory": 32
+  },
+  {
+   "control": 24,
+   "subcategory": 32
+  },
+  {
+   "control": 44,
+   "subcategory": 32
+  },
+  {
+   "control": 40,
+   "subcategory": 33
+  },
+  {
+   "control": 40,
+   "subcategory": 35
+  },
+  {
+   "control": 19,
+   "subcategory": 36
+  },
+  {
+   "control": 44,
+   "subcategory": 37
+  },
+  {
+   "control": 8,
+   "subcategory": 38
+  },
+  {
+   "control": 22,
+   "subcategory": 38
+  },
+  {
+   "control": 27,
+   "subcategory": 38
+  },
+  {
+   "control": 45,
+   "subcategory": 38
+  },
+  {
+   "control": 40,
+   "subcategory": 39
+  },
+  {
+   "control": 40,
+   "subcategory": 40
+  },
+  {
+   "control": 40,
+   "subcategory": 41
+  },
+  {
+   "control": 40,
+   "subcategory": 42
+  },
+  {
+   "control": 40,
+   "subcategory": 43
+  },
+  {
+   "control": 29,
+   "subcategory": 44
+  },
+  {
+   "control": 27,
+   "subcategory": 45
+  },
+  {
+   "control": 39,
+   "subcategory": 45
+  },
+  {
+   "control": 6,
+   "subcategory": 46
+  },
+  {
+   "control": 7,
+   "subcategory": 46
+  },
+  {
+   "control": 25,
+   "subcategory": 46
+  },
+  {
+   "control": 26,
+   "subcategory": 46
+  },
+  {
+   "control": 41,
+   "subcategory": 48
+  },
+  {
+   "control": 12,
+   "subcategory": 49
+  },
+  {
+   "control": 0,
+   "subcategory": 52
+  },
+  {
+   "control": 9,
+   "subcategory": 52
+  },
+  {
+   "control": 14,
+   "subcategory": 53
+  },
+  {
+   "control": 0,
+   "subcategory": 54
+  },
+  {
+   "control": 16,
+   "subcategory": 54
+  },
+  {
+   "control": 34,
+   "subcategory": 54
+  },
+  {
+   "control": 36,
+   "subcategory": 55
+  },
+  {
+   "control": 1,
+   "subcategory": 56
+  },
+  {
+   "control": 2,
+   "subcategory": 56
+  },
+  {
+   "control": 4,
+   "subcategory": 56
+  },
+  {
+   "control": 9,
+   "subcategory": 56
+  },
+  {
+   "control": 13,
+   "subcategory": 56
+  },
+  {
+   "control": 18,
+   "subcategory": 56
+  },
+  {
+   "control": 21,
+   "subcategory": 56
+  },
+  {
+   "control": 23,
+   "subcategory": 56
+  },
+  {
+   "control": 11,
+   "subcategory": 59
+  },
+  {
+   "control": 1,
+   "subcategory": 60
+  },
+  {
+   "control": 9,
+   "subcategory": 60
+  },
+  {
+   "control": 10,
+   "subcategory": 60
+  },
+  {
+   "control": 19,
+   "subcategory": 60
+  },
+  {
+   "control": 20,
+   "subcategory": 60
+  },
+  {
+   "control": 21,
+   "subcategory": 60
+  },
+  {
+   "control": 25,
+   "subcategory": 60
+  },
+  {
+   "control": 36,
+   "subcategory": 60
+  },
+  {
+   "control": 37,
+   "subcategory": 60
+  },
+  {
+   "control": 35,
+   "subcategory": 61
+  },
+  {
+   "control": 30,
+   "subcategory": 63
+  },
+  {
+   "control": 1,
+   "subcategory": 64
+  },
+  {
+   "control": 4,
+   "subcategory": 64
+  },
+  {
+   "control": 24,
+   "subcategory": 64
+  },
+  {
+   "control": 29,
+   "subcategory": 64
+  },
+  {
+   "control": 6,
+   "subcategory": 65
+  },
+  {
+   "control": 8,
+   "subcategory": 65
+  },
+  {
+   "control": 44,
+   "subcategory": 65
+  },
+  {
+   "control": 15,
+   "subcategory": 67
+  },
+  {
+   "control": 3,
+   "subcategory": 68
+  },
+  {
+   "control": 5,
+   "subcategory": 68
+  },
+  {
+   "control": 3,
+   "subcategory": 69
+  },
+  {
+   "control": 11,
+   "subcategory": 69
+  },
+  {
+   "control": 12,
+   "subcategory": 69
+  },
+  {
+   "control": 26,
+   "subcategory": 69
+  },
+  {
+   "control": 33,
+   "subcategory": 69
+  },
+  {
+   "control": 45,
+   "subcategory": 69
+  },
+  {
+   "control": 31,
+   "subcategory": 72
+  },
+  {
+   "control": 28,
+   "subcategory": 73
+  },
+  {
+   "control": 41,
+   "subcategory": 74
+  },
+  {
+   "control": 15,
+   "subcategory": 75
+  },
+  {
+   "control": 40,
+   "subcategory": 78
+  },
+  {
+   "control": 41,
+   "subcategory": 80
+  },
+  {
+   "control": 16,
+   "subcategory": 82
+  },
+  {
+   "control": 41,
+   "subcategory": 83
+  },
+  {
+   "control": 10,
+   "subcategory": 84
+  },
+  {
+   "control": 12,
+   "subcategory": 84
+  },
+  {
+   "control": 22,
+   "subcategory": 84
+  },
+  {
+   "control": 43,
+   "subcategory": 85
+  },
+  {
+   "control": 39,
+   "subcategory": 86
+  },
+  {
+   "control": 39,
+   "subcategory": 87
+  },
+  {
+   "control": 43,
+   "subcategory": 88
+  },
+  {
+   "control": 43,
+   "subcategory": 90
+  },
+  {
+   "control": 14,
+   "subcategory": 91
+  },
+  {
+   "control": 15,
+   "subcategory": 92
+  },
+  {
+   "control": 37,
+   "subcategory": 92
+  },
+  {
+   "control": 39,
+   "subcategory": 94
+  },
+  {
+   "control": 27,
+   "subcategory": 95
+  },
+  {
+   "control": 43,
+   "subcategory": 96
+  },
+  {
+   "control": 43,
+   "subcategory": 97
+  },
+  {
+   "control": 43,
+   "subcategory": 98
+  },
+  {
+   "control": 43,
+   "subcategory": 99
+  },
+  {
+   "control": 30,
+   "subcategory": 100
+  },
+  {
+   "control": 31,
+   "subcategory": 102
+  },
+  {
+   "control": 17,
+   "subcategory": 105
+  }
+ ],
+ "strideSlots": [
+  {
+   "element": 0,
+   "category": 0,
+   "state": "answered",
+   "threat": 20,
+   "rationale": ""
+  },
+  {
+   "element": 0,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 0,
+   "category": 2,
+   "state": "answered",
+   "threat": 24,
+   "rationale": ""
+  },
+  {
+   "element": 0,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 0,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 0,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 1,
+   "category": 0,
+   "state": "answered",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 1,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 1,
+   "category": 2,
+   "state": "answered",
+   "threat": 24,
+   "rationale": ""
+  },
+  {
+   "element": 1,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 1,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 1,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 2,
+   "category": 0,
+   "state": "answered",
+   "threat": 4,
+   "rationale": ""
+  },
+  {
+   "element": 2,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 2,
+   "category": 2,
+   "state": "answered",
+   "threat": 5,
+   "rationale": ""
+  },
+  {
+   "element": 2,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 2,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 2,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 3,
+   "category": 0,
+   "state": "answered",
+   "threat": 6,
+   "rationale": ""
+  },
+  {
+   "element": 3,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 3,
+   "category": 2,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "Discord keeps every message under the member's account, and no Foundation decision rests on a member's statement."
+  },
+  {
+   "element": 3,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 3,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 3,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 4,
+   "category": 0,
+   "state": "answered",
+   "threat": 22,
+   "rationale": ""
+  },
+  {
+   "element": 4,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 4,
+   "category": 2,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "no Foundation decision rests on a visitor's act; Supabase Auth keeps its own record of account events (open claim OC-AUTHLOG)."
+  },
+  {
+   "element": 4,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 4,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 4,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 5,
+   "category": 0,
+   "state": "answered",
+   "threat": 2,
+   "rationale": ""
+  },
+  {
+   "element": 5,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 5,
+   "category": 2,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "every upstream input is pinned by commit or digest, so what a supplier supplied is fixed by its address."
+  },
+  {
+   "element": 5,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 5,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 5,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 6,
+   "category": 0,
+   "state": "answered",
+   "threat": 19,
+   "rationale": ""
+  },
+  {
+   "element": 6,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 6,
+   "category": 2,
+   "state": "answered",
+   "threat": 19,
+   "rationale": ""
+  },
+  {
+   "element": 6,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 6,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 6,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 7,
+   "category": 0,
+   "state": "answered",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 7,
+   "category": 1,
+   "state": "answered",
+   "threat": 1,
+   "rationale": ""
+  },
+  {
+   "element": 7,
+   "category": 2,
+   "state": "answered",
+   "threat": 5,
+   "rationale": ""
+  },
+  {
+   "element": 7,
+   "category": 3,
+   "state": "answered",
+   "threat": 3,
+   "rationale": ""
+  },
+  {
+   "element": 7,
+   "category": 4,
+   "state": "answered",
+   "threat": 14,
+   "rationale": ""
+  },
+  {
+   "element": 7,
+   "category": 5,
+   "state": "answered",
+   "threat": 1,
+   "rationale": ""
+  },
+  {
+   "element": 8,
+   "category": 0,
+   "state": "answered",
+   "threat": 4,
+   "rationale": ""
+  },
+  {
+   "element": 8,
+   "category": 1,
+   "state": "answered",
+   "threat": 4,
+   "rationale": ""
+  },
+  {
+   "element": 8,
+   "category": 2,
+   "state": "answered",
+   "threat": 5,
+   "rationale": ""
+  },
+  {
+   "element": 8,
+   "category": 3,
+   "state": "answered",
+   "threat": 4,
+   "rationale": ""
+  },
+  {
+   "element": 8,
+   "category": 4,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "the loop serves no one outside the Foundation; when it stops, work waits and nothing is exposed."
+  },
+  {
+   "element": 8,
+   "category": 5,
+   "state": "answered",
+   "threat": 4,
+   "rationale": ""
+  },
+  {
+   "element": 9,
+   "category": 0,
+   "state": "answered",
+   "threat": 11,
+   "rationale": ""
+  },
+  {
+   "element": 9,
+   "category": 1,
+   "state": "answered",
+   "threat": 10,
+   "rationale": ""
+  },
+  {
+   "element": 9,
+   "category": 2,
+   "state": "answered",
+   "threat": 10,
+   "rationale": ""
+  },
+  {
+   "element": 9,
+   "category": 3,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 9,
+   "category": 4,
+   "state": "answered",
+   "threat": 25,
+   "rationale": ""
+  },
+  {
+   "element": 9,
+   "category": 5,
+   "state": "answered",
+   "threat": 10,
+   "rationale": ""
+  },
+  {
+   "element": 10,
+   "category": 0,
+   "state": "answered",
+   "threat": 22,
+   "rationale": ""
+  },
+  {
+   "element": 10,
+   "category": 1,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 10,
+   "category": 2,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "Supabase keeps the API and Auth logs, which this assessment has not read (open claim OC-AUTHLOG)."
+  },
+  {
+   "element": 10,
+   "category": 3,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 10,
+   "category": 4,
+   "state": "answered",
+   "threat": 18,
+   "rationale": ""
+  },
+  {
+   "element": 10,
+   "category": 5,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 11,
+   "category": 0,
+   "state": "answered",
+   "threat": 6,
+   "rationale": ""
+  },
+  {
+   "element": 11,
+   "category": 1,
+   "state": "answered",
+   "threat": 7,
+   "rationale": ""
+  },
+  {
+   "element": 11,
+   "category": 2,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "Discord's audit log records every moderator act, which this assessment has not read (open claim OC-DISCORDMOD)."
+  },
+  {
+   "element": 11,
+   "category": 3,
+   "state": "answered",
+   "threat": 7,
+   "rationale": ""
+  },
+  {
+   "element": 11,
+   "category": 4,
+   "state": "answered",
+   "threat": 15,
+   "rationale": ""
+  },
+  {
+   "element": 11,
+   "category": 5,
+   "state": "answered",
+   "threat": 7,
+   "rationale": ""
+  },
+  {
+   "element": 12,
+   "category": 0,
+   "state": "answered",
+   "threat": 12,
+   "rationale": ""
+  },
+  {
+   "element": 12,
+   "category": 1,
+   "state": "answered",
+   "threat": 12,
+   "rationale": ""
+  },
+  {
+   "element": 12,
+   "category": 2,
+   "state": "answered",
+   "threat": 12,
+   "rationale": ""
+  },
+  {
+   "element": 12,
+   "category": 3,
+   "state": "answered",
+   "threat": 3,
+   "rationale": ""
+  },
+  {
+   "element": 12,
+   "category": 4,
+   "state": "answered",
+   "threat": 18,
+   "rationale": ""
+  },
+  {
+   "element": 12,
+   "category": 5,
+   "state": "answered",
+   "threat": 1,
+   "rationale": ""
+  },
+  {
+   "element": 13,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 13,
+   "category": 1,
+   "state": "answered",
+   "threat": 20,
+   "rationale": ""
+  },
+  {
+   "element": 13,
+   "category": 2,
+   "state": "answered",
+   "threat": 24,
+   "rationale": ""
+  },
+  {
+   "element": 13,
+   "category": 3,
+   "state": "answered",
+   "threat": 21,
+   "rationale": ""
+  },
+  {
+   "element": 13,
+   "category": 4,
+   "state": "answered",
+   "threat": 17,
+   "rationale": ""
+  },
+  {
+   "element": 13,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 14,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 14,
+   "category": 1,
+   "state": "answered",
+   "threat": 3,
+   "rationale": ""
+  },
+  {
+   "element": 14,
+   "category": 2,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "GitHub's organization audit log records every secret change; agent sessions cannot read it (open claim OC-AUDITLOG)."
+  },
+  {
+   "element": 14,
+   "category": 3,
+   "state": "answered",
+   "threat": 3,
+   "rationale": ""
+  },
+  {
+   "element": 14,
+   "category": 4,
+   "state": "answered",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 14,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 15,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 15,
+   "category": 1,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 15,
+   "category": 2,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "Supabase keeps the database's own logs, which this assessment has not read (open claim OC-AUTHLOG)."
+  },
+  {
+   "element": 15,
+   "category": 3,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 15,
+   "category": 4,
+   "state": "answered",
+   "threat": 18,
+   "rationale": ""
+  },
+  {
+   "element": 15,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 16,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 16,
+   "category": 1,
+   "state": "answered",
+   "threat": 26,
+   "rationale": ""
+  },
+  {
+   "element": 16,
+   "category": 2,
+   "state": "answered",
+   "threat": 26,
+   "rationale": ""
+  },
+  {
+   "element": 16,
+   "category": 3,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 16,
+   "category": 4,
+   "state": "answered",
+   "threat": 17,
+   "rationale": ""
+  },
+  {
+   "element": 16,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 17,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 17,
+   "category": 1,
+   "state": "answered",
+   "threat": 12,
+   "rationale": ""
+  },
+  {
+   "element": 17,
+   "category": 2,
+   "state": "answered",
+   "threat": 12,
+   "rationale": ""
+  },
+  {
+   "element": 17,
+   "category": 3,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "the SDK images are public by design and hold no secret."
+  },
+  {
+   "element": 17,
+   "category": 4,
+   "state": "answered",
+   "threat": 18,
+   "rationale": ""
+  },
+  {
+   "element": 17,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 18,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 18,
+   "category": 1,
+   "state": "answered",
+   "threat": 7,
+   "rationale": ""
+  },
+  {
+   "element": 18,
+   "category": 2,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "Discord's audit log records message deletions by moderators and bots (open claim OC-DISCORDMOD)."
+  },
+  {
+   "element": 18,
+   "category": 3,
+   "state": "answered",
+   "threat": 7,
+   "rationale": ""
+  },
+  {
+   "element": 18,
+   "category": 4,
+   "state": "answered",
+   "threat": 18,
+   "rationale": ""
+  },
+  {
+   "element": 18,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 19,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 19,
+   "category": 1,
+   "state": "answered",
+   "threat": 20,
+   "rationale": ""
+  },
+  {
+   "element": 19,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 19,
+   "category": 3,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "issues and pull requests are public by design."
+  },
+  {
+   "element": 19,
+   "category": 4,
+   "state": "answered",
+   "threat": 14,
+   "rationale": ""
+  },
+  {
+   "element": 19,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 1,
+   "state": "answered",
+   "threat": 4,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 3,
+   "state": "answered",
+   "threat": 4,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 4,
+   "state": "answered",
+   "threat": 18,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 21,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 21,
+   "category": 1,
+   "state": "answered",
+   "threat": 1,
+   "rationale": ""
+  },
+  {
+   "element": 21,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 21,
+   "category": 3,
+   "state": "answered",
+   "threat": 3,
+   "rationale": ""
+  },
+  {
+   "element": 21,
+   "category": 4,
+   "state": "answered",
+   "threat": 16,
+   "rationale": ""
+  },
+  {
+   "element": 21,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 1,
+   "state": "answered",
+   "threat": 26,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 3,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 4,
+   "state": "answered",
+   "threat": 18,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 1,
+   "state": "answered",
+   "threat": 23,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 3,
+   "state": "answered",
+   "threat": 23,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 4,
+   "state": "answered",
+   "threat": 25,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 24,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 24,
+   "category": 1,
+   "state": "answered",
+   "threat": 23,
+   "rationale": ""
+  },
+  {
+   "element": 24,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 24,
+   "category": 3,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 24,
+   "category": 4,
+   "state": "answered",
+   "threat": 18,
+   "rationale": ""
+  },
+  {
+   "element": 24,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 25,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 25,
+   "category": 1,
+   "state": "answered",
+   "threat": 2,
+   "rationale": ""
+  },
+  {
+   "element": 25,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 25,
+   "category": 3,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "the inputs are public packages."
+  },
+  {
+   "element": 25,
+   "category": 4,
+   "state": "answered",
+   "threat": 18,
+   "rationale": ""
+  },
+  {
+   "element": 25,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 26,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 26,
+   "category": 1,
+   "state": "answered",
+   "threat": 12,
+   "rationale": ""
+  },
+  {
+   "element": 26,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 26,
+   "category": 3,
+   "state": "answered",
+   "threat": 3,
+   "rationale": ""
+  },
+  {
+   "element": 26,
+   "category": 4,
+   "state": "answered",
+   "threat": 18,
+   "rationale": ""
+  },
+  {
+   "element": 26,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 27,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 27,
+   "category": 1,
+   "state": "answered",
+   "threat": 6,
+   "rationale": ""
+  },
+  {
+   "element": 27,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 27,
+   "category": 3,
+   "state": "answered",
+   "threat": 6,
+   "rationale": ""
+  },
+  {
+   "element": 27,
+   "category": 4,
+   "state": "answered",
+   "threat": 15,
+   "rationale": ""
+  },
+  {
+   "element": 27,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 28,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 28,
+   "category": 1,
+   "state": "answered",
+   "threat": 4,
+   "rationale": ""
+  },
+  {
+   "element": 28,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 28,
+   "category": 3,
+   "state": "answered",
+   "threat": 4,
+   "rationale": ""
+  },
+  {
+   "element": 28,
+   "category": 4,
+   "state": "answered",
+   "threat": 14,
+   "rationale": ""
+  },
+  {
+   "element": 28,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  }
+ ],
+ "linddunSlots": [
+  {
+   "element": 0,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 0,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 0,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 0,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 0,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 0,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 0,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 1,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 1,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 1,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 1,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 1,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 1,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 1,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 2,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 2,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 2,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 2,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 2,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 2,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 2,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 3,
+   "category": 0,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 3,
+   "category": 1,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 3,
+   "category": 2,
+   "state": "answered",
+   "threat": 29,
+   "rationale": ""
+  },
+  {
+   "element": 3,
+   "category": 3,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 3,
+   "category": 4,
+   "state": "answered",
+   "threat": 6,
+   "rationale": ""
+  },
+  {
+   "element": 3,
+   "category": 5,
+   "state": "answered",
+   "threat": 27,
+   "rationale": ""
+  },
+  {
+   "element": 3,
+   "category": 6,
+   "state": "answered",
+   "threat": 28,
+   "rationale": ""
+  },
+  {
+   "element": 4,
+   "category": 0,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 4,
+   "category": 1,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 4,
+   "category": 2,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "the website records no statement a visitor could later need to deny."
+  },
+  {
+   "element": 4,
+   "category": 3,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "the website's public pages do not reveal whether a given person holds an account."
+  },
+  {
+   "element": 4,
+   "category": 4,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 4,
+   "category": 5,
+   "state": "answered",
+   "threat": 28,
+   "rationale": ""
+  },
+  {
+   "element": 4,
+   "category": 6,
+   "state": "answered",
+   "threat": 28,
+   "rationale": ""
+  },
+  {
+   "element": 5,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 5,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 5,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 5,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 5,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 5,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 5,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 6,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 6,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 6,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 6,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 6,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 6,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 6,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 7,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 7,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 7,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 7,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 7,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 7,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 7,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 8,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 8,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 8,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 8,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 8,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 8,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 8,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 9,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 9,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 9,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 9,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 9,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 9,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 9,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 10,
+   "category": 0,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 10,
+   "category": 1,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 10,
+   "category": 2,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "the backend records no act a person could later need to deny beyond what they themselves store."
+  },
+  {
+   "element": 10,
+   "category": 3,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 10,
+   "category": 4,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 10,
+   "category": 5,
+   "state": "answered",
+   "threat": 28,
+   "rationale": ""
+  },
+  {
+   "element": 10,
+   "category": 6,
+   "state": "answered",
+   "threat": 28,
+   "rationale": ""
+  },
+  {
+   "element": 11,
+   "category": 0,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 11,
+   "category": 1,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 11,
+   "category": 2,
+   "state": "answered",
+   "threat": 29,
+   "rationale": ""
+  },
+  {
+   "element": 11,
+   "category": 3,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 11,
+   "category": 4,
+   "state": "answered",
+   "threat": 7,
+   "rationale": ""
+  },
+  {
+   "element": 11,
+   "category": 5,
+   "state": "answered",
+   "threat": 27,
+   "rationale": ""
+  },
+  {
+   "element": 11,
+   "category": 6,
+   "state": "answered",
+   "threat": 28,
+   "rationale": ""
+  },
+  {
+   "element": 12,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 12,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 12,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 12,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 12,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 12,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 12,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 13,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 13,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 13,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 13,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 13,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 13,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 13,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 14,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 14,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 14,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 14,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 14,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 14,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 14,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 15,
+   "category": 0,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 15,
+   "category": 1,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 15,
+   "category": 2,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "what a person stores is theirs; the database keeps no record of them beyond it."
+  },
+  {
+   "element": 15,
+   "category": 3,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 15,
+   "category": 4,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 15,
+   "category": 5,
+   "state": "answered",
+   "threat": 28,
+   "rationale": ""
+  },
+  {
+   "element": 15,
+   "category": 6,
+   "state": "answered",
+   "threat": 28,
+   "rationale": ""
+  },
+  {
+   "element": 16,
+   "category": 0,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 16,
+   "category": 1,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 16,
+   "category": 2,
+   "state": "answered",
+   "threat": 29,
+   "rationale": ""
+  },
+  {
+   "element": 16,
+   "category": 3,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 16,
+   "category": 4,
+   "state": "answered",
+   "threat": 13,
+   "rationale": ""
+  },
+  {
+   "element": 16,
+   "category": 5,
+   "state": "answered",
+   "threat": 27,
+   "rationale": ""
+  },
+  {
+   "element": 16,
+   "category": 6,
+   "state": "answered",
+   "threat": 28,
+   "rationale": ""
+  },
+  {
+   "element": 17,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 17,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 17,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 17,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 17,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 17,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 17,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 18,
+   "category": 0,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 18,
+   "category": 1,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 18,
+   "category": 2,
+   "state": "answered",
+   "threat": 29,
+   "rationale": ""
+  },
+  {
+   "element": 18,
+   "category": 3,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 18,
+   "category": 4,
+   "state": "answered",
+   "threat": 7,
+   "rationale": ""
+  },
+  {
+   "element": 18,
+   "category": 5,
+   "state": "answered",
+   "threat": 27,
+   "rationale": ""
+  },
+  {
+   "element": 18,
+   "category": 6,
+   "state": "answered",
+   "threat": 28,
+   "rationale": ""
+  },
+  {
+   "element": 19,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 19,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 19,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 19,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 19,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 19,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 19,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 20,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 21,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 21,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 21,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 21,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 21,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 21,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 21,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 0,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 1,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 2,
+   "state": "answered",
+   "threat": 29,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 3,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 4,
+   "state": "answered",
+   "threat": 13,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 5,
+   "state": "answered",
+   "threat": 27,
+   "rationale": ""
+  },
+  {
+   "element": 22,
+   "category": 6,
+   "state": "answered",
+   "threat": 28,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 23,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 24,
+   "category": 0,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 24,
+   "category": 1,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 24,
+   "category": 2,
+   "state": "stated",
+   "threat": 0,
+   "rationale": "a call records nothing a person could need to deny beyond what they store."
+  },
+  {
+   "element": 24,
+   "category": 3,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 24,
+   "category": 4,
+   "state": "answered",
+   "threat": 9,
+   "rationale": ""
+  },
+  {
+   "element": 24,
+   "category": 5,
+   "state": "answered",
+   "threat": 28,
+   "rationale": ""
+  },
+  {
+   "element": 24,
+   "category": 6,
+   "state": "answered",
+   "threat": 28,
+   "rationale": ""
+  },
+  {
+   "element": 25,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 25,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 25,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 25,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 25,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 25,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 25,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 26,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 26,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 26,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 26,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 26,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 26,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 26,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 27,
+   "category": 0,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 27,
+   "category": 1,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 27,
+   "category": 2,
+   "state": "answered",
+   "threat": 29,
+   "rationale": ""
+  },
+  {
+   "element": 27,
+   "category": 3,
+   "state": "answered",
+   "threat": 8,
+   "rationale": ""
+  },
+  {
+   "element": 27,
+   "category": 4,
+   "state": "answered",
+   "threat": 6,
+   "rationale": ""
+  },
+  {
+   "element": 27,
+   "category": 5,
+   "state": "answered",
+   "threat": 27,
+   "rationale": ""
+  },
+  {
+   "element": 27,
+   "category": 6,
+   "state": "answered",
+   "threat": 28,
+   "rationale": ""
+  },
+  {
+   "element": 28,
+   "category": 0,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 28,
+   "category": 1,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 28,
+   "category": 2,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 28,
+   "category": 3,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 28,
+   "category": 4,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 28,
+   "category": 5,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  },
+  {
+   "element": 28,
+   "category": 6,
+   "state": "notApplicable",
+   "threat": 0,
+   "rationale": ""
+  }
+ ],
+ "indicators": [
+  {
+   "id": "IN-CLONES-github",
+   "threat": 21,
+   "source": "security/telemetry.json 2026-11-15T19:03:35Z",
+   "measure": "unique cloners per day beyond the Foundation's own checkout jobs, summed over GitHub's 14-day window",
+   "value": 29,
+   "text": "UOR-Foundation/.github: 29 daily unique cloners against 0 own checkout jobs; 29 are not explained by the Foundation's CI (agent sessions, Lovable and mirrors also clone; OC-CLONES)."
+  },
+  {
+   "id": "IN-CLONES-community",
+   "threat": 21,
+   "source": "security/telemetry.json 2026-11-15T19:03:35Z",
+   "measure": "unique cloners per day beyond the Foundation's own checkout jobs, summed over GitHub's 14-day window",
+   "value": 25,
+   "text": "UOR-Foundation/community: 101 daily unique cloners against 274 own checkout jobs; 25 are not explained by the Foundation's CI (agent sessions, Lovable and mirrors also clone; OC-CLONES)."
+  },
+  {
+   "id": "IN-CLONES-grimoirelab-discord",
+   "threat": 21,
+   "source": "security/telemetry.json 2026-11-15T19:03:35Z",
+   "measure": "unique cloners per day beyond the Foundation's own checkout jobs, summed over GitHub's 14-day window",
+   "value": 25,
+   "text": "UOR-Foundation/grimoirelab-discord: 29 daily unique cloners against 4 own checkout jobs; 25 are not explained by the Foundation's CI (agent sessions, Lovable and mirrors also clone; OC-CLONES)."
+  },
+  {
+   "id": "IN-CLONES-website",
+   "threat": 21,
+   "source": "security/telemetry.json 2026-11-15T19:03:35Z",
+   "measure": "unique cloners per day beyond the Foundation's own checkout jobs, summed over GitHub's 14-day window",
+   "value": 391,
+   "text": "UOR-Foundation/website: 542 daily unique cloners against 151 own checkout jobs; 391 are not explained by the Foundation's CI (agent sessions, Lovable and mirrors also clone; OC-CLONES)."
+  },
+  {
+   "id": "IN-JOINS",
+   "threat": 15,
+   "source": "observations/corpus.json 2026-11-14T00:31:49Z",
+   "measure": "weeks whose member joins exceed the c chart upper limit (ISO 7870-2, c-bar + 3 sqrt(c-bar))",
+   "value": 6,
+   "text": "236 joins over 91 weeks, c-bar 2.59, upper limit 7.42; weeks above it: 2025-03-31, 2025-12-29, 2026-01-05, 2026-02-02, 2026-02-09, 2026-02-16. A burst is consistent with a raid or with an announcement; the corpus holds no message text to tell them apart."
+  },
+  {
+   "id": "IN-SILENT",
+   "threat": 15,
+   "source": "observations/corpus.json 2026-11-14T00:31:49Z",
+   "measure": "members who joined and never posted",
+   "value": 88,
+   "text": "88 of 227 joining members never posted. Silent members are usual in any community; this is no sign of sockpuppets on its own."
+  },
+  {
+   "id": "IN-AUTOMOD",
+   "threat": 6,
+   "source": "observations/corpus.json 2026-11-14T00:31:49Z",
+   "measure": "AutoMod action messages (Discord message type 24) in the readable channels",
+   "value": 0,
+   "text": "AutoMod posts an action message where an alert channel is set; none appears, so either no rule fired or no alert channel is readable (OC-DISCORDMOD)."
+  },
+  {
+   "id": "IN-OUTSIDERS",
+   "threat": 20,
+   "source": "observations/corpus.json 2026-11-14T00:31:49Z",
+   "measure": "identities with a single issue or pull request across the ecosystem",
+   "value": 5,
+   "text": "6098 issues and pull requests come from 23 identities; 5 appear once. Outside contribution is rare, so a malicious contribution would stand out, and so would the review load it needs."
+  }
+ ],
+ "openClaims": [
+  {
+   "id": "OC-2FA",
+   "subject": "GitHub organization",
+   "detail": "Whether the organization requires two-factor authentication, and of which kind. Agent sessions cannot read organization settings."
+  },
+  {
+   "id": "OC-AUDITLOG",
+   "subject": "GitHub organization",
+   "detail": "The organization audit log (sign-ins, secret and setting changes, app installs). The API path is closed to agent sessions."
+  },
+  {
+   "id": "OC-SECRETSCAN",
+   "subject": "GitHub organization",
+   "detail": "Whether secret scanning and push protection are on for every repository."
+  },
+  {
+   "id": "OC-FORKAPPROVAL",
+   "subject": "GitHub organization",
+   "detail": "The setting that decides when fork pull request workflows need approval."
+  },
+  {
+   "id": "OC-RLS",
+   "subject": "Supabase project",
+   "detail": "The live row-level security policies of the website's 87 tables; the repository holds only two migrations."
+  },
+  {
+   "id": "OC-AUTHLOG",
+   "subject": "Supabase project",
+   "detail": "Supabase Auth settings (rate limits, CAPTCHA, leaked-password protection) and its API and Auth logs."
+  },
+  {
+   "id": "OC-DISCORDMOD",
+   "subject": "Discord guild",
+   "detail": "The guild's verification level, AutoMod rules, moderator roles and audit log."
+  },
+  {
+   "id": "OC-DOMAIN",
+   "subject": "uor.foundation",
+   "detail": "Registrar lock, DNSSEC, CAA and who holds the registrar account."
+  },
+  {
+   "id": "OC-CLONES",
+   "subject": "GitHub traffic",
+   "detail": "Who makes the clones that the Foundation's own Actions jobs do not explain. GitHub reports counts, not clients; agent sessions, Lovable's sync and mirrors also clone, and none of them is counted here."
+  },
+  {
+   "id": "OC-DISINFO",
+   "subject": "Public scrutiny",
+   "detail": "Influence and disinformation campaigns against the Foundation's claims. ATT&CK does not cover them; a catalog that does (DISARM) is not yet pinned."
+  }
+ ]
+}

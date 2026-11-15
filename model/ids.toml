@@ -75,6 +75,24 @@ level = "build"
 suite = "governance"
 statement = "Agents are Schema.org SoftwareApplication, never Person: every PROV-O actedOnBehalfOf delegation runs from a SoftwareApplication to a Person, and only a Person holds a post or a role"
 
+
+[[id]]
+id = "SE-01"
+level = "build"
+suite = "security"
+statement = "The Foundation security register is valid: every threat's overall likelihood and risk are NIST SP 800-30 Tables G-5 and I-2 of its levels; every mitigated threat has a control and every accepted one none; no technique is revoked or deprecated; every implemented or partial control has evidence; every NIST CSF 2.0 subcategory is achieved by a control or is a gap, never both; and every element is open to exactly its STRIDE-per-element categories and, when it carries personal data, every LINDDUN category, each answered by a threat or stated open"
+
+[[id]]
+id = "SE-02"
+level = "build"
+suite = "security"
+statement = "The security catalog is the projection of security/model.json against the standards security/sources.json pins: CSF 2.0's 6 functions, 22 categories and 106 subcategories, SP 800-30's Table G-5 and I-2 cells, and every named ATT&CK 20.1 or ATLAS technique and Scorecard check, each declared with the digest of its pinned source"
+
+[[id]]
+id = "SE-03"
+level = "open"
+suite = "security"
+statement = "What the assessment could not settle (an organization setting, a provider's live configuration, who makes a clone) is an open claim, and every telemetry indicator is carried with the threat it is consistent with, never as an attribution"
 [[id]]
 id = "CC-04"
 level = "build"

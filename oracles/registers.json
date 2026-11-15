@@ -51,6 +51,16 @@
         ["node", "chaoss/measurement.mjs", "--check"],
         ["node", "chaoss/upstream.mjs", "{sources}", "--check"]
       ]
+    },
+    {
+      "area": "security",
+      "sources": { "kind": "pinned", "file": "security/sources.json" },
+      "inputs": ["security/**", "observations/corpus.json", "observations/corpus/**", "ecosystem/register.json"],
+      "tools": [["pdftotext", "-v"]],
+      "check": [
+        ["node", "security/project.mjs", "{sources}", "--check"],
+        ["node", "security/catalog.mjs", "--check"]
+      ]
     }
   ]
 }
