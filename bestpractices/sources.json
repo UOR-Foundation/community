@@ -1,0 +1,42 @@
+{
+  "about": "The pinned sources of the Best Practices register. The criteria and the detectives are read from the badge project's own repository at one commit; the repositories are the public ones of ecosystem/snapshot.json at the commits licensing/snapshot.json pins; the badge search is bestpractices.dev's public projects.json API, read-only.",
+  "badge": {
+    "name": "best-practices-badge",
+    "url": "https://github.com/coreinfrastructure/best-practices-badge",
+    "commit": "31325acd7963e0c9203da0ff798802a766237517",
+    "committedAt": "2026-11-13T15:11:24-05:00",
+    "criteria": "criteria/criteria.yml",
+    "locale": "config/locales/en.yml",
+    "chief": "app/lib/chief.rb",
+    "detectives": [
+      "app/lib/github_basic_detective.rb",
+      "app/lib/floss_license_detective.rb",
+      "app/lib/repo_files_examine_detective.rb",
+      "app/lib/build_detective.rb",
+      "app/lib/subdir_file_contents_detective.rb",
+      "app/lib/project_sites_https_detective.rb",
+      "app/lib/hardened_sites_detective.rb",
+      "app/lib/security_insights_detective.rb",
+      "app/lib/repo_json_detective.rb",
+      "app/lib/baseline_to_metal_detective.rb"
+    ],
+    "search": {
+      "controller": "app/controllers/projects_controller.rb",
+      "model": "app/models/project.rb",
+      "endpoint": "https://www.bestpractices.dev/en/projects.json"
+    }
+  },
+  "repositories": {
+    "set": "ecosystem/snapshot.json",
+    "commits": "licensing/snapshot.json",
+    "api": "https://api.github.com"
+  },
+  "security": {
+    "name": "community-security",
+    "url": "https://github.com/UOR-Foundation/community",
+    "register": "security/register.json",
+    "branch": "claude/project-thread-s36ml0",
+    "commit": "bea75d7a144ca5028a96b4c6ec8e1e826d7ed70f",
+    "major": "Security"
+  }
+}

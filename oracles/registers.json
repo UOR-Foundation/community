@@ -143,6 +143,17 @@
         ["node", "conventions/project.mjs", "{sources}", "--check"],
         ["node", "conventions/catalog.mjs", "--check"]
       ]
+    },
+    {
+      "area": "bestpractices",
+      "sources": {"kind": "git-urls", "file": "bestpractices/sources.json"},
+      "inputs": ["bestpractices/**", "ecosystem/register.json", "licensing/register.json", "licensing/snapshot.json", "ecosystem/snapshot.json", "tools/register-lex.mjs"],
+      "tools": [["python3", "-c", "import yaml;print(yaml.__version__)"]],
+      "check": [
+        ["python3", "-I", "bestpractices/criteria.py", "{sources}", "--check"],
+        ["node", "bestpractices/project.mjs", "{sources}", "--check"],
+        ["node", "bestpractices/catalog.mjs", "--check"]
+      ]
     }
   ]
 }

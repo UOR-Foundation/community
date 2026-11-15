@@ -34,6 +34,14 @@ model does not sanction.
 | `AS-02` | `build` | The asset catalog declares every asset of inventory/register.json under its id, and the digests of the snapshot, the pinned sources and the standards it was projected from |
 | `AS-03` | `open` | An asset that does not resolve, a service with no repository or no deployment, a host or registration RDAP and DNS cannot vouch for, and a relationship whose relation the source does not state, is carried as an open claim, never dropped or guessed |
 
+## bestpractices
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `BP-01` | `build` | The Best Practices register is valid: every criterion of the pinned OpenSSF Best Practices badge criteria, passing, silver and gold, has exactly one outcome for every public Foundation repository, an outcome is open exactly when its criterion is MUST and it is Unmet or unknown, N/A is recorded only where the criterion allows it, an unknown outcome carries no detective, and the counts reconcile with the release |
+| `BP-02` | `build` | The Best Practices catalog declares the badge project commit and the digests of its criteria and locale files, the digests of the criteria reading and the snapshot, the security register commit, the commit of every repository, and the badge detective file and line of every outcome that is not unknown |
+| `BP-03` | `open` | A MUST criterion a repository does not meet, or whose outcome only a person or the badge application can give, is carried as an open outcome, and a fact the detectives would read but the snapshot cannot attest at the pinned commit is carried as a typed refusal, never restated as Met |
+
 ## chaoss
 
 | ID | Level | Statement |

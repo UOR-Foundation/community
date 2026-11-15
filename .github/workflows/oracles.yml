@@ -33,6 +33,7 @@ on:
       - 'standards/**'
       - 'accessibility/**'
       - 'conventions/**'
+      - 'bestpractices/**'
       - 'standards.lock'
       - 'package-lock.json'
       - 'automation/intervention*'
@@ -59,6 +60,7 @@ on:
       - 'standards/**'
       - 'accessibility/**'
       - 'conventions/**'
+      - 'bestpractices/**'
       - 'standards.lock'
       - 'package-lock.json'
       - 'automation/intervention*'
@@ -173,7 +175,7 @@ jobs:
       - name: The REUSE tool the licensing register lints every repository with
         # licensing/requirements.txt pins reuse and every package it installs by version and wheel
         # sha256; `reuse --version` is in the cache key. The wheels are CPython 3.13 manylinux x86_64.
-        if: matrix.area == 'licensing'
+        if: matrix.area == 'licensing' || matrix.area == 'bestpractices'
         uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.13'
@@ -183,6 +185,13 @@ jobs:
           python3 -m venv "$RUNNER_TEMP/reuse"
           "$RUNNER_TEMP/reuse/bin/pip" install --require-hashes --no-deps -r licensing/requirements.txt
           echo "$RUNNER_TEMP/reuse/bin" >>"$GITHUB_PATH"
+      - name: Install the pinned PyYAML the best-practices register reads the badge criteria with
+        # bestpractices/requirements.txt pins PyYAML by version and wheel sha256; its version is in the cache key.
+        if: matrix.area == 'bestpractices'
+        run: |
+          python3 -m venv "$RUNNER_TEMP/bp"
+          "$RUNNER_TEMP/bp/bin/pip" install --require-hashes --no-deps -r bestpractices/requirements.txt
+          echo "$RUNNER_TEMP/bp/bin" >>"$GITHUB_PATH"
       - name: The PDF reader the nonprofit register reads the Bylaws and IRS forms with
         # pdftotext and pdftohtml (the policies register) are not on the runner image; ubuntu-24.04's poppler-utils is 24.02.0, the
         # version nonprofit/register.json records, and its -v output is in the cache key.
