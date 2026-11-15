@@ -1,0 +1,2409 @@
+\begin{lexlean}{Supply}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Supply.V1.Model}
+\title{Supply register}
+\begin{semanticmodule}
+definition{
+  name: release,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Release,
+  body: (record Foundation.Supply.V1.Model::Release {repositoriesCount := 31, componentCountsCount := 87, licenseCountsCount := 53, packagesCount := 52, edgesCount := 58, repositoryClaimsCount := 29, packageClaimsCount := 13, componentTotal := 13292, snapshotDigest := "sha256:d838f78c357ec7cbad88662d9afa3e3eebf37288959dd2a056cd2a183abcbad7", ecosystemDigest := "sha256:6cd8f63813c08d3adaedc151f3c439871134950ceb0b3aa1463a49be109f05c1", registriesDigest := "sha256:bace435f6fc93fd563036bf4cbf330429bce5d7585555b60353e0fcce4e2f54a", registriesFetchedAt := "2026-11-15T18:49:26Z", syft := "syft 1.38.0 (a033ae525f6c7ef937c6f49513e3403f07a1d6c0) -q -o cyclonedx-json@1.6 --exclude ./.git/**", syftDigest := "sha256:bc664debb00db1b9b4b9dae4ba1a29d99621e33b641b94b78b9048374b812a3d", syftBinaryDigest := "sha256:6d380157a79f5e9114c98df5a2ea22cb06e04d8b37343a6f638f12f4775ac180", standards := "specification@8a27bfd1be5be0dcb2c208a34d2f4fa0b6d75bd7:schema/bom-1.6.schema.json#sha256:efc54d749e32a6e16abd19394b80b4c67d846e12c782e04505130375f94ea541 specification@8a27bfd1be5be0dcb2c208a34d2f4fa0b6d75bd7:schema/spdx.schema.json#sha256:c41917196639055e9f9670811bac23ef777732144f3ff5a2f39686f61580dbe6 specification@8a27bfd1be5be0dcb2c208a34d2f4fa0b6d75bd7:schema/jsf-0.82.schema.json#sha256:8bae002c25e723db7ee1f26afde680ae1a2b1a8f6b4b4b0fd65dc3becb090aae purl-spec@26671718c3da7225c582a94da319c0c6c3a60cf7:purl-types-index.json#sha256:b9fe4ac32bfac3f978f3c969d4538172c5f5c55cf273ea3457a026899ccd7fe6", validator := "ajv 8.17.1 ajv-formats 3.0.1 http://json-schema.org/draft-07/schema#; formats not asserted: idn-email iri-reference"})
+}
+
+definition{
+  name: repository0,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 0, name := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", sbomDigest := "sha256:fcf5ebf7056d2ca58ae307b05631b682c7aa2140d14fba4ed4aec36e6edb8e61", hasSbom := true, components := 0, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository1,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 1, name := "5-Levels-of-UOR", commit := "86dde40a976d2a7a7be16b31b6a509698e8eb5bb", sbomDigest := "sha256:a4c16238dd79267d3b86a3ee918185c6aae272688dfa62abb1c7762eb48563c8", hasSbom := true, components := 0, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository2,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 2, name := "atlas-12288", commit := "aef42a6fd5c323373222b6362050b439690136a1", sbomDigest := "sha256:6dfd4901fae6435da6d366921b5ff96f8d6d63ab931ff96ad418305b5bc79990", hasSbom := true, components := 39, licensedComponents := 2, licenseEntries := 2})
+}
+
+definition{
+  name: repository3,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 3, name := "calculator-example", commit := "5051dc6adb18e9ca2b6ae4ca7090e638329831ef", sbomDigest := "sha256:e96ab16d838b76aedd18f565a57ffca5e270b55de4e04e28b433340c1e00c622", hasSbom := true, components := 46, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository4,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 4, name := "community", commit := "1ef75b03a425abf09064f92db4fed0dd6bb23f62", sbomDigest := "sha256:83e696a9e2857c1c7698270ae3ce1ab3b826ec5b44ca1b13b20a6895f7558f8f", hasSbom := true, components := 97, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository5,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 5, name := "compression", commit := "c416f7f5f43e53f6888395e0b927041648b30f8f", sbomDigest := "sha256:21e9e3401008ed347714241296e5699a40e8112645c0b1b9fbf55e9a58a30fa7", hasSbom := true, components := 137, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository6,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 6, name := "F1", commit := "d45fe9f54eafbc86b5060efcaf604681482469c0", sbomDigest := "sha256:8f7e1683aaf2880e014cb053a616b6d8957c7192a63fa7bd02d8061efa28c689", hasSbom := true, components := 3, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository7,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 7, name := "foundry", commit := "9ccde14c10202a7c67cdc63e539918cfdc10a428", sbomDigest := "sha256:17c33b20ee4a38cbf59856e61a40c1f844038f548f74bfef580417de24e5ffcb", hasSbom := true, components := 1816, licensedComponents := 1105, licenseEntries := 1105})
+}
+
+definition{
+  name: repository8,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 8, name := "foundry-web", commit := "e8373c7c953bae6153fba7082c2b6c50f2f77392", sbomDigest := "sha256:1ecef933dcf1bc41c0dc76ded425da510ac71993a30909747b0ffbaabbc689c8", hasSbom := true, components := 54, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository9,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 9, name := "holo-search", commit := "c477b69c0e3f95658aedecaeb2fa9c057d9b58a6", sbomDigest := "sha256:b9dfcf6a3c1415d97942865689d892774ef5074de1c8613b95c99fad26552ef9", hasSbom := true, components := 47, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository10,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 10, name := "kappa-distribution", commit := "2475e701f25ed5887aba8b68a39ecc0f87faad6f", sbomDigest := "sha256:e7e2ab67c2205aa6bbf925e3c7e37e794e9d13e44832f10726d77f5bbadbc9c4", hasSbom := true, components := 0, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository11,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 11, name := "kappa-registry", commit := "bd231d0cc315d56e51369aff299f6741b8d8ce04", sbomDigest := "sha256:0f92640d694524941c4c11e539bc510585c0d494ec29d8fc249b3a9a262079f8", hasSbom := true, components := 771, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository12,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 12, name := "LexLean", commit := "71defb4c663aaec5b9a3aab04cbc6a03e7106227", sbomDigest := "sha256:aa0587ecbf2616c42aede2dce528b9fc1921bd4af285cf20291bf75fdcc45e8c", hasSbom := true, components := 132, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository13,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 13, name := "lexlean-mcp", commit := "ece9ef390260479edbad69c3a9d9f51edc16c885", sbomDigest := "sha256:f5e54e3a4948c0bbfcf6215e6b484b46a675946bf30ce3731c0d317410036dd0", hasSbom := true, components := 231, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository14,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 14, name := "malachite-usdc", commit := "23431008f0ccc2899c3a1ecb9243a2578d5c7156", sbomDigest := "sha256:f74e528edf4352b42872ac095816c69f12fccb0c3e0b78204d20bbbbfac5e11e", hasSbom := true, components := 0, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository15,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 15, name := "MCP", commit := "5b34b2633e2707993221019b81fae2bf9c4103d6", sbomDigest := "sha256:5ec706598ac5e96d20c73816b8bd36b793ceee3342693bba66af63d033052651", hasSbom := true, components := 107, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository16,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 16, name := "MNIST", commit := "515f75f9f01470df8cac095cdc22f5aebcc252c7", sbomDigest := "sha256:4b551255b6333b4aa8b20fb5f477e758f8bcf2c780c073d485b7b69b9f85bc25", hasSbom := true, components := 67, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository17,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 17, name := "nest-uor", commit := "5a469e7d207af7dcca54df0de39e38c54c953569", sbomDigest := "sha256:d1e1dbfd460b56ed7dcbaba7bba4d77cc8b2e9b96bd6747e6a0c61ce85a02083", hasSbom := true, components := 0, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository18,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 18, name := "OOO", commit := "d0bdb29bdfeba50590bf42b4f9071e0d4bbc2dc6", sbomDigest := "sha256:d1676e9da694f751388104d2b970779ba85b1ae0f9df7320372695939f2074cd", hasSbom := true, components := 3, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository19,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 19, name := "prism", commit := "507995bab43c0cb06ec244c96e6fc25b3f502204", sbomDigest := "sha256:2659f7b8f5697ed28f3ba0d39649fe7e85af5921ffdaf8ad5fb76f3a0e26eb1f", hasSbom := true, components := 51, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository20,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 20, name := "prism-code", commit := "67ab3e8b2092ad5812b0c34fd074cb33762366aa", sbomDigest := "sha256:68e3bdec58a490bcec81b52c893a9a06eba10263994757fa5ece27d844af8f16", hasSbom := true, components := 60, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository21,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 21, name := "PrismPM", commit := "ece658394448f09a5760fb0bec9b1fa8f065ed0e", sbomDigest := "sha256:3873957660ba9694676af39abfd494f70762cd0a7d6f7c40e6e6e9ba596c9fbc", hasSbom := true, components := 5933, licensedComponents := 1752, licenseEntries := 1933})
+}
+
+definition{
+  name: repository22,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 22, name := "research", commit := "bfccda396aab1aea5dee649fbe5180499d236cec", sbomDigest := "sha256:39e629207190c1a762d46f9cd06886944dab7d9cdc927001eafe636028f12779", hasSbom := true, components := 19, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository23,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 23, name := "template", commit := "0851bb41138041f0f75118135fd8a342109c2d73", sbomDigest := "sha256:b737f1483c4f03bd390ba7a781c367d027f7e4e27e4518a5e885d521bc4d7cd9", hasSbom := true, components := 79, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository24,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 24, name := "uor-addr", commit := "20a1c5723fc8f5d645972c8d6f5c57459846302e", sbomDigest := "sha256:1dcdec23aac4d231bb0266898543d8c2512b713efa8757059660e9745d43e210", hasSbom := true, components := 189, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository25,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 25, name := "uor-foundry", commit := "fdab06c9ab30d594c917040908485068ea6f9c9f", sbomDigest := "sha256:7dc90d0f1f20485e18fc7d6f7156bad320ecc44173f15879ed6b6fd4a1d81ad2", hasSbom := true, components := 49, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository26,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 26, name := "UOR-Framework", commit := "51c01382200b0179d6640b07e9c8119364ab69a1", sbomDigest := "sha256:0584b1217691823c75237ecf9d7f2eef168b017e1f9cd7025011923220759a8a", hasSbom := true, components := 105, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository27,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 27, name := "uor-jcs-nfc", commit := "303591128094362857791930fdc12b73875d1ff6", sbomDigest := "sha256:77b71a95b994ceaf477928db7c5d7a3ec4866d0b99b63f30ab85983e0bdede26", hasSbom := true, components := 0, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository28,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 28, name := "uor-matmul", commit := "3cc5882f210667f9ac00fd8c02c5b5957b493f5d", sbomDigest := "sha256:77c6914a07047b7c09eddfa079284dd5783cdede9ad199af40aad30720bde8c7", hasSbom := true, components := 277, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repository29,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 29, name := "uor-r4", commit := "44e2a6f062e9196fe68291259bff459dde0bde44", sbomDigest := "sha256:71f25b0846ea438bf88b8eb24c80ce9ae7649cd4c175d4ab84c3c40f8e77d119", hasSbom := true, components := 2970, licensedComponents := 3, licenseEntries := 3})
+}
+
+definition{
+  name: repository30,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Repository,
+  body: (record Foundation.Supply.V1.Model::Repository {index := 30, name := "website", commit := "e82ffdedc5d85ebd0bde239d50d4651005045d31", sbomDigest := "sha256:f7a20dc8f7a4cfc13fe2102a60f14193f2d8568f91c8dc1b915560f7e6418469", hasSbom := true, components := 10, licensedComponents := 0, licenseEntries := 0})
+}
+
+definition{
+  name: repositoriesFrom0,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::Repository),
+  body: (cons (repository0) (cons (repository1) (cons (repository2) (cons (repository3) (cons (repository4) (cons (repository5) (cons (repository6) (cons (repository7) (cons (repository8) (cons (repository9) (cons (repository10) (cons (repository11) (cons (repository12) (cons (repository13) (cons (repository14) (cons (repository15) (cons (repository16) (cons (repository17) (cons (repository18) (cons (repository19) (cons (repository20) (cons (repository21) (cons (repository22) (cons (repository23) (cons (repository24) (cons (repository25) (cons (repository26) (cons (repository27) (cons (repository28) (cons (repository29) (cons (repository30) (nil Foundation.Supply.V1.Model::Repository))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: repositories,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::Repository),
+  body: (repositoriesFrom0)
+}
+
+definition{
+  name: componentCount0,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 0, repository := 2, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 19})
+}
+
+definition{
+  name: componentCount1,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 1, repository := 2, purlType := (ctor Foundation.Supply.V1.Model::PurlType.golang), count := 6})
+}
+
+definition{
+  name: componentCount2,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 2, repository := 2, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 8})
+}
+
+definition{
+  name: componentCount3,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 3, repository := 2, purlType := (ctor Foundation.Supply.V1.Model::PurlType.npm), count := 6})
+}
+
+definition{
+  name: componentCount4,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 4, repository := 3, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 3})
+}
+
+definition{
+  name: componentCount5,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 5, repository := 3, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 31})
+}
+
+definition{
+  name: componentCount6,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 6, repository := 3, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 11})
+}
+
+definition{
+  name: componentCount7,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 7, repository := 3, purlType := (ctor Foundation.Supply.V1.Model::PurlType.npm), count := 1})
+}
+
+definition{
+  name: componentCount8,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 8, repository := 4, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 33})
+}
+
+definition{
+  name: componentCount9,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 9, repository := 4, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 44})
+}
+
+definition{
+  name: componentCount10,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 10, repository := 4, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 18})
+}
+
+definition{
+  name: componentCount11,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 11, repository := 4, purlType := (ctor Foundation.Supply.V1.Model::PurlType.npm), count := 1})
+}
+
+definition{
+  name: componentCount12,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 12, repository := 4, purlType := (ctor Foundation.Supply.V1.Model::PurlType.pypi), count := 1})
+}
+
+definition{
+  name: componentCount13,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 13, repository := 5, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 101})
+}
+
+definition{
+  name: componentCount14,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 14, repository := 5, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 26})
+}
+
+definition{
+  name: componentCount15,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 15, repository := 5, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 10})
+}
+
+definition{
+  name: componentCount16,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 16, repository := 6, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 2})
+}
+
+definition{
+  name: componentCount17,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 17, repository := 6, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 1})
+}
+
+definition{
+  name: componentCount18,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 18, repository := 7, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 172})
+}
+
+definition{
+  name: componentCount19,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 19, repository := 7, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 57})
+}
+
+definition{
+  name: componentCount20,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 20, repository := 7, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 26})
+}
+
+definition{
+  name: componentCount21,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 21, repository := 7, purlType := (ctor Foundation.Supply.V1.Model::PurlType.npm), count := 1560})
+}
+
+definition{
+  name: componentCount22,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 22, repository := 7, purlType := (ctor Foundation.Supply.V1.Model::PurlType.pypi), count := 1})
+}
+
+definition{
+  name: componentCount23,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 23, repository := 8, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 33})
+}
+
+definition{
+  name: componentCount24,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 24, repository := 8, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 14})
+}
+
+definition{
+  name: componentCount25,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 25, repository := 8, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 6})
+}
+
+definition{
+  name: componentCount26,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 26, repository := 8, purlType := (ctor Foundation.Supply.V1.Model::PurlType.npm), count := 1})
+}
+
+definition{
+  name: componentCount27,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 27, repository := 9, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 33})
+}
+
+definition{
+  name: componentCount28,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 28, repository := 9, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 10})
+}
+
+definition{
+  name: componentCount29,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 29, repository := 9, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 4})
+}
+
+definition{
+  name: componentCount30,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 30, repository := 11, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 765})
+}
+
+definition{
+  name: componentCount31,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 31, repository := 11, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 4})
+}
+
+definition{
+  name: componentCount32,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 32, repository := 11, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 2})
+}
+
+definition{
+  name: componentCount33,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 33, repository := 12, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 111})
+}
+
+definition{
+  name: componentCount34,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 34, repository := 12, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 14})
+}
+
+definition{
+  name: componentCount35,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 35, repository := 12, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 7})
+}
+
+definition{
+  name: componentCount36,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 36, repository := 13, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 205})
+}
+
+definition{
+  name: componentCount37,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 37, repository := 13, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 18})
+}
+
+definition{
+  name: componentCount38,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 38, repository := 13, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 8})
+}
+
+definition{
+  name: componentCount39,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 39, repository := 15, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 88})
+}
+
+definition{
+  name: componentCount40,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 40, repository := 15, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 13})
+}
+
+definition{
+  name: componentCount41,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 41, repository := 15, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 6})
+}
+
+definition{
+  name: componentCount42,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 42, repository := 16, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 50})
+}
+
+definition{
+  name: componentCount43,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 43, repository := 16, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 12})
+}
+
+definition{
+  name: componentCount44,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 44, repository := 16, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 5})
+}
+
+definition{
+  name: componentCount45,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 45, repository := 18, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 2})
+}
+
+definition{
+  name: componentCount46,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 46, repository := 18, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 1})
+}
+
+definition{
+  name: componentCount47,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 47, repository := 19, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 33})
+}
+
+definition{
+  name: componentCount48,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 48, repository := 19, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 13})
+}
+
+definition{
+  name: componentCount49,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 49, repository := 19, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 5})
+}
+
+definition{
+  name: componentCount50,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 50, repository := 20, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 33})
+}
+
+definition{
+  name: componentCount51,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 51, repository := 20, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 20})
+}
+
+definition{
+  name: componentCount52,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 52, repository := 20, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 7})
+}
+
+definition{
+  name: componentCount53,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 53, repository := 21, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 3343})
+}
+
+definition{
+  name: componentCount54,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 54, repository := 21, purlType := (ctor Foundation.Supply.V1.Model::PurlType.gem), count := 89})
+}
+
+definition{
+  name: componentCount55,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 55, repository := 21, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 202})
+}
+
+definition{
+  name: componentCount56,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 56, repository := 21, purlType := (ctor Foundation.Supply.V1.Model::PurlType.golang), count := 1492})
+}
+
+definition{
+  name: componentCount57,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 57, repository := 21, purlType := (ctor Foundation.Supply.V1.Model::PurlType.maven), count := 49})
+}
+
+definition{
+  name: componentCount58,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 58, repository := 21, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 177})
+}
+
+definition{
+  name: componentCount59,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 59, repository := 21, purlType := (ctor Foundation.Supply.V1.Model::PurlType.npm), count := 581})
+}
+
+definition{
+  name: componentCount60,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 60, repository := 22, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 15})
+}
+
+definition{
+  name: componentCount61,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 61, repository := 22, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 4})
+}
+
+definition{
+  name: componentCount62,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 62, repository := 23, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 40})
+}
+
+definition{
+  name: componentCount63,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 63, repository := 23, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 27})
+}
+
+definition{
+  name: componentCount64,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 64, repository := 23, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 10})
+}
+
+definition{
+  name: componentCount65,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 65, repository := 23, purlType := (ctor Foundation.Supply.V1.Model::PurlType.npm), count := 1})
+}
+
+definition{
+  name: componentCount66,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 66, repository := 23, purlType := (ctor Foundation.Supply.V1.Model::PurlType.pypi), count := 1})
+}
+
+definition{
+  name: componentCount67,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 67, repository := 24, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 156})
+}
+
+definition{
+  name: componentCount68,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 68, repository := 24, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 23})
+}
+
+definition{
+  name: componentCount69,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 69, repository := 24, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 10})
+}
+
+definition{
+  name: componentCount70,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 70, repository := 25, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 33})
+}
+
+definition{
+  name: componentCount71,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 71, repository := 25, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 10})
+}
+
+definition{
+  name: componentCount72,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 72, repository := 25, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 5})
+}
+
+definition{
+  name: componentCount73,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 73, repository := 25, purlType := (ctor Foundation.Supply.V1.Model::PurlType.npm), count := 1})
+}
+
+definition{
+  name: componentCount74,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 74, repository := 26, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 91})
+}
+
+definition{
+  name: componentCount75,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 75, repository := 26, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 11})
+}
+
+definition{
+  name: componentCount76,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 76, repository := 26, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 3})
+}
+
+definition{
+  name: componentCount77,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 77, repository := 28, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 243})
+}
+
+definition{
+  name: componentCount78,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 78, repository := 28, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 27})
+}
+
+definition{
+  name: componentCount79,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 79, repository := 28, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 7})
+}
+
+definition{
+  name: componentCount80,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 80, repository := 29, purlType := (ctor Foundation.Supply.V1.Model::PurlType.cargo), count := 2754})
+}
+
+definition{
+  name: componentCount81,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 81, repository := 29, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 94})
+}
+
+definition{
+  name: componentCount82,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 82, repository := 29, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 77})
+}
+
+definition{
+  name: componentCount83,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 83, repository := 29, purlType := (ctor Foundation.Supply.V1.Model::PurlType.npm), count := 4})
+}
+
+definition{
+  name: componentCount84,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 84, repository := 29, purlType := (ctor Foundation.Supply.V1.Model::PurlType.pypi), count := 41})
+}
+
+definition{
+  name: componentCount85,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 85, repository := 30, purlType := (ctor Foundation.Supply.V1.Model::PurlType.github), count := 8})
+}
+
+definition{
+  name: componentCount86,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::ComponentCount,
+  body: (record Foundation.Supply.V1.Model::ComponentCount {index := 86, repository := 30, purlType := (ctor Foundation.Supply.V1.Model::PurlType.none), count := 2})
+}
+
+definition{
+  name: componentCountsFrom48,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::ComponentCount),
+  body: (cons (componentCount48) (cons (componentCount49) (cons (componentCount50) (cons (componentCount51) (cons (componentCount52) (cons (componentCount53) (cons (componentCount54) (cons (componentCount55) (cons (componentCount56) (cons (componentCount57) (cons (componentCount58) (cons (componentCount59) (cons (componentCount60) (cons (componentCount61) (cons (componentCount62) (cons (componentCount63) (cons (componentCount64) (cons (componentCount65) (cons (componentCount66) (cons (componentCount67) (cons (componentCount68) (cons (componentCount69) (cons (componentCount70) (cons (componentCount71) (cons (componentCount72) (cons (componentCount73) (cons (componentCount74) (cons (componentCount75) (cons (componentCount76) (cons (componentCount77) (cons (componentCount78) (cons (componentCount79) (cons (componentCount80) (cons (componentCount81) (cons (componentCount82) (cons (componentCount83) (cons (componentCount84) (cons (componentCount85) (cons (componentCount86) (nil Foundation.Supply.V1.Model::ComponentCount))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: componentCountsFrom0,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::ComponentCount),
+  body: (cons (componentCount0) (cons (componentCount1) (cons (componentCount2) (cons (componentCount3) (cons (componentCount4) (cons (componentCount5) (cons (componentCount6) (cons (componentCount7) (cons (componentCount8) (cons (componentCount9) (cons (componentCount10) (cons (componentCount11) (cons (componentCount12) (cons (componentCount13) (cons (componentCount14) (cons (componentCount15) (cons (componentCount16) (cons (componentCount17) (cons (componentCount18) (cons (componentCount19) (cons (componentCount20) (cons (componentCount21) (cons (componentCount22) (cons (componentCount23) (cons (componentCount24) (cons (componentCount25) (cons (componentCount26) (cons (componentCount27) (cons (componentCount28) (cons (componentCount29) (cons (componentCount30) (cons (componentCount31) (cons (componentCount32) (cons (componentCount33) (cons (componentCount34) (cons (componentCount35) (cons (componentCount36) (cons (componentCount37) (cons (componentCount38) (cons (componentCount39) (cons (componentCount40) (cons (componentCount41) (cons (componentCount42) (cons (componentCount43) (cons (componentCount44) (cons (componentCount45) (cons (componentCount46) (cons (componentCount47) (componentCountsFrom48)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: componentCounts,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::ComponentCount),
+  body: (componentCountsFrom0)
+}
+
+definition{
+  name: licenseCount0,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 0, repository := 2, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "MIT", count := 2})
+}
+
+definition{
+  name: licenseCount1,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 1, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.expression), license := "AFL-2.1 OR BSD-3-Clause", count := 1})
+}
+
+definition{
+  name: licenseCount2,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 2, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.expression), license := "Apache-2.0 AND LGPL-3.0-or-later", count := 3})
+}
+
+definition{
+  name: licenseCount3,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 3, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.expression), license := "Apache-2.0 AND LGPL-3.0-or-later AND MIT", count := 1})
+}
+
+definition{
+  name: licenseCount4,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 4, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.expression), license := "BSD-2-Clause OR MIT OR Apache-2.0", count := 1})
+}
+
+definition{
+  name: licenseCount5,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 5, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.expression), license := "MIT OR Apache-2.0", count := 9})
+}
+
+definition{
+  name: licenseCount6,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 6, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.expression), license := "MIT OR WTFPL", count := 1})
+}
+
+definition{
+  name: licenseCount7,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 7, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "0BSD", count := 3})
+}
+
+definition{
+  name: licenseCount8,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 8, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "Apache-2.0", count := 83})
+}
+
+definition{
+  name: licenseCount9,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 9, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "BSD-2-Clause", count := 11})
+}
+
+definition{
+  name: licenseCount10,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 10, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "BSD-3-Clause", count := 12})
+}
+
+definition{
+  name: licenseCount11,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 11, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "BlueOak-1.0.0", count := 15})
+}
+
+definition{
+  name: licenseCount12,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 12, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "CC-BY-4.0", count := 2})
+}
+
+definition{
+  name: licenseCount13,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 13, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "ISC", count := 60})
+}
+
+definition{
+  name: licenseCount14,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 14, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "LGPL-3.0-or-later", count := 9})
+}
+
+definition{
+  name: licenseCount15,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 15, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "MIT", count := 879})
+}
+
+definition{
+  name: licenseCount16,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 16, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "MPL-2.0", count := 11})
+}
+
+definition{
+  name: licenseCount17,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 17, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "Unlicense", count := 2})
+}
+
+definition{
+  name: licenseCount18,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 18, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "SEE LICENSE IN LICENSE", count := 1})
+}
+
+definition{
+  name: licenseCount19,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 19, repository := 7, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "SIL OPEN FONT LICENSE", count := 1})
+}
+
+definition{
+  name: licenseCount20,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 20, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.expression), license := "MIT OR CC0-1.0", count := 4})
+}
+
+definition{
+  name: licenseCount21,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 21, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "0BSD", count := 4})
+}
+
+definition{
+  name: licenseCount22,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 22, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "Apache-2.0", count := 601})
+}
+
+definition{
+  name: licenseCount23,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 23, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "BSD-2-Clause", count := 41})
+}
+
+definition{
+  name: licenseCount24,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 24, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "BSD-2-Clause-Views", count := 5})
+}
+
+definition{
+  name: licenseCount25,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 25, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "BSD-3-Clause", count := 348})
+}
+
+definition{
+  name: licenseCount26,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 26, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "BlueOak-1.0.0", count := 1})
+}
+
+definition{
+  name: licenseCount27,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 27, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "CC-BY-3.0", count := 1})
+}
+
+definition{
+  name: licenseCount28,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 28, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "CC-BY-SA-4.0", count := 8})
+}
+
+definition{
+  name: licenseCount29,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 29, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "CC0-1.0", count := 1})
+}
+
+definition{
+  name: licenseCount30,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 30, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "EPL-2.0", count := 3})
+}
+
+definition{
+  name: licenseCount31,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 31, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "ISC", count := 67})
+}
+
+definition{
+  name: licenseCount32,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 32, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "MIT", count := 752})
+}
+
+definition{
+  name: licenseCount33,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 33, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "MPL-2.0", count := 41})
+}
+
+definition{
+  name: licenseCount34,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 34, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "Python-2.0", count := 2})
+}
+
+definition{
+  name: licenseCount35,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 35, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "Zlib", count := 3})
+}
+
+definition{
+  name: licenseCount36,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 36, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "Apache 2.0", count := 1})
+}
+
+definition{
+  name: licenseCount37,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 37, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "sha256:03f0b4bcaecfdb491ef5a7d320e2c2adf886c732d34e3fff87d52dbaec64d8c3", count := 6})
+}
+
+definition{
+  name: licenseCount38,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 38, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "sha256:24f49cb1b9dbc7c08f9200cdcd29065a6072ed57b566370bd25c948fefb8137d", count := 3})
+}
+
+definition{
+  name: licenseCount39,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 39, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "sha256:497fcdb9fae55924c12f55f05cbe83a096662e5c591d79b74e4a8f23bab5ffee", count := 5})
+}
+
+definition{
+  name: licenseCount40,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 40, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "sha256:516f622089068dde472773dddbf518d2de200f5877dcac1b9d034941f9331da0", count := 3})
+}
+
+definition{
+  name: licenseCount41,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 41, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "sha256:5ff7ccec357cd44bb3fcf1b3b53a4eddee322eb383d487847d1cf1ccfbd94f46", count := 3})
+}
+
+definition{
+  name: licenseCount42,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 42, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "sha256:600244c8052c8c1d307043fafacbc83b429c171dd8e08f5a537c0a54014585ee", count := 3})
+}
+
+definition{
+  name: licenseCount43,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 43, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "sha256:6c79faa15168885fb88a316ae0df18f486deafddefdc16826cdc56dfbd421e24", count := 3})
+}
+
+definition{
+  name: licenseCount44,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 44, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "sha256:7a3adb8e71d95e4536be8dab1aab2c21eedecf3ee45d2c968d034ee594d7b144", count := 3})
+}
+
+definition{
+  name: licenseCount45,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 45, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "sha256:99b8cc6bf35926b4cdf033e003e52957baac91c9fd45358d816f6b8b977e1ccb", count := 3})
+}
+
+definition{
+  name: licenseCount46,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 46, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "sha256:a6e830174d62dafad3a718384772ea1f4c0e27989f050932dc442a5e3ddad080", count := 3})
+}
+
+definition{
+  name: licenseCount47,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 47, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "sha256:a8c869fbda819afb8d80e0ac19bac52e766bc6c19cb38cf94f52d64c4be2aab6", count := 3})
+}
+
+definition{
+  name: licenseCount48,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 48, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "sha256:b40ec5b16182103ef1cd69d42a21c98369e35bd483b3973902da4807c0755446", count := 3})
+}
+
+definition{
+  name: licenseCount49,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 49, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "sha256:b7dca0a6b01fa7365e4892877a6321179ee343d72ee87a96cfc222141b99a1e6", count := 3})
+}
+
+definition{
+  name: licenseCount50,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 50, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "sha256:b81015606d10bb8640c2f5bf6d71ecbbad62bb8182a760bf7ef5ae36c52f2d86", count := 3})
+}
+
+definition{
+  name: licenseCount51,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 51, repository := 21, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseName), license := "sha256:d4290ed64c2edd0fce1d84e3f9dfb2881240fe534def76b8cd29ed6af683e287", count := 3})
+}
+
+definition{
+  name: licenseCount52,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::LicenseCount,
+  body: (record Foundation.Supply.V1.Model::LicenseCount {index := 52, repository := 29, form := (ctor Foundation.Supply.V1.Model::LicenseForm.licenseId), license := "MIT", count := 3})
+}
+
+definition{
+  name: licenseCountsFrom48,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::LicenseCount),
+  body: (cons (licenseCount48) (cons (licenseCount49) (cons (licenseCount50) (cons (licenseCount51) (cons (licenseCount52) (nil Foundation.Supply.V1.Model::LicenseCount))))))
+}
+
+definition{
+  name: licenseCountsFrom0,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::LicenseCount),
+  body: (cons (licenseCount0) (cons (licenseCount1) (cons (licenseCount2) (cons (licenseCount3) (cons (licenseCount4) (cons (licenseCount5) (cons (licenseCount6) (cons (licenseCount7) (cons (licenseCount8) (cons (licenseCount9) (cons (licenseCount10) (cons (licenseCount11) (cons (licenseCount12) (cons (licenseCount13) (cons (licenseCount14) (cons (licenseCount15) (cons (licenseCount16) (cons (licenseCount17) (cons (licenseCount18) (cons (licenseCount19) (cons (licenseCount20) (cons (licenseCount21) (cons (licenseCount22) (cons (licenseCount23) (cons (licenseCount24) (cons (licenseCount25) (cons (licenseCount26) (cons (licenseCount27) (cons (licenseCount28) (cons (licenseCount29) (cons (licenseCount30) (cons (licenseCount31) (cons (licenseCount32) (cons (licenseCount33) (cons (licenseCount34) (cons (licenseCount35) (cons (licenseCount36) (cons (licenseCount37) (cons (licenseCount38) (cons (licenseCount39) (cons (licenseCount40) (cons (licenseCount41) (cons (licenseCount42) (cons (licenseCount43) (cons (licenseCount44) (cons (licenseCount45) (cons (licenseCount46) (cons (licenseCount47) (licenseCountsFrom48)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: licenseCounts,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::LicenseCount),
+  body: (licenseCountsFrom0)
+}
+
+definition{
+  name: package0,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 0, repository := 3, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "calculator-example", evidence := "Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package1,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 1, repository := 4, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "repo-model", evidence := "crates/model/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package2,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 2, repository := 5, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "figures", evidence := "crates/figures/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.elsewhere), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package3,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 3, repository := 5, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "frontier", evidence := "crates/frontier/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.elsewhere), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package4,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 4, repository := 5, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "repo-model", evidence := "crates/model/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package5,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 5, repository := 5, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uorc", evidence := "crates/uorc/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package6,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 6, repository := 5, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uorc-wasm", evidence := "crates/uorc-wasm/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package7,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 7, repository := 7, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "hologram-forge-core", evidence := "studio/core/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package8,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 8, repository := 8, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "repo-model", evidence := "crates/model/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package9,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 9, repository := 12, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "lexlean", evidence := "crates/lexlean/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.4.1", downloads := 1898, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 0, dependentsKnown := true})
+}
+
+definition{
+  name: package10,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 10, repository := 12, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "repo-model", evidence := "crates/model/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package11,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 11, repository := 13, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "repo-model", evidence := "crates/model/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package12,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 12, repository := 15, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "repo-model", evidence := "crates/model/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package13,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 13, repository := 16, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "repo-model", evidence := "crates/model/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package14,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 14, repository := 17, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.pypi), name := "nest-uor", evidence := "pyproject.toml:6", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package15,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 15, repository := 19, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-prism", evidence := "crates/uor-prism/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.4.0", downloads := 29023, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 0, dependentsKnown := true})
+}
+
+definition{
+  name: package16,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 16, repository := 19, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-prism-crypto", evidence := "crates/uor-prism-crypto/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.4.0", downloads := 28429, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 0, dependentsKnown := true})
+}
+
+definition{
+  name: package17,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 17, repository := 19, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-prism-fhe", evidence := "crates/uor-prism-fhe/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.4.0", downloads := 29092, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 0, dependentsKnown := true})
+}
+
+definition{
+  name: package18,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 18, repository := 19, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-prism-numerics", evidence := "crates/uor-prism-numerics/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.4.0", downloads := 29202, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 0, dependentsKnown := true})
+}
+
+definition{
+  name: package19,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 19, repository := 19, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-prism-tensor", evidence := "crates/uor-prism-tensor/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.4.0", downloads := 29117, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 0, dependentsKnown := true})
+}
+
+definition{
+  name: package20,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 20, repository := 19, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-prism-verify", evidence := "crates/uor-prism-verify/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.4.0", downloads := 304, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 0, dependentsKnown := true})
+}
+
+definition{
+  name: package21,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 21, repository := 19, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "wiki-link-check", evidence := "tools/wiki-link-check/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package22,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 22, repository := 21, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "prism-stdlib", evidence := "stdlib/generated/package/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package23,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 23, repository := 21, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "prismpm", evidence := "crates/prismpm/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package24,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 24, repository := 21, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "repo-model", evidence := "crates/model/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package25,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 25, repository := 21, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.npm), name := "@prism-code/conformance", evidence := "sdk/npm/conformance/package.json:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package26,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 26, repository := 21, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.npm), name := "@prism-code/spec", evidence := "sdk/npm/spec/package.json:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package27,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 27, repository := 21, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.npm), name := "@prism-code/testing", evidence := "sdk/npm/testing/package.json:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package28,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 28, repository := 21, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.npm), name := "@prism-code/verify", evidence := "sdk/npm/verify/package.json:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package29,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 29, repository := 21, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.npm), name := "create-prism-code", evidence := "sdk/npm/create-prism-code/package.json:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package30,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 30, repository := 21, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.npm), name := "prism-code", evidence := "sdk/npm/prism-code/package.json:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.9.1", downloads := 5544, downloadsKnown := true, downloadWindow := "last-month", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package31,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 31, repository := 22, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "atlas-embeddings", evidence := "atlas-embeddings/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.elsewhere), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package32,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 32, repository := 23, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "repo-model", evidence := "crates/model/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package33,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 33, repository := 24, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-addr", evidence := "crates/uor-addr/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.2.0", downloads := 21212, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 0, dependentsKnown := true})
+}
+
+definition{
+  name: package34,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 34, repository := 24, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-addr-c", evidence := "crates/uor-addr-c/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.2.0", downloads := 65, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 0, dependentsKnown := true})
+}
+
+definition{
+  name: package35,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 35, repository := 24, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-addr-wasm", evidence := "crates/uor-addr-wasm/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.2.0", downloads := 59, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 0, dependentsKnown := true})
+}
+
+definition{
+  name: package36,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 36, repository := 24, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.npm), name := "@uor-foundation/uor-addr", evidence := "bindings/npm/package.json:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.2.0", downloads := 57, downloadsKnown := true, downloadWindow := "last-month", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package37,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 37, repository := 24, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.pypi), name := "uor-addr", evidence := "bindings/python/pyproject.toml:6", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.2.0", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package38,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 38, repository := 25, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "repo-model", evidence := "crates/model/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package39,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 39, repository := 26, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "cargo-uor", evidence := "cargo-uor/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package40,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 40, repository := 26, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-foundation", evidence := "foundation/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.5.2", downloads := 28847, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 1, dependentsKnown := true})
+}
+
+definition{
+  name: package41,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 41, repository := 26, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-foundation-sdk", evidence := "uor-foundation-sdk/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.5.2", downloads := 27787, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 1, dependentsKnown := true})
+}
+
+definition{
+  name: package42,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 42, repository := 26, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-foundation-test-helpers", evidence := "uor-foundation-test-helpers/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package43,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 43, repository := 26, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-foundation-verify", evidence := "uor-foundation-verify/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package44,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 44, repository := 26, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-ontology", evidence := "spec/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package45,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 45, repository := 26, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-xtask", evidence := "xtask/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: package46,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 46, repository := 28, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-matmul", evidence := "crates/uor-matmul/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.1.0", downloads := 18, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 0, dependentsKnown := true})
+}
+
+definition{
+  name: package47,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 47, repository := 28, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-matmul-codec", evidence := "crates/uor-matmul-codec/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.1.0", downloads := 86, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 0, dependentsKnown := true})
+}
+
+definition{
+  name: package48,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 48, repository := 28, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-matmul-core", evidence := "crates/uor-matmul-core/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.1.0", downloads := 147, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 0, dependentsKnown := true})
+}
+
+definition{
+  name: package49,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 49, repository := 28, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-matmul-gemm", evidence := "crates/uor-matmul-gemm/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.1.0", downloads := 54, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 0, dependentsKnown := true})
+}
+
+definition{
+  name: package50,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 50, repository := 28, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-matmul-kernels", evidence := "crates/uor-matmul-kernels/Cargo.toml:2", declaredPrivate := false, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.published), version := "0.1.0", downloads := 87, downloadsKnown := true, downloadWindow := "all-time", externalDependents := 0, dependentsKnown := true})
+}
+
+definition{
+  name: package51,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Package,
+  body: (record Foundation.Supply.V1.Model::Package {index := 51, repository := 28, ecosystem := (ctor Foundation.Supply.V1.Model::PurlType.cargo), name := "uor-matmul-model", evidence := "crates/uor-matmul-model/Cargo.toml:2", declaredPrivate := true, registry := (ctor Foundation.Supply.V1.Model::RegistryStatus.absent), version := "", downloads := 0, downloadsKnown := false, downloadWindow := "", externalDependents := 0, dependentsKnown := false})
+}
+
+definition{
+  name: packagesFrom48,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::Package),
+  body: (cons (package48) (cons (package49) (cons (package50) (cons (package51) (nil Foundation.Supply.V1.Model::Package)))))
+}
+
+definition{
+  name: packagesFrom0,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::Package),
+  body: (cons (package0) (cons (package1) (cons (package2) (cons (package3) (cons (package4) (cons (package5) (cons (package6) (cons (package7) (cons (package8) (cons (package9) (cons (package10) (cons (package11) (cons (package12) (cons (package13) (cons (package14) (cons (package15) (cons (package16) (cons (package17) (cons (package18) (cons (package19) (cons (package20) (cons (package21) (cons (package22) (cons (package23) (cons (package24) (cons (package25) (cons (package26) (cons (package27) (cons (package28) (cons (package29) (cons (package30) (cons (package31) (cons (package32) (cons (package33) (cons (package34) (cons (package35) (cons (package36) (cons (package37) (cons (package38) (cons (package39) (cons (package40) (cons (package41) (cons (package42) (cons (package43) (cons (package44) (cons (package45) (cons (package46) (cons (package47) (packagesFrom48)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: packages,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::Package),
+  body: (packagesFrom0)
+}
+
+definition{
+  name: edge0,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 0, dependent := 3, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.action), evidence := ".github/workflows/pages.yml:74 .github/workflows/pages.yml:81 .github/workflows/pages.yml:103 .github/workflows/pages.yml:112 .github/workflows/platform-equivalence.yml:41 .github/workflows/platform-equivalence.yml:48 .github/workflows/prismpm.yml:95 .github/workflows/prismpm.yml:100 .github/workflows/prismpm.yml:105 .github/workflows/prismpm.yml:128 .github/workflows/prismpm.yml:134 .github/workflows/prismpm.yml:208 .github/workflows/prismpm.yml:215 .github/workflows/prismpm.yml:223 .github/workflows/prismpm.yml:238 .github/workflows/prismpm.yml:269 .github/workflows/prismpm.yml:275 .github/workflows/prismpm.yml:282 .github/workflows/prismpm.yml:322 .github/workflows/prismpm.yml:328 .github/workflows/prismpm.yml:340 .github/workflows/prismpm.yml:348 .github/workflows/prismpm.yml:385 .github/workflows/prismpm.yml:391 .github/workflows/prismpm.yml:402 .github/workflows/prismpm.yml:409 .github/workflows/prismpm.yml:440 .github/workflows/prismpm.yml:446 .github/workflows/prismpm.yml:453 .github/workflows/prismpm.yml:497 .github/workflows/prismpm.yml:504 .github/workflows/prismpm.yml:512 .github/workflows/prismpm.yml:521 .github/workflows/prismpm.yml:549 .github/workflows/prismpm.yml:555 .github/workflows/production.yml:40 .github/workflows/production.yml:46 .github/workflows/production.yml:54 .github/workflows/production.yml:99 .github/workflows/production.yml:108 .github/workflows/production.yml:116 .github/workflows/production.yml:125 .github/workflows/production.yml:134 .github/workflows/production.yml:144 .github/workflows/production.yml:154 .github/workflows/production.yml:161 .github/workflows/production.yml:187 .github/workflows/production.yml:195 .github/workflows/production.yml:202 .github/workflows/production.yml:210 .github/workflows/production.yml:297 .github/workflows/production.yml:306 .github/workflows/production.yml:314 .github/workflows/production.yml:323 .github/workflows/production.yml:332 .github/workflows/production.yml:342 .github/workflows/production.yml:352 .github/workflows/production.yml:359 .github/workflows/production.yml:384 .github/workflows/production.yml:392 .github/workflows/production.yml:399 .github/workflows/production.yml:406 .github/workflows/production.yml:414 .github/workflows/production.yml:421 .github/workflows/publish-crate.yml:43 .github/workflows/publish-crate.yml:49 .github/workflows/verify.yml:18 .github/workflows/verify.yml:34 .github/workflows/verify.yml:40"})
+}
+
+definition{
+  name: edge1,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 1, dependent := 3, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "Cargo.lock:22"})
+}
+
+definition{
+  name: edge2,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 2, dependent := 3, dependency := 23, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := ".github/workflows/template-update.yml:44"})
+}
+
+definition{
+  name: edge3,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 3, dependent := 4, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.action), evidence := ".github/workflows/prismpm.yml:95 .github/workflows/prismpm.yml:100 .github/workflows/prismpm.yml:105 .github/workflows/prismpm.yml:128 .github/workflows/prismpm.yml:134 .github/workflows/prismpm.yml:208 .github/workflows/prismpm.yml:215 .github/workflows/prismpm.yml:223 .github/workflows/prismpm.yml:238 .github/workflows/prismpm.yml:269 .github/workflows/prismpm.yml:275 .github/workflows/prismpm.yml:282 .github/workflows/prismpm.yml:322 .github/workflows/prismpm.yml:328 .github/workflows/prismpm.yml:340 .github/workflows/prismpm.yml:348 .github/workflows/prismpm.yml:385 .github/workflows/prismpm.yml:391 .github/workflows/prismpm.yml:402 .github/workflows/prismpm.yml:409 .github/workflows/prismpm.yml:440 .github/workflows/prismpm.yml:446 .github/workflows/prismpm.yml:453 .github/workflows/prismpm.yml:497 .github/workflows/prismpm.yml:504 .github/workflows/prismpm.yml:512 .github/workflows/prismpm.yml:521 .github/workflows/prismpm.yml:549 .github/workflows/prismpm.yml:555"})
+}
+
+definition{
+  name: edge4,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 4, dependent := 4, dependency := 23, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := ".github/workflows/template-update.yml:40"})
+}
+
+definition{
+  name: edge5,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 5, dependent := 5, dependency := 12, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "Cargo.lock:319 crates/model/Cargo.toml:23 xtask/Cargo.toml:14"})
+}
+
+definition{
+  name: edge6,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 6, dependent := 5, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.action), evidence := ".github/workflows/prismpm.yml:95 .github/workflows/prismpm.yml:100 .github/workflows/prismpm.yml:105 .github/workflows/prismpm.yml:128 .github/workflows/prismpm.yml:134 .github/workflows/prismpm.yml:208 .github/workflows/prismpm.yml:215 .github/workflows/prismpm.yml:223 .github/workflows/prismpm.yml:238 .github/workflows/prismpm.yml:269 .github/workflows/prismpm.yml:275 .github/workflows/prismpm.yml:282 .github/workflows/prismpm.yml:322 .github/workflows/prismpm.yml:328 .github/workflows/prismpm.yml:340 .github/workflows/prismpm.yml:348 .github/workflows/prismpm.yml:385 .github/workflows/prismpm.yml:391 .github/workflows/prismpm.yml:402 .github/workflows/prismpm.yml:409 .github/workflows/prismpm.yml:440 .github/workflows/prismpm.yml:446 .github/workflows/prismpm.yml:453 .github/workflows/prismpm.yml:497 .github/workflows/prismpm.yml:504 .github/workflows/prismpm.yml:512 .github/workflows/prismpm.yml:521 .github/workflows/prismpm.yml:549 .github/workflows/prismpm.yml:555"})
+}
+
+definition{
+  name: edge7,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 7, dependent := 5, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.image), evidence := "prismpm.lock:1"})
+}
+
+definition{
+  name: edge8,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 8, dependent := 5, dependency := 23, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := ".github/workflows/template-update.yml:40"})
+}
+
+definition{
+  name: edge9,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 9, dependent := 7, dependency := 12, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "v2/in-tab-check/crate/Cargo.toml:13"})
+}
+
+definition{
+  name: edge10,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 10, dependent := 7, dependency := 19, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "studio/core/Cargo.lock:489 studio/core/Cargo.lock:503 studio/core/Cargo.lock:516 studio/core/Cargo.lock:526 studio/core/Cargo.lock:536"})
+}
+
+definition{
+  name: edge11,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 11, dependent := 7, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.action), evidence := ".github/workflows/prismpm.yml:95 .github/workflows/prismpm.yml:100 .github/workflows/prismpm.yml:105 .github/workflows/prismpm.yml:128 .github/workflows/prismpm.yml:134 .github/workflows/prismpm.yml:208 .github/workflows/prismpm.yml:215 .github/workflows/prismpm.yml:223 .github/workflows/prismpm.yml:238 .github/workflows/prismpm.yml:269 .github/workflows/prismpm.yml:275 .github/workflows/prismpm.yml:282 .github/workflows/prismpm.yml:322 .github/workflows/prismpm.yml:328 .github/workflows/prismpm.yml:340 .github/workflows/prismpm.yml:348 .github/workflows/prismpm.yml:385 .github/workflows/prismpm.yml:391 .github/workflows/prismpm.yml:402 .github/workflows/prismpm.yml:409 .github/workflows/prismpm.yml:440 .github/workflows/prismpm.yml:446 .github/workflows/prismpm.yml:453 .github/workflows/prismpm.yml:497 .github/workflows/prismpm.yml:504 .github/workflows/prismpm.yml:512 .github/workflows/prismpm.yml:521 .github/workflows/prismpm.yml:549 .github/workflows/prismpm.yml:555"})
+}
+
+definition{
+  name: edge12,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 12, dependent := 7, dependency := 23, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := ".github/workflows/template-update.yml:47"})
+}
+
+definition{
+  name: edge13,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 13, dependent := 7, dependency := 23, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.vendored), evidence := "crates/model/Cargo.toml:2"})
+}
+
+definition{
+  name: edge14,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 14, dependent := 7, dependency := 24, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "studio/core/Cargo.lock:448"})
+}
+
+definition{
+  name: edge15,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 15, dependent := 7, dependency := 26, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "studio/core/Cargo.lock:460 studio/core/Cargo.lock:469"})
+}
+
+definition{
+  name: edge16,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 16, dependent := 8, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.action), evidence := ".github/workflows/prismpm.yml:95 .github/workflows/prismpm.yml:100 .github/workflows/prismpm.yml:105 .github/workflows/prismpm.yml:128 .github/workflows/prismpm.yml:134 .github/workflows/prismpm.yml:208 .github/workflows/prismpm.yml:215 .github/workflows/prismpm.yml:223 .github/workflows/prismpm.yml:238 .github/workflows/prismpm.yml:269 .github/workflows/prismpm.yml:275 .github/workflows/prismpm.yml:282 .github/workflows/prismpm.yml:322 .github/workflows/prismpm.yml:328 .github/workflows/prismpm.yml:340 .github/workflows/prismpm.yml:348 .github/workflows/prismpm.yml:385 .github/workflows/prismpm.yml:391 .github/workflows/prismpm.yml:402 .github/workflows/prismpm.yml:409 .github/workflows/prismpm.yml:440 .github/workflows/prismpm.yml:446 .github/workflows/prismpm.yml:453 .github/workflows/prismpm.yml:497 .github/workflows/prismpm.yml:504 .github/workflows/prismpm.yml:512 .github/workflows/prismpm.yml:521 .github/workflows/prismpm.yml:549 .github/workflows/prismpm.yml:555"})
+}
+
+definition{
+  name: edge17,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 17, dependent := 8, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.image), evidence := "prismpm.lock:1"})
+}
+
+definition{
+  name: edge18,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 18, dependent := 8, dependency := 23, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := ".github/workflows/template-update.yml:40"})
+}
+
+definition{
+  name: edge19,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 19, dependent := 9, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.action), evidence := ".github/workflows/prismpm.yml:95 .github/workflows/prismpm.yml:100 .github/workflows/prismpm.yml:105 .github/workflows/prismpm.yml:128 .github/workflows/prismpm.yml:134 .github/workflows/prismpm.yml:208 .github/workflows/prismpm.yml:215 .github/workflows/prismpm.yml:223 .github/workflows/prismpm.yml:238 .github/workflows/prismpm.yml:269 .github/workflows/prismpm.yml:275 .github/workflows/prismpm.yml:282 .github/workflows/prismpm.yml:322 .github/workflows/prismpm.yml:328 .github/workflows/prismpm.yml:340 .github/workflows/prismpm.yml:348 .github/workflows/prismpm.yml:385 .github/workflows/prismpm.yml:391 .github/workflows/prismpm.yml:402 .github/workflows/prismpm.yml:409 .github/workflows/prismpm.yml:440 .github/workflows/prismpm.yml:446 .github/workflows/prismpm.yml:453 .github/workflows/prismpm.yml:497 .github/workflows/prismpm.yml:504 .github/workflows/prismpm.yml:512 .github/workflows/prismpm.yml:521 .github/workflows/prismpm.yml:549 .github/workflows/prismpm.yml:555"})
+}
+
+definition{
+  name: edge20,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 20, dependent := 9, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.image), evidence := "prismpm.lock:1"})
+}
+
+definition{
+  name: edge21,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 21, dependent := 9, dependency := 23, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := ".github/workflows/template-update.yml:40"})
+}
+
+definition{
+  name: edge22,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 22, dependent := 9, dependency := 23, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.vendored), evidence := "crates/model/Cargo.toml:2"})
+}
+
+definition{
+  name: edge23,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 23, dependent := 13, dependency := 12, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "Cargo.lock:307 crates/build-id/Cargo.toml:14 gateway/Cargo.lock:432 gateway/bindings/gateway-binding/Cargo.toml:22 gateway/bindings/gateway-engine-host/Cargo.toml:14 gateway/tool-tests/Cargo.toml:16"})
+}
+
+definition{
+  name: edge24,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 24, dependent := 13, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.action), evidence := ".github/workflows/prismpm.yml:95 .github/workflows/prismpm.yml:100 .github/workflows/prismpm.yml:105 .github/workflows/prismpm.yml:128 .github/workflows/prismpm.yml:134 .github/workflows/prismpm.yml:208 .github/workflows/prismpm.yml:215 .github/workflows/prismpm.yml:223 .github/workflows/prismpm.yml:238 .github/workflows/prismpm.yml:269 .github/workflows/prismpm.yml:275 .github/workflows/prismpm.yml:282 .github/workflows/prismpm.yml:322 .github/workflows/prismpm.yml:328 .github/workflows/prismpm.yml:340 .github/workflows/prismpm.yml:348 .github/workflows/prismpm.yml:385 .github/workflows/prismpm.yml:391 .github/workflows/prismpm.yml:402 .github/workflows/prismpm.yml:409 .github/workflows/prismpm.yml:440 .github/workflows/prismpm.yml:446 .github/workflows/prismpm.yml:453 .github/workflows/prismpm.yml:497 .github/workflows/prismpm.yml:504 .github/workflows/prismpm.yml:512 .github/workflows/prismpm.yml:521 .github/workflows/prismpm.yml:549 .github/workflows/prismpm.yml:555"})
+}
+
+definition{
+  name: edge25,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 25, dependent := 13, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.image), evidence := "prismpm.lock:1"})
+}
+
+definition{
+  name: edge26,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 26, dependent := 13, dependency := 23, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := ".github/workflows/template-update.yml:40"})
+}
+
+definition{
+  name: edge27,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 27, dependent := 14, dependency := 26, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "benchmarks/execution/uorbench/Cargo.toml:7 benchmarks/execution/uorbench2/Cargo.toml:13"})
+}
+
+definition{
+  name: edge28,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 28, dependent := 15, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.action), evidence := ".github/workflows/prismpm.yml:95 .github/workflows/prismpm.yml:100 .github/workflows/prismpm.yml:105 .github/workflows/prismpm.yml:128 .github/workflows/prismpm.yml:134 .github/workflows/prismpm.yml:208 .github/workflows/prismpm.yml:215 .github/workflows/prismpm.yml:223 .github/workflows/prismpm.yml:238 .github/workflows/prismpm.yml:269 .github/workflows/prismpm.yml:275 .github/workflows/prismpm.yml:282 .github/workflows/prismpm.yml:322 .github/workflows/prismpm.yml:328 .github/workflows/prismpm.yml:340 .github/workflows/prismpm.yml:348 .github/workflows/prismpm.yml:385 .github/workflows/prismpm.yml:391 .github/workflows/prismpm.yml:402 .github/workflows/prismpm.yml:409 .github/workflows/prismpm.yml:440 .github/workflows/prismpm.yml:446 .github/workflows/prismpm.yml:453 .github/workflows/prismpm.yml:497 .github/workflows/prismpm.yml:504 .github/workflows/prismpm.yml:512 .github/workflows/prismpm.yml:521 .github/workflows/prismpm.yml:549 .github/workflows/prismpm.yml:555"})
+}
+
+definition{
+  name: edge29,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 29, dependent := 15, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.image), evidence := "prismpm.lock:1"})
+}
+
+definition{
+  name: edge30,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 30, dependent := 15, dependency := 23, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := ".github/workflows/template-update.yml:40"})
+}
+
+definition{
+  name: edge31,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 31, dependent := 16, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.action), evidence := ".github/workflows/prismpm.yml:95 .github/workflows/prismpm.yml:100 .github/workflows/prismpm.yml:105 .github/workflows/prismpm.yml:128 .github/workflows/prismpm.yml:134 .github/workflows/prismpm.yml:208 .github/workflows/prismpm.yml:215 .github/workflows/prismpm.yml:223 .github/workflows/prismpm.yml:238 .github/workflows/prismpm.yml:269 .github/workflows/prismpm.yml:275 .github/workflows/prismpm.yml:282 .github/workflows/prismpm.yml:322 .github/workflows/prismpm.yml:328 .github/workflows/prismpm.yml:340 .github/workflows/prismpm.yml:348 .github/workflows/prismpm.yml:385 .github/workflows/prismpm.yml:391 .github/workflows/prismpm.yml:402 .github/workflows/prismpm.yml:409 .github/workflows/prismpm.yml:440 .github/workflows/prismpm.yml:446 .github/workflows/prismpm.yml:453 .github/workflows/prismpm.yml:497 .github/workflows/prismpm.yml:504 .github/workflows/prismpm.yml:512 .github/workflows/prismpm.yml:521 .github/workflows/prismpm.yml:549 .github/workflows/prismpm.yml:555"})
+}
+
+definition{
+  name: edge32,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 32, dependent := 16, dependency := 23, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := ".github/workflows/template-update.yml:40"})
+}
+
+definition{
+  name: edge33,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 33, dependent := 19, dependency := 26, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := ".github/workflows/release.yml:140"})
+}
+
+definition{
+  name: edge34,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 34, dependent := 19, dependency := 26, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "Cargo.lock:196 Cargo.lock:205 Cargo.toml:37 Cargo.toml:38 crates/uor-prism-crypto/Cargo.toml:20 crates/uor-prism-crypto/Cargo.toml:21 crates/uor-prism-fhe/Cargo.toml:20 crates/uor-prism-fhe/Cargo.toml:21 crates/uor-prism-numerics/Cargo.toml:20 crates/uor-prism-numerics/Cargo.toml:21 crates/uor-prism-tensor/Cargo.toml:20 crates/uor-prism-tensor/Cargo.toml:21 crates/uor-prism-verify/Cargo.toml:21 crates/uor-prism/Cargo.toml:20 crates/uor-prism/Cargo.toml:21"})
+}
+
+definition{
+  name: edge35,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 35, dependent := 20, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.action), evidence := ".github/workflows/prismpm.yml:95 .github/workflows/prismpm.yml:100 .github/workflows/prismpm.yml:105 .github/workflows/prismpm.yml:128 .github/workflows/prismpm.yml:134 .github/workflows/prismpm.yml:208 .github/workflows/prismpm.yml:215 .github/workflows/prismpm.yml:223 .github/workflows/prismpm.yml:238 .github/workflows/prismpm.yml:269 .github/workflows/prismpm.yml:275 .github/workflows/prismpm.yml:282 .github/workflows/prismpm.yml:322 .github/workflows/prismpm.yml:328 .github/workflows/prismpm.yml:340 .github/workflows/prismpm.yml:348 .github/workflows/prismpm.yml:385 .github/workflows/prismpm.yml:391 .github/workflows/prismpm.yml:402 .github/workflows/prismpm.yml:409 .github/workflows/prismpm.yml:440 .github/workflows/prismpm.yml:446 .github/workflows/prismpm.yml:453 .github/workflows/prismpm.yml:497 .github/workflows/prismpm.yml:504 .github/workflows/prismpm.yml:512 .github/workflows/prismpm.yml:521 .github/workflows/prismpm.yml:549 .github/workflows/prismpm.yml:555 .github/workflows/release.yml:45 .github/workflows/release.yml:50"})
+}
+
+definition{
+  name: edge36,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 36, dependent := 20, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.image), evidence := "prismpm.lock:1"})
+}
+
+definition{
+  name: edge37,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 37, dependent := 20, dependency := 23, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := ".github/workflows/template-update.yml:46"})
+}
+
+definition{
+  name: edge38,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 38, dependent := 21, dependency := 12, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := ".github/workflows/lexlean-sync.yml:85 .github/workflows/m0-lexlean-reconcile.yml:34"})
+}
+
+definition{
+  name: edge39,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 39, dependent := 21, dependency := 12, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.vendored), evidence := "vendor/lexlean/Cargo.toml:15"})
+}
+
+definition{
+  name: edge40,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 40, dependent := 21, dependency := 19, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "tests/holo-codec-oracle/Cargo.lock:487 tests/holo-codec-oracle/Cargo.lock:501 tests/holo-codec-oracle/Cargo.lock:514 tests/holo-codec-oracle/Cargo.lock:524 tests/holo-codec-oracle/Cargo.lock:534 tests/hologram-oracle/Cargo.lock:3226 tests/hologram-oracle/Cargo.lock:3240 tests/hologram-oracle/Cargo.lock:3253 tests/hologram-oracle/Cargo.lock:3263 tests/hologram-oracle/Cargo.lock:3273"})
+}
+
+definition{
+  name: edge41,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 41, dependent := 21, dependency := 24, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "tests/holo-codec-oracle/Cargo.lock:446 tests/hologram-oracle/Cargo.lock:3185"})
+}
+
+definition{
+  name: edge42,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 42, dependent := 21, dependency := 26, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "tests/holo-codec-oracle/Cargo.lock:458 tests/holo-codec-oracle/Cargo.lock:467 tests/hologram-oracle/Cargo.lock:3197 tests/hologram-oracle/Cargo.lock:3206"})
+}
+
+definition{
+  name: edge43,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 43, dependent := 23, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.action), evidence := ".github/workflows/prismpm.yml:95 .github/workflows/prismpm.yml:100 .github/workflows/prismpm.yml:105 .github/workflows/prismpm.yml:128 .github/workflows/prismpm.yml:134 .github/workflows/prismpm.yml:208 .github/workflows/prismpm.yml:215 .github/workflows/prismpm.yml:223 .github/workflows/prismpm.yml:238 .github/workflows/prismpm.yml:269 .github/workflows/prismpm.yml:275 .github/workflows/prismpm.yml:282 .github/workflows/prismpm.yml:322 .github/workflows/prismpm.yml:328 .github/workflows/prismpm.yml:340 .github/workflows/prismpm.yml:348 .github/workflows/prismpm.yml:385 .github/workflows/prismpm.yml:391 .github/workflows/prismpm.yml:402 .github/workflows/prismpm.yml:409 .github/workflows/prismpm.yml:440 .github/workflows/prismpm.yml:446 .github/workflows/prismpm.yml:453 .github/workflows/prismpm.yml:497 .github/workflows/prismpm.yml:504 .github/workflows/prismpm.yml:512 .github/workflows/prismpm.yml:521 .github/workflows/prismpm.yml:549 .github/workflows/prismpm.yml:555"})
+}
+
+definition{
+  name: edge44,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 44, dependent := 23, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.image), evidence := "prismpm.lock:1"})
+}
+
+definition{
+  name: edge45,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 45, dependent := 24, dependency := 19, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "Cargo.lock:882 Cargo.lock:896 Cargo.lock:909 Cargo.lock:919 Cargo.lock:929 Cargo.toml:48 Cargo.toml:53 crates/uor-addr/Cargo.toml:17 crates/uor-addr/Cargo.toml:25"})
+}
+
+definition{
+  name: edge46,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 46, dependent := 24, dependency := 26, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "Cargo.lock:862 Cargo.lock:871 Cargo.toml:59 Cargo.toml:60 crates/uor-addr/Cargo.toml:18 crates/uor-addr/Cargo.toml:19"})
+}
+
+definition{
+  name: edge47,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 47, dependent := 25, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.action), evidence := ".github/workflows/prismpm.yml:95 .github/workflows/prismpm.yml:100 .github/workflows/prismpm.yml:105 .github/workflows/prismpm.yml:128 .github/workflows/prismpm.yml:134 .github/workflows/prismpm.yml:208 .github/workflows/prismpm.yml:215 .github/workflows/prismpm.yml:223 .github/workflows/prismpm.yml:238 .github/workflows/prismpm.yml:269 .github/workflows/prismpm.yml:275 .github/workflows/prismpm.yml:282 .github/workflows/prismpm.yml:322 .github/workflows/prismpm.yml:328 .github/workflows/prismpm.yml:340 .github/workflows/prismpm.yml:348 .github/workflows/prismpm.yml:385 .github/workflows/prismpm.yml:391 .github/workflows/prismpm.yml:402 .github/workflows/prismpm.yml:409 .github/workflows/prismpm.yml:440 .github/workflows/prismpm.yml:446 .github/workflows/prismpm.yml:453 .github/workflows/prismpm.yml:497 .github/workflows/prismpm.yml:504 .github/workflows/prismpm.yml:512 .github/workflows/prismpm.yml:521 .github/workflows/prismpm.yml:549 .github/workflows/prismpm.yml:555"})
+}
+
+definition{
+  name: edge48,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 48, dependent := 25, dependency := 21, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.image), evidence := "prismpm.lock:1"})
+}
+
+definition{
+  name: edge49,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 49, dependent := 25, dependency := 23, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := ".github/workflows/template-update.yml:40"})
+}
+
+definition{
+  name: edge50,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 50, dependent := 28, dependency := 26, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "Cargo.lock:1760 Cargo.lock:1769"})
+}
+
+definition{
+  name: edge51,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 51, dependent := 29, dependency := 19, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.vendored), evidence := "archive/vendor-snapshots/uor_standards/prism/crates/uor-prism-crypto/Cargo.toml:2 archive/vendor-snapshots/uor_standards/prism/crates/uor-prism-fhe/Cargo.toml:2 archive/vendor-snapshots/uor_standards/prism/crates/uor-prism-numerics/Cargo.toml:2 archive/vendor-snapshots/uor_standards/prism/crates/uor-prism-tensor/Cargo.toml:2 archive/vendor-snapshots/uor_standards/prism/crates/uor-prism-verify/Cargo.toml:2 archive/vendor-snapshots/uor_standards/prism/crates/uor-prism/Cargo.toml:2 archive/vendor-snapshots/uor_standards/prism/tools/wiki-link-check/Cargo.toml:2"})
+}
+
+definition{
+  name: edge52,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 52, dependent := 29, dependency := 24, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := "Cargo.lock:2219 crates/uor-r4-graph-format/Cargo.toml:27 crates/uor-r4-router/Cargo.toml:37"})
+}
+
+definition{
+  name: edge53,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 53, dependent := 29, dependency := 24, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.vendored), evidence := "archive/vendor-snapshots/uor_standards/uor-addr/bindings/npm/package.json:2 archive/vendor-snapshots/uor_standards/uor-addr/bindings/python/pyproject.toml:6 archive/vendor-snapshots/uor_standards/uor-addr/crates/uor-addr-c/Cargo.toml:2 archive/vendor-snapshots/uor_standards/uor-addr/crates/uor-addr-wasm/Cargo.toml:2 archive/vendor-snapshots/uor_standards/uor-addr/crates/uor-addr/Cargo.toml:2 third_party/uor-addr-0.2.0/Cargo.toml:2 third_party/uor-addr-0.2.0/historical/upstream/crates/uor-addr/Cargo.toml:2"})
+}
+
+definition{
+  name: edge54,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 54, dependent := 29, dependency := 26, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := "Cargo.lock:2230 Cargo.lock:2238 Cargo.lock:2248 crates/uor-r4-router/Cargo.toml:38 crates/uor-r4-router/Cargo.toml:39 crates/uor-r4-wasm-router/Cargo.toml:40 crates/uor-r4-wasm-router/Cargo.toml:41 crates/uor-r4-wasm-router/Cargo.toml:61"})
+}
+
+definition{
+  name: edge55,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 55, dependent := 29, dependency := 26, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.vendored), evidence := "archive/vendor-snapshots/uor_standards/UOR-Framework/cargo-uor/Cargo.toml:2 archive/vendor-snapshots/uor_standards/UOR-Framework/foundation/Cargo.toml:2 archive/vendor-snapshots/uor_standards/UOR-Framework/spec/Cargo.toml:2 archive/vendor-snapshots/uor_standards/UOR-Framework/uor-foundation-sdk/Cargo.toml:2 archive/vendor-snapshots/uor_standards/UOR-Framework/uor-foundation-test-helpers/Cargo.toml:2 archive/vendor-snapshots/uor_standards/UOR-Framework/uor-foundation-verify/Cargo.toml:2 archive/vendor-snapshots/uor_standards/UOR-Framework/xtask/Cargo.toml:2"})
+}
+
+definition{
+  name: edge56,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 56, dependent := 29, dependency := 28, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.git), evidence := "crates/uor-r4-model-source/Cargo.toml:29 crates/uor-r4-model-source/Cargo.toml:32"})
+}
+
+definition{
+  name: edge57,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::Edge,
+  body: (record Foundation.Supply.V1.Model::Edge {index := 57, dependent := 29, dependency := 28, kind := (ctor Foundation.Supply.V1.Model::EdgeKind.package), evidence := "crates/uor-r4-model-source/Cargo.toml:29 crates/uor-r4-model-source/Cargo.toml:32"})
+}
+
+definition{
+  name: edgesFrom48,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::Edge),
+  body: (cons (edge48) (cons (edge49) (cons (edge50) (cons (edge51) (cons (edge52) (cons (edge53) (cons (edge54) (cons (edge55) (cons (edge56) (cons (edge57) (nil Foundation.Supply.V1.Model::Edge)))))))))))
+}
+
+definition{
+  name: edgesFrom0,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::Edge),
+  body: (cons (edge0) (cons (edge1) (cons (edge2) (cons (edge3) (cons (edge4) (cons (edge5) (cons (edge6) (cons (edge7) (cons (edge8) (cons (edge9) (cons (edge10) (cons (edge11) (cons (edge12) (cons (edge13) (cons (edge14) (cons (edge15) (cons (edge16) (cons (edge17) (cons (edge18) (cons (edge19) (cons (edge20) (cons (edge21) (cons (edge22) (cons (edge23) (cons (edge24) (cons (edge25) (cons (edge26) (cons (edge27) (cons (edge28) (cons (edge29) (cons (edge30) (cons (edge31) (cons (edge32) (cons (edge33) (cons (edge34) (cons (edge35) (cons (edge36) (cons (edge37) (cons (edge38) (cons (edge39) (cons (edge40) (cons (edge41) (cons (edge42) (cons (edge43) (cons (edge44) (cons (edge45) (cons (edge46) (cons (edge47) (edgesFrom48)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: edges,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::Edge),
+  body: (edgesFrom0)
+}
+
+definition{
+  name: repositoryClaim0,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 0, repository := 0, refusal := "sbom-empty", detail := ".github: syft 1.38.0 catalogues no component in the tree at 92da114114fc9b76cbf2c5168e29d409b62ddde8"})
+}
+
+definition{
+  name: repositoryClaim1,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 1, repository := 1, refusal := "sbom-empty", detail := "5-Levels-of-UOR: syft 1.38.0 catalogues no component in the tree at 86dde40a976d2a7a7be16b31b6a509698e8eb5bb"})
+}
+
+definition{
+  name: repositoryClaim2,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 2, repository := 2, refusal := "packages-unlinked", detail := "atlas-12288: 4 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"})
+}
+
+definition{
+  name: repositoryClaim3,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 3, repository := 3, refusal := "image-source-undeclared", detail := "calculator-example: 1 references to ghcr.io/uor-foundation/prismpm-runtime, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/template-update.yml:59)"})
+}
+
+definition{
+  name: repositoryClaim4,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 4, repository := 3, refusal := "image-source-undeclared", detail := "calculator-example: 32 references to ghcr.io/uor-foundation/calculator-system, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/production.yml:50, .github/workflows/production.yml:58, .github/workflows/production.yml:104, and 29 more)"})
+}
+
+definition{
+  name: repositoryClaim5,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 5, repository := 4, refusal := "sdk-image-outside-foundation", detail := "community: prismpm.lock:1 pins the SDK image ghcr.io/afflom/prismpm-sdk-patched, which is not published under ghcr.io/uor-foundation"})
+}
+
+definition{
+  name: repositoryClaim6,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 6, repository := 5, refusal := "packages-unlinked", detail := "compression: 3 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"})
+}
+
+definition{
+  name: repositoryClaim7,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 7, repository := 7, refusal := "packages-unlinked", detail := "foundry: 3 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"})
+}
+
+definition{
+  name: repositoryClaim8,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 8, repository := 7, refusal := "sdk-image-outside-foundation", detail := "foundry: prismpm.lock:1 pins the SDK image ghcr.io/afflom/prismpm-sdk-patched, which is not published under ghcr.io/uor-foundation"})
+}
+
+definition{
+  name: repositoryClaim9,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 9, repository := 10, refusal := "sbom-empty", detail := "kappa-distribution: syft 1.38.0 catalogues no component in the tree at 2475e701f25ed5887aba8b68a39ecc0f87faad6f"})
+}
+
+definition{
+  name: repositoryClaim10,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 10, repository := 11, refusal := "packages-unlinked", detail := "kappa-registry: 16 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"})
+}
+
+definition{
+  name: repositoryClaim11,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 11, repository := 12, refusal := "packages-unlinked", detail := "LexLean: 256 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"})
+}
+
+definition{
+  name: repositoryClaim12,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 12, repository := 13, refusal := "packages-unlinked", detail := "lexlean-mcp: 4 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"})
+}
+
+definition{
+  name: repositoryClaim13,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 13, repository := 14, refusal := "packages-unlinked", detail := "malachite-usdc: 2 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"})
+}
+
+definition{
+  name: repositoryClaim14,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 14, repository := 14, refusal := "sbom-empty", detail := "malachite-usdc: syft 1.38.0 catalogues no component in the tree at 23431008f0ccc2899c3a1ecb9243a2578d5c7156"})
+}
+
+definition{
+  name: repositoryClaim15,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 15, repository := 15, refusal := "packages-unlinked", detail := "MCP: 5 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"})
+}
+
+definition{
+  name: repositoryClaim16,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 16, repository := 16, refusal := "packages-unlinked", detail := "MNIST: 1 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"})
+}
+
+definition{
+  name: repositoryClaim17,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 17, repository := 17, refusal := "sbom-empty", detail := "nest-uor: syft 1.38.0 catalogues no component in the tree at 5a469e7d207af7dcca54df0de39e38c54c953569"})
+}
+
+definition{
+  name: repositoryClaim18,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 18, repository := 20, refusal := "image-source-undeclared", detail := "prism-code: 1 references to ghcr.io/uor-foundation/dataflow-policy, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/release.yml:53)"})
+}
+
+definition{
+  name: repositoryClaim19,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 19, repository := 20, refusal := "reference-outside-register", detail := "prism-code: 1 references to UOR-Foundation/dataflow-policy, which is not a public repository of the ecosystem register (crates/model/Cargo.toml:2)"})
+}
+
+definition{
+  name: repositoryClaim20,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 20, repository := 21, refusal := "image-source-undeclared", detail := "PrismPM: 2 references to ghcr.io/uor-foundation/prismpm-adapter-compose, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/release.yml:473, .github/workflows/release.yml:512)"})
+}
+
+definition{
+  name: repositoryClaim21,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 21, repository := 21, refusal := "image-source-undeclared", detail := "PrismPM: 2 references to ghcr.io/uor-foundation/prismpm-adapter-github-pages, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/release.yml:475, .github/workflows/release.yml:520)"})
+}
+
+definition{
+  name: repositoryClaim22,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 22, repository := 21, refusal := "image-source-undeclared", detail := "PrismPM: 2 references to ghcr.io/uor-foundation/prismpm-adapter-kubernetes, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/release.yml:474, .github/workflows/release.yml:516)"})
+}
+
+definition{
+  name: repositoryClaim23,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 23, repository := 21, refusal := "image-source-undeclared", detail := "PrismPM: 2 references to ghcr.io/uor-foundation/prismpm-oracles, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/release.yml:476, .github/workflows/release.yml:524)"})
+}
+
+definition{
+  name: repositoryClaim24,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 24, repository := 21, refusal := "image-source-undeclared", detail := "PrismPM: 2 references to ghcr.io/uor-foundation/prismpm-sdk-build, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/release.yml:477, .github/workflows/release.yml:528)"})
+}
+
+definition{
+  name: repositoryClaim25,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 25, repository := 21, refusal := "image-source-undeclared", detail := "PrismPM: 3 references to ghcr.io/uor-foundation/prismpm-runtime, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/release.yml:45, .github/workflows/release.yml:472, .github/workflows/release.yml:508)"})
+}
+
+definition{
+  name: repositoryClaim26,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 26, repository := 21, refusal := "packages-unlinked", detail := "PrismPM: 19 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"})
+}
+
+definition{
+  name: repositoryClaim27,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 27, repository := 27, refusal := "sbom-empty", detail := "uor-jcs-nfc: syft 1.38.0 catalogues no component in the tree at 303591128094362857791930fdc12b73875d1ff6"})
+}
+
+definition{
+  name: repositoryClaim28,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::RepositoryClaim,
+  body: (record Foundation.Supply.V1.Model::RepositoryClaim {index := 28, repository := 29, refusal := "packages-unlinked", detail := "uor-r4: 48 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"})
+}
+
+definition{
+  name: repositoryClaimsFrom0,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::RepositoryClaim),
+  body: (cons (repositoryClaim0) (cons (repositoryClaim1) (cons (repositoryClaim2) (cons (repositoryClaim3) (cons (repositoryClaim4) (cons (repositoryClaim5) (cons (repositoryClaim6) (cons (repositoryClaim7) (cons (repositoryClaim8) (cons (repositoryClaim9) (cons (repositoryClaim10) (cons (repositoryClaim11) (cons (repositoryClaim12) (cons (repositoryClaim13) (cons (repositoryClaim14) (cons (repositoryClaim15) (cons (repositoryClaim16) (cons (repositoryClaim17) (cons (repositoryClaim18) (cons (repositoryClaim19) (cons (repositoryClaim20) (cons (repositoryClaim21) (cons (repositoryClaim22) (cons (repositoryClaim23) (cons (repositoryClaim24) (cons (repositoryClaim25) (cons (repositoryClaim26) (cons (repositoryClaim27) (cons (repositoryClaim28) (nil Foundation.Supply.V1.Model::RepositoryClaim))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: repositoryClaims,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::RepositoryClaim),
+  body: (repositoryClaimsFrom0)
+}
+
+definition{
+  name: packageClaim0,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::PackageClaim,
+  body: (record Foundation.Supply.V1.Model::PackageClaim {index := 0, subject := 2, refusal := "private-name-held-elsewhere", detail := "crates.io publishes figures from https://github.com/khonsulabs/figures, not from UOR-Foundation/compression where crates/figures/Cargo.toml:2 declares it private"})
+}
+
+definition{
+  name: packageClaim1,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::PackageClaim,
+  body: (record Foundation.Supply.V1.Model::PackageClaim {index := 1, subject := 3, refusal := "private-name-held-elsewhere", detail := "crates.io publishes frontier naming no repository, not from UOR-Foundation/compression where crates/frontier/Cargo.toml:2 declares it private"})
+}
+
+definition{
+  name: packageClaim2,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::PackageClaim,
+  body: (record Foundation.Supply.V1.Model::PackageClaim {index := 2, subject := 7, refusal := "unpublished", detail := "cargo hologram-forge-core (studio/core/Cargo.toml:2) is declared for publication and crates.io has no package of that name"})
+}
+
+definition{
+  name: packageClaim3,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::PackageClaim,
+  body: (record Foundation.Supply.V1.Model::PackageClaim {index := 3, subject := 14, refusal := "unpublished", detail := "pypi nest-uor (pyproject.toml:6) is declared for publication and PyPI has no package of that name"})
+}
+
+definition{
+  name: packageClaim4,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::PackageClaim,
+  body: (record Foundation.Supply.V1.Model::PackageClaim {index := 4, subject := 22, refusal := "unpublished", detail := "cargo prism-stdlib (stdlib/generated/package/Cargo.toml:2) is declared for publication and crates.io has no package of that name"})
+}
+
+definition{
+  name: packageClaim5,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::PackageClaim,
+  body: (record Foundation.Supply.V1.Model::PackageClaim {index := 5, subject := 23, refusal := "unpublished", detail := "cargo prismpm (crates/prismpm/Cargo.toml:2) is declared for publication and crates.io has no package of that name"})
+}
+
+definition{
+  name: packageClaim6,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::PackageClaim,
+  body: (record Foundation.Supply.V1.Model::PackageClaim {index := 6, subject := 25, refusal := "unpublished", detail := "npm @prism-code/conformance (sdk/npm/conformance/package.json:2) is declared for publication and the npm registry has no package of that name"})
+}
+
+definition{
+  name: packageClaim7,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::PackageClaim,
+  body: (record Foundation.Supply.V1.Model::PackageClaim {index := 7, subject := 26, refusal := "unpublished", detail := "npm @prism-code/spec (sdk/npm/spec/package.json:2) is declared for publication and the npm registry has no package of that name"})
+}
+
+definition{
+  name: packageClaim8,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::PackageClaim,
+  body: (record Foundation.Supply.V1.Model::PackageClaim {index := 8, subject := 27, refusal := "unpublished", detail := "npm @prism-code/testing (sdk/npm/testing/package.json:2) is declared for publication and the npm registry has no package of that name"})
+}
+
+definition{
+  name: packageClaim9,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::PackageClaim,
+  body: (record Foundation.Supply.V1.Model::PackageClaim {index := 9, subject := 28, refusal := "unpublished", detail := "npm @prism-code/verify (sdk/npm/verify/package.json:2) is declared for publication and the npm registry has no package of that name"})
+}
+
+definition{
+  name: packageClaim10,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::PackageClaim,
+  body: (record Foundation.Supply.V1.Model::PackageClaim {index := 10, subject := 29, refusal := "unpublished", detail := "npm create-prism-code (sdk/npm/create-prism-code/package.json:2) is declared for publication and the npm registry has no package of that name"})
+}
+
+definition{
+  name: packageClaim11,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::PackageClaim,
+  body: (record Foundation.Supply.V1.Model::PackageClaim {index := 11, subject := 31, refusal := "published-from-other-repository", detail := "crates.io publishes atlas-embeddings from https://github.com/UOR-Foundation/atlas-embeddings, not from UOR-Foundation/research where atlas-embeddings/Cargo.toml:2 declares it"})
+}
+
+definition{
+  name: packageClaim12,
+  parameters: [],
+  result: Foundation.Supply.V1.Model::PackageClaim,
+  body: (record Foundation.Supply.V1.Model::PackageClaim {index := 12, subject := 43, refusal := "unpublished", detail := "cargo uor-foundation-verify (uor-foundation-verify/Cargo.toml:2) is declared for publication and crates.io has no package of that name"})
+}
+
+definition{
+  name: packageClaimsFrom0,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::PackageClaim),
+  body: (cons (packageClaim0) (cons (packageClaim1) (cons (packageClaim2) (cons (packageClaim3) (cons (packageClaim4) (cons (packageClaim5) (cons (packageClaim6) (cons (packageClaim7) (cons (packageClaim8) (cons (packageClaim9) (cons (packageClaim10) (cons (packageClaim11) (cons (packageClaim12) (nil Foundation.Supply.V1.Model::PackageClaim))))))))))))))
+}
+
+definition{
+  name: packageClaims,
+  parameters: [],
+  result: (List Foundation.Supply.V1.Model::PackageClaim),
+  body: (packageClaimsFrom0)
+}
+
+theorem{
+  name: registerValidHolds,
+  parameters: [],
+  statement: ((Foundation.Supply.V1.Model::registerValid (release) (repositories) (componentCounts) (licenseCounts) (packages) (edges) (repositoryClaims) (packageClaims)) = true),
+  proof: decide{}
+}
+\end{semanticmodule}
+\end{lexlean}

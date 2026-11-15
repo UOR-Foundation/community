@@ -1,0 +1,2783 @@
+{
+  "spec": "uor-community/supply-register/1",
+  "snapshot": {
+    "path": "supply/snapshot.json",
+    "sha256": "d838f78c357ec7cbad88662d9afa3e3eebf37288959dd2a056cd2a183abcbad7"
+  },
+  "ecosystem": {
+    "path": "ecosystem/snapshot.json",
+    "sha256": "6cd8f63813c08d3adaedc151f3c439871134950ceb0b3aa1463a49be109f05c1"
+  },
+  "registries": {
+    "path": "supply/registries.json",
+    "sha256": "bace435f6fc93fd563036bf4cbf330429bce5d7585555b60353e0fcce4e2f54a",
+    "fetchedAt": "2026-11-15T18:49:26Z"
+  },
+  "tools": {
+    "syft": {
+      "version": "1.38.0",
+      "gitCommit": "a033ae525f6c7ef937c6f49513e3403f07a1d6c0",
+      "url": "https://github.com/anchore/syft/releases/download/v1.38.0/syft_1.38.0_linux_amd64.tar.gz",
+      "sha256": "bc664debb00db1b9b4b9dae4ba1a29d99621e33b641b94b78b9048374b812a3d",
+      "checksumsSha256": "e44431d1962b0a131d24968417e327f6b8ecaee1c0d95de91d5c515155a714f0",
+      "binarySha256": "6d380157a79f5e9114c98df5a2ea22cb06e04d8b37343a6f638f12f4775ac180",
+      "args": [
+        "-q",
+        "-o",
+        "cyclonedx-json@1.6",
+        "--exclude",
+        "./.git/**"
+      ]
+    },
+    "ajv": {
+      "version": "8.17.1",
+      "ajvFormats": "3.0.1",
+      "dialect": "http://json-schema.org/draft-07/schema#",
+      "formatsNotAsserted": [
+        "idn-email",
+        "iri-reference"
+      ]
+    }
+  },
+  "standards": [
+    {
+      "path": "specification@8a27bfd1be5be0dcb2c208a34d2f4fa0b6d75bd7:schema/bom-1.6.schema.json",
+      "sha256": "efc54d749e32a6e16abd19394b80b4c67d846e12c782e04505130375f94ea541"
+    },
+    {
+      "path": "specification@8a27bfd1be5be0dcb2c208a34d2f4fa0b6d75bd7:schema/spdx.schema.json",
+      "sha256": "c41917196639055e9f9670811bac23ef777732144f3ff5a2f39686f61580dbe6"
+    },
+    {
+      "path": "specification@8a27bfd1be5be0dcb2c208a34d2f4fa0b6d75bd7:schema/jsf-0.82.schema.json",
+      "sha256": "8bae002c25e723db7ee1f26afde680ae1a2b1a8f6b4b4b0fd65dc3becb090aae"
+    },
+    {
+      "path": "purl-spec@26671718c3da7225c582a94da319c0c6c3a60cf7:purl-types-index.json",
+      "sha256": "b9fe4ac32bfac3f978f3c969d4538172c5f5c55cf273ea3457a026899ccd7fe6"
+    }
+  ],
+  "purlTypes": [
+    "alpm",
+    "apk",
+    "bazel",
+    "bitbucket",
+    "bitnami",
+    "brew",
+    "cargo",
+    "chrome-extension",
+    "cocoapods",
+    "composer",
+    "conan",
+    "conda",
+    "cpan",
+    "cran",
+    "deb",
+    "docker",
+    "gem",
+    "generic",
+    "git",
+    "github",
+    "golang",
+    "hackage",
+    "hex",
+    "huggingface",
+    "julia",
+    "luarocks",
+    "maven",
+    "mlflow",
+    "npm",
+    "nuget",
+    "oci",
+    "opam",
+    "otp",
+    "pub",
+    "pypi",
+    "qpkg",
+    "rpm",
+    "swid",
+    "swift",
+    "vcpkg",
+    "vscode-extension",
+    "yocto"
+  ],
+  "sbomBytes": 15513176,
+  "componentTotal": 13292,
+  "repositories": [
+    {
+      "index": 0,
+      "name": ".github",
+      "commit": "92da114114fc9b76cbf2c5168e29d409b62ddde8",
+      "sbom": {
+        "path": "supply/sboms/.github.cdx.json",
+        "sha256": "fcf5ebf7056d2ca58ae307b05631b682c7aa2140d14fba4ed4aec36e6edb8e61",
+        "bytes": 397
+      },
+      "components": 0,
+      "purlTypes": {},
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 1,
+      "name": "5-Levels-of-UOR",
+      "commit": "86dde40a976d2a7a7be16b31b6a509698e8eb5bb",
+      "sbom": {
+        "path": "supply/sboms/5-Levels-of-UOR.cdx.json",
+        "sha256": "a4c16238dd79267d3b86a3ee918185c6aae272688dfa62abb1c7762eb48563c8",
+        "bytes": 397
+      },
+      "components": 0,
+      "purlTypes": {},
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 2,
+      "name": "atlas-12288",
+      "commit": "aef42a6fd5c323373222b6362050b439690136a1",
+      "sbom": {
+        "path": "supply/sboms/atlas-12288.cdx.json",
+        "sha256": "6dfd4901fae6435da6d366921b5ff96f8d6d63ab931ff96ad418305b5bc79990",
+        "bytes": 33913
+      },
+      "components": 39,
+      "purlTypes": {
+        "github": 19,
+        "golang": 6,
+        "none": 8,
+        "npm": 6
+      },
+      "licensedComponents": 2,
+      "licenseEntries": 2,
+      "licenses": [
+        {
+          "form": "id",
+          "license": "MIT",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "name": "calculator-example",
+      "commit": "5051dc6adb18e9ca2b6ae4ca7090e638329831ef",
+      "sbom": {
+        "path": "supply/sboms/calculator-example.cdx.json",
+        "sha256": "e96ab16d838b76aedd18f565a57ffca5e270b55de4e04e28b433340c1e00c622",
+        "bytes": 53382
+      },
+      "components": 46,
+      "purlTypes": {
+        "cargo": 3,
+        "github": 31,
+        "none": 11,
+        "npm": 1
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 4,
+      "name": "community",
+      "commit": "1ef75b03a425abf09064f92db4fed0dd6bb23f62",
+      "sbom": {
+        "path": "supply/sboms/community.cdx.json",
+        "sha256": "83e696a9e2857c1c7698270ae3ce1ab3b826ec5b44ca1b13b20a6895f7558f8f",
+        "bytes": 92730
+      },
+      "components": 97,
+      "purlTypes": {
+        "cargo": 33,
+        "github": 44,
+        "none": 18,
+        "npm": 1,
+        "pypi": 1
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 5,
+      "name": "compression",
+      "commit": "c416f7f5f43e53f6888395e0b927041648b30f8f",
+      "sbom": {
+        "path": "supply/sboms/compression.cdx.json",
+        "sha256": "21e9e3401008ed347714241296e5699a40e8112645c0b1b9fbf55e9a58a30fa7",
+        "bytes": 144273
+      },
+      "components": 137,
+      "purlTypes": {
+        "cargo": 101,
+        "github": 26,
+        "none": 10
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 6,
+      "name": "F1",
+      "commit": "d45fe9f54eafbc86b5060efcaf604681482469c0",
+      "sbom": {
+        "path": "supply/sboms/F1.cdx.json",
+        "sha256": "8f7e1683aaf2880e014cb053a616b6d8957c7192a63fa7bd02d8061efa28c689",
+        "bytes": 2380
+      },
+      "components": 3,
+      "purlTypes": {
+        "github": 2,
+        "none": 1
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 7,
+      "name": "foundry",
+      "commit": "9ccde14c10202a7c67cdc63e539918cfdc10a428",
+      "sbom": {
+        "path": "supply/sboms/foundry.cdx.json",
+        "sha256": "17c33b20ee4a38cbf59856e61a40c1f844038f548f74bfef580417de24e5ffcb",
+        "bytes": 2448275
+      },
+      "components": 1816,
+      "purlTypes": {
+        "cargo": 172,
+        "github": 57,
+        "none": 26,
+        "npm": 1560,
+        "pypi": 1
+      },
+      "licensedComponents": 1105,
+      "licenseEntries": 1105,
+      "licenses": [
+        {
+          "form": "expression",
+          "license": "AFL-2.1 OR BSD-3-Clause",
+          "count": 1
+        },
+        {
+          "form": "expression",
+          "license": "Apache-2.0 AND LGPL-3.0-or-later",
+          "count": 3
+        },
+        {
+          "form": "expression",
+          "license": "Apache-2.0 AND LGPL-3.0-or-later AND MIT",
+          "count": 1
+        },
+        {
+          "form": "expression",
+          "license": "BSD-2-Clause OR MIT OR Apache-2.0",
+          "count": 1
+        },
+        {
+          "form": "expression",
+          "license": "MIT OR Apache-2.0",
+          "count": 9
+        },
+        {
+          "form": "expression",
+          "license": "MIT OR WTFPL",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "0BSD",
+          "count": 3
+        },
+        {
+          "form": "id",
+          "license": "Apache-2.0",
+          "count": 83
+        },
+        {
+          "form": "id",
+          "license": "BSD-2-Clause",
+          "count": 11
+        },
+        {
+          "form": "id",
+          "license": "BSD-3-Clause",
+          "count": 12
+        },
+        {
+          "form": "id",
+          "license": "BlueOak-1.0.0",
+          "count": 15
+        },
+        {
+          "form": "id",
+          "license": "CC-BY-4.0",
+          "count": 2
+        },
+        {
+          "form": "id",
+          "license": "ISC",
+          "count": 60
+        },
+        {
+          "form": "id",
+          "license": "LGPL-3.0-or-later",
+          "count": 9
+        },
+        {
+          "form": "id",
+          "license": "MIT",
+          "count": 879
+        },
+        {
+          "form": "id",
+          "license": "MPL-2.0",
+          "count": 11
+        },
+        {
+          "form": "id",
+          "license": "Unlicense",
+          "count": 2
+        },
+        {
+          "form": "name",
+          "license": "SEE LICENSE IN LICENSE",
+          "count": 1
+        },
+        {
+          "form": "name",
+          "license": "SIL OPEN FONT LICENSE",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "name": "foundry-web",
+      "commit": "e8373c7c953bae6153fba7082c2b6c50f2f77392",
+      "sbom": {
+        "path": "supply/sboms/foundry-web.cdx.json",
+        "sha256": "1ecef933dcf1bc41c0dc76ded425da510ac71993a30909747b0ffbaabbc689c8",
+        "bytes": 55279
+      },
+      "components": 54,
+      "purlTypes": {
+        "cargo": 33,
+        "github": 14,
+        "none": 6,
+        "npm": 1
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 9,
+      "name": "holo-search",
+      "commit": "c477b69c0e3f95658aedecaeb2fa9c057d9b58a6",
+      "sbom": {
+        "path": "supply/sboms/holo-search.cdx.json",
+        "sha256": "b9dfcf6a3c1415d97942865689d892774ef5074de1c8613b95c99fad26552ef9",
+        "bytes": 46806
+      },
+      "components": 47,
+      "purlTypes": {
+        "cargo": 33,
+        "github": 10,
+        "none": 4
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 10,
+      "name": "kappa-distribution",
+      "commit": "2475e701f25ed5887aba8b68a39ecc0f87faad6f",
+      "sbom": {
+        "path": "supply/sboms/kappa-distribution.cdx.json",
+        "sha256": "e7e2ab67c2205aa6bbf925e3c7e37e794e9d13e44832f10726d77f5bbadbc9c4",
+        "bytes": 397
+      },
+      "components": 0,
+      "purlTypes": {},
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 11,
+      "name": "kappa-registry",
+      "commit": "bd231d0cc315d56e51369aff299f6741b8d8ce04",
+      "sbom": {
+        "path": "supply/sboms/kappa-registry.cdx.json",
+        "sha256": "0f92640d694524941c4c11e539bc510585c0d494ec29d8fc249b3a9a262079f8",
+        "bytes": 933099
+      },
+      "components": 771,
+      "purlTypes": {
+        "cargo": 765,
+        "github": 4,
+        "none": 2
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 12,
+      "name": "LexLean",
+      "commit": "71defb4c663aaec5b9a3aab04cbc6a03e7106227",
+      "sbom": {
+        "path": "supply/sboms/LexLean.cdx.json",
+        "sha256": "aa0587ecbf2616c42aede2dce528b9fc1921bd4af285cf20291bf75fdcc45e8c",
+        "bytes": 139081
+      },
+      "components": 132,
+      "purlTypes": {
+        "cargo": 111,
+        "github": 14,
+        "none": 7
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 13,
+      "name": "lexlean-mcp",
+      "commit": "ece9ef390260479edbad69c3a9d9f51edc16c885",
+      "sbom": {
+        "path": "supply/sboms/lexlean-mcp.cdx.json",
+        "sha256": "f5e54e3a4948c0bbfcf6215e6b484b46a675946bf30ce3731c0d317410036dd0",
+        "bytes": 248525
+      },
+      "components": 231,
+      "purlTypes": {
+        "cargo": 205,
+        "github": 18,
+        "none": 8
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 14,
+      "name": "malachite-usdc",
+      "commit": "23431008f0ccc2899c3a1ecb9243a2578d5c7156",
+      "sbom": {
+        "path": "supply/sboms/malachite-usdc.cdx.json",
+        "sha256": "f74e528edf4352b42872ac095816c69f12fccb0c3e0b78204d20bbbbfac5e11e",
+        "bytes": 397
+      },
+      "components": 0,
+      "purlTypes": {},
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 15,
+      "name": "MCP",
+      "commit": "5b34b2633e2707993221019b81fae2bf9c4103d6",
+      "sbom": {
+        "path": "supply/sboms/MCP.cdx.json",
+        "sha256": "5ec706598ac5e96d20c73816b8bd36b793ceee3342693bba66af63d033052651",
+        "bytes": 113298
+      },
+      "components": 107,
+      "purlTypes": {
+        "cargo": 88,
+        "github": 13,
+        "none": 6
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 16,
+      "name": "MNIST",
+      "commit": "515f75f9f01470df8cac095cdc22f5aebcc252c7",
+      "sbom": {
+        "path": "supply/sboms/MNIST.cdx.json",
+        "sha256": "4b551255b6333b4aa8b20fb5f477e758f8bcf2c780c073d485b7b69b9f85bc25",
+        "bytes": 64819
+      },
+      "components": 67,
+      "purlTypes": {
+        "cargo": 50,
+        "github": 12,
+        "none": 5
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 17,
+      "name": "nest-uor",
+      "commit": "5a469e7d207af7dcca54df0de39e38c54c953569",
+      "sbom": {
+        "path": "supply/sboms/nest-uor.cdx.json",
+        "sha256": "d1e1dbfd460b56ed7dcbaba7bba4d77cc8b2e9b96bd6747e6a0c61ce85a02083",
+        "bytes": 397
+      },
+      "components": 0,
+      "purlTypes": {},
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 18,
+      "name": "OOO",
+      "commit": "d0bdb29bdfeba50590bf42b4f9071e0d4bbc2dc6",
+      "sbom": {
+        "path": "supply/sboms/OOO.cdx.json",
+        "sha256": "d1676e9da694f751388104d2b970779ba85b1ae0f9df7320372695939f2074cd",
+        "bytes": 2401
+      },
+      "components": 3,
+      "purlTypes": {
+        "github": 2,
+        "none": 1
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 19,
+      "name": "prism",
+      "commit": "507995bab43c0cb06ec244c96e6fc25b3f502204",
+      "sbom": {
+        "path": "supply/sboms/prism.cdx.json",
+        "sha256": "2659f7b8f5697ed28f3ba0d39649fe7e85af5921ffdaf8ad5fb76f3a0e26eb1f",
+        "bytes": 50642
+      },
+      "components": 51,
+      "purlTypes": {
+        "cargo": 33,
+        "github": 13,
+        "none": 5
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 20,
+      "name": "prism-code",
+      "commit": "67ab3e8b2092ad5812b0c34fd074cb33762366aa",
+      "sbom": {
+        "path": "supply/sboms/prism-code.cdx.json",
+        "sha256": "68e3bdec58a490bcec81b52c893a9a06eba10263994757fa5ece27d844af8f16",
+        "bytes": 60959
+      },
+      "components": 60,
+      "purlTypes": {
+        "cargo": 33,
+        "github": 20,
+        "none": 7
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 21,
+      "name": "PrismPM",
+      "commit": "ece658394448f09a5760fb0bec9b1fa8f065ed0e",
+      "sbom": {
+        "path": "supply/sboms/PrismPM.cdx.json",
+        "sha256": "3873957660ba9694676af39abfd494f70762cd0a7d6f7c40e6e6e9ba596c9fbc",
+        "bytes": 6795221
+      },
+      "components": 5933,
+      "purlTypes": {
+        "cargo": 3343,
+        "gem": 89,
+        "github": 202,
+        "golang": 1492,
+        "maven": 49,
+        "none": 177,
+        "npm": 581
+      },
+      "licensedComponents": 1752,
+      "licenseEntries": 1933,
+      "licenses": [
+        {
+          "form": "expression",
+          "license": "MIT OR CC0-1.0",
+          "count": 4
+        },
+        {
+          "form": "id",
+          "license": "0BSD",
+          "count": 4
+        },
+        {
+          "form": "id",
+          "license": "Apache-2.0",
+          "count": 601
+        },
+        {
+          "form": "id",
+          "license": "BSD-2-Clause",
+          "count": 41
+        },
+        {
+          "form": "id",
+          "license": "BSD-2-Clause-Views",
+          "count": 5
+        },
+        {
+          "form": "id",
+          "license": "BSD-3-Clause",
+          "count": 348
+        },
+        {
+          "form": "id",
+          "license": "BlueOak-1.0.0",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "CC-BY-3.0",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "CC-BY-SA-4.0",
+          "count": 8
+        },
+        {
+          "form": "id",
+          "license": "CC0-1.0",
+          "count": 1
+        },
+        {
+          "form": "id",
+          "license": "EPL-2.0",
+          "count": 3
+        },
+        {
+          "form": "id",
+          "license": "ISC",
+          "count": 67
+        },
+        {
+          "form": "id",
+          "license": "MIT",
+          "count": 752
+        },
+        {
+          "form": "id",
+          "license": "MPL-2.0",
+          "count": 41
+        },
+        {
+          "form": "id",
+          "license": "Python-2.0",
+          "count": 2
+        },
+        {
+          "form": "id",
+          "license": "Zlib",
+          "count": 3
+        },
+        {
+          "form": "name",
+          "license": "Apache 2.0",
+          "count": 1
+        },
+        {
+          "form": "name",
+          "license": "sha256:03f0b4bcaecfdb491ef5a7d320e2c2adf886c732d34e3fff87d52dbaec64d8c3",
+          "count": 6
+        },
+        {
+          "form": "name",
+          "license": "sha256:24f49cb1b9dbc7c08f9200cdcd29065a6072ed57b566370bd25c948fefb8137d",
+          "count": 3
+        },
+        {
+          "form": "name",
+          "license": "sha256:497fcdb9fae55924c12f55f05cbe83a096662e5c591d79b74e4a8f23bab5ffee",
+          "count": 5
+        },
+        {
+          "form": "name",
+          "license": "sha256:516f622089068dde472773dddbf518d2de200f5877dcac1b9d034941f9331da0",
+          "count": 3
+        },
+        {
+          "form": "name",
+          "license": "sha256:5ff7ccec357cd44bb3fcf1b3b53a4eddee322eb383d487847d1cf1ccfbd94f46",
+          "count": 3
+        },
+        {
+          "form": "name",
+          "license": "sha256:600244c8052c8c1d307043fafacbc83b429c171dd8e08f5a537c0a54014585ee",
+          "count": 3
+        },
+        {
+          "form": "name",
+          "license": "sha256:6c79faa15168885fb88a316ae0df18f486deafddefdc16826cdc56dfbd421e24",
+          "count": 3
+        },
+        {
+          "form": "name",
+          "license": "sha256:7a3adb8e71d95e4536be8dab1aab2c21eedecf3ee45d2c968d034ee594d7b144",
+          "count": 3
+        },
+        {
+          "form": "name",
+          "license": "sha256:99b8cc6bf35926b4cdf033e003e52957baac91c9fd45358d816f6b8b977e1ccb",
+          "count": 3
+        },
+        {
+          "form": "name",
+          "license": "sha256:a6e830174d62dafad3a718384772ea1f4c0e27989f050932dc442a5e3ddad080",
+          "count": 3
+        },
+        {
+          "form": "name",
+          "license": "sha256:a8c869fbda819afb8d80e0ac19bac52e766bc6c19cb38cf94f52d64c4be2aab6",
+          "count": 3
+        },
+        {
+          "form": "name",
+          "license": "sha256:b40ec5b16182103ef1cd69d42a21c98369e35bd483b3973902da4807c0755446",
+          "count": 3
+        },
+        {
+          "form": "name",
+          "license": "sha256:b7dca0a6b01fa7365e4892877a6321179ee343d72ee87a96cfc222141b99a1e6",
+          "count": 3
+        },
+        {
+          "form": "name",
+          "license": "sha256:b81015606d10bb8640c2f5bf6d71ecbbad62bb8182a760bf7ef5ae36c52f2d86",
+          "count": 3
+        },
+        {
+          "form": "name",
+          "license": "sha256:d4290ed64c2edd0fce1d84e3f9dfb2881240fe534def76b8cd29ed6af683e287",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "name": "research",
+      "commit": "bfccda396aab1aea5dee649fbe5180499d236cec",
+      "sbom": {
+        "path": "supply/sboms/research.cdx.json",
+        "sha256": "39e629207190c1a762d46f9cd06886944dab7d9cdc927001eafe636028f12779",
+        "bytes": 15904
+      },
+      "components": 19,
+      "purlTypes": {
+        "github": 15,
+        "none": 4
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 23,
+      "name": "template",
+      "commit": "0851bb41138041f0f75118135fd8a342109c2d73",
+      "sbom": {
+        "path": "supply/sboms/template.cdx.json",
+        "sha256": "b737f1483c4f03bd390ba7a781c367d027f7e4e27e4518a5e885d521bc4d7cd9",
+        "bytes": 81713
+      },
+      "components": 79,
+      "purlTypes": {
+        "cargo": 40,
+        "github": 27,
+        "none": 10,
+        "npm": 1,
+        "pypi": 1
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 24,
+      "name": "uor-addr",
+      "commit": "20a1c5723fc8f5d645972c8d6f5c57459846302e",
+      "sbom": {
+        "path": "supply/sboms/uor-addr.cdx.json",
+        "sha256": "1dcdec23aac4d231bb0266898543d8c2512b713efa8757059660e9745d43e210",
+        "bytes": 208429
+      },
+      "components": 189,
+      "purlTypes": {
+        "cargo": 156,
+        "github": 23,
+        "none": 10
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 25,
+      "name": "uor-foundry",
+      "commit": "fdab06c9ab30d594c917040908485068ea6f9c9f",
+      "sbom": {
+        "path": "supply/sboms/uor-foundry.cdx.json",
+        "sha256": "7dc90d0f1f20485e18fc7d6f7156bad320ecc44173f15879ed6b6fd4a1d81ad2",
+        "bytes": 49317
+      },
+      "components": 49,
+      "purlTypes": {
+        "cargo": 33,
+        "github": 10,
+        "none": 5,
+        "npm": 1
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 26,
+      "name": "UOR-Framework",
+      "commit": "51c01382200b0179d6640b07e9c8119364ab69a1",
+      "sbom": {
+        "path": "supply/sboms/UOR-Framework.cdx.json",
+        "sha256": "0584b1217691823c75237ecf9d7f2eef168b017e1f9cd7025011923220759a8a",
+        "bytes": 110846
+      },
+      "components": 105,
+      "purlTypes": {
+        "cargo": 91,
+        "github": 11,
+        "none": 3
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 27,
+      "name": "uor-jcs-nfc",
+      "commit": "303591128094362857791930fdc12b73875d1ff6",
+      "sbom": {
+        "path": "supply/sboms/uor-jcs-nfc.cdx.json",
+        "sha256": "77b71a95b994ceaf477928db7c5d7a3ec4866d0b99b63f30ab85983e0bdede26",
+        "bytes": 397
+      },
+      "components": 0,
+      "purlTypes": {},
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 28,
+      "name": "uor-matmul",
+      "commit": "3cc5882f210667f9ac00fd8c02c5b5957b493f5d",
+      "sbom": {
+        "path": "supply/sboms/uor-matmul.cdx.json",
+        "sha256": "77c6914a07047b7c09eddfa079284dd5783cdede9ad199af40aad30720bde8c7",
+        "bytes": 298914
+      },
+      "components": 277,
+      "purlTypes": {
+        "cargo": 243,
+        "github": 27,
+        "none": 7
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    },
+    {
+      "index": 29,
+      "name": "uor-r4",
+      "commit": "44e2a6f062e9196fe68291259bff459dde0bde44",
+      "sbom": {
+        "path": "supply/sboms/uor-r4.cdx.json",
+        "sha256": "71f25b0846ea438bf88b8eb24c80ce9ae7649cd4c175d4ab84c3c40f8e77d119",
+        "bytes": 3451626
+      },
+      "components": 2970,
+      "purlTypes": {
+        "cargo": 2754,
+        "github": 94,
+        "none": 77,
+        "npm": 4,
+        "pypi": 41
+      },
+      "licensedComponents": 3,
+      "licenseEntries": 3,
+      "licenses": [
+        {
+          "form": "id",
+          "license": "MIT",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "name": "website",
+      "commit": "e82ffdedc5d85ebd0bde239d50d4651005045d31",
+      "sbom": {
+        "path": "supply/sboms/website.cdx.json",
+        "sha256": "f7a20dc8f7a4cfc13fe2102a60f14193f2d8568f91c8dc1b915560f7e6418469",
+        "bytes": 8962
+      },
+      "components": 10,
+      "purlTypes": {
+        "github": 8,
+        "none": 2
+      },
+      "licensedComponents": 0,
+      "licenseEntries": 0,
+      "licenses": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "calculator-example",
+      "to": "PrismPM",
+      "kind": "action",
+      "evidence": [
+        ".github/workflows/pages.yml:74",
+        ".github/workflows/pages.yml:81",
+        ".github/workflows/pages.yml:103",
+        ".github/workflows/pages.yml:112",
+        ".github/workflows/platform-equivalence.yml:41",
+        ".github/workflows/platform-equivalence.yml:48",
+        ".github/workflows/prismpm.yml:95",
+        ".github/workflows/prismpm.yml:100",
+        ".github/workflows/prismpm.yml:105",
+        ".github/workflows/prismpm.yml:128",
+        ".github/workflows/prismpm.yml:134",
+        ".github/workflows/prismpm.yml:208",
+        ".github/workflows/prismpm.yml:215",
+        ".github/workflows/prismpm.yml:223",
+        ".github/workflows/prismpm.yml:238",
+        ".github/workflows/prismpm.yml:269",
+        ".github/workflows/prismpm.yml:275",
+        ".github/workflows/prismpm.yml:282",
+        ".github/workflows/prismpm.yml:322",
+        ".github/workflows/prismpm.yml:328",
+        ".github/workflows/prismpm.yml:340",
+        ".github/workflows/prismpm.yml:348",
+        ".github/workflows/prismpm.yml:385",
+        ".github/workflows/prismpm.yml:391",
+        ".github/workflows/prismpm.yml:402",
+        ".github/workflows/prismpm.yml:409",
+        ".github/workflows/prismpm.yml:440",
+        ".github/workflows/prismpm.yml:446",
+        ".github/workflows/prismpm.yml:453",
+        ".github/workflows/prismpm.yml:497",
+        ".github/workflows/prismpm.yml:504",
+        ".github/workflows/prismpm.yml:512",
+        ".github/workflows/prismpm.yml:521",
+        ".github/workflows/prismpm.yml:549",
+        ".github/workflows/prismpm.yml:555",
+        ".github/workflows/production.yml:40",
+        ".github/workflows/production.yml:46",
+        ".github/workflows/production.yml:54",
+        ".github/workflows/production.yml:99",
+        ".github/workflows/production.yml:108",
+        ".github/workflows/production.yml:116",
+        ".github/workflows/production.yml:125",
+        ".github/workflows/production.yml:134",
+        ".github/workflows/production.yml:144",
+        ".github/workflows/production.yml:154",
+        ".github/workflows/production.yml:161",
+        ".github/workflows/production.yml:187",
+        ".github/workflows/production.yml:195",
+        ".github/workflows/production.yml:202",
+        ".github/workflows/production.yml:210",
+        ".github/workflows/production.yml:297",
+        ".github/workflows/production.yml:306",
+        ".github/workflows/production.yml:314",
+        ".github/workflows/production.yml:323",
+        ".github/workflows/production.yml:332",
+        ".github/workflows/production.yml:342",
+        ".github/workflows/production.yml:352",
+        ".github/workflows/production.yml:359",
+        ".github/workflows/production.yml:384",
+        ".github/workflows/production.yml:392",
+        ".github/workflows/production.yml:399",
+        ".github/workflows/production.yml:406",
+        ".github/workflows/production.yml:414",
+        ".github/workflows/production.yml:421",
+        ".github/workflows/publish-crate.yml:43",
+        ".github/workflows/publish-crate.yml:49",
+        ".github/workflows/verify.yml:18",
+        ".github/workflows/verify.yml:34",
+        ".github/workflows/verify.yml:40"
+      ]
+    },
+    {
+      "from": "calculator-example",
+      "to": "PrismPM",
+      "kind": "package",
+      "evidence": [
+        "Cargo.lock:22"
+      ]
+    },
+    {
+      "from": "calculator-example",
+      "to": "template",
+      "kind": "git",
+      "evidence": [
+        ".github/workflows/template-update.yml:44"
+      ]
+    },
+    {
+      "from": "community",
+      "to": "PrismPM",
+      "kind": "action",
+      "evidence": [
+        ".github/workflows/prismpm.yml:95",
+        ".github/workflows/prismpm.yml:100",
+        ".github/workflows/prismpm.yml:105",
+        ".github/workflows/prismpm.yml:128",
+        ".github/workflows/prismpm.yml:134",
+        ".github/workflows/prismpm.yml:208",
+        ".github/workflows/prismpm.yml:215",
+        ".github/workflows/prismpm.yml:223",
+        ".github/workflows/prismpm.yml:238",
+        ".github/workflows/prismpm.yml:269",
+        ".github/workflows/prismpm.yml:275",
+        ".github/workflows/prismpm.yml:282",
+        ".github/workflows/prismpm.yml:322",
+        ".github/workflows/prismpm.yml:328",
+        ".github/workflows/prismpm.yml:340",
+        ".github/workflows/prismpm.yml:348",
+        ".github/workflows/prismpm.yml:385",
+        ".github/workflows/prismpm.yml:391",
+        ".github/workflows/prismpm.yml:402",
+        ".github/workflows/prismpm.yml:409",
+        ".github/workflows/prismpm.yml:440",
+        ".github/workflows/prismpm.yml:446",
+        ".github/workflows/prismpm.yml:453",
+        ".github/workflows/prismpm.yml:497",
+        ".github/workflows/prismpm.yml:504",
+        ".github/workflows/prismpm.yml:512",
+        ".github/workflows/prismpm.yml:521",
+        ".github/workflows/prismpm.yml:549",
+        ".github/workflows/prismpm.yml:555"
+      ]
+    },
+    {
+      "from": "community",
+      "to": "template",
+      "kind": "git",
+      "evidence": [
+        ".github/workflows/template-update.yml:40"
+      ]
+    },
+    {
+      "from": "compression",
+      "to": "LexLean",
+      "kind": "package",
+      "evidence": [
+        "Cargo.lock:319",
+        "crates/model/Cargo.toml:23",
+        "xtask/Cargo.toml:14"
+      ]
+    },
+    {
+      "from": "compression",
+      "to": "PrismPM",
+      "kind": "action",
+      "evidence": [
+        ".github/workflows/prismpm.yml:95",
+        ".github/workflows/prismpm.yml:100",
+        ".github/workflows/prismpm.yml:105",
+        ".github/workflows/prismpm.yml:128",
+        ".github/workflows/prismpm.yml:134",
+        ".github/workflows/prismpm.yml:208",
+        ".github/workflows/prismpm.yml:215",
+        ".github/workflows/prismpm.yml:223",
+        ".github/workflows/prismpm.yml:238",
+        ".github/workflows/prismpm.yml:269",
+        ".github/workflows/prismpm.yml:275",
+        ".github/workflows/prismpm.yml:282",
+        ".github/workflows/prismpm.yml:322",
+        ".github/workflows/prismpm.yml:328",
+        ".github/workflows/prismpm.yml:340",
+        ".github/workflows/prismpm.yml:348",
+        ".github/workflows/prismpm.yml:385",
+        ".github/workflows/prismpm.yml:391",
+        ".github/workflows/prismpm.yml:402",
+        ".github/workflows/prismpm.yml:409",
+        ".github/workflows/prismpm.yml:440",
+        ".github/workflows/prismpm.yml:446",
+        ".github/workflows/prismpm.yml:453",
+        ".github/workflows/prismpm.yml:497",
+        ".github/workflows/prismpm.yml:504",
+        ".github/workflows/prismpm.yml:512",
+        ".github/workflows/prismpm.yml:521",
+        ".github/workflows/prismpm.yml:549",
+        ".github/workflows/prismpm.yml:555"
+      ]
+    },
+    {
+      "from": "compression",
+      "to": "PrismPM",
+      "kind": "image",
+      "evidence": [
+        "prismpm.lock:1"
+      ]
+    },
+    {
+      "from": "compression",
+      "to": "template",
+      "kind": "git",
+      "evidence": [
+        ".github/workflows/template-update.yml:40"
+      ]
+    },
+    {
+      "from": "foundry",
+      "to": "LexLean",
+      "kind": "package",
+      "evidence": [
+        "v2/in-tab-check/crate/Cargo.toml:13"
+      ]
+    },
+    {
+      "from": "foundry",
+      "to": "prism",
+      "kind": "package",
+      "evidence": [
+        "studio/core/Cargo.lock:489",
+        "studio/core/Cargo.lock:503",
+        "studio/core/Cargo.lock:516",
+        "studio/core/Cargo.lock:526",
+        "studio/core/Cargo.lock:536"
+      ]
+    },
+    {
+      "from": "foundry",
+      "to": "PrismPM",
+      "kind": "action",
+      "evidence": [
+        ".github/workflows/prismpm.yml:95",
+        ".github/workflows/prismpm.yml:100",
+        ".github/workflows/prismpm.yml:105",
+        ".github/workflows/prismpm.yml:128",
+        ".github/workflows/prismpm.yml:134",
+        ".github/workflows/prismpm.yml:208",
+        ".github/workflows/prismpm.yml:215",
+        ".github/workflows/prismpm.yml:223",
+        ".github/workflows/prismpm.yml:238",
+        ".github/workflows/prismpm.yml:269",
+        ".github/workflows/prismpm.yml:275",
+        ".github/workflows/prismpm.yml:282",
+        ".github/workflows/prismpm.yml:322",
+        ".github/workflows/prismpm.yml:328",
+        ".github/workflows/prismpm.yml:340",
+        ".github/workflows/prismpm.yml:348",
+        ".github/workflows/prismpm.yml:385",
+        ".github/workflows/prismpm.yml:391",
+        ".github/workflows/prismpm.yml:402",
+        ".github/workflows/prismpm.yml:409",
+        ".github/workflows/prismpm.yml:440",
+        ".github/workflows/prismpm.yml:446",
+        ".github/workflows/prismpm.yml:453",
+        ".github/workflows/prismpm.yml:497",
+        ".github/workflows/prismpm.yml:504",
+        ".github/workflows/prismpm.yml:512",
+        ".github/workflows/prismpm.yml:521",
+        ".github/workflows/prismpm.yml:549",
+        ".github/workflows/prismpm.yml:555"
+      ]
+    },
+    {
+      "from": "foundry",
+      "to": "template",
+      "kind": "git",
+      "evidence": [
+        ".github/workflows/template-update.yml:47"
+      ]
+    },
+    {
+      "from": "foundry",
+      "to": "template",
+      "kind": "vendored",
+      "evidence": [
+        "crates/model/Cargo.toml:2"
+      ]
+    },
+    {
+      "from": "foundry",
+      "to": "uor-addr",
+      "kind": "package",
+      "evidence": [
+        "studio/core/Cargo.lock:448"
+      ]
+    },
+    {
+      "from": "foundry",
+      "to": "UOR-Framework",
+      "kind": "package",
+      "evidence": [
+        "studio/core/Cargo.lock:460",
+        "studio/core/Cargo.lock:469"
+      ]
+    },
+    {
+      "from": "foundry-web",
+      "to": "PrismPM",
+      "kind": "action",
+      "evidence": [
+        ".github/workflows/prismpm.yml:95",
+        ".github/workflows/prismpm.yml:100",
+        ".github/workflows/prismpm.yml:105",
+        ".github/workflows/prismpm.yml:128",
+        ".github/workflows/prismpm.yml:134",
+        ".github/workflows/prismpm.yml:208",
+        ".github/workflows/prismpm.yml:215",
+        ".github/workflows/prismpm.yml:223",
+        ".github/workflows/prismpm.yml:238",
+        ".github/workflows/prismpm.yml:269",
+        ".github/workflows/prismpm.yml:275",
+        ".github/workflows/prismpm.yml:282",
+        ".github/workflows/prismpm.yml:322",
+        ".github/workflows/prismpm.yml:328",
+        ".github/workflows/prismpm.yml:340",
+        ".github/workflows/prismpm.yml:348",
+        ".github/workflows/prismpm.yml:385",
+        ".github/workflows/prismpm.yml:391",
+        ".github/workflows/prismpm.yml:402",
+        ".github/workflows/prismpm.yml:409",
+        ".github/workflows/prismpm.yml:440",
+        ".github/workflows/prismpm.yml:446",
+        ".github/workflows/prismpm.yml:453",
+        ".github/workflows/prismpm.yml:497",
+        ".github/workflows/prismpm.yml:504",
+        ".github/workflows/prismpm.yml:512",
+        ".github/workflows/prismpm.yml:521",
+        ".github/workflows/prismpm.yml:549",
+        ".github/workflows/prismpm.yml:555"
+      ]
+    },
+    {
+      "from": "foundry-web",
+      "to": "PrismPM",
+      "kind": "image",
+      "evidence": [
+        "prismpm.lock:1"
+      ]
+    },
+    {
+      "from": "foundry-web",
+      "to": "template",
+      "kind": "git",
+      "evidence": [
+        ".github/workflows/template-update.yml:40"
+      ]
+    },
+    {
+      "from": "holo-search",
+      "to": "PrismPM",
+      "kind": "action",
+      "evidence": [
+        ".github/workflows/prismpm.yml:95",
+        ".github/workflows/prismpm.yml:100",
+        ".github/workflows/prismpm.yml:105",
+        ".github/workflows/prismpm.yml:128",
+        ".github/workflows/prismpm.yml:134",
+        ".github/workflows/prismpm.yml:208",
+        ".github/workflows/prismpm.yml:215",
+        ".github/workflows/prismpm.yml:223",
+        ".github/workflows/prismpm.yml:238",
+        ".github/workflows/prismpm.yml:269",
+        ".github/workflows/prismpm.yml:275",
+        ".github/workflows/prismpm.yml:282",
+        ".github/workflows/prismpm.yml:322",
+        ".github/workflows/prismpm.yml:328",
+        ".github/workflows/prismpm.yml:340",
+        ".github/workflows/prismpm.yml:348",
+        ".github/workflows/prismpm.yml:385",
+        ".github/workflows/prismpm.yml:391",
+        ".github/workflows/prismpm.yml:402",
+        ".github/workflows/prismpm.yml:409",
+        ".github/workflows/prismpm.yml:440",
+        ".github/workflows/prismpm.yml:446",
+        ".github/workflows/prismpm.yml:453",
+        ".github/workflows/prismpm.yml:497",
+        ".github/workflows/prismpm.yml:504",
+        ".github/workflows/prismpm.yml:512",
+        ".github/workflows/prismpm.yml:521",
+        ".github/workflows/prismpm.yml:549",
+        ".github/workflows/prismpm.yml:555"
+      ]
+    },
+    {
+      "from": "holo-search",
+      "to": "PrismPM",
+      "kind": "image",
+      "evidence": [
+        "prismpm.lock:1"
+      ]
+    },
+    {
+      "from": "holo-search",
+      "to": "template",
+      "kind": "git",
+      "evidence": [
+        ".github/workflows/template-update.yml:40"
+      ]
+    },
+    {
+      "from": "holo-search",
+      "to": "template",
+      "kind": "vendored",
+      "evidence": [
+        "crates/model/Cargo.toml:2"
+      ]
+    },
+    {
+      "from": "lexlean-mcp",
+      "to": "LexLean",
+      "kind": "package",
+      "evidence": [
+        "Cargo.lock:307",
+        "crates/build-id/Cargo.toml:14",
+        "gateway/Cargo.lock:432",
+        "gateway/bindings/gateway-binding/Cargo.toml:22",
+        "gateway/bindings/gateway-engine-host/Cargo.toml:14",
+        "gateway/tool-tests/Cargo.toml:16"
+      ]
+    },
+    {
+      "from": "lexlean-mcp",
+      "to": "PrismPM",
+      "kind": "action",
+      "evidence": [
+        ".github/workflows/prismpm.yml:95",
+        ".github/workflows/prismpm.yml:100",
+        ".github/workflows/prismpm.yml:105",
+        ".github/workflows/prismpm.yml:128",
+        ".github/workflows/prismpm.yml:134",
+        ".github/workflows/prismpm.yml:208",
+        ".github/workflows/prismpm.yml:215",
+        ".github/workflows/prismpm.yml:223",
+        ".github/workflows/prismpm.yml:238",
+        ".github/workflows/prismpm.yml:269",
+        ".github/workflows/prismpm.yml:275",
+        ".github/workflows/prismpm.yml:282",
+        ".github/workflows/prismpm.yml:322",
+        ".github/workflows/prismpm.yml:328",
+        ".github/workflows/prismpm.yml:340",
+        ".github/workflows/prismpm.yml:348",
+        ".github/workflows/prismpm.yml:385",
+        ".github/workflows/prismpm.yml:391",
+        ".github/workflows/prismpm.yml:402",
+        ".github/workflows/prismpm.yml:409",
+        ".github/workflows/prismpm.yml:440",
+        ".github/workflows/prismpm.yml:446",
+        ".github/workflows/prismpm.yml:453",
+        ".github/workflows/prismpm.yml:497",
+        ".github/workflows/prismpm.yml:504",
+        ".github/workflows/prismpm.yml:512",
+        ".github/workflows/prismpm.yml:521",
+        ".github/workflows/prismpm.yml:549",
+        ".github/workflows/prismpm.yml:555"
+      ]
+    },
+    {
+      "from": "lexlean-mcp",
+      "to": "PrismPM",
+      "kind": "image",
+      "evidence": [
+        "prismpm.lock:1"
+      ]
+    },
+    {
+      "from": "lexlean-mcp",
+      "to": "template",
+      "kind": "git",
+      "evidence": [
+        ".github/workflows/template-update.yml:40"
+      ]
+    },
+    {
+      "from": "malachite-usdc",
+      "to": "UOR-Framework",
+      "kind": "package",
+      "evidence": [
+        "benchmarks/execution/uorbench/Cargo.toml:7",
+        "benchmarks/execution/uorbench2/Cargo.toml:13"
+      ]
+    },
+    {
+      "from": "MCP",
+      "to": "PrismPM",
+      "kind": "action",
+      "evidence": [
+        ".github/workflows/prismpm.yml:95",
+        ".github/workflows/prismpm.yml:100",
+        ".github/workflows/prismpm.yml:105",
+        ".github/workflows/prismpm.yml:128",
+        ".github/workflows/prismpm.yml:134",
+        ".github/workflows/prismpm.yml:208",
+        ".github/workflows/prismpm.yml:215",
+        ".github/workflows/prismpm.yml:223",
+        ".github/workflows/prismpm.yml:238",
+        ".github/workflows/prismpm.yml:269",
+        ".github/workflows/prismpm.yml:275",
+        ".github/workflows/prismpm.yml:282",
+        ".github/workflows/prismpm.yml:322",
+        ".github/workflows/prismpm.yml:328",
+        ".github/workflows/prismpm.yml:340",
+        ".github/workflows/prismpm.yml:348",
+        ".github/workflows/prismpm.yml:385",
+        ".github/workflows/prismpm.yml:391",
+        ".github/workflows/prismpm.yml:402",
+        ".github/workflows/prismpm.yml:409",
+        ".github/workflows/prismpm.yml:440",
+        ".github/workflows/prismpm.yml:446",
+        ".github/workflows/prismpm.yml:453",
+        ".github/workflows/prismpm.yml:497",
+        ".github/workflows/prismpm.yml:504",
+        ".github/workflows/prismpm.yml:512",
+        ".github/workflows/prismpm.yml:521",
+        ".github/workflows/prismpm.yml:549",
+        ".github/workflows/prismpm.yml:555"
+      ]
+    },
+    {
+      "from": "MCP",
+      "to": "PrismPM",
+      "kind": "image",
+      "evidence": [
+        "prismpm.lock:1"
+      ]
+    },
+    {
+      "from": "MCP",
+      "to": "template",
+      "kind": "git",
+      "evidence": [
+        ".github/workflows/template-update.yml:40"
+      ]
+    },
+    {
+      "from": "MNIST",
+      "to": "PrismPM",
+      "kind": "action",
+      "evidence": [
+        ".github/workflows/prismpm.yml:95",
+        ".github/workflows/prismpm.yml:100",
+        ".github/workflows/prismpm.yml:105",
+        ".github/workflows/prismpm.yml:128",
+        ".github/workflows/prismpm.yml:134",
+        ".github/workflows/prismpm.yml:208",
+        ".github/workflows/prismpm.yml:215",
+        ".github/workflows/prismpm.yml:223",
+        ".github/workflows/prismpm.yml:238",
+        ".github/workflows/prismpm.yml:269",
+        ".github/workflows/prismpm.yml:275",
+        ".github/workflows/prismpm.yml:282",
+        ".github/workflows/prismpm.yml:322",
+        ".github/workflows/prismpm.yml:328",
+        ".github/workflows/prismpm.yml:340",
+        ".github/workflows/prismpm.yml:348",
+        ".github/workflows/prismpm.yml:385",
+        ".github/workflows/prismpm.yml:391",
+        ".github/workflows/prismpm.yml:402",
+        ".github/workflows/prismpm.yml:409",
+        ".github/workflows/prismpm.yml:440",
+        ".github/workflows/prismpm.yml:446",
+        ".github/workflows/prismpm.yml:453",
+        ".github/workflows/prismpm.yml:497",
+        ".github/workflows/prismpm.yml:504",
+        ".github/workflows/prismpm.yml:512",
+        ".github/workflows/prismpm.yml:521",
+        ".github/workflows/prismpm.yml:549",
+        ".github/workflows/prismpm.yml:555"
+      ]
+    },
+    {
+      "from": "MNIST",
+      "to": "template",
+      "kind": "git",
+      "evidence": [
+        ".github/workflows/template-update.yml:40"
+      ]
+    },
+    {
+      "from": "prism",
+      "to": "UOR-Framework",
+      "kind": "git",
+      "evidence": [
+        ".github/workflows/release.yml:140"
+      ]
+    },
+    {
+      "from": "prism",
+      "to": "UOR-Framework",
+      "kind": "package",
+      "evidence": [
+        "Cargo.lock:196",
+        "Cargo.lock:205",
+        "Cargo.toml:37",
+        "Cargo.toml:38",
+        "crates/uor-prism-crypto/Cargo.toml:20",
+        "crates/uor-prism-crypto/Cargo.toml:21",
+        "crates/uor-prism-fhe/Cargo.toml:20",
+        "crates/uor-prism-fhe/Cargo.toml:21",
+        "crates/uor-prism-numerics/Cargo.toml:20",
+        "crates/uor-prism-numerics/Cargo.toml:21",
+        "crates/uor-prism-tensor/Cargo.toml:20",
+        "crates/uor-prism-tensor/Cargo.toml:21",
+        "crates/uor-prism-verify/Cargo.toml:21",
+        "crates/uor-prism/Cargo.toml:20",
+        "crates/uor-prism/Cargo.toml:21"
+      ]
+    },
+    {
+      "from": "prism-code",
+      "to": "PrismPM",
+      "kind": "action",
+      "evidence": [
+        ".github/workflows/prismpm.yml:95",
+        ".github/workflows/prismpm.yml:100",
+        ".github/workflows/prismpm.yml:105",
+        ".github/workflows/prismpm.yml:128",
+        ".github/workflows/prismpm.yml:134",
+        ".github/workflows/prismpm.yml:208",
+        ".github/workflows/prismpm.yml:215",
+        ".github/workflows/prismpm.yml:223",
+        ".github/workflows/prismpm.yml:238",
+        ".github/workflows/prismpm.yml:269",
+        ".github/workflows/prismpm.yml:275",
+        ".github/workflows/prismpm.yml:282",
+        ".github/workflows/prismpm.yml:322",
+        ".github/workflows/prismpm.yml:328",
+        ".github/workflows/prismpm.yml:340",
+        ".github/workflows/prismpm.yml:348",
+        ".github/workflows/prismpm.yml:385",
+        ".github/workflows/prismpm.yml:391",
+        ".github/workflows/prismpm.yml:402",
+        ".github/workflows/prismpm.yml:409",
+        ".github/workflows/prismpm.yml:440",
+        ".github/workflows/prismpm.yml:446",
+        ".github/workflows/prismpm.yml:453",
+        ".github/workflows/prismpm.yml:497",
+        ".github/workflows/prismpm.yml:504",
+        ".github/workflows/prismpm.yml:512",
+        ".github/workflows/prismpm.yml:521",
+        ".github/workflows/prismpm.yml:549",
+        ".github/workflows/prismpm.yml:555",
+        ".github/workflows/release.yml:45",
+        ".github/workflows/release.yml:50"
+      ]
+    },
+    {
+      "from": "prism-code",
+      "to": "PrismPM",
+      "kind": "image",
+      "evidence": [
+        "prismpm.lock:1"
+      ]
+    },
+    {
+      "from": "prism-code",
+      "to": "template",
+      "kind": "git",
+      "evidence": [
+        ".github/workflows/template-update.yml:46"
+      ]
+    },
+    {
+      "from": "PrismPM",
+      "to": "LexLean",
+      "kind": "git",
+      "evidence": [
+        ".github/workflows/lexlean-sync.yml:85",
+        ".github/workflows/m0-lexlean-reconcile.yml:34"
+      ]
+    },
+    {
+      "from": "PrismPM",
+      "to": "LexLean",
+      "kind": "vendored",
+      "evidence": [
+        "vendor/lexlean/Cargo.toml:15"
+      ]
+    },
+    {
+      "from": "PrismPM",
+      "to": "prism",
+      "kind": "package",
+      "evidence": [
+        "tests/holo-codec-oracle/Cargo.lock:487",
+        "tests/holo-codec-oracle/Cargo.lock:501",
+        "tests/holo-codec-oracle/Cargo.lock:514",
+        "tests/holo-codec-oracle/Cargo.lock:524",
+        "tests/holo-codec-oracle/Cargo.lock:534",
+        "tests/hologram-oracle/Cargo.lock:3226",
+        "tests/hologram-oracle/Cargo.lock:3240",
+        "tests/hologram-oracle/Cargo.lock:3253",
+        "tests/hologram-oracle/Cargo.lock:3263",
+        "tests/hologram-oracle/Cargo.lock:3273"
+      ]
+    },
+    {
+      "from": "PrismPM",
+      "to": "uor-addr",
+      "kind": "package",
+      "evidence": [
+        "tests/holo-codec-oracle/Cargo.lock:446",
+        "tests/hologram-oracle/Cargo.lock:3185"
+      ]
+    },
+    {
+      "from": "PrismPM",
+      "to": "UOR-Framework",
+      "kind": "package",
+      "evidence": [
+        "tests/holo-codec-oracle/Cargo.lock:458",
+        "tests/holo-codec-oracle/Cargo.lock:467",
+        "tests/hologram-oracle/Cargo.lock:3197",
+        "tests/hologram-oracle/Cargo.lock:3206"
+      ]
+    },
+    {
+      "from": "template",
+      "to": "PrismPM",
+      "kind": "action",
+      "evidence": [
+        ".github/workflows/prismpm.yml:95",
+        ".github/workflows/prismpm.yml:100",
+        ".github/workflows/prismpm.yml:105",
+        ".github/workflows/prismpm.yml:128",
+        ".github/workflows/prismpm.yml:134",
+        ".github/workflows/prismpm.yml:208",
+        ".github/workflows/prismpm.yml:215",
+        ".github/workflows/prismpm.yml:223",
+        ".github/workflows/prismpm.yml:238",
+        ".github/workflows/prismpm.yml:269",
+        ".github/workflows/prismpm.yml:275",
+        ".github/workflows/prismpm.yml:282",
+        ".github/workflows/prismpm.yml:322",
+        ".github/workflows/prismpm.yml:328",
+        ".github/workflows/prismpm.yml:340",
+        ".github/workflows/prismpm.yml:348",
+        ".github/workflows/prismpm.yml:385",
+        ".github/workflows/prismpm.yml:391",
+        ".github/workflows/prismpm.yml:402",
+        ".github/workflows/prismpm.yml:409",
+        ".github/workflows/prismpm.yml:440",
+        ".github/workflows/prismpm.yml:446",
+        ".github/workflows/prismpm.yml:453",
+        ".github/workflows/prismpm.yml:497",
+        ".github/workflows/prismpm.yml:504",
+        ".github/workflows/prismpm.yml:512",
+        ".github/workflows/prismpm.yml:521",
+        ".github/workflows/prismpm.yml:549",
+        ".github/workflows/prismpm.yml:555"
+      ]
+    },
+    {
+      "from": "template",
+      "to": "PrismPM",
+      "kind": "image",
+      "evidence": [
+        "prismpm.lock:1"
+      ]
+    },
+    {
+      "from": "uor-addr",
+      "to": "prism",
+      "kind": "package",
+      "evidence": [
+        "Cargo.lock:882",
+        "Cargo.lock:896",
+        "Cargo.lock:909",
+        "Cargo.lock:919",
+        "Cargo.lock:929",
+        "Cargo.toml:48",
+        "Cargo.toml:53",
+        "crates/uor-addr/Cargo.toml:17",
+        "crates/uor-addr/Cargo.toml:25"
+      ]
+    },
+    {
+      "from": "uor-addr",
+      "to": "UOR-Framework",
+      "kind": "package",
+      "evidence": [
+        "Cargo.lock:862",
+        "Cargo.lock:871",
+        "Cargo.toml:59",
+        "Cargo.toml:60",
+        "crates/uor-addr/Cargo.toml:18",
+        "crates/uor-addr/Cargo.toml:19"
+      ]
+    },
+    {
+      "from": "uor-foundry",
+      "to": "PrismPM",
+      "kind": "action",
+      "evidence": [
+        ".github/workflows/prismpm.yml:95",
+        ".github/workflows/prismpm.yml:100",
+        ".github/workflows/prismpm.yml:105",
+        ".github/workflows/prismpm.yml:128",
+        ".github/workflows/prismpm.yml:134",
+        ".github/workflows/prismpm.yml:208",
+        ".github/workflows/prismpm.yml:215",
+        ".github/workflows/prismpm.yml:223",
+        ".github/workflows/prismpm.yml:238",
+        ".github/workflows/prismpm.yml:269",
+        ".github/workflows/prismpm.yml:275",
+        ".github/workflows/prismpm.yml:282",
+        ".github/workflows/prismpm.yml:322",
+        ".github/workflows/prismpm.yml:328",
+        ".github/workflows/prismpm.yml:340",
+        ".github/workflows/prismpm.yml:348",
+        ".github/workflows/prismpm.yml:385",
+        ".github/workflows/prismpm.yml:391",
+        ".github/workflows/prismpm.yml:402",
+        ".github/workflows/prismpm.yml:409",
+        ".github/workflows/prismpm.yml:440",
+        ".github/workflows/prismpm.yml:446",
+        ".github/workflows/prismpm.yml:453",
+        ".github/workflows/prismpm.yml:497",
+        ".github/workflows/prismpm.yml:504",
+        ".github/workflows/prismpm.yml:512",
+        ".github/workflows/prismpm.yml:521",
+        ".github/workflows/prismpm.yml:549",
+        ".github/workflows/prismpm.yml:555"
+      ]
+    },
+    {
+      "from": "uor-foundry",
+      "to": "PrismPM",
+      "kind": "image",
+      "evidence": [
+        "prismpm.lock:1"
+      ]
+    },
+    {
+      "from": "uor-foundry",
+      "to": "template",
+      "kind": "git",
+      "evidence": [
+        ".github/workflows/template-update.yml:40"
+      ]
+    },
+    {
+      "from": "uor-matmul",
+      "to": "UOR-Framework",
+      "kind": "package",
+      "evidence": [
+        "Cargo.lock:1760",
+        "Cargo.lock:1769"
+      ]
+    },
+    {
+      "from": "uor-r4",
+      "to": "prism",
+      "kind": "vendored",
+      "evidence": [
+        "archive/vendor-snapshots/uor_standards/prism/crates/uor-prism-crypto/Cargo.toml:2",
+        "archive/vendor-snapshots/uor_standards/prism/crates/uor-prism-fhe/Cargo.toml:2",
+        "archive/vendor-snapshots/uor_standards/prism/crates/uor-prism-numerics/Cargo.toml:2",
+        "archive/vendor-snapshots/uor_standards/prism/crates/uor-prism-tensor/Cargo.toml:2",
+        "archive/vendor-snapshots/uor_standards/prism/crates/uor-prism-verify/Cargo.toml:2",
+        "archive/vendor-snapshots/uor_standards/prism/crates/uor-prism/Cargo.toml:2",
+        "archive/vendor-snapshots/uor_standards/prism/tools/wiki-link-check/Cargo.toml:2"
+      ]
+    },
+    {
+      "from": "uor-r4",
+      "to": "uor-addr",
+      "kind": "git",
+      "evidence": [
+        "Cargo.lock:2219",
+        "crates/uor-r4-graph-format/Cargo.toml:27",
+        "crates/uor-r4-router/Cargo.toml:37"
+      ]
+    },
+    {
+      "from": "uor-r4",
+      "to": "uor-addr",
+      "kind": "vendored",
+      "evidence": [
+        "archive/vendor-snapshots/uor_standards/uor-addr/bindings/npm/package.json:2",
+        "archive/vendor-snapshots/uor_standards/uor-addr/bindings/python/pyproject.toml:6",
+        "archive/vendor-snapshots/uor_standards/uor-addr/crates/uor-addr-c/Cargo.toml:2",
+        "archive/vendor-snapshots/uor_standards/uor-addr/crates/uor-addr-wasm/Cargo.toml:2",
+        "archive/vendor-snapshots/uor_standards/uor-addr/crates/uor-addr/Cargo.toml:2",
+        "third_party/uor-addr-0.2.0/Cargo.toml:2",
+        "third_party/uor-addr-0.2.0/historical/upstream/crates/uor-addr/Cargo.toml:2"
+      ]
+    },
+    {
+      "from": "uor-r4",
+      "to": "UOR-Framework",
+      "kind": "git",
+      "evidence": [
+        "Cargo.lock:2230",
+        "Cargo.lock:2238",
+        "Cargo.lock:2248",
+        "crates/uor-r4-router/Cargo.toml:38",
+        "crates/uor-r4-router/Cargo.toml:39",
+        "crates/uor-r4-wasm-router/Cargo.toml:40",
+        "crates/uor-r4-wasm-router/Cargo.toml:41",
+        "crates/uor-r4-wasm-router/Cargo.toml:61"
+      ]
+    },
+    {
+      "from": "uor-r4",
+      "to": "UOR-Framework",
+      "kind": "vendored",
+      "evidence": [
+        "archive/vendor-snapshots/uor_standards/UOR-Framework/cargo-uor/Cargo.toml:2",
+        "archive/vendor-snapshots/uor_standards/UOR-Framework/foundation/Cargo.toml:2",
+        "archive/vendor-snapshots/uor_standards/UOR-Framework/spec/Cargo.toml:2",
+        "archive/vendor-snapshots/uor_standards/UOR-Framework/uor-foundation-sdk/Cargo.toml:2",
+        "archive/vendor-snapshots/uor_standards/UOR-Framework/uor-foundation-test-helpers/Cargo.toml:2",
+        "archive/vendor-snapshots/uor_standards/UOR-Framework/uor-foundation-verify/Cargo.toml:2",
+        "archive/vendor-snapshots/uor_standards/UOR-Framework/xtask/Cargo.toml:2"
+      ]
+    },
+    {
+      "from": "uor-r4",
+      "to": "uor-matmul",
+      "kind": "git",
+      "evidence": [
+        "crates/uor-r4-model-source/Cargo.toml:29",
+        "crates/uor-r4-model-source/Cargo.toml:32"
+      ]
+    },
+    {
+      "from": "uor-r4",
+      "to": "uor-matmul",
+      "kind": "package",
+      "evidence": [
+        "crates/uor-r4-model-source/Cargo.toml:29",
+        "crates/uor-r4-model-source/Cargo.toml:32"
+      ]
+    }
+  ],
+  "packages": [
+    {
+      "index": 0,
+      "repository": "calculator-example",
+      "ecosystem": "cargo",
+      "name": "calculator-example",
+      "evidence": "Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 1,
+      "repository": "community",
+      "ecosystem": "cargo",
+      "name": "repo-model",
+      "evidence": "crates/model/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 2,
+      "repository": "compression",
+      "ecosystem": "cargo",
+      "name": "figures",
+      "evidence": "crates/figures/Cargo.toml:2",
+      "private": true,
+      "registry": "elsewhere",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 3,
+      "repository": "compression",
+      "ecosystem": "cargo",
+      "name": "frontier",
+      "evidence": "crates/frontier/Cargo.toml:2",
+      "private": true,
+      "registry": "elsewhere",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 4,
+      "repository": "compression",
+      "ecosystem": "cargo",
+      "name": "repo-model",
+      "evidence": "crates/model/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 5,
+      "repository": "compression",
+      "ecosystem": "cargo",
+      "name": "uorc",
+      "evidence": "crates/uorc/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 6,
+      "repository": "compression",
+      "ecosystem": "cargo",
+      "name": "uorc-wasm",
+      "evidence": "crates/uorc-wasm/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 7,
+      "repository": "foundry",
+      "ecosystem": "cargo",
+      "name": "hologram-forge-core",
+      "evidence": "studio/core/Cargo.toml:2",
+      "private": false,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 8,
+      "repository": "foundry-web",
+      "ecosystem": "cargo",
+      "name": "repo-model",
+      "evidence": "crates/model/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 9,
+      "repository": "LexLean",
+      "ecosystem": "cargo",
+      "name": "lexlean",
+      "evidence": "crates/lexlean/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.4.1",
+      "downloads": {
+        "count": 1898,
+        "window": "all-time"
+      },
+      "externalDependents": []
+    },
+    {
+      "index": 10,
+      "repository": "LexLean",
+      "ecosystem": "cargo",
+      "name": "repo-model",
+      "evidence": "crates/model/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 11,
+      "repository": "lexlean-mcp",
+      "ecosystem": "cargo",
+      "name": "repo-model",
+      "evidence": "crates/model/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 12,
+      "repository": "MCP",
+      "ecosystem": "cargo",
+      "name": "repo-model",
+      "evidence": "crates/model/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 13,
+      "repository": "MNIST",
+      "ecosystem": "cargo",
+      "name": "repo-model",
+      "evidence": "crates/model/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 14,
+      "repository": "nest-uor",
+      "ecosystem": "pypi",
+      "name": "nest-uor",
+      "evidence": "pyproject.toml:6",
+      "private": false,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 15,
+      "repository": "prism",
+      "ecosystem": "cargo",
+      "name": "uor-prism",
+      "evidence": "crates/uor-prism/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.4.0",
+      "downloads": {
+        "count": 29023,
+        "window": "all-time"
+      },
+      "externalDependents": []
+    },
+    {
+      "index": 16,
+      "repository": "prism",
+      "ecosystem": "cargo",
+      "name": "uor-prism-crypto",
+      "evidence": "crates/uor-prism-crypto/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.4.0",
+      "downloads": {
+        "count": 28429,
+        "window": "all-time"
+      },
+      "externalDependents": []
+    },
+    {
+      "index": 17,
+      "repository": "prism",
+      "ecosystem": "cargo",
+      "name": "uor-prism-fhe",
+      "evidence": "crates/uor-prism-fhe/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.4.0",
+      "downloads": {
+        "count": 29092,
+        "window": "all-time"
+      },
+      "externalDependents": []
+    },
+    {
+      "index": 18,
+      "repository": "prism",
+      "ecosystem": "cargo",
+      "name": "uor-prism-numerics",
+      "evidence": "crates/uor-prism-numerics/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.4.0",
+      "downloads": {
+        "count": 29202,
+        "window": "all-time"
+      },
+      "externalDependents": []
+    },
+    {
+      "index": 19,
+      "repository": "prism",
+      "ecosystem": "cargo",
+      "name": "uor-prism-tensor",
+      "evidence": "crates/uor-prism-tensor/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.4.0",
+      "downloads": {
+        "count": 29117,
+        "window": "all-time"
+      },
+      "externalDependents": []
+    },
+    {
+      "index": 20,
+      "repository": "prism",
+      "ecosystem": "cargo",
+      "name": "uor-prism-verify",
+      "evidence": "crates/uor-prism-verify/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.4.0",
+      "downloads": {
+        "count": 304,
+        "window": "all-time"
+      },
+      "externalDependents": []
+    },
+    {
+      "index": 21,
+      "repository": "prism",
+      "ecosystem": "cargo",
+      "name": "wiki-link-check",
+      "evidence": "tools/wiki-link-check/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 22,
+      "repository": "PrismPM",
+      "ecosystem": "cargo",
+      "name": "prism-stdlib",
+      "evidence": "stdlib/generated/package/Cargo.toml:2",
+      "private": false,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 23,
+      "repository": "PrismPM",
+      "ecosystem": "cargo",
+      "name": "prismpm",
+      "evidence": "crates/prismpm/Cargo.toml:2",
+      "private": false,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 24,
+      "repository": "PrismPM",
+      "ecosystem": "cargo",
+      "name": "repo-model",
+      "evidence": "crates/model/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 25,
+      "repository": "PrismPM",
+      "ecosystem": "npm",
+      "name": "@prism-code/conformance",
+      "evidence": "sdk/npm/conformance/package.json:2",
+      "private": false,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 26,
+      "repository": "PrismPM",
+      "ecosystem": "npm",
+      "name": "@prism-code/spec",
+      "evidence": "sdk/npm/spec/package.json:2",
+      "private": false,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 27,
+      "repository": "PrismPM",
+      "ecosystem": "npm",
+      "name": "@prism-code/testing",
+      "evidence": "sdk/npm/testing/package.json:2",
+      "private": false,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 28,
+      "repository": "PrismPM",
+      "ecosystem": "npm",
+      "name": "@prism-code/verify",
+      "evidence": "sdk/npm/verify/package.json:2",
+      "private": false,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 29,
+      "repository": "PrismPM",
+      "ecosystem": "npm",
+      "name": "create-prism-code",
+      "evidence": "sdk/npm/create-prism-code/package.json:2",
+      "private": false,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 30,
+      "repository": "PrismPM",
+      "ecosystem": "npm",
+      "name": "prism-code",
+      "evidence": "sdk/npm/prism-code/package.json:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.9.1",
+      "downloads": {
+        "count": 5544,
+        "window": "last-month"
+      },
+      "externalDependents": null
+    },
+    {
+      "index": 31,
+      "repository": "research",
+      "ecosystem": "cargo",
+      "name": "atlas-embeddings",
+      "evidence": "atlas-embeddings/Cargo.toml:2",
+      "private": false,
+      "registry": "elsewhere",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 32,
+      "repository": "template",
+      "ecosystem": "cargo",
+      "name": "repo-model",
+      "evidence": "crates/model/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 33,
+      "repository": "uor-addr",
+      "ecosystem": "cargo",
+      "name": "uor-addr",
+      "evidence": "crates/uor-addr/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.2.0",
+      "downloads": {
+        "count": 21212,
+        "window": "all-time"
+      },
+      "externalDependents": []
+    },
+    {
+      "index": 34,
+      "repository": "uor-addr",
+      "ecosystem": "cargo",
+      "name": "uor-addr-c",
+      "evidence": "crates/uor-addr-c/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.2.0",
+      "downloads": {
+        "count": 65,
+        "window": "all-time"
+      },
+      "externalDependents": []
+    },
+    {
+      "index": 35,
+      "repository": "uor-addr",
+      "ecosystem": "cargo",
+      "name": "uor-addr-wasm",
+      "evidence": "crates/uor-addr-wasm/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.2.0",
+      "downloads": {
+        "count": 59,
+        "window": "all-time"
+      },
+      "externalDependents": []
+    },
+    {
+      "index": 36,
+      "repository": "uor-addr",
+      "ecosystem": "npm",
+      "name": "@uor-foundation/uor-addr",
+      "evidence": "bindings/npm/package.json:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.2.0",
+      "downloads": {
+        "count": 57,
+        "window": "last-month"
+      },
+      "externalDependents": null
+    },
+    {
+      "index": 37,
+      "repository": "uor-addr",
+      "ecosystem": "pypi",
+      "name": "uor-addr",
+      "evidence": "bindings/python/pyproject.toml:6",
+      "private": false,
+      "registry": "published",
+      "version": "0.2.0",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 38,
+      "repository": "uor-foundry",
+      "ecosystem": "cargo",
+      "name": "repo-model",
+      "evidence": "crates/model/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 39,
+      "repository": "UOR-Framework",
+      "ecosystem": "cargo",
+      "name": "cargo-uor",
+      "evidence": "cargo-uor/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 40,
+      "repository": "UOR-Framework",
+      "ecosystem": "cargo",
+      "name": "uor-foundation",
+      "evidence": "foundation/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.5.2",
+      "downloads": {
+        "count": 28847,
+        "window": "all-time"
+      },
+      "externalDependents": [
+        "uor-addr-1"
+      ]
+    },
+    {
+      "index": 41,
+      "repository": "UOR-Framework",
+      "ecosystem": "cargo",
+      "name": "uor-foundation-sdk",
+      "evidence": "uor-foundation-sdk/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.5.2",
+      "downloads": {
+        "count": 27787,
+        "window": "all-time"
+      },
+      "externalDependents": [
+        "uor-addr-1"
+      ]
+    },
+    {
+      "index": 42,
+      "repository": "UOR-Framework",
+      "ecosystem": "cargo",
+      "name": "uor-foundation-test-helpers",
+      "evidence": "uor-foundation-test-helpers/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 43,
+      "repository": "UOR-Framework",
+      "ecosystem": "cargo",
+      "name": "uor-foundation-verify",
+      "evidence": "uor-foundation-verify/Cargo.toml:2",
+      "private": false,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 44,
+      "repository": "UOR-Framework",
+      "ecosystem": "cargo",
+      "name": "uor-ontology",
+      "evidence": "spec/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 45,
+      "repository": "UOR-Framework",
+      "ecosystem": "cargo",
+      "name": "uor-xtask",
+      "evidence": "xtask/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    },
+    {
+      "index": 46,
+      "repository": "uor-matmul",
+      "ecosystem": "cargo",
+      "name": "uor-matmul",
+      "evidence": "crates/uor-matmul/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.1.0",
+      "downloads": {
+        "count": 18,
+        "window": "all-time"
+      },
+      "externalDependents": []
+    },
+    {
+      "index": 47,
+      "repository": "uor-matmul",
+      "ecosystem": "cargo",
+      "name": "uor-matmul-codec",
+      "evidence": "crates/uor-matmul-codec/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.1.0",
+      "downloads": {
+        "count": 86,
+        "window": "all-time"
+      },
+      "externalDependents": []
+    },
+    {
+      "index": 48,
+      "repository": "uor-matmul",
+      "ecosystem": "cargo",
+      "name": "uor-matmul-core",
+      "evidence": "crates/uor-matmul-core/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.1.0",
+      "downloads": {
+        "count": 147,
+        "window": "all-time"
+      },
+      "externalDependents": []
+    },
+    {
+      "index": 49,
+      "repository": "uor-matmul",
+      "ecosystem": "cargo",
+      "name": "uor-matmul-gemm",
+      "evidence": "crates/uor-matmul-gemm/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.1.0",
+      "downloads": {
+        "count": 54,
+        "window": "all-time"
+      },
+      "externalDependents": []
+    },
+    {
+      "index": 50,
+      "repository": "uor-matmul",
+      "ecosystem": "cargo",
+      "name": "uor-matmul-kernels",
+      "evidence": "crates/uor-matmul-kernels/Cargo.toml:2",
+      "private": false,
+      "registry": "published",
+      "version": "0.1.0",
+      "downloads": {
+        "count": 87,
+        "window": "all-time"
+      },
+      "externalDependents": []
+    },
+    {
+      "index": 51,
+      "repository": "uor-matmul",
+      "ecosystem": "cargo",
+      "name": "uor-matmul-model",
+      "evidence": "crates/uor-matmul-model/Cargo.toml:2",
+      "private": true,
+      "registry": "absent",
+      "version": "",
+      "downloads": null,
+      "externalDependents": null
+    }
+  ],
+  "refusals": [
+    {
+      "repository": 0,
+      "refusal": "sbom-empty",
+      "detail": ".github: syft 1.38.0 catalogues no component in the tree at 92da114114fc9b76cbf2c5168e29d409b62ddde8"
+    },
+    {
+      "repository": 1,
+      "refusal": "sbom-empty",
+      "detail": "5-Levels-of-UOR: syft 1.38.0 catalogues no component in the tree at 86dde40a976d2a7a7be16b31b6a509698e8eb5bb"
+    },
+    {
+      "repository": 2,
+      "refusal": "packages-unlinked",
+      "detail": "atlas-12288: 4 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"
+    },
+    {
+      "repository": 3,
+      "refusal": "image-source-undeclared",
+      "detail": "calculator-example: 1 references to ghcr.io/uor-foundation/prismpm-runtime, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/template-update.yml:59)"
+    },
+    {
+      "repository": 3,
+      "refusal": "image-source-undeclared",
+      "detail": "calculator-example: 32 references to ghcr.io/uor-foundation/calculator-system, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/production.yml:50, .github/workflows/production.yml:58, .github/workflows/production.yml:104, and 29 more)"
+    },
+    {
+      "repository": 4,
+      "refusal": "sdk-image-outside-foundation",
+      "detail": "community: prismpm.lock:1 pins the SDK image ghcr.io/afflom/prismpm-sdk-patched, which is not published under ghcr.io/uor-foundation"
+    },
+    {
+      "repository": 5,
+      "refusal": "packages-unlinked",
+      "detail": "compression: 3 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"
+    },
+    {
+      "repository": 7,
+      "refusal": "packages-unlinked",
+      "detail": "foundry: 3 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"
+    },
+    {
+      "repository": 7,
+      "refusal": "sdk-image-outside-foundation",
+      "detail": "foundry: prismpm.lock:1 pins the SDK image ghcr.io/afflom/prismpm-sdk-patched, which is not published under ghcr.io/uor-foundation"
+    },
+    {
+      "repository": 10,
+      "refusal": "sbom-empty",
+      "detail": "kappa-distribution: syft 1.38.0 catalogues no component in the tree at 2475e701f25ed5887aba8b68a39ecc0f87faad6f"
+    },
+    {
+      "repository": 11,
+      "refusal": "packages-unlinked",
+      "detail": "kappa-registry: 16 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"
+    },
+    {
+      "repository": 12,
+      "refusal": "packages-unlinked",
+      "detail": "LexLean: 256 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"
+    },
+    {
+      "repository": 13,
+      "refusal": "packages-unlinked",
+      "detail": "lexlean-mcp: 4 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"
+    },
+    {
+      "repository": 14,
+      "refusal": "packages-unlinked",
+      "detail": "malachite-usdc: 2 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"
+    },
+    {
+      "repository": 14,
+      "refusal": "sbom-empty",
+      "detail": "malachite-usdc: syft 1.38.0 catalogues no component in the tree at 23431008f0ccc2899c3a1ecb9243a2578d5c7156"
+    },
+    {
+      "repository": 15,
+      "refusal": "packages-unlinked",
+      "detail": "MCP: 5 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"
+    },
+    {
+      "repository": 16,
+      "refusal": "packages-unlinked",
+      "detail": "MNIST: 1 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"
+    },
+    {
+      "repository": 17,
+      "refusal": "sbom-empty",
+      "detail": "nest-uor: syft 1.38.0 catalogues no component in the tree at 5a469e7d207af7dcca54df0de39e38c54c953569"
+    },
+    {
+      "repository": 20,
+      "refusal": "image-source-undeclared",
+      "detail": "prism-code: 1 references to ghcr.io/uor-foundation/dataflow-policy, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/release.yml:53)"
+    },
+    {
+      "repository": 20,
+      "refusal": "reference-outside-register",
+      "detail": "prism-code: 1 references to UOR-Foundation/dataflow-policy, which is not a public repository of the ecosystem register (crates/model/Cargo.toml:2)"
+    },
+    {
+      "repository": 21,
+      "refusal": "image-source-undeclared",
+      "detail": "PrismPM: 2 references to ghcr.io/uor-foundation/prismpm-adapter-compose, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/release.yml:473, .github/workflows/release.yml:512)"
+    },
+    {
+      "repository": 21,
+      "refusal": "image-source-undeclared",
+      "detail": "PrismPM: 2 references to ghcr.io/uor-foundation/prismpm-adapter-github-pages, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/release.yml:475, .github/workflows/release.yml:520)"
+    },
+    {
+      "repository": 21,
+      "refusal": "image-source-undeclared",
+      "detail": "PrismPM: 2 references to ghcr.io/uor-foundation/prismpm-adapter-kubernetes, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/release.yml:474, .github/workflows/release.yml:516)"
+    },
+    {
+      "repository": 21,
+      "refusal": "image-source-undeclared",
+      "detail": "PrismPM: 2 references to ghcr.io/uor-foundation/prismpm-oracles, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/release.yml:476, .github/workflows/release.yml:524)"
+    },
+    {
+      "repository": 21,
+      "refusal": "image-source-undeclared",
+      "detail": "PrismPM: 2 references to ghcr.io/uor-foundation/prismpm-sdk-build, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/release.yml:477, .github/workflows/release.yml:528)"
+    },
+    {
+      "repository": 21,
+      "refusal": "image-source-undeclared",
+      "detail": "PrismPM: 3 references to ghcr.io/uor-foundation/prismpm-runtime, and ghcr.io serves no manifest for latest, so the repository it is built from is not declared (.github/workflows/release.yml:45, .github/workflows/release.yml:472, .github/workflows/release.yml:508)"
+    },
+    {
+      "repository": 21,
+      "refusal": "packages-unlinked",
+      "detail": "PrismPM: 19 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"
+    },
+    {
+      "repository": 27,
+      "refusal": "sbom-empty",
+      "detail": "uor-jcs-nfc: syft 1.38.0 catalogues no component in the tree at 303591128094362857791930fdc12b73875d1ff6"
+    },
+    {
+      "repository": 29,
+      "refusal": "packages-unlinked",
+      "detail": "uor-r4: 48 manifests declare a package for publication without naming the UOR-Foundation repository it is published from, so no registry entry can be verified as the Foundation's"
+    }
+  ],
+  "packageClaims": [
+    {
+      "package": 2,
+      "refusal": "private-name-held-elsewhere",
+      "detail": "crates.io publishes figures from https://github.com/khonsulabs/figures, not from UOR-Foundation/compression where crates/figures/Cargo.toml:2 declares it private"
+    },
+    {
+      "package": 3,
+      "refusal": "private-name-held-elsewhere",
+      "detail": "crates.io publishes frontier naming no repository, not from UOR-Foundation/compression where crates/frontier/Cargo.toml:2 declares it private"
+    },
+    {
+      "package": 7,
+      "refusal": "unpublished",
+      "detail": "cargo hologram-forge-core (studio/core/Cargo.toml:2) is declared for publication and crates.io has no package of that name"
+    },
+    {
+      "package": 14,
+      "refusal": "unpublished",
+      "detail": "pypi nest-uor (pyproject.toml:6) is declared for publication and PyPI has no package of that name"
+    },
+    {
+      "package": 22,
+      "refusal": "unpublished",
+      "detail": "cargo prism-stdlib (stdlib/generated/package/Cargo.toml:2) is declared for publication and crates.io has no package of that name"
+    },
+    {
+      "package": 23,
+      "refusal": "unpublished",
+      "detail": "cargo prismpm (crates/prismpm/Cargo.toml:2) is declared for publication and crates.io has no package of that name"
+    },
+    {
+      "package": 25,
+      "refusal": "unpublished",
+      "detail": "npm @prism-code/conformance (sdk/npm/conformance/package.json:2) is declared for publication and the npm registry has no package of that name"
+    },
+    {
+      "package": 26,
+      "refusal": "unpublished",
+      "detail": "npm @prism-code/spec (sdk/npm/spec/package.json:2) is declared for publication and the npm registry has no package of that name"
+    },
+    {
+      "package": 27,
+      "refusal": "unpublished",
+      "detail": "npm @prism-code/testing (sdk/npm/testing/package.json:2) is declared for publication and the npm registry has no package of that name"
+    },
+    {
+      "package": 28,
+      "refusal": "unpublished",
+      "detail": "npm @prism-code/verify (sdk/npm/verify/package.json:2) is declared for publication and the npm registry has no package of that name"
+    },
+    {
+      "package": 29,
+      "refusal": "unpublished",
+      "detail": "npm create-prism-code (sdk/npm/create-prism-code/package.json:2) is declared for publication and the npm registry has no package of that name"
+    },
+    {
+      "package": 31,
+      "refusal": "published-from-other-repository",
+      "detail": "crates.io publishes atlas-embeddings from https://github.com/UOR-Foundation/atlas-embeddings, not from UOR-Foundation/research where atlas-embeddings/Cargo.toml:2 declares it"
+    },
+    {
+      "package": 43,
+      "refusal": "unpublished",
+      "detail": "cargo uor-foundation-verify (uor-foundation-verify/Cargo.toml:2) is declared for publication and crates.io has no package of that name"
+    }
+  ]
+}

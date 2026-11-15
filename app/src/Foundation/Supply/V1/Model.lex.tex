@@ -1,0 +1,466 @@
+\begin{lexlean}{Foundation.Supply.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Supply model}
+\begin{semanticmodule}
+inductive{
+  name: PurlType,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: alpm, fields: []},
+    {name: apk, fields: []},
+    {name: bazel, fields: []},
+    {name: bitbucket, fields: []},
+    {name: bitnami, fields: []},
+    {name: brew, fields: []},
+    {name: cargo, fields: []},
+    {name: chromeExtension, fields: []},
+    {name: cocoapods, fields: []},
+    {name: composer, fields: []},
+    {name: conan, fields: []},
+    {name: conda, fields: []},
+    {name: cpan, fields: []},
+    {name: cran, fields: []},
+    {name: deb, fields: []},
+    {name: docker, fields: []},
+    {name: gem, fields: []},
+    {name: generic, fields: []},
+    {name: git, fields: []},
+    {name: github, fields: []},
+    {name: golang, fields: []},
+    {name: hackage, fields: []},
+    {name: hex, fields: []},
+    {name: huggingface, fields: []},
+    {name: julia, fields: []},
+    {name: luarocks, fields: []},
+    {name: maven, fields: []},
+    {name: mlflow, fields: []},
+    {name: npm, fields: []},
+    {name: nuget, fields: []},
+    {name: oci, fields: []},
+    {name: opam, fields: []},
+    {name: otp, fields: []},
+    {name: pub, fields: []},
+    {name: pypi, fields: []},
+    {name: qpkg, fields: []},
+    {name: rpm, fields: []},
+    {name: swid, fields: []},
+    {name: swift, fields: []},
+    {name: vcpkg, fields: []},
+    {name: vscodeExtension, fields: []},
+    {name: yocto, fields: []},
+    {name: none, fields: []}
+  ]
+}
+
+inductive{
+  name: LicenseForm,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: licenseId, fields: []},
+    {name: licenseName, fields: []},
+    {name: expression, fields: []}
+  ]
+}
+
+inductive{
+  name: EdgeKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: package, fields: []},
+    {name: git, fields: []},
+    {name: submodule, fields: []},
+    {name: action, fields: []},
+    {name: image, fields: []},
+    {name: vendored, fields: []}
+  ]
+}
+
+inductive{
+  name: RegistryStatus,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: published, fields: []},
+    {name: absent, fields: []},
+    {name: elsewhere, fields: []},
+    {name: unread, fields: []}
+  ]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: repositoriesCount, type: Nat},
+    {name: componentCountsCount, type: Nat},
+    {name: licenseCountsCount, type: Nat},
+    {name: packagesCount, type: Nat},
+    {name: edgesCount, type: Nat},
+    {name: repositoryClaimsCount, type: Nat},
+    {name: packageClaimsCount, type: Nat},
+    {name: componentTotal, type: Nat},
+    {name: snapshotDigest, type: String},
+    {name: ecosystemDigest, type: String},
+    {name: registriesDigest, type: String},
+    {name: registriesFetchedAt, type: String},
+    {name: syft, type: String},
+    {name: syftDigest, type: String},
+    {name: syftBinaryDigest, type: String},
+    {name: standards, type: String},
+    {name: validator, type: String}
+  ]
+}
+
+structure{
+  name: Repository,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: commit, type: String},
+    {name: sbomDigest, type: String},
+    {name: hasSbom, type: Bool},
+    {name: components, type: Nat},
+    {name: licensedComponents, type: Nat},
+    {name: licenseEntries, type: Nat}
+  ]
+}
+
+structure{
+  name: ComponentCount,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: purlType, type: PurlType},
+    {name: count, type: Nat}
+  ]
+}
+
+structure{
+  name: LicenseCount,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: form, type: LicenseForm},
+    {name: license, type: String},
+    {name: count, type: Nat}
+  ]
+}
+
+structure{
+  name: Package,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: ecosystem, type: PurlType},
+    {name: name, type: String},
+    {name: evidence, type: String},
+    {name: declaredPrivate, type: Bool},
+    {name: registry, type: RegistryStatus},
+    {name: version, type: String},
+    {name: downloads, type: Nat},
+    {name: downloadsKnown, type: Bool},
+    {name: downloadWindow, type: String},
+    {name: externalDependents, type: Nat},
+    {name: dependentsKnown, type: Bool}
+  ]
+}
+
+structure{
+  name: Edge,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: dependent, type: Nat},
+    {name: dependency, type: Nat},
+    {name: kind, type: EdgeKind},
+    {name: evidence, type: String}
+  ]
+}
+
+structure{
+  name: RepositoryClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: refusal, type: String},
+    {name: detail, type: String}
+  ]
+}
+
+structure{
+  name: PackageClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: subject, type: Nat},
+    {name: refusal, type: String},
+    {name: detail, type: String}
+  ]
+}
+
+definition{
+  name: componentsOf,
+  parameters: [position : Nat, values : (List ComponentCount)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons row rest => (if ((project row repository) =? position) then ((project row count) + (componentsOf position rest)) else (componentsOf position rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: licensesOf,
+  parameters: [position : Nat, values : (List LicenseCount)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons row rest => (if ((project row repository) =? position) then ((project row count) + (licensesOf position rest)) else (licensesOf position rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: countsReconcile,
+  parameters: [
+    allCounts : (List ComponentCount),
+    allLicenses : (List LicenseCount),
+    values : (List Repository)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => ((((componentsOf (project repository index) allCounts) =? (project repository components)) && ((licensesOf (project repository index) allLicenses) =? (project repository licenseEntries))) && (countsReconcile allCounts allLicenses rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: componentSum,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => ((project repository components) + (componentSum rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoryClaimed,
+  parameters: [position : Nat, claims : (List RepositoryClaim)],
+  result: Bool,
+  body: (match claims
+    | List.nil => false
+    | List.cons claim rest => (((project claim repository) =? position) || (repositoryClaimed position rest))),
+  recursive_argument: claims
+}
+
+definition{
+  name: packageClaimed,
+  parameters: [position : Nat, claims : (List PackageClaim)],
+  result: Bool,
+  body: (match claims
+    | List.nil => false
+    | List.cons claim rest => (((project claim subject) =? position) || (packageClaimed position rest))),
+  recursive_argument: claims
+}
+
+definition{
+  name: sbomsAccounted,
+  parameters: [claims : (List RepositoryClaim), values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => ((((project repository hasSbom) && (0 <? (project repository components))) || (repositoryClaimed (project repository index) claims)) && (sbomsAccounted claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registryAccepted,
+  parameters: [status : RegistryStatus, isPrivate : Bool],
+  result: Bool,
+  body: (match status
+    | RegistryStatus.published => true
+    | RegistryStatus.absent => isPrivate
+    | RegistryStatus.elsewhere => false
+    | RegistryStatus.unread => false)
+}
+
+definition{
+  name: packagesAccounted,
+  parameters: [claims : (List PackageClaim), values : (List Package)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => (((registryAccepted (project item registry) (project item declaredPrivate)) || (packageClaimed (project item index) claims)) && (packagesAccounted claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesValid,
+  parameters: [position : Nat, values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => (((project repository index) =? position) && (((project repository licensedComponents) <? ((project repository components) + 1)) && (((project repository licensedComponents) <? ((project repository licenseEntries) + 1)) && (repositoriesValid (position + 1) rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => (1 + (repositoriesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: componentCountsValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List ComponentCount)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons componentCount rest => (((project componentCount index) =? position) && (((project componentCount repository) <? repositoriesCount) && ((0 <? (project componentCount count)) && (componentCountsValid (position + 1) repositoriesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: componentCountsTotal,
+  parameters: [values : (List ComponentCount)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons componentCount rest => (1 + (componentCountsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: licenseCountsValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List LicenseCount)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons licenseCount rest => (((project licenseCount index) =? position) && (((project licenseCount repository) <? repositoriesCount) && ((0 <? (project licenseCount count)) && (licenseCountsValid (position + 1) repositoriesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: licenseCountsTotal,
+  parameters: [values : (List LicenseCount)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons licenseCount rest => (1 + (licenseCountsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: packagesValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List Package)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons package rest => (((project package index) =? position) && (((project package repository) <? repositoriesCount) && (packagesValid (position + 1) repositoriesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: packagesTotal,
+  parameters: [values : (List Package)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons package rest => (1 + (packagesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: edgesValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List Edge)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons edge rest => (((project edge index) =? position) && (((project edge dependent) <? repositoriesCount) && (((project edge dependency) <? repositoriesCount) && ((not ((project edge dependent) =? (project edge dependency))) && (edgesValid (position + 1) repositoriesCount rest)))))),
+  recursive_argument: values
+}
+
+definition{
+  name: edgesTotal,
+  parameters: [values : (List Edge)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons edge rest => (1 + (edgesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoryClaimsValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List RepositoryClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repositoryClaim rest => (((project repositoryClaim index) =? position) && (((project repositoryClaim repository) <? repositoriesCount) && (repositoryClaimsValid (position + 1) repositoriesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoryClaimsTotal,
+  parameters: [values : (List RepositoryClaim)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repositoryClaim rest => (1 + (repositoryClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: packageClaimsValid,
+  parameters: [position : Nat, packagesCount : Nat, values : (List PackageClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons packageClaim rest => (((project packageClaim index) =? position) && (((project packageClaim subject) <? packagesCount) && (packageClaimsValid (position + 1) packagesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: packageClaimsTotal,
+  parameters: [values : (List PackageClaim)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons packageClaim rest => (1 + (packageClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    repositories : (List Repository),
+    componentCounts : (List ComponentCount),
+    licenseCounts : (List LicenseCount),
+    packages : (List Package),
+    edges : (List Edge),
+    repositoryClaims : (List RepositoryClaim),
+    packageClaims : (List PackageClaim)
+  ],
+  result: Bool,
+  body: (((repositoriesTotal repositories) =? (project release repositoriesCount)) && (((componentCountsTotal componentCounts) =? (project release componentCountsCount)) && (((licenseCountsTotal licenseCounts) =? (project release licenseCountsCount)) && (((packagesTotal packages) =? (project release packagesCount)) && (((edgesTotal edges) =? (project release edgesCount)) && (((repositoryClaimsTotal repositoryClaims) =? (project release repositoryClaimsCount)) && (((packageClaimsTotal packageClaims) =? (project release packageClaimsCount)) && ((repositoriesValid 0 repositories) && ((componentCountsValid 0 (repositoriesTotal repositories) componentCounts) && ((licenseCountsValid 0 (repositoriesTotal repositories) licenseCounts) && ((packagesValid 0 (repositoriesTotal repositories) packages) && ((edgesValid 0 (repositoriesTotal repositories) edges) && ((repositoryClaimsValid 0 (repositoriesTotal repositories) repositoryClaims) && ((packageClaimsValid 0 (packagesTotal packages) packageClaims) && (((componentSum repositories) =? (project release componentTotal)) && ((countsReconcile componentCounts licenseCounts repositories) && ((sbomsAccounted repositoryClaims repositories) && (packagesAccounted packageClaims packages))))))))))))))))))
+}
+\end{semanticmodule}
+\end{lexlean}
