@@ -1286,3 +1286,21 @@ id = "UCD-04"
 level = "build"
 suite = "uor_community_decisions"
 statement = "Every compliance obligation is numbered in order and names its evidence"
+
+[[id]]
+id = "LC-01"
+level = "build"
+suite = "licensing"
+statement = "The licensing register is valid: every declared license identifier is a License record taken from the pinned SPDX License List, a repository is REUSE compliant exactly when every count the REUSE tool holds against compliance is zero and every file carries copyright and licensing information, every non-compliant repository is named by an open claim, and the counts reconcile with the release"
+
+[[id]]
+id = "LC-02"
+level = "build"
+suite = "licensing"
+statement = "The licensing catalog declares the REUSE tool version and wheel digest, the SPDX License List version and digests, the digests of the scan, snapshot and policy sources, and the commit of every repository it observed"
+
+[[id]]
+id = "LC-03"
+level = "open"
+suite = "licensing"
+statement = "A repository the REUSE tool does not find compliant, a declaration the Foundation's license policy or website does not allow, a missing or unidentified LICENSE text, and an identifier off the SPDX License List are carried as open claims citing both sources, never dropped or guessed"
