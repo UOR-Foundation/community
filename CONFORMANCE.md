@@ -278,6 +278,14 @@ model does not sanction.
 | `RM-02` | `build` | The remediation catalog declares every repository of remediation/register.json at the commit it was observed at, every change that applies at every tier, one issue draft per repository, and the digests of the ecosystem register, the observations and every pinned source and decision app |
 | `RM-03` | `open` | A change only a maintainer or owner can decide, and a norm no change can reach, is carried as an open claim with its evidence, never defaulted; no change is applied to another repository until the Foundation's owners approve it |
 
+## security
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `SE-01` | `build` | The Foundation security register is valid: every threat's overall likelihood and risk are NIST SP 800-30 Tables G-5 and I-2 of its levels; every mitigated threat has a control and every accepted one none; no technique is revoked or deprecated; every implemented or partial control has evidence; every NIST CSF 2.0 subcategory is achieved by a control or is a gap, never both; and every element is open to exactly its STRIDE-per-element categories and, when it carries personal data, every LINDDUN category, each answered by a threat or stated open |
+| `SE-02` | `build` | The security catalog is the projection of security/model.json against the standards security/sources.json pins: CSF 2.0's 6 functions, 22 categories and 106 subcategories, SP 800-30's Table G-5 and I-2 cells, and every named ATT&CK 20.1 or ATLAS technique and Scorecard check, each declared with the digest of its pinned source |
+| `SE-03` | `open` | What the assessment could not settle (an organization setting, a provider's live configuration, who makes a clone) is an open claim, and every telemetry indicator is carried with the threat it is consistent with, never as an attribution |
+
 ## uor_coc_enforcement
 
 | ID | Level | Statement |
