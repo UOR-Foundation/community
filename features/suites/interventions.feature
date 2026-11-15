@@ -16,7 +16,7 @@ Feature: interventions
     And a register whose proposal admission was edited by hand is refused
 
   @IV-02 @build
-  Scenario: Every chart's signal is the uor-intervention-signal answer on its ISO 7870-2:2023 individuals chart: limits are the mean of the weeks before the nine-week window plus or minus 2.66 times their mean moving range, test 1 is on the latest complete week, test 2 is over the window, and fewer than 20 baseline weeks is insufficient
+  Scenario: Every chart's signal is the uor-intervention-signal answer on its ISO 7870-2:2023 individuals chart: limits are the mean of the weeks before the nine-week window plus or minus 2.66 times their mean moving range, test 1 is on the latest complete week, test 2 is over the window and counts only where at most half the baseline weeks lie on the run's side, the probability its rate of (1/2)^9 assumes, and fewer than 20 baseline weeks is insufficient
     Given the charts in interventions/register.json
     When each chart's limits and tests are recomputed from its weekly values
     Then they equal the chart's limits and request, and its signal is the app's answer
