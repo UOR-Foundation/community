@@ -1,0 +1,965 @@
+\begin{lexlean}{Foundation.Conventions.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Conventions model}
+\begin{semanticmodule}
+inductive{
+  name: Requirement,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: mandatory, fields: []},
+    {name: conditional, fields: []},
+    {name: recommended, fields: []}
+  ]
+}
+
+inductive{
+  name: Status,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: met, fields: []},
+    {name: unmet, fields: []},
+    {name: vacuous, fields: []},
+    {name: unobserved, fields: []}
+  ]
+}
+
+inductive{
+  name: Measure,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: versions, fields: []},
+    {name: commits, fields: []},
+    {name: changelogStructure, fields: []},
+    {name: changelogFile, fields: []},
+    {name: releaseNotes, fields: []}
+  ]
+}
+
+inductive{
+  name: ClauseCheck,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: checked, fields: []},
+    {name: formless, fields: []},
+    {name: undecidable, fields: []}
+  ]
+}
+
+inductive{
+  name: TagKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: semver, fields: []},
+    {name: vSemver, fields: []},
+    {name: prefixedSemver, fields: []},
+    {name: invalid, fields: []},
+    {name: notAVersion, fields: []}
+  ]
+}
+
+inductive{
+  name: ViolationSource,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: spec, fields: []},
+    {name: commitlint, fields: []},
+    {name: commitlintWarning, fields: []},
+    {name: profile, fields: []}
+  ]
+}
+
+inductive{
+  name: Refusal,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: mandatoryUnmet, fields: []},
+    {name: conditionalUnmet, fields: []},
+    {name: mandatoryUnobserved, fields: []},
+    {name: conditionalUnobserved, fields: []},
+    {name: oracleDisagreement, fields: []},
+    {name: clauseUndecidable, fields: []},
+    {name: tierUndetermined, fields: []},
+    {name: editionSuperseded, fields: []},
+    {name: normUnobserved, fields: []},
+    {name: normUnmeasured, fields: []}
+  ]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: conventionsCount, type: Nat},
+    {name: normsCount, type: Nat},
+    {name: clausesCount, type: Nat},
+    {name: repositoriesCount, type: Nat},
+    {name: outcomesCount, type: Nat},
+    {name: tagsCount, type: Nat},
+    {name: manifestsCount, type: Nat},
+    {name: violationsCount, type: Nat},
+    {name: changelogChecksCount, type: Nat},
+    {name: openClaimsCount, type: Nat},
+    {name: policyClaimsCount, type: Nat},
+    {name: standards, type: String},
+    {name: oracles, type: String},
+    {name: lock, type: String},
+    {name: semverRegex, type: String},
+    {name: sources, type: String},
+    {name: inputs, type: String},
+    {name: commits, type: String},
+    {name: depth, type: Nat},
+    {name: commitsEvaluated, type: Nat},
+    {name: commitsConforming, type: Nat},
+    {name: agentCommits, type: Nat},
+    {name: agentConforming, type: Nat},
+    {name: metCount, type: Nat},
+    {name: unmetCount, type: Nat}
+  ]
+}
+
+structure{
+  name: Convention,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: key, type: String},
+    {name: standard, type: String},
+    {name: measure, type: Measure},
+    {name: observable, type: Bool},
+    {name: source, type: String}
+  ]
+}
+
+structure{
+  name: Norm,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: convention, type: Nat},
+    {name: document, type: String},
+    {name: section, type: String},
+    {name: statement, type: String},
+    {name: requirement, type: Requirement},
+    {name: condition, type: String}
+  ]
+}
+
+structure{
+  name: Clause,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: convention, type: Nat},
+    {name: number, type: String},
+    {name: statement, type: String},
+    {name: check, type: ClauseCheck},
+    {name: how, type: String}
+  ]
+}
+
+structure{
+  name: Repository,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: commit, type: String},
+    {name: tier, type: String},
+    {name: tierKnown, type: Bool},
+    {name: tierBound, type: Bool},
+    {name: archived, type: Bool},
+    {name: commitsEvaluated, type: Nat},
+    {name: conforming, type: Nat},
+    {name: nonconforming, type: Nat},
+    {name: parserAccepted, type: Nat},
+    {name: lintValid, type: Nat},
+    {name: lintIgnored, type: Nat},
+    {name: profileValid, type: Nat},
+    {name: agentCommits, type: Nat},
+    {name: agentConforming, type: Nat},
+    {name: tagsTotal, type: Nat},
+    {name: tagsVersion, type: Nat},
+    {name: tagsInvalid, type: Nat},
+    {name: tagsOther, type: Nat},
+    {name: precedenceTies, type: Nat},
+    {name: chronologyInversions, type: Nat},
+    {name: manifestsVersioned, type: Nat},
+    {name: manifestsInvalid, type: Nat},
+    {name: changelog, type: Bool},
+    {name: changelogChecks, type: Nat},
+    {name: changelogFailed, type: Nat},
+    {name: oracleAgrees, type: Bool}
+  ]
+}
+
+structure{
+  name: Outcome,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: convention, type: Nat},
+    {name: requirement, type: Requirement},
+    {name: status, type: Status},
+    {name: measured, type: Nat},
+    {name: failing, type: Nat},
+    {name: detail, type: String}
+  ]
+}
+
+structure{
+  name: Tag,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: name, type: String},
+    {name: commit, type: String},
+    {name: date, type: String},
+    {name: verdict, type: TagKind},
+    {name: series, type: String},
+    {name: version, type: String},
+    {name: rank, type: Nat}
+  ]
+}
+
+structure{
+  name: Manifest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: package, type: String},
+    {name: ecosystem, type: String},
+    {name: path, type: String},
+    {name: version, type: String},
+    {name: versioned, type: Bool},
+    {name: valid, type: Bool}
+  ]
+}
+
+structure{
+  name: Violation,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: source, type: ViolationSource},
+    {name: rule, type: String},
+    {name: count, type: Nat},
+    {name: agentCount, type: Nat}
+  ]
+}
+
+structure{
+  name: ChangelogCheck,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: check, type: String},
+    {name: holds, type: Bool},
+    {name: detail, type: String}
+  ]
+}
+
+structure{
+  name: OpenClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: convention, type: Nat},
+    {name: refusal, type: Refusal},
+    {name: detail, type: String}
+  ]
+}
+
+structure{
+  name: PolicyClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: refusal, type: Refusal}, {name: detail, type: String}]
+}
+
+definition{
+  name: isMet,
+  parameters: [value : Status],
+  result: Bool,
+  body: (match value
+    | Status.met => true
+    | Status.unmet => false
+    | Status.vacuous => false
+    | Status.unobserved => false)
+}
+
+definition{
+  name: isUnmet,
+  parameters: [value : Status],
+  result: Bool,
+  body: (match value
+    | Status.met => false
+    | Status.unmet => true
+    | Status.vacuous => false
+    | Status.unobserved => false)
+}
+
+definition{
+  name: isVacuous,
+  parameters: [value : Status],
+  result: Bool,
+  body: (match value
+    | Status.met => false
+    | Status.unmet => false
+    | Status.vacuous => true
+    | Status.unobserved => false)
+}
+
+definition{
+  name: isUnobserved,
+  parameters: [value : Status],
+  result: Bool,
+  body: (match value
+    | Status.met => false
+    | Status.unmet => false
+    | Status.vacuous => false
+    | Status.unobserved => true)
+}
+
+definition{
+  name: isSemver,
+  parameters: [value : TagKind],
+  result: Bool,
+  body: (match value
+    | TagKind.semver => true
+    | TagKind.vSemver => false
+    | TagKind.prefixedSemver => false
+    | TagKind.invalid => false
+    | TagKind.notAVersion => false)
+}
+
+definition{
+  name: isVSemver,
+  parameters: [value : TagKind],
+  result: Bool,
+  body: (match value
+    | TagKind.semver => false
+    | TagKind.vSemver => true
+    | TagKind.prefixedSemver => false
+    | TagKind.invalid => false
+    | TagKind.notAVersion => false)
+}
+
+definition{
+  name: isPrefixedSemver,
+  parameters: [value : TagKind],
+  result: Bool,
+  body: (match value
+    | TagKind.semver => false
+    | TagKind.vSemver => false
+    | TagKind.prefixedSemver => true
+    | TagKind.invalid => false
+    | TagKind.notAVersion => false)
+}
+
+definition{
+  name: isInvalid,
+  parameters: [value : TagKind],
+  result: Bool,
+  body: (match value
+    | TagKind.semver => false
+    | TagKind.vSemver => false
+    | TagKind.prefixedSemver => false
+    | TagKind.invalid => true
+    | TagKind.notAVersion => false)
+}
+
+definition{
+  name: isOracleDisagreement,
+  parameters: [value : Refusal],
+  result: Bool,
+  body: (match value
+    | Refusal.mandatoryUnmet => false
+    | Refusal.conditionalUnmet => false
+    | Refusal.mandatoryUnobserved => false
+    | Refusal.conditionalUnobserved => false
+    | Refusal.oracleDisagreement => true
+    | Refusal.clauseUndecidable => false
+    | Refusal.tierUndetermined => false
+    | Refusal.editionSuperseded => false
+    | Refusal.normUnobserved => false
+    | Refusal.normUnmeasured => false)
+}
+
+definition{
+  name: reqCode,
+  parameters: [value : Requirement],
+  result: Nat,
+  body: (match value
+    | Requirement.mandatory => 2
+    | Requirement.conditional => 1
+    | Requirement.recommended => 0)
+}
+
+definition{
+  name: maxNat,
+  parameters: [left : Nat, right : Nat],
+  result: Nat,
+  body: (if (left <? right) then right else left)
+}
+
+definition{
+  name: countsReconcile,
+  parameters: [repository : Repository],
+  result: Bool,
+  body: (((((project repository conforming) + (project repository nonconforming)) =? (project repository commitsEvaluated)) && (((project repository conforming) <? ((project repository parserAccepted) + 1)) && ((project repository parserAccepted) <? ((project repository commitsEvaluated) + 1)))) && (((((project repository lintValid) + (project repository lintIgnored)) <? ((project repository commitsEvaluated) + 1)) && (((project repository profileValid) + (project repository lintIgnored)) <? ((project repository commitsEvaluated) + 1))) && ((((project repository agentConforming) <? ((project repository agentCommits) + 1)) && (((project repository agentCommits) <? ((project repository commitsEvaluated) + 1)) && ((project repository agentConforming) <? ((project repository conforming) + 1)))) && (((((project repository tagsVersion) + (project repository tagsInvalid)) + (project repository tagsOther)) =? (project repository tagsTotal)) && (((project repository manifestsInvalid) <? ((project repository manifestsVersioned) + 1)) && (((project repository changelogFailed) <? ((project repository changelogChecks) + 1)) && (((project repository changelog) || ((project repository changelogChecks) =? 0)) && ((not (project repository tierBound)) || (project repository tierKnown)))))))))
+}
+
+definition{
+  name: measuredOf,
+  parameters: [measure : Measure, repository : Repository],
+  result: Nat,
+  body: (match measure
+    | Measure.versions => (((project repository tagsVersion) + (project repository tagsInvalid)) + (project repository manifestsVersioned))
+    | Measure.commits => (project repository commitsEvaluated)
+    | Measure.changelogStructure => (1 + (project repository changelogChecks))
+    | Measure.changelogFile => 1
+    | Measure.releaseNotes => (project repository tagsVersion))
+}
+
+definition{
+  name: failingOf,
+  parameters: [measure : Measure, repository : Repository],
+  result: Nat,
+  body: (match measure
+    | Measure.versions => ((project repository tagsInvalid) + (project repository manifestsInvalid))
+    | Measure.commits => (project repository nonconforming)
+    | Measure.changelogStructure => (if (project repository changelog) then (project repository changelogFailed) else 1)
+    | Measure.changelogFile => (if (project repository changelog) then 0 else 1)
+    | Measure.releaseNotes => 0)
+}
+
+definition{
+  name: statusFits,
+  parameters: [status : Status, observable : Bool, measured : Nat, failing : Nat],
+  result: Bool,
+  body: (if observable then ((((isMet status) && ((0 <? measured) && (failing =? 0))) || ((isUnmet status) && (0 <? failing))) || ((isVacuous status) && (measured =? 0))) else (((isVacuous status) && (measured =? 0)) || ((isUnobserved status) && (0 <? measured))))
+}
+
+definition{
+  name: normCode,
+  parameters: [values : (List Norm), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons norm rest => (if ((project norm convention) =? at) then (maxNat (reqCode (project norm requirement)) (normCode rest at)) else (normCode rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: requiredOf,
+  parameters: [code : Nat, repository : Repository],
+  result: Nat,
+  body: (if (code =? 2) then 2 else (if (code =? 1) then (if (project repository tierKnown) then (if (project repository tierBound) then 2 else 0) else 1) else 0))
+}
+
+definition{
+  name: measureAt,
+  parameters: [values : (List Convention), at : Nat],
+  result: Measure,
+  body: (match values
+    | List.nil => Measure.versions
+    | List.cons item rest => (if ((project item index) =? at) then (project item measure) else (measureAt rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: observableAt,
+  parameters: [values : (List Convention), at : Nat],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons item rest => (if ((project item index) =? at) then (project item observable) else (observableAt rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: measuredIn,
+  parameters: [values : (List Repository), at : Nat, measure : Measure],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => (if ((project repository index) =? at) then (measuredOf measure repository) else (measuredIn rest at measure))),
+  recursive_argument: values
+}
+
+definition{
+  name: failingIn,
+  parameters: [values : (List Repository), at : Nat, measure : Measure],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => (if ((project repository index) =? at) then (failingOf measure repository) else (failingIn rest at measure))),
+  recursive_argument: values
+}
+
+definition{
+  name: requiredIn,
+  parameters: [values : (List Repository), at : Nat, code : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 3
+    | List.cons repository rest => (if ((project repository index) =? at) then (requiredOf code repository) else (requiredIn rest at code))),
+  recursive_argument: values
+}
+
+definition{
+  name: claimed,
+  parameters: [row : Nat, column : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons claim rest => ((((project claim repository) =? row) && ((project claim convention) =? column)) || (claimed row column rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: outcomeHolds,
+  parameters: [
+    allConventions : (List Convention),
+    allNorms : (List Norm),
+    allRepositories : (List Repository),
+    claims : (List OpenClaim),
+    outcome : Outcome
+  ],
+  result: Bool,
+  body: ((((project outcome measured) =? (measuredIn allRepositories (project outcome repository) (measureAt allConventions (project outcome convention)))) && ((project outcome failing) =? (failingIn allRepositories (project outcome repository) (measureAt allConventions (project outcome convention))))) && ((statusFits (project outcome status) (observableAt allConventions (project outcome convention)) (project outcome measured) (project outcome failing)) && (((reqCode (project outcome requirement)) =? (requiredIn allRepositories (project outcome repository) (normCode allNorms (project outcome convention)))) && ((((reqCode (project outcome requirement)) =? 0) || (not ((isUnmet (project outcome status)) || (isUnobserved (project outcome status))))) || (claimed (project outcome repository) (project outcome convention) claims)))))
+}
+
+definition{
+  name: outcomesHold,
+  parameters: [
+    allConventions : (List Convention),
+    allNorms : (List Norm),
+    allRepositories : (List Repository),
+    claims : (List OpenClaim),
+    values : (List Outcome)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons outcome rest => ((outcomeHolds allConventions allNorms allRepositories claims outcome) && (outcomesHold allConventions allNorms allRepositories claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: outcomesOrdered,
+  parameters: [row : Nat, column : Nat, columns : Nat, rows : Nat, values : (List Outcome)],
+  result: Bool,
+  body: (match values
+    | List.nil => ((row =? rows) && (column =? 0))
+    | List.cons outcome rest => ((((project outcome repository) =? row) && ((project outcome convention) =? column)) && (if ((column + 1) =? columns) then (outcomesOrdered (row + 1) 0 columns rows rest) else (outcomesOrdered row (column + 1) columns rows rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: tagsOf,
+  parameters: [values : (List Tag), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => (if (((project item repository) =? at) && true) then (1 + (tagsOf rest at)) else (tagsOf rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: versionTagsOf,
+  parameters: [values : (List Tag), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => (if (((project item repository) =? at) && (((isSemver (project item verdict)) || (isVSemver (project item verdict))) || (isPrefixedSemver (project item verdict)))) then (1 + (versionTagsOf rest at)) else (versionTagsOf rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: invalidTagsOf,
+  parameters: [values : (List Tag), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => (if (((project item repository) =? at) && (isInvalid (project item verdict))) then (1 + (invalidTagsOf rest at)) else (invalidTagsOf rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: versionedOf,
+  parameters: [values : (List Manifest), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => (if (((project item repository) =? at) && (project item versioned)) then (1 + (versionedOf rest at)) else (versionedOf rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: invalidManifestsOf,
+  parameters: [values : (List Manifest), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => (if (((project item repository) =? at) && ((project item versioned) && (not (project item valid)))) then (1 + (invalidManifestsOf rest at)) else (invalidManifestsOf rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: checksOf,
+  parameters: [values : (List ChangelogCheck), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => (if (((project item repository) =? at) && true) then (1 + (checksOf rest at)) else (checksOf rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: failedOf,
+  parameters: [values : (List ChangelogCheck), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => (if (((project item repository) =? at) && (not (project item holds))) then (1 + (failedOf rest at)) else (failedOf rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: disagreementsOf,
+  parameters: [values : (List OpenClaim), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => (if (((project item repository) =? at) && (isOracleDisagreement (project item refusal))) then (1 + (disagreementsOf rest at)) else (disagreementsOf rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: recordsReconcile,
+  parameters: [
+    allTags : (List Tag),
+    allManifests : (List Manifest),
+    allChecks : (List ChangelogCheck),
+    claims : (List OpenClaim),
+    values : (List Repository)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => ((((((tagsOf allTags (project repository index)) =? (project repository tagsTotal)) && ((versionTagsOf allTags (project repository index)) =? (project repository tagsVersion))) && (((invalidTagsOf allTags (project repository index)) =? (project repository tagsInvalid)) && ((versionedOf allManifests (project repository index)) =? (project repository manifestsVersioned)))) && ((((invalidManifestsOf allManifests (project repository index)) =? (project repository manifestsInvalid)) && ((checksOf allChecks (project repository index)) =? (project repository changelogChecks))) && (((failedOf allChecks (project repository index)) =? (project repository changelogFailed)) && ((project repository oracleAgrees) || (0 <? (disagreementsOf claims (project repository index))))))) && (recordsReconcile allTags allManifests allChecks claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: evaluatedSum,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => ((project repository commitsEvaluated) + (evaluatedSum rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: conformingSum,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => ((project repository conforming) + (conformingSum rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: agentSum,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => ((project repository agentCommits) + (agentSum rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: agentConformingSum,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => ((project repository agentConforming) + (agentConformingSum rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: statusCount,
+  parameters: [values : (List Outcome), wantMet : Bool],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons outcome rest => (if (if wantMet then (isMet (project outcome status)) else (isUnmet (project outcome status))) then (1 + (statusCount rest wantMet)) else (statusCount rest wantMet))),
+  recursive_argument: values
+}
+
+definition{
+  name: conventionsValid,
+  parameters: [position : Nat, values : (List Convention)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons convention rest => (((project convention index) =? position) && (conventionsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: conventionsTotal,
+  parameters: [values : (List Convention)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons convention rest => (1 + (conventionsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: normsValid,
+  parameters: [position : Nat, conventionsCount : Nat, values : (List Norm)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons norm rest => (((project norm index) =? position) && (((project norm convention) <? conventionsCount) && (normsValid (position + 1) conventionsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: normsTotal,
+  parameters: [values : (List Norm)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons norm rest => (1 + (normsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: clausesValid,
+  parameters: [position : Nat, conventionsCount : Nat, values : (List Clause)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons clause rest => (((project clause index) =? position) && (((project clause convention) <? conventionsCount) && (clausesValid (position + 1) conventionsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: clausesTotal,
+  parameters: [values : (List Clause)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons clause rest => (1 + (clausesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesValid,
+  parameters: [position : Nat, values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => (((project repository index) =? position) && ((countsReconcile repository) && (repositoriesValid (position + 1) rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => (1 + (repositoriesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: outcomesValid,
+  parameters: [
+    position : Nat,
+    repositoriesCount : Nat,
+    conventionsCount : Nat,
+    values : (List Outcome)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons outcome rest => (((project outcome index) =? position) && (((project outcome repository) <? repositoriesCount) && (((project outcome convention) <? conventionsCount) && (((project outcome failing) <? ((project outcome measured) + 1)) && (outcomesValid (position + 1) repositoriesCount conventionsCount rest)))))),
+  recursive_argument: values
+}
+
+definition{
+  name: outcomesTotal,
+  parameters: [values : (List Outcome)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons outcome rest => (1 + (outcomesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: tagsValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List Tag)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons tag rest => (((project tag index) =? position) && (((project tag repository) <? repositoriesCount) && (tagsValid (position + 1) repositoriesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: tagsTotal,
+  parameters: [values : (List Tag)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons tag rest => (1 + (tagsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: manifestsValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List Manifest)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons manifest rest => (((project manifest index) =? position) && (((project manifest repository) <? repositoriesCount) && (((project manifest versioned) || (not (project manifest valid))) && (manifestsValid (position + 1) repositoriesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: manifestsTotal,
+  parameters: [values : (List Manifest)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons manifest rest => (1 + (manifestsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: violationsValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List Violation)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons violation rest => (((project violation index) =? position) && (((project violation repository) <? repositoriesCount) && (((0 <? (project violation count)) && ((project violation agentCount) <? ((project violation count) + 1))) && (violationsValid (position + 1) repositoriesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: violationsTotal,
+  parameters: [values : (List Violation)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons violation rest => (1 + (violationsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: changelogChecksValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List ChangelogCheck)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons changelogCheck rest => (((project changelogCheck index) =? position) && (((project changelogCheck repository) <? repositoriesCount) && (changelogChecksValid (position + 1) repositoriesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: changelogChecksTotal,
+  parameters: [values : (List ChangelogCheck)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons changelogCheck rest => (1 + (changelogChecksTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsValid,
+  parameters: [
+    position : Nat,
+    repositoriesCount : Nat,
+    conventionsCount : Nat,
+    values : (List OpenClaim)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons openClaim rest => (((project openClaim index) =? position) && (((project openClaim repository) <? repositoriesCount) && (((project openClaim convention) <? conventionsCount) && (openClaimsValid (position + 1) repositoriesCount conventionsCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsTotal,
+  parameters: [values : (List OpenClaim)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: policyClaimsValid,
+  parameters: [position : Nat, values : (List PolicyClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons policyClaim rest => (((project policyClaim index) =? position) && (policyClaimsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: policyClaimsTotal,
+  parameters: [values : (List PolicyClaim)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons policyClaim rest => (1 + (policyClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    conventions : (List Convention),
+    norms : (List Norm),
+    clauses : (List Clause),
+    repositories : (List Repository),
+    outcomes : (List Outcome),
+    tags : (List Tag),
+    manifests : (List Manifest),
+    violations : (List Violation),
+    changelogChecks : (List ChangelogCheck),
+    openClaims : (List OpenClaim),
+    policyClaims : (List PolicyClaim)
+  ],
+  result: Bool,
+  body: (((conventionsTotal conventions) =? (project release conventionsCount)) && (((normsTotal norms) =? (project release normsCount)) && (((clausesTotal clauses) =? (project release clausesCount)) && (((repositoriesTotal repositories) =? (project release repositoriesCount)) && (((outcomesTotal outcomes) =? (project release outcomesCount)) && (((tagsTotal tags) =? (project release tagsCount)) && (((manifestsTotal manifests) =? (project release manifestsCount)) && (((violationsTotal violations) =? (project release violationsCount)) && (((changelogChecksTotal changelogChecks) =? (project release changelogChecksCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && (((policyClaimsTotal policyClaims) =? (project release policyClaimsCount)) && ((conventionsValid 0 conventions) && ((normsValid 0 (conventionsTotal conventions) norms) && ((clausesValid 0 (conventionsTotal conventions) clauses) && ((repositoriesValid 0 repositories) && ((outcomesValid 0 (repositoriesTotal repositories) (conventionsTotal conventions) outcomes) && ((tagsValid 0 (repositoriesTotal repositories) tags) && ((manifestsValid 0 (repositoriesTotal repositories) manifests) && ((violationsValid 0 (repositoriesTotal repositories) violations) && ((changelogChecksValid 0 (repositoriesTotal repositories) changelogChecks) && ((openClaimsValid 0 (repositoriesTotal repositories) (conventionsTotal conventions) openClaims) && ((policyClaimsValid 0 policyClaims) && ((outcomesOrdered 0 0 (project release conventionsCount) (project release repositoriesCount) outcomes) && ((outcomesHold conventions norms repositories openClaims outcomes) && ((recordsReconcile tags manifests changelogChecks openClaims repositories) && (((evaluatedSum repositories) =? (project release commitsEvaluated)) && (((conformingSum repositories) =? (project release commitsConforming)) && (((agentSum repositories) =? (project release agentCommits)) && (((agentConformingSum repositories) =? (project release agentConforming)) && (((statusCount outcomes true) =? (project release metCount)) && ((statusCount outcomes false) =? (project release unmetCount))))))))))))))))))))))))))))))))
+}
+\end{semanticmodule}
+\end{lexlean}

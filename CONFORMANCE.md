@@ -216,6 +216,14 @@ model does not sanction.
 | --- | --- | --- |
 | `CP-01` | `build` | The control set the verified build emits as an OSCAL 1.1.0 component definition is accepted by the locked oscal-1.1.0-structural oracle |
 
+## conventions
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CV-01` | `build` | The conventions register is valid: every repository has exactly one outcome for each of Semantic Versioning 2.0.0, Conventional Commits 1.0.0, Keep a Changelog 1.1.0, the CHANGELOG.md norm and the release-notes norm, each outcome's status is the one its measured and failing counts decide, its requirement is the strongest the Foundation's norms set for that repository, every mandatory or conditional outcome that is unmet or unobserved is named by an open claim, and the counts reconcile with the records and the release |
+| `CV-02` | `build` | The conventions catalog declares the pinned specification and policy sources with their digests, the digest of the SemVer expression, every oracle by version and integrity, the oracle lock, the input digests and the commit of every repository it observed |
+| `CV-03` | `open` | A mandatory or conditional convention a repository does not meet or that this register cannot observe, an oracle disagreement, and every clause or norm the sources cannot settle are carried as open claims citing their sources, never dropped or guessed |
+
 ## ecosystem
 
 | ID | Level | Statement |
