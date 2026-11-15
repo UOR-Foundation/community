@@ -18,6 +18,14 @@ The three honesty levels (R2):
 `cargo xtask audit-limits` fails if any code path returns an error the
 model does not sanction.
 
+## assets
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `AS-01` | `build` | The asset register is valid: every asset id is unique, every package, service and document resolves to a repository asset or is an open claim, every domain has an RDAP observation, and every organization the sources name has a stated relation or is an open claim |
+| `AS-02` | `build` | The asset catalog declares every asset of inventory/register.json under its id, and the digests of the snapshot, the pinned sources and the standards it was projected from |
+| `AS-03` | `open` | An asset that does not resolve, a service with no repository or no deployment, a host or registration RDAP and DNS cannot vouch for, and a relationship whose relation the source does not state, is carried as an open claim, never dropped or guessed |
+
 ## chaoss
 
 | ID | Level | Statement |

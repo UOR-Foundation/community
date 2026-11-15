@@ -1,0 +1,2297 @@
+\begin{lexlean}{Assets}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Asset.V1.Model}
+\title{Asset register}
+\begin{semanticmodule}
+definition{
+  name: release,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Release,
+  body: (record Foundation.Asset.V1.Model::Release {assetsCount := 137, communitiesCount := 2, domainsCount := 10, packagesCount := 43, servicesCount := 19, relationshipsCount := 9, documentsCount := 22, openClaimsCount := 64, foundation := 42, snapshotDigest := "sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664", observedAt := "2026-11-15T18:56:30Z", sources := "inventory/sources.json#sha256:a0a4feeee719d4860bc14e7233c7cb5d32c9c3a3f0af9c4ad42420794665f6c1 inventory/declared.json#sha256:a5d504a4a826d6d0c2d3809d529c80e38ca05f91fcc52557ef19d0c8a3871cad ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b governance/discord.json#sha256:22ded5bde6717740bd36b2ea577c284db5caffec5c0e34176e6698a1e7a67890 observations/responses/discord/guild.json#sha256:55ba8cd06e5766fcd60e314dae6938c3fceb3ba2d987d3298a94a13d7f8b943b", checkouts := "https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8 https://github.com/UOR-Foundation/website@e82ffdedc5d85ebd0bde239d50d4651005045d31 https://github.com/UOR-Foundation/community@1ef75b03a425abf09064f92db4fed0dd6bb23f62", standards := "schema.org@30.1 https://schema.org/version/30.1/schemaorg-current-https-types.csv#sha256:27c98363f5a79c269f936f15d2d02eaaf1808750d96e9ed2f3e583f6845760d0 https://schema.org/version/30.1/schemaorg-current-https-properties.csv#sha256:ba8ba163a18385b28b9a80b29999c0aac3d81415598c7d184ef78c101bc15775 spdx@8791eda https://raw.githubusercontent.com/spdx/license-list-data/31846481de7ea17d92f2f46fad76abe58b2e9bb0/json/licenses.json#sha256:ab735654671a6d53f30717b14f6f1060eac23699403ce0ffdf4f6f3273360c0b https://raw.githubusercontent.com/spdx/license-list-data/31846481de7ea17d92f2f46fad76abe58b2e9bb0/json/exceptions.json#sha256:88af4eeb9b59ecd179e2ef821ff2025bb8b85716f36776207c20d77d4606c952 https://raw.githubusercontent.com/publicsuffix/list/dfe55f3548d0fe51c04b8d2903507a01fdec57ad/public_suffix_list.dat#sha256:c61dec506c4a1045355280a560bf66c9ee893fb1510db98510ef7fb277fb2df8 https://data.iana.org/rdap/dns.json@2026-10-28T22:00:04Z#sha256:2789f2f92f7ba785e0d3cd4cdcc70709e0ded1d331619e6784317c8bf2bc72b6 https://www.iana.org/assignments/rdap-json-values/rdap-json-values.xml#sha256:b24abf102b3c30b0a942668104df05aec3c479060ab58bb9c65287c1ce90171e", expiryDays := 90})
+}
+
+definition{
+  name: asset0,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 0, identifier := "chat:discord/1342910418754076732", rank := 0, kind := (ctor Foundation.Asset.V1.Model::AssetKind.community), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.service), name := "UOR Foundation Discord", url := "https://discord.com/channels/1342910418754076732", license := "", needsRepository := false, linked := false, repository := 0, source := "observations/responses/discord/guild.json#sha256:55ba8cd06e5766fcd60e314dae6938c3fceb3ba2d987d3298a94a13d7f8b943b governance/discord.json#sha256:22ded5bde6717740bd36b2ea577c284db5caffec5c0e34176e6698a1e7a67890"})
+}
+
+definition{
+  name: asset1,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 1, identifier := "community:github/UOR-Foundation", rank := 1, kind := (ctor Foundation.Asset.V1.Model::AssetKind.community), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.organization), name := "UOR-Foundation on GitHub", url := "https://github.com/UOR-Foundation", license := "", needsRepository := false, linked := false, repository := 0, source := "inventory/sources.json#sha256:a0a4feeee719d4860bc14e7233c7cb5d32c9c3a3f0af9c4ad42420794665f6c1"})
+}
+
+definition{
+  name: asset2,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 2, identifier := "document:.github/.github/ISSUE_TEMPLATE/bug_report.md", rank := 2, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := ".github/ISSUE_TEMPLATE/bug_report.md", url := "https://github.com/UOR-Foundation/.github/blob/92da114114fc9b76cbf2c5168e29d409b62ddde8/.github/ISSUE_TEMPLATE/bug_report.md", license := "", needsRepository := true, linked := true, repository := 87, source := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:.github/ISSUE_TEMPLATE/bug_report.md#sha256:c46758e97c9f11b7ec0b0e5f47a8af98c7608246b96814ce670b80cb07bc2395"})
+}
+
+definition{
+  name: asset3,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 3, identifier := "document:.github/.github/ISSUE_TEMPLATE/feature_request.md", rank := 3, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := ".github/ISSUE_TEMPLATE/feature_request.md", url := "https://github.com/UOR-Foundation/.github/blob/92da114114fc9b76cbf2c5168e29d409b62ddde8/.github/ISSUE_TEMPLATE/feature_request.md", license := "", needsRepository := true, linked := true, repository := 87, source := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:.github/ISSUE_TEMPLATE/feature_request.md#sha256:570b656f6ce8bc07766924f991ea3cad145b3f5043603826eb754007de28b361"})
+}
+
+definition{
+  name: asset4,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 4, identifier := "document:.github/.github/pull_request_template.md", rank := 4, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := ".github/pull_request_template.md", url := "https://github.com/UOR-Foundation/.github/blob/92da114114fc9b76cbf2c5168e29d409b62ddde8/.github/pull_request_template.md", license := "", needsRepository := true, linked := true, repository := 87, source := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:.github/pull_request_template.md#sha256:4be13e41035f4fb9d8e06845cb90de3b742dda5d797c1dc978e10f94483913b7"})
+}
+
+definition{
+  name: asset5,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 5, identifier := "document:.github/CODE_OF_CONDUCT.md", rank := 5, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "CODE_OF_CONDUCT.md", url := "https://github.com/UOR-Foundation/.github/blob/92da114114fc9b76cbf2c5168e29d409b62ddde8/CODE_OF_CONDUCT.md", license := "", needsRepository := true, linked := true, repository := 87, source := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:CODE_OF_CONDUCT.md#sha256:d01bb370bf46dadc5bd8b1b30113a3434baf079b32815e21cfd05af4fb841705"})
+}
+
+definition{
+  name: asset6,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 6, identifier := "document:.github/CONTRIBUTING.md", rank := 6, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "CONTRIBUTING.md", url := "https://github.com/UOR-Foundation/.github/blob/92da114114fc9b76cbf2c5168e29d409b62ddde8/CONTRIBUTING.md", license := "", needsRepository := true, linked := true, repository := 87, source := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:CONTRIBUTING.md#sha256:c8cbfbd2931392f03420504c1069b5352f4c35cfeb91591a86df6e8f60496ea9"})
+}
+
+definition{
+  name: asset7,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 7, identifier := "document:.github/README.md", rank := 7, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "README.md", url := "https://github.com/UOR-Foundation/.github/blob/92da114114fc9b76cbf2c5168e29d409b62ddde8/README.md", license := "", needsRepository := true, linked := true, repository := 87, source := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:README.md#sha256:0331592d4aea926423587aaeffe1d0f1f7440c11de1c2a55877878058b4a666f"})
+}
+
+definition{
+  name: asset8,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 8, identifier := "document:.github/SECURITY.md", rank := 8, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "SECURITY.md", url := "https://github.com/UOR-Foundation/.github/blob/92da114114fc9b76cbf2c5168e29d409b62ddde8/SECURITY.md", license := "", needsRepository := true, linked := true, repository := 87, source := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:SECURITY.md#sha256:5e6f0001a30a154d923c64e515fe60a1ee7c0b232abac9130006269f1c85f202"})
+}
+
+definition{
+  name: asset9,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 9, identifier := "document:.github/STANDARDS.md", rank := 9, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "STANDARDS.md", url := "https://github.com/UOR-Foundation/.github/blob/92da114114fc9b76cbf2c5168e29d409b62ddde8/STANDARDS.md", license := "", needsRepository := true, linked := true, repository := 87, source := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:STANDARDS.md#sha256:87977973277069d38bb3b9851c5f323182e15528184c5e2029dc631b133a4b26"})
+}
+
+definition{
+  name: asset10,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 10, identifier := "document:.github/UOR_Foundation.png", rank := 10, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.imageObject), name := "UOR_Foundation.png", url := "https://github.com/UOR-Foundation/.github/blob/92da114114fc9b76cbf2c5168e29d409b62ddde8/UOR_Foundation.png", license := "", needsRepository := true, linked := true, repository := 87, source := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:UOR_Foundation.png#sha256:b3ce19ee6074591add47c885dfd74791894785b3553c1c4eccfff65f09c44138"})
+}
+
+definition{
+  name: asset11,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 11, identifier := "document:.github/governance/CHANGELOG.md", rank := 11, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "governance/CHANGELOG.md", url := "https://github.com/UOR-Foundation/.github/blob/92da114114fc9b76cbf2c5168e29d409b62ddde8/governance/CHANGELOG.md", license := "", needsRepository := true, linked := true, repository := 87, source := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/CHANGELOG.md#sha256:b79a104ac67a9f3e88954756f9f3e05acb0adc9753559fafb1f122ed95aa6e1d"})
+}
+
+definition{
+  name: asset12,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 12, identifier := "document:.github/governance/GOVERNANCE.md", rank := 12, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "governance/GOVERNANCE.md", url := "https://github.com/UOR-Foundation/.github/blob/92da114114fc9b76cbf2c5168e29d409b62ddde8/governance/GOVERNANCE.md", license := "", needsRepository := true, linked := true, repository := 87, source := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574"})
+}
+
+definition{
+  name: asset13,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 13, identifier := "document:.github/governance/The_UOR_Foundation_Bylaws.pdf", rank := 13, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "governance/The_UOR_Foundation_Bylaws.pdf", url := "https://github.com/UOR-Foundation/.github/blob/92da114114fc9b76cbf2c5168e29d409b62ddde8/governance/The_UOR_Foundation_Bylaws.pdf", license := "", needsRepository := true, linked := true, repository := 87, source := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/The_UOR_Foundation_Bylaws.pdf#sha256:21dde54a38910f58fb685867a63030f5fd8d0a6d0d2c93baa58e690641a4906c"})
+}
+
+definition{
+  name: asset14,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 14, identifier := "document:.github/root-README.md", rank := 14, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "root-README.md", url := "https://github.com/UOR-Foundation/.github/blob/92da114114fc9b76cbf2c5168e29d409b62ddde8/root-README.md", license := "", needsRepository := true, linked := true, repository := 87, source := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:root-README.md#sha256:214639c557aa66569065887d63b5d489ae3fa0bdb063062b1a35c56f2cc8b8cc"})
+}
+
+definition{
+  name: asset15,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 15, identifier := "document:.github/toc/README.md", rank := 15, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "toc/README.md", url := "https://github.com/UOR-Foundation/.github/blob/92da114114fc9b76cbf2c5168e29d409b62ddde8/toc/README.md", license := "", needsRepository := true, linked := true, repository := 87, source := ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:toc/README.md#sha256:9674e625d93cefc9e490b3af5ae449f8770eeadb50c85e68597f741656c2d2a2"})
+}
+
+definition{
+  name: asset16,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 16, identifier := "document:community/site/brand/hologram-warm.css", rank := 16, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "site/brand/hologram-warm.css", url := "https://github.com/UOR-Foundation/community/blob/1ef75b03a425abf09064f92db4fed0dd6bb23f62/site/brand/hologram-warm.css", license := "", needsRepository := true, linked := true, repository := 98, source := "community@1ef75b03a425abf09064f92db4fed0dd6bb23f62:brand.lock#sha256:f9a1ff9eba345339dce8b4601a1e860a831731eb970c7c9d038f217afb0d0f65 from Hologram-Technologies/hologram-brand-kit@f14a9d8cfe6bce14fc8a6ff09ac0f99b01e300be:brand/css/hologram-warm.css"})
+}
+
+definition{
+  name: asset17,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 17, identifier := "document:community/site/fonts/Archivo-SemiBold.woff2", rank := 17, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "site/fonts/Archivo-SemiBold.woff2", url := "https://github.com/UOR-Foundation/community/blob/1ef75b03a425abf09064f92db4fed0dd6bb23f62/site/fonts/Archivo-SemiBold.woff2", license := "", needsRepository := true, linked := true, repository := 98, source := "community@1ef75b03a425abf09064f92db4fed0dd6bb23f62:brand.lock#sha256:f9a1ff9eba345339dce8b4601a1e860a831731eb970c7c9d038f217afb0d0f65 from Hologram-Technologies/hologram-brand-kit@f14a9d8cfe6bce14fc8a6ff09ac0f99b01e300be:brand/fonts/web/Archivo-SemiBold.woff2"})
+}
+
+definition{
+  name: asset18,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 18, identifier := "document:community/site/fonts/Geist-Medium.woff2", rank := 18, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "site/fonts/Geist-Medium.woff2", url := "https://github.com/UOR-Foundation/community/blob/1ef75b03a425abf09064f92db4fed0dd6bb23f62/site/fonts/Geist-Medium.woff2", license := "", needsRepository := true, linked := true, repository := 98, source := "community@1ef75b03a425abf09064f92db4fed0dd6bb23f62:brand.lock#sha256:f9a1ff9eba345339dce8b4601a1e860a831731eb970c7c9d038f217afb0d0f65 from Hologram-Technologies/hologram-brand-kit@f14a9d8cfe6bce14fc8a6ff09ac0f99b01e300be:brand/fonts/web/Geist-Medium.woff2"})
+}
+
+definition{
+  name: asset19,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 19, identifier := "document:community/site/fonts/Geist-Regular.woff2", rank := 19, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "site/fonts/Geist-Regular.woff2", url := "https://github.com/UOR-Foundation/community/blob/1ef75b03a425abf09064f92db4fed0dd6bb23f62/site/fonts/Geist-Regular.woff2", license := "", needsRepository := true, linked := true, repository := 98, source := "community@1ef75b03a425abf09064f92db4fed0dd6bb23f62:brand.lock#sha256:f9a1ff9eba345339dce8b4601a1e860a831731eb970c7c9d038f217afb0d0f65 from Hologram-Technologies/hologram-brand-kit@f14a9d8cfe6bce14fc8a6ff09ac0f99b01e300be:brand/fonts/web/Geist-Regular.woff2"})
+}
+
+definition{
+  name: asset20,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 20, identifier := "document:community/site/fonts/GeistMono-Medium.woff2", rank := 20, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "site/fonts/GeistMono-Medium.woff2", url := "https://github.com/UOR-Foundation/community/blob/1ef75b03a425abf09064f92db4fed0dd6bb23f62/site/fonts/GeistMono-Medium.woff2", license := "", needsRepository := true, linked := true, repository := 98, source := "community@1ef75b03a425abf09064f92db4fed0dd6bb23f62:brand.lock#sha256:f9a1ff9eba345339dce8b4601a1e860a831731eb970c7c9d038f217afb0d0f65 from Hologram-Technologies/hologram-brand-kit@f14a9d8cfe6bce14fc8a6ff09ac0f99b01e300be:brand/fonts/web/GeistMono-Medium.woff2"})
+}
+
+definition{
+  name: asset21,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 21, identifier := "document:community/site/fonts/GeistMono-Regular.woff2", rank := 21, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "site/fonts/GeistMono-Regular.woff2", url := "https://github.com/UOR-Foundation/community/blob/1ef75b03a425abf09064f92db4fed0dd6bb23f62/site/fonts/GeistMono-Regular.woff2", license := "", needsRepository := true, linked := true, repository := 98, source := "community@1ef75b03a425abf09064f92db4fed0dd6bb23f62:brand.lock#sha256:f9a1ff9eba345339dce8b4601a1e860a831731eb970c7c9d038f217afb0d0f65 from Hologram-Technologies/hologram-brand-kit@f14a9d8cfe6bce14fc8a6ff09ac0f99b01e300be:brand/fonts/web/GeistMono-Regular.woff2"})
+}
+
+definition{
+  name: asset22,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 22, identifier := "document:community/site/fonts/OFL-Archivo.txt", rank := 22, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "site/fonts/OFL-Archivo.txt", url := "https://github.com/UOR-Foundation/community/blob/1ef75b03a425abf09064f92db4fed0dd6bb23f62/site/fonts/OFL-Archivo.txt", license := "", needsRepository := true, linked := true, repository := 98, source := "community@1ef75b03a425abf09064f92db4fed0dd6bb23f62:brand.lock#sha256:f9a1ff9eba345339dce8b4601a1e860a831731eb970c7c9d038f217afb0d0f65 from Hologram-Technologies/hologram-brand-kit@f14a9d8cfe6bce14fc8a6ff09ac0f99b01e300be:brand/fonts/OFL-Archivo.txt"})
+}
+
+definition{
+  name: asset23,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 23, identifier := "document:community/site/fonts/OFL-Geist.txt", rank := 23, kind := (ctor Foundation.Asset.V1.Model::AssetKind.document), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.creativeWork), name := "site/fonts/OFL-Geist.txt", url := "https://github.com/UOR-Foundation/community/blob/1ef75b03a425abf09064f92db4fed0dd6bb23f62/site/fonts/OFL-Geist.txt", license := "", needsRepository := true, linked := true, repository := 98, source := "community@1ef75b03a425abf09064f92db4fed0dd6bb23f62:brand.lock#sha256:f9a1ff9eba345339dce8b4601a1e860a831731eb970c7c9d038f217afb0d0f65 from Hologram-Technologies/hologram-brand-kit@f14a9d8cfe6bce14fc8a6ff09ac0f99b01e300be:brand/fonts/OFL.txt"})
+}
+
+definition{
+  name: asset24,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 24, identifier := "domain:app.uor.foundation", rank := 24, kind := (ctor Foundation.Asset.V1.Model::AssetKind.domain), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "app.uor.foundation", url := "https://app.uor.foundation/", license := "", needsRepository := false, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 hosts[app.uor.foundation] from foundry-web:Cargo.toml"})
+}
+
+definition{
+  name: asset25,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 25, identifier := "domain:ask-api.uor.foundation", rank := 25, kind := (ctor Foundation.Asset.V1.Model::AssetKind.domain), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "ask-api.uor.foundation", url := "https://ask-api.uor.foundation/", license := "", needsRepository := false, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 hosts[ask-api.uor.foundation] from website:src/docsgpt.ts"})
+}
+
+definition{
+  name: asset26,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 26, identifier := "domain:erwfuxphwcvynxhfbvql.supabase.co", rank := 26, kind := (ctor Foundation.Asset.V1.Model::AssetKind.domain), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "erwfuxphwcvynxhfbvql.supabase.co", url := "https://erwfuxphwcvynxhfbvql.supabase.co/", license := "", needsRepository := false, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 hosts[erwfuxphwcvynxhfbvql.supabase.co] from website:.env"})
+}
+
+definition{
+  name: asset27,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 27, identifier := "domain:id.uor.foundation", rank := 27, kind := (ctor Foundation.Asset.V1.Model::AssetKind.domain), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "id.uor.foundation", url := "https://id.uor.foundation/", license := "", needsRepository := false, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 hosts[id.uor.foundation] from kappa-registry:README.md"})
+}
+
+definition{
+  name: asset28,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 28, identifier := "domain:mcp.uor.foundation", rank := 28, kind := (ctor Foundation.Asset.V1.Model::AssetKind.domain), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "mcp.uor.foundation", url := "https://mcp.uor.foundation/", license := "", needsRepository := false, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 hosts[mcp.uor.foundation] from website:src/agent/site.ts"})
+}
+
+definition{
+  name: asset29,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 29, identifier := "domain:registry.uor.foundation", rank := 29, kind := (ctor Foundation.Asset.V1.Model::AssetKind.domain), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "registry.uor.foundation", url := "https://registry.uor.foundation/", license := "", needsRepository := false, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 hosts[registry.uor.foundation] from template:README.md"})
+}
+
+definition{
+  name: asset30,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 30, identifier := "domain:schemas.uor.foundation", rank := 30, kind := (ctor Foundation.Asset.V1.Model::AssetKind.domain), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "schemas.uor.foundation", url := "https://schemas.uor.foundation/", license := "", needsRepository := false, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 hosts[schemas.uor.foundation] from website:src/docs/prism.generated.ts"})
+}
+
+definition{
+  name: asset31,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 31, identifier := "domain:universal-coordinate-foundation.lovable.app", rank := 31, kind := (ctor Foundation.Asset.V1.Model::AssetKind.domain), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "universal-coordinate-foundation.lovable.app", url := "https://universal-coordinate-foundation.lovable.app/", license := "", needsRepository := false, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 hosts[universal-coordinate-foundation.lovable.app] from website:.lovable/plan/clean-social-share-preview-2026-10-22.md"})
+}
+
+definition{
+  name: asset32,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 32, identifier := "domain:uor-foundation.github.io", rank := 32, kind := (ctor Foundation.Asset.V1.Model::AssetKind.domain), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "uor-foundation.github.io", url := "https://uor-foundation.github.io/", license := "", needsRepository := false, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 hosts[uor-foundation.github.io] from website:src/framework/Framework.tsx"})
+}
+
+definition{
+  name: asset33,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 33, identifier := "domain:uor.foundation", rank := 33, kind := (ctor Foundation.Asset.V1.Model::AssetKind.domain), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "uor.foundation", url := "https://uor.foundation/", license := "", needsRepository := false, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 hosts[uor.foundation] from website:.github/workflows/deploy.yml"})
+}
+
+definition{
+  name: asset34,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 34, identifier := "org:aaif", rank := 34, kind := (ctor Foundation.Asset.V1.Model::AssetKind.organization), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.organization), name := "AAIF", url := "https://aaif.io/", license := "", needsRepository := false, linked := false, repository := 0, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/site/FoundationHome.tsx#sha256:1eec70f8fada9bf5b02e5c05a7ef0a93dc42d23f9bfe2e32e43842e825491ad4 website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/site/copy.ts#sha256:9ee1a77e77f811628f0c95344c71f7a204caa7cb38a313e804408ba05a4e3e61"})
+}
+
+definition{
+  name: asset35,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 35, identifier := "org:discord", rank := 35, kind := (ctor Foundation.Asset.V1.Model::AssetKind.organization), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.organization), name := "Discord", url := "https://discord.com/", license := "", needsRepository := false, linked := false, repository := 0, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/site/links.ts#sha256:c40a639eef6ce179c0c09feac4226a2f97f34cbea1cb1fe401d9cd024fa2bda0"})
+}
+
+definition{
+  name: asset36,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 36, identifier := "org:github", rank := 36, kind := (ctor Foundation.Asset.V1.Model::AssetKind.organization), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.organization), name := "GitHub", url := "https://github.com/", license := "", needsRepository := false, linked := false, repository := 0, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:.github/workflows/deploy.yml#sha256:6c3b45243ec8568745c6f2e50d89bf4ec1ddde1ef136756c385c6402a16f64ff"})
+}
+
+definition{
+  name: asset37,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 37, identifier := "org:google", rank := 37, kind := (ctor Foundation.Asset.V1.Model::AssetKind.organization), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.organization), name := "Google", url := "https://marketingplatform.google.com/about/analytics/", license := "", needsRepository := false, linked := false, repository := 0, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/analytics.ts#sha256:96fd1cd250dfcb83932a165e1e93c149182c3b063a669e8ac44ed073fbfd01d0"})
+}
+
+definition{
+  name: asset38,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 38, identifier := "org:hologram-technologies", rank := 38, kind := (ctor Foundation.Asset.V1.Model::AssetKind.organization), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.organization), name := "Hologram Technologies", url := "https://github.com/Hologram-Technologies", license := "", needsRepository := false, linked := false, repository := 0, source := "community@1ef75b03a425abf09064f92db4fed0dd6bb23f62:brand.lock#sha256:f9a1ff9eba345339dce8b4601a1e860a831731eb970c7c9d038f217afb0d0f65"})
+}
+
+definition{
+  name: asset39,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 39, identifier := "org:lovable", rank := 39, kind := (ctor Foundation.Asset.V1.Model::AssetKind.organization), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.organization), name := "Lovable", url := "https://lovable.dev/", license := "", needsRepository := false, linked := false, repository := 0, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/integrations/lovable/index.ts#sha256:bcc8056dd7c6ab4be0e8043ede64a0464a95bf9dc1668f9344a58736bd0598a1"})
+}
+
+definition{
+  name: asset40,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 40, identifier := "org:mit-project-nanda", rank := 40, kind := (ctor Foundation.Asset.V1.Model::AssetKind.organization), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.organization), name := "MIT Project NANDA", url := "https://www.media.mit.edu/groups/nanda/overview/", license := "", needsRepository := false, linked := false, repository := 0, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/site/FoundationHome.tsx#sha256:1eec70f8fada9bf5b02e5c05a7ef0a93dc42d23f9bfe2e32e43842e825491ad4 website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/site/copy.ts#sha256:9ee1a77e77f811628f0c95344c71f7a204caa7cb38a313e804408ba05a4e3e61"})
+}
+
+definition{
+  name: asset41,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 41, identifier := "org:supabase", rank := 41, kind := (ctor Foundation.Asset.V1.Model::AssetKind.organization), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.organization), name := "Supabase", url := "https://supabase.com/", license := "", needsRepository := false, linked := false, repository := 0, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/integrations/supabase/client.ts#sha256:c1a7ebcf29c80b16d0cf29acd06793cbce839496596593ae2c1e7134bac574fe"})
+}
+
+definition{
+  name: asset42,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 42, identifier := "org:uor-foundation", rank := 42, kind := (ctor Foundation.Asset.V1.Model::AssetKind.organization), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.organization), name := "The UOR Foundation", url := "https://uor.foundation/", license := "", needsRepository := false, linked := false, repository := 0, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:index.html#sha256:6412e5766d86465124aa5f306fbab72fa085ae53193383f7359a0595753c849f"})
+}
+
+definition{
+  name: asset43,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 43, identifier := "org:webcontainers", rank := 43, kind := (ctor Foundation.Asset.V1.Model::AssetKind.organization), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.organization), name := "WebContainers", url := "https://webcontainers.io", license := "", needsRepository := false, linked := false, repository := 0, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/playground/Playground.tsx#sha256:e62cabfcc54a299a7dd07227e73a20137d49ea8b294cf1396623e9def2ba693b"})
+}
+
+definition{
+  name: asset44,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 44, identifier := "package:crates.io/atlas-embeddings", rank := 44, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "atlas-embeddings", url := "https://crates.io/crates/atlas-embeddings", license := "MIT", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/atlas-embeddings] (owner:afflom)"})
+}
+
+definition{
+  name: asset45,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 45, identifier := "package:crates.io/lexlean", rank := 45, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "lexlean", url := "https://crates.io/crates/lexlean", license := "MIT OR Apache-2.0", needsRepository := true, linked := true, repository := 90, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/lexlean] (owner:afflom)"})
+}
+
+definition{
+  name: asset46,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 46, identifier := "package:crates.io/prism-code", rank := 46, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "prism-code", url := "https://crates.io/crates/prism-code", license := "", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/prism-code] (install:website/src/docs/prism.generated.ts)"})
+}
+
+definition{
+  name: asset47,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 47, identifier := "package:crates.io/uor-addr", rank := 47, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "uor-addr", url := "https://crates.io/crates/uor-addr", license := "Apache-2.0", needsRepository := true, linked := true, repository := 112, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/uor-addr] (owner:afflom)"})
+}
+
+definition{
+  name: asset48,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 48, identifier := "package:crates.io/uor-addr-1", rank := 48, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "uor-addr-1", url := "https://crates.io/crates/uor-addr-1", license := "Apache-2.0", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/uor-addr-1] (owner:afflom)"})
+}
+
+definition{
+  name: asset49,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 49, identifier := "package:crates.io/uor-addr-c", rank := 49, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "uor-addr-c", url := "https://crates.io/crates/uor-addr-c", license := "Apache-2.0", needsRepository := true, linked := true, repository := 112, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/uor-addr-c] (owner:afflom)"})
+}
+
+definition{
+  name: asset50,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 50, identifier := "package:crates.io/uor-addr-wasm", rank := 50, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "uor-addr-wasm", url := "https://crates.io/crates/uor-addr-wasm", license := "Apache-2.0", needsRepository := true, linked := true, repository := 112, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/uor-addr-wasm] (owner:afflom)"})
+}
+
+definition{
+  name: asset51,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 51, identifier := "package:crates.io/uor-foundation", rank := 51, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "uor-foundation", url := "https://crates.io/crates/uor-foundation", license := "Apache-2.0", needsRepository := true, linked := true, repository := 95, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/uor-foundation] (owner:afflom)"})
+}
+
+definition{
+  name: asset52,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 52, identifier := "package:crates.io/uor-foundation-macros", rank := 52, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "uor-foundation-macros", url := "https://crates.io/crates/uor-foundation-macros", license := "Apache-2.0", needsRepository := true, linked := true, repository := 95, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/uor-foundation-macros] (owner:afflom)"})
+}
+
+definition{
+  name: asset53,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 53, identifier := "package:crates.io/uor-foundation-sdk", rank := 53, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "uor-foundation-sdk", url := "https://crates.io/crates/uor-foundation-sdk", license := "Apache-2.0", needsRepository := true, linked := true, repository := 95, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/uor-foundation-sdk] (owner:afflom)"})
+}
+
+definition{
+  name: asset54,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 54, identifier := "package:crates.io/uor-prism", rank := 54, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "uor-prism", url := "https://crates.io/crates/uor-prism", license := "MIT", needsRepository := true, linked := true, repository := 108, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/uor-prism] (owner:afflom)"})
+}
+
+definition{
+  name: asset55,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 55, identifier := "package:crates.io/uor-prism-crypto", rank := 55, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "uor-prism-crypto", url := "https://crates.io/crates/uor-prism-crypto", license := "MIT", needsRepository := true, linked := true, repository := 108, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/uor-prism-crypto] (owner:afflom)"})
+}
+
+definition{
+  name: asset56,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 56, identifier := "package:crates.io/uor-prism-fhe", rank := 56, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "uor-prism-fhe", url := "https://crates.io/crates/uor-prism-fhe", license := "MIT", needsRepository := true, linked := true, repository := 108, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/uor-prism-fhe] (owner:afflom)"})
+}
+
+definition{
+  name: asset57,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 57, identifier := "package:crates.io/uor-prism-numerics", rank := 57, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "uor-prism-numerics", url := "https://crates.io/crates/uor-prism-numerics", license := "MIT", needsRepository := true, linked := true, repository := 108, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/uor-prism-numerics] (owner:afflom)"})
+}
+
+definition{
+  name: asset58,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 58, identifier := "package:crates.io/uor-prism-tensor", rank := 58, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "uor-prism-tensor", url := "https://crates.io/crates/uor-prism-tensor", license := "MIT", needsRepository := true, linked := true, repository := 108, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/uor-prism-tensor] (owner:afflom)"})
+}
+
+definition{
+  name: asset59,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 59, identifier := "package:crates.io/uor-prism-verify", rank := 59, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "uor-prism-verify", url := "https://crates.io/crates/uor-prism-verify", license := "MIT", needsRepository := true, linked := true, repository := 108, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[crates.io/uor-prism-verify] (owner:afflom)"})
+}
+
+definition{
+  name: asset60,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 60, identifier := "package:ghcr.io/uor-foundation/calculator-system", rank := 60, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "ghcr.io/uor-foundation/calculator-system", url := "https://ghcr.io/uor-foundation/calculator-system", license := "", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 images[calculator-system] named by calculator-example"})
+}
+
+definition{
+  name: asset61,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 61, identifier := "package:ghcr.io/uor-foundation/dataflow-policy", rank := 61, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "ghcr.io/uor-foundation/dataflow-policy", url := "https://ghcr.io/uor-foundation/dataflow-policy", license := "", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 images[dataflow-policy] named by prism-code"})
+}
+
+definition{
+  name: asset62,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 62, identifier := "package:ghcr.io/uor-foundation/prismpm-adapter-compose", rank := 62, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "ghcr.io/uor-foundation/prismpm-adapter-compose", url := "https://ghcr.io/uor-foundation/prismpm-adapter-compose", license := "", needsRepository := true, linked := true, repository := 94, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 images[prismpm-adapter-compose] named by PrismPM"})
+}
+
+definition{
+  name: asset63,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 63, identifier := "package:ghcr.io/uor-foundation/prismpm-adapter-github-pages", rank := 63, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "ghcr.io/uor-foundation/prismpm-adapter-github-pages", url := "https://ghcr.io/uor-foundation/prismpm-adapter-github-pages", license := "", needsRepository := true, linked := true, repository := 94, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 images[prismpm-adapter-github-pages] named by PrismPM"})
+}
+
+definition{
+  name: asset64,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 64, identifier := "package:ghcr.io/uor-foundation/prismpm-adapter-kubernetes", rank := 64, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "ghcr.io/uor-foundation/prismpm-adapter-kubernetes", url := "https://ghcr.io/uor-foundation/prismpm-adapter-kubernetes", license := "", needsRepository := true, linked := true, repository := 94, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 images[prismpm-adapter-kubernetes] named by PrismPM"})
+}
+
+definition{
+  name: asset65,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 65, identifier := "package:ghcr.io/uor-foundation/prismpm-oracles", rank := 65, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "ghcr.io/uor-foundation/prismpm-oracles", url := "https://ghcr.io/uor-foundation/prismpm-oracles", license := "", needsRepository := true, linked := true, repository := 94, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 images[prismpm-oracles] named by PrismPM"})
+}
+
+definition{
+  name: asset66,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 66, identifier := "package:ghcr.io/uor-foundation/prismpm-runtime", rank := 66, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "ghcr.io/uor-foundation/prismpm-runtime", url := "https://ghcr.io/uor-foundation/prismpm-runtime", license := "", needsRepository := true, linked := true, repository := 94, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 images[prismpm-runtime] named by PrismPM, calculator-example"})
+}
+
+definition{
+  name: asset67,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 67, identifier := "package:ghcr.io/uor-foundation/prismpm-sdk", rank := 67, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "ghcr.io/uor-foundation/prismpm-sdk", url := "https://ghcr.io/uor-foundation/prismpm-sdk", license := "", needsRepository := true, linked := true, repository := 94, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 images[prismpm-sdk] named by PrismPM"})
+}
+
+definition{
+  name: asset68,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 68, identifier := "package:ghcr.io/uor-foundation/prismpm-sdk-build", rank := 68, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "ghcr.io/uor-foundation/prismpm-sdk-build", url := "https://ghcr.io/uor-foundation/prismpm-sdk-build", license := "", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 images[prismpm-sdk-build] named by PrismPM"})
+}
+
+definition{
+  name: asset69,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 69, identifier := "package:ghcr.io/uor-foundation/prismpm-sdk-candidate", rank := 69, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "ghcr.io/uor-foundation/prismpm-sdk-candidate", url := "https://ghcr.io/uor-foundation/prismpm-sdk-candidate", license := "", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 images[prismpm-sdk-candidate] named by PrismPM"})
+}
+
+definition{
+  name: asset70,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 70, identifier := "package:npm/@uor-foundation/algebra", rank := 70, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "@uor-foundation/algebra", url := "https://www.npmjs.com/package/@uor-foundation/algebra", license := "MIT", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[npm/@uor-foundation/algebra] (organization:uor-foundation)"})
+}
+
+definition{
+  name: asset71,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 71, identifier := "package:npm/@uor-foundation/calculus", rank := 71, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "@uor-foundation/calculus", url := "https://www.npmjs.com/package/@uor-foundation/calculus", license := "MIT", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[npm/@uor-foundation/calculus] (organization:uor-foundation)"})
+}
+
+definition{
+  name: asset72,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 72, identifier := "package:npm/@uor-foundation/field-substrate", rank := 72, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "@uor-foundation/field-substrate", url := "https://www.npmjs.com/package/@uor-foundation/field-substrate", license := "MIT", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[npm/@uor-foundation/field-substrate] (organization:uor-foundation)"})
+}
+
+definition{
+  name: asset73,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 73, identifier := "package:npm/@uor-foundation/geometry", rank := 73, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "@uor-foundation/geometry", url := "https://www.npmjs.com/package/@uor-foundation/geometry", license := "MIT", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[npm/@uor-foundation/geometry] (organization:uor-foundation)"})
+}
+
+definition{
+  name: asset74,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 74, identifier := "package:npm/@uor-foundation/math-js", rank := 74, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "@uor-foundation/math-js", url := "https://www.npmjs.com/package/@uor-foundation/math-js", license := "MIT", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[npm/@uor-foundation/math-js] (organization:uor-foundation)"})
+}
+
+definition{
+  name: asset75,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 75, identifier := "package:npm/@uor-foundation/math-ts-core", rank := 75, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "@uor-foundation/math-ts-core", url := "https://www.npmjs.com/package/@uor-foundation/math-ts-core", license := "MIT", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[npm/@uor-foundation/math-ts-core] (organization:uor-foundation)"})
+}
+
+definition{
+  name: asset76,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 76, identifier := "package:npm/@uor-foundation/mcp-server", rank := 76, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "@uor-foundation/mcp-server", url := "https://www.npmjs.com/package/@uor-foundation/mcp-server", license := "MIT", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[npm/@uor-foundation/mcp-server] (organization:uor-foundation)"})
+}
+
+definition{
+  name: asset77,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 77, identifier := "package:npm/@uor-foundation/operators", rank := 77, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "@uor-foundation/operators", url := "https://www.npmjs.com/package/@uor-foundation/operators", license := "MIT", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[npm/@uor-foundation/operators] (organization:uor-foundation)"})
+}
+
+definition{
+  name: asset78,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 78, identifier := "package:npm/@uor-foundation/resonance", rank := 78, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "@uor-foundation/resonance", url := "https://www.npmjs.com/package/@uor-foundation/resonance", license := "MIT", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[npm/@uor-foundation/resonance] (organization:uor-foundation)"})
+}
+
+definition{
+  name: asset79,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 79, identifier := "package:npm/@uor-foundation/self-reference", rank := 79, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "@uor-foundation/self-reference", url := "https://www.npmjs.com/package/@uor-foundation/self-reference", license := "MIT", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[npm/@uor-foundation/self-reference] (organization:uor-foundation)"})
+}
+
+definition{
+  name: asset80,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 80, identifier := "package:npm/@uor-foundation/sigmatics", rank := 80, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "@uor-foundation/sigmatics", url := "https://www.npmjs.com/package/@uor-foundation/sigmatics", license := "MIT", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[npm/@uor-foundation/sigmatics] (organization:uor-foundation)"})
+}
+
+definition{
+  name: asset81,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 81, identifier := "package:npm/@uor-foundation/topology", rank := 81, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "@uor-foundation/topology", url := "https://www.npmjs.com/package/@uor-foundation/topology", license := "MIT", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[npm/@uor-foundation/topology] (organization:uor-foundation)"})
+}
+
+definition{
+  name: asset82,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 82, identifier := "package:npm/@uor-foundation/uor-addr", rank := 82, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "@uor-foundation/uor-addr", url := "https://www.npmjs.com/package/@uor-foundation/uor-addr", license := "Apache-2.0", needsRepository := true, linked := true, repository := 112, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[npm/@uor-foundation/uor-addr] (organization:uor-foundation)"})
+}
+
+definition{
+  name: asset83,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 83, identifier := "package:npm/@uor/prism", rank := 83, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "@uor/prism", url := "https://www.npmjs.com/package/@uor/prism", license := "", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[npm/@uor/prism] (install:website/.lovable/plan/hero-in-the-ai-sdk-style-2026-10-21.md)"})
+}
+
+definition{
+  name: asset84,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 84, identifier := "package:npm/prism-code", rank := 84, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "prism-code", url := "https://www.npmjs.com/package/prism-code", license := "MIT", needsRepository := true, linked := true, repository := 94, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[npm/prism-code] (install:website/.lovable/plan/agent-ready-website-2026-10-22.md)"})
+}
+
+definition{
+  name: asset85,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 85, identifier := "package:pypi/prism-code", rank := 85, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "prism-code", url := "https://pypi.org/project/prism-code/", license := "", needsRepository := true, linked := false, repository := 0, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[pypi/prism-code] (install:website/src/docs/prism.generated.ts)"})
+}
+
+definition{
+  name: asset86,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 86, identifier := "package:pypi/uor-addr", rank := 86, kind := (ctor Foundation.Asset.V1.Model::AssetKind.package), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareApplication), name := "uor-addr", url := "https://pypi.org/project/uor-addr/", license := "", needsRepository := true, linked := true, repository := 112, source := "inventory/snapshot.json#sha256:b0075567efadeeb7ee258cbcf8d1684c5cfbd5d4fec7a28dcbf12b6c7c842664 packages[pypi/uor-addr] (install:website/src/blog/posts.data.ts)"})
+}
+
+definition{
+  name: asset87,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 87, identifier := "repo:.github", rank := 87, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := ".github", url := "https://github.com/UOR-Foundation/.github", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[0]"})
+}
+
+definition{
+  name: asset88,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 88, identifier := "repo:5-Levels-of-UOR", rank := 88, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "5-Levels-of-UOR", url := "https://github.com/UOR-Foundation/5-Levels-of-UOR", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[1]"})
+}
+
+definition{
+  name: asset89,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 89, identifier := "repo:F1", rank := 89, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "F1", url := "https://github.com/UOR-Foundation/F1", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[6]"})
+}
+
+definition{
+  name: asset90,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 90, identifier := "repo:LexLean", rank := 90, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "LexLean", url := "https://github.com/UOR-Foundation/LexLean", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[12]"})
+}
+
+definition{
+  name: asset91,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 91, identifier := "repo:MCP", rank := 91, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "MCP", url := "https://github.com/UOR-Foundation/MCP", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[15]"})
+}
+
+definition{
+  name: asset92,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 92, identifier := "repo:MNIST", rank := 92, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "MNIST", url := "https://github.com/UOR-Foundation/MNIST", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[16]"})
+}
+
+definition{
+  name: asset93,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 93, identifier := "repo:OOO", rank := 93, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "OOO", url := "https://github.com/UOR-Foundation/OOO", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[18]"})
+}
+
+definition{
+  name: asset94,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 94, identifier := "repo:PrismPM", rank := 94, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "PrismPM", url := "https://github.com/UOR-Foundation/PrismPM", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[21]"})
+}
+
+definition{
+  name: asset95,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 95, identifier := "repo:UOR-Framework", rank := 95, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "UOR-Framework", url := "https://github.com/UOR-Foundation/UOR-Framework", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[26]"})
+}
+
+definition{
+  name: asset96,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 96, identifier := "repo:atlas-12288", rank := 96, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "atlas-12288", url := "https://github.com/UOR-Foundation/atlas-12288", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[2]"})
+}
+
+definition{
+  name: asset97,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 97, identifier := "repo:calculator-example", rank := 97, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "calculator-example", url := "https://github.com/UOR-Foundation/calculator-example", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[3]"})
+}
+
+definition{
+  name: asset98,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 98, identifier := "repo:community", rank := 98, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "community", url := "https://github.com/UOR-Foundation/community", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[4]"})
+}
+
+definition{
+  name: asset99,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 99, identifier := "repo:compression", rank := 99, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "compression", url := "https://github.com/UOR-Foundation/compression", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[5]"})
+}
+
+definition{
+  name: asset100,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 100, identifier := "repo:foundry", rank := 100, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "foundry", url := "https://github.com/UOR-Foundation/foundry", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[7]"})
+}
+
+definition{
+  name: asset101,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 101, identifier := "repo:foundry-web", rank := 101, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "foundry-web", url := "https://github.com/UOR-Foundation/foundry-web", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[8]"})
+}
+
+definition{
+  name: asset102,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 102, identifier := "repo:holo-search", rank := 102, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "holo-search", url := "https://github.com/UOR-Foundation/holo-search", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[9]"})
+}
+
+definition{
+  name: asset103,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 103, identifier := "repo:kappa-distribution", rank := 103, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "kappa-distribution", url := "https://github.com/UOR-Foundation/kappa-distribution", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[10]"})
+}
+
+definition{
+  name: asset104,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 104, identifier := "repo:kappa-registry", rank := 104, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "kappa-registry", url := "https://github.com/UOR-Foundation/kappa-registry", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[11]"})
+}
+
+definition{
+  name: asset105,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 105, identifier := "repo:lexlean-mcp", rank := 105, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "lexlean-mcp", url := "https://github.com/UOR-Foundation/lexlean-mcp", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[13]"})
+}
+
+definition{
+  name: asset106,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 106, identifier := "repo:malachite-usdc", rank := 106, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "malachite-usdc", url := "https://github.com/UOR-Foundation/malachite-usdc", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[14]"})
+}
+
+definition{
+  name: asset107,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 107, identifier := "repo:nest-uor", rank := 107, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "nest-uor", url := "https://github.com/UOR-Foundation/nest-uor", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[17]"})
+}
+
+definition{
+  name: asset108,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 108, identifier := "repo:prism", rank := 108, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "prism", url := "https://github.com/UOR-Foundation/prism", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[19]"})
+}
+
+definition{
+  name: asset109,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 109, identifier := "repo:prism-code", rank := 109, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "prism-code", url := "https://github.com/UOR-Foundation/prism-code", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[20]"})
+}
+
+definition{
+  name: asset110,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 110, identifier := "repo:research", rank := 110, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "research", url := "https://github.com/UOR-Foundation/research", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[22]"})
+}
+
+definition{
+  name: asset111,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 111, identifier := "repo:template", rank := 111, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "template", url := "https://github.com/UOR-Foundation/template", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[23]"})
+}
+
+definition{
+  name: asset112,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 112, identifier := "repo:uor-addr", rank := 112, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "uor-addr", url := "https://github.com/UOR-Foundation/uor-addr", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[24]"})
+}
+
+definition{
+  name: asset113,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 113, identifier := "repo:uor-foundry", rank := 113, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "uor-foundry", url := "https://github.com/UOR-Foundation/uor-foundry", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[25]"})
+}
+
+definition{
+  name: asset114,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 114, identifier := "repo:uor-jcs-nfc", rank := 114, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "uor-jcs-nfc", url := "https://github.com/UOR-Foundation/uor-jcs-nfc", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[27]"})
+}
+
+definition{
+  name: asset115,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 115, identifier := "repo:uor-matmul", rank := 115, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "uor-matmul", url := "https://github.com/UOR-Foundation/uor-matmul", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[28]"})
+}
+
+definition{
+  name: asset116,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 116, identifier := "repo:uor-r4", rank := 116, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "uor-r4", url := "https://github.com/UOR-Foundation/uor-r4", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[29]"})
+}
+
+definition{
+  name: asset117,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 117, identifier := "repo:website", rank := 117, kind := (ctor Foundation.Asset.V1.Model::AssetKind.repository), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.softwareSourceCode), name := "website", url := "https://github.com/UOR-Foundation/website", license := "", needsRepository := false, linked := false, repository := 0, source := "ecosystem/register.json#sha256:c47aec1061fc942095811ee957b2387e77a717c16de62e53301b9a0b1827b69b repositories[30]"})
+}
+
+definition{
+  name: asset118,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 118, identifier := "service:about", rank := 118, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "About the Foundation", url := "https://uor.foundation/about/", license := "", needsRepository := true, linked := true, repository := 117, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/App.tsx#sha256:e7e66a7222e09a1a26d6b0f8d765997f7a904f6129d314f03cb4abc85af7b920"})
+}
+
+definition{
+  name: asset119,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 119, identifier := "service:agents", rank := 119, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "Agent entry point", url := "https://uor.foundation/agents/", license := "", needsRepository := true, linked := true, repository := 117, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/App.tsx#sha256:e7e66a7222e09a1a26d6b0f8d765997f7a904f6129d314f03cb4abc85af7b920"})
+}
+
+definition{
+  name: asset120,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 120, identifier := "service:blog", rank := 120, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "Foundation blog", url := "https://uor.foundation/blog/", license := "", needsRepository := true, linked := true, repository := 117, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/App.tsx#sha256:e7e66a7222e09a1a26d6b0f8d765997f7a904f6129d314f03cb4abc85af7b920"})
+}
+
+definition{
+  name: asset121,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 121, identifier := "service:calculator-example", rank := 121, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webApplication), name := "Calculator example", url := "https://uor-foundation.github.io/calculator-example/", license := "", needsRepository := true, linked := true, repository := 97, source := "calculator-example@5051dc6adb18e9ca2b6ae4ca7090e638329831ef:Cargo.toml#sha256:49476029609547d34094010f39b02a9a5be3130912fce024687ceaee02f9ae2c"})
+}
+
+definition{
+  name: asset122,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 122, identifier := "service:community-site", rank := 122, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "Community health site", url := "https://uor-foundation.github.io/community/", license := "", needsRepository := true, linked := true, repository := 98, source := "community@1ef75b03a425abf09064f92db4fed0dd6bb23f62:README.md#sha256:3e734bc40f887c7198303885cc9891b698cc93e2e07b7372a1eb66d07c623660"})
+}
+
+definition{
+  name: asset123,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 123, identifier := "service:dataflow-policy", rank := 123, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "Dataflow policy site", url := "https://uor-foundation.github.io/dataflow-policy/", license := "", needsRepository := true, linked := false, repository := 0, source := "prism-code@67ab3e8b2092ad5812b0c34fd074cb33762366aa:Cargo.toml#sha256:7791ab36c1e41f3e54702546835d8a818b4aa3a2213c0a71fbd79d6acc66e448"})
+}
+
+definition{
+  name: asset124,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 124, identifier := "service:discord-posting", rank := 124, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webApplication), name := "Discord posting for agents", url := "https://uor.foundation/agents/discord/", license := "", needsRepository := true, linked := true, repository := 117, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/App.tsx#sha256:e7e66a7222e09a1a26d6b0f8d765997f7a904f6129d314f03cb4abc85af7b920"})
+}
+
+definition{
+  name: asset125,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 125, identifier := "service:docs", rank := 125, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "Prism documentation", url := "https://uor.foundation/docs/", license := "", needsRepository := true, linked := true, repository := 117, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/App.tsx#sha256:e7e66a7222e09a1a26d6b0f8d765997f7a904f6129d314f03cb4abc85af7b920"})
+}
+
+definition{
+  name: asset126,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 126, identifier := "service:docs-assistant", rank := 126, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.service), name := "Docs assistant (DocsGPT API)", url := "https://ask-api.uor.foundation/", license := "", needsRepository := true, linked := false, repository := 0, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/docsgpt.ts#sha256:fa28b22caba810e00b68d37ff4e46e7a29203e4f946947f0468aff688d0a5186"})
+}
+
+definition{
+  name: asset127,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 127, identifier := "service:foundry", rank := 127, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webApplication), name := "Prism AI Foundry", url := "https://uor-foundation.github.io/foundry/", license := "", needsRepository := true, linked := true, repository := 100, source := "foundry@e4207a55966147edf09d5e62713fe197530197d3:README.md#sha256:ad7aea242c428de6a307b31c168173d1fc17f2c25132d17b262947d801610a3e"})
+}
+
+definition{
+  name: asset128,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 128, identifier := "service:foundry-web", rank := 128, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webApplication), name := "Foundry Web", url := "https://uor-foundation.github.io/foundry-web/", license := "", needsRepository := true, linked := true, repository := 101, source := "foundry-web@e8373c7c953bae6153fba7082c2b6c50f2f77392:README.md#sha256:51698b1e5d85dde07dfc1e3ec192e950a3b652c897d6e809a3ce8d463f6a948f"})
+}
+
+definition{
+  name: asset129,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 129, identifier := "service:framework", rank := 129, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "UOR Framework overview", url := "https://uor.foundation/framework/", license := "", needsRepository := true, linked := true, repository := 117, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/App.tsx#sha256:e7e66a7222e09a1a26d6b0f8d765997f7a904f6129d314f03cb4abc85af7b920"})
+}
+
+definition{
+  name: asset130,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 130, identifier := "service:holo-search", rank := 130, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webApplication), name := "Holo Search", url := "https://uor-foundation.github.io/holo-search/", license := "", needsRepository := true, linked := true, repository := 102, source := "holo-search@c477b69c0e3f95658aedecaeb2fa9c057d9b58a6:README.md#sha256:e2bc4c3bec0873d56059a480fa686a53f8ee2de006081bc717efeda75ea6f328"})
+}
+
+definition{
+  name: asset131,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 131, identifier := "service:kappa-registry", rank := 131, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.service), name := "Kappa registry", url := "https://registry.uor.foundation/", license := "", needsRepository := true, linked := true, repository := 104, source := "template@0851bb41138041f0f75118135fd8a342109c2d73:README.md#sha256:59fa3c5c1f759feaad35a890719bc197acccc36ee832a2c812a4c8c792e56652"})
+}
+
+definition{
+  name: asset132,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 132, identifier := "service:lexlean-verifier", rank := 132, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.service), name := "Hosted LexLean verifier (MCP server)", url := "https://mcp.uor.foundation/", license := "", needsRepository := true, linked := false, repository := 0, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/site/copy.ts#sha256:9ee1a77e77f811628f0c95344c71f7a204caa7cb38a313e804408ba05a4e3e61"})
+}
+
+definition{
+  name: asset133,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 133, identifier := "service:playground", rank := 133, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webApplication), name := "Prism playground", url := "", license := "", needsRepository := true, linked := true, repository := 117, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:src/playground/Playground.tsx#sha256:e62cabfcc54a299a7dd07227e73a20137d49ea8b294cf1396623e9def2ba693b"})
+}
+
+definition{
+  name: asset134,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 134, identifier := "service:template-try", rank := 134, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webApplication), name := "Template try page", url := "https://uor-foundation.github.io/template/", license := "", needsRepository := true, linked := true, repository := 111, source := "template@0851bb41138041f0f75118135fd8a342109c2d73:README.md#sha256:59fa3c5c1f759feaad35a890719bc197acccc36ee832a2c812a4c8c792e56652"})
+}
+
+definition{
+  name: asset135,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 135, identifier := "service:uor-ontology", rank := 135, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.dataset), name := "UOR Framework ontology", url := "https://doi.org/10.5281/zenodo.19068826", license := "", needsRepository := true, linked := true, repository := 95, source := "UOR-Framework@51c01382200b0179d6640b07e9c8119364ab69a1:README.md#sha256:6d0dd43211b4270ed5fea76b145a738149110a940a2d23bf0f43fd9fb34999b0"})
+}
+
+definition{
+  name: asset136,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Asset,
+  body: (record Foundation.Asset.V1.Model::Asset {index := 136, identifier := "service:website", rank := 136, kind := (ctor Foundation.Asset.V1.Model::AssetKind.service), schemaType := (ctor Foundation.Asset.V1.Model::SchemaType.webSite), name := "UOR Foundation website", url := "https://uor.foundation/", license := "", needsRepository := true, linked := true, repository := 117, source := "website@e82ffdedc5d85ebd0bde239d50d4651005045d31:public/CNAME#sha256:06e9c2dbda169cb2aba8fa3c8c892e605e170f89f51ec1219a5e99b4e7fc85bf"})
+}
+
+definition{
+  name: assetsFrom96,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::Asset),
+  body: (cons (asset96) (cons (asset97) (cons (asset98) (cons (asset99) (cons (asset100) (cons (asset101) (cons (asset102) (cons (asset103) (cons (asset104) (cons (asset105) (cons (asset106) (cons (asset107) (cons (asset108) (cons (asset109) (cons (asset110) (cons (asset111) (cons (asset112) (cons (asset113) (cons (asset114) (cons (asset115) (cons (asset116) (cons (asset117) (cons (asset118) (cons (asset119) (cons (asset120) (cons (asset121) (cons (asset122) (cons (asset123) (cons (asset124) (cons (asset125) (cons (asset126) (cons (asset127) (cons (asset128) (cons (asset129) (cons (asset130) (cons (asset131) (cons (asset132) (cons (asset133) (cons (asset134) (cons (asset135) (cons (asset136) (nil Foundation.Asset.V1.Model::Asset))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: assetsFrom48,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::Asset),
+  body: (cons (asset48) (cons (asset49) (cons (asset50) (cons (asset51) (cons (asset52) (cons (asset53) (cons (asset54) (cons (asset55) (cons (asset56) (cons (asset57) (cons (asset58) (cons (asset59) (cons (asset60) (cons (asset61) (cons (asset62) (cons (asset63) (cons (asset64) (cons (asset65) (cons (asset66) (cons (asset67) (cons (asset68) (cons (asset69) (cons (asset70) (cons (asset71) (cons (asset72) (cons (asset73) (cons (asset74) (cons (asset75) (cons (asset76) (cons (asset77) (cons (asset78) (cons (asset79) (cons (asset80) (cons (asset81) (cons (asset82) (cons (asset83) (cons (asset84) (cons (asset85) (cons (asset86) (cons (asset87) (cons (asset88) (cons (asset89) (cons (asset90) (cons (asset91) (cons (asset92) (cons (asset93) (cons (asset94) (cons (asset95) (assetsFrom96)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: assetsFrom0,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::Asset),
+  body: (cons (asset0) (cons (asset1) (cons (asset2) (cons (asset3) (cons (asset4) (cons (asset5) (cons (asset6) (cons (asset7) (cons (asset8) (cons (asset9) (cons (asset10) (cons (asset11) (cons (asset12) (cons (asset13) (cons (asset14) (cons (asset15) (cons (asset16) (cons (asset17) (cons (asset18) (cons (asset19) (cons (asset20) (cons (asset21) (cons (asset22) (cons (asset23) (cons (asset24) (cons (asset25) (cons (asset26) (cons (asset27) (cons (asset28) (cons (asset29) (cons (asset30) (cons (asset31) (cons (asset32) (cons (asset33) (cons (asset34) (cons (asset35) (cons (asset36) (cons (asset37) (cons (asset38) (cons (asset39) (cons (asset40) (cons (asset41) (cons (asset42) (cons (asset43) (cons (asset44) (cons (asset45) (cons (asset46) (cons (asset47) (assetsFrom48)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: assets,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::Asset),
+  body: (assetsFrom0)
+}
+
+definition{
+  name: community0,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Community,
+  body: (record Foundation.Asset.V1.Model::Community {index := 0, asset := 0, platform := "discord", channels := 120, invites := "U7EAUXFTVF ZwuZaNyuve"})
+}
+
+definition{
+  name: community1,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Community,
+  body: (record Foundation.Asset.V1.Model::Community {index := 1, asset := 1, platform := "github", channels := 0, invites := ""})
+}
+
+definition{
+  name: communitiesFrom0,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::Community),
+  body: (cons (community0) (cons (community1) (nil Foundation.Asset.V1.Model::Community)))
+}
+
+definition{
+  name: communities,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::Community),
+  body: (communitiesFrom0)
+}
+
+definition{
+  name: domainObservation0,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::DomainObservation,
+  body: (record Foundation.Asset.V1.Model::DomainObservation {index := 0, asset := 24, registration := 33, registrable := "uor.foundation", site := "uor.foundation", reason := "registrable-domain", rcode := 3, addresses := "", cname := "", rdapServer := "https://rdap.publicinterestregistry.org/rdap/", rdapStatus := 200, registrar := "NameCheap, Inc.", expiration := "2027-01-21T04:47:55.732Z", expires := true, daysToExpiry := 66, nameservers := "ben.ns.cloudflare.com dawn.ns.cloudflare.com", valuesRegistered := true})
+}
+
+definition{
+  name: domainObservation1,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::DomainObservation,
+  body: (record Foundation.Asset.V1.Model::DomainObservation {index := 1, asset := 25, registration := 33, registrable := "uor.foundation", site := "uor.foundation", reason := "registrable-domain", rcode := 0, addresses := "217.216.66.62", cname := "", rdapServer := "https://rdap.publicinterestregistry.org/rdap/", rdapStatus := 200, registrar := "NameCheap, Inc.", expiration := "2027-01-21T04:47:55.732Z", expires := true, daysToExpiry := 66, nameservers := "ben.ns.cloudflare.com dawn.ns.cloudflare.com", valuesRegistered := true})
+}
+
+definition{
+  name: domainObservation2,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::DomainObservation,
+  body: (record Foundation.Asset.V1.Model::DomainObservation {index := 2, asset := 26, registration := 26, registrable := "supabase.co", site := "erwfuxphwcvynxhfbvql.supabase.co", reason := "platform", rcode := 0, addresses := "104.18.38.10 172.64.149.246", cname := "", rdapServer := "", rdapStatus := 0, registrar := "", expiration := "", expires := false, daysToExpiry := 0, nameservers := "", valuesRegistered := true})
+}
+
+definition{
+  name: domainObservation3,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::DomainObservation,
+  body: (record Foundation.Asset.V1.Model::DomainObservation {index := 3, asset := 27, registration := 33, registrable := "uor.foundation", site := "uor.foundation", reason := "registrable-domain", rcode := 0, addresses := "217.216.66.62", cname := "", rdapServer := "https://rdap.publicinterestregistry.org/rdap/", rdapStatus := 200, registrar := "NameCheap, Inc.", expiration := "2027-01-21T04:47:55.732Z", expires := true, daysToExpiry := 66, nameservers := "ben.ns.cloudflare.com dawn.ns.cloudflare.com", valuesRegistered := true})
+}
+
+definition{
+  name: domainObservation4,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::DomainObservation,
+  body: (record Foundation.Asset.V1.Model::DomainObservation {index := 4, asset := 28, registration := 33, registrable := "uor.foundation", site := "uor.foundation", reason := "registrable-domain", rcode := 0, addresses := "217.216.66.62", cname := "", rdapServer := "https://rdap.publicinterestregistry.org/rdap/", rdapStatus := 200, registrar := "NameCheap, Inc.", expiration := "2027-01-21T04:47:55.732Z", expires := true, daysToExpiry := 66, nameservers := "ben.ns.cloudflare.com dawn.ns.cloudflare.com", valuesRegistered := true})
+}
+
+definition{
+  name: domainObservation5,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::DomainObservation,
+  body: (record Foundation.Asset.V1.Model::DomainObservation {index := 5, asset := 29, registration := 33, registrable := "uor.foundation", site := "uor.foundation", reason := "registrable-domain", rcode := 0, addresses := "217.216.66.62", cname := "", rdapServer := "https://rdap.publicinterestregistry.org/rdap/", rdapStatus := 200, registrar := "NameCheap, Inc.", expiration := "2027-01-21T04:47:55.732Z", expires := true, daysToExpiry := 66, nameservers := "ben.ns.cloudflare.com dawn.ns.cloudflare.com", valuesRegistered := true})
+}
+
+definition{
+  name: domainObservation6,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::DomainObservation,
+  body: (record Foundation.Asset.V1.Model::DomainObservation {index := 6, asset := 30, registration := 33, registrable := "uor.foundation", site := "uor.foundation", reason := "registrable-domain", rcode := 3, addresses := "", cname := "", rdapServer := "https://rdap.publicinterestregistry.org/rdap/", rdapStatus := 200, registrar := "NameCheap, Inc.", expiration := "2027-01-21T04:47:55.732Z", expires := true, daysToExpiry := 66, nameservers := "ben.ns.cloudflare.com dawn.ns.cloudflare.com", valuesRegistered := true})
+}
+
+definition{
+  name: domainObservation7,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::DomainObservation,
+  body: (record Foundation.Asset.V1.Model::DomainObservation {index := 7, asset := 31, registration := 31, registrable := "lovable.app", site := "universal-coordinate-foundation.lovable.app", reason := "platform", rcode := 0, addresses := "185.41.148.1 185.41.148.2 2a07:8240::1 2a07:8240::2", cname := "", rdapServer := "https://pubapi.registry.google/rdap/", rdapStatus := 200, registrar := "CloudFlare, Inc.", expiration := "2029-05-06T14:03:05.466Z", expires := true, daysToExpiry := 902, nameservers := "ivan.ns.cloudflare.com rafe.ns.cloudflare.com", valuesRegistered := true})
+}
+
+definition{
+  name: domainObservation8,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::DomainObservation,
+  body: (record Foundation.Asset.V1.Model::DomainObservation {index := 8, asset := 32, registration := 32, registrable := "github.io", site := "uor-foundation.github.io", reason := "github-pages", rcode := 0, addresses := "185.199.108.153 185.199.109.153 185.199.110.153 185.199.111.153 2606:50c0:8000::153 2606:50c0:8001::153 2606:50c0:8002::153 2606:50c0:8003::153", cname := "", rdapServer := "", rdapStatus := 0, registrar := "", expiration := "", expires := false, daysToExpiry := 0, nameservers := "", valuesRegistered := true})
+}
+
+definition{
+  name: domainObservation9,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::DomainObservation,
+  body: (record Foundation.Asset.V1.Model::DomainObservation {index := 9, asset := 33, registration := 33, registrable := "uor.foundation", site := "uor.foundation", reason := "registrable-domain", rcode := 0, addresses := "185.199.108.153 185.199.109.153 185.199.110.153 185.199.111.153", cname := "", rdapServer := "https://rdap.publicinterestregistry.org/rdap/", rdapStatus := 200, registrar := "NameCheap, Inc.", expiration := "2027-01-21T04:47:55.732Z", expires := true, daysToExpiry := 66, nameservers := "ben.ns.cloudflare.com dawn.ns.cloudflare.com", valuesRegistered := true})
+}
+
+definition{
+  name: domainsFrom0,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::DomainObservation),
+  body: (cons (domainObservation0) (cons (domainObservation1) (cons (domainObservation2) (cons (domainObservation3) (cons (domainObservation4) (cons (domainObservation5) (cons (domainObservation6) (cons (domainObservation7) (cons (domainObservation8) (cons (domainObservation9) (nil Foundation.Asset.V1.Model::DomainObservation)))))))))))
+}
+
+definition{
+  name: domains,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::DomainObservation),
+  body: (domainsFrom0)
+}
+
+definition{
+  name: packageRecord0,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 0, asset := 44, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "atlas-embeddings", version := "0.1.1", published := true, owners := "afflom", origin := "owner:afflom", sourceRepository := "https://github.com/UOR-Foundation/atlas-embeddings"})
+}
+
+definition{
+  name: packageRecord1,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 1, asset := 45, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "lexlean", version := "0.4.1", published := true, owners := "afflom", origin := "owner:afflom", sourceRepository := "https://github.com/UOR-Foundation/LexLean"})
+}
+
+definition{
+  name: packageRecord2,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 2, asset := 46, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "prism-code", version := "", published := false, owners := "", origin := "install:website/src/docs/prism.generated.ts", sourceRepository := ""})
+}
+
+definition{
+  name: packageRecord3,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 3, asset := 47, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "uor-addr", version := "0.2.0", published := true, owners := "afflom", origin := "owner:afflom", sourceRepository := "https://github.com/UOR-Foundation/uor-addr"})
+}
+
+definition{
+  name: packageRecord4,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 4, asset := 48, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "uor-addr-1", version := "0.1.0", published := true, owners := "afflom maurathat", origin := "owner:afflom", sourceRepository := "https://github.com/UOR-Foundation/uor-addr-1"})
+}
+
+definition{
+  name: packageRecord5,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 5, asset := 49, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "uor-addr-c", version := "0.2.0", published := true, owners := "afflom", origin := "owner:afflom", sourceRepository := "https://github.com/UOR-Foundation/uor-addr"})
+}
+
+definition{
+  name: packageRecord6,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 6, asset := 50, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "uor-addr-wasm", version := "0.2.0", published := true, owners := "afflom", origin := "owner:afflom", sourceRepository := "https://github.com/UOR-Foundation/uor-addr"})
+}
+
+definition{
+  name: packageRecord7,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 7, asset := 51, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "uor-foundation", version := "0.5.2", published := true, owners := "afflom", origin := "owner:afflom", sourceRepository := "https://github.com/UOR-Foundation/UOR-Framework"})
+}
+
+definition{
+  name: packageRecord8,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 8, asset := 52, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "uor-foundation-macros", version := "0.2.1", published := true, owners := "afflom", origin := "owner:afflom", sourceRepository := "https://github.com/UOR-Foundation/UOR-Framework"})
+}
+
+definition{
+  name: packageRecord9,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 9, asset := 53, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "uor-foundation-sdk", version := "0.5.2", published := true, owners := "afflom", origin := "owner:afflom", sourceRepository := "https://github.com/UOR-Foundation/UOR-Framework"})
+}
+
+definition{
+  name: packageRecord10,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 10, asset := 54, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "uor-prism", version := "0.4.0", published := true, owners := "afflom", origin := "owner:afflom", sourceRepository := "https://github.com/UOR-Foundation/prism"})
+}
+
+definition{
+  name: packageRecord11,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 11, asset := 55, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "uor-prism-crypto", version := "0.4.0", published := true, owners := "afflom", origin := "owner:afflom", sourceRepository := "https://github.com/UOR-Foundation/prism"})
+}
+
+definition{
+  name: packageRecord12,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 12, asset := 56, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "uor-prism-fhe", version := "0.4.0", published := true, owners := "afflom", origin := "owner:afflom", sourceRepository := "https://github.com/UOR-Foundation/prism"})
+}
+
+definition{
+  name: packageRecord13,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 13, asset := 57, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "uor-prism-numerics", version := "0.4.0", published := true, owners := "afflom", origin := "owner:afflom", sourceRepository := "https://github.com/UOR-Foundation/prism"})
+}
+
+definition{
+  name: packageRecord14,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 14, asset := 58, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "uor-prism-tensor", version := "0.4.0", published := true, owners := "afflom", origin := "owner:afflom", sourceRepository := "https://github.com/UOR-Foundation/prism"})
+}
+
+definition{
+  name: packageRecord15,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 15, asset := 59, registry := (ctor Foundation.Asset.V1.Model::Registry.cratesIo), name := "uor-prism-verify", version := "0.4.0", published := true, owners := "afflom", origin := "owner:afflom", sourceRepository := "https://github.com/UOR-Foundation/prism"})
+}
+
+definition{
+  name: packageRecord16,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 16, asset := 60, registry := (ctor Foundation.Asset.V1.Model::Registry.ghcrIo), name := "calculator-system", version := "", published := false, owners := "", origin := "workflow:calculator-example", sourceRepository := ""})
+}
+
+definition{
+  name: packageRecord17,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 17, asset := 61, registry := (ctor Foundation.Asset.V1.Model::Registry.ghcrIo), name := "dataflow-policy", version := "", published := false, owners := "", origin := "workflow:prism-code", sourceRepository := ""})
+}
+
+definition{
+  name: packageRecord18,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 18, asset := 62, registry := (ctor Foundation.Asset.V1.Model::Registry.ghcrIo), name := "prismpm-adapter-compose", version := "0.4.0", published := true, owners := "", origin := "workflow:PrismPM", sourceRepository := "https://github.com/UOR-Foundation/PrismPM"})
+}
+
+definition{
+  name: packageRecord19,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 19, asset := 63, registry := (ctor Foundation.Asset.V1.Model::Registry.ghcrIo), name := "prismpm-adapter-github-pages", version := "0.4.0", published := true, owners := "", origin := "workflow:PrismPM", sourceRepository := "https://github.com/UOR-Foundation/PrismPM"})
+}
+
+definition{
+  name: packageRecord20,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 20, asset := 64, registry := (ctor Foundation.Asset.V1.Model::Registry.ghcrIo), name := "prismpm-adapter-kubernetes", version := "0.4.0", published := true, owners := "", origin := "workflow:PrismPM", sourceRepository := "https://github.com/UOR-Foundation/PrismPM"})
+}
+
+definition{
+  name: packageRecord21,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 21, asset := 65, registry := (ctor Foundation.Asset.V1.Model::Registry.ghcrIo), name := "prismpm-oracles", version := "0.4.0", published := true, owners := "", origin := "workflow:PrismPM", sourceRepository := "https://github.com/UOR-Foundation/PrismPM"})
+}
+
+definition{
+  name: packageRecord22,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 22, asset := 66, registry := (ctor Foundation.Asset.V1.Model::Registry.ghcrIo), name := "prismpm-runtime", version := "0.4.0", published := true, owners := "", origin := "workflow:PrismPM calculator-example", sourceRepository := "https://github.com/UOR-Foundation/PrismPM"})
+}
+
+definition{
+  name: packageRecord23,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 23, asset := 67, registry := (ctor Foundation.Asset.V1.Model::Registry.ghcrIo), name := "prismpm-sdk", version := "0.4.0", published := true, owners := "", origin := "workflow:PrismPM", sourceRepository := "https://github.com/UOR-Foundation/PrismPM"})
+}
+
+definition{
+  name: packageRecord24,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 24, asset := 68, registry := (ctor Foundation.Asset.V1.Model::Registry.ghcrIo), name := "prismpm-sdk-build", version := "", published := false, owners := "", origin := "workflow:PrismPM", sourceRepository := ""})
+}
+
+definition{
+  name: packageRecord25,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 25, asset := 69, registry := (ctor Foundation.Asset.V1.Model::Registry.ghcrIo), name := "prismpm-sdk-candidate", version := "", published := true, owners := "", origin := "workflow:PrismPM", sourceRepository := ""})
+}
+
+definition{
+  name: packageRecord26,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 26, asset := 70, registry := (ctor Foundation.Asset.V1.Model::Registry.npm), name := "@uor-foundation/algebra", version := "0.1.0", published := true, owners := "auser humuhumu lfrlfa", origin := "organization:uor-foundation", sourceRepository := "git+https://github.com/UOR-Foundation/math-ts.git"})
+}
+
+definition{
+  name: packageRecord27,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 27, asset := 71, registry := (ctor Foundation.Asset.V1.Model::Registry.npm), name := "@uor-foundation/calculus", version := "0.1.0", published := true, owners := "auser humuhumu lfrlfa", origin := "organization:uor-foundation", sourceRepository := "git+https://github.com/UOR-Foundation/math-ts.git"})
+}
+
+definition{
+  name: packageRecord28,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 28, asset := 72, registry := (ctor Foundation.Asset.V1.Model::Registry.npm), name := "@uor-foundation/field-substrate", version := "0.1.0", published := true, owners := "auser humuhumu lfrlfa", origin := "organization:uor-foundation", sourceRepository := "git+https://github.com/UOR-Foundation/math-ts.git"})
+}
+
+definition{
+  name: packageRecord29,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 29, asset := 73, registry := (ctor Foundation.Asset.V1.Model::Registry.npm), name := "@uor-foundation/geometry", version := "0.1.0", published := true, owners := "auser humuhumu lfrlfa", origin := "organization:uor-foundation", sourceRepository := "git+https://github.com/UOR-Foundation/math-ts.git"})
+}
+
+definition{
+  name: packageRecord30,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 30, asset := 74, registry := (ctor Foundation.Asset.V1.Model::Registry.npm), name := "@uor-foundation/math-js", version := "0.1.1", published := true, owners := "auser humuhumu lfrlfa", origin := "organization:uor-foundation", sourceRepository := "git+https://github.com/uor-foundation/math-js.git"})
+}
+
+definition{
+  name: packageRecord31,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 31, asset := 75, registry := (ctor Foundation.Asset.V1.Model::Registry.npm), name := "@uor-foundation/math-ts-core", version := "0.1.0", published := true, owners := "auser humuhumu lfrlfa", origin := "organization:uor-foundation", sourceRepository := "git+https://github.com/UOR-Foundation/math-ts.git"})
+}
+
+definition{
+  name: packageRecord32,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 32, asset := 76, registry := (ctor Foundation.Asset.V1.Model::Registry.npm), name := "@uor-foundation/mcp-server", version := "0.1.0", published := true, owners := "auser humuhumu lfrlfa", origin := "organization:uor-foundation", sourceRepository := "git+https://github.com/UOR-Foundation/math-ts.git"})
+}
+
+definition{
+  name: packageRecord33,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 33, asset := 77, registry := (ctor Foundation.Asset.V1.Model::Registry.npm), name := "@uor-foundation/operators", version := "0.1.0", published := true, owners := "auser humuhumu lfrlfa", origin := "organization:uor-foundation", sourceRepository := "git+https://github.com/UOR-Foundation/math-ts.git"})
+}
+
+definition{
+  name: packageRecord34,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 34, asset := 78, registry := (ctor Foundation.Asset.V1.Model::Registry.npm), name := "@uor-foundation/resonance", version := "0.1.0", published := true, owners := "auser humuhumu lfrlfa", origin := "organization:uor-foundation", sourceRepository := "git+https://github.com/UOR-Foundation/math-ts.git"})
+}
+
+definition{
+  name: packageRecord35,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 35, asset := 79, registry := (ctor Foundation.Asset.V1.Model::Registry.npm), name := "@uor-foundation/self-reference", version := "0.1.0", published := true, owners := "auser humuhumu lfrlfa", origin := "organization:uor-foundation", sourceRepository := "git+https://github.com/UOR-Foundation/math-ts.git"})
+}
+
+definition{
+  name: packageRecord36,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 36, asset := 80, registry := (ctor Foundation.Asset.V1.Model::Registry.npm), name := "@uor-foundation/sigmatics", version := "0.3.2", published := true, owners := "auser humuhumu lfrlfa", origin := "organization:uor-foundation", sourceRepository := "git+https://github.com/UOR-Foundation/sigmatics.git"})
+}
+
+definition{
+  name: packageRecord37,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 37, asset := 81, registry := (ctor Foundation.Asset.V1.Model::Registry.npm), name := "@uor-foundation/topology", version := "0.1.0", published := true, owners := "auser humuhumu lfrlfa", origin := "organization:uor-foundation", sourceRepository := "git+https://github.com/UOR-Foundation/math-ts.git"})
+}
+
+definition{
+  name: packageRecord38,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 38, asset := 82, registry := (ctor Foundation.Asset.V1.Model::Registry.npm), name := "@uor-foundation/uor-addr", version := "0.2.0", published := true, owners := "auser humuhumu lfrlfa", origin := "organization:uor-foundation", sourceRepository := "git+https://github.com/UOR-Foundation/uor-addr.git"})
+}
+
+definition{
+  name: packageRecord39,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 39, asset := 83, registry := (ctor Foundation.Asset.V1.Model::Registry.npm), name := "@uor/prism", version := "", published := false, owners := "", origin := "install:website/.lovable/plan/hero-in-the-ai-sdk-style-2026-10-21.md", sourceRepository := ""})
+}
+
+definition{
+  name: packageRecord40,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 40, asset := 84, registry := (ctor Foundation.Asset.V1.Model::Registry.npm), name := "prism-code", version := "0.9.1", published := true, owners := "humuhumu333", origin := "install:website/.lovable/plan/agent-ready-website-2026-10-22.md", sourceRepository := "git+https://github.com/UOR-Foundation/PrismPM.git"})
+}
+
+definition{
+  name: packageRecord41,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 41, asset := 85, registry := (ctor Foundation.Asset.V1.Model::Registry.pypi), name := "prism-code", version := "", published := false, owners := "", origin := "install:website/src/docs/prism.generated.ts", sourceRepository := ""})
+}
+
+definition{
+  name: packageRecord42,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::PackageRecord,
+  body: (record Foundation.Asset.V1.Model::PackageRecord {index := 42, asset := 86, registry := (ctor Foundation.Asset.V1.Model::Registry.pypi), name := "uor-addr", version := "0.2.0", published := true, owners := "", origin := "install:website/src/blog/posts.data.ts", sourceRepository := "https://github.com/UOR-Foundation/uor-addr"})
+}
+
+definition{
+  name: packagesFrom0,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::PackageRecord),
+  body: (cons (packageRecord0) (cons (packageRecord1) (cons (packageRecord2) (cons (packageRecord3) (cons (packageRecord4) (cons (packageRecord5) (cons (packageRecord6) (cons (packageRecord7) (cons (packageRecord8) (cons (packageRecord9) (cons (packageRecord10) (cons (packageRecord11) (cons (packageRecord12) (cons (packageRecord13) (cons (packageRecord14) (cons (packageRecord15) (cons (packageRecord16) (cons (packageRecord17) (cons (packageRecord18) (cons (packageRecord19) (cons (packageRecord20) (cons (packageRecord21) (cons (packageRecord22) (cons (packageRecord23) (cons (packageRecord24) (cons (packageRecord25) (cons (packageRecord26) (cons (packageRecord27) (cons (packageRecord28) (cons (packageRecord29) (cons (packageRecord30) (cons (packageRecord31) (cons (packageRecord32) (cons (packageRecord33) (cons (packageRecord34) (cons (packageRecord35) (cons (packageRecord36) (cons (packageRecord37) (cons (packageRecord38) (cons (packageRecord39) (cons (packageRecord40) (cons (packageRecord41) (cons (packageRecord42) (nil Foundation.Asset.V1.Model::PackageRecord))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: packages,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::PackageRecord),
+  body: (packagesFrom0)
+}
+
+definition{
+  name: serviceRecord0,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 0, asset := 118, provider := 42, url := "https://uor.foundation/about/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: serviceRecord1,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 1, asset := 119, provider := 42, url := "https://uor.foundation/agents/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: serviceRecord2,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 2, asset := 120, provider := 42, url := "https://uor.foundation/blog/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: serviceRecord3,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 3, asset := 121, provider := 42, url := "https://uor-foundation.github.io/calculator-example/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: serviceRecord4,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 4, asset := 122, provider := 42, url := "https://uor-foundation.github.io/community/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: serviceRecord5,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 5, asset := 123, provider := 42, url := "https://uor-foundation.github.io/dataflow-policy/", httpStatus := 404, deployed := false, location := ""})
+}
+
+definition{
+  name: serviceRecord6,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 6, asset := 124, provider := 42, url := "https://uor.foundation/agents/discord/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: serviceRecord7,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 7, asset := 125, provider := 42, url := "https://uor.foundation/docs/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: serviceRecord8,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 8, asset := 126, provider := 42, url := "https://ask-api.uor.foundation/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: serviceRecord9,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 9, asset := 127, provider := 42, url := "https://uor-foundation.github.io/foundry/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: serviceRecord10,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 10, asset := 128, provider := 42, url := "https://uor-foundation.github.io/foundry-web/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: serviceRecord11,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 11, asset := 129, provider := 42, url := "https://uor.foundation/framework/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: serviceRecord12,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 12, asset := 130, provider := 42, url := "https://uor-foundation.github.io/holo-search/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: serviceRecord13,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 13, asset := 131, provider := 42, url := "https://registry.uor.foundation/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: serviceRecord14,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 14, asset := 132, provider := 42, url := "https://mcp.uor.foundation/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: serviceRecord15,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 15, asset := 133, provider := 42, url := "", httpStatus := 0, deployed := false, location := ""})
+}
+
+definition{
+  name: serviceRecord16,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 16, asset := 134, provider := 42, url := "https://uor-foundation.github.io/template/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: serviceRecord17,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 17, asset := 135, provider := 42, url := "https://doi.org/10.5281/zenodo.19068826", httpStatus := 302, deployed := true, location := "https://zenodo.org/doi/10.5281/zenodo.19068826"})
+}
+
+definition{
+  name: serviceRecord18,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::ServiceRecord,
+  body: (record Foundation.Asset.V1.Model::ServiceRecord {index := 18, asset := 136, provider := 42, url := "https://uor.foundation/", httpStatus := 200, deployed := true, location := ""})
+}
+
+definition{
+  name: servicesFrom0,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::ServiceRecord),
+  body: (cons (serviceRecord0) (cons (serviceRecord1) (cons (serviceRecord2) (cons (serviceRecord3) (cons (serviceRecord4) (cons (serviceRecord5) (cons (serviceRecord6) (cons (serviceRecord7) (cons (serviceRecord8) (cons (serviceRecord9) (cons (serviceRecord10) (cons (serviceRecord11) (cons (serviceRecord12) (cons (serviceRecord13) (cons (serviceRecord14) (cons (serviceRecord15) (cons (serviceRecord16) (cons (serviceRecord17) (cons (serviceRecord18) (nil Foundation.Asset.V1.Model::ServiceRecord))))))))))))))))))))
+}
+
+definition{
+  name: services,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::ServiceRecord),
+  body: (servicesFrom0)
+}
+
+definition{
+  name: relationship0,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Relationship,
+  body: (record Foundation.Asset.V1.Model::Relationship {index := 0, asset := 34, relation := (ctor Foundation.Asset.V1.Model::Relation.unstated), statement := "In production at"})
+}
+
+definition{
+  name: relationship1,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Relationship,
+  body: (record Foundation.Asset.V1.Model::Relationship {index := 1, asset := 35, relation := (ctor Foundation.Asset.V1.Model::Relation.provider), statement := "the community server is a Discord guild the website invites readers to"})
+}
+
+definition{
+  name: relationship2,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Relationship,
+  body: (record Foundation.Asset.V1.Model::Relationship {index := 2, asset := 36, relation := (ctor Foundation.Asset.V1.Model::Relation.provider), statement := "the website is deployed to GitHub Pages; every repository is hosted on GitHub"})
+}
+
+definition{
+  name: relationship3,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Relationship,
+  body: (record Foundation.Asset.V1.Model::Relationship {index := 3, asset := 37, relation := (ctor Foundation.Asset.V1.Model::Relation.provider), statement := "the website loads Google Analytics visitor tracking"})
+}
+
+definition{
+  name: relationship4,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Relationship,
+  body: (record Foundation.Asset.V1.Model::Relationship {index := 4, asset := 38, relation := (ctor Foundation.Asset.V1.Model::Relation.provider), statement := "the community site's brand files are copied from the Hologram brand kit"})
+}
+
+definition{
+  name: relationship5,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Relationship,
+  body: (record Foundation.Asset.V1.Model::Relationship {index := 5, asset := 39, relation := (ctor Foundation.Asset.V1.Model::Relation.provider), statement := "the website's sign-in integration is generated by Lovable"})
+}
+
+definition{
+  name: relationship6,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Relationship,
+  body: (record Foundation.Asset.V1.Model::Relationship {index := 6, asset := 40, relation := (ctor Foundation.Asset.V1.Model::Relation.unstated), statement := "In production at"})
+}
+
+definition{
+  name: relationship7,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Relationship,
+  body: (record Foundation.Asset.V1.Model::Relationship {index := 7, asset := 41, relation := (ctor Foundation.Asset.V1.Model::Relation.provider), statement := "the website's data client is created with supabase-js against the Foundation's Supabase project"})
+}
+
+definition{
+  name: relationship8,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Relationship,
+  body: (record Foundation.Asset.V1.Model::Relationship {index := 8, asset := 43, relation := (ctor Foundation.Asset.V1.Model::Relation.provider), statement := "the playground is powered by WebContainers"})
+}
+
+definition{
+  name: relationshipsFrom0,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::Relationship),
+  body: (cons (relationship0) (cons (relationship1) (cons (relationship2) (cons (relationship3) (cons (relationship4) (cons (relationship5) (cons (relationship6) (cons (relationship7) (cons (relationship8) (nil Foundation.Asset.V1.Model::Relationship))))))))))
+}
+
+definition{
+  name: relationships,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::Relationship),
+  body: (relationshipsFrom0)
+}
+
+definition{
+  name: document0,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 0, asset := 2, repository := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", path := ".github/ISSUE_TEMPLATE/bug_report.md", digest := "sha256:c46758e97c9f11b7ec0b0e5f47a8af98c7608246b96814ce670b80cb07bc2395", lockDigest := ""})
+}
+
+definition{
+  name: document1,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 1, asset := 3, repository := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", path := ".github/ISSUE_TEMPLATE/feature_request.md", digest := "sha256:570b656f6ce8bc07766924f991ea3cad145b3f5043603826eb754007de28b361", lockDigest := ""})
+}
+
+definition{
+  name: document2,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 2, asset := 4, repository := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", path := ".github/pull_request_template.md", digest := "sha256:4be13e41035f4fb9d8e06845cb90de3b742dda5d797c1dc978e10f94483913b7", lockDigest := ""})
+}
+
+definition{
+  name: document3,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 3, asset := 5, repository := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", path := "CODE_OF_CONDUCT.md", digest := "sha256:d01bb370bf46dadc5bd8b1b30113a3434baf079b32815e21cfd05af4fb841705", lockDigest := ""})
+}
+
+definition{
+  name: document4,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 4, asset := 6, repository := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", path := "CONTRIBUTING.md", digest := "sha256:c8cbfbd2931392f03420504c1069b5352f4c35cfeb91591a86df6e8f60496ea9", lockDigest := ""})
+}
+
+definition{
+  name: document5,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 5, asset := 7, repository := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", path := "README.md", digest := "sha256:0331592d4aea926423587aaeffe1d0f1f7440c11de1c2a55877878058b4a666f", lockDigest := ""})
+}
+
+definition{
+  name: document6,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 6, asset := 8, repository := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", path := "SECURITY.md", digest := "sha256:5e6f0001a30a154d923c64e515fe60a1ee7c0b232abac9130006269f1c85f202", lockDigest := ""})
+}
+
+definition{
+  name: document7,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 7, asset := 9, repository := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", path := "STANDARDS.md", digest := "sha256:87977973277069d38bb3b9851c5f323182e15528184c5e2029dc631b133a4b26", lockDigest := ""})
+}
+
+definition{
+  name: document8,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 8, asset := 10, repository := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", path := "UOR_Foundation.png", digest := "sha256:b3ce19ee6074591add47c885dfd74791894785b3553c1c4eccfff65f09c44138", lockDigest := ""})
+}
+
+definition{
+  name: document9,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 9, asset := 11, repository := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", path := "governance/CHANGELOG.md", digest := "sha256:b79a104ac67a9f3e88954756f9f3e05acb0adc9753559fafb1f122ed95aa6e1d", lockDigest := ""})
+}
+
+definition{
+  name: document10,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 10, asset := 12, repository := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", path := "governance/GOVERNANCE.md", digest := "sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574", lockDigest := ""})
+}
+
+definition{
+  name: document11,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 11, asset := 13, repository := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", path := "governance/The_UOR_Foundation_Bylaws.pdf", digest := "sha256:21dde54a38910f58fb685867a63030f5fd8d0a6d0d2c93baa58e690641a4906c", lockDigest := ""})
+}
+
+definition{
+  name: document12,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 12, asset := 14, repository := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", path := "root-README.md", digest := "sha256:214639c557aa66569065887d63b5d489ae3fa0bdb063062b1a35c56f2cc8b8cc", lockDigest := ""})
+}
+
+definition{
+  name: document13,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 13, asset := 15, repository := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", path := "toc/README.md", digest := "sha256:9674e625d93cefc9e490b3af5ae449f8770eeadb50c85e68597f741656c2d2a2", lockDigest := ""})
+}
+
+definition{
+  name: document14,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 14, asset := 16, repository := "community", commit := "1ef75b03a425abf09064f92db4fed0dd6bb23f62", path := "site/brand/hologram-warm.css", digest := "sha256:86297939f26618556c560542f105cf1be1f0a718180aed7617d6e3018bf0339a", lockDigest := "sha256:86297939f26618556c560542f105cf1be1f0a718180aed7617d6e3018bf0339a"})
+}
+
+definition{
+  name: document15,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 15, asset := 17, repository := "community", commit := "1ef75b03a425abf09064f92db4fed0dd6bb23f62", path := "site/fonts/Archivo-SemiBold.woff2", digest := "sha256:66822bebb0cbe98fbd0407971acabdc91583ed605cdafa275e3c556121aa9d9d", lockDigest := "sha256:66822bebb0cbe98fbd0407971acabdc91583ed605cdafa275e3c556121aa9d9d"})
+}
+
+definition{
+  name: document16,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 16, asset := 18, repository := "community", commit := "1ef75b03a425abf09064f92db4fed0dd6bb23f62", path := "site/fonts/Geist-Medium.woff2", digest := "sha256:925b5ffbf31ca1d1c2a9e615d0aa590a090ee1d91d70209fdcd67bb0f6d7f75f", lockDigest := "sha256:925b5ffbf31ca1d1c2a9e615d0aa590a090ee1d91d70209fdcd67bb0f6d7f75f"})
+}
+
+definition{
+  name: document17,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 17, asset := 19, repository := "community", commit := "1ef75b03a425abf09064f92db4fed0dd6bb23f62", path := "site/fonts/Geist-Regular.woff2", digest := "sha256:595373960ca1aa1a83ed8c2543d05e99cc436cc294c17591bfcf2c69031b5ebe", lockDigest := "sha256:595373960ca1aa1a83ed8c2543d05e99cc436cc294c17591bfcf2c69031b5ebe"})
+}
+
+definition{
+  name: document18,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 18, asset := 20, repository := "community", commit := "1ef75b03a425abf09064f92db4fed0dd6bb23f62", path := "site/fonts/GeistMono-Medium.woff2", digest := "sha256:b1670c038fc762b5094b130c5f43a6b7fd92085d74193a4e4895586afa1568cf", lockDigest := "sha256:b1670c038fc762b5094b130c5f43a6b7fd92085d74193a4e4895586afa1568cf"})
+}
+
+definition{
+  name: document19,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 19, asset := 21, repository := "community", commit := "1ef75b03a425abf09064f92db4fed0dd6bb23f62", path := "site/fonts/GeistMono-Regular.woff2", digest := "sha256:d189397fb929a6e663eb93ad6ecd02b2571ca3a581000edb4627b10933cbdb3a", lockDigest := "sha256:d189397fb929a6e663eb93ad6ecd02b2571ca3a581000edb4627b10933cbdb3a"})
+}
+
+definition{
+  name: document20,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 20, asset := 22, repository := "community", commit := "1ef75b03a425abf09064f92db4fed0dd6bb23f62", path := "site/fonts/OFL-Archivo.txt", digest := "sha256:108b4e57c9c796d3d38d0428ca7ee39de47ad93187302718d9b2d8864b9b716b", lockDigest := "sha256:108b4e57c9c796d3d38d0428ca7ee39de47ad93187302718d9b2d8864b9b716b"})
+}
+
+definition{
+  name: document21,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::Document,
+  body: (record Foundation.Asset.V1.Model::Document {index := 21, asset := 23, repository := "community", commit := "1ef75b03a425abf09064f92db4fed0dd6bb23f62", path := "site/fonts/OFL-Geist.txt", digest := "sha256:c683bfbcc7e087f5d37a54ef628f10387c451a83ddc459b151403a164ac46c90", lockDigest := "sha256:c683bfbcc7e087f5d37a54ef628f10387c451a83ddc459b151403a164ac46c90"})
+}
+
+definition{
+  name: documentsFrom0,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::Document),
+  body: (cons (document0) (cons (document1) (cons (document2) (cons (document3) (cons (document4) (cons (document5) (cons (document6) (cons (document7) (cons (document8) (cons (document9) (cons (document10) (cons (document11) (cons (document12) (cons (document13) (cons (document14) (cons (document15) (cons (document16) (cons (document17) (cons (document18) (cons (document19) (cons (document20) (cons (document21) (nil Foundation.Asset.V1.Model::Document)))))))))))))))))))))))
+}
+
+definition{
+  name: documents,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::Document),
+  body: (documentsFrom0)
+}
+
+definition{
+  name: openClaim0,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 0, asset := 24, refusal := "host-unresolved", detail := "DNS answers RCODE 3 for app.uor.foundation, which foundry-web:Cargo.toml references"})
+}
+
+definition{
+  name: openClaim1,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 1, asset := 26, refusal := "rdap-unavailable", detail := "the IANA RDAP bootstrap names no service for supabase.co"})
+}
+
+definition{
+  name: openClaim2,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 2, asset := 30, refusal := "host-unresolved", detail := "DNS answers RCODE 3 for schemas.uor.foundation, which website:src/docs/prism.generated.ts references"})
+}
+
+definition{
+  name: openClaim3,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 3, asset := 32, refusal := "rdap-unavailable", detail := "the IANA RDAP bootstrap names no service for github.io"})
+}
+
+definition{
+  name: openClaim4,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 4, asset := 33, refusal := "registration-expiring", detail := "uor.foundation expires 2027-01-21T04:47:55.732Z, 66 days after the observation"})
+}
+
+definition{
+  name: openClaim5,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 5, asset := 34, refusal := "relation-unstated", detail := "the source says \"In production at\", which states no Schema.org relation (memberOf, sponsor, funder or provider)"})
+}
+
+definition{
+  name: openClaim6,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 6, asset := 40, refusal := "relation-unstated", detail := "the source says \"In production at\", which states no Schema.org relation (memberOf, sponsor, funder or provider)"})
+}
+
+definition{
+  name: openClaim7,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 7, asset := 44, refusal := "source-repository-unregistered", detail := "crates.io states the source https://github.com/UOR-Foundation/atlas-embeddings, which is no public repository of the ecosystem register"})
+}
+
+definition{
+  name: openClaim8,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 8, asset := 46, refusal := "install-target-unpublished", detail := "website/src/docs/prism.generated.ts tells a reader to install prism-code from crates.io, which answers 404: the name is unclaimed"})
+}
+
+definition{
+  name: openClaim9,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 9, asset := 48, refusal := "source-repository-unregistered", detail := "crates.io states the source https://github.com/UOR-Foundation/uor-addr-1, which is no public repository of the ecosystem register"})
+}
+
+definition{
+  name: openClaim10,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 10, asset := 60, refusal := "image-not-public", detail := "ghcr.io answers 403 to an anonymous tag listing of ghcr.io/uor-foundation/calculator-system, which calculator-example names"})
+}
+
+definition{
+  name: openClaim11,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 11, asset := 61, refusal := "image-not-public", detail := "ghcr.io answers 403 to an anonymous tag listing of ghcr.io/uor-foundation/dataflow-policy, which prism-code names"})
+}
+
+definition{
+  name: openClaim12,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 12, asset := 68, refusal := "image-not-public", detail := "ghcr.io answers 403 to an anonymous tag listing of ghcr.io/uor-foundation/prismpm-sdk-build, which PrismPM names"})
+}
+
+definition{
+  name: openClaim13,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 13, asset := 69, refusal := "image-unversioned", detail := "ghcr.io/uor-foundation/prismpm-sdk-candidate has no SemVer tag, so no released image states its source"})
+}
+
+definition{
+  name: openClaim14,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 14, asset := 70, refusal := "source-repository-unregistered", detail := "npm states the source git+https://github.com/UOR-Foundation/math-ts.git, which is no public repository of the ecosystem register"})
+}
+
+definition{
+  name: openClaim15,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 15, asset := 71, refusal := "source-repository-unregistered", detail := "npm states the source git+https://github.com/UOR-Foundation/math-ts.git, which is no public repository of the ecosystem register"})
+}
+
+definition{
+  name: openClaim16,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 16, asset := 72, refusal := "source-repository-unregistered", detail := "npm states the source git+https://github.com/UOR-Foundation/math-ts.git, which is no public repository of the ecosystem register"})
+}
+
+definition{
+  name: openClaim17,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 17, asset := 73, refusal := "source-repository-unregistered", detail := "npm states the source git+https://github.com/UOR-Foundation/math-ts.git, which is no public repository of the ecosystem register"})
+}
+
+definition{
+  name: openClaim18,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 18, asset := 74, refusal := "source-repository-unregistered", detail := "npm states the source git+https://github.com/uor-foundation/math-js.git, which is no public repository of the ecosystem register"})
+}
+
+definition{
+  name: openClaim19,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 19, asset := 75, refusal := "source-repository-unregistered", detail := "npm states the source git+https://github.com/UOR-Foundation/math-ts.git, which is no public repository of the ecosystem register"})
+}
+
+definition{
+  name: openClaim20,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 20, asset := 76, refusal := "source-repository-unregistered", detail := "npm states the source git+https://github.com/UOR-Foundation/math-ts.git, which is no public repository of the ecosystem register"})
+}
+
+definition{
+  name: openClaim21,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 21, asset := 77, refusal := "source-repository-unregistered", detail := "npm states the source git+https://github.com/UOR-Foundation/math-ts.git, which is no public repository of the ecosystem register"})
+}
+
+definition{
+  name: openClaim22,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 22, asset := 78, refusal := "source-repository-unregistered", detail := "npm states the source git+https://github.com/UOR-Foundation/math-ts.git, which is no public repository of the ecosystem register"})
+}
+
+definition{
+  name: openClaim23,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 23, asset := 79, refusal := "source-repository-unregistered", detail := "npm states the source git+https://github.com/UOR-Foundation/math-ts.git, which is no public repository of the ecosystem register"})
+}
+
+definition{
+  name: openClaim24,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 24, asset := 80, refusal := "source-repository-unregistered", detail := "npm states the source git+https://github.com/UOR-Foundation/sigmatics.git, which is no public repository of the ecosystem register"})
+}
+
+definition{
+  name: openClaim25,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 25, asset := 81, refusal := "source-repository-unregistered", detail := "npm states the source git+https://github.com/UOR-Foundation/math-ts.git, which is no public repository of the ecosystem register"})
+}
+
+definition{
+  name: openClaim26,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 26, asset := 83, refusal := "install-target-unpublished", detail := "website/.lovable/plan/hero-in-the-ai-sdk-style-2026-10-21.md tells a reader to install @uor/prism from npm, which answers 404: the name is unclaimed"})
+}
+
+definition{
+  name: openClaim27,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 27, asset := 85, refusal := "install-target-unpublished", detail := "website/src/docs/prism.generated.ts tells a reader to install prism-code from pypi, which answers 404: the name is unclaimed"})
+}
+
+definition{
+  name: openClaim28,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 28, asset := 87, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim29,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 29, asset := 88, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim30,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 30, asset := 89, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim31,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 31, asset := 90, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim32,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 32, asset := 91, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim33,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 33, asset := 92, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim34,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 34, asset := 93, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim35,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 35, asset := 94, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim36,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 36, asset := 95, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim37,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 37, asset := 96, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim38,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 38, asset := 97, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim39,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 39, asset := 98, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim40,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 40, asset := 99, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim41,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 41, asset := 100, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim42,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 42, asset := 101, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim43,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 43, asset := 102, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim44,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 44, asset := 103, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim45,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 45, asset := 104, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim46,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 46, asset := 105, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim47,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 47, asset := 106, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim48,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 48, asset := 107, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim49,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 49, asset := 108, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim50,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 50, asset := 109, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim51,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 51, asset := 110, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim52,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 52, asset := 111, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim53,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 53, asset := 112, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim54,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 54, asset := 113, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim55,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 55, asset := 114, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim56,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 56, asset := 115, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim57,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 57, asset := 116, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim58,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 58, asset := 117, refusal := "homepage-unobserved", detail := "GitHub answered 403 for the repository resource, so its homepage is not read"})
+}
+
+definition{
+  name: openClaim59,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 59, asset := 123, refusal := "service-not-deployed", detail := "a GET of https://uor-foundation.github.io/dataflow-policy/ answered 404"})
+}
+
+definition{
+  name: openClaim60,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 60, asset := 123, refusal := "service-without-repository", detail := "no public repository of the ecosystem register states that it implements https://uor-foundation.github.io/dataflow-policy/"})
+}
+
+definition{
+  name: openClaim61,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 61, asset := 126, refusal := "service-without-repository", detail := "no public repository of the ecosystem register states that it implements https://ask-api.uor.foundation/"})
+}
+
+definition{
+  name: openClaim62,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 62, asset := 132, refusal := "service-without-repository", detail := "no public repository of the ecosystem register states that it implements https://mcp.uor.foundation/"})
+}
+
+definition{
+  name: openClaim63,
+  parameters: [],
+  result: Foundation.Asset.V1.Model::OpenClaim,
+  body: (record Foundation.Asset.V1.Model::OpenClaim {index := 63, asset := 133, refusal := "service-without-url", detail := "website:src/playground/Playground.tsx implements it, and no route or address publishes it"})
+}
+
+definition{
+  name: openClaimsFrom48,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::OpenClaim),
+  body: (cons (openClaim48) (cons (openClaim49) (cons (openClaim50) (cons (openClaim51) (cons (openClaim52) (cons (openClaim53) (cons (openClaim54) (cons (openClaim55) (cons (openClaim56) (cons (openClaim57) (cons (openClaim58) (cons (openClaim59) (cons (openClaim60) (cons (openClaim61) (cons (openClaim62) (cons (openClaim63) (nil Foundation.Asset.V1.Model::OpenClaim)))))))))))))))))
+}
+
+definition{
+  name: openClaimsFrom0,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::OpenClaim),
+  body: (cons (openClaim0) (cons (openClaim1) (cons (openClaim2) (cons (openClaim3) (cons (openClaim4) (cons (openClaim5) (cons (openClaim6) (cons (openClaim7) (cons (openClaim8) (cons (openClaim9) (cons (openClaim10) (cons (openClaim11) (cons (openClaim12) (cons (openClaim13) (cons (openClaim14) (cons (openClaim15) (cons (openClaim16) (cons (openClaim17) (cons (openClaim18) (cons (openClaim19) (cons (openClaim20) (cons (openClaim21) (cons (openClaim22) (cons (openClaim23) (cons (openClaim24) (cons (openClaim25) (cons (openClaim26) (cons (openClaim27) (cons (openClaim28) (cons (openClaim29) (cons (openClaim30) (cons (openClaim31) (cons (openClaim32) (cons (openClaim33) (cons (openClaim34) (cons (openClaim35) (cons (openClaim36) (cons (openClaim37) (cons (openClaim38) (cons (openClaim39) (cons (openClaim40) (cons (openClaim41) (cons (openClaim42) (cons (openClaim43) (cons (openClaim44) (cons (openClaim45) (cons (openClaim46) (cons (openClaim47) (openClaimsFrom48)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: openClaims,
+  parameters: [],
+  result: (List Foundation.Asset.V1.Model::OpenClaim),
+  body: (openClaimsFrom0)
+}
+
+theorem{
+  name: registerValidHolds,
+  parameters: [],
+  statement: ((Foundation.Asset.V1.Model::registerValid (release) (assets) (communities) (domains) (packages) (services) (relationships) (documents) (openClaims)) = true),
+  proof: decide{}
+}
+\end{semanticmodule}
+\end{lexlean}
