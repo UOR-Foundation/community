@@ -278,6 +278,14 @@ model does not sanction.
 | `RM-02` | `build` | The remediation catalog declares every repository of remediation/register.json at the commit it was observed at, every change that applies at every tier, one issue draft per repository, and the digests of the ecosystem register, the observations and every pinned source and decision app |
 | `RM-03` | `open` | A change only a maintainer or owner can decide, and a norm no change can reach, is carried as an open claim with its evidence, never defaulted; no change is applied to another repository until the Foundation's owners approve it |
 
+## supply
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `SC-01` | `build` | The supply register is valid: every dependency edge joins two different repositories of the ecosystem register, every repository has a valid CycloneDX 1.6 SBOM that catalogues a component or an open claim, its component and license counts reconcile with its totals and the release, and every package not published as the Foundation's is named by an open claim |
+| `SC-02` | `build` | The supply catalog declares every repository of supply/register.json at its pinned commit with the digest of its committed SBOM, the syft release and binary digests, and the digests of the CycloneDX schema and purl type index it was validated against |
+| `SC-03` | `open` | A repository without a valid SBOM or with nothing catalogued in it, a reference the register cannot resolve, and a package declared for publication that its registry does not publish as the Foundation's are carried as open claims, never dropped or defaulted |
+
 ## uor_coc_enforcement
 
 | ID | Level | Statement |
