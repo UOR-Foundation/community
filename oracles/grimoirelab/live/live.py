@@ -140,8 +140,7 @@ def classify(request, guild):
         return "error"
     if request["url.template"] == "/channels/{channel}":
         return "ok" if request.get("discord.channel.guild_id") == guild else "foreign"
-    first, after = request.get("discord.page.first_id"), request.get("discord.cursor.after")
-    if first is not None and int(first) <= int(after):
+    if request.get("discord.page.past_cursor") is False:
         return "stale"
     return "ok"
 
