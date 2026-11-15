@@ -85,9 +85,9 @@ recently into the default branch, from unfiltered workflows that exist on that
 branch, and that every open ready pull request also reports. A matrix job is
 never required, since a planned matrix runs different entries for different
 changes. A job that only an unmerged pull request adds, or only a push runs, is
-never required, and a repository with no merged pull request requires none. In
-a repository listed in `repos.json` no human approval count is set, because the
-controller's gate is the requirement there; elsewhere the count is at most one.
+never required, and a repository with no merged pull request requires none. No
+ruleset sets a human approval count (Alex, 2026-11-15): a pull request and its
+required checks gate every merge, with the controller's gate in `repos.json` too.
 Every ruleset lets an Organization Owner bypass it (GitHub `bypass_actors`,
 `OrganizationAdmin`, `always`). Where GitHub Actions committed to the default
 branch in the last 90 days (a pin bump, a docs sync), the GitHub Actions app
