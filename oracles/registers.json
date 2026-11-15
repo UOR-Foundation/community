@@ -122,6 +122,16 @@
         ["node", "standards/project.mjs", "--check"],
         ["node", "standards/catalog.mjs", "--check"]
       ]
+    },
+    {
+      "area": "accessibility",
+      "sources": {"kind": "git-urls", "file": "accessibility/sources.json"},
+      "inputs": ["accessibility/**", "inventory/register.json", "package-lock.json", "tools/register-lex.mjs"],
+      "tools": [],
+      "check": [
+        ["node", "accessibility/project.mjs", "{sources}", "--check"],
+        ["node", "accessibility/catalog.mjs", "--check"]
+      ]
     }
   ]
 }

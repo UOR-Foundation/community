@@ -4,11 +4,11 @@
   "inputs": [
     {
       "path": "standards/candidates.json",
-      "sha256": "ca14cf3be7165d0c9f822365743905d11eff9268b9d9fceb5b766ecb07854083"
+      "sha256": "9686624f1f62561e483eccdeea99292a9dfa309bb10fddc6750069e204c8bc09"
     },
     {
       "path": "standards/parts.json",
-      "sha256": "d30f1ab309121b3cb38dc05c67d401bd4b01d002a336a3f78c7bc2fffebbec9f"
+      "sha256": "cae99ded77916bfc2401e532fc8522efab2bd5344508e2220d6e32219b3619fb"
     },
     {
       "path": "standards/snapshot.json",
@@ -80,13 +80,13 @@
       "inapplicable": 64,
       "conditional": 2,
       "mandatory": 16,
-      "adopted": 288,
-      "applicable": 315
+      "adopted": 328,
+      "applicable": 275
     },
     "byStatus": {
       "implemented": 12,
-      "partial": 300,
-      "unimplemented": 343
+      "partial": 340,
+      "unimplemented": 303
     },
     "openClaims": 648,
     "workstreams": 94
@@ -251,6 +251,16 @@
       "check": "SecurityRegister registerValidHolds (SE-01)",
       "commit": "6360c460d56cb225e8ab172fa4d0b6bfc36b78b7",
       "present": true
+    },
+    {
+      "index": 16,
+      "id": "accessibility",
+      "directory": "accessibility",
+      "register": "accessibility/register.json",
+      "module": "Foundation.Accessibility.V1",
+      "check": "Accessibility registerValidHolds (AX-01)",
+      "commit": "",
+      "present": true
     }
   ],
   "checks": [
@@ -297,6 +307,10 @@
     {
       "facet": 13,
       "name": "Supply registerValidHolds (SC-01)"
+    },
+    {
+      "facet": 16,
+      "name": "Accessibility registerValidHolds (AX-01)"
     }
   ],
   "parts": [
@@ -481,7 +495,8 @@
       "name": "Website and accessibility",
       "kind": "website",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "webContent",
@@ -1127,7 +1142,8 @@
       "name": "About the Foundation",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1140,7 +1156,8 @@
       "name": "Agent entry point",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1153,7 +1170,8 @@
       "name": "Foundation blog",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1166,7 +1184,8 @@
       "name": "Calculator example",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1179,7 +1198,8 @@
       "name": "Community health site",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1192,7 +1212,8 @@
       "name": "Dataflow policy site",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1205,7 +1226,8 @@
       "name": "Discord posting for agents",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1218,7 +1240,8 @@
       "name": "Prism documentation",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1231,7 +1254,8 @@
       "name": "Docs assistant (DocsGPT API)",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1244,7 +1268,8 @@
       "name": "Prism AI Foundry",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1257,7 +1282,8 @@
       "name": "Foundry Web",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1270,7 +1296,8 @@
       "name": "UOR Framework overview",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1283,7 +1310,8 @@
       "name": "Holo Search",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1296,7 +1324,8 @@
       "name": "Kappa registry",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1309,7 +1338,8 @@
       "name": "Hosted LexLean verifier (MCP server)",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1322,7 +1352,8 @@
       "name": "Prism playground",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1335,7 +1366,8 @@
       "name": "Template try page",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1348,7 +1380,8 @@
       "name": "UOR Framework ontology",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -1361,7 +1394,8 @@
       "name": "UOR Foundation website",
       "kind": "service",
       "facets": [
-        "inventory"
+        "inventory",
+        "accessibility"
       ],
       "subjects": [
         "software",
@@ -2312,7 +2346,7 @@
         "service",
         "package"
       ],
-      "home": "site",
+      "home": "accessibility",
       "oracle": "axe-core and the W3C ACT Rules test cases, unmodified; Lighthouse accessibility audits",
       "lock": "",
       "edition": "2.2",
@@ -2425,7 +2459,7 @@
         "website",
         "service"
       ],
-      "home": "site",
+      "home": "accessibility",
       "oracle": "Its clause 9 is WCAG 2.1 level AA: the WCAG oracle; the other clauses by the test procedures of its annex C",
       "lock": "",
       "edition": "",
@@ -6694,14 +6728,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Website and accessibility"
       ]
     },
     {
@@ -6714,14 +6748,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Website and accessibility"
       ]
     },
     {
@@ -7572,7 +7606,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -7790,7 +7824,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -8008,7 +8042,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -8226,7 +8260,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -8444,7 +8478,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -8662,7 +8696,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -8880,7 +8914,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -9098,7 +9132,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -9316,7 +9350,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -9534,7 +9568,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -9752,7 +9786,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -9970,7 +10004,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -10188,7 +10222,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -10406,7 +10440,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -10624,7 +10658,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -10842,7 +10876,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -11060,7 +11094,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -11278,7 +11312,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -11496,7 +11530,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -11714,7 +11748,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -11932,7 +11966,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -12150,7 +12184,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -12368,7 +12402,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -12586,7 +12620,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -12804,7 +12838,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -13022,7 +13056,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -13240,7 +13274,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -13458,7 +13492,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -13676,7 +13710,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -13894,7 +13928,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -14112,7 +14146,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -14330,7 +14364,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -14548,7 +14582,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -14766,7 +14800,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -14984,7 +15018,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -15202,7 +15236,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -15420,7 +15454,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -15638,7 +15672,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -15856,7 +15890,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -16074,7 +16108,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -16292,7 +16326,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -16510,7 +16544,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -16728,7 +16762,7 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
+      "adopted": "yes",
       "outcome": "inapplicable",
       "rule": 3,
       "status": "unrated",
@@ -16806,14 +16840,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for About the Foundation"
       ]
     },
     {
@@ -16826,14 +16860,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for About the Foundation"
       ]
     },
     {
@@ -16904,14 +16938,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Agent entry point"
       ]
     },
     {
@@ -16924,14 +16958,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Agent entry point"
       ]
     },
     {
@@ -17002,14 +17036,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Foundation blog"
       ]
     },
     {
@@ -17022,14 +17056,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Foundation blog"
       ]
     },
     {
@@ -17100,14 +17134,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Calculator example"
       ]
     },
     {
@@ -17120,14 +17154,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Calculator example"
       ]
     },
     {
@@ -17198,14 +17232,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Community health site"
       ]
     },
     {
@@ -17218,14 +17252,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Community health site"
       ]
     },
     {
@@ -17296,14 +17330,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Dataflow policy site"
       ]
     },
     {
@@ -17316,14 +17350,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Dataflow policy site"
       ]
     },
     {
@@ -17394,14 +17428,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Discord posting for agents"
       ]
     },
     {
@@ -17414,14 +17448,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Discord posting for agents"
       ]
     },
     {
@@ -17492,14 +17526,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Prism documentation"
       ]
     },
     {
@@ -17512,14 +17546,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Prism documentation"
       ]
     },
     {
@@ -17590,14 +17624,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Docs assistant (DocsGPT API)"
       ]
     },
     {
@@ -17610,14 +17644,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Docs assistant (DocsGPT API)"
       ]
     },
     {
@@ -17688,14 +17722,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Prism AI Foundry"
       ]
     },
     {
@@ -17708,14 +17742,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Prism AI Foundry"
       ]
     },
     {
@@ -17786,14 +17820,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Foundry Web"
       ]
     },
     {
@@ -17806,14 +17840,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Foundry Web"
       ]
     },
     {
@@ -17884,14 +17918,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework overview"
       ]
     },
     {
@@ -17904,14 +17938,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework overview"
       ]
     },
     {
@@ -17982,14 +18016,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Holo Search"
       ]
     },
     {
@@ -18002,14 +18036,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Holo Search"
       ]
     },
     {
@@ -18080,14 +18114,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Kappa registry"
       ]
     },
     {
@@ -18100,14 +18134,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Kappa registry"
       ]
     },
     {
@@ -18178,14 +18212,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Hosted LexLean verifier (MCP server)"
       ]
     },
     {
@@ -18198,14 +18232,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Hosted LexLean verifier (MCP server)"
       ]
     },
     {
@@ -18276,14 +18310,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Prism playground"
       ]
     },
     {
@@ -18296,14 +18330,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Prism playground"
       ]
     },
     {
@@ -18374,14 +18408,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Template try page"
       ]
     },
     {
@@ -18394,14 +18428,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for Template try page"
       ]
     },
     {
@@ -18472,14 +18506,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework ontology"
       ]
     },
     {
@@ -18492,14 +18526,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework ontology"
       ]
     },
     {
@@ -18570,14 +18604,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Foundation website"
       ]
     },
     {
@@ -18590,14 +18624,14 @@
       "force": "voluntary",
       "jurisdiction": "unbound",
       "activity": "present",
-      "adopted": "no",
-      "outcome": "applicable",
-      "rule": 0,
-      "status": "unimplemented",
-      "facet": 8,
-      "check": 0,
+      "adopted": "yes",
+      "outcome": "adopted",
+      "rule": 8,
+      "status": "partial",
+      "facet": 16,
+      "check": 11,
       "open": [
-        "nothing in the Foundation cites or implements it"
+        "accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Foundation website"
       ]
     },
     {
@@ -19342,14 +19376,14 @@
     {
       "decision": 120,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Website and accessibility: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Website and accessibility: accessibility/register.json cites it; no check of this repository verifies its clauses for Website and accessibility"
     },
     {
       "decision": 121,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Website and accessibility: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Website and accessibility: accessibility/register.json cites it; no check of this repository verifies its clauses for Website and accessibility"
     },
     {
       "decision": 123,
@@ -22084,14 +22118,14 @@
     {
       "decision": 631,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for About the Foundation: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for About the Foundation: accessibility/register.json cites it; no check of this repository verifies its clauses for About the Foundation"
     },
     {
       "decision": 632,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for About the Foundation: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for About the Foundation: accessibility/register.json cites it; no check of this repository verifies its clauses for About the Foundation"
     },
     {
       "decision": 634,
@@ -22108,14 +22142,14 @@
     {
       "decision": 636,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Agent entry point: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Agent entry point: accessibility/register.json cites it; no check of this repository verifies its clauses for Agent entry point"
     },
     {
       "decision": 637,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Agent entry point: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Agent entry point: accessibility/register.json cites it; no check of this repository verifies its clauses for Agent entry point"
     },
     {
       "decision": 639,
@@ -22132,14 +22166,14 @@
     {
       "decision": 641,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Foundation blog: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Foundation blog: accessibility/register.json cites it; no check of this repository verifies its clauses for Foundation blog"
     },
     {
       "decision": 642,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Foundation blog: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Foundation blog: accessibility/register.json cites it; no check of this repository verifies its clauses for Foundation blog"
     },
     {
       "decision": 644,
@@ -22156,14 +22190,14 @@
     {
       "decision": 646,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Calculator example: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Calculator example: accessibility/register.json cites it; no check of this repository verifies its clauses for Calculator example"
     },
     {
       "decision": 647,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Calculator example: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Calculator example: accessibility/register.json cites it; no check of this repository verifies its clauses for Calculator example"
     },
     {
       "decision": 649,
@@ -22180,14 +22214,14 @@
     {
       "decision": 651,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Community health site: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Community health site: accessibility/register.json cites it; no check of this repository verifies its clauses for Community health site"
     },
     {
       "decision": 652,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Community health site: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Community health site: accessibility/register.json cites it; no check of this repository verifies its clauses for Community health site"
     },
     {
       "decision": 654,
@@ -22204,14 +22238,14 @@
     {
       "decision": 656,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Dataflow policy site: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Dataflow policy site: accessibility/register.json cites it; no check of this repository verifies its clauses for Dataflow policy site"
     },
     {
       "decision": 657,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Dataflow policy site: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Dataflow policy site: accessibility/register.json cites it; no check of this repository verifies its clauses for Dataflow policy site"
     },
     {
       "decision": 659,
@@ -22228,14 +22262,14 @@
     {
       "decision": 661,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Discord posting for agents: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Discord posting for agents: accessibility/register.json cites it; no check of this repository verifies its clauses for Discord posting for agents"
     },
     {
       "decision": 662,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Discord posting for agents: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Discord posting for agents: accessibility/register.json cites it; no check of this repository verifies its clauses for Discord posting for agents"
     },
     {
       "decision": 664,
@@ -22252,14 +22286,14 @@
     {
       "decision": 666,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Prism documentation: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Prism documentation: accessibility/register.json cites it; no check of this repository verifies its clauses for Prism documentation"
     },
     {
       "decision": 667,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Prism documentation: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Prism documentation: accessibility/register.json cites it; no check of this repository verifies its clauses for Prism documentation"
     },
     {
       "decision": 669,
@@ -22276,14 +22310,14 @@
     {
       "decision": 671,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Docs assistant (DocsGPT API): nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Docs assistant (DocsGPT API): accessibility/register.json cites it; no check of this repository verifies its clauses for Docs assistant (DocsGPT API)"
     },
     {
       "decision": 672,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Docs assistant (DocsGPT API): nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Docs assistant (DocsGPT API): accessibility/register.json cites it; no check of this repository verifies its clauses for Docs assistant (DocsGPT API)"
     },
     {
       "decision": 674,
@@ -22300,14 +22334,14 @@
     {
       "decision": 676,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Prism AI Foundry: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Prism AI Foundry: accessibility/register.json cites it; no check of this repository verifies its clauses for Prism AI Foundry"
     },
     {
       "decision": 677,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Prism AI Foundry: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Prism AI Foundry: accessibility/register.json cites it; no check of this repository verifies its clauses for Prism AI Foundry"
     },
     {
       "decision": 679,
@@ -22324,14 +22358,14 @@
     {
       "decision": 681,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Foundry Web: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Foundry Web: accessibility/register.json cites it; no check of this repository verifies its clauses for Foundry Web"
     },
     {
       "decision": 682,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Foundry Web: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Foundry Web: accessibility/register.json cites it; no check of this repository verifies its clauses for Foundry Web"
     },
     {
       "decision": 684,
@@ -22348,14 +22382,14 @@
     {
       "decision": 686,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for UOR Framework overview: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for UOR Framework overview: accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework overview"
     },
     {
       "decision": 687,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for UOR Framework overview: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for UOR Framework overview: accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework overview"
     },
     {
       "decision": 689,
@@ -22372,14 +22406,14 @@
     {
       "decision": 691,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Holo Search: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Holo Search: accessibility/register.json cites it; no check of this repository verifies its clauses for Holo Search"
     },
     {
       "decision": 692,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Holo Search: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Holo Search: accessibility/register.json cites it; no check of this repository verifies its clauses for Holo Search"
     },
     {
       "decision": 694,
@@ -22396,14 +22430,14 @@
     {
       "decision": 696,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Kappa registry: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Kappa registry: accessibility/register.json cites it; no check of this repository verifies its clauses for Kappa registry"
     },
     {
       "decision": 697,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Kappa registry: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Kappa registry: accessibility/register.json cites it; no check of this repository verifies its clauses for Kappa registry"
     },
     {
       "decision": 699,
@@ -22420,14 +22454,14 @@
     {
       "decision": 701,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Hosted LexLean verifier (MCP server): nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Hosted LexLean verifier (MCP server): accessibility/register.json cites it; no check of this repository verifies its clauses for Hosted LexLean verifier (MCP server)"
     },
     {
       "decision": 702,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Hosted LexLean verifier (MCP server): nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Hosted LexLean verifier (MCP server): accessibility/register.json cites it; no check of this repository verifies its clauses for Hosted LexLean verifier (MCP server)"
     },
     {
       "decision": 704,
@@ -22444,14 +22478,14 @@
     {
       "decision": 706,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Prism playground: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Prism playground: accessibility/register.json cites it; no check of this repository verifies its clauses for Prism playground"
     },
     {
       "decision": 707,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Prism playground: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Prism playground: accessibility/register.json cites it; no check of this repository verifies its clauses for Prism playground"
     },
     {
       "decision": 709,
@@ -22468,14 +22502,14 @@
     {
       "decision": 711,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Template try page: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for Template try page: accessibility/register.json cites it; no check of this repository verifies its clauses for Template try page"
     },
     {
       "decision": 712,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Template try page: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for Template try page: accessibility/register.json cites it; no check of this repository verifies its clauses for Template try page"
     },
     {
       "decision": 714,
@@ -22492,14 +22526,14 @@
     {
       "decision": 716,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for UOR Framework ontology: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for UOR Framework ontology: accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework ontology"
     },
     {
       "decision": 717,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for UOR Framework ontology: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for UOR Framework ontology: accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Framework ontology"
     },
     {
       "decision": 719,
@@ -22516,14 +22550,14 @@
     {
       "decision": 721,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for UOR Foundation website: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "Web Content Accessibility Guidelines 2.2 (level AA) for UOR Foundation website: accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Foundation website"
     },
     {
       "decision": 722,
       "owner": "standards",
-      "refusal": "standard-unimplemented",
-      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for UOR Foundation website: nothing in the Foundation cites or implements it"
+      "refusal": "standard-partial",
+      "detail": "ETSI EN 301 549 Accessibility requirements for ICT products and services for UOR Foundation website: accessibility/register.json cites it; no check of this repository verifies its clauses for UOR Foundation website"
     }
   ],
   "workstreams": [
@@ -23519,7 +23553,7 @@
       "owner": "standards",
       "mandatory": false,
       "outcomes": [
-        "applicable"
+        "adopted"
       ],
       "undecided": false,
       "parts": [
@@ -23545,11 +23579,11 @@
         "UOR Foundation website"
       ],
       "statuses": [
-        "unimplemented"
+        "partial"
       ],
       "clauses": [],
       "oracle": "Its clause 9 is WCAG 2.1 level AA: the WCAG oracle; the other clauses by the test procedures of its annex C",
-      "home": "site",
+      "home": "accessibility",
       "url": "https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf"
     },
     {
@@ -23559,7 +23593,7 @@
       "owner": "standards",
       "mandatory": false,
       "outcomes": [
-        "applicable"
+        "adopted"
       ],
       "undecided": false,
       "parts": [
@@ -23585,7 +23619,7 @@
         "UOR Foundation website"
       ],
       "statuses": [
-        "unimplemented"
+        "partial"
       ],
       "clauses": [
         "1.1.1",
@@ -23677,7 +23711,7 @@
         "4.1.3"
       ],
       "oracle": "axe-core and the W3C ACT Rules test cases, unmodified; Lighthouse accessibility audits",
-      "home": "site",
+      "home": "accessibility",
       "url": "https://www.w3.org/TR/WCAG22/"
     },
     {
