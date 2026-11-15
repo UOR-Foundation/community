@@ -110,10 +110,10 @@ fn nonprofit_np_02() {
     }
     // Every fetch the snapshot made is a source of the register, so none is read unaddressed.
     let fetches = values(&snapshot, "fetchedAt").len();
-    let addressed = digests.len() - 4 - 3;
+    let addressed = digests.len() - 5 - 3;
     assert_eq!(
         fetches, addressed,
-        "every snapshot fetch is one source: four in-repository inputs and three git documents besides"
+        "every snapshot fetch is one source: five in-repository inputs and three git documents besides"
     );
 }
 
