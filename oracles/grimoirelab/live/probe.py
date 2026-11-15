@@ -49,9 +49,10 @@ def strategy_params(strategy, now):
         # No channel has id 1, so Discord answers 404 Unknown Channel.
         p["channel"] = "1"
     elif strategy == "floor":
-        # A floor above any bucket, without sleeping: the client must stop
-        # after the first response instead of spending the bucket.
-        p.update(sleep_for_rate=False, min_rate_to_sleep=10000)
+        # The highest floor Perceval keeps (it clamps any higher one to
+        # MAX_RATE_LIMIT), without sleeping, and a full page of two: the client
+        # must stop at the message bucket instead of fetching the next page.
+        p.update(max_items=2, sleep_for_rate=False, min_rate_to_sleep=discord.DiscordClient.MAX_RATE_LIMIT)
     elif strategy != "full":
         raise ValueError("unknown strategy " + strategy)
     return p
