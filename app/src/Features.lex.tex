@@ -928,13 +928,6 @@ definition{
 }
 
 definition{
-  name: acceptUorRepoProtectionINV004,
-  parameters: [],
-  result: String,
-  body: "UorRepoProtectionProofs::inv004Holds"
-}
-
-definition{
   name: acceptUorRepoStandardsINV001,
   parameters: [],
   result: String,
@@ -3241,21 +3234,7 @@ definition{
   name: featureUorRepoProtectionRule3,
   parameters: [],
   result: Foundation.Arch::Feature,
-  body: (record Foundation.Arch::Feature {statement := "When tier is t1 and reviews is below 2, the answer is weak-protection.", calls := (cons "UorRepoProtection::uorRepoProtectionRule3" (cons "UorRepoProtection::uorRepoProtectionJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
-}
-
-definition{
-  name: featureUorRepoProtectionRule4,
-  parameters: [],
-  result: Foundation.Arch::Feature,
-  body: (record Foundation.Arch::Feature {statement := "When tier is not t4 and reviews is below 1, the answer is weak-protection.", calls := (cons "UorRepoProtection::uorRepoProtectionRule4" (cons "UorRepoProtection::uorRepoProtectionJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
-}
-
-definition{
-  name: featureUorRepoProtectionRule5,
-  parameters: [],
-  result: Foundation.Arch::Feature,
-  body: (record Foundation.Arch::Feature {statement := "When tier is not t4 and checks is optional, the answer is weak-protection.", calls := (cons "UorRepoProtection::uorRepoProtectionRule5" (cons "UorRepoProtection::uorRepoProtectionJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
+  body: (record Foundation.Arch::Feature {statement := "When tier is not t4 and checks is optional, the answer is weak-protection.", calls := (cons "UorRepoProtection::uorRepoProtectionRule3" (cons "UorRepoProtection::uorRepoProtectionJudge" (nil String))), acceptance := (cons "UorCommunityDecisions::application" (nil String))})
 }
 
 definition{
@@ -3283,21 +3262,14 @@ definition{
   name: featureUorRepoProtectionINV002,
   parameters: [],
   result: Foundation.Arch::Feature,
-  body: (record Foundation.Arch::Feature {statement := "It never answers conformant when tier is t1 and reviews is below 2.", calls := (cons "UorRepoProtection::uorRepoProtectionJudge" (nil String)), acceptance := (cons "Features::acceptUorRepoProtectionINV002" (nil String))})
+  body: (record Foundation.Arch::Feature {statement := "It never answers conformant when tier is t2 and checks is optional.", calls := (cons "UorRepoProtection::uorRepoProtectionJudge" (nil String)), acceptance := (cons "Features::acceptUorRepoProtectionINV002" (nil String))})
 }
 
 definition{
   name: featureUorRepoProtectionINV003,
   parameters: [],
   result: Foundation.Arch::Feature,
-  body: (record Foundation.Arch::Feature {statement := "It never answers conformant when tier is t2 and checks is optional.", calls := (cons "UorRepoProtection::uorRepoProtectionJudge" (nil String)), acceptance := (cons "Features::acceptUorRepoProtectionINV003" (nil String))})
-}
-
-definition{
-  name: featureUorRepoProtectionINV004,
-  parameters: [],
-  result: Foundation.Arch::Feature,
-  body: (record Foundation.Arch::Feature {statement := "It always answers conformant when tier is t4 and forcepush is blocked.", calls := (cons "UorRepoProtection::uorRepoProtectionJudge" (nil String)), acceptance := (cons "Features::acceptUorRepoProtectionINV004" (nil String))})
+  body: (record Foundation.Arch::Feature {statement := "It always answers conformant when tier is t4 and forcepush is blocked.", calls := (cons "UorRepoProtection::uorRepoProtectionJudge" (nil String)), acceptance := (cons "Features::acceptUorRepoProtectionINV003" (nil String))})
 }
 
 definition{
@@ -4130,14 +4102,14 @@ definition{
   name: journeyUorRepoProtectionRepositoryMaintainer,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRepositoryMaintainer", steps := (cons "Features::featureUorRepoProtectionRule2" (cons "Features::featureUorRepoProtectionRule3" (cons "Features::featureUorRepoProtectionRule4" (cons "Features::featureUorRepoProtectionRule5" (cons "Features::featureUorRepoProtectionOtherwise" (nil String))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderRepositoryMaintainer", steps := (cons "Features::featureUorRepoProtectionRule2" (cons "Features::featureUorRepoProtectionRule3" (cons "Features::featureUorRepoProtectionOtherwise" (nil String))))})
 }
 
 definition{
   name: journeyUorRepoProtectionVerifier,
   parameters: [],
   result: Foundation.Arch::Journey,
-  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureUorRepoProtectionRefuseMalformed" (cons "Features::featureUorRepoProtectionINV001" (cons "Features::featureUorRepoProtectionINV002" (cons "Features::featureUorRepoProtectionINV003" (cons "Features::featureUorRepoProtectionINV004" (nil String))))))})
+  body: (record Foundation.Arch::Journey {actor := "Architecture::stakeholderVerifier", steps := (cons "Features::featureUorRepoProtectionRefuseMalformed" (cons "Features::featureUorRepoProtectionINV001" (cons "Features::featureUorRepoProtectionINV002" (cons "Features::featureUorRepoProtectionINV003" (nil String)))))})
 }
 
 definition{

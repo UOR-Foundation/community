@@ -6,7 +6,7 @@
   "app": {
     "name": "uor-repo-protection",
     "title": "Branch protection by tier",
-    "purpose": "Decide whether a UOR Foundation repository protects its default branch as GOVERNANCE.md 6.2 and 9 require for its tier: pull requests, approving reviews, required status checks and no force push.",
+    "purpose": "Decide whether a UOR Foundation repository protects its default branch as GOVERNANCE.md 6.2 and 9 require for its tier: pull requests, required status checks and no force push.",
     "fields": [
       {
         "name": "tier",
@@ -33,7 +33,7 @@
         "kind": "number",
         "min": 0,
         "max": 8,
-        "means": "approving reviews the default branch requires"
+        "means": "approving reviews the default branch requires (GOVERNANCE.md 6.2 and 9, version 2.2: none is required at any tier)"
       },
       {
         "name": "checks",
@@ -94,38 +94,6 @@
         "when": [
           {
             "field": "tier",
-            "op": "is",
-            "value": "t1"
-          },
-          {
-            "field": "reviews",
-            "op": "<",
-            "value": 2
-          }
-        ],
-        "then": "weak-protection",
-        "why": "GOVERNANCE.md 6.2 and 9: Tier 1 requires 2 reviews"
-      },
-      {
-        "when": [
-          {
-            "field": "tier",
-            "op": "is not",
-            "value": "t4"
-          },
-          {
-            "field": "reviews",
-            "op": "<",
-            "value": 1
-          }
-        ],
-        "then": "weak-protection",
-        "why": "GOVERNANCE.md 6.2 and 9: Tiers 2 and 3 require 1 review"
-      },
-      {
-        "when": [
-          {
-            "field": "tier",
             "op": "is not",
             "value": "t4"
           },
@@ -153,23 +121,6 @@
         ],
         "then": "conformant",
         "why": "force push is never allowed, at any tier"
-      },
-      {
-        "kind": "never",
-        "when": [
-          {
-            "field": "tier",
-            "op": "is",
-            "value": "t1"
-          },
-          {
-            "field": "reviews",
-            "op": "<",
-            "value": 2
-          }
-        ],
-        "then": "conformant",
-        "why": "Tier 1 requires 2 reviews"
       },
       {
         "kind": "never",
@@ -212,8 +163,8 @@
         "response": "conformant"
       },
       {
-        "request": "t1 required 1 required blocked",
-        "response": "weak-protection"
+        "request": "t1 required 0 required blocked",
+        "response": "conformant"
       },
       {
         "request": "t2 required 1 required blocked",
@@ -221,7 +172,7 @@
       },
       {
         "request": "t2 required 0 required blocked",
-        "response": "weak-protection"
+        "response": "conformant"
       },
       {
         "request": "t3 optional 1 required blocked",
@@ -320,8 +271,6 @@
       "steps": [
         "REQ-002",
         "REQ-003",
-        "REQ-004",
-        "REQ-005",
         "otherwise"
       ]
     },

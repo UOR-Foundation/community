@@ -30,8 +30,6 @@ theorem{
       UorRepoProtection::uorRepoProtectionRule1,
       UorRepoProtection::uorRepoProtectionRule2,
       UorRepoProtection::uorRepoProtectionRule3,
-      UorRepoProtection::uorRepoProtectionRule4,
-      UorRepoProtection::uorRepoProtectionRule5,
       UorRepoProtection::uorRepoProtectionTierT1,
       UorRepoProtection::uorRepoProtectionTierT2,
       UorRepoProtection::uorRepoProtectionTierT3,
@@ -46,7 +44,7 @@ definition{
   name: breaksInv002,
   parameters: [request : UorRepoProtection::UorRepoProtectionRequest],
   result: Bool,
-  body: (((((((((project request tier) <? 4) && ((project request pr) <? 2)) && ((project request reviews) <=? 8)) && ((project request checks) <? 2)) && ((project request forcepush) <? 2)) && ((project request tier) =? (UorRepoProtection::uorRepoProtectionTierT1))) && ((project request reviews) <? 2)) && ((UorRepoProtection::uorRepoProtectionJudge request) =? (UorRepoProtection::uorRepoProtectionAnswerConformant)))
+  body: (((((((((project request tier) <? 4) && ((project request pr) <? 2)) && ((project request reviews) <=? 8)) && ((project request checks) <? 2)) && ((project request forcepush) <? 2)) && ((project request tier) =? (UorRepoProtection::uorRepoProtectionTierT2))) && ((project request checks) =? (UorRepoProtection::uorRepoProtectionChecksOptional))) && ((UorRepoProtection::uorRepoProtectionJudge request) =? (UorRepoProtection::uorRepoProtectionAnswerConformant)))
 }
 
 theorem{
@@ -67,8 +65,6 @@ theorem{
       UorRepoProtection::uorRepoProtectionRule1,
       UorRepoProtection::uorRepoProtectionRule2,
       UorRepoProtection::uorRepoProtectionRule3,
-      UorRepoProtection::uorRepoProtectionRule4,
-      UorRepoProtection::uorRepoProtectionRule5,
       UorRepoProtection::uorRepoProtectionTierT1,
       UorRepoProtection::uorRepoProtectionTierT2,
       UorRepoProtection::uorRepoProtectionTierT3,
@@ -83,7 +79,7 @@ definition{
   name: breaksInv003,
   parameters: [request : UorRepoProtection::UorRepoProtectionRequest],
   result: Bool,
-  body: (((((((((project request tier) <? 4) && ((project request pr) <? 2)) && ((project request reviews) <=? 8)) && ((project request checks) <? 2)) && ((project request forcepush) <? 2)) && ((project request tier) =? (UorRepoProtection::uorRepoProtectionTierT2))) && ((project request checks) =? (UorRepoProtection::uorRepoProtectionChecksOptional))) && ((UorRepoProtection::uorRepoProtectionJudge request) =? (UorRepoProtection::uorRepoProtectionAnswerConformant)))
+  body: (((((((((project request tier) <? 4) && ((project request pr) <? 2)) && ((project request reviews) <=? 8)) && ((project request checks) <? 2)) && ((project request forcepush) <? 2)) && ((project request tier) =? (UorRepoProtection::uorRepoProtectionTierT4))) && ((project request forcepush) =? (UorRepoProtection::uorRepoProtectionForcepushBlocked))) && (not ((UorRepoProtection::uorRepoProtectionJudge request) =? (UorRepoProtection::uorRepoProtectionAnswerConformant))))
 }
 
 theorem{
@@ -104,8 +100,6 @@ theorem{
       UorRepoProtection::uorRepoProtectionRule1,
       UorRepoProtection::uorRepoProtectionRule2,
       UorRepoProtection::uorRepoProtectionRule3,
-      UorRepoProtection::uorRepoProtectionRule4,
-      UorRepoProtection::uorRepoProtectionRule5,
       UorRepoProtection::uorRepoProtectionTierT1,
       UorRepoProtection::uorRepoProtectionTierT2,
       UorRepoProtection::uorRepoProtectionTierT3,
@@ -114,43 +108,6 @@ theorem{
     ]
   },
   axioms: [Classical.choice, Quot.sound, propext]
-}
-
-definition{
-  name: breaksInv004,
-  parameters: [request : UorRepoProtection::UorRepoProtectionRequest],
-  result: Bool,
-  body: (((((((((project request tier) <? 4) && ((project request pr) <? 2)) && ((project request reviews) <=? 8)) && ((project request checks) <? 2)) && ((project request forcepush) <? 2)) && ((project request tier) =? (UorRepoProtection::uorRepoProtectionTierT4))) && ((project request forcepush) =? (UorRepoProtection::uorRepoProtectionForcepushBlocked))) && (not ((UorRepoProtection::uorRepoProtectionJudge request) =? (UorRepoProtection::uorRepoProtectionAnswerConformant))))
-}
-
-theorem{
-  name: inv004Holds,
-  parameters: [request : UorRepoProtection::UorRepoProtectionRequest],
-  statement: ((breaksInv004 request) = false),
-  proof: linear_arithmetic{
-    definitions: [
-      UorRepoProtection::uorRepoProtectionAnswerConformant,
-      UorRepoProtection::uorRepoProtectionAnswerWeakProtection,
-      UorRepoProtection::uorRepoProtectionChecksOptional,
-      UorRepoProtection::uorRepoProtectionChecksRequired,
-      UorRepoProtection::uorRepoProtectionForcepushAllowed,
-      UorRepoProtection::uorRepoProtectionForcepushBlocked,
-      UorRepoProtection::uorRepoProtectionJudge,
-      UorRepoProtection::uorRepoProtectionPrOptional,
-      UorRepoProtection::uorRepoProtectionPrRequired,
-      UorRepoProtection::uorRepoProtectionRule1,
-      UorRepoProtection::uorRepoProtectionRule2,
-      UorRepoProtection::uorRepoProtectionRule3,
-      UorRepoProtection::uorRepoProtectionRule4,
-      UorRepoProtection::uorRepoProtectionRule5,
-      UorRepoProtection::uorRepoProtectionTierT1,
-      UorRepoProtection::uorRepoProtectionTierT2,
-      UorRepoProtection::uorRepoProtectionTierT3,
-      UorRepoProtection::uorRepoProtectionTierT4,
-      breaksInv004
-    ]
-  },
-  axioms: [Quot.sound, propext]
 }
 \end{semanticmodule}
 \end{lexlean}
