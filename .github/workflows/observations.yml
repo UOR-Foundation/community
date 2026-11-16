@@ -14,10 +14,19 @@
 # Discord: collect.py discord, as the read-only bot, decides every channel of
 # the Foundation's guild with the uor-discord-read app and records the
 # responses Perceval's discord backend receives for the channels it permits.
-# The record holds no message text, no member's name and no token; a member is
-# the sha256 of their Discord user id. It is kept under the content address of
-# the same inputs plus the app, governance/discord.json, the two Discord
-# overlays and the guild id.
+# The record holds no message text, no member's name and no token. Every
+# identifier a member could be found by (their user id, a message id, a thread
+# id) is its HMAC-SHA-256 pseudonym under the DISCORD_PSEUDONYM_KEY secret, as
+# the uor-deidentification app decides for each field of
+# observations/deidentification.json; without the key nothing is recorded. It is
+# kept under the content address of the same inputs plus both apps,
+# governance/discord.json, the field list, the two Discord overlays, the guild id
+# and the key's fingerprint.
+#
+# Re-key (workflow_dispatch with rekey): a record committed before the key
+# existed is re-keyed with collect.py deidentify, the corpus is rebuilt from it
+# twice, in two databases, and replay compares the runs digest for digest. The
+# result is the run's discord-deidentified artifact, reviewed and committed.
 # Project content, not universal policy.
 name: observations
 
@@ -33,6 +42,8 @@ on:
       - 'oracles/grimoirelab/chronicler-discord/**'
       - 'governance/discord.json'
       - 'apps/uor-discord-read.prompt.json'
+      - 'apps/uor-deidentification.prompt.json'
+      - 'observations/deidentification.json'
       - '.github/workflows/observations.yml'
   pull_request:
     paths:
@@ -44,8 +55,15 @@ on:
       - 'oracles/grimoirelab/chronicler-discord/**'
       - 'governance/discord.json'
       - 'apps/uor-discord-read.prompt.json'
+      - 'apps/uor-deidentification.prompt.json'
+      - 'observations/deidentification.json'
       - '.github/workflows/observations.yml'
   workflow_dispatch:
+    inputs:
+      rekey:
+        description: Re-key the committed Discord record and rebuild the corpus from it
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -131,11 +149,15 @@ jobs:
         # The GitHub job's inputs, plus what decides and reads the guild: the
         # read app, the Foundation's labels and install record, the Discord
         # backend and eventizer overlays, and the guild itself.
+        # The key enters the address only as its HMAC of a fixed label, the
+        # fingerprint guild.json records, so a new key is a new record.
         env:
           GUILD: ${{ vars.DISCORD_GUILD_ID }}
+          DISCORD_PSEUDONYM_KEY: ${{ secrets.DISCORD_PSEUDONYM_KEY }}
         run: |
-          printf 'key=observations-discord-%s-%s-py%s-%s-%s\n' "$ImageOS" "$ImageVersion" "${{ steps.python.outputs.python-version }}" "$GUILD" \
-            "${{ hashFiles('observations/sources.json', 'observations/collect.py', 'observations/oracle.sh', 'oracles/grimoirelab/oracle.lock.json', 'oracles/grimoirelab/perceval-discord/**', 'oracles/grimoirelab/chronicler-discord/**', 'governance/discord.json', 'apps/uor-discord-read.prompt.json') }}" >>"$GITHUB_OUTPUT"
+          fingerprint="$(python3 -c 'import hmac,hashlib,os; print(hmac.new(bytes.fromhex(os.environ["DISCORD_PSEUDONYM_KEY"]), b"uor-deidentification/key", hashlib.sha256).hexdigest()[:16])' 2>/dev/null || echo none)"
+          printf 'key=observations-discord-%s-%s-py%s-%s-k%s-%s\n' "$ImageOS" "$ImageVersion" "${{ steps.python.outputs.python-version }}" "$GUILD" "$fingerprint" \
+            "${{ hashFiles('observations/sources.json', 'observations/collect.py', 'observations/oracle.sh', 'oracles/grimoirelab/oracle.lock.json', 'oracles/grimoirelab/perceval-discord/**', 'oracles/grimoirelab/chronicler-discord/**', 'governance/discord.json', 'apps/uor-discord-read.prompt.json', 'apps/uor-deidentification.prompt.json', 'observations/deidentification.json') }}" >>"$GITHUB_OUTPUT"
       - name: The record of these exact inputs, kept by an earlier run
         uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
         with:
@@ -158,10 +180,11 @@ jobs:
         env:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_GUILD_ID: ${{ vars.DISCORD_GUILD_ID }}
+          DISCORD_PSEUDONYM_KEY: ${{ secrets.DISCORD_PSEUDONYM_KEY }}
           KEY: ${{ steps.address.outputs.key }}
         run: |
-          if [ -z "$DISCORD_BOT_TOKEN" ] || [ -z "$DISCORD_GUILD_ID" ]; then
-            echo "Set the DISCORD_BOT_TOKEN secret and the DISCORD_GUILD_ID variable to record the guild" >&2
+          if [ -z "$DISCORD_BOT_TOKEN" ] || [ -z "$DISCORD_GUILD_ID" ] || [ -z "$DISCORD_PSEUDONYM_KEY" ]; then
+            echo "Set the DISCORD_BOT_TOKEN and DISCORD_PSEUDONYM_KEY secrets and the DISCORD_GUILD_ID variable to record the guild" >&2
             exit 1
           fi
           sudo apt-get install -y -q libmysqlclient-dev pkg-config >/dev/null
@@ -175,3 +198,61 @@ jobs:
           path: _observations-discord/responses
           if-no-files-found: error
           retention-days: 30
+
+  rekey:
+    # reuse-exempt: a one-time re-key with a secret the cache must not address; its output is reviewed and committed.
+    name: Re-key the Discord record and rebuild the corpus
+    if: github.event_name == 'workflow_dispatch' && inputs.rekey
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    services:
+      mariadb:
+        image: mariadb:11.4
+        env:
+          MARIADB_ROOT_PASSWORD: observations
+        ports: ['3306:3306']
+        options: --health-cmd="healthcheck.sh --connect --innodb_initialized" --health-interval=10s --health-retries=10
+      redis:
+        image: redis:7.4
+        ports: ['6379:6379']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+      - name: Re-key the committed record
+        env:
+          DISCORD_PSEUDONYM_KEY: ${{ secrets.DISCORD_PSEUDONYM_KEY }}
+        run: |
+          python observations/collect.py deidentify observations/responses _rekey/responses
+          cp observations/responses/*.jsonl.gz observations/responses/.*.jsonl.gz _rekey/responses/ 2>/dev/null || true
+      - name: Rebuild the corpus twice and compare
+        env:
+          SORTINGHAT_DB_HOST: 127.0.0.1
+          SORTINGHAT_DB_PORT: '3306'
+          SORTINGHAT_DB_USER: root
+          SORTINGHAT_DB_PASSWORD: observations
+          SORTINGHAT_REDIS_HOST: 127.0.0.1
+        run: |
+          sudo apt-get install -y -q libmysqlclient-dev pkg-config >/dev/null
+          python="$(observations/oracle.sh "$RUNNER_TEMP/oracle")"
+          for db in corpus replay; do
+            mysql -h 127.0.0.1 -uroot -pobservations -e "create database $db"
+            SORTINGHAT_DB_DATABASE=$db "$python" observations/collect.py run observations/sources.json "$RUNNER_TEMP/work-$db" "_rekey/$db" _rekey/responses &
+          done
+          wait -n && wait -n
+          mv _rekey/corpus/corpus.json _rekey/corpus.json
+          "$python" observations/collect.py replay _rekey/corpus.json _rekey/replay _rekey/replay.json
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: discord-deidentified
+          path: |
+            _rekey/responses/discord
+            _rekey/corpus
+            _rekey/corpus.json
+            _rekey/replay.json
+          if-no-files-found: error
+          retention-days: 7

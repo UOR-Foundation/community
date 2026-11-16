@@ -24,6 +24,7 @@ on:
       - 'remediation/**'
       - 'observations/**'
       - 'interventions/**'
+      - 'security/**'
       - 'automation/intervention*'
       - 'apps/**'
       - 'tools/**'
@@ -39,6 +40,7 @@ on:
       - 'remediation/**'
       - 'observations/**'
       - 'interventions/**'
+      - 'security/**'
       - 'automation/intervention*'
       - 'apps/**'
       - 'tools/**'
@@ -148,6 +150,9 @@ jobs:
         id: node
         with:
           node-version: 22
+      - name: Install the tools the registers name
+        # pdftotext reads the Bylaws and NIST SP 800-30; its version is part of the address below.
+        run: command -v pdftotext >/dev/null || { sudo apt-get update -q && sudo apt-get install -yq poppler-utils; }
       - name: Address the inputs
         id: address
         # A register reads its own files (its entry's `inputs`), the

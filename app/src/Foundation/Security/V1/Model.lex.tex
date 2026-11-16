@@ -1,0 +1,1089 @@
+\begin{lexlean}{Foundation.Security.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Security model}
+\begin{semanticmodule}
+inductive{
+  name: Catalog,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: attack, fields: []}, {name: atlas, fields: []}]
+}
+
+inductive{
+  name: SourceKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: adversarial, fields: []},
+    {name: accidental, fields: []},
+    {name: structural, fields: []},
+    {name: environmental, fields: []}
+  ]
+}
+
+inductive{
+  name: ElementKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: externalEntity, fields: []},
+    {name: process, fields: []},
+    {name: dataStore, fields: []},
+    {name: dataFlow, fields: []}
+  ]
+}
+
+inductive{
+  name: Response,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: mitigate, fields: []},
+    {name: accept, fields: []},
+    {name: avoid, fields: []},
+    {name: share, fields: []},
+    {name: transfer, fields: []}
+  ]
+}
+
+inductive{
+  name: Status,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: implemented, fields: []},
+    {name: partlyImplemented, fields: []},
+    {name: planned, fields: []},
+    {name: alternative, fields: []},
+    {name: notApplicable, fields: []}
+  ]
+}
+
+inductive{
+  name: EvidenceKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: path, fields: []},
+    {name: pinned, fields: []},
+    {name: scorecard, fields: []}
+  ]
+}
+
+inductive{
+  name: GapStatus,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: planned, fields: []}, {name: notApplicable, fields: []}]
+}
+
+inductive{
+  name: SlotState,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: notApplicable, fields: []},
+    {name: answered, fields: []},
+    {name: stated, fields: []}
+  ]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: csfFunctionsCount, type: Nat},
+    {name: csfCategoriesCount, type: Nat},
+    {name: subcategoriesCount, type: Nat},
+    {name: cellsCount, type: Nat},
+    {name: techniquesCount, type: Nat},
+    {name: scorecardChecksCount, type: Nat},
+    {name: threatSourcesCount, type: Nat},
+    {name: elementsCount, type: Nat},
+    {name: controlsCount, type: Nat},
+    {name: threatsCount, type: Nat},
+    {name: threatControlsCount, type: Nat},
+    {name: threatTechniquesCount, type: Nat},
+    {name: evidenceCount, type: Nat},
+    {name: outcomesCount, type: Nat},
+    {name: gapsCount, type: Nat},
+    {name: strideSlotsCount, type: Nat},
+    {name: linddunSlotsCount, type: Nat},
+    {name: indicatorsCount, type: Nat},
+    {name: openClaimsCount, type: Nat},
+    {name: assessed, type: String},
+    {name: sources, type: String},
+    {name: pdftotext, type: String}
+  ]
+}
+
+structure{
+  name: CsfFunction,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: code, type: String}, {name: name, type: String}]
+}
+
+structure{
+  name: CsfCategory,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: code, type: String},
+    {name: name, type: String},
+    {name: function, type: Nat}
+  ]
+}
+
+structure{
+  name: Subcategory,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: code, type: String},
+    {name: text, type: String},
+    {name: category, type: Nat}
+  ]
+}
+
+structure{
+  name: Cell,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: table, type: Nat},
+    {name: row, type: Nat},
+    {name: column, type: Nat},
+    {name: level, type: Nat}
+  ]
+}
+
+structure{
+  name: Technique,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: code, type: String},
+    {name: name, type: String},
+    {name: catalog, type: Catalog},
+    {name: revoked, type: Bool},
+    {name: deprecated, type: Bool}
+  ]
+}
+
+structure{
+  name: ScorecardCheck,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: name, type: String}, {name: risk, type: String}]
+}
+
+structure{
+  name: ThreatSource,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: code, type: String},
+    {name: name, type: String},
+    {name: sourceType, type: String},
+    {name: kind, type: SourceKind},
+    {name: rated, type: Bool},
+    {name: capability, type: Nat},
+    {name: intent, type: Nat},
+    {name: targeting, type: Nat}
+  ]
+}
+
+structure{
+  name: Element,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: code, type: String},
+    {name: name, type: String},
+    {name: kind, type: ElementKind},
+    {name: personal, type: Bool}
+  ]
+}
+
+structure{
+  name: Control,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: code, type: String},
+    {name: name, type: String},
+    {name: status, type: Status},
+    {name: evidenceCount, type: Nat}
+  ]
+}
+
+structure{
+  name: Threat,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: code, type: String},
+    {name: name, type: String},
+    {name: source, type: Nat},
+    {name: initiation, type: Nat},
+    {name: adverse, type: Nat},
+    {name: impact, type: Nat},
+    {name: overall, type: Nat},
+    {name: risk, type: Nat},
+    {name: response, type: Response},
+    {name: controlCount, type: Nat},
+    {name: techniqueCount, type: Nat}
+  ]
+}
+
+structure{
+  name: ThreatControl,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: threat, type: Nat}, {name: control, type: Nat}]
+}
+
+structure{
+  name: ThreatTechnique,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: threat, type: Nat}, {name: technique, type: Nat}]
+}
+
+structure{
+  name: Evidence,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: control, type: Nat},
+    {name: kind, type: EvidenceKind},
+    {name: reference, type: String}
+  ]
+}
+
+structure{
+  name: Outcome,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: control, type: Nat}, {name: subcategory, type: Nat}]
+}
+
+structure{
+  name: Gap,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: subcategory, type: Nat},
+    {name: status, type: GapStatus},
+    {name: rationale, type: String}
+  ]
+}
+
+structure{
+  name: StrideSlot,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: element, type: Nat},
+    {name: category, type: Nat},
+    {name: state, type: SlotState},
+    {name: threat, type: Nat},
+    {name: rationale, type: String}
+  ]
+}
+
+structure{
+  name: LinddunSlot,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: element, type: Nat},
+    {name: category, type: Nat},
+    {name: state, type: SlotState},
+    {name: threat, type: Nat},
+    {name: rationale, type: String}
+  ]
+}
+
+structure{
+  name: Indicator,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: code, type: String},
+    {name: threat, type: Nat},
+    {name: source, type: String},
+    {name: measure, type: String},
+    {name: amount, type: Nat},
+    {name: text, type: String}
+  ]
+}
+
+structure{
+  name: OpenClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: code, type: String},
+    {name: subject, type: String},
+    {name: detail, type: String}
+  ]
+}
+
+definition{
+  name: sameBool,
+  parameters: [left : Bool, right : Bool],
+  result: Bool,
+  body: (if left then right else (not right))
+}
+
+definition{
+  name: exactlyOne,
+  parameters: [left : Bool, right : Bool],
+  result: Bool,
+  body: (if left then (not right) else right)
+}
+
+definition{
+  name: cellPosition,
+  parameters: [table : Nat, row : Nat, column : Nat],
+  result: Nat,
+  body: ((if (table =? 0) then 0 else 25) + ((row + (row + (row + (row + row)))) + column))
+}
+
+definition{
+  name: sourceIsAdversarial,
+  parameters: [kind : SourceKind],
+  result: Bool,
+  body: (match kind
+    | SourceKind.adversarial => true
+    | SourceKind.accidental => false
+    | SourceKind.structural => false
+    | SourceKind.environmental => false)
+}
+
+definition{
+  name: statusNeedsEvidence,
+  parameters: [status : Status],
+  result: Bool,
+  body: (match status
+    | Status.implemented => true
+    | Status.partlyImplemented => true
+    | Status.planned => false
+    | Status.alternative => false
+    | Status.notApplicable => false)
+}
+
+definition{
+  name: responseFits,
+  parameters: [response : Response, count : Nat],
+  result: Bool,
+  body: (match response
+    | Response.mitigate => (0 <? count)
+    | Response.accept => (count =? 0)
+    | Response.avoid => true
+    | Response.share => (0 <? count)
+    | Response.transfer => (0 <? count))
+}
+
+definition{
+  name: cellLevel,
+  parameters: [table : (List Cell), at : Nat],
+  result: Nat,
+  body: (match table
+    | List.nil => 5
+    | List.cons cell rest => (if ((project cell index) =? at) then (project cell level) else (cellLevel rest at))),
+  recursive_argument: table
+}
+
+definition{
+  name: threatsRated,
+  parameters: [table : (List Cell), values : (List Threat)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons threat rest => (((project threat overall) =? (cellLevel table (cellPosition 0 (project threat initiation) (project threat adverse)))) && (((project threat risk) =? (cellLevel table (cellPosition 1 (project threat overall) (project threat impact)))) && (threatsRated table rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: controlLinkRun,
+  parameters: [at : Nat, values : (List ThreatControl)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => (if ((project item threat) =? at) then (1 + (controlLinkRun at rest)) else 0)),
+  recursive_argument: values
+}
+
+definition{
+  name: controlLinkRest,
+  parameters: [at : Nat, values : (List ThreatControl)],
+  result: (List ThreatControl),
+  body: (match values
+    | List.nil => (nil ThreatControl)
+    | List.cons item rest => (if ((project item threat) =? at) then (controlLinkRest at rest) else (cons item rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: controlLinkEmpty,
+  parameters: [values : (List ThreatControl)],
+  result: Bool,
+  body: (match values | List.nil => true | List.cons item rest => false)
+}
+
+definition{
+  name: techniqueLinkRun,
+  parameters: [at : Nat, values : (List ThreatTechnique)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => (if ((project item threat) =? at) then (1 + (techniqueLinkRun at rest)) else 0)),
+  recursive_argument: values
+}
+
+definition{
+  name: techniqueLinkRest,
+  parameters: [at : Nat, values : (List ThreatTechnique)],
+  result: (List ThreatTechnique),
+  body: (match values
+    | List.nil => (nil ThreatTechnique)
+    | List.cons item rest => (if ((project item threat) =? at) then (techniqueLinkRest at rest) else (cons item rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: techniqueLinkEmpty,
+  parameters: [values : (List ThreatTechnique)],
+  result: Bool,
+  body: (match values | List.nil => true | List.cons item rest => false)
+}
+
+definition{
+  name: evidenceLinkRun,
+  parameters: [at : Nat, values : (List Evidence)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => (if ((project item control) =? at) then (1 + (evidenceLinkRun at rest)) else 0)),
+  recursive_argument: values
+}
+
+definition{
+  name: evidenceLinkRest,
+  parameters: [at : Nat, values : (List Evidence)],
+  result: (List Evidence),
+  body: (match values
+    | List.nil => (nil Evidence)
+    | List.cons item rest => (if ((project item control) =? at) then (evidenceLinkRest at rest) else (cons item rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: evidenceLinkEmpty,
+  parameters: [values : (List Evidence)],
+  result: Bool,
+  body: (match values | List.nil => true | List.cons item rest => false)
+}
+
+definition{
+  name: outcomeLinkRun,
+  parameters: [at : Nat, values : (List Outcome)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => (if ((project item subcategory) =? at) then (1 + (outcomeLinkRun at rest)) else 0)),
+  recursive_argument: values
+}
+
+definition{
+  name: outcomeLinkRest,
+  parameters: [at : Nat, values : (List Outcome)],
+  result: (List Outcome),
+  body: (match values
+    | List.nil => (nil Outcome)
+    | List.cons item rest => (if ((project item subcategory) =? at) then (outcomeLinkRest at rest) else (cons item rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: outcomeLinkEmpty,
+  parameters: [values : (List Outcome)],
+  result: Bool,
+  body: (match values | List.nil => true | List.cons item rest => false)
+}
+
+definition{
+  name: threatsControlled,
+  parameters: [values : (List Threat), links : (List ThreatControl)],
+  result: Bool,
+  body: (match values
+    | List.nil => (controlLinkEmpty links)
+    | List.cons parent rest => (((controlLinkRun (project parent index) links) =? (project parent controlCount)) && (threatsControlled rest (controlLinkRest (project parent index) links)))),
+  recursive_argument: values
+}
+
+definition{
+  name: threatsTechniqued,
+  parameters: [values : (List Threat), links : (List ThreatTechnique)],
+  result: Bool,
+  body: (match values
+    | List.nil => (techniqueLinkEmpty links)
+    | List.cons parent rest => (((techniqueLinkRun (project parent index) links) =? (project parent techniqueCount)) && (threatsTechniqued rest (techniqueLinkRest (project parent index) links)))),
+  recursive_argument: values
+}
+
+definition{
+  name: controlsEvidenced,
+  parameters: [values : (List Control), links : (List Evidence)],
+  result: Bool,
+  body: (match values
+    | List.nil => (evidenceLinkEmpty links)
+    | List.cons parent rest => (((evidenceLinkRun (project parent index) links) =? (project parent evidenceCount)) && (controlsEvidenced rest (evidenceLinkRest (project parent index) links)))),
+  recursive_argument: values
+}
+
+definition{
+  name: gapAt,
+  parameters: [at : Nat, values : (List Gap)],
+  result: Bool,
+  body: (match values | List.nil => false | List.cons gap rest => ((project gap subcategory) =? at))
+}
+
+definition{
+  name: gapsAfter,
+  parameters: [at : Nat, values : (List Gap)],
+  result: (List Gap),
+  body: (match values
+    | List.nil => (nil Gap)
+    | List.cons gap rest => (if ((project gap subcategory) =? at) then rest else (cons gap rest)))
+}
+
+definition{
+  name: gapsLeftEmpty,
+  parameters: [values : (List Gap)],
+  result: Bool,
+  body: (match values | List.nil => true | List.cons gap rest => false)
+}
+
+definition{
+  name: subcategoriesAnswered,
+  parameters: [values : (List Subcategory), links : (List Outcome), stated : (List Gap)],
+  result: Bool,
+  body: (match values
+    | List.nil => ((outcomeLinkEmpty links) && (gapsLeftEmpty stated))
+    | List.cons sub rest => ((exactlyOne (0 <? (outcomeLinkRun (project sub index) links)) (gapAt (project sub index) stated)) && (subcategoriesAnswered rest (outcomeLinkRest (project sub index) links) (gapsAfter (project sub index) stated)))),
+  recursive_argument: values
+}
+
+definition{
+  name: elementsLeftEmpty,
+  parameters: [pending : (List Element)],
+  result: Bool,
+  body: (match pending | List.nil => true | List.cons item rest => false)
+}
+
+definition{
+  name: elementsLeftAny,
+  parameters: [pending : (List Element)],
+  result: Bool,
+  body: (match pending | List.nil => false | List.cons item rest => true)
+}
+
+definition{
+  name: headIndex,
+  parameters: [pending : (List Element)],
+  result: Nat,
+  body: (match pending | List.nil => 0 | List.cons item rest => (project item index))
+}
+
+definition{
+  name: headKind,
+  parameters: [pending : (List Element)],
+  result: ElementKind,
+  body: (match pending
+    | List.nil => (ctor ElementKind.externalEntity)
+    | List.cons item rest => (project item kind))
+}
+
+definition{
+  name: headPersonal,
+  parameters: [pending : (List Element)],
+  result: Bool,
+  body: (match pending | List.nil => false | List.cons item rest => (project item personal))
+}
+
+definition{
+  name: elementsAfter,
+  parameters: [pending : (List Element)],
+  result: (List Element),
+  body: (match pending | List.nil => (nil Element) | List.cons item rest => rest)
+}
+
+definition{
+  name: strideApplies,
+  parameters: [kind : ElementKind, category : Nat],
+  result: Bool,
+  body: (match kind
+    | ElementKind.externalEntity => ((category =? 0) || (category =? 2))
+    | ElementKind.process => (category <? 6)
+    | ElementKind.dataStore => ((0 <? category) && (category <? 5))
+    | ElementKind.dataFlow => ((category =? 1) || ((category =? 3) || (category =? 4))))
+}
+
+definition{
+  name: stateFits,
+  parameters: [applies : Bool, state : SlotState],
+  result: Bool,
+  body: (match state
+    | SlotState.notApplicable => (not applies)
+    | SlotState.answered => applies
+    | SlotState.stated => applies)
+}
+
+definition{
+  name: strideWalk,
+  parameters: [pending : (List Element), expected : Nat, values : (List StrideSlot)],
+  result: Bool,
+  body: (match values
+    | List.nil => ((elementsLeftEmpty pending) && (expected =? 0))
+    | List.cons slot rest => ((elementsLeftAny pending) && (((project slot element) =? (headIndex pending)) && (((project slot category) =? expected) && ((stateFits (strideApplies (headKind pending) expected) (project slot state)) && (if (expected =? 5) then (strideWalk (elementsAfter pending) 0 rest) else (strideWalk pending (expected + 1) rest))))))),
+  recursive_argument: values
+}
+
+definition{
+  name: linddunWalk,
+  parameters: [pending : (List Element), expected : Nat, values : (List LinddunSlot)],
+  result: Bool,
+  body: (match values
+    | List.nil => ((elementsLeftEmpty pending) && (expected =? 0))
+    | List.cons slot rest => ((elementsLeftAny pending) && (((project slot element) =? (headIndex pending)) && (((project slot category) =? expected) && ((stateFits (headPersonal pending) (project slot state)) && (if (expected =? 6) then (linddunWalk (elementsAfter pending) 0 rest) else (linddunWalk pending (expected + 1) rest))))))),
+  recursive_argument: values
+}
+
+definition{
+  name: csfFunctionsValid,
+  parameters: [position : Nat, values : (List CsfFunction)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons csfFunction rest => (((project csfFunction index) =? position) && (csfFunctionsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: csfFunctionsTotal,
+  parameters: [values : (List CsfFunction)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons csfFunction rest => (1 + (csfFunctionsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: csfCategoriesValid,
+  parameters: [position : Nat, csfFunctionsCount : Nat, values : (List CsfCategory)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons csfCategory rest => (((project csfCategory index) =? position) && (((project csfCategory function) <? csfFunctionsCount) && (csfCategoriesValid (position + 1) csfFunctionsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: csfCategoriesTotal,
+  parameters: [values : (List CsfCategory)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons csfCategory rest => (1 + (csfCategoriesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: subcategoriesValid,
+  parameters: [position : Nat, csfCategoriesCount : Nat, values : (List Subcategory)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons subcategory rest => (((project subcategory index) =? position) && (((project subcategory category) <? csfCategoriesCount) && (subcategoriesValid (position + 1) csfCategoriesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: subcategoriesTotal,
+  parameters: [values : (List Subcategory)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons subcategory rest => (1 + (subcategoriesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: cellsValid,
+  parameters: [position : Nat, values : (List Cell)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons cell rest => (((project cell index) =? position) && (((project cell row) <? 5) && (((project cell column) <? 5) && (((project cell level) <? 5) && (((project cell table) <? 2) && ((position =? (cellPosition (project cell table) (project cell row) (project cell column))) && (cellsValid (position + 1) rest)))))))),
+  recursive_argument: values
+}
+
+definition{
+  name: cellsTotal,
+  parameters: [values : (List Cell)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons cell rest => (1 + (cellsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: techniquesValid,
+  parameters: [position : Nat, values : (List Technique)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons technique rest => (((project technique index) =? position) && ((not (project technique revoked)) && ((not (project technique deprecated)) && (techniquesValid (position + 1) rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: techniquesTotal,
+  parameters: [values : (List Technique)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons technique rest => (1 + (techniquesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: scorecardChecksValid,
+  parameters: [position : Nat, values : (List ScorecardCheck)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons scorecardCheck rest => (((project scorecardCheck index) =? position) && (scorecardChecksValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: scorecardChecksTotal,
+  parameters: [values : (List ScorecardCheck)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons scorecardCheck rest => (1 + (scorecardChecksTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: threatSourcesValid,
+  parameters: [position : Nat, values : (List ThreatSource)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons threatSource rest => (((project threatSource index) =? position) && ((sameBool (project threatSource rated) (sourceIsAdversarial (project threatSource kind))) && (((project threatSource capability) <? 5) && (((project threatSource intent) <? 5) && (((project threatSource targeting) <? 5) && (threatSourcesValid (position + 1) rest))))))),
+  recursive_argument: values
+}
+
+definition{
+  name: threatSourcesTotal,
+  parameters: [values : (List ThreatSource)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons threatSource rest => (1 + (threatSourcesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: elementsValid,
+  parameters: [position : Nat, values : (List Element)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons element rest => (((project element index) =? position) && (elementsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: elementsTotal,
+  parameters: [values : (List Element)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons element rest => (1 + (elementsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: controlsValid,
+  parameters: [position : Nat, values : (List Control)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons control rest => (((project control index) =? position) && (((not (statusNeedsEvidence (project control status))) || (0 <? (project control evidenceCount))) && (controlsValid (position + 1) rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: controlsTotal,
+  parameters: [values : (List Control)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons control rest => (1 + (controlsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: threatsValid,
+  parameters: [position : Nat, threatSourcesCount : Nat, values : (List Threat)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons threat rest => (((project threat index) =? position) && (((project threat source) <? threatSourcesCount) && (((project threat initiation) <? 5) && (((project threat adverse) <? 5) && (((project threat impact) <? 5) && ((responseFits (project threat response) (project threat controlCount)) && (threatsValid (position + 1) threatSourcesCount rest)))))))),
+  recursive_argument: values
+}
+
+definition{
+  name: threatsTotal,
+  parameters: [values : (List Threat)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons threat rest => (1 + (threatsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: threatControlsValid,
+  parameters: [
+    position : Nat,
+    threatsCount : Nat,
+    controlsCount : Nat,
+    values : (List ThreatControl)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons threatControl rest => (((project threatControl index) =? position) && (((project threatControl threat) <? threatsCount) && (((project threatControl control) <? controlsCount) && (threatControlsValid (position + 1) threatsCount controlsCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: threatControlsTotal,
+  parameters: [values : (List ThreatControl)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons threatControl rest => (1 + (threatControlsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: threatTechniquesValid,
+  parameters: [
+    position : Nat,
+    threatsCount : Nat,
+    techniquesCount : Nat,
+    values : (List ThreatTechnique)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons threatTechnique rest => (((project threatTechnique index) =? position) && (((project threatTechnique threat) <? threatsCount) && (((project threatTechnique technique) <? techniquesCount) && (threatTechniquesValid (position + 1) threatsCount techniquesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: threatTechniquesTotal,
+  parameters: [values : (List ThreatTechnique)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons threatTechnique rest => (1 + (threatTechniquesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: evidenceValid,
+  parameters: [position : Nat, controlsCount : Nat, values : (List Evidence)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons evidence rest => (((project evidence index) =? position) && (((project evidence control) <? controlsCount) && (evidenceValid (position + 1) controlsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: evidenceTotal,
+  parameters: [values : (List Evidence)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons evidence rest => (1 + (evidenceTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: outcomesValid,
+  parameters: [
+    position : Nat,
+    controlsCount : Nat,
+    subcategoriesCount : Nat,
+    values : (List Outcome)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons outcome rest => (((project outcome index) =? position) && (((project outcome control) <? controlsCount) && (((project outcome subcategory) <? subcategoriesCount) && (outcomesValid (position + 1) controlsCount subcategoriesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: outcomesTotal,
+  parameters: [values : (List Outcome)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons outcome rest => (1 + (outcomesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: gapsValid,
+  parameters: [position : Nat, subcategoriesCount : Nat, values : (List Gap)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons gap rest => (((project gap index) =? position) && (((project gap subcategory) <? subcategoriesCount) && (gapsValid (position + 1) subcategoriesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: gapsTotal,
+  parameters: [values : (List Gap)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons gap rest => (1 + (gapsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: strideSlotsValid,
+  parameters: [position : Nat, elementsCount : Nat, threatsCount : Nat, values : (List StrideSlot)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons strideSlot rest => (((project strideSlot index) =? position) && (((project strideSlot element) <? elementsCount) && (((project strideSlot threat) <? threatsCount) && (strideSlotsValid (position + 1) elementsCount threatsCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: strideSlotsTotal,
+  parameters: [values : (List StrideSlot)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons strideSlot rest => (1 + (strideSlotsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: linddunSlotsValid,
+  parameters: [
+    position : Nat,
+    elementsCount : Nat,
+    threatsCount : Nat,
+    values : (List LinddunSlot)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons linddunSlot rest => (((project linddunSlot index) =? position) && (((project linddunSlot element) <? elementsCount) && (((project linddunSlot threat) <? threatsCount) && (linddunSlotsValid (position + 1) elementsCount threatsCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: linddunSlotsTotal,
+  parameters: [values : (List LinddunSlot)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons linddunSlot rest => (1 + (linddunSlotsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: indicatorsValid,
+  parameters: [position : Nat, threatsCount : Nat, values : (List Indicator)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons indicator rest => (((project indicator index) =? position) && (((project indicator threat) <? threatsCount) && (indicatorsValid (position + 1) threatsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: indicatorsTotal,
+  parameters: [values : (List Indicator)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons indicator rest => (1 + (indicatorsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsValid,
+  parameters: [position : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons openClaim rest => (((project openClaim index) =? position) && (openClaimsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsTotal,
+  parameters: [values : (List OpenClaim)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    csfFunctions : (List CsfFunction),
+    csfCategories : (List CsfCategory),
+    subcategories : (List Subcategory),
+    cells : (List Cell),
+    techniques : (List Technique),
+    scorecardChecks : (List ScorecardCheck),
+    threatSources : (List ThreatSource),
+    elements : (List Element),
+    controls : (List Control),
+    threats : (List Threat),
+    threatControls : (List ThreatControl),
+    threatTechniques : (List ThreatTechnique),
+    evidence : (List Evidence),
+    outcomes : (List Outcome),
+    gaps : (List Gap),
+    strideSlots : (List StrideSlot),
+    linddunSlots : (List LinddunSlot),
+    indicators : (List Indicator),
+    openClaims : (List OpenClaim)
+  ],
+  result: Bool,
+  body: (((csfFunctionsTotal csfFunctions) =? (project release csfFunctionsCount)) && (((csfCategoriesTotal csfCategories) =? (project release csfCategoriesCount)) && (((subcategoriesTotal subcategories) =? (project release subcategoriesCount)) && (((cellsTotal cells) =? (project release cellsCount)) && (((techniquesTotal techniques) =? (project release techniquesCount)) && (((scorecardChecksTotal scorecardChecks) =? (project release scorecardChecksCount)) && (((threatSourcesTotal threatSources) =? (project release threatSourcesCount)) && (((elementsTotal elements) =? (project release elementsCount)) && (((controlsTotal controls) =? (project release controlsCount)) && (((threatsTotal threats) =? (project release threatsCount)) && (((threatControlsTotal threatControls) =? (project release threatControlsCount)) && (((threatTechniquesTotal threatTechniques) =? (project release threatTechniquesCount)) && (((evidenceTotal evidence) =? (project release evidenceCount)) && (((outcomesTotal outcomes) =? (project release outcomesCount)) && (((gapsTotal gaps) =? (project release gapsCount)) && (((strideSlotsTotal strideSlots) =? (project release strideSlotsCount)) && (((linddunSlotsTotal linddunSlots) =? (project release linddunSlotsCount)) && (((indicatorsTotal indicators) =? (project release indicatorsCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && ((csfFunctionsValid 0 csfFunctions) && ((csfCategoriesValid 0 (csfFunctionsTotal csfFunctions) csfCategories) && ((subcategoriesValid 0 (csfCategoriesTotal csfCategories) subcategories) && ((cellsValid 0 cells) && ((techniquesValid 0 techniques) && ((scorecardChecksValid 0 scorecardChecks) && ((threatSourcesValid 0 threatSources) && ((elementsValid 0 elements) && ((controlsValid 0 controls) && ((threatsValid 0 (threatSourcesTotal threatSources) threats) && ((threatControlsValid 0 (threatsTotal threats) (controlsTotal controls) threatControls) && ((threatTechniquesValid 0 (threatsTotal threats) (techniquesTotal techniques) threatTechniques) && ((evidenceValid 0 (controlsTotal controls) evidence) && ((outcomesValid 0 (controlsTotal controls) (subcategoriesTotal subcategories) outcomes) && ((gapsValid 0 (subcategoriesTotal subcategories) gaps) && ((strideSlotsValid 0 (elementsTotal elements) (threatsTotal threats) strideSlots) && ((linddunSlotsValid 0 (elementsTotal elements) (threatsTotal threats) linddunSlots) && ((indicatorsValid 0 (threatsTotal threats) indicators) && ((openClaimsValid 0 openClaims) && ((threatsRated cells threats) && ((threatsControlled threats threatControls) && ((threatsTechniqued threats threatTechniques) && ((controlsEvidenced controls evidence) && ((subcategoriesAnswered subcategories outcomes gaps) && ((strideWalk elements 0 strideSlots) && ((linddunWalk elements 0 linddunSlots) && (((cellsTotal cells) =? 50) && (((subcategoriesTotal subcategories) =? 106) && (((csfCategoriesTotal csfCategories) =? 22) && ((csfFunctionsTotal csfFunctions) =? 6)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+\end{semanticmodule}
+\end{lexlean}

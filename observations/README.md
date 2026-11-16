@@ -40,8 +40,16 @@ database).
   whether `@everyone` can view it, the bot's Message Content intent) and from
   `governance/discord.json` (the Foundation's labels and who installed the
   bot). Only the permitted channels are read. The record keeps no message text
-  and no thread title, and a member is the sha256 of their Discord user id
-  with Discord's own `bot` flag. `run` decides every channel again from the
+  and no thread title. Each field is de-identified as the
+  `uor-deidentification` app decides from `deidentification.json` (its
+  ISO/IEC 20889 class and where its subject published it): a member's user
+  id, a message id and a thread id become HMAC-SHA-256 pseudonyms (FIPS
+  198-1, checked against the RFC 4231 vectors) under the
+  `DISCORD_PSEUDONYM_KEY` secret, and without the key nothing is recorded. A
+  message or thread pseudonym keeps the snowflake's milliseconds, because
+  Perceval pages by snowflake order. `collect.py deidentify` re-keys a record
+  made before the key, and the oracles workflow re-derives the vectors from
+  the pinned RFC. `run` decides every channel again from the
   record, refuses a channel that is permitted now but was not read, and
   replays the rest with no network. A bot's message is a software agent's
   activity. The backend is not in Perceval's release, so its files are

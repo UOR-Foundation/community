@@ -1,0 +1,206 @@
+\begin{lexlean}{UorDeidentification}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: uorDeidentificationRoleDirect, parameters: [], result: Nat, body: 0}
+
+definition{name: uorDeidentificationRoleQuasi, parameters: [], result: Nat, body: 1}
+
+definition{name: uorDeidentificationRoleContent, parameters: [], result: Nat, body: 2}
+
+definition{name: uorDeidentificationRoleStructural, parameters: [], result: Nat, body: 3}
+
+definition{name: uorDeidentificationOriginRestricted, parameters: [], result: Nat, body: 0}
+
+definition{name: uorDeidentificationOriginPublic, parameters: [], result: Nat, body: 1}
+
+definition{name: uorDeidentificationKeyHeld, parameters: [], result: Nat, body: 0}
+
+definition{name: uorDeidentificationKeyMissing, parameters: [], result: Nat, body: 1}
+
+definition{name: uorDeidentificationAnswerPseudonymize, parameters: [], result: Nat, body: 0}
+
+definition{name: uorDeidentificationAnswerSuppress, parameters: [], result: Nat, body: 1}
+
+definition{name: uorDeidentificationAnswerRetain, parameters: [], result: Nat, body: 2}
+
+definition{name: uorDeidentificationAnswerIndeterminate, parameters: [], result: Nat, body: 3}
+
+structure{
+  name: UorDeidentificationRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: role, type: Nat}, {name: origin, type: Nat}, {name: key, type: Nat}]
+}
+
+definition{
+  name: uorDeidentificationByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorDeidentificationDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (uorDeidentificationByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (uorDeidentificationDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorDeidentificationParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (uorDeidentificationByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (uorDeidentificationDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorDeidentificationParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (uorDeidentificationParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorDeidentificationParseRole,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x646972656374 : Bool) then (ctor Option.some [Nat] (uorDeidentificationRoleDirect)) else (if (prim equal value 0x7175617369 : Bool) then (ctor Option.some [Nat] (uorDeidentificationRoleQuasi)) else (if (prim equal value 0x636f6e74656e74 : Bool) then (ctor Option.some [Nat] (uorDeidentificationRoleContent)) else (if (prim equal value 0x7374727563747572616c : Bool) then (ctor Option.some [Nat] (uorDeidentificationRoleStructural)) else (ctor Option.none [Nat])))))
+}
+
+definition{
+  name: uorDeidentificationParseOrigin,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x72657374726963746564 : Bool) then (ctor Option.some [Nat] (uorDeidentificationOriginRestricted)) else (if (prim equal value 0x7075626c6963 : Bool) then (ctor Option.some [Nat] (uorDeidentificationOriginPublic)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorDeidentificationParseKey,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x68656c64 : Bool) then (ctor Option.some [Nat] (uorDeidentificationKeyHeld)) else (if (prim equal value 0x6d697373696e67 : Bool) then (ctor Option.some [Nat] (uorDeidentificationKeyMissing)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorDeidentificationSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: uorDeidentificationFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (uorDeidentificationByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (uorDeidentificationFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorDeidentificationDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option UorDeidentificationRequest),
+  body: (let e : Nat := (uorDeidentificationFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorDeidentificationParseKey (uorDeidentificationSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorDeidentificationRequest])
+    | Option.some v3 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [UorDeidentificationRequest] (record UorDeidentificationRequest {role := v1, origin := v2, key := v3})) else (ctor Option.none [UorDeidentificationRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorDeidentificationDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option UorDeidentificationRequest),
+  body: (let e : Nat := (uorDeidentificationFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorDeidentificationParseOrigin (uorDeidentificationSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorDeidentificationRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorDeidentificationDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [UorDeidentificationRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorDeidentificationDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option UorDeidentificationRequest),
+  body: (let e : Nat := (uorDeidentificationFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorDeidentificationParseRole (uorDeidentificationSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorDeidentificationRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorDeidentificationDecodeField2 s (e + 1) v1) else (ctor Option.none [UorDeidentificationRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorDeidentificationRule1,
+  parameters: [request : UorDeidentificationRequest],
+  result: Bool,
+  body: ((project request role) =? (uorDeidentificationRoleContent))
+}
+
+definition{
+  name: uorDeidentificationRule2,
+  parameters: [request : UorDeidentificationRequest],
+  result: Bool,
+  body: ((((project request role) =? (uorDeidentificationRoleDirect)) && ((project request origin) =? (uorDeidentificationOriginRestricted))) && ((project request key) =? (uorDeidentificationKeyMissing)))
+}
+
+definition{
+  name: uorDeidentificationRule3,
+  parameters: [request : UorDeidentificationRequest],
+  result: Bool,
+  body: (((project request role) =? (uorDeidentificationRoleDirect)) && ((project request origin) =? (uorDeidentificationOriginRestricted)))
+}
+
+definition{
+  name: uorDeidentificationRule4,
+  parameters: [request : UorDeidentificationRequest],
+  result: Bool,
+  body: (((project request role) =? (uorDeidentificationRoleDirect)) && ((project request origin) =? (uorDeidentificationOriginPublic)))
+}
+
+definition{
+  name: uorDeidentificationJudge,
+  parameters: [request : UorDeidentificationRequest],
+  result: Nat,
+  body: (if (uorDeidentificationRule1 request) then (uorDeidentificationAnswerSuppress) else (if (uorDeidentificationRule2 request) then (uorDeidentificationAnswerIndeterminate) else (if (uorDeidentificationRule3 request) then (uorDeidentificationAnswerPseudonymize) else (if (uorDeidentificationRule4 request) then (uorDeidentificationAnswerRetain) else (uorDeidentificationAnswerRetain)))))
+}
+
+definition{
+  name: uorDeidentificationEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (uorDeidentificationAnswerPseudonymize)) then 0x70736575646f6e796d697a65 else (if (code =? (uorDeidentificationAnswerSuppress)) then 0x7375707072657373 else (if (code =? (uorDeidentificationAnswerRetain)) then 0x72657461696e else (if (code =? (uorDeidentificationAnswerIndeterminate)) then 0x696e64657465726d696e617465 else 0x696e76616c6964))))
+}
+
+definition{
+  name: uorDeidentificationDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (88 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (uorDeidentificationDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (uorDeidentificationEncodeAnswer (uorDeidentificationJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

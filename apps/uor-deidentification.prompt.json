@@ -1,0 +1,320 @@
+{
+  "schema": "prism/prompt/1",
+  "pattern": "decisionTable",
+  "goal": "Decide which de-identification technique the community collector applies to each field of a record before the record is published in the observation corpus.",
+  "repository": "UOR-Foundation/community",
+  "app": {
+    "name": "uor-deidentification",
+    "title": "Observation de-identification policy",
+    "purpose": "Publish a collected field only as GDPR Article 4(5) pseudonymised data: suppress content, replace every identifier a platform shows only to its members with a keyed cryptographic hash (the ISO/IEC 20889 pseudonymization technique with a keyed hash, HMAC per FIPS 198-1) whose key is held apart from the corpus, and refuse to publish such an identifier when the key is missing.",
+    "fields": [
+      {
+        "name": "role",
+        "kind": "choice",
+        "values": [
+          "direct",
+          "quasi",
+          "content",
+          "structural"
+        ],
+        "means": "the field's ISO/IEC 20889 attribute class: a direct identifier (it names a person or resolves to one, such as a user id, a message id or a thread id), a quasi-identifier (a time or a place a person acted), content the person wrote or named, or structure that names no person"
+      },
+      {
+        "name": "origin",
+        "kind": "choice",
+        "values": [
+          "restricted",
+          "public"
+        ],
+        "means": "where the subject published the value: only to the members of a platform (a Discord guild), or in a world-readable source the corpus cites (git commit metadata, a GitHub account)"
+      },
+      {
+        "name": "key",
+        "kind": "choice",
+        "values": [
+          "held",
+          "missing"
+        ],
+        "means": "whether the collection run holds the secret pseudonymisation key"
+      }
+    ],
+    "outcomes": [
+      "pseudonymize",
+      "suppress",
+      "retain",
+      "indeterminate"
+    ],
+    "meanings": {
+      "pseudonymize": "publish the keyed hash of the value, never the value",
+      "suppress": "publish nothing of the value",
+      "retain": "publish the value as the source holds it",
+      "indeterminate": "no keyed hash can be made, so the record is not published"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "role",
+            "op": "is",
+            "value": "content"
+          }
+        ],
+        "then": "suppress",
+        "why": "GDPR Article 5(1)(c) data minimisation and the ISO/IEC 20889 suppression technique: CHAOSS Chat Platform Inclusivity counts messages and participants, never their text or names"
+      },
+      {
+        "when": [
+          {
+            "field": "role",
+            "op": "is",
+            "value": "direct"
+          },
+          {
+            "field": "origin",
+            "op": "is",
+            "value": "restricted"
+          },
+          {
+            "field": "key",
+            "op": "is",
+            "value": "missing"
+          }
+        ],
+        "then": "indeterminate",
+        "why": "ENISA Pseudonymisation techniques and best practices (2019), Cryptographic hash function: an unkeyed hash of an identifier is reversed by hashing the identifier space, so it is not pseudonymisation under GDPR Article 4(5)"
+      },
+      {
+        "when": [
+          {
+            "field": "role",
+            "op": "is",
+            "value": "direct"
+          },
+          {
+            "field": "origin",
+            "op": "is",
+            "value": "restricted"
+          }
+        ],
+        "then": "pseudonymize",
+        "why": "GDPR Article 4(5) and ENISA (2019), Message Authentication Code, and the ISO/IEC 20889 pseudonymization technique: a keyed hash (HMAC-SHA-256, FIPS 198-1) whose key is kept separately and never published"
+      },
+      {
+        "when": [
+          {
+            "field": "role",
+            "op": "is",
+            "value": "direct"
+          },
+          {
+            "field": "origin",
+            "op": "is",
+            "value": "public"
+          }
+        ],
+        "then": "retain",
+        "why": "LINDDUN Linking and Identifying: the subject published the identifier in the world-readable source the corpus cites, so its digest links nothing the source does not"
+      }
+    ],
+    "otherwise": "retain",
+    "otherwiseWhy": "ISO/IEC 20889 attribute classes: quasi-identifiers the measurement needs and structure that names no person are kept; the keyed pseudonym breaks their linkage to outside data",
+    "properties": [
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "role",
+            "op": "is",
+            "value": "content"
+          }
+        ],
+        "then": "retain",
+        "why": "content is never published"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "role",
+            "op": "is",
+            "value": "direct"
+          },
+          {
+            "field": "origin",
+            "op": "is",
+            "value": "restricted"
+          }
+        ],
+        "then": "retain",
+        "why": "an identifier a platform shows only to its members is never published as it is"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "key",
+            "op": "is",
+            "value": "missing"
+          },
+          {
+            "field": "role",
+            "op": "is",
+            "value": "direct"
+          },
+          {
+            "field": "origin",
+            "op": "is",
+            "value": "restricted"
+          }
+        ],
+        "then": "pseudonymize",
+        "why": "no pseudonym is made without the key"
+      }
+    ],
+    "examples": [
+      {
+        "request": "direct restricted held",
+        "response": "pseudonymize"
+      },
+      {
+        "request": "direct restricted missing",
+        "response": "indeterminate"
+      },
+      {
+        "request": "direct public held",
+        "response": "retain"
+      },
+      {
+        "request": "direct public missing",
+        "response": "retain"
+      },
+      {
+        "request": "content restricted held",
+        "response": "suppress"
+      },
+      {
+        "request": "content public missing",
+        "response": "suppress"
+      },
+      {
+        "request": "quasi restricted held",
+        "response": "retain"
+      },
+      {
+        "request": "structural restricted missing",
+        "response": "retain"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Discord member",
+      "text": "Talks in the Foundation's Discord and needs no one outside the guild, and no one inside it, to turn the published corpus back into their messages.",
+      "concerns": [
+        "Proved guarantees"
+      ]
+    },
+    {
+      "name": "Community and Outreach Committee",
+      "text": "Needs the CHAOSS chat metrics measured on the Foundation's live chat from a corpus anyone can replay.",
+      "concerns": [
+        "Correct answers"
+      ]
+    },
+    {
+      "name": "Data protection reviewer",
+      "text": "Needs every published field to be pseudonymised, suppressed or kept for a stated reason under GDPR Article 4(5) and ISO/IEC 20889.",
+      "concerns": [
+        "Proved guarantees",
+        "Refused malformed requests"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Community collector",
+      "kind": "externalSystem",
+      "text": "observations/collect.py, which asks this app for every field of observations/deidentification.json before it records or publishes anything."
+    },
+    {
+      "name": "Pseudonymisation key",
+      "kind": "externalSystem",
+      "text": "The DISCORD_PSEUDONYM_KEY secret, held only by the collection run."
+    }
+  ],
+  "threats": [
+    {
+      "name": "Re-identification of published activity",
+      "text": "A member's id or a message id in the public corpus is looked up in Discord or hashed, and the member's activity is linked back to them.",
+      "stride": "informationDisclosure",
+      "asset": "answer",
+      "likelihood": "high",
+      "impact": "major",
+      "control": {
+        "name": "Keyed pseudonyms only",
+        "text": "A restricted direct identifier is never retained, and without the key it is never published.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-002"
+          },
+          {
+            "kind": "proof",
+            "reference": "INV-003"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Timing linkage inside the guild",
+      "text": "A member who reads a channel matches a pseudonymised message's time and channel to the message they saw.",
+      "stride": "informationDisclosure",
+      "asset": "request",
+      "likelihood": "medium",
+      "impact": "minor",
+      "accepted": "The member already sees the message and its author in Discord; the time and channel are what the measurement needs, and the keyed pseudonym keeps the match from extending to the member's other activity outside what they can see."
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Discord member",
+      "steps": [
+        "REQ-001",
+        "REQ-003",
+        "INV-002"
+      ]
+    },
+    {
+      "stakeholder": "Community and Outreach Committee",
+      "steps": [
+        "otherwise",
+        "REQ-004"
+      ]
+    },
+    {
+      "stakeholder": "Data protection reviewer",
+      "steps": [
+        "REQ-002",
+        "INV-003",
+        "refuse"
+      ]
+    }
+  ],
+  "axioms": {
+    "inv001Holds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "inv002Holds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "inv003Holds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  }
+}

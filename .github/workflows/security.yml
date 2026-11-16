@@ -1,0 +1,60 @@
+# Measures the controls the security register cites by OpenSSF Scorecard check
+# (security/model.json evidence `scorecard:<Check>`), on every repository of
+# the ecosystem register, with the unmodified upstream Scorecard at the release
+# whose check definitions security/sources.json pins (v5.6.0). The results are
+# the run's `security-scorecard-*` artifact and job summary; they are a live
+# measurement of the organization, read by the agent loop and the next
+# assessment, never a gate on a pull request.
+#
+# No cache: each run observes the repositories as they are that week, so a
+# reused result would be a stale observation, not a saved computation.
+# reuse-exempt: a scheduled live measurement of external state.
+#
+# GITHUB_AUTH_TOKEN is the run's own read-only token; it reads public
+# repositories. Checks that need an administrator's read (Branch-Protection,
+# Webhooks) report -1, inconclusive, which is recorded as such.
+name: security
+
+on:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scorecard:
+    name: OpenSSF Scorecard
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.5.0
+        with:
+          go-version: '1.25'
+          cache: false
+      - name: Build Scorecard at the pinned release
+        # The Go module proxy and checksum database bind v5.6.0 to one source tree.
+        run: GOBIN="$RUNNER_TEMP/bin" go install github.com/ossf/scorecard/v5@v5.6.0
+      - name: Score every repository of the ecosystem register
+        env:
+          GITHUB_AUTH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p scorecard
+          for name in $(node -e 'for (const r of require("./ecosystem/register.json").repositories) console.log(r.name)'); do
+            if "$RUNNER_TEMP/bin/scorecard" --repo="github.com/UOR-Foundation/$name" --format=json --show-details >"scorecard/$name.json" 2>"scorecard/$name.err"; then
+              node -e 'const r=require(process.argv[1]); console.log(`| ${r.repo.name} | ${r.score} | ${r.checks.map((c)=>`${c.name} ${c.score}`).join(", ")} |`)' "$PWD/scorecard/$name.json" >>scorecard/summary.md
+            else
+              printf '| github.com/UOR-Foundation/%s | not scored | %s |\n' "$name" "$(tail -1 "scorecard/$name.err")" >>scorecard/summary.md
+            fi
+          done
+          { printf '## OpenSSF Scorecard v5.6.0\n\n| Repository | Score | Checks |\n| --- | --- | --- |\n'; cat scorecard/summary.md; } >>"$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: security-scorecard-${{ github.run_id }}
+          path: scorecard/
+          retention-days: 90
