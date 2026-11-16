@@ -27507,9 +27507,7 @@ definition{
   name: pairsEmpty,
   parameters: [pairs : (List StridePair)],
   result: Bool,
-  body: (match pairs
-    | List.nil => true
-    | List.cons pair rest => false)
+  body: (match pairs | List.nil => true | List.cons pair rest => false)
 }
 
 definition{
