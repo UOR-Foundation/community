@@ -68,14 +68,22 @@ on:
 permissions:
   contents: read
 
+# A newer head of a pull request supersedes the older one's recording: cancel it
+# (a cancelled run keeps nothing, since the record is cached only on completion).
+# Pushes to main and dispatches are never cancelled.
 concurrency:
   group: observations-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   github:
     name: Record GitHub issues and pull requests
     runs-on: ubuntu-24.04
+    # One recording across every ref at a time: each draws on this repository's
+    # installation rate limit, which the merge controller also needs (issue #31).
+    concurrency:
+      group: observations-github-recording
+      cancel-in-progress: false
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
