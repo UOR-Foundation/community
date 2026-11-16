@@ -212,20 +212,6 @@ definition{
   name: uorRepoProtectionRule3,
   parameters: [request : UorRepoProtectionRequest],
   result: Bool,
-  body: (((project request tier) =? (uorRepoProtectionTierT1)) && ((project request reviews) <? 2))
-}
-
-definition{
-  name: uorRepoProtectionRule4,
-  parameters: [request : UorRepoProtectionRequest],
-  result: Bool,
-  body: ((not ((project request tier) =? (uorRepoProtectionTierT4))) && ((project request reviews) <? 1))
-}
-
-definition{
-  name: uorRepoProtectionRule5,
-  parameters: [request : UorRepoProtectionRequest],
-  result: Bool,
   body: ((not ((project request tier) =? (uorRepoProtectionTierT4))) && ((project request checks) =? (uorRepoProtectionChecksOptional)))
 }
 
@@ -233,7 +219,7 @@ definition{
   name: uorRepoProtectionJudge,
   parameters: [request : UorRepoProtectionRequest],
   result: Nat,
-  body: (if (uorRepoProtectionRule1 request) then (uorRepoProtectionAnswerWeakProtection) else (if (uorRepoProtectionRule2 request) then (uorRepoProtectionAnswerWeakProtection) else (if (uorRepoProtectionRule3 request) then (uorRepoProtectionAnswerWeakProtection) else (if (uorRepoProtectionRule4 request) then (uorRepoProtectionAnswerWeakProtection) else (if (uorRepoProtectionRule5 request) then (uorRepoProtectionAnswerWeakProtection) else (uorRepoProtectionAnswerConformant))))))
+  body: (if (uorRepoProtectionRule1 request) then (uorRepoProtectionAnswerWeakProtection) else (if (uorRepoProtectionRule2 request) then (uorRepoProtectionAnswerWeakProtection) else (if (uorRepoProtectionRule3 request) then (uorRepoProtectionAnswerWeakProtection) else (uorRepoProtectionAnswerConformant))))
 }
 
 definition{

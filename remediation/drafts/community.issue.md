@@ -25,7 +25,6 @@ UOR-Foundation/community does not yet meet the repository standards of UOR-Found
 ### Repository settings an Organization Owner applies
 
 - Require a pull request before merging to the default branch
-- Require at least 1 approving review
 - Require status checks to pass before merging
 - Block force pushes to the default branch
 - Add topic uor
