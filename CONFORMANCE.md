@@ -497,9 +497,8 @@ model does not sanction.
 | ID | Level | Statement |
 | --- | --- | --- |
 | `URP-01` | `build` | The app never answers conformant when forcepush is allowed |
-| `URP-02` | `build` | The app never answers conformant when tier is t1 and reviews is below 2 |
-| `URP-03` | `build` | The app never answers conformant when tier is t2 and checks is optional |
-| `URP-04` | `build` | The app always answers conformant when tier is t4 and forcepush is blocked |
+| `URP-02` | `build` | The app never answers conformant when tier is t2 and checks is optional |
+| `URP-03` | `build` | The app always answers conformant when tier is t4 and forcepush is blocked |
 
 ## uor_repo_standards
 

@@ -4,7 +4,7 @@
 
 ## Purpose
 
-Branch protection by tier: Decide whether a UOR Foundation repository protects its default branch as GOVERNANCE.md 6.2 and 9 require for its tier: pull requests, approving reviews, required status checks and no force push.
+Branch protection by tier: Decide whether a UOR Foundation repository protects its default branch as GOVERNANCE.md 6.2 and 9 require for its tier: pull requests, required status checks and no force push.
 
 ## Requirements
 
@@ -20,37 +20,25 @@ Verified: to be proved by Lean for every request (INV-001, theorem `inv001Holds`
 - **THEN** the answer SHALL NOT be `conformant`
 - **AND** the app answers `weak-protection`, decided by REQ-001
 
-### Requirement: Never conformant when tier is t1 and reviews is below 2
+### Requirement: Never conformant when tier is t2 and checks is optional
 
-The app SHALL NOT answer `conformant` when tier is t1 and reviews is below 2, because Tier 1 requires 2 reviews.
+The app SHALL NOT answer `conformant` when tier is t2 and checks is optional, because Tier 2 requires status checks.
 
 Verified: to be proved by Lean for every request (INV-002, theorem `inv002Holds`).
 
 #### Scenario: INV-002 holds
 
-- **WHEN** the request is `t1 required 1 required blocked` (an acceptance example)
-- **THEN** the answer SHALL NOT be `conformant`
-- **AND** the app answers `weak-protection`, decided by REQ-003
-
-### Requirement: Never conformant when tier is t2 and checks is optional
-
-The app SHALL NOT answer `conformant` when tier is t2 and checks is optional, because Tier 2 requires status checks.
-
-Verified: to be proved by Lean for every request (INV-003, theorem `inv003Holds`).
-
-#### Scenario: INV-003 holds
-
 - **WHEN** the request is `t2 required 0 optional blocked`
 - **THEN** the answer SHALL NOT be `conformant`
-- **AND** the app answers `weak-protection`, decided by REQ-004
+- **AND** the app answers `weak-protection`, decided by REQ-003
 
 ### Requirement: Always conformant when tier is t4 and forcepush is blocked
 
 The app SHALL answer `conformant` when tier is t4 and forcepush is blocked, because Tier 4 only forbids force push; the rest is recommended or optional.
 
-Verified: to be proved by Lean for every request (INV-004, theorem `inv004Holds`).
+Verified: to be proved by Lean for every request (INV-003, theorem `inv003Holds`).
 
-#### Scenario: INV-004 holds
+#### Scenario: INV-003 holds
 
 - **WHEN** the request is `t4 optional 0 optional blocked` (an acceptance example)
 - **THEN** the answer SHALL be `conformant`
@@ -78,38 +66,16 @@ Verified: tested by the acceptance vectors (`rule2`).
 - **WHEN** the request is `t3 optional 1 required blocked` (an acceptance example)
 - **THEN** the answer SHALL be `weak-protection`, decided by REQ-002
 
-### Requirement: REQ-003 weak-protection when tier is t1 and reviews is below 2
+### Requirement: REQ-003 weak-protection when tier is not t4 and checks is optional
 
-The app SHALL answer `weak-protection` when tier is t1 and reviews is below 2 and no earlier rule matches, because GOVERNANCE.md 6.2 and 9: Tier 1 requires 2 reviews.
+The app SHALL answer `weak-protection` when tier is not t4 and checks is optional and no earlier rule matches, because GOVERNANCE.md 6.2: status checks are required at Tiers 1 to 3.
 
 Verified: tested by the acceptance vectors (`rule3`).
 
 #### Scenario: REQ-003 decides
 
-- **WHEN** the request is `t1 required 1 required blocked` (an acceptance example)
-- **THEN** the answer SHALL be `weak-protection`, decided by REQ-003
-
-### Requirement: REQ-004 weak-protection when tier is not t4 and reviews is below 1
-
-The app SHALL answer `weak-protection` when tier is not t4 and reviews is below 1 and no earlier rule matches, because GOVERNANCE.md 6.2 and 9: Tiers 2 and 3 require 1 review.
-
-Verified: tested by the acceptance vectors (`rule4`).
-
-#### Scenario: REQ-004 decides
-
-- **WHEN** the request is `t2 required 0 required blocked` (an acceptance example)
-- **THEN** the answer SHALL be `weak-protection`, decided by REQ-004
-
-### Requirement: REQ-005 weak-protection when tier is not t4 and checks is optional
-
-The app SHALL answer `weak-protection` when tier is not t4 and checks is optional and no earlier rule matches, because GOVERNANCE.md 6.2: status checks are required at Tiers 1 to 3.
-
-Verified: tested by the acceptance vectors (`rule5`).
-
-#### Scenario: REQ-005 decides
-
 - **WHEN** the request is `t3 required 1 optional blocked` (an acceptance example)
-- **THEN** the answer SHALL be `weak-protection`, decided by REQ-005
+- **THEN** the answer SHALL be `weak-protection`, decided by REQ-003
 
 ### Requirement: Otherwise conformant
 
@@ -124,14 +90,14 @@ Verified: tested by the acceptance vectors.
 
 ### Requirement: The first matching rule decides
 
-The app SHALL try REQ-001, REQ-002, REQ-003, REQ-004, REQ-005 in that order, and the first rule that matches SHALL decide.
+The app SHALL try REQ-001, REQ-002, REQ-003 in that order, and the first rule that matches SHALL decide.
 
 Verified: tested by the acceptance vectors.
 
 #### Scenario: Two rules match
 
-- **WHEN** the request is `t1 required 0 required blocked`
-- **THEN** the answer SHALL be `weak-protection`, decided by REQ-003, the earlier rule
+- **WHEN** the request is `t1 required 0 optional allowed`
+- **THEN** the answer SHALL be `weak-protection`, decided by REQ-001, the earlier rule
 
 ### Requirement: Request and answers
 
@@ -141,7 +107,7 @@ The app SHALL read one request as one line of 5 fields separated by single space
 | --- | --- | --- |
 | `tier` | `t1`, `t2`, `t3`, `t4` | the repository's tier: core framework, implementation, presentation or experiment |
 | `pr` | `required`, `optional` | whether the default branch requires a pull request |
-| `reviews` | whole number from 0 up to 8 | approving reviews the default branch requires |
+| `reviews` | whole number from 0 up to 8 | approving reviews the default branch requires (GOVERNANCE.md 6.2 and 9, version 2.2: none is required at any tier) |
 | `checks` | `required`, `optional` | whether status checks must pass before merging |
 | `forcepush` | `blocked`, `allowed` | whether force pushes to the default branch are allowed |
 
@@ -161,9 +127,9 @@ Verified: reading a request is tested, not proved.
 ## Examples
 
 - `t1 required 2 required blocked` gives `conformant`
-- `t1 required 1 required blocked` gives `weak-protection`
+- `t1 required 0 required blocked` gives `conformant`
 - `t2 required 1 required blocked` gives `conformant`
-- `t2 required 0 required blocked` gives `weak-protection`
+- `t2 required 0 required blocked` gives `conformant`
 - `t3 optional 1 required blocked` gives `weak-protection`
 - `t3 required 1 optional blocked` gives `weak-protection`
 - `t3 required 1 required allowed` gives `weak-protection`

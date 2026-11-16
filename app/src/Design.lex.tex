@@ -2576,20 +2576,6 @@ definition{
 }
 
 definition{
-  name: processUorRepoProtectionRule4,
-  parameters: [],
-  result: Foundation.Arch::SystemProcess,
-  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentUorRepoProtectionBranchProtectionByTierGuest"})
-}
-
-definition{
-  name: processUorRepoProtectionRule5,
-  parameters: [],
-  result: Foundation.Arch::SystemProcess,
-  body: (record Foundation.Arch::SystemProcess {owner := "Architecture::componentUorRepoProtectionBranchProtectionByTierGuest"})
-}
-
-definition{
   name: processUorRepoProtectionOtherwise,
   parameters: [],
   result: Foundation.Arch::SystemProcess,
@@ -19852,45 +19838,31 @@ definition{
 }
 
 definition{
-  name: trUorRepoProtectionRule4,
-  parameters: [],
-  result: Foundation.Arch::UmlTransition,
-  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorRepoProtectionUmlStates", order := 5, source := "Design::stateUorRepoProtectionDeciding", target := "Design::stateUorRepoProtectionAnsweredWeakProtection", trigger := "Design::processUorRepoProtectionRule4"})
-}
-
-definition{
-  name: trUorRepoProtectionRule5,
-  parameters: [],
-  result: Foundation.Arch::UmlTransition,
-  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorRepoProtectionUmlStates", order := 6, source := "Design::stateUorRepoProtectionDeciding", target := "Design::stateUorRepoProtectionAnsweredWeakProtection", trigger := "Design::processUorRepoProtectionRule5"})
-}
-
-definition{
   name: trUorRepoProtectionOtherwise,
   parameters: [],
   result: Foundation.Arch::UmlTransition,
-  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorRepoProtectionUmlStates", order := 7, source := "Design::stateUorRepoProtectionDeciding", target := "Design::stateUorRepoProtectionAnsweredConformant", trigger := "Design::processUorRepoProtectionOtherwise"})
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorRepoProtectionUmlStates", order := 5, source := "Design::stateUorRepoProtectionDeciding", target := "Design::stateUorRepoProtectionAnsweredConformant", trigger := "Design::processUorRepoProtectionOtherwise"})
 }
 
 definition{
   name: trUorRepoProtectionResetWeakProtection,
   parameters: [],
   result: Foundation.Arch::UmlTransition,
-  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorRepoProtectionUmlStates", order := 8, source := "Design::stateUorRepoProtectionAnsweredWeakProtection", target := "Design::stateUorRepoProtectionIdle", trigger := "Design::processUorRepoProtectionEncodeAnswer"})
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorRepoProtectionUmlStates", order := 6, source := "Design::stateUorRepoProtectionAnsweredWeakProtection", target := "Design::stateUorRepoProtectionIdle", trigger := "Design::processUorRepoProtectionEncodeAnswer"})
 }
 
 definition{
   name: trUorRepoProtectionResetConformant,
   parameters: [],
   result: Foundation.Arch::UmlTransition,
-  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorRepoProtectionUmlStates", order := 9, source := "Design::stateUorRepoProtectionAnsweredConformant", target := "Design::stateUorRepoProtectionIdle", trigger := "Design::processUorRepoProtectionEncodeAnswer"})
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorRepoProtectionUmlStates", order := 7, source := "Design::stateUorRepoProtectionAnsweredConformant", target := "Design::stateUorRepoProtectionIdle", trigger := "Design::processUorRepoProtectionEncodeAnswer"})
 }
 
 definition{
   name: trUorRepoProtectionResetRefused,
   parameters: [],
   result: Foundation.Arch::UmlTransition,
-  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorRepoProtectionUmlStates", order := 10, source := "Design::stateUorRepoProtectionRefused", target := "Design::stateUorRepoProtectionIdle", trigger := "Design::processUorRepoProtectionEncodeAnswer"})
+  body: (record Foundation.Arch::UmlTransition {view := "Design::viewUorRepoProtectionUmlStates", order := 8, source := "Design::stateUorRepoProtectionRefused", target := "Design::stateUorRepoProtectionIdle", trigger := "Design::processUorRepoProtectionEncodeAnswer"})
 }
 
 definition{
