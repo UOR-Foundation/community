@@ -56,32 +56,22 @@ fn uor_repo_protection_urp_01() {
     );
 }
 
-/// `URP-02`: The app never answers conformant when tier is t1 and reviews is below 2
+/// `URP-02`: The app never answers conformant when tier is t2 and checks is optional
 #[test]
 fn uor_repo_protection_urp_02() {
     pinned(
         "breaksInv002",
-        "body: (((((((((project request tier) <? 4) && ((project request pr) <? 2)) && ((project request reviews) <=? 8)) && ((project request checks) <? 2)) && ((project request forcepush) <? 2)) && ((project request tier) =? (UorRepoProtection::uorRepoProtectionTierT1))) && ((project request reviews) <? 2)) && ((UorRepoProtection::uorRepoProtectionJudge request) =? (UorRepoProtection::uorRepoProtectionAnswerConformant)))",
+        "body: (((((((((project request tier) <? 4) && ((project request pr) <? 2)) && ((project request reviews) <=? 8)) && ((project request checks) <? 2)) && ((project request forcepush) <? 2)) && ((project request tier) =? (UorRepoProtection::uorRepoProtectionTierT2))) && ((project request checks) =? (UorRepoProtection::uorRepoProtectionChecksOptional))) && ((UorRepoProtection::uorRepoProtectionJudge request) =? (UorRepoProtection::uorRepoProtectionAnswerConformant)))",
         "inv002Holds",
     );
 }
 
-/// `URP-03`: The app never answers conformant when tier is t2 and checks is optional
+/// `URP-03`: The app always answers conformant when tier is t4 and forcepush is blocked
 #[test]
 fn uor_repo_protection_urp_03() {
     pinned(
         "breaksInv003",
-        "body: (((((((((project request tier) <? 4) && ((project request pr) <? 2)) && ((project request reviews) <=? 8)) && ((project request checks) <? 2)) && ((project request forcepush) <? 2)) && ((project request tier) =? (UorRepoProtection::uorRepoProtectionTierT2))) && ((project request checks) =? (UorRepoProtection::uorRepoProtectionChecksOptional))) && ((UorRepoProtection::uorRepoProtectionJudge request) =? (UorRepoProtection::uorRepoProtectionAnswerConformant)))",
-        "inv003Holds",
-    );
-}
-
-/// `URP-04`: The app always answers conformant when tier is t4 and forcepush is blocked
-#[test]
-fn uor_repo_protection_urp_04() {
-    pinned(
-        "breaksInv004",
         "body: (((((((((project request tier) <? 4) && ((project request pr) <? 2)) && ((project request reviews) <=? 8)) && ((project request checks) <? 2)) && ((project request forcepush) <? 2)) && ((project request tier) =? (UorRepoProtection::uorRepoProtectionTierT4))) && ((project request forcepush) =? (UorRepoProtection::uorRepoProtectionForcepushBlocked))) && (not ((UorRepoProtection::uorRepoProtectionJudge request) =? (UorRepoProtection::uorRepoProtectionAnswerConformant))))",
-        "inv004Holds",
+        "inv003Holds",
     );
 }

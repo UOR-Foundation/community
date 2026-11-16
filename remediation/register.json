@@ -12,23 +12,23 @@
   },
   "sources": [
     {
-      "path": ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:STANDARDS.md",
+      "path": ".github@733e954f11d07c4ba984ba107e10ffcf73096034:STANDARDS.md",
       "sha256": "87977973277069d38bb3b9851c5f323182e15528184c5e2029dc631b133a4b26"
     },
     {
-      "path": ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md",
-      "sha256": "96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574"
+      "path": ".github@733e954f11d07c4ba984ba107e10ffcf73096034:governance/GOVERNANCE.md",
+      "sha256": "44aa9a97c03cd1a93761d38d0657fd03c7cf553c41c078dfaa14775b2d5615e0"
     },
     {
-      "path": ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:CONTRIBUTING.md",
+      "path": ".github@733e954f11d07c4ba984ba107e10ffcf73096034:CONTRIBUTING.md",
       "sha256": "c8cbfbd2931392f03420504c1069b5352f4c35cfeb91591a86df6e8f60496ea9"
     },
     {
-      "path": ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:CODE_OF_CONDUCT.md",
+      "path": ".github@733e954f11d07c4ba984ba107e10ffcf73096034:CODE_OF_CONDUCT.md",
       "sha256": "d01bb370bf46dadc5bd8b1b30113a3434baf079b32815e21cfd05af4fb841705"
     },
     {
-      "path": ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8:SECURITY.md",
+      "path": ".github@733e954f11d07c4ba984ba107e10ffcf73096034:SECURITY.md",
       "sha256": "5e6f0001a30a154d923c64e515fe60a1ee7c0b232abac9130006269f1c85f202"
     },
     {
@@ -45,7 +45,7 @@
     },
     {
       "path": "apps/uor-repo-protection.prompt.json",
-      "sha256": "589c79fc95ddf9219bec0a64d8243677045d3004e4c179f0b5aaca74d3eb81ce"
+      "sha256": "a80a034666c895133dba17d655d778722fe06e6866980d421850200bfdc6a2de"
     },
     {
       "path": "apps/uor-repo-standards.prompt.json",
@@ -149,16 +149,6 @@
           "to": "required",
           "kind": "ruleset",
           "detail": "Require a pull request before merging to the default branch",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
           "rule": "pull_request",
           "by": "owner"
         },
@@ -299,7 +289,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -361,16 +351,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -516,16 +496,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -664,7 +634,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -726,16 +696,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -890,16 +850,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -1028,7 +978,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -1092,16 +1042,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -1255,16 +1195,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -1405,7 +1335,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -1465,16 +1395,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -1651,16 +1571,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -1779,7 +1689,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -1841,16 +1751,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -1994,16 +1894,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -2132,7 +2022,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -2182,16 +2072,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -2593,16 +2473,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -2721,7 +2591,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -2787,16 +2657,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -2940,16 +2800,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -3067,7 +2917,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -3117,16 +2967,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -3282,16 +3122,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -3410,7 +3240,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -3472,16 +3302,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -3907,16 +3727,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -4059,7 +3869,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -4122,16 +3932,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -4308,16 +4108,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":2}",
-          "kind": "ruleset",
-          "detail": "Require at least 2 approving reviews",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -4469,7 +4259,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 2,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -4538,16 +4328,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":2}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 2 approving reviews",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -4734,16 +4514,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -4873,7 +4643,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -4935,16 +4705,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -5347,16 +5107,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -5496,7 +5246,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -5558,16 +5308,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -5731,16 +5471,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -5874,7 +5604,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -5924,16 +5654,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -6109,16 +5829,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -6259,7 +5969,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -6321,16 +6031,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -6743,16 +6443,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":2}",
-          "kind": "ruleset",
-          "detail": "Require at least 2 approving reviews",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -6893,7 +6583,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 2,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -6944,16 +6634,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":2}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 2 approving reviews",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -7120,16 +6800,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -7259,7 +6929,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -7321,16 +6991,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -7496,16 +7156,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":2}",
-          "kind": "ruleset",
-          "detail": "Require at least 2 approving reviews",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -7645,7 +7295,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 2,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -7726,16 +7376,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":2}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 2 approving reviews",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -8145,16 +7785,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":2}",
-          "kind": "ruleset",
-          "detail": "Require at least 2 approving reviews",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -8285,7 +7915,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 2,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -8347,16 +7977,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":2}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 2 approving reviews",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -8512,16 +8132,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -8663,7 +8273,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -8714,16 +8324,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -8900,16 +8500,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -9039,7 +8629,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -9101,16 +8691,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -9265,16 +8845,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":2}",
-          "kind": "ruleset",
-          "detail": "Require at least 2 approving reviews",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -9413,7 +8983,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 2,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -9464,16 +9034,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":2}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 2 approving reviews",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -9639,16 +9199,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":2}",
-          "kind": "ruleset",
-          "detail": "Require at least 2 approving reviews",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -9789,7 +9339,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 2,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -9851,16 +9401,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":2}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 2 approving reviews",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -10016,16 +9556,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -10167,7 +9697,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -10218,16 +9748,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
@@ -10664,16 +10184,6 @@
         },
         {
           "app": "uor-repo-protection",
-          "field": "reviews",
-          "from": "unobserved",
-          "to": "{\"atLeast\":1}",
-          "kind": "ruleset",
-          "detail": "Require at least 1 approving review",
-          "rule": "pull_request",
-          "by": "owner"
-        },
-        {
-          "app": "uor-repo-protection",
           "field": "checks",
           "from": "unobserved",
           "to": "required",
@@ -10815,7 +10325,7 @@
               {
                 "type": "pull_request",
                 "parameters": {
-                  "required_approving_review_count": 1,
+                  "required_approving_review_count": 0,
                   "dismiss_stale_reviews_on_push": false,
                   "require_code_owner_review": false,
                   "require_last_push_approval": false,
@@ -10866,16 +10376,6 @@
                   "to": "required",
                   "kind": "ruleset",
                   "detail": "Require a pull request before merging to the default branch",
-                  "rule": "pull_request",
-                  "by": "owner"
-                },
-                {
-                  "app": "uor-repo-protection",
-                  "field": "reviews",
-                  "from": "unobserved",
-                  "to": "{\"atLeast\":1}",
-                  "kind": "ruleset",
-                  "detail": "Require at least 1 approving review",
                   "rule": "pull_request",
                   "by": "owner"
                 },
