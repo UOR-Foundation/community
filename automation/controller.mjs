@@ -12,6 +12,7 @@
  *
  * This file only observes facts and turns them into requests:
  *   repository  automation/repos.json lists this repository as owned
+ *   author      agent when the account and branch prefix repos.json `agents` names opened it, else person
  *   reach       reachOf: the speaks-outside label, the diff's secrets references, its gate and trust-root paths
  *   checks      every check run and status on the head
  *   human       humanOf: an approving human review of the head, or human-approved added after it
@@ -79,7 +80,9 @@ const act = (what, args, input) => {
 
 const registry = JSON.parse(readFileSync(join(here, 'repos.json'), 'utf8'));
 const owned = registry.owned.some((r) => r.repository.toLowerCase() === repo.toLowerCase());
-const self = registry.owned.find((r) => r.repository.toLowerCase() === repo.toLowerCase()) ?? {};
+const self = [...registry.owned, ...(registry.shared ?? [])].find((r) => r.repository.toLowerCase() === repo.toLowerCase()) ?? {};
+const gate = self.gate ?? registry.gate;
+const authorOf = (pr) => (pr.user.login === registry.agents.login && new RegExp(registry.agents.branch).test(pr.head.ref) ? 'agent' : 'person');
 const defaultBranch = get(`repos/${repo}`).default_branch;
 
 /** What the diff reaches (AUTOMATION.md: the human gates H1 to H3). */
@@ -110,7 +113,7 @@ function humanOf(pr, headDate) {
 function checksOf(sha) {
   const runs = all(`repos/${repo}/commits/${sha}/check-runs?per_page=100`).flatMap((p) => p.check_runs ?? p).filter((c) => !/^automerge\b/.test(c.name));
   const statuses = get(`repos/${repo}/commits/${sha}/status`).statuses ?? [];
-  if (!runs.some((c) => new RegExp(registry.gate).test(c.name))) return { checks: 'running', why: `no ${registry.gate} check run yet` };
+  if (!runs.some((c) => new RegExp(gate).test(c.name))) return { checks: 'running', why: `no ${gate} check run yet` };
   if (runs.some((c) => c.status !== 'completed') || statuses.some((s) => s.state === 'pending')) return { checks: 'running' };
   const bad = runs.filter((c) => !['success', 'skipped', 'neutral'].includes(c.conclusion)).map((c) => c.name).concat(statuses.filter((s) => s.state !== 'success').map((s) => s.context));
   return bad.length ? { checks: 'red', why: bad.join(', ') } : { checks: 'green' };
@@ -154,7 +157,7 @@ for (const listed of open) {
   const headCommit = get(`repos/${repo}/commits/${pr.head.sha}`);
   const headDate = new Date(headCommit.commit.committer.date);
   const c = checksOf(pr.head.sha);
-  const facts = { repository: owned ? 'owned' : 'shared', reach: reachOf(pr, files), checks: c.checks, human: owned ? humanOf(pr, headDate) : 'none', draft: pr.draft ? 'draft' : 'ready' };
+  const facts = { repository: owned ? 'owned' : 'shared', author: authorOf(pr), reach: reachOf(pr, files), checks: c.checks, human: humanOf(pr, headDate), draft: pr.draft ? 'draft' : 'ready' };
   const a = decide(admission, facts);
   let action = 'none';
   if (a.outcome === 'permit') {

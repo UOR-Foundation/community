@@ -8,7 +8,8 @@
     "title": "Merge admission",
     "purpose": "Decide whether the merge controller approves and merges one pull request at its head commit, from who maintains the repository, what the change reaches, the state of every check run on the head, whether a human approved that head, and whether it is a draft.",
     "fields": [
-      { "name": "repository", "kind": "choice", "values": ["owned", "shared"], "means": "owned: automation/repos.json lists the repository as one whose merges Alex alone decides; shared: any other repository" },
+      { "name": "repository", "kind": "choice", "values": ["owned", "shared"], "means": "owned: automation/repos.json lists the repository as one whose merges Alex alone decides; shared: any other Foundation repository" },
+      { "name": "author", "kind": "choice", "values": ["agent", "person"], "means": "agent: an agent acting for Alex opened it (automation/repos.json agents: the account agents push as and their branch prefix); person: anyone else" },
       { "name": "reach", "kind": "choice", "values": ["inside", "secrets", "gate", "trust-root", "outside"], "means": "what the diff reaches: inside the model only; a secrets reference or a settings write; a file that holds a human gate (automation/repos.json gates: the admission policies, the code that reads reach and approvals, the approvals file, bootstrap.yml, automerge.yml, CODEOWNERS); the rest of the trust root (automation/** and the workflows the agent loop runs); or something said outside the organization" },
       { "name": "checks", "kind": "choice", "values": ["green", "red", "running"], "means": "every check run on the head commit, the acceptance gate (just vv) and the oracles among them: all passed or skipped, any failed, or any not finished" },
       { "name": "human", "kind": "choice", "values": ["approved", "none"], "means": "whether a human approved this exact head: an approving review by a human other than the author, or the human-approved label added after the head commit" },
@@ -22,7 +23,7 @@
       "indeterminate": "XACML 3.0 section 7: Indeterminate; a check is still running, so the controller decides on its next run"
     },
     "rules": [
-      { "when": [{ "field": "repository", "op": "is", "value": "shared" }], "then": "not-applicable", "why": "UOR-Foundation/.github GOVERNANCE.md 6.2: a repository with other maintainers keeps the review its maintainers give" },
+      { "when": [{"field": "repository", "op": "is", "value": "shared"}, {"field": "author", "op": "is", "value": "person"}], "then": "not-applicable", "why": "AUTOMATION.md H4: in a shared repository a person's pull request keeps the review its maintainers give, so the controller leaves it to them" },
       { "when": [{ "field": "draft", "op": "is", "value": "draft" }], "then": "not-applicable", "why": "GitHub Docs, About pull requests: a draft pull request cannot be merged" },
       { "when": [{ "field": "reach", "op": "is", "value": "outside" }], "then": "deny", "why": "AUTOMATION.md H1: anything that speaks for Alex outside the organization (upstream PRs, advisories, DCO sign-offs) is done by a human" },
       { "when": [{ "field": "checks", "op": "is", "value": "red" }], "then": "deny", "why": "GOVERNANCE.md 6.2 and 7.1 step 5: status checks are required and a change passes CI before it merges" },
@@ -31,9 +32,10 @@
       { "when": [{ "field": "reach", "op": "is", "value": "gate" }, { "field": "human", "op": "is", "value": "none" }], "then": "deny", "why": "AUTOMATION.md H3: the policy never admits a change to its own human gates (H1 outside, H2 secrets, people), so no agent can remove one; bootstrap.yml is the human-reviewed trust root" }
     ],
     "otherwise": "permit",
-    "otherwiseWhy": "an owned repository, a ready pull request, every check green, and nothing a human must decide: GOVERNANCE.md 6.2 review is given by the controller as an agent acting for Alex (PROV-O actedOnBehalfOf)",
+    "otherwiseWhy": "a ready pull request in an owned repository, or an agent's in a shared one, every check green, and nothing a human must decide: GOVERNANCE.md v2.2 6.2 requires no approving review, and the controller merges as an agent acting for Alex (PROV-O actedOnBehalfOf)",
     "properties": [
-      { "kind": "never", "when": [{ "field": "repository", "op": "is", "value": "shared" }], "then": "permit", "why": "another maintainer's repository is never merged by the controller" },
+      { "kind": "never", "when": [{"field": "repository", "op": "is", "value": "shared"}, {"field": "author", "op": "is", "value": "person"}], "then": "permit", "why": "a person's pull request in a shared repository is never merged by the controller" },
+      { "kind": "always", "when": [{"field": "repository", "op": "is", "value": "shared"}, {"field": "author", "op": "is", "value": "agent"}, {"field": "reach", "op": "is", "value": "inside"}, {"field": "checks", "op": "is", "value": "green"}, {"field": "draft", "op": "is", "value": "ready"}], "then": "permit", "why": "Alex, 2026-11-16: do not wait on Alex for merging; an agent's change in a shared Foundation repository merges on green, keeping the people, law, secrets and outside gates" },
       { "kind": "never", "when": [{ "field": "reach", "op": "is", "value": "outside" }], "then": "permit", "why": "nothing is said outside the organization without a human" },
       { "kind": "never", "when": [{ "field": "checks", "op": "is", "value": "red" }], "then": "permit", "why": "a failing gate or oracle never merges" },
       { "kind": "never", "when": [{ "field": "checks", "op": "is", "value": "running" }], "then": "permit", "why": "an unfinished gate never merges" },
@@ -43,17 +45,23 @@
       { "kind": "never", "when": [{ "field": "draft", "op": "is", "value": "draft" }], "then": "permit", "why": "a draft never merges" }
     ],
     "examples": [
-      { "request": "owned inside green none ready", "response": "permit" },
-      { "request": "shared inside green approved ready", "response": "not-applicable" },
-      { "request": "owned outside green approved ready", "response": "deny" },
-      { "request": "owned inside red none ready", "response": "deny" },
-      { "request": "owned inside running none ready", "response": "indeterminate" },
-      { "request": "owned secrets green none ready", "response": "deny" },
-      { "request": "owned secrets green approved ready", "response": "permit" },
-      { "request": "owned trust-root green none ready", "response": "permit" },
-      { "request": "owned gate green none ready", "response": "deny" },
-      { "request": "owned gate green approved ready", "response": "permit" },
-      { "request": "owned inside green none draft", "response": "not-applicable" }
+      { "request": "owned agent inside green none ready", "response": "permit" },
+      { "request": "shared person inside green approved ready", "response": "not-applicable" },
+      { "request": "owned agent outside green approved ready", "response": "deny" },
+      { "request": "owned agent inside red none ready", "response": "deny" },
+      { "request": "owned agent inside running none ready", "response": "indeterminate" },
+      { "request": "owned agent secrets green none ready", "response": "deny" },
+      { "request": "owned agent secrets green approved ready", "response": "permit" },
+      { "request": "owned agent trust-root green none ready", "response": "permit" },
+      { "request": "owned agent gate green none ready", "response": "deny" },
+      { "request": "owned agent gate green approved ready", "response": "permit" },
+      { "request": "owned agent inside green none draft", "response": "not-applicable" },
+      { "request": "shared agent inside green none ready", "response": "permit" },
+      { "request": "shared agent inside red none ready", "response": "deny" },
+      { "request": "shared agent outside green approved ready", "response": "deny" },
+      { "request": "shared agent secrets green none ready", "response": "deny" },
+      { "request": "shared person trust-root green approved ready", "response": "not-applicable" },
+      { "request": "owned person inside green none ready", "response": "permit" }
     ]
   },
   "stakeholders": [

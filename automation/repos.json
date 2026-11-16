@@ -1,6 +1,6 @@
 {
   "spec": "uor-community/automation-repos/1",
-  "about": "The repositories whose merges Alex alone decides, which the merge controller may merge (uor-merge-admission: repository is owned), and the paths each pull request is read against. Every other repository is shared, and the controller never merges there. This file is a gate: adding a repository here needs a human (AUTOMATION.md H3).",
+  "about": "The repositories whose merges Alex alone decides, which the merge controller may merge (uor-merge-admission: repository is owned), and the paths each pull request is read against. Every other repository is shared: there the controller merges only an agent's pull request (agents), on the gate the shared entry names, and never a person's. This file is a gate: adding a repository here needs a human (AUTOMATION.md H3).",
   "owned": [
     {
       "repository": "UOR-Foundation/community",
@@ -28,6 +28,15 @@
       ]
     }
   ],
+  "shared": [
+    {
+      "repository": "UOR-Foundation/.github",
+      "why": "The Foundation's organization defaults and GOVERNANCE.md. Alex, 2026-11-16: do not wait on Alex for merging; the controller merges agents' pull requests here on green, and a person's keeps its maintainers' review (AUTOMATION.md H4).",
+      "gate": "^lint / ",
+      "dispatchAfterMerge": []
+    }
+  ],
+  "agents": { "login": "afflom", "branch": "^claude/", "why": "Agents push as Alex's account from claude/ branches (AUTOMATION.md); a person's pull request comes from another account or branch" },
   "gate": "^acceptance / ",
   "trustRoot": [
     ".github/workflows/bootstrap.yml",
