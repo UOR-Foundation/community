@@ -1,0 +1,251 @@
+\begin{lexlean}{Uor990Return}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: uor990ReturnNormallySmall, parameters: [], result: Nat, body: 0}
+
+definition{name: uor990ReturnNormallyLarge, parameters: [], result: Nat, body: 1}
+
+definition{name: uor990ReturnReceiptsSmall, parameters: [], result: Nat, body: 0}
+
+definition{name: uor990ReturnReceiptsLarge, parameters: [], result: Nat, body: 1}
+
+definition{name: uor990ReturnAssetsSmall, parameters: [], result: Nat, body: 0}
+
+definition{name: uor990ReturnAssetsLarge, parameters: [], result: Nat, body: 1}
+
+definition{name: uor990ReturnKindPublic, parameters: [], result: Nat, body: 0}
+
+definition{name: uor990ReturnKindSupporting, parameters: [], result: Nat, body: 1}
+
+definition{name: uor990ReturnKindSponsor, parameters: [], result: Nat, body: 2}
+
+definition{name: uor990ReturnKindControlling, parameters: [], result: Nat, body: 3}
+
+definition{name: uor990ReturnAnswerForm990n, parameters: [], result: Nat, body: 0}
+
+definition{name: uor990ReturnAnswerForm990ez, parameters: [], result: Nat, body: 1}
+
+definition{name: uor990ReturnAnswerForm990, parameters: [], result: Nat, body: 2}
+
+structure{
+  name: Uor990ReturnRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: normally, type: Nat},
+    {name: receipts, type: Nat},
+    {name: assets, type: Nat},
+    {name: kind, type: Nat}
+  ]
+}
+
+definition{
+  name: uor990ReturnByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uor990ReturnDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (uor990ReturnByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (uor990ReturnDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uor990ReturnParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (uor990ReturnByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (uor990ReturnDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uor990ReturnParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (uor990ReturnParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uor990ReturnParseNormally,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x736d616c6c : Bool) then (ctor Option.some [Nat] (uor990ReturnNormallySmall)) else (if (prim equal value 0x6c61726765 : Bool) then (ctor Option.some [Nat] (uor990ReturnNormallyLarge)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uor990ReturnParseReceipts,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x736d616c6c : Bool) then (ctor Option.some [Nat] (uor990ReturnReceiptsSmall)) else (if (prim equal value 0x6c61726765 : Bool) then (ctor Option.some [Nat] (uor990ReturnReceiptsLarge)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uor990ReturnParseAssets,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x736d616c6c : Bool) then (ctor Option.some [Nat] (uor990ReturnAssetsSmall)) else (if (prim equal value 0x6c61726765 : Bool) then (ctor Option.some [Nat] (uor990ReturnAssetsLarge)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uor990ReturnParseKind,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x7075626c6963 : Bool) then (ctor Option.some [Nat] (uor990ReturnKindPublic)) else (if (prim equal value 0x737570706f7274696e67 : Bool) then (ctor Option.some [Nat] (uor990ReturnKindSupporting)) else (if (prim equal value 0x73706f6e736f72 : Bool) then (ctor Option.some [Nat] (uor990ReturnKindSponsor)) else (if (prim equal value 0x636f6e74726f6c6c696e67 : Bool) then (ctor Option.some [Nat] (uor990ReturnKindControlling)) else (ctor Option.none [Nat])))))
+}
+
+definition{
+  name: uor990ReturnSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: uor990ReturnFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (uor990ReturnByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (uor990ReturnFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uor990ReturnDecodeField4,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat],
+  result: (Option Uor990ReturnRequest),
+  body: (let e : Nat := (uor990ReturnFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uor990ReturnParseKind (uor990ReturnSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [Uor990ReturnRequest])
+    | Option.some v4 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [Uor990ReturnRequest] (record Uor990ReturnRequest {normally := v1, receipts := v2, assets := v3, kind := v4})) else (ctor Option.none [Uor990ReturnRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uor990ReturnDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option Uor990ReturnRequest),
+  body: (let e : Nat := (uor990ReturnFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uor990ReturnParseAssets (uor990ReturnSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [Uor990ReturnRequest])
+    | Option.some v3 => (if (e <? (Foundation.Bytes::byteLength s)) then (uor990ReturnDecodeField4 s (e + 1) v1 v2 v3) else (ctor Option.none [Uor990ReturnRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uor990ReturnDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option Uor990ReturnRequest),
+  body: (let e : Nat := (uor990ReturnFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uor990ReturnParseReceipts (uor990ReturnSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [Uor990ReturnRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (uor990ReturnDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [Uor990ReturnRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uor990ReturnDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option Uor990ReturnRequest),
+  body: (let e : Nat := (uor990ReturnFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uor990ReturnParseNormally (uor990ReturnSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [Uor990ReturnRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (uor990ReturnDecodeField2 s (e + 1) v1) else (ctor Option.none [Uor990ReturnRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uor990ReturnRule1,
+  parameters: [request : Uor990ReturnRequest],
+  result: Bool,
+  body: (((project request normally) =? (uor990ReturnNormallySmall)) && ((project request kind) =? (uor990ReturnKindPublic)))
+}
+
+definition{
+  name: uor990ReturnRule2,
+  parameters: [request : Uor990ReturnRequest],
+  result: Bool,
+  body: (((project request normally) =? (uor990ReturnNormallySmall)) && ((project request kind) =? (uor990ReturnKindSponsor)))
+}
+
+definition{
+  name: uor990ReturnRule3,
+  parameters: [request : Uor990ReturnRequest],
+  result: Bool,
+  body: (((project request normally) =? (uor990ReturnNormallySmall)) && ((project request kind) =? (uor990ReturnKindControlling)))
+}
+
+definition{
+  name: uor990ReturnRule4,
+  parameters: [request : Uor990ReturnRequest],
+  result: Bool,
+  body: ((project request receipts) =? (uor990ReturnReceiptsLarge))
+}
+
+definition{
+  name: uor990ReturnRule5,
+  parameters: [request : Uor990ReturnRequest],
+  result: Bool,
+  body: ((project request assets) =? (uor990ReturnAssetsLarge))
+}
+
+definition{
+  name: uor990ReturnRule6,
+  parameters: [request : Uor990ReturnRequest],
+  result: Bool,
+  body: ((project request kind) =? (uor990ReturnKindSponsor))
+}
+
+definition{
+  name: uor990ReturnRule7,
+  parameters: [request : Uor990ReturnRequest],
+  result: Bool,
+  body: ((project request kind) =? (uor990ReturnKindControlling))
+}
+
+definition{
+  name: uor990ReturnJudge,
+  parameters: [request : Uor990ReturnRequest],
+  result: Nat,
+  body: (if (uor990ReturnRule1 request) then (uor990ReturnAnswerForm990n) else (if (uor990ReturnRule2 request) then (uor990ReturnAnswerForm990n) else (if (uor990ReturnRule3 request) then (uor990ReturnAnswerForm990n) else (if (uor990ReturnRule4 request) then (uor990ReturnAnswerForm990) else (if (uor990ReturnRule5 request) then (uor990ReturnAnswerForm990) else (if (uor990ReturnRule6 request) then (uor990ReturnAnswerForm990) else (if (uor990ReturnRule7 request) then (uor990ReturnAnswerForm990) else (uor990ReturnAnswerForm990ez))))))))
+}
+
+definition{
+  name: uor990ReturnEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (uor990ReturnAnswerForm990n)) then 0x666f726d3939306e else (if (code =? (uor990ReturnAnswerForm990ez)) then 0x666f726d393930657a else (if (code =? (uor990ReturnAnswerForm990)) then 0x666f726d393930 else 0x696e76616c6964)))
+}
+
+definition{
+  name: uor990ReturnDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (112 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (uor990ReturnDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (uor990ReturnEncodeAnswer (uor990ReturnJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

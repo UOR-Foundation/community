@@ -24,6 +24,18 @@ on:
       - 'remediation/**'
       - 'observations/**'
       - 'interventions/**'
+      - 'nonprofit/**'
+      - 'inventory/**'
+      - 'supply/**'
+      - 'reorg/**'
+      - 'licensing/**'
+      - 'policies/**'
+      - 'standards/**'
+      - 'accessibility/**'
+      - 'conventions/**'
+      - 'bestpractices/**'
+      - 'standards.lock'
+      - 'package-lock.json'
       - 'security/**'
       - 'automation/intervention*'
       - 'apps/**'
@@ -40,6 +52,18 @@ on:
       - 'remediation/**'
       - 'observations/**'
       - 'interventions/**'
+      - 'nonprofit/**'
+      - 'inventory/**'
+      - 'supply/**'
+      - 'reorg/**'
+      - 'licensing/**'
+      - 'policies/**'
+      - 'standards/**'
+      - 'accessibility/**'
+      - 'conventions/**'
+      - 'bestpractices/**'
+      - 'standards.lock'
+      - 'package-lock.json'
       - 'security/**'
       - 'automation/intervention*'
       - 'apps/**'
@@ -150,6 +174,27 @@ jobs:
         id: node
         with:
           node-version: 22
+      - name: The REUSE tool the licensing register lints every repository with
+        # licensing/requirements.txt pins reuse and every package it installs by version and wheel
+        # sha256; `reuse --version` is in the cache key. The wheels are CPython 3.13 manylinux x86_64.
+        # supply installs spdx/tools-python into its own venv from supply/spdx-tools.requirements.txt by hash.
+        if: matrix.area == 'licensing' || matrix.area == 'bestpractices' || matrix.area == 'supply'
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+      - name: Install the pinned REUSE tool
+        if: matrix.area == 'licensing'
+        run: |
+          python3 -m venv "$RUNNER_TEMP/reuse"
+          "$RUNNER_TEMP/reuse/bin/pip" install --require-hashes --no-deps -r licensing/requirements.txt
+          echo "$RUNNER_TEMP/reuse/bin" >>"$GITHUB_PATH"
+      - name: Install the pinned PyYAML the best-practices register reads the badge criteria with
+        # bestpractices/requirements.txt pins PyYAML by version and wheel sha256; its version is in the cache key.
+        if: matrix.area == 'bestpractices'
+        run: |
+          python3 -m venv "$RUNNER_TEMP/bp"
+          "$RUNNER_TEMP/bp/bin/pip" install --require-hashes --no-deps -r bestpractices/requirements.txt
+          echo "$RUNNER_TEMP/bp/bin" >>"$GITHUB_PATH"
       - name: Install the tools the registers name
         # pdftotext reads the Bylaws and NIST SP 800-30; its version is part of the address below.
         run: command -v pdftotext >/dev/null || { sudo apt-get update -q && sudo apt-get install -yq poppler-utils; }
@@ -190,6 +235,20 @@ jobs:
           # every checkout's commit on read and refetches any that differs.
           path: ${{ runner.temp }}/sources/${{ matrix.area }}
           key: sources-${{ matrix.area }}-${{ hashFiles(matrix.sources) }}
+      - name: The locked node packages the supply register validates SBOMs with
+        # supply/project.mjs checks every SBOM against the CycloneDX 1.7, SPDX 2.3 and SPDX 3.0.1 schemas with ajv, which
+        # package-lock.json pins; the supply entry's cache key hashes package-lock.json.
+        if: steps.reuse.outputs.reuse != 'true' && matrix.area == 'supply'
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: The pinned convention parsers the conventions register runs
+        # conventions/oracles/package-lock.json pins semver, conventional-commits-parser, commitlint
+        # and keep-a-changelog; the conventions entry's cache key hashes conventions/**.
+        if: steps.reuse.outputs.reuse != 'true' && matrix.area == 'conventions'
+        run: |
+          mkdir -p "$RUNNER_TEMP/conv"
+          cp conventions/oracles/package.json conventions/oracles/package-lock.json "$RUNNER_TEMP/conv/"
+          npm ci --prefix "$RUNNER_TEMP/conv" --ignore-scripts --no-audit --no-fund
+          echo "ORACLES=$RUNNER_TEMP/conv" >>"$GITHUB_ENV"
       - name: Re-project with --check
         if: steps.reuse.outputs.reuse != 'true'
         env:

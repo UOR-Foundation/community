@@ -1,0 +1,758 @@
+\begin{lexlean}{Foundation.Asset.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Asset model}
+\begin{semanticmodule}
+inductive{
+  name: AssetKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: organization, fields: []},
+    {name: repository, fields: []},
+    {name: community, fields: []},
+    {name: domain, fields: []},
+    {name: package, fields: []},
+    {name: service, fields: []},
+    {name: document, fields: []}
+  ]
+}
+
+inductive{
+  name: SchemaType,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: creativeWork, fields: []},
+    {name: dataset, fields: []},
+    {name: imageObject, fields: []},
+    {name: organization, fields: []},
+    {name: service, fields: []},
+    {name: softwareApplication, fields: []},
+    {name: softwareSourceCode, fields: []},
+    {name: webApplication, fields: []},
+    {name: webSite, fields: []}
+  ]
+}
+
+inductive{
+  name: Relation,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: funder, fields: []},
+    {name: memberOf, fields: []},
+    {name: provider, fields: []},
+    {name: sponsor, fields: []},
+    {name: unstated, fields: []}
+  ]
+}
+
+inductive{
+  name: Registry,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: cratesIo, fields: []},
+    {name: npm, fields: []},
+    {name: pypi, fields: []},
+    {name: ghcrIo, fields: []}
+  ]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: assetsCount, type: Nat},
+    {name: communitiesCount, type: Nat},
+    {name: domainsCount, type: Nat},
+    {name: packagesCount, type: Nat},
+    {name: servicesCount, type: Nat},
+    {name: relationshipsCount, type: Nat},
+    {name: documentsCount, type: Nat},
+    {name: openClaimsCount, type: Nat},
+    {name: foundation, type: Nat},
+    {name: snapshotDigest, type: String},
+    {name: observedAt, type: String},
+    {name: sources, type: String},
+    {name: checkouts, type: String},
+    {name: standards, type: String},
+    {name: expiryDays, type: Nat}
+  ]
+}
+
+structure{
+  name: Asset,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: identifier, type: String},
+    {name: rank, type: Nat},
+    {name: kind, type: AssetKind},
+    {name: schemaType, type: SchemaType},
+    {name: name, type: String},
+    {name: url, type: String},
+    {name: license, type: String},
+    {name: needsRepository, type: Bool},
+    {name: linked, type: Bool},
+    {name: repository, type: Nat},
+    {name: source, type: String}
+  ]
+}
+
+structure{
+  name: Community,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: asset, type: Nat},
+    {name: platform, type: String},
+    {name: channels, type: Nat},
+    {name: invites, type: String}
+  ]
+}
+
+structure{
+  name: DomainObservation,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: asset, type: Nat},
+    {name: registration, type: Nat},
+    {name: registrable, type: String},
+    {name: site, type: String},
+    {name: reason, type: String},
+    {name: rcode, type: Nat},
+    {name: addresses, type: String},
+    {name: cname, type: String},
+    {name: rdapServer, type: String},
+    {name: rdapStatus, type: Nat},
+    {name: registrar, type: String},
+    {name: expiration, type: String},
+    {name: expires, type: Bool},
+    {name: daysToExpiry, type: Nat},
+    {name: nameservers, type: String},
+    {name: valuesRegistered, type: Bool}
+  ]
+}
+
+structure{
+  name: PackageRecord,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: asset, type: Nat},
+    {name: registry, type: Registry},
+    {name: name, type: String},
+    {name: version, type: String},
+    {name: published, type: Bool},
+    {name: owners, type: String},
+    {name: origin, type: String},
+    {name: sourceRepository, type: String}
+  ]
+}
+
+structure{
+  name: ServiceRecord,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: asset, type: Nat},
+    {name: provider, type: Nat},
+    {name: url, type: String},
+    {name: httpStatus, type: Nat},
+    {name: deployed, type: Bool},
+    {name: location, type: String}
+  ]
+}
+
+structure{
+  name: Relationship,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: asset, type: Nat},
+    {name: relation, type: Relation},
+    {name: statement, type: String}
+  ]
+}
+
+structure{
+  name: Document,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: asset, type: Nat},
+    {name: repository, type: String},
+    {name: commit, type: String},
+    {name: path, type: String},
+    {name: digest, type: String},
+    {name: lockDigest, type: String}
+  ]
+}
+
+structure{
+  name: OpenClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: asset, type: Nat},
+    {name: refusal, type: String},
+    {name: detail, type: String}
+  ]
+}
+
+definition{
+  name: isOrganizationKind,
+  parameters: [value : AssetKind],
+  result: Bool,
+  body: (match value
+    | AssetKind.organization => true
+    | AssetKind.repository => false
+    | AssetKind.community => false
+    | AssetKind.domain => false
+    | AssetKind.package => false
+    | AssetKind.service => false
+    | AssetKind.document => false)
+}
+
+definition{
+  name: isRepositoryKind,
+  parameters: [value : AssetKind],
+  result: Bool,
+  body: (match value
+    | AssetKind.organization => false
+    | AssetKind.repository => true
+    | AssetKind.community => false
+    | AssetKind.domain => false
+    | AssetKind.package => false
+    | AssetKind.service => false
+    | AssetKind.document => false)
+}
+
+definition{
+  name: isCommunityKind,
+  parameters: [value : AssetKind],
+  result: Bool,
+  body: (match value
+    | AssetKind.organization => false
+    | AssetKind.repository => false
+    | AssetKind.community => true
+    | AssetKind.domain => false
+    | AssetKind.package => false
+    | AssetKind.service => false
+    | AssetKind.document => false)
+}
+
+definition{
+  name: isDomainKind,
+  parameters: [value : AssetKind],
+  result: Bool,
+  body: (match value
+    | AssetKind.organization => false
+    | AssetKind.repository => false
+    | AssetKind.community => false
+    | AssetKind.domain => true
+    | AssetKind.package => false
+    | AssetKind.service => false
+    | AssetKind.document => false)
+}
+
+definition{
+  name: isPackageKind,
+  parameters: [value : AssetKind],
+  result: Bool,
+  body: (match value
+    | AssetKind.organization => false
+    | AssetKind.repository => false
+    | AssetKind.community => false
+    | AssetKind.domain => false
+    | AssetKind.package => true
+    | AssetKind.service => false
+    | AssetKind.document => false)
+}
+
+definition{
+  name: isServiceKind,
+  parameters: [value : AssetKind],
+  result: Bool,
+  body: (match value
+    | AssetKind.organization => false
+    | AssetKind.repository => false
+    | AssetKind.community => false
+    | AssetKind.domain => false
+    | AssetKind.package => false
+    | AssetKind.service => true
+    | AssetKind.document => false)
+}
+
+definition{
+  name: isDocumentKind,
+  parameters: [value : AssetKind],
+  result: Bool,
+  body: (match value
+    | AssetKind.organization => false
+    | AssetKind.repository => false
+    | AssetKind.community => false
+    | AssetKind.domain => false
+    | AssetKind.package => false
+    | AssetKind.service => false
+    | AssetKind.document => true)
+}
+
+definition{
+  name: relationStated,
+  parameters: [value : Relation],
+  result: Bool,
+  body: (match value
+    | Relation.funder => true
+    | Relation.memberOf => true
+    | Relation.provider => true
+    | Relation.sponsor => true
+    | Relation.unstated => false)
+}
+
+definition{
+  name: agree,
+  parameters: [left : Bool, right : Bool],
+  result: Bool,
+  body: (if left then right else (not right))
+}
+
+definition{
+  name: organizationAt,
+  parameters: [allAssets : (List Asset), at : Nat],
+  result: Bool,
+  body: (match allAssets
+    | List.nil => false
+    | List.cons asset rest => (if ((project asset index) =? at) then (isOrganizationKind (project asset kind)) else (organizationAt rest at))),
+  recursive_argument: allAssets
+}
+
+definition{
+  name: repositoryAt,
+  parameters: [allAssets : (List Asset), at : Nat],
+  result: Bool,
+  body: (match allAssets
+    | List.nil => false
+    | List.cons asset rest => (if ((project asset index) =? at) then (isRepositoryKind (project asset kind)) else (repositoryAt rest at))),
+  recursive_argument: allAssets
+}
+
+definition{
+  name: communityAt,
+  parameters: [allAssets : (List Asset), at : Nat],
+  result: Bool,
+  body: (match allAssets
+    | List.nil => false
+    | List.cons asset rest => (if ((project asset index) =? at) then (isCommunityKind (project asset kind)) else (communityAt rest at))),
+  recursive_argument: allAssets
+}
+
+definition{
+  name: domainAt,
+  parameters: [allAssets : (List Asset), at : Nat],
+  result: Bool,
+  body: (match allAssets
+    | List.nil => false
+    | List.cons asset rest => (if ((project asset index) =? at) then (isDomainKind (project asset kind)) else (domainAt rest at))),
+  recursive_argument: allAssets
+}
+
+definition{
+  name: packageAt,
+  parameters: [allAssets : (List Asset), at : Nat],
+  result: Bool,
+  body: (match allAssets
+    | List.nil => false
+    | List.cons asset rest => (if ((project asset index) =? at) then (isPackageKind (project asset kind)) else (packageAt rest at))),
+  recursive_argument: allAssets
+}
+
+definition{
+  name: serviceAt,
+  parameters: [allAssets : (List Asset), at : Nat],
+  result: Bool,
+  body: (match allAssets
+    | List.nil => false
+    | List.cons asset rest => (if ((project asset index) =? at) then (isServiceKind (project asset kind)) else (serviceAt rest at))),
+  recursive_argument: allAssets
+}
+
+definition{
+  name: documentAt,
+  parameters: [allAssets : (List Asset), at : Nat],
+  result: Bool,
+  body: (match allAssets
+    | List.nil => false
+    | List.cons asset rest => (if ((project asset index) =? at) then (isDocumentKind (project asset kind)) else (documentAt rest at))),
+  recursive_argument: allAssets
+}
+
+definition{
+  name: claimed,
+  parameters: [position : Nat, claims : (List OpenClaim)],
+  result: Bool,
+  body: (match claims
+    | List.nil => false
+    | List.cons claim rest => (((project claim asset) =? position) || (claimed position rest))),
+  recursive_argument: claims
+}
+
+definition{
+  name: assetsResolved,
+  parameters: [claims : (List OpenClaim), allAssets : (List Asset), values : (List Asset)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons asset rest => (((not (project asset needsRepository)) || (((project asset linked) && (repositoryAt allAssets (project asset repository))) || (claimed (project asset index) claims))) && (assetsResolved claims allAssets rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: linksAreRepositories,
+  parameters: [total : Nat, values : (List Asset)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons asset rest => (((not (project asset linked)) || ((project asset needsRepository) && ((project asset repository) <? total))) && (linksAreRepositories total rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: observedAt,
+  parameters: [position : Nat, observations : (List DomainObservation)],
+  result: Bool,
+  body: (match observations
+    | List.nil => false
+    | List.cons item rest => (((project item asset) =? position) || (observedAt position rest))),
+  recursive_argument: observations
+}
+
+definition{
+  name: domainsObserved,
+  parameters: [observations : (List DomainObservation), values : (List Asset)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons asset rest => (((not (isDomainKind (project asset kind))) || (observedAt (project asset index) observations)) && (domainsObserved observations rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: relatedAt,
+  parameters: [position : Nat, links : (List Relationship)],
+  result: Bool,
+  body: (match links
+    | List.nil => false
+    | List.cons item rest => (((project item asset) =? position) || (relatedAt position rest))),
+  recursive_argument: links
+}
+
+definition{
+  name: organizationsRelated,
+  parameters: [links : (List Relationship), foundation : Nat, values : (List Asset)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons asset rest => (((not (isOrganizationKind (project asset kind))) || (((project asset index) =? foundation) || (relatedAt (project asset index) links))) && (organizationsRelated links foundation rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: expiryAccounted,
+  parameters: [expiryWindow : Nat, claims : (List OpenClaim), values : (List DomainObservation)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => (((not ((project item expires) && ((project item daysToExpiry) <? expiryWindow))) || (claimed (project item registration) claims)) && (expiryAccounted expiryWindow claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: rdapAccounted,
+  parameters: [claims : (List OpenClaim), values : (List DomainObservation)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => ((((project item rdapStatus) =? 200) || (claimed (project item asset) claims)) && (rdapAccounted claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: resolutionAccounted,
+  parameters: [claims : (List OpenClaim), values : (List DomainObservation)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => ((((project item rcode) =? 0) || (claimed (project item asset) claims)) && (resolutionAccounted claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: deploymentsAccounted,
+  parameters: [claims : (List OpenClaim), values : (List ServiceRecord)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => (((project item deployed) || (claimed (project item asset) claims)) && (deploymentsAccounted claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: publicationsAccounted,
+  parameters: [claims : (List OpenClaim), values : (List PackageRecord)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => (((project item published) || (claimed (project item asset) claims)) && (publicationsAccounted claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: relationsAccounted,
+  parameters: [claims : (List OpenClaim), values : (List Relationship)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => (((relationStated (project item relation)) || (claimed (project item asset) claims)) && (relationsAccounted claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: domainsTyped,
+  parameters: [allAssets : (List Asset), values : (List DomainObservation)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => ((domainAt allAssets (project item asset)) && (domainsTyped allAssets rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: packagesTyped,
+  parameters: [allAssets : (List Asset), values : (List PackageRecord)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => ((packageAt allAssets (project item asset)) && (packagesTyped allAssets rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: servicesTyped,
+  parameters: [allAssets : (List Asset), values : (List ServiceRecord)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => ((serviceAt allAssets (project item asset)) && (servicesTyped allAssets rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: relationshipsTyped,
+  parameters: [allAssets : (List Asset), values : (List Relationship)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => ((organizationAt allAssets (project item asset)) && (relationshipsTyped allAssets rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: documentsTyped,
+  parameters: [allAssets : (List Asset), values : (List Document)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => ((documentAt allAssets (project item asset)) && (documentsTyped allAssets rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: communitiesTyped,
+  parameters: [allAssets : (List Asset), values : (List Community)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => ((communityAt allAssets (project item asset)) && (communitiesTyped allAssets rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: assetsValid,
+  parameters: [position : Nat, values : (List Asset)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons asset rest => (((project asset index) =? position) && (((project asset rank) =? (project asset index)) && (assetsValid (position + 1) rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: assetsTotal,
+  parameters: [values : (List Asset)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons asset rest => (1 + (assetsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: communitiesValid,
+  parameters: [position : Nat, assetsCount : Nat, values : (List Community)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons community rest => (((project community index) =? position) && (((project community asset) <? assetsCount) && (communitiesValid (position + 1) assetsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: communitiesTotal,
+  parameters: [values : (List Community)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons community rest => (1 + (communitiesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: domainsValid,
+  parameters: [position : Nat, assetsCount : Nat, values : (List DomainObservation)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons domainObservation rest => (((project domainObservation index) =? position) && (((project domainObservation asset) <? assetsCount) && (((project domainObservation registration) <? assetsCount) && (domainsValid (position + 1) assetsCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: domainsTotal,
+  parameters: [values : (List DomainObservation)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons domainObservation rest => (1 + (domainsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: packagesValid,
+  parameters: [position : Nat, assetsCount : Nat, values : (List PackageRecord)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons packageRecord rest => (((project packageRecord index) =? position) && (((project packageRecord asset) <? assetsCount) && (packagesValid (position + 1) assetsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: packagesTotal,
+  parameters: [values : (List PackageRecord)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons packageRecord rest => (1 + (packagesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: servicesValid,
+  parameters: [position : Nat, assetsCount : Nat, values : (List ServiceRecord)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons serviceRecord rest => (((project serviceRecord index) =? position) && (((project serviceRecord asset) <? assetsCount) && (((project serviceRecord provider) <? assetsCount) && ((agree (project serviceRecord deployed) ((199 <? (project serviceRecord httpStatus)) && ((project serviceRecord httpStatus) <? 400))) && (servicesValid (position + 1) assetsCount rest)))))),
+  recursive_argument: values
+}
+
+definition{
+  name: servicesTotal,
+  parameters: [values : (List ServiceRecord)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons serviceRecord rest => (1 + (servicesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: relationshipsValid,
+  parameters: [position : Nat, assetsCount : Nat, values : (List Relationship)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons relationship rest => (((project relationship index) =? position) && (((project relationship asset) <? assetsCount) && (relationshipsValid (position + 1) assetsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: relationshipsTotal,
+  parameters: [values : (List Relationship)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons relationship rest => (1 + (relationshipsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: documentsValid,
+  parameters: [position : Nat, assetsCount : Nat, values : (List Document)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons document rest => (((project document index) =? position) && (((project document asset) <? assetsCount) && (documentsValid (position + 1) assetsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: documentsTotal,
+  parameters: [values : (List Document)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons document rest => (1 + (documentsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsValid,
+  parameters: [position : Nat, assetsCount : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons openClaim rest => (((project openClaim index) =? position) && (((project openClaim asset) <? assetsCount) && (openClaimsValid (position + 1) assetsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsTotal,
+  parameters: [values : (List OpenClaim)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    assets : (List Asset),
+    communities : (List Community),
+    domains : (List DomainObservation),
+    packages : (List PackageRecord),
+    services : (List ServiceRecord),
+    relationships : (List Relationship),
+    documents : (List Document),
+    openClaims : (List OpenClaim)
+  ],
+  result: Bool,
+  body: (((assetsTotal assets) =? (project release assetsCount)) && (((communitiesTotal communities) =? (project release communitiesCount)) && (((domainsTotal domains) =? (project release domainsCount)) && (((packagesTotal packages) =? (project release packagesCount)) && (((servicesTotal services) =? (project release servicesCount)) && (((relationshipsTotal relationships) =? (project release relationshipsCount)) && (((documentsTotal documents) =? (project release documentsCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && ((assetsValid 0 assets) && ((communitiesValid 0 (assetsTotal assets) communities) && ((domainsValid 0 (assetsTotal assets) domains) && ((packagesValid 0 (assetsTotal assets) packages) && ((servicesValid 0 (assetsTotal assets) services) && ((relationshipsValid 0 (assetsTotal assets) relationships) && ((documentsValid 0 (assetsTotal assets) documents) && ((openClaimsValid 0 (assetsTotal assets) openClaims) && ((organizationAt assets (project release foundation)) && ((linksAreRepositories (assetsTotal assets) assets) && ((assetsResolved openClaims assets assets) && ((domainsObserved domains assets) && ((organizationsRelated relationships (project release foundation) assets) && ((rdapAccounted openClaims domains) && ((resolutionAccounted openClaims domains) && ((expiryAccounted (project release expiryDays) openClaims domains) && ((deploymentsAccounted openClaims services) && ((publicationsAccounted openClaims packages) && ((relationsAccounted openClaims relationships) && ((domainsTyped assets domains) && ((packagesTyped assets packages) && ((servicesTyped assets services) && ((relationshipsTyped assets relationships) && ((documentsTyped assets documents) && (communitiesTyped assets communities)))))))))))))))))))))))))))))))))
+}
+\end{semanticmodule}
+\end{lexlean}

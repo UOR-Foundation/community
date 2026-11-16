@@ -1,0 +1,554 @@
+\begin{lexlean}{Foundation.Licensing.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Licensing model}
+\begin{semanticmodule}
+inductive{
+  name: Refusal,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: reuseNoncompliant, fields: []},
+    {name: policyMismatch, fields: []},
+    {name: websiteMismatch, fields: []},
+    {name: licenseFileMissing, fields: []},
+    {name: licenseTextUnidentified, fields: []},
+    {name: declarationsDisagree, fields: []},
+    {name: identifierUnlisted, fields: []},
+    {name: expressionInvalid, fields: []},
+    {name: licenseUndeclared, fields: []}
+  ]
+}
+
+inductive{
+  name: DeclarationKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: cargo, fields: []},
+    {name: cargoWorkspace, fields: []},
+    {name: npm, fields: []},
+    {name: pyproject, fields: []},
+    {name: licenseFile, fields: []},
+    {name: spdxIdentifier, fields: []}
+  ]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: licensesCount, type: Nat},
+    {name: rulesCount, type: Nat},
+    {name: repositoriesCount, type: Nat},
+    {name: declarationsCount, type: Nat},
+    {name: declaredIdsCount, type: Nat},
+    {name: openClaimsCount, type: Nat},
+    {name: policyClaimsCount, type: Nat},
+    {name: standards, type: String},
+    {name: reuseTool, type: String},
+    {name: spdxList, type: String},
+    {name: spdxDigest, type: String},
+    {name: exceptionsDigest, type: String},
+    {name: inputs, type: String},
+    {name: sources, type: String},
+    {name: commits, type: String},
+    {name: compliantCount, type: Nat},
+    {name: dcoRule, type: Bool},
+    {name: claRule, type: Bool}
+  ]
+}
+
+structure{
+  name: License,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: spdxId, type: String},
+    {name: name, type: String},
+    {name: isException, type: Bool},
+    {name: osiApproved, type: Bool},
+    {name: fsfLibre, type: Bool},
+    {name: deprecated, type: Bool}
+  ]
+}
+
+structure{
+  name: PolicyRule,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: document, type: String},
+    {name: section, type: String},
+    {name: statement, type: String},
+    {name: subject, type: String},
+    {name: allows, type: String}
+  ]
+}
+
+structure{
+  name: Repository,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: commit, type: String},
+    {name: filesTotal, type: Nat},
+    {name: filesWithCopyright, type: Nat},
+    {name: filesWithLicense, type: Nat},
+    {name: missingLicenses, type: Nat},
+    {name: badLicenses, type: Nat},
+    {name: deprecatedLicenses, type: Nat},
+    {name: unusedLicenses, type: Nat},
+    {name: licensesWithoutExtension, type: Nat},
+    {name: readErrors, type: Nat},
+    {name: invalidExpressions, type: Nat},
+    {name: compliant, type: Bool},
+    {name: licenseFiles, type: Nat},
+    {name: identifiedFiles, type: Nat},
+    {name: expected, type: Nat},
+    {name: rule, type: Nat},
+    {name: expression, type: String}
+  ]
+}
+
+structure{
+  name: Declaration,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: declarationKind, type: DeclarationKind},
+    {name: source, type: String},
+    {name: expression, type: String},
+    {name: conformsPolicy, type: Bool},
+    {name: conformsWebsite, type: Bool}
+  ]
+}
+
+structure{
+  name: DeclaredId,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: declaration, type: Nat},
+    {name: license, type: Nat},
+    {name: orLater, type: Bool}
+  ]
+}
+
+structure{
+  name: OpenClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: refusal, type: Refusal},
+    {name: detail, type: String}
+  ]
+}
+
+structure{
+  name: PolicyClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: refusal, type: Refusal}, {name: detail, type: String}]
+}
+
+definition{
+  name: isReuseNoncompliant,
+  parameters: [value : Refusal],
+  result: Bool,
+  body: (match value
+    | Refusal.reuseNoncompliant => true
+    | Refusal.policyMismatch => false
+    | Refusal.websiteMismatch => false
+    | Refusal.licenseFileMissing => false
+    | Refusal.licenseTextUnidentified => false
+    | Refusal.declarationsDisagree => false
+    | Refusal.identifierUnlisted => false
+    | Refusal.expressionInvalid => false
+    | Refusal.licenseUndeclared => false)
+}
+
+definition{
+  name: isPolicyMismatch,
+  parameters: [value : Refusal],
+  result: Bool,
+  body: (match value
+    | Refusal.reuseNoncompliant => false
+    | Refusal.policyMismatch => true
+    | Refusal.websiteMismatch => false
+    | Refusal.licenseFileMissing => false
+    | Refusal.licenseTextUnidentified => false
+    | Refusal.declarationsDisagree => false
+    | Refusal.identifierUnlisted => false
+    | Refusal.expressionInvalid => false
+    | Refusal.licenseUndeclared => false)
+}
+
+definition{
+  name: isWebsiteMismatch,
+  parameters: [value : Refusal],
+  result: Bool,
+  body: (match value
+    | Refusal.reuseNoncompliant => false
+    | Refusal.policyMismatch => false
+    | Refusal.websiteMismatch => true
+    | Refusal.licenseFileMissing => false
+    | Refusal.licenseTextUnidentified => false
+    | Refusal.declarationsDisagree => false
+    | Refusal.identifierUnlisted => false
+    | Refusal.expressionInvalid => false
+    | Refusal.licenseUndeclared => false)
+}
+
+definition{
+  name: isLicenseFileMissing,
+  parameters: [value : Refusal],
+  result: Bool,
+  body: (match value
+    | Refusal.reuseNoncompliant => false
+    | Refusal.policyMismatch => false
+    | Refusal.websiteMismatch => false
+    | Refusal.licenseFileMissing => true
+    | Refusal.licenseTextUnidentified => false
+    | Refusal.declarationsDisagree => false
+    | Refusal.identifierUnlisted => false
+    | Refusal.expressionInvalid => false
+    | Refusal.licenseUndeclared => false)
+}
+
+definition{
+  name: isLicenseTextUnidentified,
+  parameters: [value : Refusal],
+  result: Bool,
+  body: (match value
+    | Refusal.reuseNoncompliant => false
+    | Refusal.policyMismatch => false
+    | Refusal.websiteMismatch => false
+    | Refusal.licenseFileMissing => false
+    | Refusal.licenseTextUnidentified => true
+    | Refusal.declarationsDisagree => false
+    | Refusal.identifierUnlisted => false
+    | Refusal.expressionInvalid => false
+    | Refusal.licenseUndeclared => false)
+}
+
+definition{
+  name: claimedReuseNoncompliant,
+  parameters: [position : Nat, claims : (List OpenClaim)],
+  result: Bool,
+  body: (match claims
+    | List.nil => false
+    | List.cons claim rest => ((((project claim repository) =? position) && (isReuseNoncompliant (project claim refusal))) || (claimedReuseNoncompliant position rest))),
+  recursive_argument: claims
+}
+
+definition{
+  name: claimedPolicyMismatch,
+  parameters: [position : Nat, claims : (List OpenClaim)],
+  result: Bool,
+  body: (match claims
+    | List.nil => false
+    | List.cons claim rest => ((((project claim repository) =? position) && (isPolicyMismatch (project claim refusal))) || (claimedPolicyMismatch position rest))),
+  recursive_argument: claims
+}
+
+definition{
+  name: claimedWebsiteMismatch,
+  parameters: [position : Nat, claims : (List OpenClaim)],
+  result: Bool,
+  body: (match claims
+    | List.nil => false
+    | List.cons claim rest => ((((project claim repository) =? position) && (isWebsiteMismatch (project claim refusal))) || (claimedWebsiteMismatch position rest))),
+  recursive_argument: claims
+}
+
+definition{
+  name: claimedLicenseFileMissing,
+  parameters: [position : Nat, claims : (List OpenClaim)],
+  result: Bool,
+  body: (match claims
+    | List.nil => false
+    | List.cons claim rest => ((((project claim repository) =? position) && (isLicenseFileMissing (project claim refusal))) || (claimedLicenseFileMissing position rest))),
+  recursive_argument: claims
+}
+
+definition{
+  name: claimedLicenseTextUnidentified,
+  parameters: [position : Nat, claims : (List OpenClaim)],
+  result: Bool,
+  body: (match claims
+    | List.nil => false
+    | List.cons claim rest => ((((project claim repository) =? position) && (isLicenseTextUnidentified (project claim refusal))) || (claimedLicenseTextUnidentified position rest))),
+  recursive_argument: claims
+}
+
+definition{
+  name: agree,
+  parameters: [left : Bool, right : Bool],
+  result: Bool,
+  body: (if left then right else (not right))
+}
+
+definition{
+  name: noFindings,
+  parameters: [repository : Repository],
+  result: Bool,
+  body: ((((project repository missingLicenses) =? 0) && (((project repository badLicenses) =? 0) && (((project repository deprecatedLicenses) =? 0) && ((project repository unusedLicenses) =? 0)))) && ((((project repository licensesWithoutExtension) =? 0) && (((project repository readErrors) =? 0) && ((project repository invalidExpressions) =? 0))) && (((project repository filesWithCopyright) =? (project repository filesTotal)) && ((project repository filesWithLicense) =? (project repository filesTotal)))))
+}
+
+definition{
+  name: countsReconcile,
+  parameters: [repository : Repository],
+  result: Bool,
+  body: ((agree (project repository compliant) (noFindings repository)) && ((((project repository filesWithCopyright) <? ((project repository filesTotal) + 1)) && ((project repository filesWithLicense) <? ((project repository filesTotal) + 1))) && ((project repository identifiedFiles) <? ((project repository licenseFiles) + 1))))
+}
+
+definition{
+  name: compliantTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => ((if (project repository compliant) then 1 else 0) + (compliantTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesClaimed,
+  parameters: [claims : (List OpenClaim), values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => ((((project repository compliant) || (claimedReuseNoncompliant (project repository index) claims)) && ((((project repository licenseFiles) =? 0) && (claimedLicenseFileMissing (project repository index) claims)) || ((0 <? (project repository licenseFiles)) && (((project repository identifiedFiles) =? (project repository licenseFiles)) || (claimedLicenseTextUnidentified (project repository index) claims))))) && (repositoriesClaimed claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: declarationsClaimed,
+  parameters: [claims : (List OpenClaim), values : (List Declaration)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons declaration rest => ((((project declaration conformsPolicy) || (claimedPolicyMismatch (project declaration repository) claims)) && ((project declaration conformsWebsite) || (claimedWebsiteMismatch (project declaration repository) claims))) && (declarationsClaimed claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: idsOf,
+  parameters: [values : (List DeclaredId), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons declaredId rest => (if ((project declaredId declaration) =? at) then (1 + (idsOf rest at)) else (idsOf rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: licenseOf,
+  parameters: [values : (List DeclaredId), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons declaredId rest => (if ((project declaredId declaration) =? at) then (project declaredId license) else (licenseOf rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: expectedOf,
+  parameters: [values : (List Repository), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => (if ((project repository index) =? at) then (project repository expected) else (expectedOf rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: conformingNamesExpected,
+  parameters: [
+    allIds : (List DeclaredId),
+    allRepositories : (List Repository),
+    values : (List Declaration)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons declaration rest => ((if (project declaration conformsPolicy) then (((idsOf allIds (project declaration index)) =? 1) && ((licenseOf allIds (project declaration index)) =? (expectedOf allRepositories (project declaration repository)))) else true) && (conformingNamesExpected allIds allRepositories rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: declarationsHaveIds,
+  parameters: [allIds : (List DeclaredId), values : (List Declaration)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons declaration rest => ((0 <? (idsOf allIds (project declaration index))) && (declarationsHaveIds allIds rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: licensesValid,
+  parameters: [position : Nat, values : (List License)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons license rest => (((project license index) =? position) && (licensesValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: licensesTotal,
+  parameters: [values : (List License)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons license rest => (1 + (licensesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: rulesValid,
+  parameters: [position : Nat, values : (List PolicyRule)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons policyRule rest => (((project policyRule index) =? position) && (rulesValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: rulesTotal,
+  parameters: [values : (List PolicyRule)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons policyRule rest => (1 + (rulesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesValid,
+  parameters: [position : Nat, licensesCount : Nat, rulesCount : Nat, values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => (((project repository index) =? position) && (((project repository expected) <? licensesCount) && (((project repository rule) <? rulesCount) && ((countsReconcile repository) && (repositoriesValid (position + 1) licensesCount rulesCount rest)))))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => (1 + (repositoriesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: declarationsValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List Declaration)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons declaration rest => (((project declaration index) =? position) && (((project declaration repository) <? repositoriesCount) && (declarationsValid (position + 1) repositoriesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: declarationsTotal,
+  parameters: [values : (List Declaration)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons declaration rest => (1 + (declarationsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: declaredIdsValid,
+  parameters: [
+    position : Nat,
+    declarationsCount : Nat,
+    licensesCount : Nat,
+    values : (List DeclaredId)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons declaredId rest => (((project declaredId index) =? position) && (((project declaredId declaration) <? declarationsCount) && (((project declaredId license) <? licensesCount) && (declaredIdsValid (position + 1) declarationsCount licensesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: declaredIdsTotal,
+  parameters: [values : (List DeclaredId)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons declaredId rest => (1 + (declaredIdsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons openClaim rest => (((project openClaim index) =? position) && (((project openClaim repository) <? repositoriesCount) && (openClaimsValid (position + 1) repositoriesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsTotal,
+  parameters: [values : (List OpenClaim)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: policyClaimsValid,
+  parameters: [position : Nat, values : (List PolicyClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons policyClaim rest => (((project policyClaim index) =? position) && (policyClaimsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: policyClaimsTotal,
+  parameters: [values : (List PolicyClaim)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons policyClaim rest => (1 + (policyClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    licenses : (List License),
+    rules : (List PolicyRule),
+    repositories : (List Repository),
+    declarations : (List Declaration),
+    declaredIds : (List DeclaredId),
+    openClaims : (List OpenClaim),
+    policyClaims : (List PolicyClaim)
+  ],
+  result: Bool,
+  body: (((licensesTotal licenses) =? (project release licensesCount)) && (((rulesTotal rules) =? (project release rulesCount)) && (((repositoriesTotal repositories) =? (project release repositoriesCount)) && (((declarationsTotal declarations) =? (project release declarationsCount)) && (((declaredIdsTotal declaredIds) =? (project release declaredIdsCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && (((policyClaimsTotal policyClaims) =? (project release policyClaimsCount)) && ((licensesValid 0 licenses) && ((rulesValid 0 rules) && ((repositoriesValid 0 (licensesTotal licenses) (rulesTotal rules) repositories) && ((declarationsValid 0 (repositoriesTotal repositories) declarations) && ((declaredIdsValid 0 (declarationsTotal declarations) (licensesTotal licenses) declaredIds) && ((openClaimsValid 0 (repositoriesTotal repositories) openClaims) && ((policyClaimsValid 0 policyClaims) && (((compliantTotal repositories) =? (project release compliantCount)) && ((repositoriesClaimed openClaims repositories) && ((declarationsClaimed openClaims declarations) && ((conformingNamesExpected declaredIds repositories declarations) && (declarationsHaveIds declaredIds declarations)))))))))))))))))))
+}
+\end{semanticmodule}
+\end{lexlean}

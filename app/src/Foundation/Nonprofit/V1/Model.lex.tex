@@ -1,0 +1,743 @@
+\begin{lexlean}{Foundation.Nonprofit.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Nonprofit model}
+\begin{semanticmodule}
+inductive{
+  name: Jurisdiction,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: us, fields: []}, {name: usCo, fields: []}]
+}
+
+inductive{
+  name: Instrument,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: statute, fields: []},
+    {name: regulation, fields: []},
+    {name: instructions, fields: []},
+    {name: agencyGuidance, fields: []},
+    {name: form, fields: []},
+    {name: bylaws, fields: []}
+  ]
+}
+
+inductive{
+  name: Cadence,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: once, fields: []},
+    {name: annual, fields: []},
+    {name: continuous, fields: []},
+    {name: onEvent, fields: []}
+  ]
+}
+
+inductive{
+  name: Applicability,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: standing, fields: []}, {name: conditional, fields: []}]
+}
+
+inductive{
+  name: ObligationStatus,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: discharged, fields: []},
+    {name: undischarged, fields: []},
+    {name: unobservable, fields: []},
+    {name: undetermined, fields: []},
+    {name: active, fields: []}
+  ]
+}
+
+inductive{
+  name: Shows,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: recognition, fields: []}, {name: filing, fields: []}]
+}
+
+inductive{
+  name: Consistency,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: verified, fields: []},
+    {name: unverified, fields: []},
+    {name: pending, fields: []}
+  ]
+}
+
+inductive{
+  name: LineStatus,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: evidenced, fields: []}, {name: open, fields: []}]
+}
+
+inductive{
+  name: SubjectKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: entity, fields: []},
+    {name: obligation, fields: []},
+    {name: line, fields: []},
+    {name: statement, fields: []},
+    {name: need, fields: []},
+    {name: observation, fields: []}
+  ]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: sourcesCount, type: Nat},
+    {name: authoritiesCount, type: Nat},
+    {name: postsCount, type: Nat},
+    {name: obligationsCount, type: Nat},
+    {name: citationsCount, type: Nat},
+    {name: filingsCount, type: Nat},
+    {name: observationsCount, type: Nat},
+    {name: statementsCount, type: Nat},
+    {name: linesCount, type: Nat},
+    {name: needsCount, type: Nat},
+    {name: openClaimsCount, type: Nat},
+    {name: legalName, type: String},
+    {name: coloradoId, type: String},
+    {name: foundingDate, type: String},
+    {name: standing, type: String},
+    {name: jurisdiction, type: Jurisdiction},
+    {name: nonprofitStatusClaimed, type: String},
+    {name: recognitionObserved, type: Bool},
+    {name: governanceDigest, type: String},
+    {name: appDigest, type: String},
+    {name: snapshotDigest, type: String},
+    {name: pdftotext, type: String}
+  ]
+}
+
+structure{
+  name: Source,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: key, type: String},
+    {name: url, type: String},
+    {name: fetchedAt, type: String},
+    {name: digest, type: String}
+  ]
+}
+
+structure{
+  name: Authority,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: key, type: String},
+    {name: instrument, type: Instrument},
+    {name: ref, type: String},
+    {name: title, type: String},
+    {name: jurisdiction, type: Jurisdiction},
+    {name: source, type: Nat},
+    {name: digest, type: String}
+  ]
+}
+
+structure{
+  name: Post,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: unit, type: String},
+    {name: governanceIndex, type: Nat}
+  ]
+}
+
+structure{
+  name: Obligation,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: authority, type: Nat},
+    {name: post, type: Nat},
+    {name: basis, type: Nat},
+    {name: cadence, type: Cadence},
+    {name: applicability, type: Applicability},
+    {name: status, type: ObligationStatus},
+    {name: due, type: String},
+    {name: evidence, type: String},
+    {name: observed, type: String}
+  ]
+}
+
+structure{
+  name: Citation,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: obligation, type: Nat}, {name: authority, type: Nat}]
+}
+
+structure{
+  name: Filing,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: event, type: String},
+    {name: dateFiled, type: String},
+    {name: document, type: String},
+    {name: digest, type: String}
+  ]
+}
+
+structure{
+  name: Observation,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: dataset, type: String},
+    {name: source, type: Nat},
+    {name: shows, type: Shows},
+    {name: rows, type: Nat},
+    {name: matched, type: Nat},
+    {name: near, type: Nat}
+  ]
+}
+
+structure{
+  name: Statement,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: path, type: String},
+    {name: line, type: Nat},
+    {name: text, type: String},
+    {name: claim, type: String},
+    {name: consistency, type: Consistency},
+    {name: source, type: Nat}
+  ]
+}
+
+structure{
+  name: PartSixLine,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: line, type: String},
+    {name: section, type: String},
+    {name: question, type: String},
+    {name: digest, type: String},
+    {name: policy, type: String},
+    {name: status, type: LineStatus},
+    {name: evidence, type: String}
+  ]
+}
+
+structure{
+  name: Need,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: part, type: Nat},
+    {name: provision, type: Nat}
+  ]
+}
+
+structure{
+  name: OpenClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: area, type: String},
+    {name: subjectKind, type: SubjectKind},
+    {name: subject, type: Nat},
+    {name: refusal, type: String},
+    {name: detail, type: String},
+    {name: closes, type: String}
+  ]
+}
+
+definition{
+  name: jurisdictionCode,
+  parameters: [value : Jurisdiction],
+  result: Nat,
+  body: (match value | Jurisdiction.us => 1 | Jurisdiction.usCo => 2)
+}
+
+definition{
+  name: jurisdictionParent,
+  parameters: [value : Jurisdiction],
+  result: Nat,
+  body: (match value | Jurisdiction.us => 0 | Jurisdiction.usCo => 1)
+}
+
+definition{
+  name: isBylaws,
+  parameters: [value : Instrument],
+  result: Bool,
+  body: (match value
+    | Instrument.statute => false
+    | Instrument.regulation => false
+    | Instrument.instructions => false
+    | Instrument.agencyGuidance => false
+    | Instrument.form => false
+    | Instrument.bylaws => true)
+}
+
+definition{
+  name: isDischarged,
+  parameters: [value : ObligationStatus],
+  result: Bool,
+  body: (match value
+    | ObligationStatus.discharged => true
+    | ObligationStatus.undischarged => false
+    | ObligationStatus.unobservable => false
+    | ObligationStatus.undetermined => false
+    | ObligationStatus.active => false)
+}
+
+definition{
+  name: isRecognition,
+  parameters: [value : Shows],
+  result: Bool,
+  body: (match value | Shows.recognition => true | Shows.filing => false)
+}
+
+definition{
+  name: isVerified,
+  parameters: [value : Consistency],
+  result: Bool,
+  body: (match value
+    | Consistency.verified => true
+    | Consistency.unverified => false
+    | Consistency.pending => false)
+}
+
+definition{
+  name: isEvidenced,
+  parameters: [value : LineStatus],
+  result: Bool,
+  body: (match value | LineStatus.evidenced => true | LineStatus.open => false)
+}
+
+definition{
+  name: subjectCode,
+  parameters: [value : SubjectKind],
+  result: Nat,
+  body: (match value
+    | SubjectKind.entity => 0
+    | SubjectKind.obligation => 1
+    | SubjectKind.line => 2
+    | SubjectKind.statement => 3
+    | SubjectKind.need => 4
+    | SubjectKind.observation => 5)
+}
+
+definition{
+  name: agree,
+  parameters: [left : Bool, right : Bool],
+  result: Bool,
+  body: (if left then right else (not right))
+}
+
+definition{
+  name: governs,
+  parameters: [law : Jurisdiction, home : Jurisdiction],
+  result: Bool,
+  body: (((jurisdictionCode law) =? (jurisdictionCode home)) || ((jurisdictionCode law) =? (jurisdictionParent home)))
+}
+
+definition{
+  name: authoritiesGovern,
+  parameters: [home : Jurisdiction, values : (List Authority)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons authority rest => ((governs (project authority jurisdiction) home) && (authoritiesGovern home rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: bylawsAt,
+  parameters: [values : (List Authority), at : Nat],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons authority rest => (if ((project authority index) =? at) then (isBylaws (project authority instrument)) else (bylawsAt rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: cites,
+  parameters: [at : Nat, cited : Nat, values : (List Citation)],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons citation rest => ((((project citation obligation) =? at) && ((project citation authority) =? cited)) || (cites at cited rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: obligationsCited,
+  parameters: [
+    allAuthorities : (List Authority),
+    allCitations : (List Citation),
+    values : (List Obligation)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons obligation rest => ((cites (project obligation index) (project obligation authority) allCitations) && ((bylawsAt allAuthorities (project obligation basis)) && (obligationsCited allAuthorities allCitations rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: claimedAs,
+  parameters: [kind : Nat, at : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons claim rest => ((((subjectCode (project claim subjectKind)) =? kind) && ((project claim subject) =? at)) || (claimedAs kind at rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: obligationsAccounted,
+  parameters: [claims : (List OpenClaim), values : (List Obligation)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons obligation rest => (((isDischarged (project obligation status)) || (claimedAs 1 (project obligation index) claims)) && (obligationsAccounted claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: linesAccounted,
+  parameters: [claims : (List OpenClaim), values : (List PartSixLine)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons line rest => (((isEvidenced (project line status)) || (claimedAs 2 (project line index) claims)) && (linesAccounted claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: needsAccounted,
+  parameters: [claims : (List OpenClaim), values : (List Need)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons need rest => ((claimedAs 4 (project need index) claims) && (needsAccounted claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: statementsAccounted,
+  parameters: [claims : (List OpenClaim), recognized : Bool, values : (List Statement)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons statement rest => ((agree (isVerified (project statement consistency)) recognized) && (((isVerified (project statement consistency)) || (claimedAs 3 (project statement index) claims)) && (statementsAccounted claims recognized rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: recognitionMatched,
+  parameters: [values : (List Observation)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons observation rest => ((if (isRecognition (project observation shows)) then (project observation matched) else 0) + (recognitionMatched rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: subjectBound,
+  parameters: [
+    value : SubjectKind,
+    obligationBound : Nat,
+    lineBound : Nat,
+    statementBound : Nat,
+    needBound : Nat,
+    observationBound : Nat
+  ],
+  result: Nat,
+  body: (match value
+    | SubjectKind.entity => 1
+    | SubjectKind.obligation => obligationBound
+    | SubjectKind.line => lineBound
+    | SubjectKind.statement => statementBound
+    | SubjectKind.need => needBound
+    | SubjectKind.observation => observationBound)
+}
+
+definition{
+  name: claimsNamed,
+  parameters: [
+    obligationBound : Nat,
+    lineBound : Nat,
+    statementBound : Nat,
+    needBound : Nat,
+    observationBound : Nat,
+    values : (List OpenClaim)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons claim rest => (((project claim subject) <? (subjectBound (project claim subjectKind) obligationBound lineBound statementBound needBound observationBound)) && (claimsNamed obligationBound lineBound statementBound needBound observationBound rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: sourcesValid,
+  parameters: [position : Nat, values : (List Source)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons source rest => (((project source index) =? position) && (sourcesValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: sourcesTotal,
+  parameters: [values : (List Source)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons source rest => (1 + (sourcesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: authoritiesValid,
+  parameters: [position : Nat, sourcesCount : Nat, values : (List Authority)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons authority rest => (((project authority index) =? position) && (((project authority source) <? sourcesCount) && (authoritiesValid (position + 1) sourcesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: authoritiesTotal,
+  parameters: [values : (List Authority)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons authority rest => (1 + (authoritiesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: postsValid,
+  parameters: [position : Nat, values : (List Post)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons post rest => (((project post index) =? position) && (((project post governanceIndex) =? position) && (postsValid (position + 1) rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: postsTotal,
+  parameters: [values : (List Post)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons post rest => (1 + (postsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: obligationsValid,
+  parameters: [
+    position : Nat,
+    authoritiesCount : Nat,
+    postsCount : Nat,
+    values : (List Obligation)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons obligation rest => (((project obligation index) =? position) && (((project obligation authority) <? authoritiesCount) && (((project obligation post) <? postsCount) && (((project obligation basis) <? authoritiesCount) && (obligationsValid (position + 1) authoritiesCount postsCount rest)))))),
+  recursive_argument: values
+}
+
+definition{
+  name: obligationsTotal,
+  parameters: [values : (List Obligation)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons obligation rest => (1 + (obligationsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: citationsValid,
+  parameters: [
+    position : Nat,
+    obligationsCount : Nat,
+    authoritiesCount : Nat,
+    values : (List Citation)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons citation rest => (((project citation index) =? position) && (((project citation obligation) <? obligationsCount) && (((project citation authority) <? authoritiesCount) && (citationsValid (position + 1) obligationsCount authoritiesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: citationsTotal,
+  parameters: [values : (List Citation)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons citation rest => (1 + (citationsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: filingsValid,
+  parameters: [position : Nat, values : (List Filing)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons filing rest => (((project filing index) =? position) && (filingsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: filingsTotal,
+  parameters: [values : (List Filing)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons filing rest => (1 + (filingsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: observationsValid,
+  parameters: [position : Nat, sourcesCount : Nat, values : (List Observation)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons observation rest => (((project observation index) =? position) && (((project observation source) <? sourcesCount) && (((project observation matched) <? ((project observation near) + 1)) && (((project observation near) <? ((project observation rows) + 1)) && (observationsValid (position + 1) sourcesCount rest)))))),
+  recursive_argument: values
+}
+
+definition{
+  name: observationsTotal,
+  parameters: [values : (List Observation)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons observation rest => (1 + (observationsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: statementsValid,
+  parameters: [position : Nat, sourcesCount : Nat, values : (List Statement)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons statement rest => (((project statement index) =? position) && (((project statement source) <? sourcesCount) && (statementsValid (position + 1) sourcesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: statementsTotal,
+  parameters: [values : (List Statement)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons statement rest => (1 + (statementsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: linesValid,
+  parameters: [position : Nat, values : (List PartSixLine)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons partSixLine rest => (((project partSixLine index) =? position) && (linesValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: linesTotal,
+  parameters: [values : (List PartSixLine)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons partSixLine rest => (1 + (linesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: needsValid,
+  parameters: [position : Nat, authoritiesCount : Nat, values : (List Need)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons need rest => (((project need index) =? position) && (((project need part) <? authoritiesCount) && (((project need provision) <? authoritiesCount) && (needsValid (position + 1) authoritiesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: needsTotal,
+  parameters: [values : (List Need)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons need rest => (1 + (needsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsValid,
+  parameters: [position : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons openClaim rest => (((project openClaim index) =? position) && (openClaimsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsTotal,
+  parameters: [values : (List OpenClaim)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    sources : (List Source),
+    authorities : (List Authority),
+    posts : (List Post),
+    obligations : (List Obligation),
+    citations : (List Citation),
+    filings : (List Filing),
+    observations : (List Observation),
+    statements : (List Statement),
+    lines : (List PartSixLine),
+    needs : (List Need),
+    openClaims : (List OpenClaim)
+  ],
+  result: Bool,
+  body: (((sourcesTotal sources) =? (project release sourcesCount)) && (((authoritiesTotal authorities) =? (project release authoritiesCount)) && (((postsTotal posts) =? (project release postsCount)) && (((obligationsTotal obligations) =? (project release obligationsCount)) && (((citationsTotal citations) =? (project release citationsCount)) && (((filingsTotal filings) =? (project release filingsCount)) && (((observationsTotal observations) =? (project release observationsCount)) && (((statementsTotal statements) =? (project release statementsCount)) && (((linesTotal lines) =? (project release linesCount)) && (((needsTotal needs) =? (project release needsCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && ((sourcesValid 0 sources) && ((authoritiesValid 0 (sourcesTotal sources) authorities) && ((postsValid 0 posts) && ((obligationsValid 0 (authoritiesTotal authorities) (postsTotal posts) obligations) && ((citationsValid 0 (obligationsTotal obligations) (authoritiesTotal authorities) citations) && ((filingsValid 0 filings) && ((observationsValid 0 (sourcesTotal sources) observations) && ((statementsValid 0 (sourcesTotal sources) statements) && ((linesValid 0 lines) && ((needsValid 0 (authoritiesTotal authorities) needs) && ((openClaimsValid 0 openClaims) && ((authoritiesGovern (project release jurisdiction) authorities) && ((obligationsCited authorities citations obligations) && ((obligationsAccounted openClaims obligations) && ((linesAccounted openClaims lines) && ((needsAccounted openClaims needs) && ((statementsAccounted openClaims (project release recognitionObserved) statements) && ((agree (project release recognitionObserved) (0 <? (recognitionMatched observations))) && (((project release recognitionObserved) || (claimedAs 0 0 openClaims)) && (claimsNamed (obligationsTotal obligations) (linesTotal lines) (statementsTotal statements) (needsTotal needs) (observationsTotal observations) openClaims)))))))))))))))))))))))))))))))
+}
+\end{semanticmodule}
+\end{lexlean}

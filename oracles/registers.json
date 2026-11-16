@@ -62,6 +62,109 @@
       ]
     },
     {
+      "area": "nonprofit",
+      "sources": {"kind": "git-urls", "file": "nonprofit/sources.json"},
+      "inputs": ["nonprofit/**", "governance/register.json", "apps/uor-990-return.prompt.json", "tools/register-lex.mjs"],
+      "tools": [["pdftotext", "-v"]],
+      "check": [
+        ["node", "nonprofit/project.mjs", "{sources}", "--check"],
+        ["node", "nonprofit/catalog.mjs", "--check"]
+      ]
+    },
+    {
+      "area": "inventory",
+      "sources": {"kind": "git-urls", "file": "inventory/sources.json"},
+      "inputs": ["inventory/**", "ecosystem/register.json", "governance/discord.json", "observations/responses/discord/guild.json", "tools/register-lex.mjs"],
+      "tools": [],
+      "check": [
+        ["node", "inventory/project.mjs", "{sources}", "--check"],
+        ["node", "inventory/catalog.mjs", "--check"]
+      ]
+    },
+    {
+      "area": "supply",
+      "sources": {"kind": "git-urls", "file": ["supply/snapshot.json", "supply/sources.json"]},
+      "inputs": ["supply/**", "ecosystem/snapshot.json", "tools/register-lex.mjs", "package-lock.json"],
+      "tools": [["python3", "--version"]],
+      "check": [
+        ["node", "supply/project.mjs", "{sources}", "--check"],
+        ["node", "supply/catalog.mjs", "--check"]
+      ]
+    },
+    {
+      "area": "reorg",
+      "sources": {"kind": "git-urls", "file": "reorg/sources.json"},
+      "inputs": ["reorg/**", "ecosystem/snapshot.json", "apps/uor-repo-disposition.prompt.json", "apps/set.json", "tools/register-lex.mjs"],
+      "tools": [],
+      "check": [
+        ["node", "reorg/project.mjs", "{sources}", "--check"],
+        ["node", "reorg/catalog.mjs", "--check"]
+      ]
+    },
+    {
+      "area": "licensing",
+      "sources": {"kind": "git-urls", "file": "licensing/sources.json"},
+      "inputs": ["licensing/**", "ecosystem/snapshot.json", "tools/register-lex.mjs"],
+      "tools": [["reuse", "--version"]],
+      "check": [
+        ["node", "licensing/scan.mjs", "{sources}", "--prune", "--check"],
+        ["node", "licensing/project.mjs", "{sources}", "--check"],
+        ["node", "licensing/catalog.mjs", "--check"]
+      ]
+    },
+    {
+      "area": "policies",
+      "sources": {"kind": "git-urls", "file": "policies/sources.json"},
+      "inputs": ["policies/**", "governance/register.json", "nonprofit/register.json", "nonprofit/snapshot.json", "tools/register-lex.mjs"],
+      "tools": [["pdftotext", "-v"], ["pdftohtml", "-v"]],
+      "check": [
+        ["node", "policies/project.mjs", "{sources}", "--check"],
+        ["node", "policies/catalog.mjs", "--check"]
+      ]
+    },
+    {
+      "area": "standards",
+      "sources": {"kind": "committed", "file": "standards/snapshot.json"},
+      "inputs": ["standards/**", "apps/uor-standard-applicability.prompt.json", "standards.lock", "*/register.json", "*/sources.json", "tools/register-lex.mjs"],
+      "tools": [],
+      "check": [
+        ["node", "standards/project.mjs", "--check"],
+        ["node", "standards/catalog.mjs", "--check"]
+      ]
+    },
+    {
+      "area": "accessibility",
+      "sources": {"kind": "git-urls", "file": "accessibility/sources.json"},
+      "inputs": ["accessibility/**", "inventory/register.json", "package-lock.json", "tools/register-lex.mjs"],
+      "tools": [],
+      "check": [
+        ["node", "accessibility/project.mjs", "{sources}", "--check"],
+        ["node", "accessibility/catalog.mjs", "--check"]
+      ]
+    },
+    {
+      "area": "conventions",
+      "sources": {"kind": "git-urls", "file": "conventions/sources.json"},
+      "inputs": ["conventions/**", "licensing/snapshot.json", "ecosystem/snapshot.json", "ecosystem/register.json", "supply/register.json", "governance/agents.json", "tools/register-lex.mjs"],
+      "tools": [["npm", "--version"]],
+      "check": [
+        ["node", "conventions/scan.mjs", "{sources}/conventions-work", "{sources}", "--check"],
+        ["node", "conventions/project.mjs", "{sources}", "--check"],
+        ["node", "conventions/catalog.mjs", "--check"]
+      ]
+    },
+    {
+      "area": "bestpractices",
+      "sources": {"kind": "git-urls", "file": "bestpractices/sources.json"},
+      "inputs": ["bestpractices/**", "ecosystem/register.json", "licensing/register.json", "licensing/snapshot.json", "ecosystem/snapshot.json", "tools/register-lex.mjs"],
+      "tools": [["python3", "-c", "import yaml;print(yaml.__version__)"]],
+      "check": [
+        ["python3", "-I", "bestpractices/criteria.py", "{sources}", "--check"],
+        ["node", "bestpractices/project.mjs", "{sources}", "--check"],
+        ["node", "bestpractices/catalog.mjs", "--check"]
+      ]
+    },
+    {
       "area": "security",
       "sources": { "kind": "pinned", "file": "security/sources.json" },
       "inputs": ["security/**", "observations/corpus.json", "observations/corpus/**", "ecosystem/register.json"],

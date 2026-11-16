@@ -1,0 +1,337 @@
+\begin{lexlean}{UorRepoDisposition}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: uorRepoDispositionArchivedYes, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoDispositionArchivedNo, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoDispositionReservedYes, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoDispositionReservedNo, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoDispositionStatementSuperseded, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoDispositionStatementDeprecated, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoDispositionStatementRelocated, parameters: [], result: Nat, body: 2}
+
+definition{name: uorRepoDispositionStatementNone, parameters: [], result: Nat, body: 3}
+
+definition{name: uorRepoDispositionFamilyNone, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoDispositionFamilyHub, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoDispositionFamilyMember, parameters: [], result: Nat, body: 2}
+
+definition{name: uorRepoDispositionConsumerNone, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoDispositionConsumerSole, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoDispositionConsumerShared, parameters: [], result: Nat, body: 2}
+
+definition{name: uorRepoDispositionOverlapNone, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoDispositionOverlapNames, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoDispositionActivityRecent, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoDispositionActivityQuiet, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoDispositionAnswerKeep, parameters: [], result: Nat, body: 0}
+
+definition{name: uorRepoDispositionAnswerArchive, parameters: [], result: Nat, body: 1}
+
+definition{name: uorRepoDispositionAnswerFold, parameters: [], result: Nat, body: 2}
+
+definition{name: uorRepoDispositionAnswerReview, parameters: [], result: Nat, body: 3}
+
+structure{
+  name: UorRepoDispositionRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: archived, type: Nat},
+    {name: reserved, type: Nat},
+    {name: statement, type: Nat},
+    {name: family, type: Nat},
+    {name: consumer, type: Nat},
+    {name: overlap, type: Nat},
+    {name: activity, type: Nat}
+  ]
+}
+
+definition{
+  name: uorRepoDispositionByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoDispositionDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (uorRepoDispositionByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (uorRepoDispositionDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorRepoDispositionParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (uorRepoDispositionByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (uorRepoDispositionDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoDispositionParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (uorRepoDispositionParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoDispositionParseArchived,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x796573 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionArchivedYes)) else (if (prim equal value 0x6e6f : Bool) then (ctor Option.some [Nat] (uorRepoDispositionArchivedNo)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoDispositionParseReserved,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x796573 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionReservedYes)) else (if (prim equal value 0x6e6f : Bool) then (ctor Option.some [Nat] (uorRepoDispositionReservedNo)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoDispositionParseStatement,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x73757065727365646564 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionStatementSuperseded)) else (if (prim equal value 0x64657072656361746564 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionStatementDeprecated)) else (if (prim equal value 0x72656c6f6361746564 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionStatementRelocated)) else (if (prim equal value 0x6e6f6e65 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionStatementNone)) else (ctor Option.none [Nat])))))
+}
+
+definition{
+  name: uorRepoDispositionParseFamily,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6e6f6e65 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionFamilyNone)) else (if (prim equal value 0x687562 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionFamilyHub)) else (if (prim equal value 0x6d656d626572 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionFamilyMember)) else (ctor Option.none [Nat]))))
+}
+
+definition{
+  name: uorRepoDispositionParseConsumer,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6e6f6e65 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionConsumerNone)) else (if (prim equal value 0x736f6c65 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionConsumerSole)) else (if (prim equal value 0x736861726564 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionConsumerShared)) else (ctor Option.none [Nat]))))
+}
+
+definition{
+  name: uorRepoDispositionParseOverlap,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6e6f6e65 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionOverlapNone)) else (if (prim equal value 0x6e616d6573 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionOverlapNames)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoDispositionParseActivity,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x726563656e74 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionActivityRecent)) else (if (prim equal value 0x7175696574 : Bool) then (ctor Option.some [Nat] (uorRepoDispositionActivityQuiet)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorRepoDispositionSliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: uorRepoDispositionFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (uorRepoDispositionByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (uorRepoDispositionFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorRepoDispositionDecodeField7,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat, v5 : Nat, v6 : Nat],
+  result: (Option UorRepoDispositionRequest),
+  body: (let e : Nat := (uorRepoDispositionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoDispositionParseActivity (uorRepoDispositionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoDispositionRequest])
+    | Option.some v7 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [UorRepoDispositionRequest] (record UorRepoDispositionRequest {archived := v1, reserved := v2, statement := v3, family := v4, consumer := v5, overlap := v6, activity := v7})) else (ctor Option.none [UorRepoDispositionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoDispositionDecodeField6,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat, v5 : Nat],
+  result: (Option UorRepoDispositionRequest),
+  body: (let e : Nat := (uorRepoDispositionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoDispositionParseOverlap (uorRepoDispositionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoDispositionRequest])
+    | Option.some v6 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoDispositionDecodeField7 s (e + 1) v1 v2 v3 v4 v5 v6) else (ctor Option.none [UorRepoDispositionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoDispositionDecodeField5,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat],
+  result: (Option UorRepoDispositionRequest),
+  body: (let e : Nat := (uorRepoDispositionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoDispositionParseConsumer (uorRepoDispositionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoDispositionRequest])
+    | Option.some v5 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoDispositionDecodeField6 s (e + 1) v1 v2 v3 v4 v5) else (ctor Option.none [UorRepoDispositionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoDispositionDecodeField4,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat],
+  result: (Option UorRepoDispositionRequest),
+  body: (let e : Nat := (uorRepoDispositionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoDispositionParseFamily (uorRepoDispositionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoDispositionRequest])
+    | Option.some v4 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoDispositionDecodeField5 s (e + 1) v1 v2 v3 v4) else (ctor Option.none [UorRepoDispositionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoDispositionDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option UorRepoDispositionRequest),
+  body: (let e : Nat := (uorRepoDispositionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoDispositionParseStatement (uorRepoDispositionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoDispositionRequest])
+    | Option.some v3 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoDispositionDecodeField4 s (e + 1) v1 v2 v3) else (ctor Option.none [UorRepoDispositionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoDispositionDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option UorRepoDispositionRequest),
+  body: (let e : Nat := (uorRepoDispositionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoDispositionParseReserved (uorRepoDispositionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoDispositionRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoDispositionDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [UorRepoDispositionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoDispositionDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option UorRepoDispositionRequest),
+  body: (let e : Nat := (uorRepoDispositionFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorRepoDispositionParseArchived (uorRepoDispositionSliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorRepoDispositionRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorRepoDispositionDecodeField2 s (e + 1) v1) else (ctor Option.none [UorRepoDispositionRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorRepoDispositionRule1,
+  parameters: [request : UorRepoDispositionRequest],
+  result: Bool,
+  body: ((project request archived) =? (uorRepoDispositionArchivedYes))
+}
+
+definition{
+  name: uorRepoDispositionRule2,
+  parameters: [request : UorRepoDispositionRequest],
+  result: Bool,
+  body: ((project request reserved) =? (uorRepoDispositionReservedYes))
+}
+
+definition{
+  name: uorRepoDispositionRule3,
+  parameters: [request : UorRepoDispositionRequest],
+  result: Bool,
+  body: ((project request statement) =? (uorRepoDispositionStatementSuperseded))
+}
+
+definition{
+  name: uorRepoDispositionRule4,
+  parameters: [request : UorRepoDispositionRequest],
+  result: Bool,
+  body: ((project request statement) =? (uorRepoDispositionStatementDeprecated))
+}
+
+definition{
+  name: uorRepoDispositionRule5,
+  parameters: [request : UorRepoDispositionRequest],
+  result: Bool,
+  body: ((project request statement) =? (uorRepoDispositionStatementRelocated))
+}
+
+definition{
+  name: uorRepoDispositionRule6,
+  parameters: [request : UorRepoDispositionRequest],
+  result: Bool,
+  body: ((project request family) =? (uorRepoDispositionFamilyMember))
+}
+
+definition{
+  name: uorRepoDispositionRule7,
+  parameters: [request : UorRepoDispositionRequest],
+  result: Bool,
+  body: ((project request consumer) =? (uorRepoDispositionConsumerSole))
+}
+
+definition{
+  name: uorRepoDispositionRule8,
+  parameters: [request : UorRepoDispositionRequest],
+  result: Bool,
+  body: ((project request overlap) =? (uorRepoDispositionOverlapNames))
+}
+
+definition{
+  name: uorRepoDispositionRule9,
+  parameters: [request : UorRepoDispositionRequest],
+  result: Bool,
+  body: ((project request activity) =? (uorRepoDispositionActivityQuiet))
+}
+
+definition{
+  name: uorRepoDispositionJudge,
+  parameters: [request : UorRepoDispositionRequest],
+  result: Nat,
+  body: (if (uorRepoDispositionRule1 request) then (uorRepoDispositionAnswerArchive) else (if (uorRepoDispositionRule2 request) then (uorRepoDispositionAnswerKeep) else (if (uorRepoDispositionRule3 request) then (uorRepoDispositionAnswerFold) else (if (uorRepoDispositionRule4 request) then (uorRepoDispositionAnswerArchive) else (if (uorRepoDispositionRule5 request) then (uorRepoDispositionAnswerReview) else (if (uorRepoDispositionRule6 request) then (uorRepoDispositionAnswerReview) else (if (uorRepoDispositionRule7 request) then (uorRepoDispositionAnswerReview) else (if (uorRepoDispositionRule8 request) then (uorRepoDispositionAnswerReview) else (if (uorRepoDispositionRule9 request) then (uorRepoDispositionAnswerReview) else (uorRepoDispositionAnswerKeep))))))))))
+}
+
+definition{
+  name: uorRepoDispositionEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (uorRepoDispositionAnswerKeep)) then 0x6b656570 else (if (code =? (uorRepoDispositionAnswerArchive)) then 0x61726368697665 else (if (code =? (uorRepoDispositionAnswerFold)) then 0x666f6c64 else (if (code =? (uorRepoDispositionAnswerReview)) then 0x726576696577 else 0x696e76616c6964))))
+}
+
+definition{
+  name: uorRepoDispositionDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (184 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (uorRepoDispositionDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (uorRepoDispositionEncodeAnswer (uorRepoDispositionJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

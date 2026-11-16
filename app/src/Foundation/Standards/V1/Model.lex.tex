@@ -1,0 +1,790 @@
+\begin{lexlean}{Foundation.Standards.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Standards model}
+\begin{semanticmodule}
+inductive{
+  name: Owner,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: standards, fields: []}, {name: security, fields: []}]
+}
+
+inductive{
+  name: Scope,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: quoted, fields: []}, {name: unread, fields: []}]
+}
+
+inductive{
+  name: YesNo,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: yes, fields: []}, {name: no, fields: []}]
+}
+
+inductive{
+  name: Force,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: law, fields: []}, {name: voluntary, fields: []}]
+}
+
+inductive{
+  name: Jurisdiction,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: own, fields: []}, {name: foreign, fields: []}, {name: unbound, fields: []}]
+}
+
+inductive{
+  name: Activity,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: present, fields: []},
+    {name: absent, fields: []},
+    {name: undetermined, fields: []}
+  ]
+}
+
+inductive{
+  name: Outcome,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: secured, fields: []},
+    {name: undecided, fields: []},
+    {name: inapplicable, fields: []},
+    {name: conditional, fields: []},
+    {name: mandatory, fields: []},
+    {name: adopted, fields: []},
+    {name: applicable, fields: []}
+  ]
+}
+
+inductive{
+  name: Status,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: implemented, fields: []},
+    {name: partiallyImplemented, fields: []},
+    {name: unimplemented, fields: []},
+    {name: unrated, fields: []}
+  ]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: facetsCount, type: Nat},
+    {name: checksCount, type: Nat},
+    {name: partsCount, type: Nat},
+    {name: standardsCount, type: Nat},
+    {name: decisionsCount, type: Nat},
+    {name: openClaimsCount, type: Nat},
+    {name: scopeClaimsCount, type: Nat},
+    {name: inputs, type: String},
+    {name: app, type: String},
+    {name: security, type: String},
+    {name: implementedCount, type: Nat},
+    {name: partialCount, type: Nat},
+    {name: unimplementedCount, type: Nat},
+    {name: applicableCount, type: Nat}
+  ]
+}
+
+structure{
+  name: Facet,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: identifier, type: String},
+    {name: directory, type: String},
+    {name: present, type: Bool},
+    {name: commit, type: String},
+    {name: checkName, type: String}
+  ]
+}
+
+structure{
+  name: Check,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: facet, type: Nat}, {name: name, type: String}]
+}
+
+structure{
+  name: Part,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: identifier, type: String},
+    {name: name, type: String},
+    {name: kind, type: String},
+    {name: facet, type: Nat}
+  ]
+}
+
+structure{
+  name: Standard,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: identifier, type: String},
+    {name: name, type: String},
+    {name: issuer, type: String},
+    {name: edition, type: String},
+    {name: force, type: Force},
+    {name: owner, type: Owner},
+    {name: scope, type: Scope},
+    {name: url, type: String},
+    {name: digest, type: String},
+    {name: fetchedAt, type: String},
+    {name: quote, type: String},
+    {name: clauses, type: Nat}
+  ]
+}
+
+structure{
+  name: Decision,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: part, type: Nat},
+    {name: standard, type: Nat},
+    {name: owner, type: Owner},
+    {name: scope, type: Scope},
+    {name: inscope, type: YesNo},
+    {name: force, type: Force},
+    {name: jurisdiction, type: Jurisdiction},
+    {name: activity, type: Activity},
+    {name: adopted, type: YesNo},
+    {name: outcome, type: Outcome},
+    {name: rule, type: Nat},
+    {name: status, type: Status},
+    {name: facet, type: Nat},
+    {name: check, type: Nat}
+  ]
+}
+
+structure{
+  name: OpenClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: decision, type: Nat},
+    {name: owner, type: Owner},
+    {name: refusal, type: String},
+    {name: detail, type: String}
+  ]
+}
+
+structure{
+  name: ScopeClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: standard, type: Nat},
+    {name: refusal, type: String},
+    {name: detail, type: String}
+  ]
+}
+
+definition{
+  name: ownerIsStandards,
+  parameters: [value : Owner],
+  result: Bool,
+  body: (match value | Owner.standards => true | Owner.security => false)
+}
+
+definition{
+  name: ownerIsSecurity,
+  parameters: [value : Owner],
+  result: Bool,
+  body: (match value | Owner.standards => false | Owner.security => true)
+}
+
+definition{
+  name: scopeIsQuoted,
+  parameters: [value : Scope],
+  result: Bool,
+  body: (match value | Scope.quoted => true | Scope.unread => false)
+}
+
+definition{
+  name: scopeIsUnread,
+  parameters: [value : Scope],
+  result: Bool,
+  body: (match value | Scope.quoted => false | Scope.unread => true)
+}
+
+definition{
+  name: yesNoIsYes,
+  parameters: [value : YesNo],
+  result: Bool,
+  body: (match value | YesNo.yes => true | YesNo.no => false)
+}
+
+definition{
+  name: yesNoIsNo,
+  parameters: [value : YesNo],
+  result: Bool,
+  body: (match value | YesNo.yes => false | YesNo.no => true)
+}
+
+definition{
+  name: forceIsLaw,
+  parameters: [value : Force],
+  result: Bool,
+  body: (match value | Force.law => true | Force.voluntary => false)
+}
+
+definition{
+  name: forceIsVoluntary,
+  parameters: [value : Force],
+  result: Bool,
+  body: (match value | Force.law => false | Force.voluntary => true)
+}
+
+definition{
+  name: jurisdictionIsOwn,
+  parameters: [value : Jurisdiction],
+  result: Bool,
+  body: (match value
+    | Jurisdiction.own => true
+    | Jurisdiction.foreign => false
+    | Jurisdiction.unbound => false)
+}
+
+definition{
+  name: jurisdictionIsForeign,
+  parameters: [value : Jurisdiction],
+  result: Bool,
+  body: (match value
+    | Jurisdiction.own => false
+    | Jurisdiction.foreign => true
+    | Jurisdiction.unbound => false)
+}
+
+definition{
+  name: jurisdictionIsUnbound,
+  parameters: [value : Jurisdiction],
+  result: Bool,
+  body: (match value
+    | Jurisdiction.own => false
+    | Jurisdiction.foreign => false
+    | Jurisdiction.unbound => true)
+}
+
+definition{
+  name: activityIsPresent,
+  parameters: [value : Activity],
+  result: Bool,
+  body: (match value
+    | Activity.present => true
+    | Activity.absent => false
+    | Activity.undetermined => false)
+}
+
+definition{
+  name: activityIsAbsent,
+  parameters: [value : Activity],
+  result: Bool,
+  body: (match value
+    | Activity.present => false
+    | Activity.absent => true
+    | Activity.undetermined => false)
+}
+
+definition{
+  name: activityIsUndetermined,
+  parameters: [value : Activity],
+  result: Bool,
+  body: (match value
+    | Activity.present => false
+    | Activity.absent => false
+    | Activity.undetermined => true)
+}
+
+definition{
+  name: outcomeIsSecured,
+  parameters: [value : Outcome],
+  result: Bool,
+  body: (match value
+    | Outcome.secured => true
+    | Outcome.undecided => false
+    | Outcome.inapplicable => false
+    | Outcome.conditional => false
+    | Outcome.mandatory => false
+    | Outcome.adopted => false
+    | Outcome.applicable => false)
+}
+
+definition{
+  name: outcomeIsUndecided,
+  parameters: [value : Outcome],
+  result: Bool,
+  body: (match value
+    | Outcome.secured => false
+    | Outcome.undecided => true
+    | Outcome.inapplicable => false
+    | Outcome.conditional => false
+    | Outcome.mandatory => false
+    | Outcome.adopted => false
+    | Outcome.applicable => false)
+}
+
+definition{
+  name: outcomeIsInapplicable,
+  parameters: [value : Outcome],
+  result: Bool,
+  body: (match value
+    | Outcome.secured => false
+    | Outcome.undecided => false
+    | Outcome.inapplicable => true
+    | Outcome.conditional => false
+    | Outcome.mandatory => false
+    | Outcome.adopted => false
+    | Outcome.applicable => false)
+}
+
+definition{
+  name: outcomeIsConditional,
+  parameters: [value : Outcome],
+  result: Bool,
+  body: (match value
+    | Outcome.secured => false
+    | Outcome.undecided => false
+    | Outcome.inapplicable => false
+    | Outcome.conditional => true
+    | Outcome.mandatory => false
+    | Outcome.adopted => false
+    | Outcome.applicable => false)
+}
+
+definition{
+  name: outcomeIsMandatory,
+  parameters: [value : Outcome],
+  result: Bool,
+  body: (match value
+    | Outcome.secured => false
+    | Outcome.undecided => false
+    | Outcome.inapplicable => false
+    | Outcome.conditional => false
+    | Outcome.mandatory => true
+    | Outcome.adopted => false
+    | Outcome.applicable => false)
+}
+
+definition{
+  name: outcomeIsAdopted,
+  parameters: [value : Outcome],
+  result: Bool,
+  body: (match value
+    | Outcome.secured => false
+    | Outcome.undecided => false
+    | Outcome.inapplicable => false
+    | Outcome.conditional => false
+    | Outcome.mandatory => false
+    | Outcome.adopted => true
+    | Outcome.applicable => false)
+}
+
+definition{
+  name: outcomeIsApplicable,
+  parameters: [value : Outcome],
+  result: Bool,
+  body: (match value
+    | Outcome.secured => false
+    | Outcome.undecided => false
+    | Outcome.inapplicable => false
+    | Outcome.conditional => false
+    | Outcome.mandatory => false
+    | Outcome.adopted => false
+    | Outcome.applicable => true)
+}
+
+definition{
+  name: statusIsImplemented,
+  parameters: [value : Status],
+  result: Bool,
+  body: (match value
+    | Status.implemented => true
+    | Status.partiallyImplemented => false
+    | Status.unimplemented => false
+    | Status.unrated => false)
+}
+
+definition{
+  name: statusIsPartiallyImplemented,
+  parameters: [value : Status],
+  result: Bool,
+  body: (match value
+    | Status.implemented => false
+    | Status.partiallyImplemented => true
+    | Status.unimplemented => false
+    | Status.unrated => false)
+}
+
+definition{
+  name: statusIsUnimplemented,
+  parameters: [value : Status],
+  result: Bool,
+  body: (match value
+    | Status.implemented => false
+    | Status.partiallyImplemented => false
+    | Status.unimplemented => true
+    | Status.unrated => false)
+}
+
+definition{
+  name: statusIsUnrated,
+  parameters: [value : Status],
+  result: Bool,
+  body: (match value
+    | Status.implemented => false
+    | Status.partiallyImplemented => false
+    | Status.unimplemented => false
+    | Status.unrated => true)
+}
+
+definition{
+  name: outcomeCode,
+  parameters: [value : Outcome],
+  result: Nat,
+  body: (match value
+    | Outcome.secured => 0
+    | Outcome.undecided => 1
+    | Outcome.inapplicable => 2
+    | Outcome.conditional => 3
+    | Outcome.mandatory => 4
+    | Outcome.adopted => 5
+    | Outcome.applicable => 6)
+}
+
+definition{
+  name: ownerCode,
+  parameters: [value : Owner],
+  result: Nat,
+  body: (match value | Owner.standards => 0 | Owner.security => 1)
+}
+
+definition{
+  name: statusCode,
+  parameters: [value : Status],
+  result: Nat,
+  body: (match value
+    | Status.implemented => 0
+    | Status.partiallyImplemented => 1
+    | Status.unimplemented => 2
+    | Status.unrated => 3)
+}
+
+definition{
+  name: outcomeApplicable,
+  parameters: [value : Outcome],
+  result: Bool,
+  body: (match value
+    | Outcome.secured => true
+    | Outcome.undecided => false
+    | Outcome.inapplicable => false
+    | Outcome.conditional => true
+    | Outcome.mandatory => true
+    | Outcome.adopted => true
+    | Outcome.applicable => true)
+}
+
+definition{
+  name: agree,
+  parameters: [left : Bool, right : Bool],
+  result: Bool,
+  body: (if left then right else (not right))
+}
+
+definition{
+  name: decideApplicability,
+  parameters: [
+    owner : Owner,
+    scope : Scope,
+    inscope : YesNo,
+    force : Force,
+    jurisdiction : Jurisdiction,
+    activity : Activity,
+    adopted : YesNo
+  ],
+  result: Nat,
+  body: (if ((ownerIsSecurity owner) && (yesNoIsYes inscope)) then 0 else (if (scopeIsUnread scope) then 1 else (if (yesNoIsNo inscope) then 2 else (if ((forceIsLaw force) && (jurisdictionIsForeign jurisdiction)) then 2 else (if ((forceIsLaw force) && (activityIsAbsent activity)) then 2 else (if ((forceIsLaw force) && (activityIsUndetermined activity)) then 3 else (if ((forceIsLaw force) && ((jurisdictionIsOwn jurisdiction) && (activityIsPresent activity))) then 4 else (if ((forceIsVoluntary force) && (yesNoIsYes adopted)) then 5 else (if (forceIsLaw force) then 1 else 6)))))))))
+}
+
+definition{
+  name: needsClaim,
+  parameters: [decision : Decision],
+  result: Bool,
+  body: ((outcomeIsUndecided (project decision outcome)) || ((outcomeApplicable (project decision outcome)) && (not (statusIsImplemented (project decision status)))))
+}
+
+definition{
+  name: decisionsOrdered,
+  parameters: [values : (List Decision), current : Nat, low : Nat],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons decision rest => (((current <? (project decision part)) || (((project decision part) =? current) && (low <? ((project decision standard) + 1)))) && (decisionsOrdered rest (project decision part) ((project decision standard) + 1)))),
+  recursive_argument: values
+}
+
+definition{
+  name: partsCovered,
+  parameters: [values : (List Decision), current : Nat, seen : Bool, total : Nat],
+  result: Bool,
+  body: (match values
+    | List.nil => (seen && ((current + 1) =? total))
+    | List.cons decision rest => (if ((project decision part) =? current) then (partsCovered rest current (seen || (outcomeApplicable (project decision outcome))) total) else (seen && (((project decision part) =? (current + 1)) && (partsCovered rest (project decision part) (outcomeApplicable (project decision outcome)) total))))),
+  recursive_argument: values
+}
+
+definition{
+  name: claimHeadIs,
+  parameters: [claimList : (List OpenClaim), at : Nat, owner : Nat],
+  result: Bool,
+  body: (match claimList
+    | List.nil => false
+    | List.cons claim rest => (((project claim decision) =? at) && ((ownerCode (project claim owner)) =? owner)))
+}
+
+definition{
+  name: claimTail,
+  parameters: [claimList : (List OpenClaim)],
+  result: (List OpenClaim),
+  body: (match claimList | List.nil => claimList | List.cons claim rest => rest)
+}
+
+definition{
+  name: claimsEmpty,
+  parameters: [claimList : (List OpenClaim)],
+  result: Bool,
+  body: (match claimList | List.nil => true | List.cons claim rest => false)
+}
+
+definition{
+  name: claimsMatch,
+  parameters: [claimList : (List OpenClaim), values : (List Decision)],
+  result: Bool,
+  body: (match values
+    | List.nil => (claimsEmpty claimList)
+    | List.cons decision rest => (if (needsClaim decision) then ((claimHeadIs claimList (project decision index) (ownerCode (project decision owner))) && (claimsMatch (claimTail claimList) rest)) else (claimsMatch claimList rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: facetPresentAt,
+  parameters: [values : (List Facet), at : Nat],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons facet rest => (if ((project facet index) =? at) then (project facet present) else (facetPresentAt rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: checkFacetAt,
+  parameters: [values : (List Check), at : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons check rest => (if ((project check index) =? at) then (project check facet) else (checkFacetAt rest at))),
+  recursive_argument: values
+}
+
+definition{
+  name: implementedFaceted,
+  parameters: [allFacets : (List Facet), allChecks : (List Check), values : (List Decision)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons decision rest => ((if (statusIsImplemented (project decision status)) then ((facetPresentAt allFacets (project decision facet)) && ((checkFacetAt allChecks (project decision check)) =? (project decision facet))) else true) && (implementedFaceted allFacets allChecks rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: statusTotal,
+  parameters: [values : (List Decision), wanted : Nat],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons decision rest => ((if ((statusCode (project decision status)) =? wanted) then 1 else 0) + (statusTotal rest wanted))),
+  recursive_argument: values
+}
+
+definition{
+  name: applicableTotal,
+  parameters: [values : (List Decision)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons decision rest => ((if (outcomeApplicable (project decision outcome)) then 1 else 0) + (applicableTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: facetsValid,
+  parameters: [position : Nat, values : (List Facet)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons facet rest => (((project facet index) =? position) && (facetsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: facetsTotal,
+  parameters: [values : (List Facet)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons facet rest => (1 + (facetsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: checksValid,
+  parameters: [position : Nat, facetsCount : Nat, values : (List Check)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons check rest => (((project check index) =? position) && (((project check facet) <? facetsCount) && (checksValid (position + 1) facetsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: checksTotal,
+  parameters: [values : (List Check)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons check rest => (1 + (checksTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: partsValid,
+  parameters: [position : Nat, facetsCount : Nat, values : (List Part)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons part rest => (((project part index) =? position) && (((project part facet) <? facetsCount) && (partsValid (position + 1) facetsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: partsTotal,
+  parameters: [values : (List Part)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons part rest => (1 + (partsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: standardsValid,
+  parameters: [position : Nat, values : (List Standard)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons standard rest => (((project standard index) =? position) && (standardsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: standardsTotal,
+  parameters: [values : (List Standard)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons standard rest => (1 + (standardsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: decisionsValid,
+  parameters: [
+    position : Nat,
+    partsCount : Nat,
+    standardsCount : Nat,
+    facetsCount : Nat,
+    checksCount : Nat,
+    values : (List Decision)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons decision rest => (((project decision index) =? position) && (((project decision part) <? partsCount) && (((project decision standard) <? standardsCount) && (((project decision facet) <? facetsCount) && (((project decision check) <? checksCount) && (((outcomeCode (project decision outcome)) =? (decideApplicability (project decision owner) (project decision scope) (project decision inscope) (project decision force) (project decision jurisdiction) (project decision activity) (project decision adopted))) && ((agree (outcomeApplicable (project decision outcome)) (not (statusIsUnrated (project decision status)))) && ((if (outcomeIsSecured (project decision outcome)) then (ownerIsSecurity (project decision owner)) else true) && ((if (statusIsImplemented (project decision status)) then (0 <? (project decision check)) else true) && (decisionsValid (position + 1) partsCount standardsCount facetsCount checksCount rest))))))))))),
+  recursive_argument: values
+}
+
+definition{
+  name: decisionsTotal,
+  parameters: [values : (List Decision)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons decision rest => (1 + (decisionsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsValid,
+  parameters: [position : Nat, decisionsCount : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons openClaim rest => (((project openClaim index) =? position) && (((project openClaim decision) <? decisionsCount) && (openClaimsValid (position + 1) decisionsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsTotal,
+  parameters: [values : (List OpenClaim)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: scopeClaimsValid,
+  parameters: [position : Nat, standardsCount : Nat, values : (List ScopeClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons scopeClaim rest => (((project scopeClaim index) =? position) && (((project scopeClaim standard) <? standardsCount) && (scopeClaimsValid (position + 1) standardsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: scopeClaimsTotal,
+  parameters: [values : (List ScopeClaim)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons scopeClaim rest => (1 + (scopeClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    facets : (List Facet),
+    checks : (List Check),
+    parts : (List Part),
+    standards : (List Standard),
+    decisions : (List Decision),
+    openClaims : (List OpenClaim),
+    scopeClaims : (List ScopeClaim)
+  ],
+  result: Bool,
+  body: (((facetsTotal facets) =? (project release facetsCount)) && (((checksTotal checks) =? (project release checksCount)) && (((partsTotal parts) =? (project release partsCount)) && (((standardsTotal standards) =? (project release standardsCount)) && (((decisionsTotal decisions) =? (project release decisionsCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && (((scopeClaimsTotal scopeClaims) =? (project release scopeClaimsCount)) && ((facetsValid 0 facets) && ((checksValid 0 (facetsTotal facets) checks) && ((partsValid 0 (facetsTotal facets) parts) && ((standardsValid 0 standards) && ((decisionsValid 0 (partsTotal parts) (standardsTotal standards) (facetsTotal facets) (checksTotal checks) decisions) && ((openClaimsValid 0 (decisionsTotal decisions) openClaims) && ((scopeClaimsValid 0 (standardsTotal standards) scopeClaims) && ((decisionsOrdered decisions 0 0) && ((partsCovered decisions 0 false (partsTotal parts)) && ((claimsMatch openClaims decisions) && ((implementedFaceted facets checks decisions) && (((statusTotal decisions 0) =? (project release implementedCount)) && (((statusTotal decisions 1) =? (project release partialCount)) && (((statusTotal decisions 2) =? (project release unimplementedCount)) && ((applicableTotal decisions) =? (project release applicableCount)))))))))))))))))))))))
+}
+\end{semanticmodule}
+\end{lexlean}

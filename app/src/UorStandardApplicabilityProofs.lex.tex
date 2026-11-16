@@ -1,0 +1,268 @@
+\begin{lexlean}{UorStandardApplicabilityProofs}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{UorStandardApplicability}
+\title{Text application model}
+\begin{semanticmodule}
+definition{
+  name: breaksInv001,
+  parameters: [request : UorStandardApplicability::UorStandardApplicabilityRequest],
+  result: Bool,
+  body: (((((((((((project request owner) <? 2) && ((project request scope) <? 2)) && ((project request inscope) <? 2)) && ((project request force) <? 2)) && ((project request jurisdiction) <? 3)) && ((project request activity) <? 3)) && ((project request adopted) <? 2)) && ((project request owner) =? (UorStandardApplicability::uorStandardApplicabilityOwnerSecurity))) && ((project request inscope) =? (UorStandardApplicability::uorStandardApplicabilityInscopeYes))) && ((UorStandardApplicability::uorStandardApplicabilityJudge request) =? (UorStandardApplicability::uorStandardApplicabilityAnswerApplicable)))
+}
+
+theorem{
+  name: inv001Holds,
+  parameters: [request : UorStandardApplicability::UorStandardApplicabilityRequest],
+  statement: ((breaksInv001 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorStandardApplicability::uorStandardApplicabilityActivityAbsent,
+      UorStandardApplicability::uorStandardApplicabilityActivityPresent,
+      UorStandardApplicability::uorStandardApplicabilityActivityUndetermined,
+      UorStandardApplicability::uorStandardApplicabilityAdoptedNo,
+      UorStandardApplicability::uorStandardApplicabilityAdoptedYes,
+      UorStandardApplicability::uorStandardApplicabilityAnswerAdopted,
+      UorStandardApplicability::uorStandardApplicabilityAnswerApplicable,
+      UorStandardApplicability::uorStandardApplicabilityAnswerConditional,
+      UorStandardApplicability::uorStandardApplicabilityAnswerInapplicable,
+      UorStandardApplicability::uorStandardApplicabilityAnswerMandatory,
+      UorStandardApplicability::uorStandardApplicabilityAnswerSecured,
+      UorStandardApplicability::uorStandardApplicabilityAnswerUndecided,
+      UorStandardApplicability::uorStandardApplicabilityForceLaw,
+      UorStandardApplicability::uorStandardApplicabilityForceVoluntary,
+      UorStandardApplicability::uorStandardApplicabilityInscopeNo,
+      UorStandardApplicability::uorStandardApplicabilityInscopeYes,
+      UorStandardApplicability::uorStandardApplicabilityJudge,
+      UorStandardApplicability::uorStandardApplicabilityJurisdictionForeign,
+      UorStandardApplicability::uorStandardApplicabilityJurisdictionOwn,
+      UorStandardApplicability::uorStandardApplicabilityJurisdictionUnbound,
+      UorStandardApplicability::uorStandardApplicabilityOwnerSecurity,
+      UorStandardApplicability::uorStandardApplicabilityOwnerStandards,
+      UorStandardApplicability::uorStandardApplicabilityRule1,
+      UorStandardApplicability::uorStandardApplicabilityRule2,
+      UorStandardApplicability::uorStandardApplicabilityRule3,
+      UorStandardApplicability::uorStandardApplicabilityRule4,
+      UorStandardApplicability::uorStandardApplicabilityRule5,
+      UorStandardApplicability::uorStandardApplicabilityRule6,
+      UorStandardApplicability::uorStandardApplicabilityRule7,
+      UorStandardApplicability::uorStandardApplicabilityRule8,
+      UorStandardApplicability::uorStandardApplicabilityRule9,
+      UorStandardApplicability::uorStandardApplicabilityScopeQuoted,
+      UorStandardApplicability::uorStandardApplicabilityScopeUnread,
+      breaksInv001
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv002,
+  parameters: [request : UorStandardApplicability::UorStandardApplicabilityRequest],
+  result: Bool,
+  body: (((((((((((project request owner) <? 2) && ((project request scope) <? 2)) && ((project request inscope) <? 2)) && ((project request force) <? 2)) && ((project request jurisdiction) <? 3)) && ((project request activity) <? 3)) && ((project request adopted) <? 2)) && ((project request owner) =? (UorStandardApplicability::uorStandardApplicabilityOwnerStandards))) && ((project request scope) =? (UorStandardApplicability::uorStandardApplicabilityScopeUnread))) && (not ((UorStandardApplicability::uorStandardApplicabilityJudge request) =? (UorStandardApplicability::uorStandardApplicabilityAnswerUndecided))))
+}
+
+theorem{
+  name: inv002Holds,
+  parameters: [request : UorStandardApplicability::UorStandardApplicabilityRequest],
+  statement: ((breaksInv002 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorStandardApplicability::uorStandardApplicabilityActivityAbsent,
+      UorStandardApplicability::uorStandardApplicabilityActivityPresent,
+      UorStandardApplicability::uorStandardApplicabilityActivityUndetermined,
+      UorStandardApplicability::uorStandardApplicabilityAdoptedNo,
+      UorStandardApplicability::uorStandardApplicabilityAdoptedYes,
+      UorStandardApplicability::uorStandardApplicabilityAnswerAdopted,
+      UorStandardApplicability::uorStandardApplicabilityAnswerApplicable,
+      UorStandardApplicability::uorStandardApplicabilityAnswerConditional,
+      UorStandardApplicability::uorStandardApplicabilityAnswerInapplicable,
+      UorStandardApplicability::uorStandardApplicabilityAnswerMandatory,
+      UorStandardApplicability::uorStandardApplicabilityAnswerSecured,
+      UorStandardApplicability::uorStandardApplicabilityAnswerUndecided,
+      UorStandardApplicability::uorStandardApplicabilityForceLaw,
+      UorStandardApplicability::uorStandardApplicabilityForceVoluntary,
+      UorStandardApplicability::uorStandardApplicabilityInscopeNo,
+      UorStandardApplicability::uorStandardApplicabilityInscopeYes,
+      UorStandardApplicability::uorStandardApplicabilityJudge,
+      UorStandardApplicability::uorStandardApplicabilityJurisdictionForeign,
+      UorStandardApplicability::uorStandardApplicabilityJurisdictionOwn,
+      UorStandardApplicability::uorStandardApplicabilityJurisdictionUnbound,
+      UorStandardApplicability::uorStandardApplicabilityOwnerSecurity,
+      UorStandardApplicability::uorStandardApplicabilityOwnerStandards,
+      UorStandardApplicability::uorStandardApplicabilityRule1,
+      UorStandardApplicability::uorStandardApplicabilityRule2,
+      UorStandardApplicability::uorStandardApplicabilityRule3,
+      UorStandardApplicability::uorStandardApplicabilityRule4,
+      UorStandardApplicability::uorStandardApplicabilityRule5,
+      UorStandardApplicability::uorStandardApplicabilityRule6,
+      UorStandardApplicability::uorStandardApplicabilityRule7,
+      UorStandardApplicability::uorStandardApplicabilityRule8,
+      UorStandardApplicability::uorStandardApplicabilityRule9,
+      UorStandardApplicability::uorStandardApplicabilityScopeQuoted,
+      UorStandardApplicability::uorStandardApplicabilityScopeUnread,
+      breaksInv002
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv003,
+  parameters: [request : UorStandardApplicability::UorStandardApplicabilityRequest],
+  result: Bool,
+  body: ((((((((((((((project request owner) <? 2) && ((project request scope) <? 2)) && ((project request inscope) <? 2)) && ((project request force) <? 2)) && ((project request jurisdiction) <? 3)) && ((project request activity) <? 3)) && ((project request adopted) <? 2)) && ((project request owner) =? (UorStandardApplicability::uorStandardApplicabilityOwnerStandards))) && ((project request scope) =? (UorStandardApplicability::uorStandardApplicabilityScopeQuoted))) && ((project request inscope) =? (UorStandardApplicability::uorStandardApplicabilityInscopeYes))) && ((project request force) =? (UorStandardApplicability::uorStandardApplicabilityForceLaw))) && ((project request jurisdiction) =? (UorStandardApplicability::uorStandardApplicabilityJurisdictionForeign))) && (not ((UorStandardApplicability::uorStandardApplicabilityJudge request) =? (UorStandardApplicability::uorStandardApplicabilityAnswerInapplicable))))
+}
+
+theorem{
+  name: inv003Holds,
+  parameters: [request : UorStandardApplicability::UorStandardApplicabilityRequest],
+  statement: ((breaksInv003 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorStandardApplicability::uorStandardApplicabilityActivityAbsent,
+      UorStandardApplicability::uorStandardApplicabilityActivityPresent,
+      UorStandardApplicability::uorStandardApplicabilityActivityUndetermined,
+      UorStandardApplicability::uorStandardApplicabilityAdoptedNo,
+      UorStandardApplicability::uorStandardApplicabilityAdoptedYes,
+      UorStandardApplicability::uorStandardApplicabilityAnswerAdopted,
+      UorStandardApplicability::uorStandardApplicabilityAnswerApplicable,
+      UorStandardApplicability::uorStandardApplicabilityAnswerConditional,
+      UorStandardApplicability::uorStandardApplicabilityAnswerInapplicable,
+      UorStandardApplicability::uorStandardApplicabilityAnswerMandatory,
+      UorStandardApplicability::uorStandardApplicabilityAnswerSecured,
+      UorStandardApplicability::uorStandardApplicabilityAnswerUndecided,
+      UorStandardApplicability::uorStandardApplicabilityForceLaw,
+      UorStandardApplicability::uorStandardApplicabilityForceVoluntary,
+      UorStandardApplicability::uorStandardApplicabilityInscopeNo,
+      UorStandardApplicability::uorStandardApplicabilityInscopeYes,
+      UorStandardApplicability::uorStandardApplicabilityJudge,
+      UorStandardApplicability::uorStandardApplicabilityJurisdictionForeign,
+      UorStandardApplicability::uorStandardApplicabilityJurisdictionOwn,
+      UorStandardApplicability::uorStandardApplicabilityJurisdictionUnbound,
+      UorStandardApplicability::uorStandardApplicabilityOwnerSecurity,
+      UorStandardApplicability::uorStandardApplicabilityOwnerStandards,
+      UorStandardApplicability::uorStandardApplicabilityRule1,
+      UorStandardApplicability::uorStandardApplicabilityRule2,
+      UorStandardApplicability::uorStandardApplicabilityRule3,
+      UorStandardApplicability::uorStandardApplicabilityRule4,
+      UorStandardApplicability::uorStandardApplicabilityRule5,
+      UorStandardApplicability::uorStandardApplicabilityRule6,
+      UorStandardApplicability::uorStandardApplicabilityRule7,
+      UorStandardApplicability::uorStandardApplicabilityRule8,
+      UorStandardApplicability::uorStandardApplicabilityRule9,
+      UorStandardApplicability::uorStandardApplicabilityScopeQuoted,
+      UorStandardApplicability::uorStandardApplicabilityScopeUnread,
+      breaksInv003
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv004,
+  parameters: [request : UorStandardApplicability::UorStandardApplicabilityRequest],
+  result: Bool,
+  body: (((((((((((((((project request owner) <? 2) && ((project request scope) <? 2)) && ((project request inscope) <? 2)) && ((project request force) <? 2)) && ((project request jurisdiction) <? 3)) && ((project request activity) <? 3)) && ((project request adopted) <? 2)) && ((project request owner) =? (UorStandardApplicability::uorStandardApplicabilityOwnerStandards))) && ((project request scope) =? (UorStandardApplicability::uorStandardApplicabilityScopeQuoted))) && ((project request inscope) =? (UorStandardApplicability::uorStandardApplicabilityInscopeYes))) && ((project request force) =? (UorStandardApplicability::uorStandardApplicabilityForceLaw))) && ((project request jurisdiction) =? (UorStandardApplicability::uorStandardApplicabilityJurisdictionOwn))) && ((project request activity) =? (UorStandardApplicability::uorStandardApplicabilityActivityUndetermined))) && ((UorStandardApplicability::uorStandardApplicabilityJudge request) =? (UorStandardApplicability::uorStandardApplicabilityAnswerInapplicable)))
+}
+
+theorem{
+  name: inv004Holds,
+  parameters: [request : UorStandardApplicability::UorStandardApplicabilityRequest],
+  statement: ((breaksInv004 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorStandardApplicability::uorStandardApplicabilityActivityAbsent,
+      UorStandardApplicability::uorStandardApplicabilityActivityPresent,
+      UorStandardApplicability::uorStandardApplicabilityActivityUndetermined,
+      UorStandardApplicability::uorStandardApplicabilityAdoptedNo,
+      UorStandardApplicability::uorStandardApplicabilityAdoptedYes,
+      UorStandardApplicability::uorStandardApplicabilityAnswerAdopted,
+      UorStandardApplicability::uorStandardApplicabilityAnswerApplicable,
+      UorStandardApplicability::uorStandardApplicabilityAnswerConditional,
+      UorStandardApplicability::uorStandardApplicabilityAnswerInapplicable,
+      UorStandardApplicability::uorStandardApplicabilityAnswerMandatory,
+      UorStandardApplicability::uorStandardApplicabilityAnswerSecured,
+      UorStandardApplicability::uorStandardApplicabilityAnswerUndecided,
+      UorStandardApplicability::uorStandardApplicabilityForceLaw,
+      UorStandardApplicability::uorStandardApplicabilityForceVoluntary,
+      UorStandardApplicability::uorStandardApplicabilityInscopeNo,
+      UorStandardApplicability::uorStandardApplicabilityInscopeYes,
+      UorStandardApplicability::uorStandardApplicabilityJudge,
+      UorStandardApplicability::uorStandardApplicabilityJurisdictionForeign,
+      UorStandardApplicability::uorStandardApplicabilityJurisdictionOwn,
+      UorStandardApplicability::uorStandardApplicabilityJurisdictionUnbound,
+      UorStandardApplicability::uorStandardApplicabilityOwnerSecurity,
+      UorStandardApplicability::uorStandardApplicabilityOwnerStandards,
+      UorStandardApplicability::uorStandardApplicabilityRule1,
+      UorStandardApplicability::uorStandardApplicabilityRule2,
+      UorStandardApplicability::uorStandardApplicabilityRule3,
+      UorStandardApplicability::uorStandardApplicabilityRule4,
+      UorStandardApplicability::uorStandardApplicabilityRule5,
+      UorStandardApplicability::uorStandardApplicabilityRule6,
+      UorStandardApplicability::uorStandardApplicabilityRule7,
+      UorStandardApplicability::uorStandardApplicabilityRule8,
+      UorStandardApplicability::uorStandardApplicabilityRule9,
+      UorStandardApplicability::uorStandardApplicabilityScopeQuoted,
+      UorStandardApplicability::uorStandardApplicabilityScopeUnread,
+      breaksInv004
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksInv005,
+  parameters: [request : UorStandardApplicability::UorStandardApplicabilityRequest],
+  result: Bool,
+  body: (((((((((((((((project request owner) <? 2) && ((project request scope) <? 2)) && ((project request inscope) <? 2)) && ((project request force) <? 2)) && ((project request jurisdiction) <? 3)) && ((project request activity) <? 3)) && ((project request adopted) <? 2)) && ((project request owner) =? (UorStandardApplicability::uorStandardApplicabilityOwnerStandards))) && ((project request scope) =? (UorStandardApplicability::uorStandardApplicabilityScopeQuoted))) && ((project request inscope) =? (UorStandardApplicability::uorStandardApplicabilityInscopeYes))) && ((project request force) =? (UorStandardApplicability::uorStandardApplicabilityForceLaw))) && ((project request jurisdiction) =? (UorStandardApplicability::uorStandardApplicabilityJurisdictionOwn))) && ((project request activity) =? (UorStandardApplicability::uorStandardApplicabilityActivityPresent))) && (not ((UorStandardApplicability::uorStandardApplicabilityJudge request) =? (UorStandardApplicability::uorStandardApplicabilityAnswerMandatory))))
+}
+
+theorem{
+  name: inv005Holds,
+  parameters: [request : UorStandardApplicability::UorStandardApplicabilityRequest],
+  statement: ((breaksInv005 request) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      UorStandardApplicability::uorStandardApplicabilityActivityAbsent,
+      UorStandardApplicability::uorStandardApplicabilityActivityPresent,
+      UorStandardApplicability::uorStandardApplicabilityActivityUndetermined,
+      UorStandardApplicability::uorStandardApplicabilityAdoptedNo,
+      UorStandardApplicability::uorStandardApplicabilityAdoptedYes,
+      UorStandardApplicability::uorStandardApplicabilityAnswerAdopted,
+      UorStandardApplicability::uorStandardApplicabilityAnswerApplicable,
+      UorStandardApplicability::uorStandardApplicabilityAnswerConditional,
+      UorStandardApplicability::uorStandardApplicabilityAnswerInapplicable,
+      UorStandardApplicability::uorStandardApplicabilityAnswerMandatory,
+      UorStandardApplicability::uorStandardApplicabilityAnswerSecured,
+      UorStandardApplicability::uorStandardApplicabilityAnswerUndecided,
+      UorStandardApplicability::uorStandardApplicabilityForceLaw,
+      UorStandardApplicability::uorStandardApplicabilityForceVoluntary,
+      UorStandardApplicability::uorStandardApplicabilityInscopeNo,
+      UorStandardApplicability::uorStandardApplicabilityInscopeYes,
+      UorStandardApplicability::uorStandardApplicabilityJudge,
+      UorStandardApplicability::uorStandardApplicabilityJurisdictionForeign,
+      UorStandardApplicability::uorStandardApplicabilityJurisdictionOwn,
+      UorStandardApplicability::uorStandardApplicabilityJurisdictionUnbound,
+      UorStandardApplicability::uorStandardApplicabilityOwnerSecurity,
+      UorStandardApplicability::uorStandardApplicabilityOwnerStandards,
+      UorStandardApplicability::uorStandardApplicabilityRule1,
+      UorStandardApplicability::uorStandardApplicabilityRule2,
+      UorStandardApplicability::uorStandardApplicabilityRule3,
+      UorStandardApplicability::uorStandardApplicabilityRule4,
+      UorStandardApplicability::uorStandardApplicabilityRule5,
+      UorStandardApplicability::uorStandardApplicabilityRule6,
+      UorStandardApplicability::uorStandardApplicabilityRule7,
+      UorStandardApplicability::uorStandardApplicabilityRule8,
+      UorStandardApplicability::uorStandardApplicabilityRule9,
+      UorStandardApplicability::uorStandardApplicabilityScopeQuoted,
+      UorStandardApplicability::uorStandardApplicabilityScopeUnread,
+      breaksInv005
+    ]
+  },
+  axioms: [Classical.choice, Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

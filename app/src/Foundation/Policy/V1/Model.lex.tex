@@ -1,0 +1,1009 @@
+\begin{lexlean}{Foundation.Policy.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Policy model}
+\begin{semanticmodule}
+inductive{
+  name: Jurisdiction,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: us, fields: []}, {name: usCo, fields: []}]
+}
+
+inductive{
+  name: Instrument,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: statute, fields: []},
+    {name: regulation, fields: []},
+    {name: instructions, fields: []},
+    {name: publication, fields: []},
+    {name: agencyGuidance, fields: []},
+    {name: form, fields: []},
+    {name: model, fields: []},
+    {name: filedRecord, fields: []},
+    {name: bylaws, fields: []},
+    {name: governance, fields: []}
+  ]
+}
+
+inductive{
+  name: ClauseKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: model, fields: []},
+    {name: carried, fields: []},
+    {name: composed, fields: []},
+    {name: schedule, fields: []}
+  ]
+}
+
+inductive{
+  name: Period,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: unstated, fields: []},
+    {name: current, fields: []},
+    {name: years, fields: []},
+    {name: permanent, fields: []}
+  ]
+}
+
+inductive{
+  name: ActKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: boardResolution, fields: []},
+    {name: filing, fields: []},
+    {name: recurring, fields: []},
+    {name: publication, fields: []}
+  ]
+}
+
+inductive{
+  name: SubjectKind,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: requirement, fields: []},
+    {name: post, fields: []},
+    {name: recordClass, fields: []},
+    {name: act, fields: []}
+  ]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: sourcesCount, type: Nat},
+    {name: authoritiesCount, type: Nat},
+    {name: modelsCount, type: Nat},
+    {name: sectionsCount, type: Nat},
+    {name: policiesCount, type: Nat},
+    {name: clausesCount, type: Nat},
+    {name: derivationsCount, type: Nat},
+    {name: citationsCount, type: Nat},
+    {name: carriesCount, type: Nat},
+    {name: substitutionsCount, type: Nat},
+    {name: requirementsCount, type: Nat},
+    {name: coveragesCount, type: Nat},
+    {name: postsCount, type: Nat},
+    {name: recordClassesCount, type: Nat},
+    {name: basesCount, type: Nat},
+    {name: actsCount, type: Nat},
+    {name: openClaimsCount, type: Nat},
+    {name: legalName, type: String},
+    {name: coloradoId, type: String},
+    {name: jurisdiction, type: Jurisdiction},
+    {name: boardSeats, type: Nat},
+    {name: governanceDigest, type: String},
+    {name: nonprofitDigest, type: String},
+    {name: snapshotDigest, type: String},
+    {name: clausesDigest, type: String},
+    {name: pdftotext, type: String},
+    {name: pdftohtml, type: String}
+  ]
+}
+
+structure{
+  name: Source,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: key, type: String},
+    {name: url, type: String},
+    {name: fetchedAt, type: String},
+    {name: digest, type: String}
+  ]
+}
+
+structure{
+  name: Authority,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: key, type: String},
+    {name: instrument, type: Instrument},
+    {name: ref, type: String},
+    {name: title, type: String},
+    {name: jurisdiction, type: Jurisdiction},
+    {name: source, type: Nat},
+    {name: digest, type: String}
+  ]
+}
+
+structure{
+  name: StandardModel,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: key, type: String},
+    {name: title, type: String},
+    {name: revision, type: String},
+    {name: source, type: Nat},
+    {name: authority, type: Nat}
+  ]
+}
+
+structure{
+  name: ModelSection,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: model, type: Nat},
+    {name: number, type: String},
+    {name: title, type: String},
+    {name: numberStated, type: Bool},
+    {name: digest, type: String}
+  ]
+}
+
+structure{
+  name: Policy,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: key, type: String},
+    {name: title, type: String},
+    {name: draft, type: String},
+    {name: standard, type: String},
+    {name: clauseCount, type: Nat},
+    {name: draftDigest, type: String}
+  ]
+}
+
+structure{
+  name: Clause,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: policy, type: Nat},
+    {name: number, type: String},
+    {name: group, type: String},
+    {name: heading, type: String},
+    {name: kind, type: ClauseKind},
+    {name: text, type: String},
+    {name: digest, type: String},
+    {name: substitutions, type: String}
+  ]
+}
+
+structure{
+  name: Derivation,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: clause, type: Nat}, {name: section, type: Nat}]
+}
+
+structure{
+  name: Citation,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: clause, type: Nat}, {name: authority, type: Nat}]
+}
+
+structure{
+  name: Carry,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: clause, type: Nat},
+    {name: authority, type: Nat},
+    {name: excerpt, type: String},
+    {name: digest, type: String}
+  ]
+}
+
+structure{
+  name: Substitution,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: id, type: String},
+    {name: replaced, type: String},
+    {name: replacement, type: String},
+    {name: basis, type: Nat},
+    {name: applied, type: Nat}
+  ]
+}
+
+structure{
+  name: Requirement,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: key, type: String},
+    {name: policy, type: Nat},
+    {name: label, type: String},
+    {name: authority, type: Nat},
+    {name: mandatory, type: Bool}
+  ]
+}
+
+structure{
+  name: Coverage,
+  type_parameters: [],
+  parameters: [],
+  fields: [{name: index, type: Nat}, {name: requirement, type: Nat}, {name: clause, type: Nat}]
+}
+
+structure{
+  name: Post,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: unit, type: String},
+    {name: governanceIndex, type: Nat},
+    {name: held, type: Bool},
+    {name: basis, type: Nat}
+  ]
+}
+
+structure{
+  name: RecordClass,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: period, type: Period},
+    {name: years, type: Nat},
+    {name: condition, type: String}
+  ]
+}
+
+structure{
+  name: RetentionBasis,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: recordClass, type: Nat},
+    {name: authority, type: Nat},
+    {name: period, type: Period},
+    {name: years, type: Nat},
+    {name: at, type: String}
+  ]
+}
+
+structure{
+  name: StagedAct,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: key, type: String},
+    {name: policy, type: String},
+    {name: kind, type: ActKind},
+    {name: name, type: String},
+    {name: voteRuleApplies, type: Bool},
+    {name: voteRule, type: Nat},
+    {name: threshold, type: String},
+    {name: authority, type: Nat},
+    {name: executed, type: Bool},
+    {name: preconditions, type: String},
+    {name: steps, type: String}
+  ]
+}
+
+structure{
+  name: OpenClaim,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: area, type: String},
+    {name: subjectKind, type: SubjectKind},
+    {name: subject, type: Nat},
+    {name: refusal, type: String},
+    {name: detail, type: String},
+    {name: closes, type: String}
+  ]
+}
+
+definition{
+  name: jurisdictionCode,
+  parameters: [value : Jurisdiction],
+  result: Nat,
+  body: (match value | Jurisdiction.us => 1 | Jurisdiction.usCo => 2)
+}
+
+definition{
+  name: jurisdictionParent,
+  parameters: [value : Jurisdiction],
+  result: Nat,
+  body: (match value | Jurisdiction.us => 0 | Jurisdiction.usCo => 1)
+}
+
+definition{
+  name: isModelClause,
+  parameters: [value : ClauseKind],
+  result: Bool,
+  body: (match value
+    | ClauseKind.model => true
+    | ClauseKind.carried => false
+    | ClauseKind.composed => false
+    | ClauseKind.schedule => false)
+}
+
+definition{
+  name: isCarriedClause,
+  parameters: [value : ClauseKind],
+  result: Bool,
+  body: (match value
+    | ClauseKind.model => false
+    | ClauseKind.carried => true
+    | ClauseKind.composed => false
+    | ClauseKind.schedule => false)
+}
+
+definition{
+  name: periodRank,
+  parameters: [value : Period],
+  result: Nat,
+  body: (match value
+    | Period.unstated => 0
+    | Period.current => 1
+    | Period.years => 2
+    | Period.permanent => 3)
+}
+
+definition{
+  name: isUnstated,
+  parameters: [value : Period],
+  result: Bool,
+  body: (match value
+    | Period.unstated => true
+    | Period.current => false
+    | Period.years => false
+    | Period.permanent => false)
+}
+
+definition{
+  name: subjectCode,
+  parameters: [value : SubjectKind],
+  result: Nat,
+  body: (match value
+    | SubjectKind.requirement => 0
+    | SubjectKind.post => 1
+    | SubjectKind.recordClass => 2
+    | SubjectKind.act => 3)
+}
+
+definition{
+  name: natMax,
+  parameters: [left : Nat, right : Nat],
+  result: Nat,
+  body: (if (left <? right) then right else left)
+}
+
+definition{
+  name: governs,
+  parameters: [law : Jurisdiction, home : Jurisdiction],
+  result: Bool,
+  body: (((jurisdictionCode law) =? (jurisdictionCode home)) || ((jurisdictionCode law) =? (jurisdictionParent home)))
+}
+
+definition{
+  name: authoritiesGovern,
+  parameters: [home : Jurisdiction, values : (List Authority)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons authority rest => ((governs (project authority jurisdiction) home) && (authoritiesGovern home rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: clauseCited,
+  parameters: [at : Nat, values : (List Citation)],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons citation rest => (((project citation clause) =? at) || (clauseCited at rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: clausesCited,
+  parameters: [allCitations : (List Citation), values : (List Clause)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons clause rest => ((clauseCited (project clause index) allCitations) && (clausesCited allCitations rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: clauseDerivations,
+  parameters: [at : Nat, values : (List Derivation)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons derivation rest => ((if ((project derivation clause) =? at) then 1 else 0) + (clauseDerivations at rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: sectionDerivations,
+  parameters: [at : Nat, values : (List Derivation)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons derivation rest => ((if ((project derivation section) =? at) then 1 else 0) + (sectionDerivations at rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: clausesDerived,
+  parameters: [allDerivations : (List Derivation), values : (List Clause)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons clause rest => (((clauseDerivations (project clause index) allDerivations) =? (if (isModelClause (project clause kind)) then 1 else 0)) && (clausesDerived allDerivations rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: sectionsOnce,
+  parameters: [allDerivations : (List Derivation), values : (List ModelSection)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons section rest => (((sectionDerivations (project section index) allDerivations) =? 1) && (sectionsOnce allDerivations rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: clauseCarries,
+  parameters: [at : Nat, values : (List Carry)],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons carry rest => (((project carry clause) =? at) || (clauseCarries at rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: clausesCarried,
+  parameters: [allCarries : (List Carry), values : (List Clause)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons clause rest => (((not (isCarriedClause (project clause kind))) || (clauseCarries (project clause index) allCarries)) && (clausesCarried allCarries rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: substitutionsApplied,
+  parameters: [values : (List Substitution)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons substitution rest => ((0 <? (project substitution applied)) && (substitutionsApplied rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: claimedAs,
+  parameters: [kind : Nat, at : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons claim rest => ((((subjectCode (project claim subjectKind)) =? kind) && ((project claim subject) =? at)) || (claimedAs kind at rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: requirementCovered,
+  parameters: [at : Nat, values : (List Coverage)],
+  result: Bool,
+  body: (match values
+    | List.nil => false
+    | List.cons coverage rest => (((project coverage requirement) =? at) || (requirementCovered at rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: requirementsAccounted,
+  parameters: [
+    claims : (List OpenClaim),
+    allCoverages : (List Coverage),
+    values : (List Requirement)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons requirement rest => (((requirementCovered (project requirement index) allCoverages) || ((not (project requirement mandatory)) && (claimedAs 0 (project requirement index) claims))) && (requirementsAccounted claims allCoverages rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: postsAccounted,
+  parameters: [claims : (List OpenClaim), values : (List Post)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons post rest => (((project post held) || (claimedAs 1 (project post index) claims)) && (postsAccounted claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: classRank,
+  parameters: [at : Nat, values : (List RetentionBasis)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons basis rest => (natMax (if ((project basis recordClass) =? at) then (periodRank (project basis period)) else 0) (classRank at rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: classYears,
+  parameters: [at : Nat, rank : Nat, values : (List RetentionBasis)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons basis rest => (natMax (if (((project basis recordClass) =? at) && ((periodRank (project basis period)) =? rank)) then (project basis years) else 0) (classYears at rank rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: classesSettled,
+  parameters: [
+    claims : (List OpenClaim),
+    allBases : (List RetentionBasis),
+    values : (List RecordClass)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons recordClass rest => ((((periodRank (project recordClass period)) =? (classRank (project recordClass index) allBases)) && (((project recordClass years) =? (classYears (project recordClass index) (periodRank (project recordClass period)) allBases)) && ((not (isUnstated (project recordClass period))) || (claimedAs 2 (project recordClass index) claims)))) && (classesSettled claims allBases rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: actsStaged,
+  parameters: [claims : (List OpenClaim), values : (List StagedAct)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons act rest => (((not (project act executed)) && (claimedAs 3 (project act index) claims)) && (actsStaged claims rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: subjectBound,
+  parameters: [
+    value : SubjectKind,
+    requirementBound : Nat,
+    postBound : Nat,
+    classBound : Nat,
+    actBound : Nat
+  ],
+  result: Nat,
+  body: (match value
+    | SubjectKind.requirement => requirementBound
+    | SubjectKind.post => postBound
+    | SubjectKind.recordClass => classBound
+    | SubjectKind.act => actBound)
+}
+
+definition{
+  name: claimsNamed,
+  parameters: [
+    requirementBound : Nat,
+    postBound : Nat,
+    classBound : Nat,
+    actBound : Nat,
+    values : (List OpenClaim)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons claim rest => (((project claim subject) <? (subjectBound (project claim subjectKind) requirementBound postBound classBound actBound)) && (claimsNamed requirementBound postBound classBound actBound rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: sourcesValid,
+  parameters: [position : Nat, values : (List Source)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons source rest => (((project source index) =? position) && (sourcesValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: sourcesTotal,
+  parameters: [values : (List Source)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons source rest => (1 + (sourcesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: authoritiesValid,
+  parameters: [position : Nat, sourcesCount : Nat, values : (List Authority)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons authority rest => (((project authority index) =? position) && (((project authority source) <? sourcesCount) && (authoritiesValid (position + 1) sourcesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: authoritiesTotal,
+  parameters: [values : (List Authority)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons authority rest => (1 + (authoritiesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: modelsValid,
+  parameters: [
+    position : Nat,
+    sourcesCount : Nat,
+    authoritiesCount : Nat,
+    values : (List StandardModel)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons standardModel rest => (((project standardModel index) =? position) && (((project standardModel source) <? sourcesCount) && (((project standardModel authority) <? authoritiesCount) && (modelsValid (position + 1) sourcesCount authoritiesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: modelsTotal,
+  parameters: [values : (List StandardModel)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons standardModel rest => (1 + (modelsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: sectionsValid,
+  parameters: [position : Nat, modelsCount : Nat, values : (List ModelSection)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons modelSection rest => (((project modelSection index) =? position) && (((project modelSection model) <? modelsCount) && (sectionsValid (position + 1) modelsCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: sectionsTotal,
+  parameters: [values : (List ModelSection)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons modelSection rest => (1 + (sectionsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: policiesValid,
+  parameters: [position : Nat, values : (List Policy)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons policy rest => (((project policy index) =? position) && (policiesValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: policiesTotal,
+  parameters: [values : (List Policy)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons policy rest => (1 + (policiesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: clausesValid,
+  parameters: [position : Nat, policiesCount : Nat, values : (List Clause)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons clause rest => (((project clause index) =? position) && (((project clause policy) <? policiesCount) && (clausesValid (position + 1) policiesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: clausesTotal,
+  parameters: [values : (List Clause)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons clause rest => (1 + (clausesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: derivationsValid,
+  parameters: [position : Nat, clausesCount : Nat, sectionsCount : Nat, values : (List Derivation)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons derivation rest => (((project derivation index) =? position) && (((project derivation clause) <? clausesCount) && (((project derivation section) <? sectionsCount) && (derivationsValid (position + 1) clausesCount sectionsCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: derivationsTotal,
+  parameters: [values : (List Derivation)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons derivation rest => (1 + (derivationsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: citationsValid,
+  parameters: [
+    position : Nat,
+    clausesCount : Nat,
+    authoritiesCount : Nat,
+    values : (List Citation)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons citation rest => (((project citation index) =? position) && (((project citation clause) <? clausesCount) && (((project citation authority) <? authoritiesCount) && (citationsValid (position + 1) clausesCount authoritiesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: citationsTotal,
+  parameters: [values : (List Citation)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons citation rest => (1 + (citationsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: carriesValid,
+  parameters: [position : Nat, clausesCount : Nat, authoritiesCount : Nat, values : (List Carry)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons carry rest => (((project carry index) =? position) && (((project carry clause) <? clausesCount) && (((project carry authority) <? authoritiesCount) && (carriesValid (position + 1) clausesCount authoritiesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: carriesTotal,
+  parameters: [values : (List Carry)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons carry rest => (1 + (carriesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: substitutionsValid,
+  parameters: [position : Nat, authoritiesCount : Nat, values : (List Substitution)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons substitution rest => (((project substitution index) =? position) && (((project substitution basis) <? authoritiesCount) && (substitutionsValid (position + 1) authoritiesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: substitutionsTotal,
+  parameters: [values : (List Substitution)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons substitution rest => (1 + (substitutionsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: requirementsValid,
+  parameters: [
+    position : Nat,
+    policiesCount : Nat,
+    authoritiesCount : Nat,
+    values : (List Requirement)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons requirement rest => (((project requirement index) =? position) && (((project requirement policy) <? policiesCount) && (((project requirement authority) <? authoritiesCount) && (requirementsValid (position + 1) policiesCount authoritiesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: requirementsTotal,
+  parameters: [values : (List Requirement)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons requirement rest => (1 + (requirementsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: coveragesValid,
+  parameters: [
+    position : Nat,
+    requirementsCount : Nat,
+    clausesCount : Nat,
+    values : (List Coverage)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons coverage rest => (((project coverage index) =? position) && (((project coverage requirement) <? requirementsCount) && (((project coverage clause) <? clausesCount) && (coveragesValid (position + 1) requirementsCount clausesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: coveragesTotal,
+  parameters: [values : (List Coverage)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons coverage rest => (1 + (coveragesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: postsValid,
+  parameters: [position : Nat, authoritiesCount : Nat, values : (List Post)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons post rest => (((project post index) =? position) && (((project post basis) <? authoritiesCount) && (postsValid (position + 1) authoritiesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: postsTotal,
+  parameters: [values : (List Post)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons post rest => (1 + (postsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: recordClassesValid,
+  parameters: [position : Nat, values : (List RecordClass)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons recordClass rest => (((project recordClass index) =? position) && (recordClassesValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: recordClassesTotal,
+  parameters: [values : (List RecordClass)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons recordClass rest => (1 + (recordClassesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: basesValid,
+  parameters: [
+    position : Nat,
+    recordClassesCount : Nat,
+    authoritiesCount : Nat,
+    values : (List RetentionBasis)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons retentionBasis rest => (((project retentionBasis index) =? position) && (((project retentionBasis recordClass) <? recordClassesCount) && (((project retentionBasis authority) <? authoritiesCount) && (basesValid (position + 1) recordClassesCount authoritiesCount rest))))),
+  recursive_argument: values
+}
+
+definition{
+  name: basesTotal,
+  parameters: [values : (List RetentionBasis)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons retentionBasis rest => (1 + (basesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: actsValid,
+  parameters: [position : Nat, authoritiesCount : Nat, values : (List StagedAct)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons stagedAct rest => (((project stagedAct index) =? position) && (((project stagedAct authority) <? authoritiesCount) && (actsValid (position + 1) authoritiesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: actsTotal,
+  parameters: [values : (List StagedAct)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons stagedAct rest => (1 + (actsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsValid,
+  parameters: [position : Nat, values : (List OpenClaim)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons openClaim rest => (((project openClaim index) =? position) && (openClaimsValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openClaimsTotal,
+  parameters: [values : (List OpenClaim)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons openClaim rest => (1 + (openClaimsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    sources : (List Source),
+    authorities : (List Authority),
+    models : (List StandardModel),
+    sections : (List ModelSection),
+    policies : (List Policy),
+    clauses : (List Clause),
+    derivations : (List Derivation),
+    citations : (List Citation),
+    carries : (List Carry),
+    substitutions : (List Substitution),
+    requirements : (List Requirement),
+    coverages : (List Coverage),
+    posts : (List Post),
+    recordClasses : (List RecordClass),
+    bases : (List RetentionBasis),
+    acts : (List StagedAct),
+    openClaims : (List OpenClaim)
+  ],
+  result: Bool,
+  body: (((sourcesTotal sources) =? (project release sourcesCount)) && (((authoritiesTotal authorities) =? (project release authoritiesCount)) && (((modelsTotal models) =? (project release modelsCount)) && (((sectionsTotal sections) =? (project release sectionsCount)) && (((policiesTotal policies) =? (project release policiesCount)) && (((clausesTotal clauses) =? (project release clausesCount)) && (((derivationsTotal derivations) =? (project release derivationsCount)) && (((citationsTotal citations) =? (project release citationsCount)) && (((carriesTotal carries) =? (project release carriesCount)) && (((substitutionsTotal substitutions) =? (project release substitutionsCount)) && (((requirementsTotal requirements) =? (project release requirementsCount)) && (((coveragesTotal coverages) =? (project release coveragesCount)) && (((postsTotal posts) =? (project release postsCount)) && (((recordClassesTotal recordClasses) =? (project release recordClassesCount)) && (((basesTotal bases) =? (project release basesCount)) && (((actsTotal acts) =? (project release actsCount)) && (((openClaimsTotal openClaims) =? (project release openClaimsCount)) && ((sourcesValid 0 sources) && ((authoritiesValid 0 (sourcesTotal sources) authorities) && ((modelsValid 0 (sourcesTotal sources) (authoritiesTotal authorities) models) && ((sectionsValid 0 (modelsTotal models) sections) && ((policiesValid 0 policies) && ((clausesValid 0 (policiesTotal policies) clauses) && ((derivationsValid 0 (clausesTotal clauses) (sectionsTotal sections) derivations) && ((citationsValid 0 (clausesTotal clauses) (authoritiesTotal authorities) citations) && ((carriesValid 0 (clausesTotal clauses) (authoritiesTotal authorities) carries) && ((substitutionsValid 0 (authoritiesTotal authorities) substitutions) && ((requirementsValid 0 (policiesTotal policies) (authoritiesTotal authorities) requirements) && ((coveragesValid 0 (requirementsTotal requirements) (clausesTotal clauses) coverages) && ((postsValid 0 (authoritiesTotal authorities) posts) && ((recordClassesValid 0 recordClasses) && ((basesValid 0 (recordClassesTotal recordClasses) (authoritiesTotal authorities) bases) && ((actsValid 0 (authoritiesTotal authorities) acts) && ((openClaimsValid 0 openClaims) && ((authoritiesGovern (project release jurisdiction) authorities) && ((clausesCited citations clauses) && ((clausesDerived derivations clauses) && ((sectionsOnce derivations sections) && (((derivationsTotal derivations) =? (sectionsTotal sections)) && ((clausesCarried carries clauses) && ((substitutionsApplied substitutions) && ((requirementsAccounted openClaims coverages requirements) && ((postsAccounted openClaims posts) && ((classesSettled openClaims bases recordClasses) && ((actsStaged openClaims acts) && (claimsNamed (requirementsTotal requirements) (postsTotal posts) (recordClassesTotal recordClasses) (actsTotal acts) openClaims))))))))))))))))))))))))))))))))))))))))))))))
+}
+\end{semanticmodule}
+\end{lexlean}

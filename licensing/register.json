@@ -1,0 +1,4075 @@
+{
+ "spec": "uor-community/licensing-register/1",
+ "standards": [
+  "REUSE Specification 3.3 (https://reuse.software/spec-3.3/, sha256:0b033840037e3bf4452f112839c890fb64605fa870800ad81d7bd2072eb01a9f)",
+  "SPDX License List 3.29.0 (https://github.com/spdx/license-list-data@31ba1a50e5397e00a304dbadc76531740e89ee48)",
+  "SPDX Specification 2.3.1 Annex B, license matching guidelines (https://spdx.github.io/spdx-spec/v2.3.1/license-matching-guidelines-and-templates/, sha256:3cef0fd0cf74be60bc41da230c8ad753926c62fb0b656b0fe359309bce8f29b0)",
+  "SPDX Specification 2.3.1 Annex D, license expressions (https://spdx.github.io/spdx-spec/v2.3.1/SPDX-license-expressions/)"
+ ],
+ "tools": {
+  "reuse": {
+   "version": "6.3.0",
+   "wheel": "reuse-6.3.0-py3-none-any.whl",
+   "sha256": "be6b598aa6d5cdf44af0da265572a72f0adcd30033857af874fd8607188259c1",
+   "lint": "1.0",
+   "spec": "3.3"
+  }
+ },
+ "spdx": {
+  "version": "3.29.0",
+  "tag": "v3.29.0",
+  "commit": "31ba1a50e5397e00a304dbadc76531740e89ee48",
+  "licensesSha256": "47d1cc681abe31166b342b6cc4aab13a6ba8ea5c48794697fe3bf8b1dbaf509a",
+  "exceptionsSha256": "59ee7c150de521d635cbf9367b8cf543b8da6781ea3ac1c073d305524f84ada2"
+ },
+ "inputs": [
+  {
+   "path": "licensing/snapshot.json",
+   "sha256": "f21633c88df0b0c4cf262526cb35e46d6f7bd2e3a3ee147e469414d14c4447bc"
+  },
+  {
+   "path": "licensing/scan.json",
+   "sha256": "fb2bf2c73d4e74f644074e892a3afb0d574d76e3878df32b4e3604cd1ec309c9"
+  },
+  {
+   "path": "ecosystem/snapshot.json",
+   "sha256": "6cd8f63813c08d3adaedc151f3c439871134950ceb0b3aa1463a49be109f05c1"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md",
+   "sha256": "96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574"
+  },
+  {
+   "ref": "https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:CONTRIBUTING.md",
+   "sha256": "c8cbfbd2931392f03420504c1069b5352f4c35cfeb91591a86df6e8f60496ea9"
+  },
+  {
+   "ref": "https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:STANDARDS.md",
+   "sha256": "87977973277069d38bb3b9851c5f323182e15528184c5e2029dc631b133a4b26"
+  },
+  {
+   "ref": "https://github.com/UOR-Foundation/website@1008c3b0989225f5414a9bd58ed8208a56af5e53:src/docs/content.ts",
+   "sha256": "62491461fc10cf65442b26b135f1c27ca2d9620e698e058c4b08d3047329cbd9"
+  },
+  {
+   "ref": "https://github.com/UOR-Foundation/website@1008c3b0989225f5414a9bd58ed8208a56af5e53:src/about/content.ts",
+   "sha256": "3ded37fd5602305bf58bcacb6fa31a701710bbf45f65bdfb2caec02627b9f88e"
+  },
+  {
+   "ref": "https://github.com/UOR-Foundation/website@1008c3b0989225f5414a9bd58ed8208a56af5e53:src/site/copy.ts",
+   "sha256": "9ee1a77e77f811628f0c95344c71f7a204caa7cb38a313e804408ba05a4e3e61"
+  }
+ ],
+ "policy": {
+  "default": "MIT",
+  "exceptions": [
+   {
+    "repository": "UOR-Framework",
+    "license": "Apache-2.0"
+   }
+  ],
+  "inbound": "MIT",
+  "licenseRequired": true,
+  "dcoRule": false,
+  "claRule": false,
+  "crate": {
+   "name": "uor foundation",
+   "license": "Apache-2.0"
+  },
+  "code": "MIT OR Apache-2.0"
+ },
+ "rules": [
+  {
+   "index": 0,
+   "document": "https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574",
+   "section": "13",
+   "statement": "Default license policy is MIT across foundation repos.",
+   "subject": "*",
+   "licenses": "MIT"
+  },
+  {
+   "index": 1,
+   "document": "https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574",
+   "section": "13",
+   "statement": "Current known exception: UOR-Framework uses Apache-2.0. Exceptions require owner approval and clear documentation.",
+   "subject": "UOR-Framework",
+   "licenses": "Apache-2.0"
+  },
+  {
+   "index": 2,
+   "document": "https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574",
+   "section": "6.1",
+   "statement": "LICENSE is required at Tier 1, Tier 2, Tier 3 and Tier 4.",
+   "subject": "*",
+   "licenses": ""
+  },
+  {
+   "index": 3,
+   "document": "https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:CONTRIBUTING.md#sha256:c8cbfbd2931392f03420504c1069b5352f4c35cfeb91591a86df6e8f60496ea9",
+   "section": "License",
+   "statement": "By submitting a Pull Request, you represent that you have the right to license your contribution under the repository's license (MIT by default) and that it does not infringe any third-party intellectual property rights.",
+   "subject": "*",
+   "licenses": "MIT"
+  },
+  {
+   "index": 4,
+   "document": "https://github.com/UOR-Foundation/website@1008c3b0989225f5414a9bd58ed8208a56af5e53:src/about/content.ts#sha256:3ded37fd5602305bf58bcacb6fa31a701710bbf45f65bdfb2caec02627b9f88e",
+   "section": "src/about/content.ts",
+   "statement": "as the Rust crate uor foundation, published on crates.io under Apache 2.0.",
+   "subject": "crate uor foundation",
+   "licenses": "Apache-2.0"
+  },
+  {
+   "index": 5,
+   "document": "https://github.com/UOR-Foundation/website@1008c3b0989225f5414a9bd58ed8208a56af5e53:src/site/copy.ts#sha256:9ee1a77e77f811628f0c95344c71f7a204caa7cb38a313e804408ba05a4e3e61",
+   "section": "src/site/copy.ts",
+   "statement": "\"MIT or Apache 2.0, free to use\"",
+   "subject": "*",
+   "licenses": "MIT OR Apache-2.0"
+  }
+ ],
+ "licenses": [
+  {
+   "index": 0,
+   "id": "MIT",
+   "name": "MIT License",
+   "exception": false,
+   "osiApproved": true,
+   "fsfLibre": true,
+   "deprecated": false
+  },
+  {
+   "index": 1,
+   "id": "Apache-2.0",
+   "name": "Apache License 2.0",
+   "exception": false,
+   "osiApproved": true,
+   "fsfLibre": true,
+   "deprecated": false
+  },
+  {
+   "index": 2,
+   "id": "BSD-2-Clause",
+   "name": "BSD 2-Clause \"Simplified\" License",
+   "exception": false,
+   "osiApproved": true,
+   "fsfLibre": true,
+   "deprecated": false
+  }
+ ],
+ "repositories": [
+  {
+   "index": 0,
+   "name": ".github",
+   "commit": "92da114114fc9b76cbf2c5168e29d409b62ddde8",
+   "filesTotal": 14,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 0,
+   "identifiedFiles": 0,
+   "expected": 0,
+   "rule": 0,
+   "expression": ""
+  },
+  {
+   "index": 1,
+   "name": "5-Levels-of-UOR",
+   "commit": "86dde40a976d2a7a7be16b31b6a509698e8eb5bb",
+   "filesTotal": 2,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 0,
+   "identifiedFiles": 0,
+   "expected": 0,
+   "rule": 0,
+   "expression": ""
+  },
+  {
+   "index": 2,
+   "name": "atlas-12288",
+   "commit": "aef42a6fd5c323373222b6362050b439690136a1",
+   "filesTotal": 147,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 1,
+   "identifiedFiles": 1,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT"
+  },
+  {
+   "index": 3,
+   "name": "calculator-example",
+   "commit": "5051dc6adb18e9ca2b6ae4ca7090e638329831ef",
+   "filesTotal": 104,
+   "filesWithCopyright": 1,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 2,
+   "identifiedFiles": 1,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT OR Apache-2.0"
+  },
+  {
+   "index": 4,
+   "name": "community",
+   "commit": "1ef75b03a425abf09064f92db4fed0dd6bb23f62",
+   "filesTotal": 865,
+   "filesWithCopyright": 10,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 2,
+   "compliant": false,
+   "licenseFiles": 3,
+   "identifiedFiles": 3,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT OR Apache-2.0"
+  },
+  {
+   "index": 5,
+   "name": "compression",
+   "commit": "c416f7f5f43e53f6888395e0b927041648b30f8f",
+   "filesTotal": 447,
+   "filesWithCopyright": 3,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 2,
+   "identifiedFiles": 2,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT OR Apache-2.0"
+  },
+  {
+   "index": 6,
+   "name": "F1",
+   "commit": "d45fe9f54eafbc86b5060efcaf604681482469c0",
+   "filesTotal": 786,
+   "filesWithCopyright": 1,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 1,
+   "identifiedFiles": 1,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT"
+  },
+  {
+   "index": 7,
+   "name": "foundry",
+   "commit": "9ccde14c10202a7c67cdc63e539918cfdc10a428",
+   "filesTotal": 4276,
+   "filesWithCopyright": 9,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 2,
+   "identifiedFiles": 2,
+   "expected": 0,
+   "rule": 0,
+   "expression": ""
+  },
+  {
+   "index": 8,
+   "name": "foundry-web",
+   "commit": "e8373c7c953bae6153fba7082c2b6c50f2f77392",
+   "filesTotal": 112,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 2,
+   "identifiedFiles": 2,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT OR Apache-2.0"
+  },
+  {
+   "index": 9,
+   "name": "holo-search",
+   "commit": "c477b69c0e3f95658aedecaeb2fa9c057d9b58a6",
+   "filesTotal": 139,
+   "filesWithCopyright": 2,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 2,
+   "identifiedFiles": 2,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT OR Apache-2.0"
+  },
+  {
+   "index": 10,
+   "name": "kappa-distribution",
+   "commit": "2475e701f25ed5887aba8b68a39ecc0f87faad6f",
+   "filesTotal": 1,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 0,
+   "identifiedFiles": 0,
+   "expected": 0,
+   "rule": 0,
+   "expression": ""
+  },
+  {
+   "index": 11,
+   "name": "kappa-registry",
+   "commit": "bd231d0cc315d56e51369aff299f6741b8d8ce04",
+   "filesTotal": 236,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 0,
+   "identifiedFiles": 0,
+   "expected": 0,
+   "rule": 0,
+   "expression": ""
+  },
+  {
+   "index": 12,
+   "name": "LexLean",
+   "commit": "71defb4c663aaec5b9a3aab04cbc6a03e7106227",
+   "filesTotal": 9877,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 2,
+   "identifiedFiles": 2,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT OR Apache-2.0"
+  },
+  {
+   "index": 13,
+   "name": "lexlean-mcp",
+   "commit": "ece9ef390260479edbad69c3a9d9f51edc16c885",
+   "filesTotal": 2085,
+   "filesWithCopyright": 3,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 2,
+   "identifiedFiles": 2,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT OR Apache-2.0"
+  },
+  {
+   "index": 14,
+   "name": "malachite-usdc",
+   "commit": "23431008f0ccc2899c3a1ecb9243a2578d5c7156",
+   "filesTotal": 22,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 1,
+   "identifiedFiles": 1,
+   "expected": 0,
+   "rule": 0,
+   "expression": "Apache-2.0"
+  },
+  {
+   "index": 15,
+   "name": "MCP",
+   "commit": "5b34b2633e2707993221019b81fae2bf9c4103d6",
+   "filesTotal": 783,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 2,
+   "identifiedFiles": 2,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT OR Apache-2.0"
+  },
+  {
+   "index": 16,
+   "name": "MNIST",
+   "commit": "515f75f9f01470df8cac095cdc22f5aebcc252c7",
+   "filesTotal": 92,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 2,
+   "identifiedFiles": 2,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT OR Apache-2.0"
+  },
+  {
+   "index": 17,
+   "name": "nest-uor",
+   "commit": "5a469e7d207af7dcca54df0de39e38c54c953569",
+   "filesTotal": 8,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 5,
+   "missingLicenses": 1,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 1,
+   "identifiedFiles": 1,
+   "expected": 0,
+   "rule": 0,
+   "expression": "Apache-2.0"
+  },
+  {
+   "index": 18,
+   "name": "OOO",
+   "commit": "d0bdb29bdfeba50590bf42b4f9071e0d4bbc2dc6",
+   "filesTotal": 4,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 1,
+   "identifiedFiles": 1,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT"
+  },
+  {
+   "index": 19,
+   "name": "prism",
+   "commit": "507995bab43c0cb06ec244c96e6fc25b3f502204",
+   "filesTotal": 81,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 1,
+   "identifiedFiles": 1,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT"
+  },
+  {
+   "index": 20,
+   "name": "prism-code",
+   "commit": "67ab3e8b2092ad5812b0c34fd074cb33762366aa",
+   "filesTotal": 161,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 2,
+   "identifiedFiles": 2,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT OR Apache-2.0"
+  },
+  {
+   "index": 21,
+   "name": "PrismPM",
+   "commit": "ece658394448f09a5760fb0bec9b1fa8f065ed0e",
+   "filesTotal": 13913,
+   "filesWithCopyright": 486,
+   "filesWithLicense": 702,
+   "missingLicenses": 4,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 2,
+   "identifiedFiles": 1,
+   "expected": 0,
+   "rule": 0,
+   "expression": ""
+  },
+  {
+   "index": 22,
+   "name": "research",
+   "commit": "bfccda396aab1aea5dee649fbe5180499d236cec",
+   "filesTotal": 95,
+   "filesWithCopyright": 9,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 1,
+   "identifiedFiles": 1,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT"
+  },
+  {
+   "index": 23,
+   "name": "template",
+   "commit": "0851bb41138041f0f75118135fd8a342109c2d73",
+   "filesTotal": 197,
+   "filesWithCopyright": 2,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 3,
+   "identifiedFiles": 3,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT OR Apache-2.0"
+  },
+  {
+   "index": 24,
+   "name": "uor-addr",
+   "commit": "20a1c5723fc8f5d645972c8d6f5c57459846302e",
+   "filesTotal": 251,
+   "filesWithCopyright": 3,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 1,
+   "identifiedFiles": 1,
+   "expected": 0,
+   "rule": 0,
+   "expression": "Apache-2.0"
+  },
+  {
+   "index": 25,
+   "name": "uor-foundry",
+   "commit": "fdab06c9ab30d594c917040908485068ea6f9c9f",
+   "filesTotal": 245,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 2,
+   "identifiedFiles": 2,
+   "expected": 0,
+   "rule": 0,
+   "expression": "MIT OR Apache-2.0"
+  },
+  {
+   "index": 26,
+   "name": "UOR-Framework",
+   "commit": "51c01382200b0179d6640b07e9c8119364ab69a1",
+   "filesTotal": 785,
+   "filesWithCopyright": 0,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 1,
+   "identifiedFiles": 1,
+   "expected": 1,
+   "rule": 1,
+   "expression": "MIT"
+  },
+  {
+   "index": 27,
+   "name": "uor-jcs-nfc",
+   "commit": "303591128094362857791930fdc12b73875d1ff6",
+   "filesTotal": 10,
+   "filesWithCopyright": 1,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 1,
+   "identifiedFiles": 1,
+   "expected": 0,
+   "rule": 0,
+   "expression": "Apache-2.0"
+  },
+  {
+   "index": 28,
+   "name": "uor-matmul",
+   "commit": "3cc5882f210667f9ac00fd8c02c5b5957b493f5d",
+   "filesTotal": 683,
+   "filesWithCopyright": 1,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 1,
+   "identifiedFiles": 1,
+   "expected": 0,
+   "rule": 0,
+   "expression": ""
+  },
+  {
+   "index": 29,
+   "name": "uor-r4",
+   "commit": "44e2a6f062e9196fe68291259bff459dde0bde44",
+   "filesTotal": 20509,
+   "filesWithCopyright": 33,
+   "filesWithLicense": 10,
+   "missingLicenses": 1,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 1,
+   "identifiedFiles": 1,
+   "expected": 0,
+   "rule": 0,
+   "expression": ""
+  },
+  {
+   "index": 30,
+   "name": "website",
+   "commit": "e82ffdedc5d85ebd0bde239d50d4651005045d31",
+   "filesTotal": 188,
+   "filesWithCopyright": 10,
+   "filesWithLicense": 0,
+   "missingLicenses": 0,
+   "badLicenses": 0,
+   "deprecatedLicenses": 0,
+   "unusedLicenses": 0,
+   "licensesWithoutExtension": 0,
+   "readErrors": 0,
+   "invalidExpressions": 0,
+   "compliant": false,
+   "licenseFiles": 0,
+   "identifiedFiles": 0,
+   "expected": 0,
+   "rule": 0,
+   "expression": ""
+  }
+ ],
+ "declarations": [
+  {
+   "index": 0,
+   "repository": 2,
+   "kind": "npm",
+   "source": "pkg/node/package.json",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-ffi"
+  },
+  {
+   "index": 1,
+   "repository": 2,
+   "kind": "cargo",
+   "source": "pkg/rust/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-ffi"
+  },
+  {
+   "index": 2,
+   "repository": 2,
+   "kind": "npm",
+   "source": "runtime/node/package.json",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-runtime"
+  },
+  {
+   "index": 3,
+   "repository": 2,
+   "kind": "cargo",
+   "source": "runtime/rust/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-ffi"
+  },
+  {
+   "index": 4,
+   "repository": 2,
+   "kind": "license-file",
+   "source": "LICENSE",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 5,
+   "repository": 3,
+   "kind": "cargo",
+   "source": "Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "calculator-example"
+  },
+  {
+   "index": 6,
+   "repository": 3,
+   "kind": "license-file",
+   "source": "LICENSE-MIT",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 7,
+   "repository": 4,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 8,
+   "repository": 4,
+   "kind": "spdx-identifier",
+   "source": "LICENSE",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 9,
+   "repository": 4,
+   "kind": "license-file",
+   "source": "LICENSE-APACHE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 10,
+   "repository": 4,
+   "kind": "license-file",
+   "source": "LICENSE-MIT",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 11,
+   "repository": 5,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 12,
+   "repository": 5,
+   "kind": "license-file",
+   "source": "LICENSE-APACHE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 13,
+   "repository": 5,
+   "kind": "license-file",
+   "source": "LICENSE-MIT",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 14,
+   "repository": 6,
+   "kind": "license-file",
+   "source": "LICENSE",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 15,
+   "repository": 7,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 16,
+   "repository": 7,
+   "kind": "cargo",
+   "source": "studio/core/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "hologram-forge-core"
+  },
+  {
+   "index": 17,
+   "repository": 7,
+   "kind": "npm",
+   "source": "studio/vendor/dyad/package.json",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "dyad"
+  },
+  {
+   "index": 18,
+   "repository": 7,
+   "kind": "npm",
+   "source": "studio/vendor/dyad/packages/@dyad-sh/nextjs-webpack-component-tagger/package.json",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "@dyad-sh/nextjs-webpack-component-tagger"
+  },
+  {
+   "index": 19,
+   "repository": 7,
+   "kind": "npm",
+   "source": "studio/vendor/dyad/packages/@dyad-sh/react-vite-component-tagger/package.json",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "@dyad-sh/react-vite-component-tagger"
+  },
+  {
+   "index": 20,
+   "repository": 7,
+   "kind": "npm",
+   "source": "studio/vendor/dyad/packages/pg-schema-classifier/package.json",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "pg-schema-classifier"
+  },
+  {
+   "index": 21,
+   "repository": 7,
+   "kind": "npm",
+   "source": "studio/vendor/dyad/packages/ts-pg-schema-diff/package.json",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "ts-pg-schema-diff"
+  },
+  {
+   "index": 22,
+   "repository": 7,
+   "kind": "license-file",
+   "source": "LICENSE-APACHE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 23,
+   "repository": 7,
+   "kind": "license-file",
+   "source": "LICENSE-MIT",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 24,
+   "repository": 8,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 25,
+   "repository": 8,
+   "kind": "license-file",
+   "source": "LICENSE-APACHE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 26,
+   "repository": 8,
+   "kind": "license-file",
+   "source": "LICENSE-MIT",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 27,
+   "repository": 9,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 28,
+   "repository": 9,
+   "kind": "license-file",
+   "source": "LICENSE-APACHE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 29,
+   "repository": 9,
+   "kind": "license-file",
+   "source": "LICENSE-MIT",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 30,
+   "repository": 11,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 31,
+   "repository": 11,
+   "kind": "cargo",
+   "source": "crates/kappa-module-nix/Cargo.toml",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "kappa-module-nix"
+  },
+  {
+   "index": 32,
+   "repository": 12,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 33,
+   "repository": 12,
+   "kind": "license-file",
+   "source": "LICENSE-APACHE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 34,
+   "repository": 12,
+   "kind": "license-file",
+   "source": "LICENSE-MIT",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 35,
+   "repository": 13,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 36,
+   "repository": 13,
+   "kind": "cargo",
+   "source": "gateway/bindings/gateway-binding/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "gateway-binding"
+  },
+  {
+   "index": 37,
+   "repository": 13,
+   "kind": "cargo",
+   "source": "gateway/bindings/gateway-engine-host/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "gateway-engine-host"
+  },
+  {
+   "index": 38,
+   "repository": 13,
+   "kind": "cargo",
+   "source": "gateway/bindings/gateway-ready/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "gateway-ready"
+  },
+  {
+   "index": 39,
+   "repository": 13,
+   "kind": "cargo",
+   "source": "gateway/bindings/gateway-signer/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "gateway-signer"
+  },
+  {
+   "index": 40,
+   "repository": 13,
+   "kind": "cargo",
+   "source": "gateway/bindings/gateway-verifier-host/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "gateway-verifier-host"
+  },
+  {
+   "index": 41,
+   "repository": 13,
+   "kind": "cargo",
+   "source": "gateway/tool-tests/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "gateway-tool-tests"
+  },
+  {
+   "index": 42,
+   "repository": 13,
+   "kind": "cargo",
+   "source": "gateway/vectors/runner/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "gateway-vectors"
+  },
+  {
+   "index": 43,
+   "repository": 13,
+   "kind": "license-file",
+   "source": "LICENSE-APACHE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 44,
+   "repository": 13,
+   "kind": "license-file",
+   "source": "LICENSE-MIT",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 45,
+   "repository": 14,
+   "kind": "license-file",
+   "source": "LICENSE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 46,
+   "repository": 15,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 47,
+   "repository": 15,
+   "kind": "cargo",
+   "source": "conformance/bindings/mcp-binding/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "mcp-binding"
+  },
+  {
+   "index": 48,
+   "repository": 15,
+   "kind": "license-file",
+   "source": "LICENSE-APACHE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 49,
+   "repository": 15,
+   "kind": "license-file",
+   "source": "LICENSE-MIT",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 50,
+   "repository": 16,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 51,
+   "repository": 16,
+   "kind": "license-file",
+   "source": "LICENSE-APACHE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 52,
+   "repository": 16,
+   "kind": "license-file",
+   "source": "LICENSE-MIT",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 53,
+   "repository": 17,
+   "kind": "pyproject",
+   "source": "pyproject.toml",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "nest-uor"
+  },
+  {
+   "index": 54,
+   "repository": 17,
+   "kind": "license-file",
+   "source": "LICENSE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 55,
+   "repository": 18,
+   "kind": "license-file",
+   "source": "LICENSE",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 56,
+   "repository": 19,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 57,
+   "repository": 19,
+   "kind": "license-file",
+   "source": "LICENSE",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 58,
+   "repository": 20,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 59,
+   "repository": 20,
+   "kind": "license-file",
+   "source": "LICENSE-APACHE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 60,
+   "repository": 20,
+   "kind": "license-file",
+   "source": "LICENSE-MIT",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 61,
+   "repository": 21,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 62,
+   "repository": 21,
+   "kind": "cargo",
+   "source": "prism-factory/host/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "prism-factory-host"
+  },
+  {
+   "index": 63,
+   "repository": 21,
+   "kind": "npm",
+   "source": "sdk/asyncapi-runtime/package.json",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "validation"
+  },
+  {
+   "index": 64,
+   "repository": 21,
+   "kind": "npm",
+   "source": "sdk/docs/package.json",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "@prism-code/docs-generator"
+  },
+  {
+   "index": 65,
+   "repository": 21,
+   "kind": "npm",
+   "source": "sdk/npm/conformance/package.json",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "@prism-code/conformance"
+  },
+  {
+   "index": 66,
+   "repository": 21,
+   "kind": "npm",
+   "source": "sdk/npm/create-prism-code/package.json",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "create-prism-code"
+  },
+  {
+   "index": 67,
+   "repository": 21,
+   "kind": "npm",
+   "source": "sdk/npm/prism-code/package.json",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "prism-code"
+  },
+  {
+   "index": 68,
+   "repository": 21,
+   "kind": "npm",
+   "source": "sdk/npm/spec/package.json",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "@prism-code/spec"
+  },
+  {
+   "index": 69,
+   "repository": 21,
+   "kind": "npm",
+   "source": "sdk/npm/testing/package.json",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "@prism-code/testing"
+  },
+  {
+   "index": 70,
+   "repository": 21,
+   "kind": "npm",
+   "source": "sdk/npm/verify/package.json",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "@prism-code/verify"
+  },
+  {
+   "index": 71,
+   "repository": 21,
+   "kind": "cargo",
+   "source": "sdk/oracles/oscal/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "prismpm-oscal-oracle"
+  },
+  {
+   "index": 72,
+   "repository": 21,
+   "kind": "npm",
+   "source": "standards/oracles/asyncapi-spec-b3fac5bb/scripts/validation/package.json",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "validation"
+  },
+  {
+   "index": 73,
+   "repository": 21,
+   "kind": "cargo",
+   "source": "stdlib/generated/package/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "prism-stdlib"
+  },
+  {
+   "index": 74,
+   "repository": 21,
+   "kind": "cargo",
+   "source": "vendor/lean4-prod/rust/prod-alloc-counter/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "prod-alloc-counter"
+  },
+  {
+   "index": 75,
+   "repository": 21,
+   "kind": "cargo",
+   "source": "vendor/lean4-prod/rust/prod-codegen/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "prod-codegen"
+  },
+  {
+   "index": 76,
+   "repository": 21,
+   "kind": "cargo",
+   "source": "vendor/lean4-prod/rust/prod-ir/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "prod-ir"
+  },
+  {
+   "index": 77,
+   "repository": 21,
+   "kind": "cargo",
+   "source": "vendor/lexlean/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "lexlean"
+  },
+  {
+   "index": 78,
+   "repository": 21,
+   "kind": "license-file",
+   "source": "LICENSE-MIT",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 79,
+   "repository": 22,
+   "kind": "cargo",
+   "source": "atlas-embeddings/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "atlas-embeddings"
+  },
+  {
+   "index": 80,
+   "repository": 22,
+   "kind": "license-file",
+   "source": "LICENSE",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 81,
+   "repository": 23,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 82,
+   "repository": 23,
+   "kind": "spdx-identifier",
+   "source": "LICENSE",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 83,
+   "repository": 23,
+   "kind": "license-file",
+   "source": "LICENSE-APACHE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 84,
+   "repository": 23,
+   "kind": "license-file",
+   "source": "LICENSE-MIT",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 85,
+   "repository": 24,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 86,
+   "repository": 24,
+   "kind": "npm",
+   "source": "bindings/npm/package.json",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "@uor-foundation/uor-addr"
+  },
+  {
+   "index": 87,
+   "repository": 24,
+   "kind": "pyproject",
+   "source": "bindings/python/pyproject.toml",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "uor-addr"
+  },
+  {
+   "index": 88,
+   "repository": 24,
+   "kind": "license-file",
+   "source": "LICENSE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 89,
+   "repository": 25,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 90,
+   "repository": 25,
+   "kind": "license-file",
+   "source": "LICENSE-APACHE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 91,
+   "repository": 25,
+   "kind": "license-file",
+   "source": "LICENSE-MIT",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 92,
+   "repository": 26,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "MIT",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 93,
+   "repository": 26,
+   "kind": "license-file",
+   "source": "LICENSE",
+   "expression": "MIT",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 94,
+   "repository": 27,
+   "kind": "license-file",
+   "source": "LICENSE",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 95,
+   "repository": 28,
+   "kind": "cargo-workspace",
+   "source": "Cargo.toml [workspace.package]",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 96,
+   "repository": 28,
+   "kind": "license-file",
+   "source": "LICENSE",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 97,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "archive/handoff/cloud-20260928/sandbox/ablate/crates/uor-r4-training/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-training"
+  },
+  {
+   "index": 98,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "archive/handoff/cloud-20260928/sandbox/exp/verify/hwcopy/crates/uor-r4-integer/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-integer-hw"
+  },
+  {
+   "index": 99,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "archive/handoff/cloud-20260928/sandbox/exp/verify/hwcopy2/crates/uor-r4-integer/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-integer-hw2"
+  },
+  {
+   "index": 100,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "archive/handoff/cloud-20260928/sandbox/exp/verify/hwprof/crates/uor-r4-integer/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-integer-hwprof"
+  },
+  {
+   "index": 101,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "archive/handoff/cloud-20260928/sandbox/exp/verify/swprof/crates/uor-r4-integer/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-integer-swprof"
+  },
+  {
+   "index": 102,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "archive/history/d29-excluded-lut-2026-10-13/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-lut"
+  },
+  {
+   "index": 103,
+   "repository": 29,
+   "kind": "cargo-workspace",
+   "source": "archive/vendor-snapshots/uor_standards/UOR-Framework/Cargo.toml [workspace.package]",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 104,
+   "repository": 29,
+   "kind": "cargo-workspace",
+   "source": "archive/vendor-snapshots/uor_standards/prism/Cargo.toml [workspace.package]",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 105,
+   "repository": 29,
+   "kind": "cargo-workspace",
+   "source": "archive/vendor-snapshots/uor_standards/uor-addr/Cargo.toml [workspace.package]",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 106,
+   "repository": 29,
+   "kind": "npm",
+   "source": "archive/vendor-snapshots/uor_standards/uor-addr/bindings/npm/package.json",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "@uor-foundation/uor-addr"
+  },
+  {
+   "index": 107,
+   "repository": 29,
+   "kind": "pyproject",
+   "source": "archive/vendor-snapshots/uor_standards/uor-addr/bindings/python/pyproject.toml",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "uor-addr"
+  },
+  {
+   "index": 108,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/repo-conformance/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "repo-conformance"
+  },
+  {
+   "index": 109,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/repo-model/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "repo-model"
+  },
+  {
+   "index": 110,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-api/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-api"
+  },
+  {
+   "index": 111,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-claim-wording/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-claim-wording"
+  },
+  {
+   "index": 112,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-core/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-core"
+  },
+  {
+   "index": 113,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-cpu-train/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-cpu-train"
+  },
+  {
+   "index": 114,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-discrete/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-discrete"
+  },
+  {
+   "index": 115,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-graph-certify/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-graph-certify"
+  },
+  {
+   "index": 116,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-graph-cli/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-graph-cli"
+  },
+  {
+   "index": 117,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-graph-compiler/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-graph-compiler"
+  },
+  {
+   "index": 118,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-graph-format/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-graph-format"
+  },
+  {
+   "index": 119,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-graph-runtime/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-graph-runtime"
+  },
+  {
+   "index": 120,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-harness/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-harness"
+  },
+  {
+   "index": 121,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-integer/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-integer"
+  },
+  {
+   "index": 122,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-lut/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-lut"
+  },
+  {
+   "index": 123,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-model-source/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-model-source"
+  },
+  {
+   "index": 124,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-naf/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-naf"
+  },
+  {
+   "index": 125,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-native-vector/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-native-vector"
+  },
+  {
+   "index": 126,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-object-store/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-object-store"
+  },
+  {
+   "index": 127,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-pod-provider/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-pod-provider"
+  },
+  {
+   "index": 128,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-proof-model/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-proof-model"
+  },
+  {
+   "index": 129,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-recon-dag/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-recon-dag"
+  },
+  {
+   "index": 130,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-router/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-router"
+  },
+  {
+   "index": 131,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-simd/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-simd"
+  },
+  {
+   "index": 132,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-source-interface/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-source-interface"
+  },
+  {
+   "index": 133,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-studio-agent/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-studio-agent"
+  },
+  {
+   "index": 134,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-tokenizer/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-tokenizer"
+  },
+  {
+   "index": 135,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-training/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-training"
+  },
+  {
+   "index": 136,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-vision/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-vision"
+  },
+  {
+   "index": 137,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-wasm-router/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-wasm-router"
+  },
+  {
+   "index": 138,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "crates/uor-r4-workbench/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-workbench"
+  },
+  {
+   "index": 139,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "src-tauri/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-desktop-client"
+  },
+  {
+   "index": 140,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "third_party/arrayref/Cargo.toml",
+   "expression": "BSD-2-Clause",
+   "conformsPolicy": false,
+   "conformsWebsite": false,
+   "package": "arrayref"
+  },
+  {
+   "index": 141,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "third_party/candle-core-0.9.2/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "candle-core"
+  },
+  {
+   "index": 142,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "third_party/candle-kernels-0.9.2/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "candle-kernels"
+  },
+  {
+   "index": 143,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "third_party/candle-nn-0.9.2/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "candle-nn"
+  },
+  {
+   "index": 144,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "third_party/candle-nn-0.9.2/historical/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "candle-nn"
+  },
+  {
+   "index": 145,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "third_party/cudarc-0.19.10/Cargo.toml",
+   "expression": "MIT OR Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "cudarc"
+  },
+  {
+   "index": 146,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "third_party/float8-0.6.1/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "float8"
+  },
+  {
+   "index": 147,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "third_party/uor-addr-0.2.0/Cargo.toml",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": "uor-addr"
+  },
+  {
+   "index": 148,
+   "repository": 29,
+   "kind": "cargo-workspace",
+   "source": "third_party/uor-addr-0.2.0/historical/upstream/Cargo.toml [workspace.package]",
+   "expression": "Apache-2.0",
+   "conformsPolicy": false,
+   "conformsWebsite": true,
+   "package": ""
+  },
+  {
+   "index": 149,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "tools/lab-runner/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "lab-runner"
+  },
+  {
+   "index": 150,
+   "repository": 29,
+   "kind": "pyproject",
+   "source": "tools/r4-softmax-trainer/pyproject.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "uor-r4-softmax-trainer"
+  },
+  {
+   "index": 151,
+   "repository": 29,
+   "kind": "cargo",
+   "source": "xtask/Cargo.toml",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": "xtask"
+  },
+  {
+   "index": 152,
+   "repository": 29,
+   "kind": "license-file",
+   "source": "LICENSE",
+   "expression": "MIT",
+   "conformsPolicy": true,
+   "conformsWebsite": true,
+   "package": ""
+  }
+ ],
+ "declaredIds": [
+  {
+   "index": 0,
+   "declaration": 0,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 1,
+   "declaration": 1,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 2,
+   "declaration": 2,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 3,
+   "declaration": 3,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 4,
+   "declaration": 4,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 5,
+   "declaration": 5,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 6,
+   "declaration": 5,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 7,
+   "declaration": 6,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 8,
+   "declaration": 7,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 9,
+   "declaration": 7,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 10,
+   "declaration": 8,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 11,
+   "declaration": 8,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 12,
+   "declaration": 9,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 13,
+   "declaration": 10,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 14,
+   "declaration": 11,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 15,
+   "declaration": 11,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 16,
+   "declaration": 12,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 17,
+   "declaration": 13,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 18,
+   "declaration": 14,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 19,
+   "declaration": 15,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 20,
+   "declaration": 15,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 21,
+   "declaration": 16,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 22,
+   "declaration": 16,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 23,
+   "declaration": 17,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 24,
+   "declaration": 18,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 25,
+   "declaration": 19,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 26,
+   "declaration": 20,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 27,
+   "declaration": 21,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 28,
+   "declaration": 22,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 29,
+   "declaration": 23,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 30,
+   "declaration": 24,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 31,
+   "declaration": 24,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 32,
+   "declaration": 25,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 33,
+   "declaration": 26,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 34,
+   "declaration": 27,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 35,
+   "declaration": 27,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 36,
+   "declaration": 28,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 37,
+   "declaration": 29,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 38,
+   "declaration": 30,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 39,
+   "declaration": 30,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 40,
+   "declaration": 31,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 41,
+   "declaration": 32,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 42,
+   "declaration": 32,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 43,
+   "declaration": 33,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 44,
+   "declaration": 34,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 45,
+   "declaration": 35,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 46,
+   "declaration": 35,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 47,
+   "declaration": 36,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 48,
+   "declaration": 36,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 49,
+   "declaration": 37,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 50,
+   "declaration": 37,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 51,
+   "declaration": 38,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 52,
+   "declaration": 38,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 53,
+   "declaration": 39,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 54,
+   "declaration": 39,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 55,
+   "declaration": 40,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 56,
+   "declaration": 40,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 57,
+   "declaration": 41,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 58,
+   "declaration": 41,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 59,
+   "declaration": 42,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 60,
+   "declaration": 42,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 61,
+   "declaration": 43,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 62,
+   "declaration": 44,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 63,
+   "declaration": 45,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 64,
+   "declaration": 46,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 65,
+   "declaration": 46,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 66,
+   "declaration": 47,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 67,
+   "declaration": 47,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 68,
+   "declaration": 48,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 69,
+   "declaration": 49,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 70,
+   "declaration": 50,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 71,
+   "declaration": 50,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 72,
+   "declaration": 51,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 73,
+   "declaration": 52,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 74,
+   "declaration": 53,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 75,
+   "declaration": 54,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 76,
+   "declaration": 55,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 77,
+   "declaration": 56,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 78,
+   "declaration": 57,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 79,
+   "declaration": 58,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 80,
+   "declaration": 58,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 81,
+   "declaration": 59,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 82,
+   "declaration": 60,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 83,
+   "declaration": 61,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 84,
+   "declaration": 61,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 85,
+   "declaration": 62,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 86,
+   "declaration": 62,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 87,
+   "declaration": 63,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 88,
+   "declaration": 64,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 89,
+   "declaration": 65,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 90,
+   "declaration": 66,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 91,
+   "declaration": 67,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 92,
+   "declaration": 68,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 93,
+   "declaration": 69,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 94,
+   "declaration": 70,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 95,
+   "declaration": 71,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 96,
+   "declaration": 71,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 97,
+   "declaration": 72,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 98,
+   "declaration": 73,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 99,
+   "declaration": 73,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 100,
+   "declaration": 74,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 101,
+   "declaration": 75,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 102,
+   "declaration": 76,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 103,
+   "declaration": 77,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 104,
+   "declaration": 77,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 105,
+   "declaration": 78,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 106,
+   "declaration": 79,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 107,
+   "declaration": 80,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 108,
+   "declaration": 81,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 109,
+   "declaration": 81,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 110,
+   "declaration": 82,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 111,
+   "declaration": 82,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 112,
+   "declaration": 83,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 113,
+   "declaration": 84,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 114,
+   "declaration": 85,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 115,
+   "declaration": 86,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 116,
+   "declaration": 87,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 117,
+   "declaration": 88,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 118,
+   "declaration": 89,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 119,
+   "declaration": 89,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 120,
+   "declaration": 90,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 121,
+   "declaration": 91,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 122,
+   "declaration": 92,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 123,
+   "declaration": 93,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 124,
+   "declaration": 94,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 125,
+   "declaration": 95,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 126,
+   "declaration": 96,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 127,
+   "declaration": 97,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 128,
+   "declaration": 98,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 129,
+   "declaration": 99,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 130,
+   "declaration": 100,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 131,
+   "declaration": 101,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 132,
+   "declaration": 102,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 133,
+   "declaration": 103,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 134,
+   "declaration": 104,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 135,
+   "declaration": 105,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 136,
+   "declaration": 106,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 137,
+   "declaration": 107,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 138,
+   "declaration": 108,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 139,
+   "declaration": 109,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 140,
+   "declaration": 110,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 141,
+   "declaration": 111,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 142,
+   "declaration": 112,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 143,
+   "declaration": 113,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 144,
+   "declaration": 114,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 145,
+   "declaration": 115,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 146,
+   "declaration": 116,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 147,
+   "declaration": 117,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 148,
+   "declaration": 118,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 149,
+   "declaration": 119,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 150,
+   "declaration": 120,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 151,
+   "declaration": 121,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 152,
+   "declaration": 122,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 153,
+   "declaration": 123,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 154,
+   "declaration": 124,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 155,
+   "declaration": 125,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 156,
+   "declaration": 126,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 157,
+   "declaration": 127,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 158,
+   "declaration": 128,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 159,
+   "declaration": 129,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 160,
+   "declaration": 130,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 161,
+   "declaration": 131,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 162,
+   "declaration": 132,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 163,
+   "declaration": 133,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 164,
+   "declaration": 134,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 165,
+   "declaration": 135,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 166,
+   "declaration": 136,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 167,
+   "declaration": 137,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 168,
+   "declaration": 138,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 169,
+   "declaration": 139,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 170,
+   "declaration": 140,
+   "license": 2,
+   "orLater": false
+  },
+  {
+   "index": 171,
+   "declaration": 141,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 172,
+   "declaration": 141,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 173,
+   "declaration": 142,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 174,
+   "declaration": 142,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 175,
+   "declaration": 143,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 176,
+   "declaration": 143,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 177,
+   "declaration": 144,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 178,
+   "declaration": 144,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 179,
+   "declaration": 145,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 180,
+   "declaration": 145,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 181,
+   "declaration": 146,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 182,
+   "declaration": 147,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 183,
+   "declaration": 148,
+   "license": 1,
+   "orLater": false
+  },
+  {
+   "index": 184,
+   "declaration": 149,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 185,
+   "declaration": 150,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 186,
+   "declaration": 151,
+   "license": 0,
+   "orLater": false
+  },
+  {
+   "index": 187,
+   "declaration": 152,
+   "license": 0,
+   "orLater": false
+  }
+ ],
+ "refusals": [
+  {
+   "repository": 0,
+   "refusal": "license-file-missing",
+   "detail": ".github has no LICENSE, LICENCE or COPYING file at its root; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (6.1)"
+  },
+  {
+   "repository": 0,
+   "refusal": "license-undeclared",
+   "detail": ".github declares no license in any manifest or identified LICENSE text"
+  },
+  {
+   "repository": 0,
+   "refusal": "reuse-noncompliant",
+   "detail": ".github@92da114114fc9b76cbf2c5168e29d409b62ddde8: reuse 6.3.0 finds 14 of 14 files without a copyright notice and 14 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 1,
+   "refusal": "license-file-missing",
+   "detail": "5-Levels-of-UOR has no LICENSE, LICENCE or COPYING file at its root; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (6.1)"
+  },
+  {
+   "repository": 1,
+   "refusal": "license-undeclared",
+   "detail": "5-Levels-of-UOR declares no license in any manifest or identified LICENSE text"
+  },
+  {
+   "repository": 1,
+   "refusal": "reuse-noncompliant",
+   "detail": "5-Levels-of-UOR@86dde40a976d2a7a7be16b31b6a509698e8eb5bb: reuse 6.3.0 finds 2 of 2 files without a copyright notice and 2 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 2,
+   "refusal": "reuse-noncompliant",
+   "detail": "atlas-12288@aef42a6fd5c323373222b6362050b439690136a1: reuse 6.3.0 finds 147 of 147 files without a copyright notice and 147 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 3,
+   "refusal": "license-text-unidentified",
+   "detail": "calculator-example:LICENSE-APACHE (sha256:0d0a33bfc9c787ea04bdf88212b635bda27d28a0f8181db33853767cc73820b2) matches no listed template by SPDX 2.3.1 Annex B; nearest Pixar, Apache-2.0, ECL-2.0"
+  },
+  {
+   "repository": 3,
+   "refusal": "policy-mismatch",
+   "detail": "calculator-example:Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 3,
+   "refusal": "reuse-noncompliant",
+   "detail": "calculator-example@5051dc6adb18e9ca2b6ae4ca7090e638329831ef: reuse 6.3.0 finds 103 of 104 files without a copyright notice and 104 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 4,
+   "refusal": "policy-mismatch",
+   "detail": "community:Cargo.toml [workspace.package] declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 4,
+   "refusal": "policy-mismatch",
+   "detail": "community:LICENSE declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 4,
+   "refusal": "policy-mismatch",
+   "detail": "community:LICENSE-APACHE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 4,
+   "refusal": "reuse-noncompliant",
+   "detail": "community@1ef75b03a425abf09064f92db4fed0dd6bb23f62: reuse 6.3.0 finds 855 of 865 files without a copyright notice and 865 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 2 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 5,
+   "refusal": "policy-mismatch",
+   "detail": "compression:Cargo.toml [workspace.package] declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 5,
+   "refusal": "policy-mismatch",
+   "detail": "compression:LICENSE-APACHE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 5,
+   "refusal": "reuse-noncompliant",
+   "detail": "compression@c416f7f5f43e53f6888395e0b927041648b30f8f: reuse 6.3.0 finds 444 of 447 files without a copyright notice and 447 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 6,
+   "refusal": "reuse-noncompliant",
+   "detail": "F1@d45fe9f54eafbc86b5060efcaf604681482469c0: reuse 6.3.0 finds 785 of 786 files without a copyright notice and 786 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 7,
+   "refusal": "declarations-disagree",
+   "detail": "foundry: the manifests declare Apache-2.0; MIT; MIT OR Apache-2.0"
+  },
+  {
+   "repository": 7,
+   "refusal": "policy-mismatch",
+   "detail": "foundry:Cargo.toml [workspace.package] declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 7,
+   "refusal": "policy-mismatch",
+   "detail": "foundry:LICENSE-APACHE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 7,
+   "refusal": "policy-mismatch",
+   "detail": "foundry:studio/core/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 7,
+   "refusal": "policy-mismatch",
+   "detail": "foundry:studio/vendor/dyad/packages/@dyad-sh/nextjs-webpack-component-tagger/package.json declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 7,
+   "refusal": "policy-mismatch",
+   "detail": "foundry:studio/vendor/dyad/packages/@dyad-sh/react-vite-component-tagger/package.json declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 7,
+   "refusal": "reuse-noncompliant",
+   "detail": "foundry@9ccde14c10202a7c67cdc63e539918cfdc10a428: reuse 6.3.0 finds 4267 of 4276 files without a copyright notice and 4276 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 8,
+   "refusal": "policy-mismatch",
+   "detail": "foundry-web:Cargo.toml [workspace.package] declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 8,
+   "refusal": "policy-mismatch",
+   "detail": "foundry-web:LICENSE-APACHE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 8,
+   "refusal": "reuse-noncompliant",
+   "detail": "foundry-web@e8373c7c953bae6153fba7082c2b6c50f2f77392: reuse 6.3.0 finds 112 of 112 files without a copyright notice and 112 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 9,
+   "refusal": "policy-mismatch",
+   "detail": "holo-search:Cargo.toml [workspace.package] declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 9,
+   "refusal": "policy-mismatch",
+   "detail": "holo-search:LICENSE-APACHE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 9,
+   "refusal": "reuse-noncompliant",
+   "detail": "holo-search@c477b69c0e3f95658aedecaeb2fa9c057d9b58a6: reuse 6.3.0 finds 137 of 139 files without a copyright notice and 139 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 10,
+   "refusal": "license-file-missing",
+   "detail": "kappa-distribution has no LICENSE, LICENCE or COPYING file at its root; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (6.1)"
+  },
+  {
+   "repository": 10,
+   "refusal": "license-undeclared",
+   "detail": "kappa-distribution declares no license in any manifest or identified LICENSE text"
+  },
+  {
+   "repository": 10,
+   "refusal": "reuse-noncompliant",
+   "detail": "kappa-distribution@2475e701f25ed5887aba8b68a39ecc0f87faad6f: reuse 6.3.0 finds 1 of 1 files without a copyright notice and 1 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 11,
+   "refusal": "declarations-disagree",
+   "detail": "kappa-registry: the manifests declare Apache-2.0; MIT OR Apache-2.0"
+  },
+  {
+   "repository": 11,
+   "refusal": "license-file-missing",
+   "detail": "kappa-registry has no LICENSE, LICENCE or COPYING file at its root; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (6.1)"
+  },
+  {
+   "repository": 11,
+   "refusal": "policy-mismatch",
+   "detail": "kappa-registry:Cargo.toml [workspace.package] declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 11,
+   "refusal": "policy-mismatch",
+   "detail": "kappa-registry:crates/kappa-module-nix/Cargo.toml declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 11,
+   "refusal": "reuse-noncompliant",
+   "detail": "kappa-registry@bd231d0cc315d56e51369aff299f6741b8d8ce04: reuse 6.3.0 finds 236 of 236 files without a copyright notice and 236 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 12,
+   "refusal": "policy-mismatch",
+   "detail": "LexLean:Cargo.toml [workspace.package] declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 12,
+   "refusal": "policy-mismatch",
+   "detail": "LexLean:LICENSE-APACHE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 12,
+   "refusal": "reuse-noncompliant",
+   "detail": "LexLean@71defb4c663aaec5b9a3aab04cbc6a03e7106227: reuse 6.3.0 finds 9877 of 9877 files without a copyright notice and 9877 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 13,
+   "refusal": "policy-mismatch",
+   "detail": "lexlean-mcp:Cargo.toml [workspace.package] declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 13,
+   "refusal": "policy-mismatch",
+   "detail": "lexlean-mcp:LICENSE-APACHE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 13,
+   "refusal": "policy-mismatch",
+   "detail": "lexlean-mcp:gateway/bindings/gateway-binding/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 13,
+   "refusal": "policy-mismatch",
+   "detail": "lexlean-mcp:gateway/bindings/gateway-engine-host/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 13,
+   "refusal": "policy-mismatch",
+   "detail": "lexlean-mcp:gateway/bindings/gateway-ready/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 13,
+   "refusal": "policy-mismatch",
+   "detail": "lexlean-mcp:gateway/bindings/gateway-signer/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 13,
+   "refusal": "policy-mismatch",
+   "detail": "lexlean-mcp:gateway/bindings/gateway-verifier-host/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 13,
+   "refusal": "policy-mismatch",
+   "detail": "lexlean-mcp:gateway/tool-tests/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 13,
+   "refusal": "policy-mismatch",
+   "detail": "lexlean-mcp:gateway/vectors/runner/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 13,
+   "refusal": "reuse-noncompliant",
+   "detail": "lexlean-mcp@ece9ef390260479edbad69c3a9d9f51edc16c885: reuse 6.3.0 finds 2082 of 2085 files without a copyright notice and 2085 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 14,
+   "refusal": "policy-mismatch",
+   "detail": "malachite-usdc:LICENSE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 14,
+   "refusal": "reuse-noncompliant",
+   "detail": "malachite-usdc@23431008f0ccc2899c3a1ecb9243a2578d5c7156: reuse 6.3.0 finds 22 of 22 files without a copyright notice and 22 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 15,
+   "refusal": "policy-mismatch",
+   "detail": "MCP:Cargo.toml [workspace.package] declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 15,
+   "refusal": "policy-mismatch",
+   "detail": "MCP:LICENSE-APACHE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 15,
+   "refusal": "policy-mismatch",
+   "detail": "MCP:conformance/bindings/mcp-binding/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 15,
+   "refusal": "reuse-noncompliant",
+   "detail": "MCP@5b34b2633e2707993221019b81fae2bf9c4103d6: reuse 6.3.0 finds 783 of 783 files without a copyright notice and 783 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 16,
+   "refusal": "policy-mismatch",
+   "detail": "MNIST:Cargo.toml [workspace.package] declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 16,
+   "refusal": "policy-mismatch",
+   "detail": "MNIST:LICENSE-APACHE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 16,
+   "refusal": "reuse-noncompliant",
+   "detail": "MNIST@515f75f9f01470df8cac095cdc22f5aebcc252c7: reuse 6.3.0 finds 92 of 92 files without a copyright notice and 92 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 17,
+   "refusal": "policy-mismatch",
+   "detail": "nest-uor:LICENSE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 17,
+   "refusal": "policy-mismatch",
+   "detail": "nest-uor:pyproject.toml declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 17,
+   "refusal": "reuse-noncompliant",
+   "detail": "nest-uor@5a469e7d207af7dcca54df0de39e38c54c953569: reuse 6.3.0 finds 8 of 8 files without a copyright notice and 3 without licensing information; 1 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 18,
+   "refusal": "reuse-noncompliant",
+   "detail": "OOO@d0bdb29bdfeba50590bf42b4f9071e0d4bbc2dc6: reuse 6.3.0 finds 4 of 4 files without a copyright notice and 4 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 19,
+   "refusal": "reuse-noncompliant",
+   "detail": "prism@507995bab43c0cb06ec244c96e6fc25b3f502204: reuse 6.3.0 finds 81 of 81 files without a copyright notice and 81 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 20,
+   "refusal": "policy-mismatch",
+   "detail": "prism-code:Cargo.toml [workspace.package] declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 20,
+   "refusal": "policy-mismatch",
+   "detail": "prism-code:LICENSE-APACHE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 20,
+   "refusal": "reuse-noncompliant",
+   "detail": "prism-code@67ab3e8b2092ad5812b0c34fd074cb33762366aa: reuse 6.3.0 finds 161 of 161 files without a copyright notice and 161 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 21,
+   "refusal": "declarations-disagree",
+   "detail": "PrismPM: the manifests declare Apache-2.0; MIT; MIT OR Apache-2.0"
+  },
+  {
+   "repository": 21,
+   "refusal": "expression-invalid",
+   "detail": "PrismPM:standards/oracles/asyncapi-spec-b3fac5bb/.github/workflows/scripts/mailchimp/package.json declares \"Apache 2.0\", 2.0 follows a complete expression (SPDX 2.3.1 Annex D)"
+  },
+  {
+   "repository": 21,
+   "refusal": "license-text-unidentified",
+   "detail": "PrismPM:LICENSE-APACHE (sha256:0d0a33bfc9c787ea04bdf88212b635bda27d28a0f8181db33853767cc73820b2) matches no listed template by SPDX 2.3.1 Annex B; nearest Pixar, Apache-2.0, ECL-2.0"
+  },
+  {
+   "repository": 21,
+   "refusal": "policy-mismatch",
+   "detail": "PrismPM:Cargo.toml [workspace.package] declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 21,
+   "refusal": "policy-mismatch",
+   "detail": "PrismPM:prism-factory/host/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 21,
+   "refusal": "policy-mismatch",
+   "detail": "PrismPM:sdk/asyncapi-runtime/package.json declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 21,
+   "refusal": "policy-mismatch",
+   "detail": "PrismPM:sdk/oracles/oscal/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 21,
+   "refusal": "policy-mismatch",
+   "detail": "PrismPM:standards/oracles/asyncapi-spec-b3fac5bb/scripts/validation/package.json declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 21,
+   "refusal": "policy-mismatch",
+   "detail": "PrismPM:stdlib/generated/package/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 21,
+   "refusal": "policy-mismatch",
+   "detail": "PrismPM:vendor/lexlean/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 21,
+   "refusal": "reuse-noncompliant",
+   "detail": "PrismPM@ece658394448f09a5760fb0bec9b1fa8f065ed0e: reuse 6.3.0 finds 13427 of 13913 files without a copyright notice and 13211 without licensing information; 4 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 22,
+   "refusal": "reuse-noncompliant",
+   "detail": "research@bfccda396aab1aea5dee649fbe5180499d236cec: reuse 6.3.0 finds 86 of 95 files without a copyright notice and 95 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 23,
+   "refusal": "policy-mismatch",
+   "detail": "template:Cargo.toml [workspace.package] declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 23,
+   "refusal": "policy-mismatch",
+   "detail": "template:LICENSE declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 23,
+   "refusal": "policy-mismatch",
+   "detail": "template:LICENSE-APACHE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 23,
+   "refusal": "reuse-noncompliant",
+   "detail": "template@0851bb41138041f0f75118135fd8a342109c2d73: reuse 6.3.0 finds 195 of 197 files without a copyright notice and 197 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 24,
+   "refusal": "policy-mismatch",
+   "detail": "uor-addr:Cargo.toml [workspace.package] declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 24,
+   "refusal": "policy-mismatch",
+   "detail": "uor-addr:LICENSE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 24,
+   "refusal": "policy-mismatch",
+   "detail": "uor-addr:bindings/npm/package.json declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 24,
+   "refusal": "policy-mismatch",
+   "detail": "uor-addr:bindings/python/pyproject.toml declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 24,
+   "refusal": "reuse-noncompliant",
+   "detail": "uor-addr@20a1c5723fc8f5d645972c8d6f5c57459846302e: reuse 6.3.0 finds 248 of 251 files without a copyright notice and 251 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 25,
+   "refusal": "policy-mismatch",
+   "detail": "uor-foundry:Cargo.toml [workspace.package] declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 25,
+   "refusal": "policy-mismatch",
+   "detail": "uor-foundry:LICENSE-APACHE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 25,
+   "refusal": "reuse-noncompliant",
+   "detail": "uor-foundry@fdab06c9ab30d594c917040908485068ea6f9c9f: reuse 6.3.0 finds 245 of 245 files without a copyright notice and 245 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 26,
+   "refusal": "policy-mismatch",
+   "detail": "UOR-Framework:Cargo.toml [workspace.package] declares MIT; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets Apache-2.0"
+  },
+  {
+   "repository": 26,
+   "refusal": "policy-mismatch",
+   "detail": "UOR-Framework:LICENSE declares MIT; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets Apache-2.0"
+  },
+  {
+   "repository": 26,
+   "refusal": "reuse-noncompliant",
+   "detail": "UOR-Framework@51c01382200b0179d6640b07e9c8119364ab69a1: reuse 6.3.0 finds 785 of 785 files without a copyright notice and 785 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 26,
+   "refusal": "website-mismatch",
+   "detail": "UOR-Framework:foundation/Cargo.toml publishes uor-foundation under MIT; https://github.com/UOR-Foundation/website@1008c3b0989225f5414a9bd58ed8208a56af5e53:src/about/content.ts#sha256:3ded37fd5602305bf58bcacb6fa31a701710bbf45f65bdfb2caec02627b9f88e (src/about/content.ts) states Apache-2.0"
+  },
+  {
+   "repository": 27,
+   "refusal": "policy-mismatch",
+   "detail": "uor-jcs-nfc:LICENSE declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 27,
+   "refusal": "reuse-noncompliant",
+   "detail": "uor-jcs-nfc@303591128094362857791930fdc12b73875d1ff6: reuse 6.3.0 finds 9 of 10 files without a copyright notice and 10 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 28,
+   "refusal": "declarations-disagree",
+   "detail": "uor-matmul: the manifests declare Apache-2.0; the LICENSE texts are MIT"
+  },
+  {
+   "repository": 28,
+   "refusal": "policy-mismatch",
+   "detail": "uor-matmul:Cargo.toml [workspace.package] declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 28,
+   "refusal": "reuse-noncompliant",
+   "detail": "uor-matmul@3cc5882f210667f9ac00fd8c02c5b5957b493f5d: reuse 6.3.0 finds 682 of 683 files without a copyright notice and 683 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 29,
+   "refusal": "declarations-disagree",
+   "detail": "uor-r4: the manifests declare Apache-2.0; BSD-2-Clause; MIT; MIT OR Apache-2.0"
+  },
+  {
+   "repository": 29,
+   "refusal": "policy-mismatch",
+   "detail": "uor-r4:archive/vendor-snapshots/uor_standards/uor-addr/Cargo.toml [workspace.package] declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 29,
+   "refusal": "policy-mismatch",
+   "detail": "uor-r4:archive/vendor-snapshots/uor_standards/uor-addr/bindings/npm/package.json declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 29,
+   "refusal": "policy-mismatch",
+   "detail": "uor-r4:archive/vendor-snapshots/uor_standards/uor-addr/bindings/python/pyproject.toml declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 29,
+   "refusal": "policy-mismatch",
+   "detail": "uor-r4:third_party/arrayref/Cargo.toml declares BSD-2-Clause; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 29,
+   "refusal": "policy-mismatch",
+   "detail": "uor-r4:third_party/candle-core-0.9.2/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 29,
+   "refusal": "policy-mismatch",
+   "detail": "uor-r4:third_party/candle-kernels-0.9.2/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 29,
+   "refusal": "policy-mismatch",
+   "detail": "uor-r4:third_party/candle-nn-0.9.2/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 29,
+   "refusal": "policy-mismatch",
+   "detail": "uor-r4:third_party/candle-nn-0.9.2/historical/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 29,
+   "refusal": "policy-mismatch",
+   "detail": "uor-r4:third_party/cudarc-0.19.10/Cargo.toml declares MIT OR Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 29,
+   "refusal": "policy-mismatch",
+   "detail": "uor-r4:third_party/uor-addr-0.2.0/Cargo.toml declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 29,
+   "refusal": "policy-mismatch",
+   "detail": "uor-r4:third_party/uor-addr-0.2.0/historical/upstream/Cargo.toml [workspace.package] declares Apache-2.0; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (13) sets MIT"
+  },
+  {
+   "repository": 29,
+   "refusal": "reuse-noncompliant",
+   "detail": "uor-r4@44e2a6f062e9196fe68291259bff459dde0bde44: reuse 6.3.0 finds 20476 of 20509 files without a copyright notice and 20499 without licensing information; 1 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  },
+  {
+   "repository": 29,
+   "refusal": "website-mismatch",
+   "detail": "uor-r4:third_party/arrayref/Cargo.toml declares BSD-2-Clause; https://github.com/UOR-Foundation/website@1008c3b0989225f5414a9bd58ed8208a56af5e53:src/site/copy.ts#sha256:9ee1a77e77f811628f0c95344c71f7a204caa7cb38a313e804408ba05a4e3e61 (src/site/copy.ts) states the code is MIT OR Apache-2.0"
+  },
+  {
+   "repository": 30,
+   "refusal": "license-file-missing",
+   "detail": "website has no LICENSE, LICENCE or COPYING file at its root; https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 (6.1)"
+  },
+  {
+   "repository": 30,
+   "refusal": "license-undeclared",
+   "detail": "website declares no license in any manifest or identified LICENSE text"
+  },
+  {
+   "repository": 30,
+   "refusal": "reuse-noncompliant",
+   "detail": "website@e82ffdedc5d85ebd0bde239d50d4651005045d31: reuse 6.3.0 finds 178 of 188 files without a copyright notice and 188 without licensing information; 0 missing, 0 bad, 0 deprecated, 0 unused licenses, 0 without extension, 0 read errors, 0 files with invalid expressions (REUSE 3.3)"
+  }
+ ],
+ "policyClaims": []
+}

@@ -1,0 +1,1716 @@
+\begin{lexlean}{Reorg}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Reorg.V1.Model}
+\title{Reorganization register}
+\begin{semanticmodule}
+definition{
+  name: release,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Release,
+  body: (record Foundation.Reorg.V1.Model::Release {repositoriesCount := 31, dependenciesCount := 24, citationsCount := 103, candidatesCount := 11, normGapsCount := 5, actsCount := 53, snapshotDigest := "sha256:c963a806aba6c0e55d703869b6f6718877ce0abee165fca7208871cca3256d00", asOf := "2026-11-15T18:49:57Z", windowDays := 180, setDigest := "ecosystem/snapshot.json#sha256:6cd8f63813c08d3adaedc151f3c439871134950ceb0b3aa1463a49be109f05c1", norms := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:toc/README.md#sha256:9674e625d93cefc9e490b3af5ae449f8770eeadb50c85e68597f741656c2d2a2 UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md#sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574 UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:STANDARDS.md#sha256:87977973277069d38bb3b9851c5f323182e15528184c5e2029dc631b133a4b26", platform := "https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/customizing-your-organizations-profile#sha256:894ad3de24fed6def994432caed51202e75ea8ea56c4b445d7b6d88639808b8e https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file#sha256:54fec3f715093cc47e424f13df6e66454a534b44964ea3053992fbe1cfe9f86d", app := "apps/uor-repo-disposition.prompt.json", appDigest := "sha256:fa9e00763ef4e15e3d1097fc0622a687e7628d7280f3e160223c3a650efd1635", builder := "afflom/prism-devrel@61ae55ea727347214c017588b47699b2ca807caf", keepCount := 17, archiveCount := 3, foldCount := 0, reviewCount := 11})
+}
+
+definition{
+  name: repository0,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 0, name := ".github", commit := "92da114114fc9b76cbf2c5168e29d409b62ddde8", lastCommit := "2026-04-01T01:12:18Z", recentCommits := 0, dependents := 0, archived := false, reserved := true, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.quiet), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 0, hostRefused := false, ruleId := "REQ-002", purpose := "This is the main entry point for the UOR Foundation on GitHub."})
+}
+
+definition{
+  name: repository1,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 1, name := "5-Levels-of-UOR", commit := "86dde40a976d2a7a7be16b31b6a509698e8eb5bb", lastCommit := "2025-03-11T03:17:54Z", recentCommits := 0, dependents := 0, archived := true, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.quiet), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.archive), host := 1, hostRefused := false, ruleId := "REQ-001", purpose := "Explains how the Prime Framework works in 5 levels of difficulty."})
+}
+
+definition{
+  name: repository2,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 2, name := "atlas-12288", commit := "aef42a6fd5c323373222b6362050b439690136a1", lastCommit := "2025-10-03T17:26:19Z", recentCommits := 0, dependents := 0, archived := true, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.quiet), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.archive), host := 2, hostRefused := false, ruleId := "REQ-001", purpose := "A Lean 4 implementation of the Prime Structure/Φ-Atlas-12288 mathematical framework with FFI bindings for multiple languages."})
+}
+
+definition{
+  name: repository3,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 3, name := "calculator-example", commit := "5051dc6adb18e9ca2b6ae4ca7090e638329831ef", lastCommit := "2026-09-09T17:15:47Z", recentCommits := 9, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 3, hostRefused := false, ruleId := "otherwise", purpose := "Calculator is the reference PrismPM product: one authoritative application model plus one authoritative production-system model become a portable Pages application and complete A/B service releases."})
+}
+
+definition{
+  name: repository4,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 4, name := "community", commit := "1ef75b03a425abf09064f92db4fed0dd6bb23f62", lastCommit := "2026-11-15T18:22:45Z", recentCommits := 114, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 4, hostRefused := false, ruleId := "otherwise", purpose := "The community model of the UOR Foundation, as a Prism application. It brings the Foundation's own norms (the Bylaws, the governance framework, the TOC lifecycle, the repository standards and the Code of Conduct) together with CHAOSS, the Linux Foundation's community health standard, implemented in full. Each claim in it is checked by the Lean kernel in the SDK that prismpm.lock pins."})
+}
+
+definition{
+  name: repository5,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 5, name := "compression", commit := "c416f7f5f43e53f6888395e0b927041648b30f8f", lastCommit := "2026-11-15T08:54:29Z", recentCommits := 65, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 5, hostRefused := false, ruleId := "otherwise", purpose := "A lossless compression system whose compressed object is an exact executable Universal Object Reference synthesized under explicit accounting and evidence."})
+}
+
+definition{
+  name: repository6,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 6, name := "F1", commit := "d45fe9f54eafbc86b5060efcaf604681482469c0", lastCommit := "2026-08-27T16:26:11Z", recentCommits := 1640, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 6, hostRefused := false, ruleId := "otherwise", purpose := "An active research program toward Spec ℤ ×{𝔽₁} Spec ℤ — the missing surface whose intersection-positivity is the Riemann Hypothesis."})
+}
+
+definition{
+  name: repository7,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 7, name := "foundry", commit := "9ccde14c10202a7c67cdc63e539918cfdc10a428", lastCommit := "2026-11-15T18:37:07Z", recentCommits := 770, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.member), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.review), host := 7, hostRefused := false, ruleId := "REQ-006", purpose := "Turn your ideas into apps you can prove. Describe what you want to build. Prism AI Foundry builds it, proves it, and publishes it to a live URL."})
+}
+
+definition{
+  name: repository8,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 8, name := "foundry-web", commit := "e8373c7c953bae6153fba7082c2b6c50f2f77392", lastCommit := "2026-10-05T04:10:04Z", recentCommits := 59, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.relocated), family := (ctor Foundation.Reorg.V1.Model::Family.member), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.names), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.review), host := 8, hostRefused := false, ruleId := "REQ-005", purpose := "The publication repository for the Foundry organizational platform. uor-foundry owns the complete model, services, workflows, and stakeholder Views; this repository publishes its verified, authorized output without duplicating application logic. Organizations, including the UOR Foundation, are created through normal modeled workflows. No organization, account, or UOR-specific authority is preseeded."})
+}
+
+definition{
+  name: repository9,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 9, name := "holo-search", commit := "c477b69c0e3f95658aedecaeb2fa9c057d9b58a6", lastCommit := "2026-11-10T12:59:24Z", recentCommits := 15, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 9, hostRefused := false, ruleId := "otherwise", purpose := "Search and run self-verifying Prism apps by their address."})
+}
+
+definition{
+  name: repository10,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 10, name := "kappa-distribution", commit := "2475e701f25ed5887aba8b68a39ecc0f87faad6f", lastCommit := "2026-07-23T00:30:47Z", recentCommits := 1, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.member), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.review), host := 10, hostRefused := false, ruleId := "REQ-006", purpose := ""})
+}
+
+definition{
+  name: repository11,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 11, name := "kappa-registry", commit := "bd231d0cc315d56e51369aff299f6741b8d8ce04", lastCommit := "2026-11-07T23:50:40Z", recentCommits := 27, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.member), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.review), host := 11, hostRefused := false, ruleId := "REQ-006", purpose := "A single-binary server that speaks Docker, Git, S3, Nix, and AT Protocol, storing everything in one content-addressed database. One process, one port, one data directory."})
+}
+
+definition{
+  name: repository12,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 12, name := "LexLean", commit := "71defb4c663aaec5b9a3aab04cbc6a03e7106227", lastCommit := "2026-10-27T14:43:16Z", recentCommits := 1504, dependents := 4, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.hub), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.shared), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 12, hostRefused := false, ruleId := "otherwise", purpose := "LexLean compiles .lex.tex modules written in a closed controlled language. Every word, symbol, and control comes from a versioned lexicon package. Every sentence follows a fixed grammar. One typed representation produces both the canonical LaTeX document and a Lean 4 program with no prose."})
+}
+
+definition{
+  name: repository13,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 13, name := "lexlean-mcp", commit := "ece9ef390260479edbad69c3a9d9f51edc16c885", lastCommit := "2026-11-13T20:10:18Z", recentCommits := 94, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.member), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.names), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.review), host := 13, hostRefused := false, ruleId := "REQ-006", purpose := "LexLean MCP serves LexLean to LLM clients over the Model Context Protocol. LexLean establishes meaning over the UOR Atlas; this server adds no meaning of its own. A document an LLM writes through it reaches its reader only as the canonical rendering of a verified LexLean module, bound to its signed attestation."})
+}
+
+definition{
+  name: repository14,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 14, name := "malachite-usdc", commit := "23431008f0ccc2899c3a1ecb9243a2578d5c7156", lastCommit := "2026-08-04T20:31:30Z", recentCommits := 2, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 14, hostRefused := false, ruleId := "otherwise", purpose := "Measured: consensus finality that stays flat as validators are added, and 1.7-2x more transactions per second - by referencing transactions instead of re-sending them during consensus. Validated against circlefin/malachite (the consensus engine behind Circle's Arc blockchain) with real USDC traffic from Ethereum mainnet. Every number below is reproducible from this repository."})
+}
+
+definition{
+  name: repository15,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 15, name := "MCP", commit := "5b34b2633e2707993221019b81fae2bf9c4103d6", lastCommit := "2026-11-13T10:04:24Z", recentCommits := 38, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.member), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.review), host := 15, hostRefused := false, ruleId := "REQ-006", purpose := "The Model Context Protocol revision 2026-07-28, implemented as a server protocol core in LexLean."})
+}
+
+definition{
+  name: repository16,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 16, name := "MNIST", commit := "515f75f9f01470df8cac095cdc22f5aebcc252c7", lastCommit := "2026-10-14T22:25:28Z", recentCommits := 28, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 16, hostRefused := false, ruleId := "otherwise", purpose := "The ONNX Model Zoo's int8 MNIST network as one LexLean model: its parameters are content-addressed artifacts, its network is a language-1.2 graph, its boundary is a contract with validators and evidence, and its product is a certified Rust package bundle that replays offline. Everything under src/Mnist/ is the single source; the Lean, the LaTeX, the kernel theorems, the certificates and the Rust package are derived from it by the locked LexLean compiler, and nothing in this repository implements the model in any other language (R1)."})
+}
+
+definition{
+  name: repository17,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 17, name := "nest-uor", commit := "5a469e7d207af7dcca54df0de39e38c54c953569", lastCommit := "2026-08-16T01:44:19Z", recentCommits := 1, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 17, hostRefused := false, ruleId := "otherwise", purpose := "Structural content addressing for Nanda Town's DataFacts layer (layer 12)."})
+}
+
+definition{
+  name: repository18,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 18, name := "OOO", commit := "d0bdb29bdfeba50590bf42b4f9071e0d4bbc2dc6", lastCommit := "2026-08-04T21:30:28Z", recentCommits := 1, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 18, hostRefused := false, ruleId := "otherwise", purpose := ""})
+}
+
+definition{
+  name: repository19,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 19, name := "prism", commit := "507995bab43c0cb06ec244c96e6fc25b3f502204", lastCommit := "2026-05-24T00:27:09Z", recentCommits := 16, dependents := 2, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.member), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.shared), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.review), host := 19, hostRefused := false, ruleId := "REQ-006", purpose := "Source repository and publishing pipeline for the Prism standard library — the implementation of the Prism system specified by the UOR-Framework wiki. Per wiki ADR-031, prism IS the standard library: a façade re-exporting the uor-foundation substrate together with the Layer-3 sub-crates that contribute the built-in axes and built-in types it surfaces."})
+}
+
+definition{
+  name: repository20,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 20, name := "prism-code", commit := "67ab3e8b2092ad5812b0c34fd074cb33762366aa", lastCommit := "2026-11-12T13:17:18Z", recentCommits := 64, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.member), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.review), host := 20, hostRefused := false, ruleId := "REQ-006", purpose := "dataflow-policy checks a Prism dataflow project script against its declared memory and PII-encryption policies, and emits the project's canonical form. It is a Prism application: its behavior is authored once in LexLean (src/.lex.tex) and PrismPM generates the verified browser application (GitHub Pages) and the command-line interface from that single model. No application behavior is written by hand outside the model."})
+}
+
+definition{
+  name: repository21,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 21, name := "PrismPM", commit := "ece658394448f09a5760fb0bec9b1fa8f065ed0e", lastCommit := "2026-11-15T17:15:43Z", recentCommits := 1800, dependents := 12, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.hub), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.shared), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 21, hostRefused := false, ruleId := "otherwise", purpose := "PrismPM compiles authoritative Prism models into verified software artifacts. A model is a closed .lex.tex source graph: LexLean produces its semantic snapshot and Lean, Lean checks the proofs, lean4-prod exports only named verified roots, and generic generators produce Cargo, Core-Wasm, View, browser, and Hologram artifacts. Prism application behavior is never supplied by handwritten Lean or target-specific application code."})
+}
+
+definition{
+  name: repository22,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 22, name := "research", commit := "bfccda396aab1aea5dee649fbe5180499d236cec", lastCommit := "2026-02-15T18:21:00Z", recentCommits := 0, dependents := 0, archived := true, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.quiet), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.archive), host := 22, hostRefused := false, ruleId := "REQ-001", purpose := "This repository is the official open-source research directory of the UOR Foundation. It contains foundational mathematical and scientific frameworks developed to enable rigorous validation, interoperability, and scalable discovery."})
+}
+
+definition{
+  name: repository23,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 23, name := "template", commit := "0851bb41138041f0f75118135fd8a342109c2d73", lastCommit := "2026-11-15T00:27:01Z", recentCommits := 223, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 23, hostRefused := false, ruleId := "otherwise", purpose := "The starting point for a Prism application: a repository whose every claim is registered, specified as a scenario, tested, and accepted by one gate running in one digest-pinned SDK."})
+}
+
+definition{
+  name: repository24,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 24, name := "uor-addr", commit := "20a1c5723fc8f5d645972c8d6f5c57459846302e", lastCommit := "2026-10-15T05:08:23Z", recentCommits := 36, dependents := 1, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.sole), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.review), host := 24, hostRefused := false, ruleId := "REQ-007", purpose := "Typed content-addressing for data passing across system boundaries — deterministic, verifiable sha256:<64hex> labels with structural equivalence at the level of what the data means, not what its bytes happen to look like."})
+}
+
+definition{
+  name: repository25,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 25, name := "uor-foundry", commit := "fdab06c9ab30d594c917040908485068ea6f9c9f", lastCommit := "2026-10-04T15:51:59Z", recentCommits := 91, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.member), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.review), host := 25, hostRefused := false, ruleId := "REQ-006", purpose := "Foundry is a generic organization-management platform modeled with PrismPM. Organizations and their physical sites are created through normal workflows; no account, organization or administrator mailbox is pre-seeded. UOR Foundation is one such organization, with its Citizen Gardens operating model and Foundry sites, not a privileged platform identity."})
+}
+
+definition{
+  name: repository26,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 26, name := "UOR-Framework", commit := "51c01382200b0179d6640b07e9c8119364ab69a1", lastCommit := "2026-05-23T21:14:31Z", recentCommits := 27, dependents := 4, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.shared), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 26, hostRefused := false, ruleId := "otherwise", purpose := "The Universal Object Reference (UOR) Framework is a Rust workspace implementing the UOR Foundation ontology — a mathematical framework for content-addressed, symmetric, multi-metric object spaces with algebraic structure based on Z/(2^n)Z."})
+}
+
+definition{
+  name: repository27,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 27, name := "uor-jcs-nfc", commit := "303591128094362857791930fdc12b73875d1ff6", lastCommit := "2026-09-11T15:49:19Z", recentCommits := 1, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 27, hostRefused := false, ruleId := "otherwise", purpose := "Publication status — provisional RC5 draft. SPEC.md version 1.1 and uorjcsnfcref.py are the stable publication targets in this commit. The aggregate corpus in conformance/ is retained as author-side RC5 history; it is not the canonical registry corpus. Its observed contrast record is a breaking shape change and therefore requires regeneration as uor-vectors-v2. Whether that regeneration also includes CPB per-file vectors remains pending. A registry entry must cite the later final commit, not this provisional corpus."})
+}
+
+definition{
+  name: repository28,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 28, name := "uor-matmul", commit := "3cc5882f210667f9ac00fd8c02c5b5957b493f5d", lastCommit := "2026-08-14T22:46:32Z", recentCommits := 188, dependents := 1, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.sole), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.review), host := 28, hostRefused := false, ruleId := "REQ-007", purpose := "Decode the code, accumulate exactly, encode once."})
+}
+
+definition{
+  name: repository29,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 29, name := "uor-r4", commit := "44e2a6f062e9196fe68291259bff459dde0bde44", lastCommit := "2026-11-15T16:38:10Z", recentCommits := 3469, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 29, hostRefused := false, ruleId := "otherwise", purpose := "An open research project: can geometry replace a transformer's run-time machinery in a language model that runs on a laptop?"})
+}
+
+definition{
+  name: repository30,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Repository,
+  body: (record Foundation.Reorg.V1.Model::Repository {index := 30, name := "website", commit := "e82ffdedc5d85ebd0bde239d50d4651005045d31", lastCommit := "2026-11-14T00:50:49Z", recentCommits := 164, dependents := 0, archived := false, reserved := false, statement := (ctor Foundation.Reorg.V1.Model::Statement.absent), family := (ctor Foundation.Reorg.V1.Model::Family.absent), consumer := (ctor Foundation.Reorg.V1.Model::Consumer.absent), overlap := (ctor Foundation.Reorg.V1.Model::Overlap.absent), activity := (ctor Foundation.Reorg.V1.Model::Activity.recent), disposition := (ctor Foundation.Reorg.V1.Model::Disposition.keep), host := 30, hostRefused := false, ruleId := "otherwise", purpose := "The UOR Foundation website: a lean, fast site for the UOR framework and the Prism SDK, built with React, Vite and Tailwind."})
+}
+
+definition{
+  name: repositoriesFrom0,
+  parameters: [],
+  result: (List Foundation.Reorg.V1.Model::Repository),
+  body: (cons (repository0) (cons (repository1) (cons (repository2) (cons (repository3) (cons (repository4) (cons (repository5) (cons (repository6) (cons (repository7) (cons (repository8) (cons (repository9) (cons (repository10) (cons (repository11) (cons (repository12) (cons (repository13) (cons (repository14) (cons (repository15) (cons (repository16) (cons (repository17) (cons (repository18) (cons (repository19) (cons (repository20) (cons (repository21) (cons (repository22) (cons (repository23) (cons (repository24) (cons (repository25) (cons (repository26) (cons (repository27) (cons (repository28) (cons (repository29) (cons (repository30) (nil Foundation.Reorg.V1.Model::Repository))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: repositories,
+  parameters: [],
+  result: (List Foundation.Reorg.V1.Model::Repository),
+  body: (repositoriesFrom0)
+}
+
+definition{
+  name: dependency0,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 0, source := 3, target := 21, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.workflow), file := ".github/workflows/pages.yml", line := 74})
+}
+
+definition{
+  name: dependency1,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 1, source := 4, target := 21, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.workflow), file := ".github/workflows/prismpm.yml", line := 95})
+}
+
+definition{
+  name: dependency2,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 2, source := 5, target := 12, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.crate), file := "crates/model/Cargo.toml", line := 23})
+}
+
+definition{
+  name: dependency3,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 3, source := 5, target := 21, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.workflow), file := ".github/workflows/prismpm.yml", line := 95})
+}
+
+definition{
+  name: dependency4,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 4, source := 7, target := 12, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.crate), file := "v2/in-tab-check/crate/Cargo.toml", line := 13})
+}
+
+definition{
+  name: dependency5,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 5, source := 7, target := 21, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.workflow), file := ".github/workflows/prismpm.yml", line := 95})
+}
+
+definition{
+  name: dependency6,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 6, source := 8, target := 21, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.workflow), file := ".github/workflows/prismpm.yml", line := 95})
+}
+
+definition{
+  name: dependency7,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 7, source := 9, target := 21, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.workflow), file := ".github/workflows/prismpm.yml", line := 95})
+}
+
+definition{
+  name: dependency8,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 8, source := 13, target := 12, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.crate), file := "crates/build-id/Cargo.toml", line := 14})
+}
+
+definition{
+  name: dependency9,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 9, source := 13, target := 21, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.workflow), file := ".github/workflows/prismpm.yml", line := 95})
+}
+
+definition{
+  name: dependency10,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 10, source := 14, target := 26, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.crate), file := "benchmarks/execution/uorbench/Cargo.toml", line := 7})
+}
+
+definition{
+  name: dependency11,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 11, source := 15, target := 21, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.workflow), file := ".github/workflows/prismpm.yml", line := 95})
+}
+
+definition{
+  name: dependency12,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 12, source := 16, target := 21, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.workflow), file := ".github/workflows/prismpm.yml", line := 95})
+}
+
+definition{
+  name: dependency13,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 13, source := 19, target := 26, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.crate), file := "Cargo.toml", line := 37})
+}
+
+definition{
+  name: dependency14,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 14, source := 20, target := 21, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.workflow), file := ".github/workflows/prismpm.yml", line := 95})
+}
+
+definition{
+  name: dependency15,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 15, source := 21, target := 12, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.crate), file := "Cargo.toml", line := 27})
+}
+
+definition{
+  name: dependency16,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 16, source := 23, target := 21, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.workflow), file := ".github/workflows/prismpm.yml", line := 95})
+}
+
+definition{
+  name: dependency17,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 17, source := 24, target := 26, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.crate), file := "Cargo.toml", line := 59})
+}
+
+definition{
+  name: dependency18,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 18, source := 24, target := 19, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.crate), file := "Cargo.toml", line := 48})
+}
+
+definition{
+  name: dependency19,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 19, source := 25, target := 21, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.workflow), file := ".github/workflows/prismpm.yml", line := 95})
+}
+
+definition{
+  name: dependency20,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 20, source := 29, target := 26, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.crate), file := "archive/vendor-snapshots/uor_standards/UOR-Framework/Cargo.toml", line := 33})
+}
+
+definition{
+  name: dependency21,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 21, source := 29, target := 19, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.crate), file := "archive/vendor-snapshots/uor_standards/prism/Cargo.toml", line := 44})
+}
+
+definition{
+  name: dependency22,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 22, source := 29, target := 24, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.crate), file := "archive/vendor-snapshots/uor_standards/uor-addr/Cargo.toml", line := 38})
+}
+
+definition{
+  name: dependency23,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Dependency,
+  body: (record Foundation.Reorg.V1.Model::Dependency {index := 23, source := 29, target := 28, kind := (ctor Foundation.Reorg.V1.Model::DependencyKind.crate), file := "crates/uor-r4-model-source/Cargo.toml", line := 29})
+}
+
+definition{
+  name: dependenciesFrom0,
+  parameters: [],
+  result: (List Foundation.Reorg.V1.Model::Dependency),
+  body: (cons (dependency0) (cons (dependency1) (cons (dependency2) (cons (dependency3) (cons (dependency4) (cons (dependency5) (cons (dependency6) (cons (dependency7) (cons (dependency8) (cons (dependency9) (cons (dependency10) (cons (dependency11) (cons (dependency12) (cons (dependency13) (cons (dependency14) (cons (dependency15) (cons (dependency16) (cons (dependency17) (cons (dependency18) (cons (dependency19) (cons (dependency20) (cons (dependency21) (cons (dependency22) (cons (dependency23) (nil Foundation.Reorg.V1.Model::Dependency)))))))))))))))))))))))))
+}
+
+definition{
+  name: dependencies,
+  parameters: [],
+  result: (List Foundation.Reorg.V1.Model::Dependency),
+  body: (dependenciesFrom0)
+}
+
+definition{
+  name: citation0,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 0, repository := 0, signal := (ctor Foundation.Reorg.V1.Model::Signal.reservedName), source := "https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/customizing-your-organizations-profile", line := 0, text := "If your organization does not already have a public .github repository, create a public .github repository."})
+}
+
+definition{
+  name: citation1,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 1, repository := 0, signal := (ctor Foundation.Reorg.V1.Model::Signal.quietActivity), source := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8", line := 0, text := "0 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-04-01T01:12:18Z"})
+}
+
+definition{
+  name: citation2,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 2, repository := 0, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:README.md", line := 3, text := "This is the main entry point for the UOR Foundation on GitHub."})
+}
+
+definition{
+  name: citation3,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 3, repository := 1, signal := (ctor Foundation.Reorg.V1.Model::Signal.archivedFlag), source := "ecosystem/snapshot.json", line := 15, text := "GitHub holds 5-Levels-of-UOR archived"})
+}
+
+definition{
+  name: citation4,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 4, repository := 1, signal := (ctor Foundation.Reorg.V1.Model::Signal.quietActivity), source := "UOR-Foundation/5-Levels-of-UOR@86dde40a976d2a7a7be16b31b6a509698e8eb5bb", line := 0, text := "0 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2025-03-11T03:17:54Z"})
+}
+
+definition{
+  name: citation5,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 5, repository := 1, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/5-Levels-of-UOR@86dde40a976d2a7a7be16b31b6a509698e8eb5bb:README.md", line := 2, text := "Explains how the Prime Framework works in 5 levels of difficulty."})
+}
+
+definition{
+  name: citation6,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 6, repository := 2, signal := (ctor Foundation.Reorg.V1.Model::Signal.archivedFlag), source := "ecosystem/snapshot.json", line := 23, text := "GitHub holds atlas-12288 archived"})
+}
+
+definition{
+  name: citation7,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 7, repository := 2, signal := (ctor Foundation.Reorg.V1.Model::Signal.quietActivity), source := "UOR-Foundation/atlas-12288@aef42a6fd5c323373222b6362050b439690136a1", line := 0, text := "0 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2025-10-03T17:26:19Z"})
+}
+
+definition{
+  name: citation8,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 8, repository := 2, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/atlas-12288@aef42a6fd5c323373222b6362050b439690136a1:README.md", line := 3, text := "A Lean 4 implementation of the Prime Structure/Φ-Atlas-12288 mathematical framework with FFI bindings for multiple languages."})
+}
+
+definition{
+  name: citation9,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 9, repository := 3, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/calculator-example@5051dc6adb18e9ca2b6ae4ca7090e638329831ef", line := 0, text := "9 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-09-09T17:15:47Z"})
+}
+
+definition{
+  name: citation10,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 10, repository := 3, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/calculator-example@5051dc6adb18e9ca2b6ae4ca7090e638329831ef:README.md", line := 3, text := "Calculator is the reference PrismPM product: one authoritative application model plus one authoritative production-system model become a portable Pages application and complete A/B service releases."})
+}
+
+definition{
+  name: citation11,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 11, repository := 4, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/community@1ef75b03a425abf09064f92db4fed0dd6bb23f62", line := 0, text := "114 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-11-15T18:22:45Z"})
+}
+
+definition{
+  name: citation12,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 12, repository := 4, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/community@1ef75b03a425abf09064f92db4fed0dd6bb23f62:README.md", line := 3, text := "The community model of the UOR Foundation, as a Prism application. It brings the Foundation's own norms (the Bylaws, the governance framework, the TOC lifecycle, the repository standards and the Code of Conduct) together with CHAOSS, the Linux Foundation's community health standard, implemented in full. Each claim in it is checked by the Lean kernel in the SDK that prismpm.lock pins."})
+}
+
+definition{
+  name: citation13,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 13, repository := 5, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/compression@c416f7f5f43e53f6888395e0b927041648b30f8f", line := 0, text := "65 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-11-15T08:54:29Z"})
+}
+
+definition{
+  name: citation14,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 14, repository := 5, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/compression@c416f7f5f43e53f6888395e0b927041648b30f8f:README.md", line := 6, text := "A lossless compression system whose compressed object is an exact executable Universal Object Reference synthesized under explicit accounting and evidence."})
+}
+
+definition{
+  name: citation15,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 15, repository := 6, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/F1@d45fe9f54eafbc86b5060efcaf604681482469c0", line := 0, text := "1640 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-08-27T16:26:11Z"})
+}
+
+definition{
+  name: citation16,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 16, repository := 6, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/F1@d45fe9f54eafbc86b5060efcaf604681482469c0:README.md", line := 5, text := "An active research program toward Spec ℤ ×{𝔽₁} Spec ℤ — the missing surface whose intersection-positivity is the Riemann Hypothesis."})
+}
+
+definition{
+  name: citation17,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 17, repository := 7, signal := (ctor Foundation.Reorg.V1.Model::Signal.familyMember), source := "reorg/snapshot.json", line := 0, text := "name family {foundry, foundry-web, uor-foundry}; no member has the most Foundation dependents; shares a name word with foundry-web, uor-foundry"})
+}
+
+definition{
+  name: citation18,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 18, repository := 7, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/foundry@9ccde14c10202a7c67cdc63e539918cfdc10a428", line := 0, text := "770 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-11-15T18:37:07Z"})
+}
+
+definition{
+  name: citation19,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 19, repository := 7, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/foundry@9ccde14c10202a7c67cdc63e539918cfdc10a428:README.md", line := 21, text := "Turn your ideas into apps you can prove. Describe what you want to build. Prism AI Foundry builds it, proves it, and publishes it to a live URL."})
+}
+
+definition{
+  name: citation20,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 20, repository := 8, signal := (ctor Foundation.Reorg.V1.Model::Signal.relocation), source := "UOR-Foundation/foundry-web@e8373c7c953bae6153fba7082c2b6c50f2f77392:README.md", line := 5, text := "uor-foundry owns the complete model, services, workflows, and stakeholder Views; this repository publishes its verified, authorized output without duplicating application logic."})
+}
+
+definition{
+  name: citation21,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 21, repository := 8, signal := (ctor Foundation.Reorg.V1.Model::Signal.relocation), source := "UOR-Foundation/foundry-web@e8373c7c953bae6153fba7082c2b6c50f2f77392:README.md", line := 36, text := "Application source and acceptance belong in uor-foundry, including the unaccepted draft-preview increment moved out of this repository."})
+}
+
+definition{
+  name: citation22,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 22, repository := 8, signal := (ctor Foundation.Reorg.V1.Model::Signal.familyMember), source := "reorg/snapshot.json", line := 0, text := "name family {foundry, foundry-web, uor-foundry}; no member has the most Foundation dependents; shares a name word with foundry, uor-foundry"})
+}
+
+definition{
+  name: citation23,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 23, repository := 8, signal := (ctor Foundation.Reorg.V1.Model::Signal.purposeNames), source := "UOR-Foundation/foundry-web@e8373c7c953bae6153fba7082c2b6c50f2f77392:README.md", line := 3, text := "the purpose names uor-foundry, outside its dependency closure: The publication repository for the Foundry organizational platform. uor-foundry owns the complete model, services, workflows, and stakeholder Views; this repository publishes its verified, authorized output without duplicating application logic. Organizations, including the UOR Foundation, are created through normal modeled workflows. No organization, account, or UOR-specific authority is preseeded."})
+}
+
+definition{
+  name: citation24,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 24, repository := 8, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/foundry-web@e8373c7c953bae6153fba7082c2b6c50f2f77392", line := 0, text := "59 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-10-05T04:10:04Z"})
+}
+
+definition{
+  name: citation25,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 25, repository := 8, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/foundry-web@e8373c7c953bae6153fba7082c2b6c50f2f77392:README.md", line := 3, text := "The publication repository for the Foundry organizational platform. uor-foundry owns the complete model, services, workflows, and stakeholder Views; this repository publishes its verified, authorized output without duplicating application logic. Organizations, including the UOR Foundation, are created through normal modeled workflows. No organization, account, or UOR-specific authority is preseeded."})
+}
+
+definition{
+  name: citation26,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 26, repository := 9, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/holo-search@c477b69c0e3f95658aedecaeb2fa9c057d9b58a6", line := 0, text := "15 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-11-10T12:59:24Z"})
+}
+
+definition{
+  name: citation27,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 27, repository := 9, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/holo-search@c477b69c0e3f95658aedecaeb2fa9c057d9b58a6:README.md", line := 3, text := "Search and run self-verifying Prism apps by their address."})
+}
+
+definition{
+  name: citation28,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 28, repository := 10, signal := (ctor Foundation.Reorg.V1.Model::Signal.familyMember), source := "reorg/snapshot.json", line := 0, text := "name family {kappa-distribution, kappa-registry}; no member has the most Foundation dependents; shares a name word with kappa-registry"})
+}
+
+definition{
+  name: citation29,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 29, repository := 10, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/kappa-distribution@2475e701f25ed5887aba8b68a39ecc0f87faad6f", line := 0, text := "1 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-07-23T00:30:47Z"})
+}
+
+definition{
+  name: citation30,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 30, repository := 11, signal := (ctor Foundation.Reorg.V1.Model::Signal.familyMember), source := "reorg/snapshot.json", line := 0, text := "name family {kappa-distribution, kappa-registry}; no member has the most Foundation dependents; shares a name word with kappa-distribution"})
+}
+
+definition{
+  name: citation31,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 31, repository := 11, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/kappa-registry@bd231d0cc315d56e51369aff299f6741b8d8ce04", line := 0, text := "27 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-11-07T23:50:40Z"})
+}
+
+definition{
+  name: citation32,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 32, repository := 11, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/kappa-registry@bd231d0cc315d56e51369aff299f6741b8d8ce04:README.md", line := 3, text := "A single-binary server that speaks Docker, Git, S3, Nix, and AT Protocol, storing everything in one content-addressed database. One process, one port, one data directory."})
+}
+
+definition{
+  name: citation33,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 33, repository := 12, signal := (ctor Foundation.Reorg.V1.Model::Signal.familyHub), source := "reorg/snapshot.json", line := 0, text := "name family {LexLean, lexlean-mcp, MCP}; LexLean has the most Foundation dependents (4); shares a name word with lexlean-mcp, MCP"})
+}
+
+definition{
+  name: citation34,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 34, repository := 12, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/compression@c416f7f5f43e53f6888395e0b927041648b30f8f:crates/model/Cargo.toml", line := 23, text := "compression depends on LexLean (crate): lexlean = \"=0.4.0\""})
+}
+
+definition{
+  name: citation35,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 35, repository := 12, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/foundry@9ccde14c10202a7c67cdc63e539918cfdc10a428:v2/in-tab-check/crate/Cargo.toml", line := 13, text := "foundry depends on LexLean (crate): lexlean = { path = \"../../../../lexlean\" }"})
+}
+
+definition{
+  name: citation36,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 36, repository := 12, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/lexlean-mcp@ece9ef390260479edbad69c3a9d9f51edc16c885:crates/build-id/Cargo.toml", line := 14, text := "lexlean-mcp depends on LexLean (crate): lexlean = \"=0.4.0\""})
+}
+
+definition{
+  name: citation37,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 37, repository := 12, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/PrismPM@ece658394448f09a5760fb0bec9b1fa8f065ed0e:Cargo.toml", line := 27, text := "PrismPM depends on LexLean (crate): lexlean = { version = \"0.4.0\", path = \"vendor/lexlean\" }"})
+}
+
+definition{
+  name: citation38,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 38, repository := 12, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/LexLean@71defb4c663aaec5b9a3aab04cbc6a03e7106227", line := 0, text := "1504 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-10-27T14:43:16Z"})
+}
+
+definition{
+  name: citation39,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 39, repository := 12, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/LexLean@71defb4c663aaec5b9a3aab04cbc6a03e7106227:README.md", line := 7, text := "LexLean compiles .lex.tex modules written in a closed controlled language. Every word, symbol, and control comes from a versioned lexicon package. Every sentence follows a fixed grammar. One typed representation produces both the canonical LaTeX document and a Lean 4 program with no prose."})
+}
+
+definition{
+  name: citation40,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 40, repository := 13, signal := (ctor Foundation.Reorg.V1.Model::Signal.familyMember), source := "reorg/snapshot.json", line := 0, text := "name family {LexLean, lexlean-mcp, MCP}; LexLean has the most Foundation dependents; shares a name word with LexLean, MCP"})
+}
+
+definition{
+  name: citation41,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 41, repository := 13, signal := (ctor Foundation.Reorg.V1.Model::Signal.purposeNames), source := "UOR-Foundation/lexlean-mcp@ece9ef390260479edbad69c3a9d9f51edc16c885:README.md", line := 3, text := "the purpose names MCP, outside its dependency closure: LexLean MCP serves LexLean to LLM clients over the Model Context Protocol. LexLean establishes meaning over the UOR Atlas; this server adds no meaning of its own. A document an LLM writes through it reaches its reader only as the canonical rendering of a verified LexLean module, bound to its signed attestation."})
+}
+
+definition{
+  name: citation42,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 42, repository := 13, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/lexlean-mcp@ece9ef390260479edbad69c3a9d9f51edc16c885", line := 0, text := "94 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-11-13T20:10:18Z"})
+}
+
+definition{
+  name: citation43,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 43, repository := 13, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/lexlean-mcp@ece9ef390260479edbad69c3a9d9f51edc16c885:README.md", line := 3, text := "LexLean MCP serves LexLean to LLM clients over the Model Context Protocol. LexLean establishes meaning over the UOR Atlas; this server adds no meaning of its own. A document an LLM writes through it reaches its reader only as the canonical rendering of a verified LexLean module, bound to its signed attestation."})
+}
+
+definition{
+  name: citation44,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 44, repository := 14, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/malachite-usdc@23431008f0ccc2899c3a1ecb9243a2578d5c7156", line := 0, text := "2 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-08-04T20:31:30Z"})
+}
+
+definition{
+  name: citation45,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 45, repository := 14, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/malachite-usdc@23431008f0ccc2899c3a1ecb9243a2578d5c7156:README.md", line := 3, text := "Measured: consensus finality that stays flat as validators are added, and 1.7-2x more transactions per second - by referencing transactions instead of re-sending them during consensus. Validated against circlefin/malachite (the consensus engine behind Circle's Arc blockchain) with real USDC traffic from Ethereum mainnet. Every number below is reproducible from this repository."})
+}
+
+definition{
+  name: citation46,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 46, repository := 15, signal := (ctor Foundation.Reorg.V1.Model::Signal.familyMember), source := "reorg/snapshot.json", line := 0, text := "name family {LexLean, lexlean-mcp, MCP}; LexLean has the most Foundation dependents; shares a name word with LexLean, lexlean-mcp"})
+}
+
+definition{
+  name: citation47,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 47, repository := 15, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/MCP@5b34b2633e2707993221019b81fae2bf9c4103d6", line := 0, text := "38 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-11-13T10:04:24Z"})
+}
+
+definition{
+  name: citation48,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 48, repository := 15, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/MCP@5b34b2633e2707993221019b81fae2bf9c4103d6:README.md", line := 3, text := "The Model Context Protocol revision 2026-07-28, implemented as a server protocol core in LexLean."})
+}
+
+definition{
+  name: citation49,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 49, repository := 16, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/MNIST@515f75f9f01470df8cac095cdc22f5aebcc252c7", line := 0, text := "28 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-10-14T22:25:28Z"})
+}
+
+definition{
+  name: citation50,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 50, repository := 16, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/MNIST@515f75f9f01470df8cac095cdc22f5aebcc252c7:README.md", line := 3, text := "The ONNX Model Zoo's int8 MNIST network as one LexLean model: its parameters are content-addressed artifacts, its network is a language-1.2 graph, its boundary is a contract with validators and evidence, and its product is a certified Rust package bundle that replays offline. Everything under src/Mnist/ is the single source; the Lean, the LaTeX, the kernel theorems, the certificates and the Rust package are derived from it by the locked LexLean compiler, and nothing in this repository implements the model in any other language (R1)."})
+}
+
+definition{
+  name: citation51,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 51, repository := 17, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/nest-uor@5a469e7d207af7dcca54df0de39e38c54c953569", line := 0, text := "1 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-08-16T01:44:19Z"})
+}
+
+definition{
+  name: citation52,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 52, repository := 17, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/nest-uor@5a469e7d207af7dcca54df0de39e38c54c953569:README.md", line := 3, text := "Structural content addressing for Nanda Town's DataFacts layer (layer 12)."})
+}
+
+definition{
+  name: citation53,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 53, repository := 18, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/OOO@d0bdb29bdfeba50590bf42b4f9071e0d4bbc2dc6", line := 0, text := "1 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-08-04T21:30:28Z"})
+}
+
+definition{
+  name: citation54,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 54, repository := 19, signal := (ctor Foundation.Reorg.V1.Model::Signal.familyMember), source := "reorg/snapshot.json", line := 0, text := "name family {prism, prism-code, PrismPM}; PrismPM has the most Foundation dependents; shares a name word with prism-code, PrismPM"})
+}
+
+definition{
+  name: citation55,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 55, repository := 19, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/uor-addr@20a1c5723fc8f5d645972c8d6f5c57459846302e:Cargo.toml", line := 48, text := "uor-addr depends on prism (crate): uor-prism          = { version = \"0.4\", default-features = false }"})
+}
+
+definition{
+  name: citation56,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 56, repository := 19, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/uor-r4@44e2a6f062e9196fe68291259bff459dde0bde44:archive/vendor-snapshots/uor_standards/prism/Cargo.toml", line := 44, text := "uor-r4 depends on prism (crate): uor-prism-numerics = { version = \"0.4.0\", path = \"crates/uor-prism-numerics\", default-features = false }"})
+}
+
+definition{
+  name: citation57,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 57, repository := 19, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/prism@507995bab43c0cb06ec244c96e6fc25b3f502204", line := 0, text := "16 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-05-24T00:27:09Z"})
+}
+
+definition{
+  name: citation58,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 58, repository := 19, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/prism@507995bab43c0cb06ec244c96e6fc25b3f502204:README.md", line := 3, text := "Source repository and publishing pipeline for the Prism standard library — the implementation of the Prism system specified by the UOR-Framework wiki. Per wiki ADR-031, prism IS the standard library: a façade re-exporting the uor-foundation substrate together with the Layer-3 sub-crates that contribute the built-in axes and built-in types it surfaces."})
+}
+
+definition{
+  name: citation59,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 59, repository := 20, signal := (ctor Foundation.Reorg.V1.Model::Signal.familyMember), source := "reorg/snapshot.json", line := 0, text := "name family {prism, prism-code, PrismPM}; PrismPM has the most Foundation dependents; shares a name word with prism, PrismPM"})
+}
+
+definition{
+  name: citation60,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 60, repository := 20, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/prism-code@67ab3e8b2092ad5812b0c34fd074cb33762366aa", line := 0, text := "64 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-11-12T13:17:18Z"})
+}
+
+definition{
+  name: citation61,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 61, repository := 20, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/prism-code@67ab3e8b2092ad5812b0c34fd074cb33762366aa:README.md", line := 3, text := "dataflow-policy checks a Prism dataflow project script against its declared memory and PII-encryption policies, and emits the project's canonical form. It is a Prism application: its behavior is authored once in LexLean (src/.lex.tex) and PrismPM generates the verified browser application (GitHub Pages) and the command-line interface from that single model. No application behavior is written by hand outside the model."})
+}
+
+definition{
+  name: citation62,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 62, repository := 21, signal := (ctor Foundation.Reorg.V1.Model::Signal.familyHub), source := "reorg/snapshot.json", line := 0, text := "name family {prism, prism-code, PrismPM}; PrismPM has the most Foundation dependents (12); shares a name word with prism, prism-code"})
+}
+
+definition{
+  name: citation63,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 63, repository := 21, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/calculator-example@5051dc6adb18e9ca2b6ae4ca7090e638329831ef:.github/workflows/pages.yml", line := 74, text := "calculator-example depends on PrismPM (workflow): uses: UOR-Foundation/PrismPM/action@d20a1f9455a0719ba5ec162b7c28f4f1855f4882"})
+}
+
+definition{
+  name: citation64,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 64, repository := 21, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/community@1ef75b03a425abf09064f92db4fed0dd6bb23f62:.github/workflows/prismpm.yml", line := 95, text := "community depends on PrismPM (workflow): uses: UOR-Foundation/PrismPM/action@35e9f01d5415ed4b0b64c152238f291546957ec4 # prismpm-action-input"})
+}
+
+definition{
+  name: citation65,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 65, repository := 21, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/compression@c416f7f5f43e53f6888395e0b927041648b30f8f:.github/workflows/prismpm.yml", line := 95, text := "compression depends on PrismPM (workflow): uses: UOR-Foundation/PrismPM/action@f785ee46d794886c29b7efe80c2b261e48733a15 # prismpm-action-input"})
+}
+
+definition{
+  name: citation66,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 66, repository := 21, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/foundry@9ccde14c10202a7c67cdc63e539918cfdc10a428:.github/workflows/prismpm.yml", line := 95, text := "foundry depends on PrismPM (workflow): uses: UOR-Foundation/PrismPM/action@35e9f01d5415ed4b0b64c152238f291546957ec4 # prismpm-action-input"})
+}
+
+definition{
+  name: citation67,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 67, repository := 21, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/foundry-web@e8373c7c953bae6153fba7082c2b6c50f2f77392:.github/workflows/prismpm.yml", line := 95, text := "foundry-web depends on PrismPM (workflow): uses: UOR-Foundation/PrismPM/action@d0174e1d64339f73091fe4c59d5d6bf532a37d1f # prismpm-action-input"})
+}
+
+definition{
+  name: citation68,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 68, repository := 21, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/holo-search@c477b69c0e3f95658aedecaeb2fa9c057d9b58a6:.github/workflows/prismpm.yml", line := 95, text := "holo-search depends on PrismPM (workflow): uses: UOR-Foundation/PrismPM/action@35e9f01d5415ed4b0b64c152238f291546957ec4 # prismpm-action-input"})
+}
+
+definition{
+  name: citation69,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 69, repository := 21, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/lexlean-mcp@ece9ef390260479edbad69c3a9d9f51edc16c885:.github/workflows/prismpm.yml", line := 95, text := "lexlean-mcp depends on PrismPM (workflow): uses: UOR-Foundation/PrismPM/action@3b1cca75a629d8212bb22f8d5790baf915beba60 # prismpm-action-input"})
+}
+
+definition{
+  name: citation70,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 70, repository := 21, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/MCP@5b34b2633e2707993221019b81fae2bf9c4103d6:.github/workflows/prismpm.yml", line := 95, text := "MCP depends on PrismPM (workflow): uses: UOR-Foundation/PrismPM/action@f785ee46d794886c29b7efe80c2b261e48733a15 # prismpm-action-input"})
+}
+
+definition{
+  name: citation71,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 71, repository := 21, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/MNIST@515f75f9f01470df8cac095cdc22f5aebcc252c7:.github/workflows/prismpm.yml", line := 95, text := "MNIST depends on PrismPM (workflow): uses: UOR-Foundation/PrismPM/action@f785ee46d794886c29b7efe80c2b261e48733a15 # prismpm-action-input"})
+}
+
+definition{
+  name: citation72,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 72, repository := 21, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/prism-code@67ab3e8b2092ad5812b0c34fd074cb33762366aa:.github/workflows/prismpm.yml", line := 95, text := "prism-code depends on PrismPM (workflow): uses: UOR-Foundation/PrismPM/action@b48ee2ffa4d2097685054dc350b57aa204fc7080 # prismpm-action-input"})
+}
+
+definition{
+  name: citation73,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 73, repository := 21, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/template@0851bb41138041f0f75118135fd8a342109c2d73:.github/workflows/prismpm.yml", line := 95, text := "template depends on PrismPM (workflow): uses: UOR-Foundation/PrismPM/action@b48ee2ffa4d2097685054dc350b57aa204fc7080 # prismpm-action-input"})
+}
+
+definition{
+  name: citation74,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 74, repository := 21, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/uor-foundry@fdab06c9ab30d594c917040908485068ea6f9c9f:.github/workflows/prismpm.yml", line := 95, text := "uor-foundry depends on PrismPM (workflow): uses: UOR-Foundation/PrismPM/action@d0174e1d64339f73091fe4c59d5d6bf532a37d1f # prismpm-action-input"})
+}
+
+definition{
+  name: citation75,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 75, repository := 21, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/PrismPM@ece658394448f09a5760fb0bec9b1fa8f065ed0e", line := 0, text := "1800 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-11-15T17:15:43Z"})
+}
+
+definition{
+  name: citation76,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 76, repository := 21, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/PrismPM@ece658394448f09a5760fb0bec9b1fa8f065ed0e:README.md", line := 3, text := "PrismPM compiles authoritative Prism models into verified software artifacts. A model is a closed .lex.tex source graph: LexLean produces its semantic snapshot and Lean, Lean checks the proofs, lean4-prod exports only named verified roots, and generic generators produce Cargo, Core-Wasm, View, browser, and Hologram artifacts. Prism application behavior is never supplied by handwritten Lean or target-specific application code."})
+}
+
+definition{
+  name: citation77,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 77, repository := 22, signal := (ctor Foundation.Reorg.V1.Model::Signal.archivedFlag), source := "ecosystem/snapshot.json", line := 450, text := "GitHub holds research archived"})
+}
+
+definition{
+  name: citation78,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 78, repository := 22, signal := (ctor Foundation.Reorg.V1.Model::Signal.quietActivity), source := "UOR-Foundation/research@bfccda396aab1aea5dee649fbe5180499d236cec", line := 0, text := "0 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-02-15T18:21:00Z"})
+}
+
+definition{
+  name: citation79,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 79, repository := 22, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/research@bfccda396aab1aea5dee649fbe5180499d236cec:README.md", line := 3, text := "This repository is the official open-source research directory of the UOR Foundation. It contains foundational mathematical and scientific frameworks developed to enable rigorous validation, interoperability, and scalable discovery."})
+}
+
+definition{
+  name: citation80,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 80, repository := 23, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/template@0851bb41138041f0f75118135fd8a342109c2d73", line := 0, text := "223 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-11-15T00:27:01Z"})
+}
+
+definition{
+  name: citation81,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 81, repository := 23, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/template@0851bb41138041f0f75118135fd8a342109c2d73:README.md", line := 26, text := "The starting point for a Prism application: a repository whose every claim is registered, specified as a scenario, tested, and accepted by one gate running in one digest-pinned SDK."})
+}
+
+definition{
+  name: citation82,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 82, repository := 24, signal := (ctor Foundation.Reorg.V1.Model::Signal.soleConsumer), source := "UOR-Foundation/uor-r4@44e2a6f062e9196fe68291259bff459dde0bde44:archive/vendor-snapshots/uor_standards/uor-addr/Cargo.toml", line := 38, text := "uor-r4 depends on uor-addr (crate): uor-addr      = { path = \"crates/uor-addr\",      version = \"0.2.0\", default-features = false }"})
+}
+
+definition{
+  name: citation83,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 83, repository := 24, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/uor-addr@20a1c5723fc8f5d645972c8d6f5c57459846302e", line := 0, text := "36 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-10-15T05:08:23Z"})
+}
+
+definition{
+  name: citation84,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 84, repository := 24, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/uor-addr@20a1c5723fc8f5d645972c8d6f5c57459846302e:README.md", line := 3, text := "Typed content-addressing for data passing across system boundaries — deterministic, verifiable sha256:<64hex> labels with structural equivalence at the level of what the data means, not what its bytes happen to look like."})
+}
+
+definition{
+  name: citation85,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 85, repository := 25, signal := (ctor Foundation.Reorg.V1.Model::Signal.familyMember), source := "reorg/snapshot.json", line := 0, text := "name family {foundry, foundry-web, uor-foundry}; no member has the most Foundation dependents; shares a name word with foundry, foundry-web"})
+}
+
+definition{
+  name: citation86,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 86, repository := 25, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/uor-foundry@fdab06c9ab30d594c917040908485068ea6f9c9f", line := 0, text := "91 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-10-04T15:51:59Z"})
+}
+
+definition{
+  name: citation87,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 87, repository := 25, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/uor-foundry@fdab06c9ab30d594c917040908485068ea6f9c9f:README.md", line := 3, text := "Foundry is a generic organization-management platform modeled with PrismPM. Organizations and their physical sites are created through normal workflows; no account, organization or administrator mailbox is pre-seeded. UOR Foundation is one such organization, with its Citizen Gardens operating model and Foundry sites, not a privileged platform identity."})
+}
+
+definition{
+  name: citation88,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 88, repository := 26, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/malachite-usdc@23431008f0ccc2899c3a1ecb9243a2578d5c7156:benchmarks/execution/uorbench/Cargo.toml", line := 7, text := "malachite-usdc depends on UOR-Framework (crate): uor-foundation = { version = \"0.5.2\", features = [\"std\", \"alloc\"] }"})
+}
+
+definition{
+  name: citation89,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 89, repository := 26, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/prism@507995bab43c0cb06ec244c96e6fc25b3f502204:Cargo.toml", line := 37, text := "prism depends on UOR-Framework (crate): uor-foundation = { version = \"0.5\", default-features = false }"})
+}
+
+definition{
+  name: citation90,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 90, repository := 26, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/uor-addr@20a1c5723fc8f5d645972c8d6f5c57459846302e:Cargo.toml", line := 59, text := "uor-addr depends on UOR-Framework (crate): uor-foundation     = { version = \"0.5.2\" }"})
+}
+
+definition{
+  name: citation91,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 91, repository := 26, signal := (ctor Foundation.Reorg.V1.Model::Signal.sharedConsumer), source := "UOR-Foundation/uor-r4@44e2a6f062e9196fe68291259bff459dde0bde44:archive/vendor-snapshots/uor_standards/UOR-Framework/Cargo.toml", line := 33, text := "uor-r4 depends on UOR-Framework (crate): uor-foundation = { version = \"0.5.2\", path = \"foundation\" }"})
+}
+
+definition{
+  name: citation92,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 92, repository := 26, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/UOR-Framework@51c01382200b0179d6640b07e9c8119364ab69a1", line := 0, text := "27 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-05-23T21:14:31Z"})
+}
+
+definition{
+  name: citation93,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 93, repository := 26, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/UOR-Framework@51c01382200b0179d6640b07e9c8119364ab69a1:README.md", line := 5, text := "The Universal Object Reference (UOR) Framework is a Rust workspace implementing the UOR Foundation ontology — a mathematical framework for content-addressed, symmetric, multi-metric object spaces with algebraic structure based on Z/(2^n)Z."})
+}
+
+definition{
+  name: citation94,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 94, repository := 27, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/uor-jcs-nfc@303591128094362857791930fdc12b73875d1ff6", line := 0, text := "1 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-09-11T15:49:19Z"})
+}
+
+definition{
+  name: citation95,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 95, repository := 27, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/uor-jcs-nfc@303591128094362857791930fdc12b73875d1ff6:README.md", line := 3, text := "Publication status — provisional RC5 draft. SPEC.md version 1.1 and uorjcsnfcref.py are the stable publication targets in this commit. The aggregate corpus in conformance/ is retained as author-side RC5 history; it is not the canonical registry corpus. Its observed contrast record is a breaking shape change and therefore requires regeneration as uor-vectors-v2. Whether that regeneration also includes CPB per-file vectors remains pending. A registry entry must cite the later final commit, not this provisional corpus."})
+}
+
+definition{
+  name: citation96,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 96, repository := 28, signal := (ctor Foundation.Reorg.V1.Model::Signal.soleConsumer), source := "UOR-Foundation/uor-r4@44e2a6f062e9196fe68291259bff459dde0bde44:crates/uor-r4-model-source/Cargo.toml", line := 29, text := "uor-r4 depends on uor-matmul (crate): uor-matmul = { git = \"https://github.com/UOR-Foundation/uor-matmul.git\", version = \"0.1.0\", rev = \"b13c98449948174f590e337c4dc25dfc394a07d0\", default-features = false, features = [\"std\"] }"})
+}
+
+definition{
+  name: citation97,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 97, repository := 28, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/uor-matmul@3cc5882f210667f9ac00fd8c02c5b5957b493f5d", line := 0, text := "188 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-08-14T22:46:32Z"})
+}
+
+definition{
+  name: citation98,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 98, repository := 28, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/uor-matmul@3cc5882f210667f9ac00fd8c02c5b5957b493f5d:README.md", line := 3, text := "Decode the code, accumulate exactly, encode once."})
+}
+
+definition{
+  name: citation99,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 99, repository := 29, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/uor-r4@44e2a6f062e9196fe68291259bff459dde0bde44", line := 0, text := "3469 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-11-15T16:38:10Z"})
+}
+
+definition{
+  name: citation100,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 100, repository := 29, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/uor-r4@44e2a6f062e9196fe68291259bff459dde0bde44:README.md", line := 3, text := "An open research project: can geometry replace a transformer's run-time machinery in a language model that runs on a laptop?"})
+}
+
+definition{
+  name: citation101,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 101, repository := 30, signal := (ctor Foundation.Reorg.V1.Model::Signal.recentActivity), source := "UOR-Foundation/website@e82ffdedc5d85ebd0bde239d50d4651005045d31", line := 0, text := "164 commits on main from 2026-05-19T18:49:57Z to 2026-11-15T18:49:57Z; last commit 2026-11-14T00:50:49Z"})
+}
+
+definition{
+  name: citation102,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Citation,
+  body: (record Foundation.Reorg.V1.Model::Citation {index := 102, repository := 30, signal := (ctor Foundation.Reorg.V1.Model::Signal.purpose), source := "UOR-Foundation/website@e82ffdedc5d85ebd0bde239d50d4651005045d31:README.md", line := 3, text := "The UOR Foundation website: a lean, fast site for the UOR framework and the Prism SDK, built with React, Vite and Tailwind."})
+}
+
+definition{
+  name: citationsFrom96,
+  parameters: [],
+  result: (List Foundation.Reorg.V1.Model::Citation),
+  body: (cons (citation96) (cons (citation97) (cons (citation98) (cons (citation99) (cons (citation100) (cons (citation101) (cons (citation102) (nil Foundation.Reorg.V1.Model::Citation))))))))
+}
+
+definition{
+  name: citationsFrom48,
+  parameters: [],
+  result: (List Foundation.Reorg.V1.Model::Citation),
+  body: (cons (citation48) (cons (citation49) (cons (citation50) (cons (citation51) (cons (citation52) (cons (citation53) (cons (citation54) (cons (citation55) (cons (citation56) (cons (citation57) (cons (citation58) (cons (citation59) (cons (citation60) (cons (citation61) (cons (citation62) (cons (citation63) (cons (citation64) (cons (citation65) (cons (citation66) (cons (citation67) (cons (citation68) (cons (citation69) (cons (citation70) (cons (citation71) (cons (citation72) (cons (citation73) (cons (citation74) (cons (citation75) (cons (citation76) (cons (citation77) (cons (citation78) (cons (citation79) (cons (citation80) (cons (citation81) (cons (citation82) (cons (citation83) (cons (citation84) (cons (citation85) (cons (citation86) (cons (citation87) (cons (citation88) (cons (citation89) (cons (citation90) (cons (citation91) (cons (citation92) (cons (citation93) (cons (citation94) (cons (citation95) (citationsFrom96)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: citationsFrom0,
+  parameters: [],
+  result: (List Foundation.Reorg.V1.Model::Citation),
+  body: (cons (citation0) (cons (citation1) (cons (citation2) (cons (citation3) (cons (citation4) (cons (citation5) (cons (citation6) (cons (citation7) (cons (citation8) (cons (citation9) (cons (citation10) (cons (citation11) (cons (citation12) (cons (citation13) (cons (citation14) (cons (citation15) (cons (citation16) (cons (citation17) (cons (citation18) (cons (citation19) (cons (citation20) (cons (citation21) (cons (citation22) (cons (citation23) (cons (citation24) (cons (citation25) (cons (citation26) (cons (citation27) (cons (citation28) (cons (citation29) (cons (citation30) (cons (citation31) (cons (citation32) (cons (citation33) (cons (citation34) (cons (citation35) (cons (citation36) (cons (citation37) (cons (citation38) (cons (citation39) (cons (citation40) (cons (citation41) (cons (citation42) (cons (citation43) (cons (citation44) (cons (citation45) (cons (citation46) (cons (citation47) (citationsFrom48)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: citations,
+  parameters: [],
+  result: (List Foundation.Reorg.V1.Model::Citation),
+  body: (citationsFrom0)
+}
+
+definition{
+  name: candidate0,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Candidate,
+  body: (record Foundation.Reorg.V1.Model::Candidate {index := 0, repository := 7, host := 7, refusal := "undecided-req-006", signals := "familyMember", detail := "foundry: its name shares a word with other Foundation repositories; no single kept host is named, so no fold is staged. The TOC decides it (toc/README.md Archived: TOC vote (simple majority))."})
+}
+
+definition{
+  name: candidate1,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Candidate,
+  body: (record Foundation.Reorg.V1.Model::Candidate {index := 1, repository := 8, host := 8, refusal := "undecided-req-005", signals := "relocation familyMember purposeNames", detail := "foundry-web: its README says part of its content belongs in another Foundation repository; the candidate host uor-foundry is not itself kept, so no fold is staged. The TOC decides it (toc/README.md Archived: TOC vote (simple majority))."})
+}
+
+definition{
+  name: candidate2,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Candidate,
+  body: (record Foundation.Reorg.V1.Model::Candidate {index := 2, repository := 10, host := 10, refusal := "undecided-req-006", signals := "familyMember", detail := "kappa-distribution: its name shares a word with other Foundation repositories; no single kept host is named, so no fold is staged. The TOC decides it (toc/README.md Archived: TOC vote (simple majority))."})
+}
+
+definition{
+  name: candidate3,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Candidate,
+  body: (record Foundation.Reorg.V1.Model::Candidate {index := 3, repository := 11, host := 11, refusal := "undecided-req-006", signals := "familyMember", detail := "kappa-registry: its name shares a word with other Foundation repositories; no single kept host is named, so no fold is staged. The TOC decides it (toc/README.md Archived: TOC vote (simple majority))."})
+}
+
+definition{
+  name: candidate4,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Candidate,
+  body: (record Foundation.Reorg.V1.Model::Candidate {index := 4, repository := 13, host := 12, refusal := "undecided-req-006", signals := "familyMember purposeNames", detail := "lexlean-mcp: its name shares a word with other Foundation repositories; the candidate host is LexLean, which is kept. The TOC decides it (toc/README.md Archived: TOC vote (simple majority))."})
+}
+
+definition{
+  name: candidate5,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Candidate,
+  body: (record Foundation.Reorg.V1.Model::Candidate {index := 5, repository := 15, host := 12, refusal := "undecided-req-006", signals := "familyMember", detail := "MCP: its name shares a word with other Foundation repositories; the candidate host is LexLean, which is kept. The TOC decides it (toc/README.md Archived: TOC vote (simple majority))."})
+}
+
+definition{
+  name: candidate6,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Candidate,
+  body: (record Foundation.Reorg.V1.Model::Candidate {index := 6, repository := 19, host := 21, refusal := "undecided-req-006", signals := "familyMember", detail := "prism: its name shares a word with other Foundation repositories; the candidate host is PrismPM, which is kept. The TOC decides it (toc/README.md Archived: TOC vote (simple majority))."})
+}
+
+definition{
+  name: candidate7,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Candidate,
+  body: (record Foundation.Reorg.V1.Model::Candidate {index := 7, repository := 20, host := 21, refusal := "undecided-req-006", signals := "familyMember", detail := "prism-code: its name shares a word with other Foundation repositories; the candidate host is PrismPM, which is kept. The TOC decides it (toc/README.md Archived: TOC vote (simple majority))."})
+}
+
+definition{
+  name: candidate8,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Candidate,
+  body: (record Foundation.Reorg.V1.Model::Candidate {index := 8, repository := 24, host := 29, refusal := "undecided-req-007", signals := "soleConsumer", detail := "uor-addr: exactly one other Foundation repository depends on it; the candidate host is uor-r4, which is kept. The TOC decides it (toc/README.md Archived: TOC vote (simple majority))."})
+}
+
+definition{
+  name: candidate9,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Candidate,
+  body: (record Foundation.Reorg.V1.Model::Candidate {index := 9, repository := 25, host := 25, refusal := "undecided-req-006", signals := "familyMember", detail := "uor-foundry: its name shares a word with other Foundation repositories; no single kept host is named, so no fold is staged. The TOC decides it (toc/README.md Archived: TOC vote (simple majority))."})
+}
+
+definition{
+  name: candidate10,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Candidate,
+  body: (record Foundation.Reorg.V1.Model::Candidate {index := 10, repository := 28, host := 29, refusal := "undecided-req-007", signals := "soleConsumer", detail := "uor-matmul: exactly one other Foundation repository depends on it; the candidate host is uor-r4, which is kept. The TOC decides it (toc/README.md Archived: TOC vote (simple majority))."})
+}
+
+definition{
+  name: candidatesFrom0,
+  parameters: [],
+  result: (List Foundation.Reorg.V1.Model::Candidate),
+  body: (cons (candidate0) (cons (candidate1) (cons (candidate2) (cons (candidate3) (cons (candidate4) (cons (candidate5) (cons (candidate6) (cons (candidate7) (cons (candidate8) (cons (candidate9) (cons (candidate10) (nil Foundation.Reorg.V1.Model::Candidate))))))))))))
+}
+
+definition{
+  name: candidates,
+  parameters: [],
+  result: (List Foundation.Reorg.V1.Model::Candidate),
+  body: (candidatesFrom0)
+}
+
+definition{
+  name: normGap0,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::NormGap,
+  body: (record Foundation.Reorg.V1.Model::NormGap {index := 0, norm := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:toc/README.md", digest := "sha256:9674e625d93cefc9e490b3af5ae449f8770eeadb50c85e68597f741656c2d2a2", refusal := "fold-undefined", detail := "No norm defines folding one repository into another. A fold is modeled as the act the norms do define: the TOC Archived stage on supersession (toc/README.md, TOC vote, simple majority), taken after the host imports the content, with context kept in the README (GOVERNANCE.md 11)."})
+}
+
+definition{
+  name: normGap1,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::NormGap,
+  body: (record Foundation.Reorg.V1.Model::NormGap {index := 1, norm := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:toc/README.md", digest := "sha256:9674e625d93cefc9e490b3af5ae449f8770eeadb50c85e68597f741656c2d2a2", refusal := "inactivity-unquantified", detail := "toc/README.md names \"Sustained inactivity, maintainer request, or supersession\" and GOVERNANCE.md 11 says \"Archive only when inactive or superseded, and keep context in README.\", but no norm says how long inactivity must last; a quiet window only raises a candidate."})
+}
+
+definition{
+  name: normGap2,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::NormGap,
+  body: (record Foundation.Reorg.V1.Model::NormGap {index := 2, norm := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:toc/README.md", digest := "sha256:9674e625d93cefc9e490b3af5ae449f8770eeadb50c85e68597f741656c2d2a2", refusal := "archival-application-unspecified", detail := "toc/README.md specifies how to apply for Sandbox, Incubation and Graduation, but not how an archival is proposed, by whom, or the title it is filed under; the staged application uses \"[Archived] <repository>\" by analogy with \"[Incubation]\" and \"[Graduation]\"."})
+}
+
+definition{
+  name: normGap3,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::NormGap,
+  body: (record Foundation.Reorg.V1.Model::NormGap {index := 3, norm := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:STANDARDS.md", digest := "sha256:87977973277069d38bb3b9851c5f323182e15528184c5e2029dc631b133a4b26", refusal := "status-without-stage", detail := "STANDARDS.md status tags [active, maintenance, deprecated, archived] include [deprecated], which neither the TOC stages [Sandbox, Incubation, Graduated, Archived] nor the GOVERNANCE.md 11 lifecycle [Proposal, Active, Maintenance, Archived] defines, so a deprecation has no lifecycle decision."})
+}
+
+definition{
+  name: normGap4,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::NormGap,
+  body: (record Foundation.Reorg.V1.Model::NormGap {index := 4, norm := "UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/GOVERNANCE.md", digest := "sha256:96caf3ce9c8a574b5672fcab72648dea6085354ca6bf2eada05e5746f079f574", refusal := "issue-transfer-undefined", detail := "No norm says what happens to the open issues and pull requests of a repository that is archived or folded; the staged acts transfer open issues to the host, which GitHub allows only within one organization."})
+}
+
+definition{
+  name: normGapsFrom0,
+  parameters: [],
+  result: (List Foundation.Reorg.V1.Model::NormGap),
+  body: (cons (normGap0) (cons (normGap1) (cons (normGap2) (cons (normGap3) (cons (normGap4) (nil Foundation.Reorg.V1.Model::NormGap))))))
+}
+
+definition{
+  name: normGaps,
+  parameters: [],
+  result: (List Foundation.Reorg.V1.Model::NormGap),
+  body: (normGapsFrom0)
+}
+
+definition{
+  name: act0,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 0, repository := 7, host := 7, step := 1, action := (ctor Foundation.Reorg.V1.Model::Action.tocApplication), command := "ISSUE=$(gh issue create --repo UOR-Foundation/.github --title \"[Review] foundry\" --body \"foundry (UOR-Foundation/foundry@9ccde14c10202a7c67cdc63e539918cfdc10a428) is a reorganization candidate with no single kept host: its name shares a word with other Foundation repositories. Evidence: reorg/register.json in UOR-Foundation/community.\" | sed 's#.*/##')", precondition := "The Organization Owner approves filing it. The TOC decides whether a host or an archival follows; the register is then re-projected with that decision.", conditional := true, executed := false})
+}
+
+definition{
+  name: act1,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 1, repository := 8, host := 8, step := 1, action := (ctor Foundation.Reorg.V1.Model::Action.tocApplication), command := "ISSUE=$(gh issue create --repo UOR-Foundation/.github --title \"[Review] foundry-web\" --body \"foundry-web (UOR-Foundation/foundry-web@e8373c7c953bae6153fba7082c2b6c50f2f77392) is a reorganization candidate with no single kept host: its README says part of its content belongs in another Foundation repository. Evidence: reorg/register.json in UOR-Foundation/community.\" | sed 's#.*/##')", precondition := "The Organization Owner approves filing it. The TOC decides whether a host or an archival follows; the register is then re-projected with that decision.", conditional := true, executed := false})
+}
+
+definition{
+  name: act2,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 2, repository := 10, host := 10, step := 1, action := (ctor Foundation.Reorg.V1.Model::Action.tocApplication), command := "ISSUE=$(gh issue create --repo UOR-Foundation/.github --title \"[Review] kappa-distribution\" --body \"kappa-distribution (UOR-Foundation/kappa-distribution@2475e701f25ed5887aba8b68a39ecc0f87faad6f) is a reorganization candidate with no single kept host: its name shares a word with other Foundation repositories. Evidence: reorg/register.json in UOR-Foundation/community.\" | sed 's#.*/##')", precondition := "The Organization Owner approves filing it. The TOC decides whether a host or an archival follows; the register is then re-projected with that decision.", conditional := true, executed := false})
+}
+
+definition{
+  name: act3,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 3, repository := 11, host := 11, step := 1, action := (ctor Foundation.Reorg.V1.Model::Action.tocApplication), command := "ISSUE=$(gh issue create --repo UOR-Foundation/.github --title \"[Review] kappa-registry\" --body \"kappa-registry (UOR-Foundation/kappa-registry@bd231d0cc315d56e51369aff299f6741b8d8ce04) is a reorganization candidate with no single kept host: its name shares a word with other Foundation repositories. Evidence: reorg/register.json in UOR-Foundation/community.\" | sed 's#.*/##')", precondition := "The Organization Owner approves filing it. The TOC decides whether a host or an archival follows; the register is then re-projected with that decision.", conditional := true, executed := false})
+}
+
+definition{
+  name: act4,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 4, repository := 13, host := 12, step := 1, action := (ctor Foundation.Reorg.V1.Model::Action.tocApplication), command := "ISSUE=$(gh issue create --repo UOR-Foundation/.github --title \"[Archived] lexlean-mcp\" --body \"lexlean-mcp (UOR-Foundation/lexlean-mcp@ece9ef390260479edbad69c3a9d9f51edc16c885) folds into LexLean. Evidence and rule: reorg/register.json in UOR-Foundation/community.\" | sed 's#.*/##')", precondition := "The TOC decides this candidate as a fold into LexLean. The Organization Owner approves filing it. ISSUE is the issue number this prints, used by every later step.", conditional := true, executed := false})
+}
+
+definition{
+  name: act5,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 5, repository := 13, host := 12, step := 2, action := (ctor Foundation.Reorg.V1.Model::Action.maintainerNotice), command := "gh issue create --repo UOR-Foundation/lexlean-mcp --title \"Archival notice: fold into LexLean\" --body \"Proposed in UOR-Foundation/.github#$ISSUE. Archival response window: 30 days notice to maintainers.\"", precondition := "The TOC decides this candidate as a fold into LexLean. Step 1 is filed. The 30 days notice to maintainers toc/README.md Timelines sets starts here.", conditional := true, executed := false})
+}
+
+definition{
+  name: act6,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 6, repository := 13, host := 12, step := 3, action := (ctor Foundation.Reorg.V1.Model::Action.subtreeAdd), command := "git clone https://github.com/UOR-Foundation/LexLean.git && git -C LexLean switch -c chore/$ISSUE-fold-lexlean-mcp && git -C LexLean subtree add --prefix=lexlean-mcp https://github.com/UOR-Foundation/lexlean-mcp.git ece9ef390260479edbad69c3a9d9f51edc16c885", precondition := "The TOC decides this candidate as a fold into LexLean. The TOC vote (simple majority) on the Archived stage (toc/README.md) has passed, held after the 30 days notice to maintainers its Timelines table sets. lexlean-mcp's default branch is still at ece9ef390260479edbad69c3a9d9f51edc16c885; otherwise re-snapshot and re-project first. The branch is named as GOVERNANCE.md 7.2 requires.", conditional := true, executed := false})
+}
+
+definition{
+  name: act7,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 7, repository := 13, host := 12, step := 4, action := (ctor Foundation.Reorg.V1.Model::Action.hostPullRequest), command := "git -C LexLean push origin chore/$ISSUE-fold-lexlean-mcp && gh pr create --repo UOR-Foundation/LexLean --head chore/$ISSUE-fold-lexlean-mcp --title \"chore(lexlean-mcp): fold lexlean-mcp into LexLean\" --body \"Imports UOR-Foundation/lexlean-mcp@ece9ef390260479edbad69c3a9d9f51edc16c885 under lexlean-mcp/ with its history. Decided in UOR-Foundation/.github#$ISSUE.\"", precondition := "The TOC decides this candidate as a fold into LexLean. Step 3 is done. The host's required CI is green on the branch and the review its tier requires (GOVERNANCE.md 6.2, 9) approves it.", conditional := true, executed := false})
+}
+
+definition{
+  name: act8,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 8, repository := 13, host := 12, step := 5, action := (ctor Foundation.Reorg.V1.Model::Action.readmeRedirect), command := "git clone https://github.com/UOR-Foundation/lexlean-mcp.git && git -C lexlean-mcp switch -c docs/$ISSUE-folded && { echo '> This repository was folded into [UOR-Foundation/LexLean](https://github.com/UOR-Foundation/LexLean/tree/main/lexlean-mcp) by TOC decision UOR-Foundation/.github#$ISSUE.'; echo; cat lexlean-mcp/README.md; } > lexlean-mcp/README.tmp && mv lexlean-mcp/README.tmp lexlean-mcp/README.md && git -C lexlean-mcp commit -am \"docs: point to LexLean\" && git -C lexlean-mcp push origin docs/$ISSUE-folded && gh pr create --repo UOR-Foundation/lexlean-mcp --head docs/$ISSUE-folded --title \"docs: lexlean-mcp is folded into LexLean\" --body \"Keeps context in the README, as GOVERNANCE.md 11 requires. UOR-Foundation/.github#$ISSUE.\"", precondition := "The TOC decides this candidate as a fold into LexLean. The host pull request of step 4 is merged.", conditional := true, executed := false})
+}
+
+definition{
+  name: act9,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 9, repository := 13, host := 12, step := 6, action := (ctor Foundation.Reorg.V1.Model::Action.transferIssues), command := "gh issue list --repo UOR-Foundation/lexlean-mcp --state open --limit 1000 --json number --jq '.[].number' | xargs -I{} gh issue transfer {} UOR-Foundation/LexLean --repo UOR-Foundation/lexlean-mcp", precondition := "The TOC decides this candidate as a fold into LexLean. The redirect of step 5 is merged. GitHub transfers an issue only between repositories of one owner.", conditional := true, executed := false})
+}
+
+definition{
+  name: act10,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 10, repository := 13, host := 12, step := 7, action := (ctor Foundation.Reorg.V1.Model::Action.statusTopic), command := "gh repo edit UOR-Foundation/lexlean-mcp --remove-topic active --remove-topic maintenance --remove-topic deprecated --add-topic archived", precondition := "The TOC decides this candidate as a fold into LexLean. The README pull request is merged. STANDARDS.md Topic Tags: exactly one status tag.", conditional := true, executed := false})
+}
+
+definition{
+  name: act11,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 11, repository := 13, host := 12, step := 8, action := (ctor Foundation.Reorg.V1.Model::Action.archiveRepository), command := "gh api -X PATCH repos/UOR-Foundation/lexlean-mcp -f archived=true", precondition := "The TOC decides this candidate as a fold into LexLean. Every earlier step is done and the open issues are transferred. GOVERNANCE.md 11: Archived is read-only.", conditional := true, executed := false})
+}
+
+definition{
+  name: act12,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 12, repository := 15, host := 12, step := 1, action := (ctor Foundation.Reorg.V1.Model::Action.tocApplication), command := "ISSUE=$(gh issue create --repo UOR-Foundation/.github --title \"[Archived] MCP\" --body \"MCP (UOR-Foundation/MCP@5b34b2633e2707993221019b81fae2bf9c4103d6) folds into LexLean. Evidence and rule: reorg/register.json in UOR-Foundation/community.\" | sed 's#.*/##')", precondition := "The TOC decides this candidate as a fold into LexLean. The Organization Owner approves filing it. ISSUE is the issue number this prints, used by every later step.", conditional := true, executed := false})
+}
+
+definition{
+  name: act13,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 13, repository := 15, host := 12, step := 2, action := (ctor Foundation.Reorg.V1.Model::Action.maintainerNotice), command := "gh issue create --repo UOR-Foundation/MCP --title \"Archival notice: fold into LexLean\" --body \"Proposed in UOR-Foundation/.github#$ISSUE. Archival response window: 30 days notice to maintainers.\"", precondition := "The TOC decides this candidate as a fold into LexLean. Step 1 is filed. The 30 days notice to maintainers toc/README.md Timelines sets starts here.", conditional := true, executed := false})
+}
+
+definition{
+  name: act14,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 14, repository := 15, host := 12, step := 3, action := (ctor Foundation.Reorg.V1.Model::Action.subtreeAdd), command := "git clone https://github.com/UOR-Foundation/LexLean.git && git -C LexLean switch -c chore/$ISSUE-fold-mcp && git -C LexLean subtree add --prefix=mcp https://github.com/UOR-Foundation/MCP.git 5b34b2633e2707993221019b81fae2bf9c4103d6", precondition := "The TOC decides this candidate as a fold into LexLean. The TOC vote (simple majority) on the Archived stage (toc/README.md) has passed, held after the 30 days notice to maintainers its Timelines table sets. MCP's default branch is still at 5b34b2633e2707993221019b81fae2bf9c4103d6; otherwise re-snapshot and re-project first. The branch is named as GOVERNANCE.md 7.2 requires.", conditional := true, executed := false})
+}
+
+definition{
+  name: act15,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 15, repository := 15, host := 12, step := 4, action := (ctor Foundation.Reorg.V1.Model::Action.hostPullRequest), command := "git -C LexLean push origin chore/$ISSUE-fold-mcp && gh pr create --repo UOR-Foundation/LexLean --head chore/$ISSUE-fold-mcp --title \"chore(mcp): fold MCP into LexLean\" --body \"Imports UOR-Foundation/MCP@5b34b2633e2707993221019b81fae2bf9c4103d6 under mcp/ with its history. Decided in UOR-Foundation/.github#$ISSUE.\"", precondition := "The TOC decides this candidate as a fold into LexLean. Step 3 is done. The host's required CI is green on the branch and the review its tier requires (GOVERNANCE.md 6.2, 9) approves it.", conditional := true, executed := false})
+}
+
+definition{
+  name: act16,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 16, repository := 15, host := 12, step := 5, action := (ctor Foundation.Reorg.V1.Model::Action.readmeRedirect), command := "git clone https://github.com/UOR-Foundation/MCP.git && git -C MCP switch -c docs/$ISSUE-folded && { echo '> This repository was folded into [UOR-Foundation/LexLean](https://github.com/UOR-Foundation/LexLean/tree/main/mcp) by TOC decision UOR-Foundation/.github#$ISSUE.'; echo; cat MCP/README.md; } > MCP/README.tmp && mv MCP/README.tmp MCP/README.md && git -C MCP commit -am \"docs: point to LexLean\" && git -C MCP push origin docs/$ISSUE-folded && gh pr create --repo UOR-Foundation/MCP --head docs/$ISSUE-folded --title \"docs: MCP is folded into LexLean\" --body \"Keeps context in the README, as GOVERNANCE.md 11 requires. UOR-Foundation/.github#$ISSUE.\"", precondition := "The TOC decides this candidate as a fold into LexLean. The host pull request of step 4 is merged.", conditional := true, executed := false})
+}
+
+definition{
+  name: act17,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 17, repository := 15, host := 12, step := 6, action := (ctor Foundation.Reorg.V1.Model::Action.transferIssues), command := "gh issue list --repo UOR-Foundation/MCP --state open --limit 1000 --json number --jq '.[].number' | xargs -I{} gh issue transfer {} UOR-Foundation/LexLean --repo UOR-Foundation/MCP", precondition := "The TOC decides this candidate as a fold into LexLean. The redirect of step 5 is merged. GitHub transfers an issue only between repositories of one owner.", conditional := true, executed := false})
+}
+
+definition{
+  name: act18,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 18, repository := 15, host := 12, step := 7, action := (ctor Foundation.Reorg.V1.Model::Action.statusTopic), command := "gh repo edit UOR-Foundation/MCP --remove-topic active --remove-topic maintenance --remove-topic deprecated --add-topic archived", precondition := "The TOC decides this candidate as a fold into LexLean. The README pull request is merged. STANDARDS.md Topic Tags: exactly one status tag.", conditional := true, executed := false})
+}
+
+definition{
+  name: act19,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 19, repository := 15, host := 12, step := 8, action := (ctor Foundation.Reorg.V1.Model::Action.archiveRepository), command := "gh api -X PATCH repos/UOR-Foundation/MCP -f archived=true", precondition := "The TOC decides this candidate as a fold into LexLean. Every earlier step is done and the open issues are transferred. GOVERNANCE.md 11: Archived is read-only.", conditional := true, executed := false})
+}
+
+definition{
+  name: act20,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 20, repository := 19, host := 21, step := 1, action := (ctor Foundation.Reorg.V1.Model::Action.tocApplication), command := "ISSUE=$(gh issue create --repo UOR-Foundation/.github --title \"[Archived] prism\" --body \"prism (UOR-Foundation/prism@507995bab43c0cb06ec244c96e6fc25b3f502204) folds into PrismPM. Evidence and rule: reorg/register.json in UOR-Foundation/community.\" | sed 's#.*/##')", precondition := "The TOC decides this candidate as a fold into PrismPM. The Organization Owner approves filing it. ISSUE is the issue number this prints, used by every later step.", conditional := true, executed := false})
+}
+
+definition{
+  name: act21,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 21, repository := 19, host := 21, step := 2, action := (ctor Foundation.Reorg.V1.Model::Action.maintainerNotice), command := "gh issue create --repo UOR-Foundation/prism --title \"Archival notice: fold into PrismPM\" --body \"Proposed in UOR-Foundation/.github#$ISSUE. Archival response window: 30 days notice to maintainers.\"", precondition := "The TOC decides this candidate as a fold into PrismPM. Step 1 is filed. The 30 days notice to maintainers toc/README.md Timelines sets starts here.", conditional := true, executed := false})
+}
+
+definition{
+  name: act22,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 22, repository := 19, host := 21, step := 3, action := (ctor Foundation.Reorg.V1.Model::Action.subtreeAdd), command := "git clone https://github.com/UOR-Foundation/PrismPM.git && git -C PrismPM switch -c chore/$ISSUE-fold-prism && git -C PrismPM subtree add --prefix=prism https://github.com/UOR-Foundation/prism.git 507995bab43c0cb06ec244c96e6fc25b3f502204", precondition := "The TOC decides this candidate as a fold into PrismPM. The TOC vote (simple majority) on the Archived stage (toc/README.md) has passed, held after the 30 days notice to maintainers its Timelines table sets. prism's default branch is still at 507995bab43c0cb06ec244c96e6fc25b3f502204; otherwise re-snapshot and re-project first. The branch is named as GOVERNANCE.md 7.2 requires.", conditional := true, executed := false})
+}
+
+definition{
+  name: act23,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 23, repository := 19, host := 21, step := 4, action := (ctor Foundation.Reorg.V1.Model::Action.hostPullRequest), command := "git -C PrismPM push origin chore/$ISSUE-fold-prism && gh pr create --repo UOR-Foundation/PrismPM --head chore/$ISSUE-fold-prism --title \"chore(prism): fold prism into PrismPM\" --body \"Imports UOR-Foundation/prism@507995bab43c0cb06ec244c96e6fc25b3f502204 under prism/ with its history. Decided in UOR-Foundation/.github#$ISSUE.\"", precondition := "The TOC decides this candidate as a fold into PrismPM. Step 3 is done. The host's required CI is green on the branch and the review its tier requires (GOVERNANCE.md 6.2, 9) approves it.", conditional := true, executed := false})
+}
+
+definition{
+  name: act24,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 24, repository := 19, host := 21, step := 5, action := (ctor Foundation.Reorg.V1.Model::Action.readmeRedirect), command := "git clone https://github.com/UOR-Foundation/prism.git && git -C prism switch -c docs/$ISSUE-folded && { echo '> This repository was folded into [UOR-Foundation/PrismPM](https://github.com/UOR-Foundation/PrismPM/tree/main/prism) by TOC decision UOR-Foundation/.github#$ISSUE.'; echo; cat prism/README.md; } > prism/README.tmp && mv prism/README.tmp prism/README.md && git -C prism commit -am \"docs: point to PrismPM\" && git -C prism push origin docs/$ISSUE-folded && gh pr create --repo UOR-Foundation/prism --head docs/$ISSUE-folded --title \"docs: prism is folded into PrismPM\" --body \"Keeps context in the README, as GOVERNANCE.md 11 requires. UOR-Foundation/.github#$ISSUE.\"", precondition := "The TOC decides this candidate as a fold into PrismPM. The host pull request of step 4 is merged.", conditional := true, executed := false})
+}
+
+definition{
+  name: act25,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 25, repository := 19, host := 21, step := 6, action := (ctor Foundation.Reorg.V1.Model::Action.transferIssues), command := "gh issue list --repo UOR-Foundation/prism --state open --limit 1000 --json number --jq '.[].number' | xargs -I{} gh issue transfer {} UOR-Foundation/PrismPM --repo UOR-Foundation/prism", precondition := "The TOC decides this candidate as a fold into PrismPM. The redirect of step 5 is merged. GitHub transfers an issue only between repositories of one owner.", conditional := true, executed := false})
+}
+
+definition{
+  name: act26,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 26, repository := 19, host := 21, step := 7, action := (ctor Foundation.Reorg.V1.Model::Action.statusTopic), command := "gh repo edit UOR-Foundation/prism --remove-topic active --remove-topic maintenance --remove-topic deprecated --add-topic archived", precondition := "The TOC decides this candidate as a fold into PrismPM. The README pull request is merged. STANDARDS.md Topic Tags: exactly one status tag.", conditional := true, executed := false})
+}
+
+definition{
+  name: act27,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 27, repository := 19, host := 21, step := 8, action := (ctor Foundation.Reorg.V1.Model::Action.archiveRepository), command := "gh api -X PATCH repos/UOR-Foundation/prism -f archived=true", precondition := "The TOC decides this candidate as a fold into PrismPM. Every earlier step is done and the open issues are transferred. GOVERNANCE.md 11: Archived is read-only.", conditional := true, executed := false})
+}
+
+definition{
+  name: act28,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 28, repository := 20, host := 21, step := 1, action := (ctor Foundation.Reorg.V1.Model::Action.tocApplication), command := "ISSUE=$(gh issue create --repo UOR-Foundation/.github --title \"[Archived] prism-code\" --body \"prism-code (UOR-Foundation/prism-code@67ab3e8b2092ad5812b0c34fd074cb33762366aa) folds into PrismPM. Evidence and rule: reorg/register.json in UOR-Foundation/community.\" | sed 's#.*/##')", precondition := "The TOC decides this candidate as a fold into PrismPM. The Organization Owner approves filing it. ISSUE is the issue number this prints, used by every later step.", conditional := true, executed := false})
+}
+
+definition{
+  name: act29,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 29, repository := 20, host := 21, step := 2, action := (ctor Foundation.Reorg.V1.Model::Action.maintainerNotice), command := "gh issue create --repo UOR-Foundation/prism-code --title \"Archival notice: fold into PrismPM\" --body \"Proposed in UOR-Foundation/.github#$ISSUE. Archival response window: 30 days notice to maintainers.\"", precondition := "The TOC decides this candidate as a fold into PrismPM. Step 1 is filed. The 30 days notice to maintainers toc/README.md Timelines sets starts here.", conditional := true, executed := false})
+}
+
+definition{
+  name: act30,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 30, repository := 20, host := 21, step := 3, action := (ctor Foundation.Reorg.V1.Model::Action.subtreeAdd), command := "git clone https://github.com/UOR-Foundation/PrismPM.git && git -C PrismPM switch -c chore/$ISSUE-fold-prism-code && git -C PrismPM subtree add --prefix=prism-code https://github.com/UOR-Foundation/prism-code.git 67ab3e8b2092ad5812b0c34fd074cb33762366aa", precondition := "The TOC decides this candidate as a fold into PrismPM. The TOC vote (simple majority) on the Archived stage (toc/README.md) has passed, held after the 30 days notice to maintainers its Timelines table sets. prism-code's default branch is still at 67ab3e8b2092ad5812b0c34fd074cb33762366aa; otherwise re-snapshot and re-project first. The branch is named as GOVERNANCE.md 7.2 requires.", conditional := true, executed := false})
+}
+
+definition{
+  name: act31,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 31, repository := 20, host := 21, step := 4, action := (ctor Foundation.Reorg.V1.Model::Action.hostPullRequest), command := "git -C PrismPM push origin chore/$ISSUE-fold-prism-code && gh pr create --repo UOR-Foundation/PrismPM --head chore/$ISSUE-fold-prism-code --title \"chore(prism-code): fold prism-code into PrismPM\" --body \"Imports UOR-Foundation/prism-code@67ab3e8b2092ad5812b0c34fd074cb33762366aa under prism-code/ with its history. Decided in UOR-Foundation/.github#$ISSUE.\"", precondition := "The TOC decides this candidate as a fold into PrismPM. Step 3 is done. The host's required CI is green on the branch and the review its tier requires (GOVERNANCE.md 6.2, 9) approves it.", conditional := true, executed := false})
+}
+
+definition{
+  name: act32,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 32, repository := 20, host := 21, step := 5, action := (ctor Foundation.Reorg.V1.Model::Action.readmeRedirect), command := "git clone https://github.com/UOR-Foundation/prism-code.git && git -C prism-code switch -c docs/$ISSUE-folded && { echo '> This repository was folded into [UOR-Foundation/PrismPM](https://github.com/UOR-Foundation/PrismPM/tree/main/prism-code) by TOC decision UOR-Foundation/.github#$ISSUE.'; echo; cat prism-code/README.md; } > prism-code/README.tmp && mv prism-code/README.tmp prism-code/README.md && git -C prism-code commit -am \"docs: point to PrismPM\" && git -C prism-code push origin docs/$ISSUE-folded && gh pr create --repo UOR-Foundation/prism-code --head docs/$ISSUE-folded --title \"docs: prism-code is folded into PrismPM\" --body \"Keeps context in the README, as GOVERNANCE.md 11 requires. UOR-Foundation/.github#$ISSUE.\"", precondition := "The TOC decides this candidate as a fold into PrismPM. The host pull request of step 4 is merged.", conditional := true, executed := false})
+}
+
+definition{
+  name: act33,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 33, repository := 20, host := 21, step := 6, action := (ctor Foundation.Reorg.V1.Model::Action.transferIssues), command := "gh issue list --repo UOR-Foundation/prism-code --state open --limit 1000 --json number --jq '.[].number' | xargs -I{} gh issue transfer {} UOR-Foundation/PrismPM --repo UOR-Foundation/prism-code", precondition := "The TOC decides this candidate as a fold into PrismPM. The redirect of step 5 is merged. GitHub transfers an issue only between repositories of one owner.", conditional := true, executed := false})
+}
+
+definition{
+  name: act34,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 34, repository := 20, host := 21, step := 7, action := (ctor Foundation.Reorg.V1.Model::Action.statusTopic), command := "gh repo edit UOR-Foundation/prism-code --remove-topic active --remove-topic maintenance --remove-topic deprecated --add-topic archived", precondition := "The TOC decides this candidate as a fold into PrismPM. The README pull request is merged. STANDARDS.md Topic Tags: exactly one status tag.", conditional := true, executed := false})
+}
+
+definition{
+  name: act35,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 35, repository := 20, host := 21, step := 8, action := (ctor Foundation.Reorg.V1.Model::Action.archiveRepository), command := "gh api -X PATCH repos/UOR-Foundation/prism-code -f archived=true", precondition := "The TOC decides this candidate as a fold into PrismPM. Every earlier step is done and the open issues are transferred. GOVERNANCE.md 11: Archived is read-only.", conditional := true, executed := false})
+}
+
+definition{
+  name: act36,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 36, repository := 24, host := 29, step := 1, action := (ctor Foundation.Reorg.V1.Model::Action.tocApplication), command := "ISSUE=$(gh issue create --repo UOR-Foundation/.github --title \"[Archived] uor-addr\" --body \"uor-addr (UOR-Foundation/uor-addr@20a1c5723fc8f5d645972c8d6f5c57459846302e) folds into uor-r4. Evidence and rule: reorg/register.json in UOR-Foundation/community.\" | sed 's#.*/##')", precondition := "The TOC decides this candidate as a fold into uor-r4. The Organization Owner approves filing it. ISSUE is the issue number this prints, used by every later step.", conditional := true, executed := false})
+}
+
+definition{
+  name: act37,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 37, repository := 24, host := 29, step := 2, action := (ctor Foundation.Reorg.V1.Model::Action.maintainerNotice), command := "gh issue create --repo UOR-Foundation/uor-addr --title \"Archival notice: fold into uor-r4\" --body \"Proposed in UOR-Foundation/.github#$ISSUE. Archival response window: 30 days notice to maintainers.\"", precondition := "The TOC decides this candidate as a fold into uor-r4. Step 1 is filed. The 30 days notice to maintainers toc/README.md Timelines sets starts here.", conditional := true, executed := false})
+}
+
+definition{
+  name: act38,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 38, repository := 24, host := 29, step := 3, action := (ctor Foundation.Reorg.V1.Model::Action.subtreeAdd), command := "git clone https://github.com/UOR-Foundation/uor-r4.git && git -C uor-r4 switch -c chore/$ISSUE-fold-uor-addr && git -C uor-r4 subtree add --prefix=uor-addr https://github.com/UOR-Foundation/uor-addr.git 20a1c5723fc8f5d645972c8d6f5c57459846302e", precondition := "The TOC decides this candidate as a fold into uor-r4. The TOC vote (simple majority) on the Archived stage (toc/README.md) has passed, held after the 30 days notice to maintainers its Timelines table sets. uor-addr's default branch is still at 20a1c5723fc8f5d645972c8d6f5c57459846302e; otherwise re-snapshot and re-project first. The branch is named as GOVERNANCE.md 7.2 requires.", conditional := true, executed := false})
+}
+
+definition{
+  name: act39,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 39, repository := 24, host := 29, step := 4, action := (ctor Foundation.Reorg.V1.Model::Action.hostPullRequest), command := "git -C uor-r4 push origin chore/$ISSUE-fold-uor-addr && gh pr create --repo UOR-Foundation/uor-r4 --head chore/$ISSUE-fold-uor-addr --title \"chore(uor-addr): fold uor-addr into uor-r4\" --body \"Imports UOR-Foundation/uor-addr@20a1c5723fc8f5d645972c8d6f5c57459846302e under uor-addr/ with its history. Decided in UOR-Foundation/.github#$ISSUE.\"", precondition := "The TOC decides this candidate as a fold into uor-r4. Step 3 is done. The host's required CI is green on the branch and the review its tier requires (GOVERNANCE.md 6.2, 9) approves it.", conditional := true, executed := false})
+}
+
+definition{
+  name: act40,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 40, repository := 24, host := 29, step := 5, action := (ctor Foundation.Reorg.V1.Model::Action.readmeRedirect), command := "git clone https://github.com/UOR-Foundation/uor-addr.git && git -C uor-addr switch -c docs/$ISSUE-folded && { echo '> This repository was folded into [UOR-Foundation/uor-r4](https://github.com/UOR-Foundation/uor-r4/tree/main/uor-addr) by TOC decision UOR-Foundation/.github#$ISSUE.'; echo; cat uor-addr/README.md; } > uor-addr/README.tmp && mv uor-addr/README.tmp uor-addr/README.md && git -C uor-addr commit -am \"docs: point to uor-r4\" && git -C uor-addr push origin docs/$ISSUE-folded && gh pr create --repo UOR-Foundation/uor-addr --head docs/$ISSUE-folded --title \"docs: uor-addr is folded into uor-r4\" --body \"Keeps context in the README, as GOVERNANCE.md 11 requires. UOR-Foundation/.github#$ISSUE.\"", precondition := "The TOC decides this candidate as a fold into uor-r4. The host pull request of step 4 is merged.", conditional := true, executed := false})
+}
+
+definition{
+  name: act41,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 41, repository := 24, host := 29, step := 6, action := (ctor Foundation.Reorg.V1.Model::Action.transferIssues), command := "gh issue list --repo UOR-Foundation/uor-addr --state open --limit 1000 --json number --jq '.[].number' | xargs -I{} gh issue transfer {} UOR-Foundation/uor-r4 --repo UOR-Foundation/uor-addr", precondition := "The TOC decides this candidate as a fold into uor-r4. The redirect of step 5 is merged. GitHub transfers an issue only between repositories of one owner.", conditional := true, executed := false})
+}
+
+definition{
+  name: act42,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 42, repository := 24, host := 29, step := 7, action := (ctor Foundation.Reorg.V1.Model::Action.statusTopic), command := "gh repo edit UOR-Foundation/uor-addr --remove-topic active --remove-topic maintenance --remove-topic deprecated --add-topic archived", precondition := "The TOC decides this candidate as a fold into uor-r4. The README pull request is merged. STANDARDS.md Topic Tags: exactly one status tag.", conditional := true, executed := false})
+}
+
+definition{
+  name: act43,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 43, repository := 24, host := 29, step := 8, action := (ctor Foundation.Reorg.V1.Model::Action.archiveRepository), command := "gh api -X PATCH repos/UOR-Foundation/uor-addr -f archived=true", precondition := "The TOC decides this candidate as a fold into uor-r4. Every earlier step is done and the open issues are transferred. GOVERNANCE.md 11: Archived is read-only.", conditional := true, executed := false})
+}
+
+definition{
+  name: act44,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 44, repository := 25, host := 25, step := 1, action := (ctor Foundation.Reorg.V1.Model::Action.tocApplication), command := "ISSUE=$(gh issue create --repo UOR-Foundation/.github --title \"[Review] uor-foundry\" --body \"uor-foundry (UOR-Foundation/uor-foundry@fdab06c9ab30d594c917040908485068ea6f9c9f) is a reorganization candidate with no single kept host: its name shares a word with other Foundation repositories. Evidence: reorg/register.json in UOR-Foundation/community.\" | sed 's#.*/##')", precondition := "The Organization Owner approves filing it. The TOC decides whether a host or an archival follows; the register is then re-projected with that decision.", conditional := true, executed := false})
+}
+
+definition{
+  name: act45,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 45, repository := 28, host := 29, step := 1, action := (ctor Foundation.Reorg.V1.Model::Action.tocApplication), command := "ISSUE=$(gh issue create --repo UOR-Foundation/.github --title \"[Archived] uor-matmul\" --body \"uor-matmul (UOR-Foundation/uor-matmul@3cc5882f210667f9ac00fd8c02c5b5957b493f5d) folds into uor-r4. Evidence and rule: reorg/register.json in UOR-Foundation/community.\" | sed 's#.*/##')", precondition := "The TOC decides this candidate as a fold into uor-r4. The Organization Owner approves filing it. ISSUE is the issue number this prints, used by every later step.", conditional := true, executed := false})
+}
+
+definition{
+  name: act46,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 46, repository := 28, host := 29, step := 2, action := (ctor Foundation.Reorg.V1.Model::Action.maintainerNotice), command := "gh issue create --repo UOR-Foundation/uor-matmul --title \"Archival notice: fold into uor-r4\" --body \"Proposed in UOR-Foundation/.github#$ISSUE. Archival response window: 30 days notice to maintainers.\"", precondition := "The TOC decides this candidate as a fold into uor-r4. Step 1 is filed. The 30 days notice to maintainers toc/README.md Timelines sets starts here.", conditional := true, executed := false})
+}
+
+definition{
+  name: act47,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 47, repository := 28, host := 29, step := 3, action := (ctor Foundation.Reorg.V1.Model::Action.subtreeAdd), command := "git clone https://github.com/UOR-Foundation/uor-r4.git && git -C uor-r4 switch -c chore/$ISSUE-fold-uor-matmul && git -C uor-r4 subtree add --prefix=uor-matmul https://github.com/UOR-Foundation/uor-matmul.git 3cc5882f210667f9ac00fd8c02c5b5957b493f5d", precondition := "The TOC decides this candidate as a fold into uor-r4. The TOC vote (simple majority) on the Archived stage (toc/README.md) has passed, held after the 30 days notice to maintainers its Timelines table sets. uor-matmul's default branch is still at 3cc5882f210667f9ac00fd8c02c5b5957b493f5d; otherwise re-snapshot and re-project first. The branch is named as GOVERNANCE.md 7.2 requires.", conditional := true, executed := false})
+}
+
+definition{
+  name: act48,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 48, repository := 28, host := 29, step := 4, action := (ctor Foundation.Reorg.V1.Model::Action.hostPullRequest), command := "git -C uor-r4 push origin chore/$ISSUE-fold-uor-matmul && gh pr create --repo UOR-Foundation/uor-r4 --head chore/$ISSUE-fold-uor-matmul --title \"chore(uor-matmul): fold uor-matmul into uor-r4\" --body \"Imports UOR-Foundation/uor-matmul@3cc5882f210667f9ac00fd8c02c5b5957b493f5d under uor-matmul/ with its history. Decided in UOR-Foundation/.github#$ISSUE.\"", precondition := "The TOC decides this candidate as a fold into uor-r4. Step 3 is done. The host's required CI is green on the branch and the review its tier requires (GOVERNANCE.md 6.2, 9) approves it.", conditional := true, executed := false})
+}
+
+definition{
+  name: act49,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 49, repository := 28, host := 29, step := 5, action := (ctor Foundation.Reorg.V1.Model::Action.readmeRedirect), command := "git clone https://github.com/UOR-Foundation/uor-matmul.git && git -C uor-matmul switch -c docs/$ISSUE-folded && { echo '> This repository was folded into [UOR-Foundation/uor-r4](https://github.com/UOR-Foundation/uor-r4/tree/main/uor-matmul) by TOC decision UOR-Foundation/.github#$ISSUE.'; echo; cat uor-matmul/README.md; } > uor-matmul/README.tmp && mv uor-matmul/README.tmp uor-matmul/README.md && git -C uor-matmul commit -am \"docs: point to uor-r4\" && git -C uor-matmul push origin docs/$ISSUE-folded && gh pr create --repo UOR-Foundation/uor-matmul --head docs/$ISSUE-folded --title \"docs: uor-matmul is folded into uor-r4\" --body \"Keeps context in the README, as GOVERNANCE.md 11 requires. UOR-Foundation/.github#$ISSUE.\"", precondition := "The TOC decides this candidate as a fold into uor-r4. The host pull request of step 4 is merged.", conditional := true, executed := false})
+}
+
+definition{
+  name: act50,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 50, repository := 28, host := 29, step := 6, action := (ctor Foundation.Reorg.V1.Model::Action.transferIssues), command := "gh issue list --repo UOR-Foundation/uor-matmul --state open --limit 1000 --json number --jq '.[].number' | xargs -I{} gh issue transfer {} UOR-Foundation/uor-r4 --repo UOR-Foundation/uor-matmul", precondition := "The TOC decides this candidate as a fold into uor-r4. The redirect of step 5 is merged. GitHub transfers an issue only between repositories of one owner.", conditional := true, executed := false})
+}
+
+definition{
+  name: act51,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 51, repository := 28, host := 29, step := 7, action := (ctor Foundation.Reorg.V1.Model::Action.statusTopic), command := "gh repo edit UOR-Foundation/uor-matmul --remove-topic active --remove-topic maintenance --remove-topic deprecated --add-topic archived", precondition := "The TOC decides this candidate as a fold into uor-r4. The README pull request is merged. STANDARDS.md Topic Tags: exactly one status tag.", conditional := true, executed := false})
+}
+
+definition{
+  name: act52,
+  parameters: [],
+  result: Foundation.Reorg.V1.Model::Act,
+  body: (record Foundation.Reorg.V1.Model::Act {index := 52, repository := 28, host := 29, step := 8, action := (ctor Foundation.Reorg.V1.Model::Action.archiveRepository), command := "gh api -X PATCH repos/UOR-Foundation/uor-matmul -f archived=true", precondition := "The TOC decides this candidate as a fold into uor-r4. Every earlier step is done and the open issues are transferred. GOVERNANCE.md 11: Archived is read-only.", conditional := true, executed := false})
+}
+
+definition{
+  name: actsFrom48,
+  parameters: [],
+  result: (List Foundation.Reorg.V1.Model::Act),
+  body: (cons (act48) (cons (act49) (cons (act50) (cons (act51) (cons (act52) (nil Foundation.Reorg.V1.Model::Act))))))
+}
+
+definition{
+  name: actsFrom0,
+  parameters: [],
+  result: (List Foundation.Reorg.V1.Model::Act),
+  body: (cons (act0) (cons (act1) (cons (act2) (cons (act3) (cons (act4) (cons (act5) (cons (act6) (cons (act7) (cons (act8) (cons (act9) (cons (act10) (cons (act11) (cons (act12) (cons (act13) (cons (act14) (cons (act15) (cons (act16) (cons (act17) (cons (act18) (cons (act19) (cons (act20) (cons (act21) (cons (act22) (cons (act23) (cons (act24) (cons (act25) (cons (act26) (cons (act27) (cons (act28) (cons (act29) (cons (act30) (cons (act31) (cons (act32) (cons (act33) (cons (act34) (cons (act35) (cons (act36) (cons (act37) (cons (act38) (cons (act39) (cons (act40) (cons (act41) (cons (act42) (cons (act43) (cons (act44) (cons (act45) (cons (act46) (cons (act47) (actsFrom48)))))))))))))))))))))))))))))))))))))))))))))))))
+}
+
+definition{
+  name: acts,
+  parameters: [],
+  result: (List Foundation.Reorg.V1.Model::Act),
+  body: (actsFrom0)
+}
+
+theorem{
+  name: registerValidHolds,
+  parameters: [],
+  statement: ((Foundation.Reorg.V1.Model::registerValid (release) (repositories) (dependencies) (citations) (candidates) (normGaps) (acts)) = true),
+  proof: decide{}
+}
+\end{semanticmodule}
+\end{lexlean}
