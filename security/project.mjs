@@ -33,6 +33,7 @@ const [dir, flag] = process.argv.slice(2);
 if (!dir) { process.stderr.write('usage: project.mjs <sources-dir> [--check]\n'); process.exit(64); }
 const fail = (m) => { throw new Error(m); };
 const sha256 = (b) => createHash('sha256').update(b).digest('hex');
+const visibleText = (b) => b.toString('utf8').replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 const json = (p) => JSON.parse(readFileSync(p, 'utf8'));
 const pins = json(join(here, 'sources.json'));
 const model = json(join(here, 'model.json'));
@@ -41,7 +42,9 @@ const telemetry = json(join(here, 'telemetry.json'));
 const file = (name) => {
   const pin = pins.files.find((f) => f.name === name) ?? fail(`no pinned source ${name}`);
   const bytes = readFileSync(join(dir, name));
-  if (sha256(bytes) !== pin.sha256) fail(`${name} is not the pinned bytes (sha256 ${sha256(bytes)})`);
+  // form "text": the page carries per-request nonces, so its visible text (scripts, styles and tags dropped) is pinned.
+  const pinned = pin.form === 'text' ? visibleText(bytes) : bytes;
+  if (sha256(pinned) !== pin.sha256) fail(`${name} is not the pinned ${pin.form ?? 'bytes'} (sha256 ${sha256(pinned)})`);
   return bytes;
 };
 for (const r of pins.repositories) {

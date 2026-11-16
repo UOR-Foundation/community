@@ -78,7 +78,9 @@ const pinsOf = (kind, files) => {
 if (register.sources.kind === 'pinned') {
   for (const f of [].concat(register.sources.file).flatMap((p) => JSON.parse(readFileSync(join(root, p), 'utf8')).files ?? [])) {
     const target = join(sources, f.name);
-    const digest = () => createHash('sha256').update(readFileSync(target)).digest('hex');
+    // form "text": a page with per-request nonces is pinned by its visible text (scripts, styles and tags dropped).
+    const pinned = () => (f.form === 'text' ? readFileSync(target, 'utf8').replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() : readFileSync(target));
+    const digest = () => createHash('sha256').update(pinned()).digest('hex');
     if (existsSync(target) && digest() === f.sha256) continue;
     run('curl', ['-fsSL', '--retry', '4', '-o', target, f.url]);
     if (digest() !== f.sha256) throw new Error(`${f.url} is not the pinned ${f.name} (sha256 ${digest()})`);
