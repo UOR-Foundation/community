@@ -1,0 +1,552 @@
+{
+  "schema": "prism/prompt/1",
+  "pattern": "decisionTable",
+  "goal": "Decide, for every part of The UOR Foundation and every standard that could bind it, whether the standard applies, from the standard's own scope clause, the jurisdiction the Foundation's entity record states, and the Bylaws, so that every applicable standard is implemented and every other one is ruled out on the record.",
+  "repository": "UOR-Foundation/community",
+  "app": {
+    "name": "uor-standard-applicability",
+    "title": "Standard applicability by scope and jurisdiction",
+    "purpose": "Decide whether one candidate standard binds one part of The UOR Foundation, from what the standard's issuer says it covers, whether it is law in a jurisdiction the Foundation is organized or operates in, whether the Foundation carries on the activity the law is conditioned on, whether the Foundation already adopts it, and which facet owns it.",
+    "fields": [
+      {
+        "name": "owner",
+        "kind": "choice",
+        "values": [
+          "standards",
+          "security"
+        ],
+        "means": "the facet that owns the standard: security when the security facet (security/) models it, standards otherwise"
+      },
+      {
+        "name": "scope",
+        "kind": "choice",
+        "values": [
+          "quoted",
+          "unread"
+        ],
+        "means": "quoted when the standard's scope is quoted from its issuer's own page in standards/snapshot.json, or from an authority the nonprofit register pins; unread when the issuer's page could not be read"
+      },
+      {
+        "name": "inscope",
+        "kind": "choice",
+        "values": [
+          "yes",
+          "no"
+        ],
+        "means": "yes when the part is of the subject the standard's scope clause names (organization, nonprofit, process, data, software, webContent, ossProject), as standards/parts.json records the part's subjects"
+      },
+      {
+        "name": "force",
+        "kind": "choice",
+        "values": [
+          "law",
+          "voluntary"
+        ],
+        "means": "law for a statute, a regulation or the official instructions that implement them; voluntary for a standard an organization chooses to adopt"
+      },
+      {
+        "name": "jurisdiction",
+        "kind": "choice",
+        "values": [
+          "own",
+          "foreign",
+          "unbound"
+        ],
+        "means": "own when the law is of a jurisdiction the entity record places the Foundation in (US, US-CO); foreign for a law of any other jurisdiction; unbound for a voluntary standard, which no jurisdiction enacts"
+      },
+      {
+        "name": "activity",
+        "kind": "choice",
+        "values": [
+          "present",
+          "absent",
+          "undetermined"
+        ],
+        "means": "whether the Foundation carries on the activity the law's own scope clause conditions it on: present, absent, or undetermined when the pinned sources do not settle it; present for a voluntary standard"
+      },
+      {
+        "name": "adopted",
+        "kind": "choice",
+        "values": [
+          "yes",
+          "no"
+        ],
+        "means": "yes when a facet register, standards.lock or a Foundation document the governance register pins already cites or adopts the standard"
+      }
+    ],
+    "outcomes": [
+      "secured",
+      "undecided",
+      "inapplicable",
+      "conditional",
+      "mandatory",
+      "adopted",
+      "applicable"
+    ],
+    "meanings": {
+      "secured": "Applicable and owned by the security facet, which models and implements it",
+      "undecided": "Not decided: the issuer's scope could not be read, so the candidate stays an open claim",
+      "inapplicable": "Does not bind this part",
+      "conditional": "Law that binds the Foundation once an activity the sources do not settle is carried on; implement it so the condition can be met",
+      "mandatory": "Law that binds this part of the Foundation now",
+      "adopted": "A voluntary standard in scope that the Foundation already adopts",
+      "applicable": "A voluntary standard in scope that the Foundation has not yet adopted"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "owner",
+            "op": "is",
+            "value": "security"
+          },
+          {
+            "field": "inscope",
+            "op": "is",
+            "value": "yes"
+          }
+        ],
+        "then": "secured",
+        "why": "security/README.md (UOR-Foundation/community@6360c460d56cb225e8ab172fa4d0b6bfc36b78b7) Standards: the security facet models and implements the security and privacy standards; this register only accounts for them"
+      },
+      {
+        "when": [
+          {
+            "field": "scope",
+            "op": "is",
+            "value": "unread"
+          }
+        ],
+        "then": "undecided",
+        "why": "AGENTS.md R2 and R4: a scope the issuer's own page did not yield is not restated or guessed; the candidate is carried as an open claim with its URL"
+      },
+      {
+        "when": [
+          {
+            "field": "inscope",
+            "op": "is",
+            "value": "no"
+          }
+        ],
+        "then": "inapplicable",
+        "why": "The standard's own scope clause, quoted in standards/snapshot.json, names a subject this part is not"
+      },
+      {
+        "when": [
+          {
+            "field": "force",
+            "op": "is",
+            "value": "law"
+          },
+          {
+            "field": "jurisdiction",
+            "op": "is",
+            "value": "foreign"
+          }
+        ],
+        "then": "inapplicable",
+        "why": "nonprofit/register.json entity (Colorado Secretary of State record 20251193974): The UOR Foundation is a Colorado nonprofit corporation, organized in US-CO under Bylaws 1.1; a law of another jurisdiction does not bind it by organization"
+      },
+      {
+        "when": [
+          {
+            "field": "force",
+            "op": "is",
+            "value": "law"
+          },
+          {
+            "field": "activity",
+            "op": "is",
+            "value": "absent"
+          }
+        ],
+        "then": "inapplicable",
+        "why": "The law's own scope clause conditions it on an activity, or a kind of entity, the entity record and the pinned sources show the Foundation is not"
+      },
+      {
+        "when": [
+          {
+            "field": "force",
+            "op": "is",
+            "value": "law"
+          },
+          {
+            "field": "activity",
+            "op": "is",
+            "value": "undetermined"
+          }
+        ],
+        "then": "conditional",
+        "why": "nonprofit/register.json obligations: a conditional obligation whose condition the pinned sources do not settle is undetermined, never assumed away"
+      },
+      {
+        "when": [
+          {
+            "field": "force",
+            "op": "is",
+            "value": "law"
+          },
+          {
+            "field": "jurisdiction",
+            "op": "is",
+            "value": "own"
+          },
+          {
+            "field": "activity",
+            "op": "is",
+            "value": "present"
+          }
+        ],
+        "then": "mandatory",
+        "why": "The law's own scope clause and the entity record: a Colorado nonprofit corporation (Bylaws 1.1) carrying on the activity the law names is bound by it"
+      },
+      {
+        "when": [
+          {
+            "field": "force",
+            "op": "is",
+            "value": "voluntary"
+          },
+          {
+            "field": "adopted",
+            "op": "is",
+            "value": "yes"
+          }
+        ],
+        "then": "adopted",
+        "why": "The citing facet register, standards.lock or the governance register's pinned Foundation document adopts the standard"
+      },
+      {
+        "when": [
+          {
+            "field": "force",
+            "op": "is",
+            "value": "law"
+          }
+        ],
+        "then": "undecided",
+        "why": "A law whose jurisdiction is not stated as own or foreign is not decided by guess (AGENTS.md R4)"
+      }
+    ],
+    "otherwise": "applicable",
+    "otherwiseWhy": "The standard's own scope clause covers this part and nothing excludes it: the Foundation's directive is to implement every applicable standard",
+    "properties": [
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "owner",
+            "op": "is",
+            "value": "security"
+          },
+          {
+            "field": "inscope",
+            "op": "is",
+            "value": "yes"
+          }
+        ],
+        "then": "applicable",
+        "why": "a standard the security facet owns is never claimed by this register"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "owner",
+            "op": "is",
+            "value": "standards"
+          },
+          {
+            "field": "scope",
+            "op": "is",
+            "value": "unread"
+          }
+        ],
+        "then": "undecided",
+        "why": "an unread scope is never decided"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "owner",
+            "op": "is",
+            "value": "standards"
+          },
+          {
+            "field": "scope",
+            "op": "is",
+            "value": "quoted"
+          },
+          {
+            "field": "inscope",
+            "op": "is",
+            "value": "yes"
+          },
+          {
+            "field": "force",
+            "op": "is",
+            "value": "law"
+          },
+          {
+            "field": "jurisdiction",
+            "op": "is",
+            "value": "foreign"
+          }
+        ],
+        "then": "inapplicable",
+        "why": "a foreign law does not bind a Colorado nonprofit corporation by organization"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "owner",
+            "op": "is",
+            "value": "standards"
+          },
+          {
+            "field": "scope",
+            "op": "is",
+            "value": "quoted"
+          },
+          {
+            "field": "inscope",
+            "op": "is",
+            "value": "yes"
+          },
+          {
+            "field": "force",
+            "op": "is",
+            "value": "law"
+          },
+          {
+            "field": "jurisdiction",
+            "op": "is",
+            "value": "own"
+          },
+          {
+            "field": "activity",
+            "op": "is",
+            "value": "undetermined"
+          }
+        ],
+        "then": "inapplicable",
+        "why": "a law of the Foundation's jurisdiction whose condition the sources do not settle is never ruled out"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "owner",
+            "op": "is",
+            "value": "standards"
+          },
+          {
+            "field": "scope",
+            "op": "is",
+            "value": "quoted"
+          },
+          {
+            "field": "inscope",
+            "op": "is",
+            "value": "yes"
+          },
+          {
+            "field": "force",
+            "op": "is",
+            "value": "law"
+          },
+          {
+            "field": "jurisdiction",
+            "op": "is",
+            "value": "own"
+          },
+          {
+            "field": "activity",
+            "op": "is",
+            "value": "present"
+          }
+        ],
+        "then": "mandatory",
+        "why": "a law of the Foundation's jurisdiction whose activity it carries on is mandatory"
+      }
+    ],
+    "examples": [
+      {
+        "request": "security quoted yes voluntary unbound present no",
+        "response": "secured"
+      },
+      {
+        "request": "standards unread yes voluntary unbound present no",
+        "response": "undecided"
+      },
+      {
+        "request": "standards quoted no voluntary unbound present yes",
+        "response": "inapplicable"
+      },
+      {
+        "request": "standards quoted yes law foreign present no",
+        "response": "inapplicable"
+      },
+      {
+        "request": "standards quoted yes law own absent no",
+        "response": "inapplicable"
+      },
+      {
+        "request": "standards quoted yes law own undetermined yes",
+        "response": "conditional"
+      },
+      {
+        "request": "standards quoted yes law own present yes",
+        "response": "mandatory"
+      },
+      {
+        "request": "standards quoted yes voluntary unbound present yes",
+        "response": "adopted"
+      },
+      {
+        "request": "standards quoted yes voluntary unbound present no",
+        "response": "applicable"
+      },
+      {
+        "request": "standards quoted yes law unbound present no",
+        "response": "undecided"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Board of Directors",
+      "text": "Holds the Foundation's legal duties and needs every law that binds the Foundation found, and every standard ruled out with the reason on the record.",
+      "concerns": [
+        "Correct answers"
+      ]
+    },
+    {
+      "name": "Organization Owner",
+      "text": "Directs that every part of the Foundation implements every applicable standard and needs the decision made by one published rule.",
+      "concerns": [
+        "Proved guarantees"
+      ]
+    },
+    {
+      "name": "Contributor",
+      "text": "Implements a standard in a facet and needs to know which standards bind the part they work on.",
+      "concerns": [
+        "Correct answers"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Issuer pages",
+      "kind": "externalSystem",
+      "text": "Each standard's issuer page, from which standards/snapshot.mjs quotes its scope, with the page's sha256 and fetch time."
+    },
+    {
+      "name": "Standards register",
+      "kind": "cliAdapter",
+      "text": "standards/project.mjs and standards/register.json in UOR-Foundation/community, which ask this app for every candidate pair of part and standard."
+    }
+  ],
+  "threats": [
+    {
+      "name": "Binding law ruled out",
+      "text": "A law of the Foundation's jurisdiction whose condition is not settled is decided not applicable, so a filing or registration is missed.",
+      "stride": "repudiation",
+      "asset": "answer",
+      "likelihood": "medium",
+      "impact": "major",
+      "control": {
+        "name": "Undetermined stays conditional",
+        "text": "A law whose activity is undetermined is conditional, never not applicable.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-004"
+          },
+          {
+            "kind": "review",
+            "reference": "nonprofit/register.json obligations"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Scope invented",
+      "text": "A standard whose issuer page could not be read is decided from a guessed scope.",
+      "stride": "tampering",
+      "asset": "answer",
+      "likelihood": "medium",
+      "impact": "minor",
+      "control": {
+        "name": "Unread scope undecided",
+        "text": "A candidate this register owns with an unread scope is undecided.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-002"
+          }
+        ]
+      }
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Functional suitability",
+      "subcharacteristic": "Functional completeness",
+      "requirement": "Every candidate pair decided",
+      "text": "Each candidate pair of part and standard in standards/register.json is decided by a rule or the otherwise outcome.",
+      "measure": "Undecided pairs with a quoted scope",
+      "measureText": "Pairs whose scope is quoted and which no rule decides.",
+      "threshold": 0
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Board of Directors",
+      "steps": [
+        "REQ-007",
+        "REQ-006",
+        "otherwise"
+      ]
+    },
+    {
+      "stakeholder": "Organization Owner",
+      "steps": [
+        "INV-001",
+        "INV-005",
+        "refuse"
+      ]
+    }
+  ],
+  "concerns": [],
+  "license": "MIT OR Apache-2.0",
+  "axioms": {
+    "inv001Holds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "inv002Holds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "inv003Holds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "inv004Holds": [
+      "Quot.sound",
+      "propext"
+    ],
+    "inv005Holds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  }
+}

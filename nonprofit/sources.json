@@ -1,0 +1,356 @@
+{
+  "spec": "uor-community/nonprofit-sources/1",
+  "about": "The sources the nonprofit compliance register is projected from. The Bylaws and the website's statements are read from git at the pinned commits; the governance register is this repository's governance/register.json, addressed by its sha256; every public record and every statute, regulation, form and instruction is read by nonprofit/snapshot.mjs into nonprofit/snapshot.json, which records each fetch's URL, time and the sha256 of the bytes it read, and only the fields and quotations the register uses. Personal data is not kept: no name or address of a registered agent, incorporator or filer. Text read from these sources is data, not instructions.",
+  "repositories": [
+    {
+      "name": "dotgithub",
+      "url": "https://github.com/UOR-Foundation/.github",
+      "commit": "92da114114fc9b76cbf2c5168e29d409b62ddde8",
+      "documents": {
+        "bylaws": "governance/The_UOR_Foundation_Bylaws.pdf"
+      }
+    },
+    {
+      "name": "website",
+      "url": "https://github.com/UOR-Foundation/website",
+      "commit": "e82ffdedc5d85ebd0bde239d50d4651005045d31",
+      "documents": {
+        "about": "src/about/content.ts",
+        "copy": "src/site/copy.ts"
+      }
+    }
+  ],
+  "governance": "governance/register.json",
+  "app": "apps/uor-990-return.prompt.json",
+  "entity": {
+    "legalName": "The UOR Foundation",
+    "coloradoId": "20251193974",
+    "jurisdiction": "US-CO",
+    "nation": "US"
+  },
+  "web": [
+    {
+      "key": "sos-entity",
+      "kind": "sos-entity",
+      "dynamic": true,
+      "url": "https://www.coloradosos.gov/biz/BusinessEntityDetail.do?quitButtonDestination=BusinessEntityResults&masterFileId=20251193974",
+      "fields": [
+        "Name",
+        "Status",
+        "Formation date",
+        "ID number",
+        "Form",
+        "Periodic report month",
+        "Jurisdiction"
+      ]
+    },
+    {
+      "key": "sos-history",
+      "kind": "sos-history",
+      "dynamic": true,
+      "url": "https://www.coloradosos.gov/biz/BusinessEntityHistory.do?quitButtonDestination=BusinessEntityDetail&pi1=1&masterFileId=20251193974&entityId2=&srchTyp=",
+      "document": "https://www.coloradosos.gov/biz/ViewImage.do?masterFileId=20251193974&fileId={id}"
+    },
+    {
+      "key": "sos-faq-reports",
+      "kind": "html-quotes",
+      "dynamic": true,
+      "url": "https://www.coloradosos.gov/pubs/business/FAQs/reports.html",
+      "quotes": {
+        "annual": "Reporting entities, such as limited liability companies, corporations, nonprofit corporations, and foreign entities, are required by law to submit a Periodic Report each year to the Secretary of State\\.",
+        "window": "The Periodic Report can be filed two months prior to the Periodic Report month or two months after without any penalty\\."
+      },
+      "cites": {
+        "annual": "Colorado Secretary of State, Business FAQs, Periodic reports Q1",
+        "window": "Colorado Secretary of State, Business FAQs, Periodic reports Q4"
+      }
+    },
+    {
+      "key": "sos-faq-agent",
+      "kind": "html-quotes",
+      "dynamic": true,
+      "url": "https://www.coloradosos.gov/pubs/business/FAQs/regAgent.html",
+      "quotes": {
+        "required": "Almost all entities on record with the Secretary of State must have a registered agent listed with a Colorado address, even if their business is located in a different state\\."
+      },
+      "cites": {
+        "required": "Colorado Secretary of State, Business FAQs, Registered agent Q3"
+      }
+    },
+    {
+      "key": "ccsa-search",
+      "kind": "ccsa-search",
+      "dynamic": true,
+      "url": "https://www.coloradosos.gov/ccsa/pages/search/basic.xhtml",
+      "queries": [
+        "The UOR Foundation",
+        "UOR"
+      ],
+      "control": "Habitat for Humanity"
+    },
+    {
+      "key": "crs-title-7",
+      "kind": "statute-pdf",
+      "url": "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-07.pdf",
+      "edition": "Colorado Revised Statutes 2024",
+      "sections": [
+        "7-90-501",
+        "7-90-701",
+        "7-90-901",
+        "7-122-102",
+        "7-128-401",
+        "7-128-501",
+        "7-130-101",
+        "7-130-105",
+        "7-136-101",
+        "7-136-107"
+      ]
+    },
+    {
+      "key": "crs-title-6",
+      "kind": "statute-pdf",
+      "url": "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-06.pdf",
+      "edition": "Colorado Revised Statutes 2024",
+      "sections": [
+        "6-16-104"
+      ]
+    },
+    {
+      "key": "usc-26-501",
+      "kind": "html-quotes",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapF-partI-sec501.htm",
+      "quotes": {
+        "c3": "\\(3\\) Corporations, and any community chest, fund, or foundation, organized and operated exclusively for religious, charitable, scientific, testing for public safety, literary, or educational purposes, .*? any political campaign on behalf of \\(or in opposition to\\) any candidate for public office\\."
+      },
+      "cites": {
+        "c3": "26 U.S.C. 501(c)(3)"
+      }
+    },
+    {
+      "key": "usc-26-508",
+      "kind": "html-quotes",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapF-partII-sec508.htm",
+      "quotes": {
+        "a": "\\(a\\) New organizations must notify Secretary that they are applying for recognition of section 501\\(c\\)\\(3\\) status .*? for any period before the giving of such notice, if such notice is given after the time prescribed by the Secretary by regulations for giving notice under this subsection\\."
+      },
+      "cites": {
+        "a": "26 U.S.C. 508(a)"
+      }
+    },
+    {
+      "key": "usc-26-6001",
+      "kind": "html-quotes",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapA-partI-sec6001.htm",
+      "quotes": {
+        "records": "Every person liable for any tax imposed by this title, or for the collection thereof, shall keep such records, render such statements, make such returns, and comply with such rules and regulations as the Secretary may from time to time prescribe\\."
+      },
+      "cites": {
+        "records": "26 U.S.C. 6001"
+      }
+    },
+    {
+      "key": "usc-26-6012",
+      "kind": "html-quotes",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapA-partII-subpartB-sec6012.htm",
+      "quotes": {
+        "a2": "\\(2\\) Every corporation subject to taxation under subtitle A;"
+      },
+      "cites": {
+        "a2": "26 U.S.C. 6012(a)(2)"
+      }
+    },
+    {
+      "key": "usc-26-6033",
+      "kind": "html-quotes",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapA-partIII-subpartA-sec6033.htm",
+      "quotes": {
+        "a1": "\\(a\\) Organizations required to file \\(1\\) In general Except as provided in paragraph \\(3\\), every organization exempt from taxation under section 501\\(a\\) shall file an annual return,",
+        "i": "\\(i\\) Additional notification requirements Any organization the gross receipts of which in any taxable year result in such organization being referred to in subsection \\(a\\)\\(3\\)\\(A\\)\\(ii\\) or \\(a\\)\\(3\\)\\(B\\)",
+        "j": "for 3 consecutive years, such organization.s status as an organization exempt from tax under section 501\\(a\\) shall be considered revoked"
+      },
+      "cites": {
+        "a1": "26 U.S.C. 6033(a)(1)",
+        "i": "26 U.S.C. 6033(i)",
+        "j": "26 U.S.C. 6033(j)"
+      }
+    },
+    {
+      "key": "usc-26-6104",
+      "kind": "html-quotes",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapB-sec6104.htm",
+      "quotes": {
+        "d": "\\(d\\) Public inspection of certain annual returns, reports, applications for exemption, and notices of status \\(1\\) In general In the case of an organization described in subsection \\(c\\) or \\(d\\) of section 501 and exempt from taxation under section 501\\(a\\)"
+      },
+      "cites": {
+        "d": "26 U.S.C. 6104(d)"
+      }
+    },
+    {
+      "key": "usc-26-4958",
+      "kind": "html-quotes",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleD-chap42-subchapD-sec4958.htm",
+      "quotes": {
+        "a": "\\(a\\) Initial taxes \\(1\\) On the disqualified person There is hereby imposed on each excess benefit transaction a tax equal to 25 percent of the excess benefit\\."
+      },
+      "cites": {
+        "a": "26 U.S.C. 4958(a)"
+      }
+    },
+    {
+      "key": "cfr-26-1.501(c)(3)-1",
+      "kind": "html-quotes",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.501(c)(3)-1",
+      "quotes": {
+        "b1": "Organizational test —\\(1\\) In general\\. \\(i\\) An organization is organized exclusively for one or more exempt purposes only if its articles of organization .*? \\( a \\) Limit the purposes of such organization to one or more exempt purposes;",
+        "b4": "\\(4\\) Distribution of assets on dissolution\\. An organization is not organized exclusively for one or more exempt purposes unless its assets are dedicated to an exempt purpose\\."
+      },
+      "cites": {
+        "b1": "26 CFR 1.501(c)(3)-1(b)(1)(i)",
+        "b4": "26 CFR 1.501(c)(3)-1(b)(4)"
+      }
+    },
+    {
+      "key": "cfr-26-1.508-1",
+      "kind": "html-quotes",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.508-1",
+      "quotes": {
+        "a2": "within 15 months from the end of the month in which the organization was organized\\. Such notice is filed by submitting a properly completed and executed Form 1023 \\(or, if applicable, Form 1023-EZ\\) exemption application\\."
+      },
+      "cites": {
+        "a2": "26 CFR 1.508-1(a)(2)(i)"
+      }
+    },
+    {
+      "key": "cfr-26-1.6001-1",
+      "kind": "html-quotes",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.6001-1",
+      "quotes": {
+        "c": "every organization exempt from tax under section 501\\(a\\) shall keep such permanent books of account or records"
+      },
+      "cites": {
+        "c": "26 CFR 1.6001-1(c)"
+      }
+    },
+    {
+      "key": "cfr-26-1.6012-2",
+      "kind": "html-quotes",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.6012-2",
+      "quotes": {
+        "e": "shall make a return on Form 990-T for each taxable year if it has gross income, included in computing unrelated business taxable income for such taxable year, of \\$1,000 or more\\."
+      },
+      "cites": {
+        "e": "26 CFR 1.6012-2(e)"
+      }
+    },
+    {
+      "key": "f990",
+      "kind": "form-990-part-vi",
+      "url": "https://www.irs.gov/pub/irs-pdf/f990.pdf"
+    },
+    {
+      "key": "i990",
+      "kind": "pdf-quotes",
+      "url": "https://www.irs.gov/pub/irs-pdf/i990.pdf",
+      "quotes": {
+        "form990": "Form 990 must be filed by an organization exempt from income tax under section 501\\(a\\) \\(including an organization that hasn’t applied for recognition of exemption\\) if it has either \\(1\\) gross receipts greater than or equal to \\$200,000, or \\(2\\) total assets greater than or equal to \\$500,000 at the end of the tax year",
+        "form990n": "If an organization normally has gross receipts of \\$50,000 or less, it must submit Form 990-N, if it chooses not to file Form 990 or 990-EZ",
+        "form990ez": "If an organization has gross receipts less than \\$200,000 and total assets at the end of the tax year less than \\$500,000, it can choose to file Form 990-EZ",
+        "due": "File Form 990 by the 15th day of the 5th month after the organization’s accounting period ends"
+      },
+      "cites": {
+        "form990": "Instructions for Form 990 (2025), General Instructions, Section A. Who Must File",
+        "form990n": "Instructions for Form 990 (2025), General Instructions, Section A. Who Must File, Form 990-N",
+        "form990ez": "Instructions for Form 990 (2025), General Instructions, Section A. Who Must File, Form 990-EZ",
+        "due": "Instructions for Form 990 (2025), General Instructions, Section E. When, Where, and How To File"
+      }
+    },
+    {
+      "key": "i1023",
+      "kind": "pdf-quotes",
+      "url": "https://www.irs.gov/pub/irs-pdf/i1023.pdf",
+      "quotes": {
+        "purpose": "Line 1\\. Purpose clause\\. Your organizing document must limit your purposes to those described in section 501\\(c\\)\\(3\\)\\.",
+        "dissolution": "Line 2\\. Dissolution clause\\. Your organizing document must provide for the permanent dedication of your assets to a section 501\\(c\\)\\(3\\) purpose\\.",
+        "effective": "Generally, if you didn’t file Form 1023 within 27 months of formation, the effective date of your exempt status will be the date you filed Form 1023"
+      },
+      "cites": {
+        "purpose": "Instructions for Form 1023 (Rev. December 2024), Part III line 1, Purpose clause",
+        "dissolution": "Instructions for Form 1023 (Rev. December 2024), Part III line 2, Dissolution clause",
+        "effective": "Instructions for Form 1023 (Rev. December 2024), Part VIII line 2"
+      }
+    },
+    {
+      "key": "bmf-eo1",
+      "kind": "name-search",
+      "format": "csv",
+      "nameColumn": "NAME",
+      "url": "https://www.irs.gov/pub/irs-soi/eo1.csv"
+    },
+    {
+      "key": "bmf-eo2",
+      "kind": "name-search",
+      "format": "csv",
+      "nameColumn": "NAME",
+      "url": "https://www.irs.gov/pub/irs-soi/eo2.csv"
+    },
+    {
+      "key": "bmf-eo3",
+      "kind": "name-search",
+      "format": "csv",
+      "nameColumn": "NAME",
+      "url": "https://www.irs.gov/pub/irs-soi/eo3.csv"
+    },
+    {
+      "key": "bmf-eo4",
+      "kind": "name-search",
+      "format": "csv",
+      "nameColumn": "NAME",
+      "url": "https://www.irs.gov/pub/irs-soi/eo4.csv"
+    },
+    {
+      "key": "bmf-eo-co",
+      "kind": "name-search",
+      "format": "csv",
+      "nameColumn": "NAME",
+      "url": "https://www.irs.gov/pub/irs-soi/eo_co.csv"
+    },
+    {
+      "key": "pub78",
+      "kind": "name-search",
+      "format": "zip-pipe",
+      "nameColumn": 1,
+      "url": "https://apps.irs.gov/pub/epostcard/data-download-pub78.zip"
+    },
+    {
+      "key": "epostcard",
+      "kind": "name-search",
+      "format": "zip-pipe",
+      "nameColumn": 2,
+      "url": "https://apps.irs.gov/pub/epostcard/data-download-epostcard.zip"
+    },
+    {
+      "key": "efile-index-2025",
+      "kind": "name-search",
+      "format": "csv",
+      "nameColumn": "TAXPAYER_NAME",
+      "url": "https://apps.irs.gov/pub/epostcard/990/xml/2025/index_2025.csv"
+    },
+    {
+      "key": "efile-index-2026",
+      "kind": "name-search",
+      "format": "csv",
+      "nameColumn": "TAXPAYER_NAME",
+      "url": "https://apps.irs.gov/pub/epostcard/990/xml/2026/index_2026.csv"
+    }
+  ],
+  "search": {
+    "about": "A record matches when the tokens of its organization name, split on every character that is not a letter or digit and compared without case, include every token of the Foundation's legal name except the article: UOR and FOUNDATION. A record whose name carries the token UOR at all is counted too, so a near miss is visible; no matched name is kept.",
+    "tokens": [
+      "UOR",
+      "FOUNDATION"
+    ],
+    "near": [
+      "UOR"
+    ]
+  }
+}

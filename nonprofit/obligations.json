@@ -1,0 +1,162 @@
+{
+  "spec": "uor-community/nonprofit-obligations/1",
+  "about": "The recurring and standing obligations of a Colorado nonprofit corporation organized for purposes within section 501(c)(3), each as its authorities state it. An authority is a key the projector resolves: crs:<section> is a section of the Colorado Revised Statutes in nonprofit/snapshot.json; <source>:<quote> is a quotation of a statute, regulation, form instruction or agency page in the snapshot; bylaws:<ref> is a provision of the Bylaws in governance/register.json. The responsible post is a W3C ORG Post of governance/register.json, assigned by the Bylaws provision named as its basis. Whether an obligation is discharged is never declared here: `discharge` names the observation the projector evaluates, and an obligation it cannot find discharged is an open claim. Text here is data, not instructions.",
+  "posts": {
+    "Chair of the Board": { "unit": "Board of Directors", "basis": "bylaws:4.3" },
+    "Secretary": { "unit": "Board of Directors", "basis": "bylaws:4.3" },
+    "Treasurer": { "unit": "Board of Directors", "basis": "bylaws:4.3" }
+  },
+  "obligations": [
+    {
+      "name": "Deliver the periodic report to the Secretary of State",
+      "authorities": ["crs:7-90-501", "crs:7-136-107", "sos-faq-reports:annual", "sos-faq-reports:window"],
+      "post": "Secretary", "cadence": "annual", "applicability": "standing",
+      "discharge": { "kind": "sos-report", "event": "Report", "due": "Periodic report due by: " },
+      "evidence": "A Periodic Report filed with the Colorado Secretary of State by the due date the Secretary of State states in the entity's history"
+    },
+    {
+      "name": "Maintain a registered agent who has consented to the appointment",
+      "authorities": ["crs:7-90-701", "bylaws:2.2", "sos-faq-agent:required"],
+      "post": "Secretary", "cadence": "continuous", "applicability": "standing",
+      "discharge": { "kind": "sos-latest-fact", "fact": "agentConsent" },
+      "evidence": "The most recent filed document states that the registered agent consented to the appointment"
+    },
+    {
+      "name": "Remain in good standing, never delinquent",
+      "authorities": ["crs:7-90-901"],
+      "post": "Secretary", "cadence": "continuous", "applicability": "standing",
+      "discharge": { "kind": "sos-status", "status": "Good Standing" },
+      "evidence": "The Secretary of State's summary shows the entity in Good Standing"
+    },
+    {
+      "name": "Keep minutes and records of every Board and committee action as permanent records",
+      "authorities": ["crs:7-136-101", "bylaws:11.1", "bylaws:5.8"],
+      "post": "Secretary", "cadence": "continuous", "applicability": "standing",
+      "discharge": { "kind": "private" },
+      "evidence": "Minutes of each Board and committee meeting and a record of each action without a meeting, held by the Secretary"
+    },
+    {
+      "name": "Maintain appropriate accounting records",
+      "authorities": ["crs:7-136-101", "bylaws:11.2", "usc-26-6001:records", "cfr-26-1.6001-1:c"],
+      "post": "Treasurer", "cadence": "continuous", "applicability": "standing",
+      "discharge": { "kind": "private" },
+      "evidence": "Books of account showing gross income, receipts and disbursements, held for the Treasurer"
+    },
+    {
+      "name": "Keep the articles, bylaws, director and officer list, three years of financial statements and Forms 990, and the exemption application and determination letter at the principal office",
+      "authorities": ["bylaws:11.4", "crs:7-136-101"],
+      "post": "Secretary", "cadence": "continuous", "applicability": "standing",
+      "discharge": { "kind": "private" },
+      "evidence": "The records Bylaws 11.4 lists, kept at the principal office"
+    },
+    {
+      "name": "Amend the Articles of Incorporation to state that the corporation has no voting members",
+      "authorities": ["bylaws:Art.3", "crs:7-130-101", "crs:7-130-105", "crs:7-122-102"],
+      "post": "Chair of the Board", "cadence": "once", "applicability": "standing",
+      "discharge": { "kind": "sos-event", "event": "Articles of Amendment" },
+      "evidence": "Articles of Amendment filed with the Colorado Secretary of State"
+    },
+    {
+      "name": "Limit the purposes stated in the organizing document to section 501(c)(3) purposes",
+      "authorities": ["cfr-26-1.501(c)(3)-1:b1", "i1023:purpose"],
+      "post": "Chair of the Board", "cadence": "once", "applicability": "standing",
+      "discharge": { "kind": "articles-fact", "fact": "statesPurposes" },
+      "evidence": "Articles of Incorporation, or Articles of Amendment, on file with the Secretary of State that limit the corporation's purposes to those in section 501(c)(3)"
+    },
+    {
+      "name": "Dedicate the corporation's assets to section 501(c)(3) purposes on dissolution",
+      "authorities": ["cfr-26-1.501(c)(3)-1:b4", "i1023:dissolution"],
+      "post": "Chair of the Board", "cadence": "once", "applicability": "standing",
+      "discharge": { "kind": "articles-fact", "fact": "dissolution" },
+      "evidence": "A dissolution clause in the Articles of Incorporation on file with the Secretary of State"
+    },
+    {
+      "name": "Apply to the IRS for recognition of exemption on Form 1023 or Form 1023-EZ",
+      "authorities": ["usc-26-508:a", "cfr-26-1.508-1:a2", "i1023:effective"],
+      "post": "Chair of the Board", "cadence": "once", "applicability": "standing",
+      "discharge": { "kind": "irs-recognition" },
+      "evidence": "An IRS determination letter, or the Foundation in the Exempt Organizations Business Master File or the Publication 78 data"
+    },
+    {
+      "name": "File the annual information return or notice: Form 990, Form 990-EZ or Form 990-N",
+      "authorities": ["usc-26-6033:a1", "usc-26-6033:i", "usc-26-6033:j", "i990:due", "i990:form990", "i990:form990ez", "i990:form990n"],
+      "post": "Treasurer", "cadence": "annual", "applicability": "standing",
+      "discharge": { "kind": "irs-filing" },
+      "evidence": "The return the uor-990-return app names for the tax year, filed by the 15th day of the 5th month after the accounting period ends, and found in the IRS e-file index or the e-Postcard data"
+    },
+    {
+      "name": "Make the exemption application and the three most recent annual returns available for public inspection",
+      "authorities": ["usc-26-6104:d"],
+      "post": "Secretary", "cadence": "continuous", "applicability": "standing",
+      "discharge": { "kind": "private" },
+      "evidence": "Form 1023 and the Forms 990 published on the Foundation's website, or provided on request"
+    },
+    {
+      "name": "Pay no excess benefit; set compensation by independent review with comparability data",
+      "authorities": ["usc-26-4958:a", "bylaws:5.11", "bylaws:4.15"],
+      "post": "Chair of the Board", "cadence": "continuous", "applicability": "standing",
+      "discharge": { "kind": "private" },
+      "evidence": "Board minutes approving each compensation arrangement with the comparability data relied on"
+    },
+    {
+      "name": "Operate exclusively for exempt purposes: no private inurement, no substantial lobbying, no political campaign intervention",
+      "authorities": ["usc-26-501:c3", "bylaws:1.2", "bylaws:Art.12"],
+      "post": "Chair of the Board", "cadence": "continuous", "applicability": "standing",
+      "discharge": { "kind": "private" },
+      "evidence": "Form 990 Schedule C and Part IV answers, and Board minutes, showing no inurement, no substantial lobbying and no campaign intervention"
+    },
+    {
+      "name": "Adopt a conflict of interest policy",
+      "authorities": ["bylaws:10.3", "crs:7-128-501"],
+      "post": "Chair of the Board", "cadence": "once", "applicability": "standing",
+      "discharge": { "kind": "published", "policy": "conflict of interest" },
+      "evidence": "A conflict of interest policy adopted by Board resolution and published in UOR-Foundation/.github"
+    },
+    {
+      "name": "Discharge each director's and officer's duties in good faith and in the corporation's best interests",
+      "authorities": ["crs:7-128-401", "bylaws:10.1"],
+      "post": "Chair of the Board", "cadence": "continuous", "applicability": "standing",
+      "discharge": { "kind": "private" },
+      "evidence": "Board minutes recording the information each decision relied on"
+    },
+    {
+      "name": "Hold the regular annual meeting of the Board and elect the officers",
+      "authorities": ["bylaws:4.7", "bylaws:5.2"],
+      "post": "Chair of the Board", "cadence": "annual", "applicability": "standing",
+      "discharge": { "kind": "private" },
+      "evidence": "Minutes of the annual meeting recording the election of the officers"
+    },
+    {
+      "name": "Register with the Secretary of State before soliciting contributions in Colorado",
+      "authorities": ["crs:6-16-104"],
+      "post": "Treasurer", "cadence": "onEvent", "applicability": "conditional",
+      "discharge": { "kind": "ccsa-registration" },
+      "evidence": "A charitable organization registration in the Secretary of State's charities database, or a record that the Foundation neither solicits in Colorado nor exceeds the exemption of C.R.S. 6-16-104(6)(c)"
+    },
+    {
+      "name": "File the annual charitable financial report with the Secretary of State",
+      "authorities": ["crs:6-16-104"],
+      "post": "Treasurer", "cadence": "annual", "applicability": "conditional",
+      "discharge": { "kind": "ccsa-registration" },
+      "evidence": "The financial report, or a copy of Form 990, filed by the earlier of the 15th day of the 8th month after the fiscal year or the Form 990 due date"
+    },
+    {
+      "name": "File Form 990-T when gross unrelated business income is $1,000 or more",
+      "authorities": ["cfr-26-1.6012-2:e", "usc-26-6012:a2"],
+      "post": "Treasurer", "cadence": "annual", "applicability": "conditional",
+      "discharge": { "kind": "private" },
+      "evidence": "The accounting records' unrelated business gross income for the year, and Form 990-T when it is $1,000 or more"
+    }
+  ],
+  "needs": [
+    { "name": "Revenue for the tax year", "part": "f990:VIII", "provision": "bylaws:11.2" },
+    { "name": "Functional expenses for the tax year", "part": "f990:IX", "provision": "bylaws:11.2" },
+    { "name": "Balance sheet at the end of the tax year", "part": "f990:X", "provision": "bylaws:11.2" },
+    { "name": "Summary of activities and finances", "part": "f990:I", "provision": "bylaws:11.2" },
+    { "name": "Accounting period (the month the tax year ends)", "part": "i990:due", "provision": "bylaws:11.2" },
+    { "name": "Gross receipts normally $50,000 or less (Appendix B test)", "part": "i990:form990n", "provision": "bylaws:11.2" },
+    { "name": "Gross receipts for the tax year against $200,000", "part": "i990:form990", "provision": "bylaws:11.2" },
+    { "name": "Total assets at the end of the tax year against $500,000", "part": "i990:form990", "provision": "bylaws:11.2" },
+    { "name": "Finance and Audit Committee establishment, members and charter", "part": "bylaws:6.1", "provision": "bylaws:6.1" }
+  ]
+}

@@ -1,0 +1,339 @@
+\begin{lexlean}{UorStandardApplicability}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Bytes}
+\importmodule{Foundation.View.Text.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+definition{name: uorStandardApplicabilityOwnerStandards, parameters: [], result: Nat, body: 0}
+
+definition{name: uorStandardApplicabilityOwnerSecurity, parameters: [], result: Nat, body: 1}
+
+definition{name: uorStandardApplicabilityScopeQuoted, parameters: [], result: Nat, body: 0}
+
+definition{name: uorStandardApplicabilityScopeUnread, parameters: [], result: Nat, body: 1}
+
+definition{name: uorStandardApplicabilityInscopeYes, parameters: [], result: Nat, body: 0}
+
+definition{name: uorStandardApplicabilityInscopeNo, parameters: [], result: Nat, body: 1}
+
+definition{name: uorStandardApplicabilityForceLaw, parameters: [], result: Nat, body: 0}
+
+definition{name: uorStandardApplicabilityForceVoluntary, parameters: [], result: Nat, body: 1}
+
+definition{name: uorStandardApplicabilityJurisdictionOwn, parameters: [], result: Nat, body: 0}
+
+definition{name: uorStandardApplicabilityJurisdictionForeign, parameters: [], result: Nat, body: 1}
+
+definition{name: uorStandardApplicabilityJurisdictionUnbound, parameters: [], result: Nat, body: 2}
+
+definition{name: uorStandardApplicabilityActivityPresent, parameters: [], result: Nat, body: 0}
+
+definition{name: uorStandardApplicabilityActivityAbsent, parameters: [], result: Nat, body: 1}
+
+definition{name: uorStandardApplicabilityActivityUndetermined, parameters: [], result: Nat, body: 2}
+
+definition{name: uorStandardApplicabilityAdoptedYes, parameters: [], result: Nat, body: 0}
+
+definition{name: uorStandardApplicabilityAdoptedNo, parameters: [], result: Nat, body: 1}
+
+definition{name: uorStandardApplicabilityAnswerSecured, parameters: [], result: Nat, body: 0}
+
+definition{name: uorStandardApplicabilityAnswerUndecided, parameters: [], result: Nat, body: 1}
+
+definition{name: uorStandardApplicabilityAnswerInapplicable, parameters: [], result: Nat, body: 2}
+
+definition{name: uorStandardApplicabilityAnswerConditional, parameters: [], result: Nat, body: 3}
+
+definition{name: uorStandardApplicabilityAnswerMandatory, parameters: [], result: Nat, body: 4}
+
+definition{name: uorStandardApplicabilityAnswerAdopted, parameters: [], result: Nat, body: 5}
+
+definition{name: uorStandardApplicabilityAnswerApplicable, parameters: [], result: Nat, body: 6}
+
+structure{
+  name: UorStandardApplicabilityRequest,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: owner, type: Nat},
+    {name: scope, type: Nat},
+    {name: inscope, type: Nat},
+    {name: force, type: Nat},
+    {name: jurisdiction, type: Nat},
+    {name: activity, type: Nat},
+    {name: adopted, type: Nat}
+  ]
+}
+
+definition{
+  name: uorStandardApplicabilityByteAt,
+  parameters: [s : Bytes, i : Nat],
+  result: (Option Nat),
+  body: (match (prim index s i : (Option UInt8))
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some b => (ctor Option.some [Nat] (prim to_nat b : Nat))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorStandardApplicabilityDigitsValue,
+  parameters: [s : Bytes, i : Nat, acc : Nat, fuel : Nat],
+  result: (Option Nat),
+  body: (match fuel
+    | Nat.zero => (ctor Option.some [Nat] acc)
+    | Nat.succ rest => (match (uorStandardApplicabilityByteAt s i)
+      | Option.none => (ctor Option.none [Nat])
+      | Option.some d => (if ((d <? 48) || (57 <? d)) then (ctor Option.none [Nat]) else (uorStandardApplicabilityDigitsValue s (i + 1) ((prim multiply acc 10 : Nat) + (prim subtract d 48 : Nat)) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorStandardApplicabilityParseDigits,
+  parameters: [s : Bytes],
+  result: (Option Nat),
+  body: (if ((Foundation.Bytes::byteLength s) =? 0) then (ctor Option.none [Nat]) else (if (18 <? (Foundation.Bytes::byteLength s)) then (ctor Option.none [Nat]) else (match (uorStandardApplicabilityByteAt s 0)
+    | Option.none => (ctor Option.none [Nat])
+    | Option.some lead => (if ((lead =? 48) && (1 <? (Foundation.Bytes::byteLength s))) then (ctor Option.none [Nat]) else (uorStandardApplicabilityDigitsValue s 0 0 (Foundation.Bytes::byteLength s)))))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorStandardApplicabilityParseNumber,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (uorStandardApplicabilityParseDigits value),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorStandardApplicabilityParseOwner,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x7374616e6461726473 : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityOwnerStandards)) else (if (prim equal value 0x7365637572697479 : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityOwnerSecurity)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorStandardApplicabilityParseScope,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x71756f746564 : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityScopeQuoted)) else (if (prim equal value 0x756e72656164 : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityScopeUnread)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorStandardApplicabilityParseInscope,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x796573 : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityInscopeYes)) else (if (prim equal value 0x6e6f : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityInscopeNo)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorStandardApplicabilityParseForce,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6c6177 : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityForceLaw)) else (if (prim equal value 0x766f6c756e74617279 : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityForceVoluntary)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorStandardApplicabilityParseJurisdiction,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x6f776e : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityJurisdictionOwn)) else (if (prim equal value 0x666f726569676e : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityJurisdictionForeign)) else (if (prim equal value 0x756e626f756e64 : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityJurisdictionUnbound)) else (ctor Option.none [Nat]))))
+}
+
+definition{
+  name: uorStandardApplicabilityParseActivity,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x70726573656e74 : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityActivityPresent)) else (if (prim equal value 0x616273656e74 : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityActivityAbsent)) else (if (prim equal value 0x756e64657465726d696e6564 : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityActivityUndetermined)) else (ctor Option.none [Nat]))))
+}
+
+definition{
+  name: uorStandardApplicabilityParseAdopted,
+  parameters: [value : Bytes],
+  result: (Option Nat),
+  body: (if (prim equal value 0x796573 : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityAdoptedYes)) else (if (prim equal value 0x6e6f : Bool) then (ctor Option.some [Nat] (uorStandardApplicabilityAdoptedNo)) else (ctor Option.none [Nat])))
+}
+
+definition{
+  name: uorStandardApplicabilitySliceOf,
+  parameters: [s : Bytes, start : Nat, count : Nat],
+  result: Bytes,
+  body: (match (prim slice s start count : (Option Bytes))
+    | Option.none => 0x
+    | Option.some part => part)
+}
+
+definition{
+  name: uorStandardApplicabilityFieldEnd,
+  parameters: [s : Bytes, i : Nat, fuel : Nat],
+  result: Nat,
+  body: (match fuel
+    | Nat.zero => i
+    | Nat.succ rest => (match (uorStandardApplicabilityByteAt s i)
+      | Option.none => i
+      | Option.some d => (if (d =? 32) then i else (uorStandardApplicabilityFieldEnd s (i + 1) rest)))),
+  axioms: [Quot.sound, propext],
+  recursive_argument: fuel
+}
+
+definition{
+  name: uorStandardApplicabilityDecodeField7,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat, v5 : Nat, v6 : Nat],
+  result: (Option UorStandardApplicabilityRequest),
+  body: (let e : Nat := (uorStandardApplicabilityFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorStandardApplicabilityParseAdopted (uorStandardApplicabilitySliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorStandardApplicabilityRequest])
+    | Option.some v7 => (if (e =? (Foundation.Bytes::byteLength s)) then (ctor Option.some [UorStandardApplicabilityRequest] (record UorStandardApplicabilityRequest {owner := v1, scope := v2, inscope := v3, force := v4, jurisdiction := v5, activity := v6, adopted := v7})) else (ctor Option.none [UorStandardApplicabilityRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorStandardApplicabilityDecodeField6,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat, v5 : Nat],
+  result: (Option UorStandardApplicabilityRequest),
+  body: (let e : Nat := (uorStandardApplicabilityFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorStandardApplicabilityParseActivity (uorStandardApplicabilitySliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorStandardApplicabilityRequest])
+    | Option.some v6 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorStandardApplicabilityDecodeField7 s (e + 1) v1 v2 v3 v4 v5 v6) else (ctor Option.none [UorStandardApplicabilityRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorStandardApplicabilityDecodeField5,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat, v4 : Nat],
+  result: (Option UorStandardApplicabilityRequest),
+  body: (let e : Nat := (uorStandardApplicabilityFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorStandardApplicabilityParseJurisdiction (uorStandardApplicabilitySliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorStandardApplicabilityRequest])
+    | Option.some v5 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorStandardApplicabilityDecodeField6 s (e + 1) v1 v2 v3 v4 v5) else (ctor Option.none [UorStandardApplicabilityRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorStandardApplicabilityDecodeField4,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat, v3 : Nat],
+  result: (Option UorStandardApplicabilityRequest),
+  body: (let e : Nat := (uorStandardApplicabilityFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorStandardApplicabilityParseForce (uorStandardApplicabilitySliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorStandardApplicabilityRequest])
+    | Option.some v4 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorStandardApplicabilityDecodeField5 s (e + 1) v1 v2 v3 v4) else (ctor Option.none [UorStandardApplicabilityRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorStandardApplicabilityDecodeField3,
+  parameters: [s : Bytes, start : Nat, v1 : Nat, v2 : Nat],
+  result: (Option UorStandardApplicabilityRequest),
+  body: (let e : Nat := (uorStandardApplicabilityFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorStandardApplicabilityParseInscope (uorStandardApplicabilitySliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorStandardApplicabilityRequest])
+    | Option.some v3 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorStandardApplicabilityDecodeField4 s (e + 1) v1 v2 v3) else (ctor Option.none [UorStandardApplicabilityRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorStandardApplicabilityDecodeField2,
+  parameters: [s : Bytes, start : Nat, v1 : Nat],
+  result: (Option UorStandardApplicabilityRequest),
+  body: (let e : Nat := (uorStandardApplicabilityFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorStandardApplicabilityParseScope (uorStandardApplicabilitySliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorStandardApplicabilityRequest])
+    | Option.some v2 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorStandardApplicabilityDecodeField3 s (e + 1) v1 v2) else (ctor Option.none [UorStandardApplicabilityRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorStandardApplicabilityDecodeField1,
+  parameters: [s : Bytes, start : Nat],
+  result: (Option UorStandardApplicabilityRequest),
+  body: (let e : Nat := (uorStandardApplicabilityFieldEnd s start (Foundation.Bytes::byteLength s)); (match (uorStandardApplicabilityParseOwner (uorStandardApplicabilitySliceOf s start (prim subtract e start : Nat)))
+    | Option.none => (ctor Option.none [UorStandardApplicabilityRequest])
+    | Option.some v1 => (if (e <? (Foundation.Bytes::byteLength s)) then (uorStandardApplicabilityDecodeField2 s (e + 1) v1) else (ctor Option.none [UorStandardApplicabilityRequest])))),
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: uorStandardApplicabilityRule1,
+  parameters: [request : UorStandardApplicabilityRequest],
+  result: Bool,
+  body: (((project request owner) =? (uorStandardApplicabilityOwnerSecurity)) && ((project request inscope) =? (uorStandardApplicabilityInscopeYes)))
+}
+
+definition{
+  name: uorStandardApplicabilityRule2,
+  parameters: [request : UorStandardApplicabilityRequest],
+  result: Bool,
+  body: ((project request scope) =? (uorStandardApplicabilityScopeUnread))
+}
+
+definition{
+  name: uorStandardApplicabilityRule3,
+  parameters: [request : UorStandardApplicabilityRequest],
+  result: Bool,
+  body: ((project request inscope) =? (uorStandardApplicabilityInscopeNo))
+}
+
+definition{
+  name: uorStandardApplicabilityRule4,
+  parameters: [request : UorStandardApplicabilityRequest],
+  result: Bool,
+  body: (((project request force) =? (uorStandardApplicabilityForceLaw)) && ((project request jurisdiction) =? (uorStandardApplicabilityJurisdictionForeign)))
+}
+
+definition{
+  name: uorStandardApplicabilityRule5,
+  parameters: [request : UorStandardApplicabilityRequest],
+  result: Bool,
+  body: (((project request force) =? (uorStandardApplicabilityForceLaw)) && ((project request activity) =? (uorStandardApplicabilityActivityAbsent)))
+}
+
+definition{
+  name: uorStandardApplicabilityRule6,
+  parameters: [request : UorStandardApplicabilityRequest],
+  result: Bool,
+  body: (((project request force) =? (uorStandardApplicabilityForceLaw)) && ((project request activity) =? (uorStandardApplicabilityActivityUndetermined)))
+}
+
+definition{
+  name: uorStandardApplicabilityRule7,
+  parameters: [request : UorStandardApplicabilityRequest],
+  result: Bool,
+  body: ((((project request force) =? (uorStandardApplicabilityForceLaw)) && ((project request jurisdiction) =? (uorStandardApplicabilityJurisdictionOwn))) && ((project request activity) =? (uorStandardApplicabilityActivityPresent)))
+}
+
+definition{
+  name: uorStandardApplicabilityRule8,
+  parameters: [request : UorStandardApplicabilityRequest],
+  result: Bool,
+  body: (((project request force) =? (uorStandardApplicabilityForceVoluntary)) && ((project request adopted) =? (uorStandardApplicabilityAdoptedYes)))
+}
+
+definition{
+  name: uorStandardApplicabilityRule9,
+  parameters: [request : UorStandardApplicabilityRequest],
+  result: Bool,
+  body: ((project request force) =? (uorStandardApplicabilityForceLaw))
+}
+
+definition{
+  name: uorStandardApplicabilityJudge,
+  parameters: [request : UorStandardApplicabilityRequest],
+  result: Nat,
+  body: (if (uorStandardApplicabilityRule1 request) then (uorStandardApplicabilityAnswerSecured) else (if (uorStandardApplicabilityRule2 request) then (uorStandardApplicabilityAnswerUndecided) else (if (uorStandardApplicabilityRule3 request) then (uorStandardApplicabilityAnswerInapplicable) else (if (uorStandardApplicabilityRule4 request) then (uorStandardApplicabilityAnswerInapplicable) else (if (uorStandardApplicabilityRule5 request) then (uorStandardApplicabilityAnswerInapplicable) else (if (uorStandardApplicabilityRule6 request) then (uorStandardApplicabilityAnswerConditional) else (if (uorStandardApplicabilityRule7 request) then (uorStandardApplicabilityAnswerMandatory) else (if (uorStandardApplicabilityRule8 request) then (uorStandardApplicabilityAnswerAdopted) else (if (uorStandardApplicabilityRule9 request) then (uorStandardApplicabilityAnswerUndecided) else (uorStandardApplicabilityAnswerApplicable))))))))))
+}
+
+definition{
+  name: uorStandardApplicabilityEncodeAnswer,
+  parameters: [code : Nat],
+  result: Bytes,
+  body: (if (code =? (uorStandardApplicabilityAnswerSecured)) then 0x73656375726564 else (if (code =? (uorStandardApplicabilityAnswerUndecided)) then 0x756e64656369646564 else (if (code =? (uorStandardApplicabilityAnswerInapplicable)) then 0x696e6170706c696361626c65 else (if (code =? (uorStandardApplicabilityAnswerConditional)) then 0x636f6e646974696f6e616c else (if (code =? (uorStandardApplicabilityAnswerMandatory)) then 0x6d616e6461746f7279 else (if (code =? (uorStandardApplicabilityAnswerAdopted)) then 0x61646f70746564 else (if (code =? (uorStandardApplicabilityAnswerApplicable)) then 0x6170706c696361626c65 else 0x696e76616c6964)))))))
+}
+
+definition{
+  name: uorStandardApplicabilityDispatch,
+  parameters: [value : Bytes],
+  result: Bytes,
+  body: (if (184 <? (Foundation.Bytes::byteLength value)) then 0x696e76616c6964 else (match (uorStandardApplicabilityDecodeField1 value 0)
+    | Option.none => 0x696e76616c6964
+    | Option.some request => (uorStandardApplicabilityEncodeAnswer (uorStandardApplicabilityJudge request)))),
+  axioms: [Quot.sound, propext]
+}
+\end{semanticmodule}
+\end{lexlean}

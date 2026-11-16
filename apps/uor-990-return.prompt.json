@@ -1,0 +1,415 @@
+{
+  "schema": "prism/prompt/1",
+  "pattern": "decisionTable",
+  "goal": "Name the annual information return the IRS Form 990 instructions require of the UOR Foundation, a section 501(c)(3) organization that is not a private foundation, for a tax year.",
+  "repository": "UOR-Foundation/community",
+  "app": {
+    "name": "uor-990-return",
+    "title": "Annual information return by gross receipts and assets",
+    "purpose": "Decide which of Form 990-N, Form 990-EZ and Form 990 a section 501(c)(3) public charity files for a tax year, from its normal gross receipts, its gross receipts and total assets for the year, and the special rules for supporting organizations, sponsoring organizations of donor advised funds and controlling organizations, as the 2025 Instructions for Form 990 state them. The answer is the shortest return the instructions permit; an organization may always file a longer one.",
+    "fields": [
+      {
+        "name": "normally",
+        "kind": "choice",
+        "values": [
+          "small",
+          "large"
+        ],
+        "means": "small when the organization’s gross receipts are normally $50,000 or less and large otherwise, as Appendix B of the Instructions for Form 990 determines it"
+      },
+      {
+        "name": "receipts",
+        "kind": "choice",
+        "values": [
+          "small",
+          "large"
+        ],
+        "means": "small when the organization’s gross receipts for the tax year are less than $200,000, large when they are greater than or equal to it"
+      },
+      {
+        "name": "assets",
+        "kind": "choice",
+        "values": [
+          "small",
+          "large"
+        ],
+        "means": "small when the organization’s total assets at the end of the tax year are less than $500,000, large when they are greater than or equal to it"
+      },
+      {
+        "name": "kind",
+        "kind": "choice",
+        "values": [
+          "public",
+          "supporting",
+          "sponsor",
+          "controlling"
+        ],
+        "means": "the special rule that applies: none (public), a section 509(a)(3) supporting organization, a sponsoring organization of donor advised funds, or a section 512(b)(13) controlling organization with a transfer of funds to or from a controlled entity during the year"
+      }
+    ],
+    "outcomes": [
+      "form990n",
+      "form990ez",
+      "form990"
+    ],
+    "meanings": {
+      "form990n": "Form 990-N, the annual electronic notice (e-Postcard)",
+      "form990ez": "Form 990-EZ, Short Form Return of Organization Exempt From Income Tax",
+      "form990": "Form 990, Return of Organization Exempt From Income Tax"
+    },
+    "rules": [
+      {
+        "when": [
+          {
+            "field": "normally",
+            "op": "is",
+            "value": "small"
+          },
+          {
+            "field": "kind",
+            "op": "is",
+            "value": "public"
+          }
+        ],
+        "then": "form990n",
+        "why": "Instructions for Form 990 (2025), https://www.irs.gov/pub/irs-pdf/i990.pdf sha256:ae9f947383cd7393e3359ff7977b4c7665e21496df592a5fd1f8e4efed3acebf, General Instructions, Section A (Who Must File), Form 990-N: an organization that normally has gross receipts of $50,000 or less must submit Form 990-N if it chooses not to file Form 990 or 990-EZ"
+      },
+      {
+        "when": [
+          {
+            "field": "normally",
+            "op": "is",
+            "value": "small"
+          },
+          {
+            "field": "kind",
+            "op": "is",
+            "value": "sponsor"
+          }
+        ],
+        "then": "form990n",
+        "why": "Instructions for Form 990 (2025), https://www.irs.gov/pub/irs-pdf/i990.pdf sha256:ae9f947383cd7393e3359ff7977b4c7665e21496df592a5fd1f8e4efed3acebf, General Instructions, Section A (Who Must File), Form 990-N: the only exceptions to the $50,000 rule are certain section 509(a)(3) supporting organizations and certain Section B organizations"
+      },
+      {
+        "when": [
+          {
+            "field": "normally",
+            "op": "is",
+            "value": "small"
+          },
+          {
+            "field": "kind",
+            "op": "is",
+            "value": "controlling"
+          }
+        ],
+        "then": "form990n",
+        "why": "Instructions for Form 990 (2025), https://www.irs.gov/pub/irs-pdf/i990.pdf sha256:ae9f947383cd7393e3359ff7977b4c7665e21496df592a5fd1f8e4efed3acebf, General Instructions, Section A (Who Must File), Form 990-N: the only exceptions to the $50,000 rule are certain section 509(a)(3) supporting organizations and certain Section B organizations"
+      },
+      {
+        "when": [
+          {
+            "field": "receipts",
+            "op": "is",
+            "value": "large"
+          }
+        ],
+        "then": "form990",
+        "why": "Instructions for Form 990 (2025), https://www.irs.gov/pub/irs-pdf/i990.pdf sha256:ae9f947383cd7393e3359ff7977b4c7665e21496df592a5fd1f8e4efed3acebf, General Instructions, Section A (Who Must File): Form 990 must be filed by an organization with gross receipts greater than or equal to $200,000"
+      },
+      {
+        "when": [
+          {
+            "field": "assets",
+            "op": "is",
+            "value": "large"
+          }
+        ],
+        "then": "form990",
+        "why": "Instructions for Form 990 (2025), https://www.irs.gov/pub/irs-pdf/i990.pdf sha256:ae9f947383cd7393e3359ff7977b4c7665e21496df592a5fd1f8e4efed3acebf, General Instructions, Section A (Who Must File): Form 990 must be filed by an organization with total assets greater than or equal to $500,000 at the end of the tax year"
+      },
+      {
+        "when": [
+          {
+            "field": "kind",
+            "op": "is",
+            "value": "sponsor"
+          }
+        ],
+        "then": "form990",
+        "why": "Instructions for Form 990 (2025), https://www.irs.gov/pub/irs-pdf/i990.pdf sha256:ae9f947383cd7393e3359ff7977b4c7665e21496df592a5fd1f8e4efed3acebf, General Instructions, Section A (Who Must File), Sponsoring organizations of donor advised funds: must file Form 990 and not Form 990-EZ"
+      },
+      {
+        "when": [
+          {
+            "field": "kind",
+            "op": "is",
+            "value": "controlling"
+          }
+        ],
+        "then": "form990",
+        "why": "Instructions for Form 990 (2025), https://www.irs.gov/pub/irs-pdf/i990.pdf sha256:ae9f947383cd7393e3359ff7977b4c7665e21496df592a5fd1f8e4efed3acebf, General Instructions, Section A (Who Must File), Controlling organizations described in section 512(b)(13): with a transfer of funds to or from a controlled entity during the year, must file Form 990 and not Form 990-EZ"
+      }
+    ],
+    "otherwise": "form990ez",
+    "otherwiseWhy": "Instructions for Form 990 (2025), https://www.irs.gov/pub/irs-pdf/i990.pdf sha256:ae9f947383cd7393e3359ff7977b4c7665e21496df592a5fd1f8e4efed3acebf, General Instructions, Section A (Who Must File), Form 990-EZ: an organization with gross receipts less than $200,000 and total assets at the end of the tax year less than $500,000 can choose to file Form 990-EZ instead of Form 990; a section 509(a)(3) supporting organization must file Form 990 or 990-EZ even if its gross receipts are normally $50,000 or less",
+    "properties": [
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "normally",
+            "op": "is",
+            "value": "large"
+          }
+        ],
+        "then": "form990n",
+        "why": "Form 990-N is only for an organization whose gross receipts are normally $50,000 or less"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "kind",
+            "op": "is",
+            "value": "supporting"
+          }
+        ],
+        "then": "form990n",
+        "why": "a section 509(a)(3) supporting organization files Form 990 or 990-EZ even when its gross receipts are normally $50,000 or less"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "normally",
+            "op": "is",
+            "value": "large"
+          },
+          {
+            "field": "receipts",
+            "op": "is",
+            "value": "large"
+          }
+        ],
+        "then": "form990",
+        "why": "gross receipts of $200,000 or more require Form 990"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "normally",
+            "op": "is",
+            "value": "large"
+          },
+          {
+            "field": "assets",
+            "op": "is",
+            "value": "large"
+          }
+        ],
+        "then": "form990",
+        "why": "total assets of $500,000 or more require Form 990"
+      },
+      {
+        "kind": "always",
+        "when": [
+          {
+            "field": "normally",
+            "op": "is",
+            "value": "large"
+          },
+          {
+            "field": "receipts",
+            "op": "is",
+            "value": "small"
+          },
+          {
+            "field": "assets",
+            "op": "is",
+            "value": "small"
+          },
+          {
+            "field": "kind",
+            "op": "is",
+            "value": "public"
+          }
+        ],
+        "then": "form990ez",
+        "why": "below both Form 990 thresholds a public charity may file Form 990-EZ"
+      },
+      {
+        "kind": "never",
+        "when": [
+          {
+            "field": "normally",
+            "op": "is",
+            "value": "large"
+          },
+          {
+            "field": "kind",
+            "op": "is",
+            "value": "sponsor"
+          }
+        ],
+        "then": "form990ez",
+        "why": "a sponsoring organization of donor advised funds never files Form 990-EZ"
+      }
+    ],
+    "examples": [
+      {
+        "request": "small small small public",
+        "response": "form990n"
+      },
+      {
+        "request": "small large small public",
+        "response": "form990n"
+      },
+      {
+        "request": "small small small supporting",
+        "response": "form990ez"
+      },
+      {
+        "request": "small large small supporting",
+        "response": "form990"
+      },
+      {
+        "request": "large small small public",
+        "response": "form990ez"
+      },
+      {
+        "request": "large large small public",
+        "response": "form990"
+      },
+      {
+        "request": "large small large public",
+        "response": "form990"
+      },
+      {
+        "request": "large small small sponsor",
+        "response": "form990"
+      },
+      {
+        "request": "large small small controlling",
+        "response": "form990"
+      },
+      {
+        "request": "small small small sponsor",
+        "response": "form990n"
+      }
+    ]
+  },
+  "stakeholders": [
+    {
+      "name": "Treasurer",
+      "text": "Has charge of the Foundation’s funds under Bylaws 5.7 and needs the return the IRS requires for the year named from the figures the accounting records hold.",
+      "concerns": [
+        "Correct answers"
+      ]
+    },
+    {
+      "name": "Board of Directors",
+      "text": "Is responsible for the Foundation’s compliance and, under Form 990 Part VI line 11a, receives a copy of the return before it is filed.",
+      "concerns": [
+        "Proved guarantees"
+      ]
+    },
+    {
+      "name": "Public",
+      "text": "Reads the Foundation’s annual return under section 6104 and needs it to be the return the instructions require.",
+      "concerns": [
+        "Correct answers"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Accounting records",
+      "kind": "externalSystem",
+      "text": "The accounting records Bylaws 11.2 requires, which give the gross receipts and total assets the decision reads."
+    },
+    {
+      "name": "Nonprofit register",
+      "kind": "cliAdapter",
+      "text": "nonprofit/project.mjs and nonprofit/register.json in UOR-Foundation/community, which carry the annual return obligation and its open finance claims."
+    }
+  ],
+  "threats": [
+    {
+      "name": "Shorter return than required",
+      "text": "An organization large a Form 990 threshold is answered Form 990-EZ or 990-N, so its return omits the governance, compensation and financial parts the public relies on.",
+      "stride": "tampering",
+      "asset": "answer",
+      "likelihood": "medium",
+      "impact": "major",
+      "control": {
+        "name": "Thresholds decide",
+        "text": "Gross receipts of $200,000 or more or total assets of $500,000 or more answer Form 990 unless receipts are normally $50,000 or less.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-003"
+          },
+          {
+            "kind": "proof",
+            "reference": "INV-004"
+          },
+          {
+            "kind": "review",
+            "reference": "https://www.irs.gov/pub/irs-pdf/i990.pdf General Instructions, Section A (Who Must File)"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Supporting organization answered 990-N",
+      "text": "A section 509(a)(3) supporting organization is told to submit only the e-Postcard.",
+      "stride": "repudiation",
+      "asset": "answer",
+      "likelihood": "low",
+      "impact": "major",
+      "control": {
+        "name": "Supporting organizations file a return",
+        "text": "A supporting organization is never answered Form 990-N.",
+        "evidence": [
+          {
+            "kind": "proof",
+            "reference": "INV-002"
+          }
+        ]
+      }
+    }
+  ],
+  "quality": [
+    {
+      "characteristic": "Functional suitability",
+      "subcharacteristic": "Functional completeness",
+      "requirement": "Every return rule modeled",
+      "text": "Each filing rule of General Instructions, Section A (Who Must File) of the Instructions for Form 990 that a section 501(c)(3) public charity can meet is reached by a rule.",
+      "measure": "Unmodeled filing rules",
+      "measureText": "Rules of General Instructions, Section A (Who Must File) for public charities with no rule.",
+      "threshold": 0
+    }
+  ],
+  "journeys": [
+    {
+      "stakeholder": "Treasurer",
+      "steps": [
+        "REQ-001",
+        "REQ-004",
+        "otherwise"
+      ]
+    },
+    {
+      "stakeholder": "Board of Directors",
+      "steps": [
+        "INV-003",
+        "INV-005",
+        "refuse"
+      ]
+    }
+  ],
+  "concerns": [],
+  "license": "MIT OR Apache-2.0"
+}

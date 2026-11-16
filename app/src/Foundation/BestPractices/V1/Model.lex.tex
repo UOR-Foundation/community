@@ -1,0 +1,595 @@
+\begin{lexlean}{Foundation.BestPractices.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\title{Best Practices model}
+\begin{semanticmodule}
+inductive{
+  name: Level,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: passing, fields: []}, {name: silver, fields: []}, {name: gold, fields: []}]
+}
+
+inductive{
+  name: Category,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: must, fields: []},
+    {name: should, fields: []},
+    {name: suggested, fields: []}
+  ]
+}
+
+inductive{
+  name: Status,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: met, fields: []},
+    {name: unmet, fields: []},
+    {name: na, fields: []},
+    {name: unknown, fields: []}
+  ]
+}
+
+inductive{
+  name: Owner,
+  type_parameters: [],
+  parameters: [],
+  constructors: [{name: bestpractices, fields: []}, {name: security, fields: []}]
+}
+
+inductive{
+  name: Detective,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: githubBasic, fields: []},
+    {name: flossLicense, fields: []},
+    {name: repoFilesExamine, fields: []},
+    {name: build, fields: []},
+    {name: subdirFileContents, fields: []},
+    {name: projectSitesHttps, fields: []},
+    {name: hardenedSites, fields: []},
+    {name: noDetective, fields: []}
+  ]
+}
+
+inductive{
+  name: Refusal,
+  type_parameters: [],
+  parameters: [],
+  constructors: [
+    {name: licenseAtLaterHead, fields: []},
+    {name: headersUnreadable, fields: []},
+    {name: selfDeclaredFile, fields: []}
+  ]
+}
+
+structure{
+  name: Release,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: criteriaCount, type: Nat},
+    {name: repositoriesCount, type: Nat},
+    {name: outcomesCount, type: Nat},
+    {name: badgeQueriesCount, type: Nat},
+    {name: refusalsCount, type: Nat},
+    {name: badgeRepository, type: String},
+    {name: badgeCommit, type: String},
+    {name: criteriaDigest, type: String},
+    {name: localeDigest, type: String},
+    {name: readingDigest, type: String},
+    {name: snapshotDigest, type: String},
+    {name: securityCommit, type: String},
+    {name: securityDigest, type: String},
+    {name: metCount, type: Nat},
+    {name: unmetCount, type: Nat},
+    {name: naCount, type: Nat},
+    {name: unknownCount, type: Nat},
+    {name: openCount, type: Nat},
+    {name: mustClearPassing, type: Nat},
+    {name: mustClearSilver, type: Nat},
+    {name: mustClearGold, type: Nat},
+    {name: badgeEntries, type: Nat}
+  ]
+}
+
+structure{
+  name: Criterion,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: level, type: Level},
+    {name: major, type: String},
+    {name: minor, type: String},
+    {name: category, type: Category},
+    {name: naAllowed, type: Bool},
+    {name: metUrlRequired, type: Bool},
+    {name: future, type: Bool},
+    {name: obsolete, type: Bool},
+    {name: owner, type: Owner},
+    {name: securityDecides, type: Bool},
+    {name: descriptionDigest, type: String}
+  ]
+}
+
+structure{
+  name: Repository,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: name, type: String},
+    {name: commit, type: String},
+    {name: licenseSpdx, type: String},
+    {name: licenseCurrent, type: Bool},
+    {name: licensingExpression, type: String},
+    {name: homepage, type: String},
+    {name: met, type: Nat},
+    {name: unmet, type: Nat},
+    {name: na, type: Nat},
+    {name: unknown, type: Nat},
+    {name: open, type: Nat},
+    {name: openPassing, type: Nat},
+    {name: openSilver, type: Nat},
+    {name: openGold, type: Nat}
+  ]
+}
+
+structure{
+  name: Outcome,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: criterion, type: Nat},
+    {name: status, type: Status},
+    {name: detective, type: Detective},
+    {name: cite, type: String},
+    {name: confidence, type: Nat},
+    {name: forced, type: Bool},
+    {name: open, type: Bool},
+    {name: evidence, type: String}
+  ]
+}
+
+structure{
+  name: BadgeQuery,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: query, type: String},
+    {name: status, type: Nat},
+    {name: found, type: Nat}
+  ]
+}
+
+structure{
+  name: OpenRefusal,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: index, type: Nat},
+    {name: repository, type: Nat},
+    {name: name, type: Refusal},
+    {name: reason, type: String}
+  ]
+}
+
+definition{
+  name: agree,
+  parameters: [left : Bool, right : Bool],
+  result: Bool,
+  body: (if left then right else (not right))
+}
+
+definition{
+  name: isMet,
+  parameters: [value : Status],
+  result: Bool,
+  body: (match value
+    | Status.met => true
+    | Status.unmet => false
+    | Status.na => false
+    | Status.unknown => false)
+}
+
+definition{
+  name: isUnmet,
+  parameters: [value : Status],
+  result: Bool,
+  body: (match value
+    | Status.met => false
+    | Status.unmet => true
+    | Status.na => false
+    | Status.unknown => false)
+}
+
+definition{
+  name: isNa,
+  parameters: [value : Status],
+  result: Bool,
+  body: (match value
+    | Status.met => false
+    | Status.unmet => false
+    | Status.na => true
+    | Status.unknown => false)
+}
+
+definition{
+  name: isUnknown,
+  parameters: [value : Status],
+  result: Bool,
+  body: (match value
+    | Status.met => false
+    | Status.unmet => false
+    | Status.na => false
+    | Status.unknown => true)
+}
+
+definition{
+  name: isMust,
+  parameters: [value : Category],
+  result: Bool,
+  body: (match value
+    | Category.must => true
+    | Category.should => false
+    | Category.suggested => false)
+}
+
+definition{
+  name: noDetective,
+  parameters: [value : Detective],
+  result: Bool,
+  body: (match value
+    | Detective.githubBasic => false
+    | Detective.flossLicense => false
+    | Detective.repoFilesExamine => false
+    | Detective.build => false
+    | Detective.subdirFileContents => false
+    | Detective.projectSitesHttps => false
+    | Detective.hardenedSites => false
+    | Detective.noDetective => true)
+}
+
+definition{
+  name: securityOwned,
+  parameters: [value : Owner],
+  result: Bool,
+  body: (match value | Owner.bestpractices => false | Owner.security => true)
+}
+
+definition{
+  name: outcomeAgrees,
+  parameters: [criterion : Criterion, outcome : Outcome],
+  result: Bool,
+  body: ((((project outcome criterion) =? (project criterion index)) && (agree (project outcome open) ((isMust (project criterion category)) && ((isUnmet (project outcome status)) || (isUnknown (project outcome status)))))) && ((not (isNa (project outcome status))) || (project criterion naAllowed)))
+}
+
+definition{
+  name: agreesHead,
+  parameters: [cursor : (List Criterion), position : Nat, outcome : Outcome],
+  result: Bool,
+  body: (match cursor
+    | List.nil => false
+    | List.cons criterion rest => (((project outcome repository) =? position) && (outcomeAgrees criterion outcome)))
+}
+
+definition{
+  name: restart,
+  parameters: [whole : (List Criterion), rest : (List Criterion)],
+  result: (List Criterion),
+  body: (match rest | List.nil => whole | List.cons criterion more => rest)
+}
+
+definition{
+  name: advance,
+  parameters: [whole : (List Criterion), cursor : (List Criterion)],
+  result: (List Criterion),
+  body: (match cursor | List.nil => whole | List.cons criterion rest => (restart whole rest))
+}
+
+definition{
+  name: restartPosition,
+  parameters: [rest : (List Criterion), position : Nat],
+  result: Nat,
+  body: (match rest | List.nil => (position + 1) | List.cons criterion more => position)
+}
+
+definition{
+  name: nextPosition,
+  parameters: [cursor : (List Criterion), position : Nat],
+  result: Nat,
+  body: (match cursor
+    | List.nil => position
+    | List.cons criterion rest => (restartPosition rest position))
+}
+
+definition{
+  name: blockAligned,
+  parameters: [
+    whole : (List Criterion),
+    cursor : (List Criterion),
+    position : Nat,
+    width : Nat,
+    values : (List Outcome)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => (position =? width)
+    | List.cons outcome rest => ((agreesHead cursor position outcome) && (blockAligned whole (advance whole cursor) (nextPosition cursor position) width rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: metTotal,
+  parameters: [values : (List Outcome)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => ((if (isMet (project item status)) then 1 else 0) + (metTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: unmetTotal,
+  parameters: [values : (List Outcome)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => ((if (isUnmet (project item status)) then 1 else 0) + (unmetTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: naTotal,
+  parameters: [values : (List Outcome)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => ((if (isNa (project item status)) then 1 else 0) + (naTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: unknownTotal,
+  parameters: [values : (List Outcome)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => ((if (isUnknown (project item status)) then 1 else 0) + (unknownTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: openTotal,
+  parameters: [values : (List Outcome)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => ((if (project item open) then 1 else 0) + (openTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoryMetTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => ((project item met) + (repositoryMetTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoryUnmetTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => ((project item unmet) + (repositoryUnmetTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoryNaTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => ((project item na) + (repositoryNaTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoryUnknownTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => ((project item unknown) + (repositoryUnknownTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoryOpenTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => ((project item open) + (repositoryOpenTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: clearPassingTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => ((if ((project item openPassing) =? 0) then 1 else 0) + (clearPassingTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: clearSilverTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => ((if ((project item openSilver) =? 0) then 1 else 0) + (clearSilverTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: clearGoldTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => ((if ((project item openGold) =? 0) then 1 else 0) + (clearGoldTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: badgeFoundTotal,
+  parameters: [values : (List BadgeQuery)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons item rest => ((project item found) + (badgeFoundTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesComplete,
+  parameters: [width : Nat, values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons item rest => ((((((project item met) + (project item unmet)) + (project item na)) + (project item unknown)) =? width) && (repositoriesComplete width rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: criteriaValid,
+  parameters: [position : Nat, values : (List Criterion)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons criterion rest => (((project criterion index) =? position) && (((not (project criterion securityDecides)) || (securityOwned (project criterion owner))) && (criteriaValid (position + 1) rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: criteriaTotal,
+  parameters: [values : (List Criterion)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons criterion rest => (1 + (criteriaTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesValid,
+  parameters: [position : Nat, values : (List Repository)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons repository rest => (((project repository index) =? position) && (((project repository open) =? (((project repository openPassing) + (project repository openSilver)) + (project repository openGold))) && (repositoriesValid (position + 1) rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: repositoriesTotal,
+  parameters: [values : (List Repository)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons repository rest => (1 + (repositoriesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: outcomesValid,
+  parameters: [
+    position : Nat,
+    repositoriesCount : Nat,
+    criteriaCount : Nat,
+    values : (List Outcome)
+  ],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons outcome rest => (((project outcome index) =? position) && (((project outcome repository) <? repositoriesCount) && (((project outcome criterion) <? criteriaCount) && ((agree (isUnknown (project outcome status)) ((project outcome confidence) =? 0)) && ((agree (isUnknown (project outcome status)) (noDetective (project outcome detective))) && ((agree (project outcome forced) (3 <? (project outcome confidence))) && (((project outcome confidence) <? 6) && (outcomesValid (position + 1) repositoriesCount criteriaCount rest))))))))),
+  recursive_argument: values
+}
+
+definition{
+  name: outcomesTotal,
+  parameters: [values : (List Outcome)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons outcome rest => (1 + (outcomesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: badgeQueriesValid,
+  parameters: [position : Nat, values : (List BadgeQuery)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons badgeQuery rest => (((project badgeQuery index) =? position) && (badgeQueriesValid (position + 1) rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: badgeQueriesTotal,
+  parameters: [values : (List BadgeQuery)],
+  result: Nat,
+  body: (match values
+    | List.nil => 0
+    | List.cons badgeQuery rest => (1 + (badgeQueriesTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: refusalsValid,
+  parameters: [position : Nat, repositoriesCount : Nat, values : (List OpenRefusal)],
+  result: Bool,
+  body: (match values
+    | List.nil => true
+    | List.cons openRefusal rest => (((project openRefusal index) =? position) && (((project openRefusal repository) <? repositoriesCount) && (refusalsValid (position + 1) repositoriesCount rest)))),
+  recursive_argument: values
+}
+
+definition{
+  name: refusalsTotal,
+  parameters: [values : (List OpenRefusal)],
+  result: Nat,
+  body: (match values | List.nil => 0 | List.cons openRefusal rest => (1 + (refusalsTotal rest))),
+  recursive_argument: values
+}
+
+definition{
+  name: registerValid,
+  parameters: [
+    release : Release,
+    criteria : (List Criterion),
+    repositories : (List Repository),
+    outcomes : (List Outcome),
+    badgeQueries : (List BadgeQuery),
+    refusals : (List OpenRefusal)
+  ],
+  result: Bool,
+  body: (((criteriaTotal criteria) =? (project release criteriaCount)) && (((repositoriesTotal repositories) =? (project release repositoriesCount)) && (((outcomesTotal outcomes) =? (project release outcomesCount)) && (((badgeQueriesTotal badgeQueries) =? (project release badgeQueriesCount)) && (((refusalsTotal refusals) =? (project release refusalsCount)) && ((criteriaValid 0 criteria) && ((repositoriesValid 0 repositories) && ((outcomesValid 0 (repositoriesTotal repositories) (criteriaTotal criteria) outcomes) && ((badgeQueriesValid 0 badgeQueries) && ((refusalsValid 0 (repositoriesTotal repositories) refusals) && ((blockAligned criteria criteria 0 (project release repositoriesCount) outcomes) && ((repositoriesComplete (project release criteriaCount) repositories) && (((metTotal outcomes) =? (project release metCount)) && (((unmetTotal outcomes) =? (project release unmetCount)) && (((naTotal outcomes) =? (project release naCount)) && (((unknownTotal outcomes) =? (project release unknownCount)) && (((openTotal outcomes) =? (project release openCount)) && (((repositoryMetTotal repositories) =? (project release metCount)) && (((repositoryUnmetTotal repositories) =? (project release unmetCount)) && (((repositoryNaTotal repositories) =? (project release naCount)) && (((repositoryUnknownTotal repositories) =? (project release unknownCount)) && (((repositoryOpenTotal repositories) =? (project release openCount)) && (((clearPassingTotal repositories) =? (project release mustClearPassing)) && (((clearSilverTotal repositories) =? (project release mustClearSilver)) && (((clearGoldTotal repositories) =? (project release mustClearGold)) && ((badgeFoundTotal badgeQueries) =? (project release badgeEntries)))))))))))))))))))))))))))
+}
+\end{semanticmodule}
+\end{lexlean}

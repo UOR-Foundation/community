@@ -1,0 +1,2452 @@
+{
+ "spec": "uor-community/nonprofit-register/1",
+ "standards": [
+  "Schema.org NGO, nonprofitStatus Nonprofit501c3 (https://schema.org/NGO, https://schema.org/Nonprofit501c3)",
+  "W3C ORG FormalOrganization, Post (https://www.w3.org/TR/vocab-org/)",
+  "ISO 3166-2:US subdivision codes (US-CO)",
+  "IRS Form 990 (2025) Part VI and its instructions (https://www.irs.gov/pub/irs-pdf/f990.pdf, https://www.irs.gov/pub/irs-pdf/i990.pdf)",
+  "OMG DMN 1.5 decision table, hit policy FIRST (apps/uor-990-return.prompt.json)"
+ ],
+ "tools": {
+  "pdftotext": "24.02.0"
+ },
+ "search": {
+  "method": "A record matches when the tokens of its organization name, split on every character that is not a letter or digit and compared without case, include every token of the Foundation's legal name except the article: UOR and FOUNDATION. A record whose name carries the token UOR at all is counted too, so a near miss is visible; no matched name is kept. Searched 2026-11-15.",
+  "tokens": [
+   "UOR",
+   "FOUNDATION"
+  ],
+  "near": [
+   "UOR"
+  ]
+ },
+ "counts": {
+  "sources": 42,
+  "authorities": 55,
+  "posts": 14,
+  "obligations": 20,
+  "citations": 52,
+  "filings": 5,
+  "observations": 9,
+  "statements": 2,
+  "lines": 31,
+  "needs": 9,
+  "claims": 67
+ },
+ "entity": {
+  "types": [
+   "schema:NGO",
+   "org:FormalOrganization"
+  ],
+  "legalName": "The UOR Foundation",
+  "identifier": [
+   {
+    "propertyID": "US-CO Secretary of State entity ID",
+    "value": "20251193974"
+   }
+  ],
+  "foundingDate": "2025-02-21",
+  "status": "Good Standing",
+  "form": "Nonprofit Corporation",
+  "jurisdiction": "US-CO",
+  "periodicReportMonth": "February",
+  "nonprofitStatusClaimed": "Nonprofit501c3",
+  "recognitionObserved": false,
+  "source": 8,
+  "fieldsSha256": "ab937e09cbd898e6b1432fac6c132306657a2bdde3e8dd8e544ffa249535b55e"
+ },
+ "sources": [
+  {
+   "key": "bylaws",
+   "url": "https://github.com/UOR-Foundation/.github/blob/92da114114fc9b76cbf2c5168e29d409b62ddde8/governance/The_UOR_Foundation_Bylaws.pdf",
+   "fetchedAt": "",
+   "digest": "sha256:21dde54a38910f58fb685867a63030f5fd8d0a6d0d2c93baa58e690641a4906c"
+  },
+  {
+   "key": "about",
+   "url": "https://github.com/UOR-Foundation/website/blob/e82ffdedc5d85ebd0bde239d50d4651005045d31/src/about/content.ts",
+   "fetchedAt": "",
+   "digest": "sha256:3ded37fd5602305bf58bcacb6fa31a701710bbf45f65bdfb2caec02627b9f88e"
+  },
+  {
+   "key": "copy",
+   "url": "https://github.com/UOR-Foundation/website/blob/e82ffdedc5d85ebd0bde239d50d4651005045d31/src/site/copy.ts",
+   "fetchedAt": "",
+   "digest": "sha256:9ee1a77e77f811628f0c95344c71f7a204caa7cb38a313e804408ba05a4e3e61"
+  },
+  {
+   "key": "governance/register.json",
+   "url": "governance/register.json",
+   "fetchedAt": "",
+   "digest": "sha256:d042b7bb0a87843c38d0bcfd6dde0ec1eb983aafd6e64340e180fc552bdcb77b"
+  },
+  {
+   "key": "apps/uor-990-return.prompt.json",
+   "url": "apps/uor-990-return.prompt.json",
+   "fetchedAt": "",
+   "digest": "sha256:609eaafc908d9b8e511ec056b0a470dece602679aaad8137a3506d9b37cf1b20"
+  },
+  {
+   "key": "nonprofit/obligations.json",
+   "url": "nonprofit/obligations.json",
+   "fetchedAt": "",
+   "digest": "sha256:330adf1bf6f67d05192cf3f209e7240d3a31529ed2d625e4394bd113a6126160"
+  },
+  {
+   "key": "nonprofit/attestations.json",
+   "url": "nonprofit/attestations.json",
+   "fetchedAt": "",
+   "digest": "sha256:618cf7d4822293ec298b461079abdf179ec25151b523808e5aec088d9c8c45dd"
+  },
+  {
+   "key": "nonprofit/snapshot.json",
+   "url": "nonprofit/snapshot.json",
+   "fetchedAt": "",
+   "digest": "sha256:bb2f0e291d3f79dc57189f70ebf0f146ee7a25bf4a3beab9bf188d98423f0f5f"
+  },
+  {
+   "key": "sos-entity",
+   "url": "https://www.coloradosos.gov/biz/BusinessEntityDetail.do?quitButtonDestination=BusinessEntityResults&masterFileId=20251193974",
+   "fetchedAt": "2026-11-15T19:01:10.112Z",
+   "digest": "sha256:8604b716548dd2229eb3706828272e2e7ea8ae2d64519ac7ecac55dcd5253fbc"
+  },
+  {
+   "key": "sos-history",
+   "url": "https://www.coloradosos.gov/biz/BusinessEntityHistory.do?quitButtonDestination=BusinessEntityDetail&pi1=1&masterFileId=20251193974&entityId2=&srchTyp=",
+   "fetchedAt": "2026-11-15T19:01:10.401Z",
+   "digest": "sha256:28a5fe2b19e8d95126f786baada91fb539ddfe54a17475e9f6264a7021485fc2"
+  },
+  {
+   "key": "sos-history:20251193974",
+   "url": "https://www.coloradosos.gov/biz/ViewImage.do?masterFileId=20251193974&fileId=20251193974",
+   "fetchedAt": "2026-11-15T19:01:10.541Z",
+   "digest": "sha256:0730ef5d1fcf5bf3fde6ad284b8daaff9e135e81f49a3b0bfe90af92719299ef"
+  },
+  {
+   "key": "sos-history:20258114259",
+   "url": "https://www.coloradosos.gov/biz/ViewImage.do?masterFileId=20251193974&fileId=20258114259",
+   "fetchedAt": "2026-11-15T19:01:10.945Z",
+   "digest": "sha256:10c91a7114126a8a90ff32b3360ee05b7008fb9f608404207c556061443677ad"
+  },
+  {
+   "key": "sos-history:20261517577",
+   "url": "https://www.coloradosos.gov/biz/ViewImage.do?masterFileId=20251193974&fileId=20261517577",
+   "fetchedAt": "2026-11-15T19:01:11.122Z",
+   "digest": "sha256:48bd9b8d0584c29449f39b48088e3c7eedc90ddedbac247f8ae0f46f85374d90"
+  },
+  {
+   "key": "sos-faq-reports",
+   "url": "https://www.coloradosos.gov/pubs/business/FAQs/reports.html",
+   "fetchedAt": "2026-11-15T19:01:11.223Z",
+   "digest": "sha256:4ecdba5d06c62d925a6c9e43eff64bcd6e22a3ae23f7d29e252a58f874d769f4"
+  },
+  {
+   "key": "sos-faq-agent",
+   "url": "https://www.coloradosos.gov/pubs/business/FAQs/regAgent.html",
+   "fetchedAt": "2026-11-15T19:01:11.311Z",
+   "digest": "sha256:ab74d7251f7d49a97ec46514a86b8b510a7587c24ed30c919254cb7890877656"
+  },
+  {
+   "key": "ccsa-search:The UOR Foundation",
+   "url": "https://www.coloradosos.gov/ccsa/pages/search/basic.xhtml",
+   "fetchedAt": "2026-11-15T19:01:13.767Z",
+   "digest": "sha256:36ce835cbd2b11c4f4f7348d1373b062ceeb0d44f41958334abef9e0c8e7eb13"
+  },
+  {
+   "key": "ccsa-search:UOR",
+   "url": "https://www.coloradosos.gov/ccsa/pages/search/basic.xhtml",
+   "fetchedAt": "2026-11-15T19:01:14.056Z",
+   "digest": "sha256:3181a8f400b550f25c1c19701f70f9a2d37f91e3455d03fe45b96248ba821ab3"
+  },
+  {
+   "key": "crs-title-7",
+   "url": "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-07.pdf",
+   "fetchedAt": "2026-11-15T19:01:15.030Z",
+   "digest": "sha256:3537780f7869a03699e24ba9ad9769ec9885dd8bcb7f524a0e28e70e6bebff5f"
+  },
+  {
+   "key": "crs-title-6",
+   "url": "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-06.pdf",
+   "fetchedAt": "2026-11-15T19:01:16.431Z",
+   "digest": "sha256:560ff6d64b5afdf2a3bc5ac917a392269d16270a029b252ff8f7957deb38b423"
+  },
+  {
+   "key": "usc-26-501",
+   "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapF-partI-sec501.htm",
+   "fetchedAt": "2026-11-15T19:01:17.437Z",
+   "digest": "sha256:c43a0c1870410831e8772fa4cd7f03793450d08404121e7db9c27922495fc38a"
+  },
+  {
+   "key": "usc-26-508",
+   "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapF-partII-sec508.htm",
+   "fetchedAt": "2026-11-15T19:01:17.502Z",
+   "digest": "sha256:4498a3b7656a0b8a3febde6e14de5bfc31423f986148214e208b543bae31e94c"
+  },
+  {
+   "key": "usc-26-6001",
+   "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapA-partI-sec6001.htm",
+   "fetchedAt": "2026-11-15T19:01:17.555Z",
+   "digest": "sha256:2ea58aa27fc3f344f8396a8da99f6a59b5df07784fc61126435a8ee12ce4495b"
+  },
+  {
+   "key": "usc-26-6012",
+   "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapA-partII-subpartB-sec6012.htm",
+   "fetchedAt": "2026-11-15T19:01:17.613Z",
+   "digest": "sha256:64434529f8f0342eacbbc96177ed94c9a506bcbd1011897e9d49184ad85fc9d3"
+  },
+  {
+   "key": "usc-26-6033",
+   "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapA-partIII-subpartA-sec6033.htm",
+   "fetchedAt": "2026-11-15T19:01:17.677Z",
+   "digest": "sha256:6bc6b6a34ff69f4f18afb56dc76424f47e63690d0aa5010ef3d56b068595e0c7"
+  },
+  {
+   "key": "usc-26-6104",
+   "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleF-chap61-subchapB-sec6104.htm",
+   "fetchedAt": "2026-11-15T19:01:17.745Z",
+   "digest": "sha256:6a2750905dde7899996eacfbd2cd91bc6ccb6a3456c0cf3bbb00911f6552d2a3"
+  },
+  {
+   "key": "usc-26-4958",
+   "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleD-chap42-subchapD-sec4958.htm",
+   "fetchedAt": "2026-11-15T19:01:17.802Z",
+   "digest": "sha256:d1a1d17f6664d3914a6d84af3fe8a89480895fb2ffd9d818f0c5620af9be47f8"
+  },
+  {
+   "key": "cfr-26-1.501(c)(3)-1",
+   "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.501(c)(3)-1",
+   "fetchedAt": "2026-11-15T19:01:18.111Z",
+   "digest": "sha256:1a03dff1b983886ac7d178d60827e11c30da938e7bc0297d8064be352b9862fb"
+  },
+  {
+   "key": "cfr-26-1.508-1",
+   "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.508-1",
+   "fetchedAt": "2026-11-15T19:01:18.176Z",
+   "digest": "sha256:ed72261f2fdafd08191dc22ae1e696c8f69f54486ec96996c17d04c91e3bafa6"
+  },
+  {
+   "key": "cfr-26-1.6001-1",
+   "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.6001-1",
+   "fetchedAt": "2026-11-15T19:01:23.186Z",
+   "digest": "sha256:2514ea0ff5ee736f88b462184dc825add07ecbfac66bdd5b6271afb3d5884d9b"
+  },
+  {
+   "key": "cfr-26-1.6012-2",
+   "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-12/title-26.xml?part=1&section=1.6012-2",
+   "fetchedAt": "2026-11-15T19:01:23.240Z",
+   "digest": "sha256:f25def4d5d03bbfbda4efb307bcd130385dbe69b01c0d13ea2c47da42ed500aa"
+  },
+  {
+   "key": "f990",
+   "url": "https://www.irs.gov/pub/irs-pdf/f990.pdf",
+   "fetchedAt": "2026-11-15T19:01:23.620Z",
+   "digest": "sha256:0b715d2790691ca6d4fb16ba0923e3cdf1d0e04cd26ea48788d41a708e945533"
+  },
+  {
+   "key": "i990",
+   "url": "https://www.irs.gov/pub/irs-pdf/i990.pdf",
+   "fetchedAt": "2026-11-15T19:01:23.978Z",
+   "digest": "sha256:ae9f947383cd7393e3359ff7977b4c7665e21496df592a5fd1f8e4efed3acebf"
+  },
+  {
+   "key": "i1023",
+   "url": "https://www.irs.gov/pub/irs-pdf/i1023.pdf",
+   "fetchedAt": "2026-11-15T19:01:24.554Z",
+   "digest": "sha256:63eb528189ab4a042d227a77ed1f358368488227e294f98d1d845b5700dbd041"
+  },
+  {
+   "key": "bmf-eo1",
+   "url": "https://www.irs.gov/pub/irs-soi/eo1.csv",
+   "fetchedAt": "2026-11-15T19:01:25.481Z",
+   "digest": "sha256:5d1047c15cb6109b73ed244da97961b92a3ec122ac4419f354d248dc059df4e6"
+  },
+  {
+   "key": "bmf-eo2",
+   "url": "https://www.irs.gov/pub/irs-soi/eo2.csv",
+   "fetchedAt": "2026-11-15T19:01:27.959Z",
+   "digest": "sha256:46db809791e9cfe785c74fd6028ed18612f8a639edf763142c017cce3446ccfa"
+  },
+  {
+   "key": "bmf-eo3",
+   "url": "https://www.irs.gov/pub/irs-soi/eo3.csv",
+   "fetchedAt": "2026-11-15T19:01:32.346Z",
+   "digest": "sha256:4902eab594c4be7312192bb03ee5082580ca208bd4f6b9b5a6bcfc009c8f27f4"
+  },
+  {
+   "key": "bmf-eo4",
+   "url": "https://www.irs.gov/pub/irs-soi/eo4.csv",
+   "fetchedAt": "2026-11-15T19:01:36.165Z",
+   "digest": "sha256:3c161b91056ea9291723aa608e40fe093a605238866e4ef8de8d6d9e26ce325c"
+  },
+  {
+   "key": "bmf-eo-co",
+   "url": "https://www.irs.gov/pub/irs-soi/eo_co.csv",
+   "fetchedAt": "2026-11-15T19:01:36.339Z",
+   "digest": "sha256:3eba46611cc074045b4bbb732d8990db6a21671cc35061144d0ad6bd2ed69421"
+  },
+  {
+   "key": "pub78",
+   "url": "https://apps.irs.gov/pub/epostcard/data-download-pub78.zip",
+   "fetchedAt": "2026-11-15T19:01:37.109Z",
+   "digest": "sha256:8a6fc43fad5bd9324209ccd58e671e4ea8db9a5b8029b8ac4ec621d6c61c62bf"
+  },
+  {
+   "key": "epostcard",
+   "url": "https://apps.irs.gov/pub/epostcard/data-download-epostcard.zip",
+   "fetchedAt": "2026-11-15T19:01:41.664Z",
+   "digest": "sha256:aa901cf860f000f7910ba5b26b249a4534003d69b4924563838285d755ba47db"
+  },
+  {
+   "key": "efile-index-2025",
+   "url": "https://apps.irs.gov/pub/epostcard/990/xml/2025/index_2025.csv",
+   "fetchedAt": "2026-11-15T19:01:48.581Z",
+   "digest": "sha256:e54ba6938d98b1746f2fd464a0f77e520efd956dc3da737d73843dc0013c6770"
+  },
+  {
+   "key": "efile-index-2026",
+   "url": "https://apps.irs.gov/pub/epostcard/990/xml/2026/index_2026.csv",
+   "fetchedAt": "2026-11-15T19:01:52.035Z",
+   "digest": "sha256:4e100f04b85fbaed4940581f8bbb7cd47eb33ee200a93334018b98542ae323e7"
+  }
+ ],
+ "authorities": [
+  {
+   "key": "bylaws:4.3",
+   "instrument": "bylaws",
+   "ref": "Bylaws 4.3",
+   "title": "Composition",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "394542302862c756301c7bb0646fa9266a04b3c26a4cdb5173139a2b357d99d6",
+   "provision": 10
+  },
+  {
+   "key": "crs:7-90-501",
+   "instrument": "statute",
+   "ref": "C.R.S. 7-90-501",
+   "title": "Periodic reports",
+   "jurisdiction": "US-CO",
+   "source": 17,
+   "quote": "7-90-501. Periodic reports. (1) Each reporting entity shall deliver to the secretary of state, for filing pursuant to part 3 of this article, a periodic report that states the entity name of the reporting entity, the jurisdiction under the ",
+   "textSha256": "5eeddb6fbbe4dacfc9272986fca5925d878654d4d56f220f251d8581f65319d0"
+  },
+  {
+   "key": "crs:7-136-107",
+   "instrument": "statute",
+   "ref": "C.R.S. 7-136-107",
+   "title": "Periodic report to secretary of state",
+   "jurisdiction": "US-CO",
+   "source": 17,
+   "quote": "7-136-107. Periodic report to secretary of state. Part 5 of article 90 of this title, providing for periodic reports from reporting entities, applies to domestic nonprofit corporations and applies to foreign nonprofit corporations that are ",
+   "textSha256": "6cccec0a1f498196d0000b37b1280cf24b13da5d808206ab71d5fe2aca7294f2"
+  },
+  {
+   "key": "sos-faq-reports:annual",
+   "instrument": "agencyGuidance",
+   "ref": "Colorado Secretary of State, Business FAQs, Periodic reports Q1",
+   "title": "Reporting entities, such as limited liability companies, corporations, nonprofit corporations, and foreign entities, are",
+   "jurisdiction": "US-CO",
+   "source": 13,
+   "quote": "Reporting entities, such as limited liability companies, corporations, nonprofit corporations, and foreign entities, are required by law to submit a Periodic Report each year to the Secretary of State.",
+   "textSha256": "7f1d5ad946359257da8b4fa92564cdaeb82dcbd154cd9e4489eccdf7f9a67eaf"
+  },
+  {
+   "key": "sos-faq-reports:window",
+   "instrument": "agencyGuidance",
+   "ref": "Colorado Secretary of State, Business FAQs, Periodic reports Q4",
+   "title": "The Periodic Report can be filed two months prior to the Periodic Report month or two months after without any penalty.",
+   "jurisdiction": "US-CO",
+   "source": 13,
+   "quote": "The Periodic Report can be filed two months prior to the Periodic Report month or two months after without any penalty.",
+   "textSha256": "676197a56b36a16537d40c09437b768527ec23b7df7041827e0c5754ad6f0e49"
+  },
+  {
+   "key": "crs:7-90-701",
+   "instrument": "statute",
+   "ref": "C.R.S. 7-90-701",
+   "title": "Registered agent - definition",
+   "jurisdiction": "US-CO",
+   "source": 17,
+   "quote": "7-90-701. Registered agent - definition. (1) [Editor's note: For the applicability of this subsection (1) on or after July 1, 2025, see the editor's note following this section.] Every domestic entity for which a constituent filed document ",
+   "textSha256": "fdfe7491171a9ae7c2da60c2482ec6889ed5e9f266cc63487f0ab9b32e0e97f4"
+  },
+  {
+   "key": "bylaws:2.2",
+   "instrument": "bylaws",
+   "ref": "Bylaws 2.2",
+   "title": "Registered Office",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "9a80380c19d64117c67c1405886919eb3048cea49ef9165f6c2275f88ebab4f1",
+   "provision": 5
+  },
+  {
+   "key": "sos-faq-agent:required",
+   "instrument": "agencyGuidance",
+   "ref": "Colorado Secretary of State, Business FAQs, Registered agent Q3",
+   "title": "Almost all entities on record with the Secretary of State must have a registered agent listed with a Colorado address, e",
+   "jurisdiction": "US-CO",
+   "source": 14,
+   "quote": "Almost all entities on record with the Secretary of State must have a registered agent listed with a Colorado address, even if their business is located in a different state.",
+   "textSha256": "b5e2d2e4a01bb471749ebb8732ea46bd9339f291b38cece09b58f16be7bf30f5"
+  },
+  {
+   "key": "crs:7-90-901",
+   "instrument": "statute",
+   "ref": "C.R.S. 7-90-901",
+   "title": "Grounds for delinquency",
+   "jurisdiction": "US-CO",
+   "source": 17,
+   "quote": "7-90-901. Grounds for delinquency. (1) A domestic entity that is a reporting entity may be declared delinquent under section 7-90-902 if: (a) The domestic entity does not pay any fee or penalty imposed by this title when it is due; (b) The ",
+   "textSha256": "f88820b0488407a024f61f58f34673163320865e07bc13fcd29c5453b8e6cc92"
+  },
+  {
+   "key": "crs:7-136-101",
+   "instrument": "statute",
+   "ref": "C.R.S. 7-136-101",
+   "title": "Corporate records",
+   "jurisdiction": "US-CO",
+   "source": 17,
+   "quote": "7-136-101. Corporate records. (1) A nonprofit corporation shall keep as permanent records minutes of all meetings of its members and board of directors, a record of all actions taken by the members or board of directors without a meeting, a",
+   "textSha256": "c69e04d81475e10b617e5df8afa972894f49acb61a8a508782ade4ccf75ab25e"
+  },
+  {
+   "key": "bylaws:11.1",
+   "instrument": "bylaws",
+   "ref": "Bylaws 11.1",
+   "title": "Minutes, Records, Etc",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "af223331ae12622e96528b7494856b6c1df73a288947b6ac308805d2339f57dc",
+   "provision": 60
+  },
+  {
+   "key": "bylaws:5.8",
+   "instrument": "bylaws",
+   "ref": "Bylaws 5.8",
+   "title": "Secretary",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "ddde543c3864fc6018ad4db4e3ae37f9bdc7c5883326f84b2373700e21fe2bd0",
+   "provision": 31
+  },
+  {
+   "key": "bylaws:11.2",
+   "instrument": "bylaws",
+   "ref": "Bylaws 11.2",
+   "title": "Accounting Records",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "b84ac91625e6c296b57129623b306e3c6920d3a9768e2d0c30418660d08cfc3d",
+   "provision": 61
+  },
+  {
+   "key": "usc-26-6001:records",
+   "instrument": "statute",
+   "ref": "26 U.S.C. 6001",
+   "title": "Every person liable for any tax imposed by this title, or for the collection thereof, shall keep such records, render su",
+   "jurisdiction": "US",
+   "source": 21,
+   "quote": "Every person liable for any tax imposed by this title, or for the collection thereof, shall keep such records, render such statements, make such returns, and comply with such rules and regulations as the Secretary may from time to time prescribe.",
+   "textSha256": "86ed17643e2e4a7ed2e078857c61de3c2eb3415a4e51fafa99b82b0cc3f56c75"
+  },
+  {
+   "key": "cfr-26-1.6001-1:c",
+   "instrument": "regulation",
+   "ref": "26 CFR 1.6001-1(c)",
+   "title": "every organization exempt from tax under section 501(a) shall keep such permanent books of account or records",
+   "jurisdiction": "US",
+   "source": 28,
+   "quote": "every organization exempt from tax under section 501(a) shall keep such permanent books of account or records",
+   "textSha256": "6f470f51b7594ddea119b7ec49dc6d1c70536c225fe3cbfee47453d5fb004d45"
+  },
+  {
+   "key": "bylaws:11.4",
+   "instrument": "bylaws",
+   "ref": "Bylaws 11.4",
+   "title": "Records Maintained at Principal Office",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "5dfd7bbe47b06c41bf4a0669117cd61c04696b745461b98cb41624ac72ef579f",
+   "provision": 63
+  },
+  {
+   "key": "bylaws:Art.3",
+   "instrument": "bylaws",
+   "ref": "Bylaws Article 3",
+   "title": "MEMBERS",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "103a1957d2d2638f54899d4f0e692788dd6eec73d05a92f0786fe699d77d2142",
+   "provision": 6
+  },
+  {
+   "key": "crs:7-130-101",
+   "instrument": "statute",
+   "ref": "C.R.S. 7-130-101",
+   "title": "Authority to amend articles of incorporation",
+   "jurisdiction": "US-CO",
+   "source": 17,
+   "quote": "7-130-101. Authority to amend articles of incorporation. (1) A nonprofit corporation may amend its articles of incorporation at any time to add or change a provision that is required or permitted in the articles of incorporation or to delet",
+   "textSha256": "df91061d29168a2e689175fd23b2bf2787fa34699bbcedfa8372c0a30f1854a0"
+  },
+  {
+   "key": "crs:7-130-105",
+   "instrument": "statute",
+   "ref": "C.R.S. 7-130-105",
+   "title": "Articles of amendment to articles of incorporation",
+   "jurisdiction": "US-CO",
+   "source": 17,
+   "quote": "7-130-105. Articles of amendment to articles of incorporation. (1) A nonprofit corporation amending its articles of incorporation shall deliver to the secretary of state, for filing pursuant to part 3 of article 90 of this title, articles o",
+   "textSha256": "94e7da24f96be92dc502199eb32b5426436d7dab6532d88dd6831a3b10996ed7"
+  },
+  {
+   "key": "crs:7-122-102",
+   "instrument": "statute",
+   "ref": "C.R.S. 7-122-102",
+   "title": "Articles of incorporation",
+   "jurisdiction": "US-CO",
+   "source": 17,
+   "quote": "7-122-102. Articles of incorporation. (1) The articles of incorporation shall state: (a) The domestic entity name for the nonprofit corporation, which domestic entity name shall comply with part 6 of article 90 of this title; (b) The regist",
+   "textSha256": "57f50abb385231422fd5d1b69c6b757f38402674d4323c66acc52a5ad5d99ccd"
+  },
+  {
+   "key": "cfr-26-1.501(c)(3)-1:b1",
+   "instrument": "regulation",
+   "ref": "26 CFR 1.501(c)(3)-1(b)(1)(i)",
+   "title": "Organizational test —(1) In general. (i) An organization is organized exclusively for one or more exempt purposes only i",
+   "jurisdiction": "US",
+   "source": 26,
+   "quote": "Organizational test —(1) In general. (i) An organization is organized exclusively for one or more exempt purposes only if its articles of organization (referred to in this section as its articles ) as defined in subparagraph (2) of this paragraph: ( a ) Limit the purposes of such organization to one or more exempt purposes;",
+   "textSha256": "f7a72e5a22c0e20e94e8aa5169502fa90526b35000c60c7ae78dec6688a73fda"
+  },
+  {
+   "key": "i1023:purpose",
+   "instrument": "instructions",
+   "ref": "Instructions for Form 1023 (Rev. December 2024), Part III line 1, Purpose clause",
+   "title": "Line 1. Purpose clause. Your organizing document must limit your purposes to those described in section 501(c)(3).",
+   "jurisdiction": "US",
+   "source": 32,
+   "quote": "Line 1. Purpose clause. Your organizing document must limit your purposes to those described in section 501(c)(3).",
+   "textSha256": "2fba4483412069a3ee3af0df70b911821f8db83e9a609ab4a8f83d4a8635bcd2"
+  },
+  {
+   "key": "cfr-26-1.501(c)(3)-1:b4",
+   "instrument": "regulation",
+   "ref": "26 CFR 1.501(c)(3)-1(b)(4)",
+   "title": "(4) Distribution of assets on dissolution. An organization is not organized exclusively for one or more exempt purposes ",
+   "jurisdiction": "US",
+   "source": 26,
+   "quote": "(4) Distribution of assets on dissolution. An organization is not organized exclusively for one or more exempt purposes unless its assets are dedicated to an exempt purpose.",
+   "textSha256": "01316823251faa143ec409030a69da2eee9e66a1f401cfd84000134c5cc498ed"
+  },
+  {
+   "key": "i1023:dissolution",
+   "instrument": "instructions",
+   "ref": "Instructions for Form 1023 (Rev. December 2024), Part III line 2, Dissolution clause",
+   "title": "Line 2. Dissolution clause. Your organizing document must provide for the permanent dedication of your assets to a secti",
+   "jurisdiction": "US",
+   "source": 32,
+   "quote": "Line 2. Dissolution clause. Your organizing document must provide for the permanent dedication of your assets to a section 501(c)(3) purpose.",
+   "textSha256": "9dd3d3eee54917d9325776b2f50a7caf0e37a2805da9488ce1b6709dcc83cc0f"
+  },
+  {
+   "key": "usc-26-508:a",
+   "instrument": "statute",
+   "ref": "26 U.S.C. 508(a)",
+   "title": "(a) New organizations must notify Secretary that they are applying for recognition of section 501(c)(3) status Except as",
+   "jurisdiction": "US",
+   "source": 20,
+   "quote": "(a) New organizations must notify Secretary that they are applying for recognition of section 501(c)(3) status Except as provided in subsection (c), an organization organized after October 9, 1969, shall not be treated as an organization described in section 501(c)(3)&mdash; (1) unless it has given notice to the Secretary in such manner as the Secretary may by regulations prescribe, that it is applying for recognition of such status, or (2) for any period before the giving of such notice, if such notice is given after the time prescribed by the Secretary by regulations for giving notice under this subsection.",
+   "textSha256": "fd0437facf9ff9829db8364fddfd8aa193b7b2eab24ac084939136bb9a1c34cd"
+  },
+  {
+   "key": "cfr-26-1.508-1:a2",
+   "instrument": "regulation",
+   "ref": "26 CFR 1.508-1(a)(2)(i)",
+   "title": "within 15 months from the end of the month in which the organization was organized. Such notice is filed by submitting a",
+   "jurisdiction": "US",
+   "source": 27,
+   "quote": "within 15 months from the end of the month in which the organization was organized. Such notice is filed by submitting a properly completed and executed Form 1023 (or, if applicable, Form 1023-EZ) exemption application.",
+   "textSha256": "f08f34ef14934ea90ef0c997b09108093f15f269abe90b737e31963778a8399e"
+  },
+  {
+   "key": "i1023:effective",
+   "instrument": "instructions",
+   "ref": "Instructions for Form 1023 (Rev. December 2024), Part VIII line 2",
+   "title": "Generally, if you didn’t file Form 1023 within 27 months of formation, the effective date of your exempt status will be ",
+   "jurisdiction": "US",
+   "source": 32,
+   "quote": "Generally, if you didn’t file Form 1023 within 27 months of formation, the effective date of your exempt status will be the date you filed Form 1023",
+   "textSha256": "a83d3e0a18ebaa4f9c70734036fbabb46245d5f7ec8a78659692054d9c418c18"
+  },
+  {
+   "key": "usc-26-6033:a1",
+   "instrument": "statute",
+   "ref": "26 U.S.C. 6033(a)(1)",
+   "title": "(a) Organizations required to file (1) In general Except as provided in paragraph (3), every organization exempt from ta",
+   "jurisdiction": "US",
+   "source": 23,
+   "quote": "(a) Organizations required to file (1) In general Except as provided in paragraph (3), every organization exempt from taxation under section 501(a) shall file an annual return,",
+   "textSha256": "47d06904d0f55880645799d01869c8210a5c43c61d04a7a12711a50c7cc647ee"
+  },
+  {
+   "key": "usc-26-6033:i",
+   "instrument": "statute",
+   "ref": "26 U.S.C. 6033(i)",
+   "title": "(i) Additional notification requirements Any organization the gross receipts of which in any taxable year result in such",
+   "jurisdiction": "US",
+   "source": 23,
+   "quote": "(i) Additional notification requirements Any organization the gross receipts of which in any taxable year result in such organization being referred to in subsection (a)(3)(A)(ii) or (a)(3)(B)",
+   "textSha256": "25081268a926aa2d5d368c64a10bfdfe7b220a2bf9c7c26987d8cf8e587d188c"
+  },
+  {
+   "key": "usc-26-6033:j",
+   "instrument": "statute",
+   "ref": "26 U.S.C. 6033(j)",
+   "title": "for 3 consecutive years, such organization's status as an organization exempt from tax under section 501(a) shall be con",
+   "jurisdiction": "US",
+   "source": 23,
+   "quote": "for 3 consecutive years, such organization's status as an organization exempt from tax under section 501(a) shall be considered revoked",
+   "textSha256": "ecee81c6d8e7a22a63be28c292a4ca1d9a04beda77b64bc88349d357f6c32987"
+  },
+  {
+   "key": "i990:due",
+   "instrument": "instructions",
+   "ref": "Instructions for Form 990 (2025), General Instructions, Section E. When, Where, and How To File",
+   "title": "File Form 990 by the 15th day of the 5th month after the organization’s accounting period ends",
+   "jurisdiction": "US",
+   "source": 31,
+   "quote": "File Form 990 by the 15th day of the 5th month after the organization’s accounting period ends",
+   "textSha256": "6a859d0ce1b091a05721c5fe9d6d768f1500e5b06c7ce52fbe41efbe55263337"
+  },
+  {
+   "key": "i990:form990",
+   "instrument": "instructions",
+   "ref": "Instructions for Form 990 (2025), General Instructions, Section A. Who Must File",
+   "title": "Form 990 must be filed by an organization exempt from income tax under section 501(a) (including an organization that ha",
+   "jurisdiction": "US",
+   "source": 31,
+   "quote": "Form 990 must be filed by an organization exempt from income tax under section 501(a) (including an organization that hasn’t applied for recognition of exemption) if it has either (1) gross receipts greater than or equal to $200,000, or (2) total assets greater than or equal to $500,000 at the end of the tax year",
+   "textSha256": "f038c51596ff3607be3002e18661345f7e5edaa6dc882877b2bd244e8f9f47ba"
+  },
+  {
+   "key": "i990:form990ez",
+   "instrument": "instructions",
+   "ref": "Instructions for Form 990 (2025), General Instructions, Section A. Who Must File, Form 990-EZ",
+   "title": "If an organization has gross receipts less than $200,000 and total assets at the end of the tax year less than $500,000,",
+   "jurisdiction": "US",
+   "source": 31,
+   "quote": "If an organization has gross receipts less than $200,000 and total assets at the end of the tax year less than $500,000, it can choose to file Form 990-EZ",
+   "textSha256": "257f9994c07972fa644be8863e941c492fdb8d0edc90c3a2b0c52b3f88c06560"
+  },
+  {
+   "key": "i990:form990n",
+   "instrument": "instructions",
+   "ref": "Instructions for Form 990 (2025), General Instructions, Section A. Who Must File, Form 990-N",
+   "title": "If an organization normally has gross receipts of $50,000 or less, it must submit Form 990-N, if it chooses not to file ",
+   "jurisdiction": "US",
+   "source": 31,
+   "quote": "If an organization normally has gross receipts of $50,000 or less, it must submit Form 990-N, if it chooses not to file Form 990 or 990-EZ",
+   "textSha256": "b90e80042a050b53eebf604e96c7720c5f28e131bfd1b799a49f6decb7cc08a8"
+  },
+  {
+   "key": "usc-26-6104:d",
+   "instrument": "statute",
+   "ref": "26 U.S.C. 6104(d)",
+   "title": "(d) Public inspection of certain annual returns, reports, applications for exemption, and notices of status (1) In gener",
+   "jurisdiction": "US",
+   "source": 24,
+   "quote": "(d) Public inspection of certain annual returns, reports, applications for exemption, and notices of status (1) In general In the case of an organization described in subsection (c) or (d) of section 501 and exempt from taxation under section 501(a)",
+   "textSha256": "e8fc271d69e1e245f8d41cf52a0d57efceed0eccbc267a5236672d344cde2edd"
+  },
+  {
+   "key": "usc-26-4958:a",
+   "instrument": "statute",
+   "ref": "26 U.S.C. 4958(a)",
+   "title": "(a) Initial taxes (1) On the disqualified person There is hereby imposed on each excess benefit transaction a tax equal ",
+   "jurisdiction": "US",
+   "source": 25,
+   "quote": "(a) Initial taxes (1) On the disqualified person There is hereby imposed on each excess benefit transaction a tax equal to 25 percent of the excess benefit.",
+   "textSha256": "036a75dd22d735a4e89ea49afe50f0cfa206d8e351a65b312b97e5a910b9ac4c"
+  },
+  {
+   "key": "bylaws:5.11",
+   "instrument": "bylaws",
+   "ref": "Bylaws 5.11",
+   "title": "Compensation",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "956175d2d32aff66d9e86da0ec5849e9c10de06c0795fc56792f2e97f5ecfdaf",
+   "provision": 34
+  },
+  {
+   "key": "bylaws:4.15",
+   "instrument": "bylaws",
+   "ref": "Bylaws 4.15",
+   "title": "Compensation",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "1584e08324a647ec9d62073bbce7da70d79532ae1cacb45b53638ba07919dde5",
+   "provision": 22
+  },
+  {
+   "key": "usc-26-501:c3",
+   "instrument": "statute",
+   "ref": "26 U.S.C. 501(c)(3)",
+   "title": "(3) Corporations, and any community chest, fund, or foundation, organized and operated exclusively for religious, charit",
+   "jurisdiction": "US",
+   "source": 19,
+   "quote": "(3) Corporations, and any community chest, fund, or foundation, organized and operated exclusively for religious, charitable, scientific, testing for public safety, literary, or educational purposes, or to foster national or international amateur sports competition (but only if no part of its activities involve the provision of athletic facilities or equipment), or for the prevention of cruelty to children or animals, no part of the net earnings of which inures to the benefit of any private shareholder or individual, no substantial part of the activities of which is carrying on propaganda, or otherwise attempting, to influence legislation (except as otherwise provided in subsection (h)), and which does not participate in, or intervene in (including the publishing or distributing of statements), any political campaign on behalf of (or in opposition to) any candidate for public office.",
+   "textSha256": "c48766ac5e2726a7a1f3a42ef862c96c830ca30e1bf99753180e188812a7b0d3"
+  },
+  {
+   "key": "bylaws:1.2",
+   "instrument": "bylaws",
+   "ref": "Bylaws 1.2",
+   "title": "Purpose",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "e9d0585468ac3db18dbfda9e89a5772c2174f2e6bfdf0076c696f619ae399cac",
+   "provision": 2
+  },
+  {
+   "key": "bylaws:Art.12",
+   "instrument": "bylaws",
+   "ref": "Bylaws Article 12",
+   "title": "MISSION AND OPEN SOURCE COMMITMENT",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "20835b581a45a0f83f291628bf9ee2af8795eb812bf31e5474a3c0d2268255d7",
+   "provision": 64
+  },
+  {
+   "key": "bylaws:10.3",
+   "instrument": "bylaws",
+   "ref": "Bylaws 10.3",
+   "title": "Conflicts of Interest",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "d36625804ec9dce2f25c3d5eba53774094614e40555c0c4eeb9989ae71ce7a0d",
+   "provision": 57
+  },
+  {
+   "key": "crs:7-128-501",
+   "instrument": "statute",
+   "ref": "C.R.S. 7-128-501",
+   "title": "Conflicting interest transaction",
+   "jurisdiction": "US-CO",
+   "source": 17,
+   "quote": "7-128-501. Conflicting interest transaction. (1) As used in this section, \"conflicting interest transaction\" means: A contract, transaction, or other financial relationship between a nonprofit corporation and a director of the nonprofit cor",
+   "textSha256": "5229fd43ba19da9a13913338a3a323f3181dab76e7e6d86dff5874159e6722d4"
+  },
+  {
+   "key": "crs:7-128-401",
+   "instrument": "statute",
+   "ref": "C.R.S. 7-128-401",
+   "title": "General standards of conduct for directors and officers",
+   "jurisdiction": "US-CO",
+   "source": 17,
+   "quote": "7-128-401. General standards of conduct for directors and officers. (1) Each director shall discharge the director's duties as a director, including the director's duties as a member of a committee of the board, and each officer with discre",
+   "textSha256": "2ba43b94db573d7160134956f8f74d3a11fd64a8f20e846fb9651166500aac79"
+  },
+  {
+   "key": "bylaws:10.1",
+   "instrument": "bylaws",
+   "ref": "Bylaws 10.1",
+   "title": "General Standards of Conduct",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "cdb4cd84f6259cdfde2e2069efd510b3fb6f258d0f496c57ef55fc3a8962d4af",
+   "provision": 55
+  },
+  {
+   "key": "bylaws:4.7",
+   "instrument": "bylaws",
+   "ref": "Bylaws 4.7",
+   "title": "Regular Meetings",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "562d5728a456d9bff967731aef84ff0494651bca4f06b8857e575168cb3efd72",
+   "provision": 14
+  },
+  {
+   "key": "bylaws:5.2",
+   "instrument": "bylaws",
+   "ref": "Bylaws 5.2",
+   "title": "Election and Term of Office",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "de51023070576da46558cd21f79a0f8affe838de0f95ef4653de4c2ce62c0e90",
+   "provision": 25
+  },
+  {
+   "key": "crs:6-16-104",
+   "instrument": "statute",
+   "ref": "C.R.S. 6-16-104",
+   "title": "Charitable organizations - initial registration - annual filing - fees",
+   "jurisdiction": "US-CO",
+   "source": 18,
+   "quote": "6-16-104. Charitable organizations - initial registration - annual filing - fees. (1) Every charitable organization, except those exempted under subsection (6) of this section, that intends to solicit contributions in this state by any mean",
+   "textSha256": "07e062c1ef76e7a8fea3cae2b356ebf89952290ef192316f0f1f1c0466819d92"
+  },
+  {
+   "key": "cfr-26-1.6012-2:e",
+   "instrument": "regulation",
+   "ref": "26 CFR 1.6012-2(e)",
+   "title": "shall make a return on Form 990-T for each taxable year if it has gross income, included in computing unrelated business",
+   "jurisdiction": "US",
+   "source": 29,
+   "quote": "shall make a return on Form 990-T for each taxable year if it has gross income, included in computing unrelated business taxable income for such taxable year, of $1,000 or more.",
+   "textSha256": "e7228251faf8e8e4818abf1586509698f05cbfb7b67423f2bab4b556b3f47639"
+  },
+  {
+   "key": "usc-26-6012:a2",
+   "instrument": "statute",
+   "ref": "26 U.S.C. 6012(a)(2)",
+   "title": "(2) Every corporation subject to taxation under subtitle A;",
+   "jurisdiction": "US",
+   "source": 22,
+   "quote": "(2) Every corporation subject to taxation under subtitle A;",
+   "textSha256": "dfe0f967e8eeb74dbd64dcc0c61c21099be81ac1cbb5605814edf068e84f5575"
+  },
+  {
+   "key": "f990:VIII",
+   "instrument": "form",
+   "ref": "Form 990 Part VIII",
+   "title": "Part VIII Statement of Revenue",
+   "jurisdiction": "US",
+   "source": 30,
+   "quote": "Part VIII Statement of Revenue",
+   "textSha256": "95c07dfe112dc0eeec35d4780b76119c3ffc2e21199b7e6fca0ccad9ab1b7579"
+  },
+  {
+   "key": "f990:IX",
+   "instrument": "form",
+   "ref": "Form 990 Part IX",
+   "title": "Part IX Statement of Functional Expenses",
+   "jurisdiction": "US",
+   "source": 30,
+   "quote": "Part IX Statement of Functional Expenses",
+   "textSha256": "25ce177cbf4a2b1dfacb73e777cdb78673b0ba5316af1c744ab0eb9d3e2a0522"
+  },
+  {
+   "key": "f990:X",
+   "instrument": "form",
+   "ref": "Form 990 Part X",
+   "title": "Part X Balance Sheet",
+   "jurisdiction": "US",
+   "source": 30,
+   "quote": "Part X Balance Sheet",
+   "textSha256": "f53d0614711c997e7029f3fb8084bf5337f6904de965f90de7af0ac9f77ec281"
+  },
+  {
+   "key": "f990:I",
+   "instrument": "form",
+   "ref": "Form 990 Part I",
+   "title": "Part I Summary",
+   "jurisdiction": "US",
+   "source": 30,
+   "quote": "Part I Summary",
+   "textSha256": "3b64cc640392fbf90f298377c12fe4f3512652d6e06baeb765edc67c5e925679"
+  },
+  {
+   "key": "bylaws:6.1",
+   "instrument": "bylaws",
+   "ref": "Bylaws 6.1",
+   "title": "Committees of Directors",
+   "jurisdiction": "US-CO",
+   "source": 0,
+   "quote": "",
+   "textSha256": "1c61097ce7d824cabe9b890d6ee11b2841853a6b599a9d971055b347c906290b",
+   "provision": 36
+  }
+ ],
+ "posts": [
+  {
+   "name": "Chair of the Board",
+   "unit": "Board of Directors",
+   "governanceIndex": 0
+  },
+  {
+   "name": "Treasurer",
+   "unit": "Board of Directors",
+   "governanceIndex": 1
+  },
+  {
+   "name": "Secretary",
+   "unit": "Board of Directors",
+   "governanceIndex": 2
+  },
+  {
+   "name": "Independent Director",
+   "unit": "Board of Directors",
+   "governanceIndex": 3
+  },
+  {
+   "name": "Research Director",
+   "unit": "Board of Directors",
+   "governanceIndex": 4
+  },
+  {
+   "name": "Chair",
+   "unit": "The UOR Foundation",
+   "governanceIndex": 5
+  },
+  {
+   "name": "Secretary",
+   "unit": "The UOR Foundation",
+   "governanceIndex": 6
+  },
+  {
+   "name": "Treasurer",
+   "unit": "The UOR Foundation",
+   "governanceIndex": 7
+  },
+  {
+   "name": "Vice Chair",
+   "unit": "The UOR Foundation",
+   "governanceIndex": 8
+  },
+  {
+   "name": "Executive Director",
+   "unit": "The UOR Foundation",
+   "governanceIndex": 9
+  },
+  {
+   "name": "Chair of the Finance and Audit Committee",
+   "unit": "Finance and Audit Committee",
+   "governanceIndex": 10
+  },
+  {
+   "name": "Chair of the Governance and Nominations Committee",
+   "unit": "Governance and Nominations Committee",
+   "governanceIndex": 11
+  },
+  {
+   "name": "Chair of the Technical Oversight Committee",
+   "unit": "Technical Oversight Committee",
+   "governanceIndex": 12
+  },
+  {
+   "name": "Chair of the Community and Outreach Committee",
+   "unit": "Community and Outreach Committee",
+   "governanceIndex": 13
+  }
+ ],
+ "obligations": [
+  {
+   "name": "Deliver the periodic report to the Secretary of State",
+   "authority": 1,
+   "post": 2,
+   "basis": 0,
+   "cadence": "annual",
+   "applicability": "standing",
+   "status": "discharged",
+   "due": "2026-04-30 (stated by the Secretary of State); annually thereafter under C.R.S. 7-90-501(4)(c)(I), next 2027-04-30",
+   "evidence": "A Periodic Report filed with the Colorado Secretary of State by the due date the Secretary of State states in the entity's history",
+   "observed": "Report filed 04/27/2026, document 20261517577"
+  },
+  {
+   "name": "Maintain a registered agent who has consented to the appointment",
+   "authority": 5,
+   "post": 2,
+   "basis": 0,
+   "cadence": "continuous",
+   "applicability": "standing",
+   "status": "discharged",
+   "due": "",
+   "evidence": "The most recent filed document states that the registered agent consented to the appointment",
+   "observed": "document 20261517577: The person above has agreed to be appointed as the registered agent for this entity."
+  },
+  {
+   "name": "Remain in good standing, never delinquent",
+   "authority": 8,
+   "post": 2,
+   "basis": 0,
+   "cadence": "continuous",
+   "applicability": "standing",
+   "status": "discharged",
+   "due": "",
+   "evidence": "The Secretary of State's summary shows the entity in Good Standing",
+   "observed": "the summary shows Good Standing"
+  },
+  {
+   "name": "Keep minutes and records of every Board and committee action as permanent records",
+   "authority": 9,
+   "post": 2,
+   "basis": 0,
+   "cadence": "continuous",
+   "applicability": "standing",
+   "status": "unobservable",
+   "due": "",
+   "evidence": "Minutes of each Board and committee meeting and a record of each action without a meeting, held by the Secretary",
+   "observed": "the evidence is the Foundation’s own records, which no public source holds"
+  },
+  {
+   "name": "Maintain appropriate accounting records",
+   "authority": 9,
+   "post": 1,
+   "basis": 0,
+   "cadence": "continuous",
+   "applicability": "standing",
+   "status": "unobservable",
+   "due": "",
+   "evidence": "Books of account showing gross income, receipts and disbursements, held for the Treasurer",
+   "observed": "the evidence is the Foundation’s own records, which no public source holds"
+  },
+  {
+   "name": "Keep the articles, bylaws, director and officer list, three years of financial statements and Forms 990, and the exemption application and determination letter at the principal office",
+   "authority": 15,
+   "post": 2,
+   "basis": 0,
+   "cadence": "continuous",
+   "applicability": "standing",
+   "status": "unobservable",
+   "due": "",
+   "evidence": "The records Bylaws 11.4 lists, kept at the principal office",
+   "observed": "the evidence is the Foundation’s own records, which no public source holds"
+  },
+  {
+   "name": "Amend the Articles of Incorporation to state that the corporation has no voting members",
+   "authority": 16,
+   "post": 0,
+   "basis": 0,
+   "cadence": "once",
+   "applicability": "standing",
+   "status": "undischarged",
+   "due": "",
+   "evidence": "Articles of Amendment filed with the Colorado Secretary of State",
+   "observed": "the history lists no Articles of Amendment; the Articles (document 20251193974) state: There are voting members for the nonprofit corporation."
+  },
+  {
+   "name": "Limit the purposes stated in the organizing document to section 501(c)(3) purposes",
+   "authority": 20,
+   "post": 0,
+   "basis": 0,
+   "cadence": "once",
+   "applicability": "standing",
+   "status": "undischarged",
+   "due": "",
+   "evidence": "Articles of Incorporation, or Articles of Amendment, on file with the Secretary of State that limit the corporation's purposes to those in section 501(c)(3)",
+   "observed": "the Articles (document 20251193974, sha256:0730ef5d1fcf5bf3fde6ad284b8daaff9e135e81f49a3b0bfe90af92719299ef) state no purposes; the purposes are stated in Bylaws 1.2, which are not the articles of organization 26 CFR 1.501(c)(3)-1(b)(2) names; no Articles of Amendment are on file"
+  },
+  {
+   "name": "Dedicate the corporation's assets to section 501(c)(3) purposes on dissolution",
+   "authority": 22,
+   "post": 0,
+   "basis": 0,
+   "cadence": "once",
+   "applicability": "standing",
+   "status": "discharged",
+   "due": "",
+   "evidence": "A dissolution clause in the Articles of Incorporation on file with the Secretary of State",
+   "observed": "the Articles (document 20251193974) state: Upon dissolution, assets shall be distributed to one or more tax-exempt organizations under Section 501(c)(3) of the Internal Revenue Code, as determined by the Board of Directors."
+  },
+  {
+   "name": "Apply to the IRS for recognition of exemption on Form 1023 or Form 1023-EZ",
+   "authority": 24,
+   "post": 0,
+   "basis": 0,
+   "cadence": "once",
+   "applicability": "standing",
+   "status": "active",
+   "due": "2026-05-31 (15 months, 26 CFR 1.508-1(a)(2)(i)); 2027-05-31 (27 months, Instructions for Form 1023 Part VIII)",
+   "evidence": "An IRS determination letter, or the Foundation in the Exempt Organizations Business Master File or the Publication 78 data",
+   "observed": "The Foundation's Form 1023 application for recognition of exemption is in preparation and has not been filed. (Alex Flom, Director (governance/register.json people), 2026-11-15T19:29:26Z, nonprofit/attestations.json); deadline 2027-05-31: 27 months from formation on 2025-02-21, the extended period the Instructions for Form 1023 Part VIII state for recognition from the date of formation. IRS recognition is not observable in IRS public data: bmf-eo1 0/281266, bmf-eo2 0/728633, bmf-eo3 0/969932, bmf-eo4 0/5060, bmf-eo-co 0/36654, pub78 0/1437288; a pending application is not public"
+  },
+  {
+   "name": "File the annual information return or notice: Form 990, Form 990-EZ or Form 990-N",
+   "authority": 27,
+   "post": 1,
+   "basis": 0,
+   "cadence": "annual",
+   "applicability": "standing",
+   "status": "unobservable",
+   "due": "the 15th day of the 5th month after the accounting period ends; the accounting period is not public",
+   "evidence": "The return the uor-990-return app names for the tax year, filed by the 15th day of the 5th month after the accounting period ends, and found in the IRS e-file index or the e-Postcard data",
+   "observed": "no filing observable in IRS public data: epostcard 0/1552842, efile-index-2025 0/748906, efile-index-2026 0/472357; the return the uor-990-return app names needs figures that are not public"
+  },
+  {
+   "name": "Make the exemption application and the three most recent annual returns available for public inspection",
+   "authority": 34,
+   "post": 2,
+   "basis": 0,
+   "cadence": "continuous",
+   "applicability": "standing",
+   "status": "unobservable",
+   "due": "",
+   "evidence": "Form 1023 and the Forms 990 published on the Foundation's website, or provided on request",
+   "observed": "the evidence is the Foundation’s own records, which no public source holds"
+  },
+  {
+   "name": "Pay no excess benefit; set compensation by independent review with comparability data",
+   "authority": 35,
+   "post": 0,
+   "basis": 0,
+   "cadence": "continuous",
+   "applicability": "standing",
+   "status": "unobservable",
+   "due": "",
+   "evidence": "Board minutes approving each compensation arrangement with the comparability data relied on",
+   "observed": "the evidence is the Foundation’s own records, which no public source holds"
+  },
+  {
+   "name": "Operate exclusively for exempt purposes: no private inurement, no substantial lobbying, no political campaign intervention",
+   "authority": 38,
+   "post": 0,
+   "basis": 0,
+   "cadence": "continuous",
+   "applicability": "standing",
+   "status": "unobservable",
+   "due": "",
+   "evidence": "Form 990 Schedule C and Part IV answers, and Board minutes, showing no inurement, no substantial lobbying and no campaign intervention",
+   "observed": "the evidence is the Foundation’s own records, which no public source holds"
+  },
+  {
+   "name": "Adopt a conflict of interest policy",
+   "authority": 41,
+   "post": 0,
+   "basis": 0,
+   "cadence": "once",
+   "applicability": "standing",
+   "status": "unobservable",
+   "due": "",
+   "evidence": "A conflict of interest policy adopted by Board resolution and published in UOR-Foundation/.github",
+   "observed": "no conflict of interest policy is published in the pinned repositories; mentioned in https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/The_UOR_Foundation_Bylaws.pdf"
+  },
+  {
+   "name": "Discharge each director's and officer's duties in good faith and in the corporation's best interests",
+   "authority": 43,
+   "post": 0,
+   "basis": 0,
+   "cadence": "continuous",
+   "applicability": "standing",
+   "status": "unobservable",
+   "due": "",
+   "evidence": "Board minutes recording the information each decision relied on",
+   "observed": "the evidence is the Foundation’s own records, which no public source holds"
+  },
+  {
+   "name": "Hold the regular annual meeting of the Board and elect the officers",
+   "authority": 45,
+   "post": 0,
+   "basis": 0,
+   "cadence": "annual",
+   "applicability": "standing",
+   "status": "unobservable",
+   "due": "",
+   "evidence": "Minutes of the annual meeting recording the election of the officers",
+   "observed": "the evidence is the Foundation’s own records, which no public source holds"
+  },
+  {
+   "name": "Register with the Secretary of State before soliciting contributions in Colorado",
+   "authority": 47,
+   "post": 1,
+   "basis": 0,
+   "cadence": "onEvent",
+   "applicability": "conditional",
+   "status": "undetermined",
+   "due": "before soliciting in Colorado (C.R.S. 6-16-104(1)); annual report by the earlier of the 15th day of the 8th month after the fiscal year or the Form 990 due date (C.R.S. 6-16-104(5))",
+   "evidence": "A charitable organization registration in the Secretary of State's charities database, or a record that the Foundation neither solicits in Colorado nor exceeds the exemption of C.R.S. 6-16-104(6)(c)",
+   "observed": "the charities database lists no registration for \"The UOR Foundation\" or \"UOR\" (control \"Habitat for Humanity\" found); whether the Foundation solicits in Colorado or qualifies for the C.R.S. 6-16-104(6)(c) exemption is not public"
+  },
+  {
+   "name": "File the annual charitable financial report with the Secretary of State",
+   "authority": 47,
+   "post": 1,
+   "basis": 0,
+   "cadence": "annual",
+   "applicability": "conditional",
+   "status": "undetermined",
+   "due": "before soliciting in Colorado (C.R.S. 6-16-104(1)); annual report by the earlier of the 15th day of the 8th month after the fiscal year or the Form 990 due date (C.R.S. 6-16-104(5))",
+   "evidence": "The financial report, or a copy of Form 990, filed by the earlier of the 15th day of the 8th month after the fiscal year or the Form 990 due date",
+   "observed": "the charities database lists no registration for \"The UOR Foundation\" or \"UOR\" (control \"Habitat for Humanity\" found); whether the Foundation solicits in Colorado or qualifies for the C.R.S. 6-16-104(6)(c) exemption is not public"
+  },
+  {
+   "name": "File Form 990-T when gross unrelated business income is $1,000 or more",
+   "authority": 48,
+   "post": 1,
+   "basis": 0,
+   "cadence": "annual",
+   "applicability": "conditional",
+   "status": "unobservable",
+   "due": "",
+   "evidence": "The accounting records' unrelated business gross income for the year, and Form 990-T when it is $1,000 or more",
+   "observed": "the evidence is the Foundation’s own records, which no public source holds"
+  }
+ ],
+ "citations": [
+  {
+   "obligation": 0,
+   "authority": 1
+  },
+  {
+   "obligation": 0,
+   "authority": 2
+  },
+  {
+   "obligation": 0,
+   "authority": 3
+  },
+  {
+   "obligation": 0,
+   "authority": 4
+  },
+  {
+   "obligation": 1,
+   "authority": 5
+  },
+  {
+   "obligation": 1,
+   "authority": 6
+  },
+  {
+   "obligation": 1,
+   "authority": 7
+  },
+  {
+   "obligation": 2,
+   "authority": 8
+  },
+  {
+   "obligation": 3,
+   "authority": 9
+  },
+  {
+   "obligation": 3,
+   "authority": 10
+  },
+  {
+   "obligation": 3,
+   "authority": 11
+  },
+  {
+   "obligation": 4,
+   "authority": 9
+  },
+  {
+   "obligation": 4,
+   "authority": 12
+  },
+  {
+   "obligation": 4,
+   "authority": 13
+  },
+  {
+   "obligation": 4,
+   "authority": 14
+  },
+  {
+   "obligation": 5,
+   "authority": 15
+  },
+  {
+   "obligation": 5,
+   "authority": 9
+  },
+  {
+   "obligation": 6,
+   "authority": 16
+  },
+  {
+   "obligation": 6,
+   "authority": 17
+  },
+  {
+   "obligation": 6,
+   "authority": 18
+  },
+  {
+   "obligation": 6,
+   "authority": 19
+  },
+  {
+   "obligation": 7,
+   "authority": 20
+  },
+  {
+   "obligation": 7,
+   "authority": 21
+  },
+  {
+   "obligation": 8,
+   "authority": 22
+  },
+  {
+   "obligation": 8,
+   "authority": 23
+  },
+  {
+   "obligation": 9,
+   "authority": 24
+  },
+  {
+   "obligation": 9,
+   "authority": 25
+  },
+  {
+   "obligation": 9,
+   "authority": 26
+  },
+  {
+   "obligation": 10,
+   "authority": 27
+  },
+  {
+   "obligation": 10,
+   "authority": 28
+  },
+  {
+   "obligation": 10,
+   "authority": 29
+  },
+  {
+   "obligation": 10,
+   "authority": 30
+  },
+  {
+   "obligation": 10,
+   "authority": 31
+  },
+  {
+   "obligation": 10,
+   "authority": 32
+  },
+  {
+   "obligation": 10,
+   "authority": 33
+  },
+  {
+   "obligation": 11,
+   "authority": 34
+  },
+  {
+   "obligation": 12,
+   "authority": 35
+  },
+  {
+   "obligation": 12,
+   "authority": 36
+  },
+  {
+   "obligation": 12,
+   "authority": 37
+  },
+  {
+   "obligation": 13,
+   "authority": 38
+  },
+  {
+   "obligation": 13,
+   "authority": 39
+  },
+  {
+   "obligation": 13,
+   "authority": 40
+  },
+  {
+   "obligation": 14,
+   "authority": 41
+  },
+  {
+   "obligation": 14,
+   "authority": 42
+  },
+  {
+   "obligation": 15,
+   "authority": 43
+  },
+  {
+   "obligation": 15,
+   "authority": 44
+  },
+  {
+   "obligation": 16,
+   "authority": 45
+  },
+  {
+   "obligation": 16,
+   "authority": 46
+  },
+  {
+   "obligation": 17,
+   "authority": 47
+  },
+  {
+   "obligation": 18,
+   "authority": 47
+  },
+  {
+   "obligation": 19,
+   "authority": 48
+  },
+  {
+   "obligation": 19,
+   "authority": 49
+  }
+ ],
+ "filings": [
+  {
+   "event": "Articles of Incorporation",
+   "dateFiled": "02/21/2025",
+   "document": "20251193974",
+   "comment": "",
+   "documentDigest": "sha256:0730ef5d1fcf5bf3fde6ad284b8daaff9e135e81f49a3b0bfe90af92719299ef"
+  },
+  {
+   "event": "Statement of Change",
+   "dateFiled": "10/09/2025",
+   "document": "20258114259",
+   "comment": "Registered agent information changed;Removed agent mailing address;",
+   "documentDigest": "sha256:10c91a7114126a8a90ff32b3360ee05b7008fb9f608404207c556061443677ad"
+  },
+  {
+   "event": "Periodic Report due",
+   "dateFiled": "01/23/2026",
+   "document": "",
+   "comment": "Periodic report due by: 04/30/2026",
+   "documentDigest": ""
+  },
+  {
+   "event": "Periodic Report due in one week",
+   "dateFiled": "04/24/2026",
+   "document": "",
+   "comment": "Periodic report due by: 04/30/2026",
+   "documentDigest": ""
+  },
+  {
+   "event": "Report",
+   "dateFiled": "04/27/2026",
+   "document": "20261517577",
+   "comment": "Principal address changed, Change in registered agent information",
+   "documentDigest": "sha256:48bd9b8d0584c29449f39b48088e3c7eedc90ddedbac247f8ae0f46f85374d90"
+  }
+ ],
+ "observations": [
+  {
+   "dataset": "bmf-eo1",
+   "url": "https://www.irs.gov/pub/irs-soi/eo1.csv",
+   "source": 33,
+   "shows": "recognition",
+   "rows": 281266,
+   "matched": 0,
+   "near": 0,
+   "fetchedAt": "2026-11-15T19:01:25.481Z"
+  },
+  {
+   "dataset": "bmf-eo2",
+   "url": "https://www.irs.gov/pub/irs-soi/eo2.csv",
+   "source": 34,
+   "shows": "recognition",
+   "rows": 728633,
+   "matched": 0,
+   "near": 0,
+   "fetchedAt": "2026-11-15T19:01:27.959Z"
+  },
+  {
+   "dataset": "bmf-eo3",
+   "url": "https://www.irs.gov/pub/irs-soi/eo3.csv",
+   "source": 35,
+   "shows": "recognition",
+   "rows": 969932,
+   "matched": 0,
+   "near": 0,
+   "fetchedAt": "2026-11-15T19:01:32.346Z"
+  },
+  {
+   "dataset": "bmf-eo4",
+   "url": "https://www.irs.gov/pub/irs-soi/eo4.csv",
+   "source": 36,
+   "shows": "recognition",
+   "rows": 5060,
+   "matched": 0,
+   "near": 0,
+   "fetchedAt": "2026-11-15T19:01:36.165Z"
+  },
+  {
+   "dataset": "bmf-eo-co",
+   "url": "https://www.irs.gov/pub/irs-soi/eo_co.csv",
+   "source": 37,
+   "shows": "recognition",
+   "rows": 36654,
+   "matched": 0,
+   "near": 0,
+   "fetchedAt": "2026-11-15T19:01:36.339Z"
+  },
+  {
+   "dataset": "pub78",
+   "url": "https://apps.irs.gov/pub/epostcard/data-download-pub78.zip",
+   "source": 38,
+   "shows": "recognition",
+   "rows": 1437288,
+   "matched": 0,
+   "near": 0,
+   "fetchedAt": "2026-11-15T19:01:37.109Z"
+  },
+  {
+   "dataset": "epostcard",
+   "url": "https://apps.irs.gov/pub/epostcard/data-download-epostcard.zip",
+   "source": 39,
+   "shows": "filing",
+   "rows": 1552842,
+   "matched": 0,
+   "near": 1,
+   "fetchedAt": "2026-11-15T19:01:41.664Z"
+  },
+  {
+   "dataset": "efile-index-2025",
+   "url": "https://apps.irs.gov/pub/epostcard/990/xml/2025/index_2025.csv",
+   "source": 40,
+   "shows": "filing",
+   "rows": 748906,
+   "matched": 0,
+   "near": 0,
+   "fetchedAt": "2026-11-15T19:01:48.581Z"
+  },
+  {
+   "dataset": "efile-index-2026",
+   "url": "https://apps.irs.gov/pub/epostcard/990/xml/2026/index_2026.csv",
+   "source": 41,
+   "shows": "filing",
+   "rows": 472357,
+   "matched": 0,
+   "near": 0,
+   "fetchedAt": "2026-11-15T19:01:52.035Z"
+  }
+ ],
+ "statements": [
+  {
+   "repository": "https://github.com/UOR-Foundation/website",
+   "commit": "e82ffdedc5d85ebd0bde239d50d4651005045d31",
+   "path": "src/about/content.ts",
+   "line": 6,
+   "text": "line: \"A 501(c)(3) nonprofit maintaining the UOR specification and the projects built on it.\",",
+   "claim": "Nonprofit501c3",
+   "consistency": "pending",
+   "source": 1
+  },
+  {
+   "repository": "https://github.com/UOR-Foundation/website",
+   "commit": "e82ffdedc5d85ebd0bde239d50d4651005045d31",
+   "path": "src/site/copy.ts",
+   "line": 28,
+   "text": "steward: \"Stewarded by an independent 501(c)(3).\",",
+   "claim": "Nonprofit501c3",
+   "consistency": "pending",
+   "source": 2
+  }
+ ],
+ "lines": [
+  {
+   "line": "1a",
+   "section": "Section A. Governing Body and Management",
+   "question": "Enter the number of voting members of the governing body at the end of the tax year If there are material differences in voting rights among members of the governing body, or if the governing body delegated broad authority to an executive committee or similar committee, explain on Schedule O.",
+   "questionSha256": "bd5a57aaffb901a91440cfd82380611dc20afcf2ebf6a1a24f3f5745402b9859",
+   "policy": "",
+   "status": "evidenced",
+   "evidence": "5 Board positions held (governance/register.json holdings, from https://github.com/UOR-Foundation/website@1008c3b0989225f5414a9bd58ed8208a56af5e53)",
+   "refusal": ""
+  },
+  {
+   "line": "1b",
+   "section": "Section A. Governing Body and Management",
+   "question": "Enter the number of voting members included on line 1a, above, who are independent",
+   "questionSha256": "dd2c0d4f443c32cd1f3c79c2ed5f781503367588f7bc4991f0320a2d68dd45c2",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "2",
+   "section": "Section A. Governing Body and Management",
+   "question": "Did any officer, director, trustee, or key employee have a family relationship or a business relationship with any other officer, director, trustee, or key employee?",
+   "questionSha256": "e9de0260cb462f0e4fecaaebc42a1a8c2be7fe899d6b5237cc7b56ce3f8044b0",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "3",
+   "section": "Section A. Governing Body and Management",
+   "question": "Did the organization delegate control over management duties customarily performed by or under the direct supervision of officers, directors, trustees, or key employees to a management company or other person?",
+   "questionSha256": "45e1238e92c117d45c2fbb36b378b3aabb951bd4c112d634d7d78b3649563243",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "4",
+   "section": "Section A. Governing Body and Management",
+   "question": "Did the organization make any significant changes to its governing documents since the prior Form 990 was filed?",
+   "questionSha256": "29eb57568fd54f39c4ee6df4f91108d3f14173a51379b1082a92e80fb00e5a94",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "5",
+   "section": "Section A. Governing Body and Management",
+   "question": "Did the organization become aware during the year of a significant diversion of the organization’s assets?",
+   "questionSha256": "e5bdd19446b5e1c90bd191f83460ce193a6ca3947136975de76deb65ce1eb56f",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "6",
+   "section": "Section A. Governing Body and Management",
+   "question": "Did the organization have members or stockholders?",
+   "questionSha256": "49b5593aaaa8aa8514fbe182a29c49c9dbb69e9fe2ba393c48b90ac1d4297af9",
+   "policy": "",
+   "status": "open",
+   "evidence": "the Articles (document 20251193974) state \"There are voting members for the nonprofit corporation.\"; Bylaws Article III states the corporation shall not have voting members",
+   "refusal": "members-inconsistent"
+  },
+  {
+   "line": "7a",
+   "section": "Section A. Governing Body and Management",
+   "question": "Did the organization have members, stockholders, or other persons who had the power to elect or appoint one or more members of the governing body?",
+   "questionSha256": "d0371dc796769360fbb6d3a579997255126935fa6edc012f5f95f483cd0a1d18",
+   "policy": "",
+   "status": "open",
+   "evidence": "the Articles (document 20251193974) state \"There are voting members for the nonprofit corporation.\"; Bylaws Article III states the corporation shall not have voting members",
+   "refusal": "members-inconsistent"
+  },
+  {
+   "line": "7b",
+   "section": "Section A. Governing Body and Management",
+   "question": "Are any governance decisions of the organization reserved to (or subject to approval by) members, stockholders, or persons other than the governing body?",
+   "questionSha256": "6ffde346b328e76740da8a76de34bbf33216d5c1601efa36d53e81bdd3b88ef3",
+   "policy": "",
+   "status": "open",
+   "evidence": "the Articles (document 20251193974) state \"There are voting members for the nonprofit corporation.\"; Bylaws Article III states the corporation shall not have voting members",
+   "refusal": "members-inconsistent"
+  },
+  {
+   "line": "8",
+   "section": "Section A. Governing Body and Management",
+   "question": "Did the organization contemporaneously document the meetings held or written actions undertaken during the year by the following:",
+   "questionSha256": "fcd433c52bf82f56d0392dcfa2463affd5373e4400ed125a87837a0eea3a00e9",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "8a",
+   "section": "Section A. Governing Body and Management",
+   "question": "The governing body?",
+   "questionSha256": "bc8f01fec1f0abed17505f4dc28d87cd9fc0aeaa8650269f69924844623c8230",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "8b",
+   "section": "Section A. Governing Body and Management",
+   "question": "Each committee with authority to act on behalf of the governing body?",
+   "questionSha256": "491062fbf582fa963b05f00147a21815dbaf48fceed9ce5f20f7f8a31015550c",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "9",
+   "section": "Section A. Governing Body and Management",
+   "question": "Is there any officer, director, trustee, or key employee listed in Part VII, Section A, who cannot be reached at the organization’s mailing address? If “Yes,” provide the names and addresses on Schedule O",
+   "questionSha256": "09b65b6a41a298f2f7a5d7b7665e1da20541b480286148c43f206c719431cd14",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "10a",
+   "section": "Section B. Policies (This Section B requests information about policies not required by the Internal Revenue Code.)",
+   "question": "Did the organization have local chapters, branches, or affiliates?",
+   "questionSha256": "3cb3f516c8becd393d35a2e312afa0a1d8a37bd98bef3bdc8006ee66d1870d70",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "10b",
+   "section": "Section B. Policies (This Section B requests information about policies not required by the Internal Revenue Code.)",
+   "question": "If “Yes,” did the organization have written policies and procedures governing the activities of such chapters, affiliates, and branches to ensure their operations are consistent with the organization’s exempt purposes?",
+   "questionSha256": "7a9cbf0f84df3aa915ccc31752222241ea4d2151b0a0a1ca8ebeee1bedc828c3",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "11a",
+   "section": "Section B. Policies (This Section B requests information about policies not required by the Internal Revenue Code.)",
+   "question": "Has the organization provided a complete copy of this Form 990 to all members of its governing body before filing the form?",
+   "questionSha256": "489a48dd3f2febeaa86d00fc4252fce8ecf887d78efcd8dd8d0b73d50c4dfdfa",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "11b",
+   "section": "Section B. Policies (This Section B requests information about policies not required by the Internal Revenue Code.)",
+   "question": "Describe on Schedule O the process, if any, used by the organization to review this Form 990.",
+   "questionSha256": "bd343165138d48524d82b30459cedd86d9aa1b79cc7c7581164cdc11e73d8e26",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "12a",
+   "section": "Section B. Policies (This Section B requests information about policies not required by the Internal Revenue Code.)",
+   "question": "Did the organization have a written conflict of interest policy? If “No,” go to line 13",
+   "questionSha256": "2b7acd53534987369b4f7d9343a9267d23f727b25d7bee7c7d459077ab394cec",
+   "policy": "conflict of interest",
+   "status": "open",
+   "evidence": "mentioned in https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/The_UOR_Foundation_Bylaws.pdf",
+   "refusal": "policy-unpublished"
+  },
+  {
+   "line": "12b",
+   "section": "Section B. Policies (This Section B requests information about policies not required by the Internal Revenue Code.)",
+   "question": "Were officers, directors, or trustees, and key employees required to disclose annually interests that could give rise to conflicts?",
+   "questionSha256": "0bc015163c3845360e7b37b63b019727fbc23160bfb4b99977605be71d04e248",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "12c",
+   "section": "Section B. Policies (This Section B requests information about policies not required by the Internal Revenue Code.)",
+   "question": "Did the organization regularly and consistently monitor and enforce compliance with the policy? If “Yes,” describe on Schedule O how this was done",
+   "questionSha256": "21b53229f05abea261c5c35e5600d862ed1ca697521aa7c4021ea2b989308334",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "13",
+   "section": "Section B. Policies (This Section B requests information about policies not required by the Internal Revenue Code.)",
+   "question": "Did the organization have a written whistleblower policy?",
+   "questionSha256": "6682d1472e0301fbe686a7d64f20107f2d5f24dc429a85757bdbaf0ad1f4b37d",
+   "policy": "whistleblower",
+   "status": "open",
+   "evidence": "no pinned source names it",
+   "refusal": "policy-unpublished"
+  },
+  {
+   "line": "14",
+   "section": "Section B. Policies (This Section B requests information about policies not required by the Internal Revenue Code.)",
+   "question": "Did the organization have a written document retention and destruction policy?",
+   "questionSha256": "71a49d63d95dc981385e8d2aee670d69154ee35a4616972bb99e857ea9fc87bc",
+   "policy": "document retention and destruction",
+   "status": "open",
+   "evidence": "no pinned source names it",
+   "refusal": "policy-unpublished"
+  },
+  {
+   "line": "15",
+   "section": "Section B. Policies (This Section B requests information about policies not required by the Internal Revenue Code.)",
+   "question": "Did the process for determining compensation of the following persons include a review and approval by independent persons, comparability data, and contemporaneous substantiation of the deliberation and decision?",
+   "questionSha256": "54139c463f9a48155c60a06a46dbec5dfc19662674bd003db0cdfd609ec73afd",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "15a",
+   "section": "Section B. Policies (This Section B requests information about policies not required by the Internal Revenue Code.)",
+   "question": "The organization’s CEO, Executive Director, or top management official",
+   "questionSha256": "958c0add6d86e2502dce86cd0a35bbf845dfc214f8d8ca8759036255261f1019",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "15b",
+   "section": "Section B. Policies (This Section B requests information about policies not required by the Internal Revenue Code.)",
+   "question": "Other officers or key employees of the organization If “Yes” to line 15a or 15b, describe the process on Schedule O. See instructions.",
+   "questionSha256": "455b98f08cc8d534a2de6e837fef14e933d524c8b465064d553f5e5125444042",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "16a",
+   "section": "Section B. Policies (This Section B requests information about policies not required by the Internal Revenue Code.)",
+   "question": "Did the organization invest in, contribute assets to, or participate in a joint venture or similar arrangement with a taxable entity during the year?",
+   "questionSha256": "66958939ee899f6d930d6f90390794574eccc55817a3be801e2d31342b120f83",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "16b",
+   "section": "Section B. Policies (This Section B requests information about policies not required by the Internal Revenue Code.)",
+   "question": "If “Yes,” did the organization follow a written policy or procedure requiring the organization to evaluate its participation in joint venture arrangements under applicable federal tax law, and take steps to safeguard the organization’s exempt status with respect to such arrangements?",
+   "questionSha256": "ced14fd3ba7606b916e3ab0b8eb6a08c89f8c7e426708b0b3afeeea8c72e5690",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "17",
+   "section": "Section C. Disclosure",
+   "question": "List the states with which a copy of this Form 990 is required to be filed",
+   "questionSha256": "09724a282d72bf670a12fdc8a20ce644a2af7bc6d870ad18281f2e75f121f0d5",
+   "policy": "",
+   "status": "open",
+   "evidence": "the states that require a copy depend on charitable registrations; the Colorado charities database lists none",
+   "refusal": "not-public"
+  },
+  {
+   "line": "18",
+   "section": "Section C. Disclosure",
+   "question": "Section 6104 requires an organization to make its Forms 1023 (1024 or 1024-A, if applicable), 990, and 990-T (section 501(c) (3)s only) available for public inspection. Indicate how you made these available. Check all that apply. Own website Another’s website Upon request Other (explain on Schedule O)",
+   "questionSha256": "b3e039d1cec751b16038c04b231953ee38396dadda1f1b8f3d0f15f241922bd6",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  },
+  {
+   "line": "19",
+   "section": "Section C. Disclosure",
+   "question": "Describe on Schedule O whether (and if so, how) the organization made its governing documents, conflict of interest policy, and financial statements available to the public during the tax year.",
+   "questionSha256": "e842336fa64492e8c1bb61e8431812acc002ac159c6761cfda06da5f4d980cdb",
+   "policy": "",
+   "status": "open",
+   "evidence": "the Bylaws are public at https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/The_UOR_Foundation_Bylaws.pdf; no conflict of interest policy or financial statement is",
+   "refusal": "disclosure-partial"
+  },
+  {
+   "line": "20",
+   "section": "Section C. Disclosure",
+   "question": "State the name, address, and telephone number of the person who possesses the organization’s books and records.",
+   "questionSha256": "89423df13ec6d37815db72bdbd08a2b98f88b6def49941c57b1f65a2cd3b4a4c",
+   "policy": "",
+   "status": "open",
+   "evidence": "",
+   "refusal": "not-public"
+  }
+ ],
+ "needs": [
+  {
+   "name": "Revenue for the tax year",
+   "part": 50,
+   "provision": 12
+  },
+  {
+   "name": "Functional expenses for the tax year",
+   "part": 51,
+   "provision": 12
+  },
+  {
+   "name": "Balance sheet at the end of the tax year",
+   "part": 52,
+   "provision": 12
+  },
+  {
+   "name": "Summary of activities and finances",
+   "part": 53,
+   "provision": 12
+  },
+  {
+   "name": "Accounting period (the month the tax year ends)",
+   "part": 30,
+   "provision": 12
+  },
+  {
+   "name": "Gross receipts normally $50,000 or less (Appendix B test)",
+   "part": 33,
+   "provision": 12
+  },
+  {
+   "name": "Gross receipts for the tax year against $200,000",
+   "part": 31,
+   "provision": 12
+  },
+  {
+   "name": "Total assets at the end of the tax year against $500,000",
+   "part": 31,
+   "provision": 12
+  },
+  {
+   "name": "Finance and Audit Committee establishment, members and charter",
+   "part": 54,
+   "provision": 54
+  }
+ ],
+ "claims": [
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 3,
+   "refusal": "obligation-unobservable",
+   "detail": "Keep minutes and records of every Board and committee action as permanent records: the evidence is the Foundation’s own records, which no public source holds",
+   "closes": "Minutes of each Board and committee meeting and a record of each action without a meeting, held by the Secretary"
+  },
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 4,
+   "refusal": "obligation-unobservable",
+   "detail": "Maintain appropriate accounting records: the evidence is the Foundation’s own records, which no public source holds",
+   "closes": "Books of account showing gross income, receipts and disbursements, held for the Treasurer"
+  },
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 5,
+   "refusal": "obligation-unobservable",
+   "detail": "Keep the articles, bylaws, director and officer list, three years of financial statements and Forms 990, and the exemption application and determination letter at the principal office: the evidence is the Foundation’s own records, which no public source holds",
+   "closes": "The records Bylaws 11.4 lists, kept at the principal office"
+  },
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 6,
+   "refusal": "obligation-undischarged",
+   "detail": "Amend the Articles of Incorporation to state that the corporation has no voting members: the history lists no Articles of Amendment; the Articles (document 20251193974) state: There are voting members for the nonprofit corporation.",
+   "closes": "Articles of Amendment filed with the Colorado Secretary of State"
+  },
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 7,
+   "refusal": "obligation-undischarged",
+   "detail": "Limit the purposes stated in the organizing document to section 501(c)(3) purposes: the Articles (document 20251193974, sha256:0730ef5d1fcf5bf3fde6ad284b8daaff9e135e81f49a3b0bfe90af92719299ef) state no purposes; the purposes are stated in Bylaws 1.2, which are not the articles of organization 26 CFR 1.501(c)(3)-1(b)(2) names; no Articles of Amendment are on file",
+   "closes": "Articles of Incorporation, or Articles of Amendment, on file with the Secretary of State that limit the corporation's purposes to those in section 501(c)(3)"
+  },
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 9,
+   "refusal": "obligation-active",
+   "detail": "Apply to the IRS for recognition of exemption on Form 1023 or Form 1023-EZ: The Foundation's Form 1023 application for recognition of exemption is in preparation and has not been filed. (Alex Flom, Director (governance/register.json people), 2026-11-15T19:29:26Z, nonprofit/attestations.json); deadline 2027-05-31: 27 months from formation on 2025-02-21, the extended period the Instructions for Form 1023 Part VIII state for recognition from the date of formation. IRS recognition is not observable in IRS public data: bmf-eo1 0/281266, bmf-eo2 0/728633, bmf-eo3 0/969932, bmf-eo4 0/5060, bmf-eo-co 0/36654, pub78 0/1437288; a pending application is not public",
+   "closes": "An IRS determination letter, or the Foundation in the Exempt Organizations Business Master File or the Publication 78 data"
+  },
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 10,
+   "refusal": "obligation-unobservable",
+   "detail": "File the annual information return or notice: Form 990, Form 990-EZ or Form 990-N: no filing observable in IRS public data: epostcard 0/1552842, efile-index-2025 0/748906, efile-index-2026 0/472357; the return the uor-990-return app names needs figures that are not public",
+   "closes": "The return the uor-990-return app names for the tax year, filed by the 15th day of the 5th month after the accounting period ends, and found in the IRS e-file index or the e-Postcard data"
+  },
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 11,
+   "refusal": "obligation-unobservable",
+   "detail": "Make the exemption application and the three most recent annual returns available for public inspection: the evidence is the Foundation’s own records, which no public source holds",
+   "closes": "Form 1023 and the Forms 990 published on the Foundation's website, or provided on request"
+  },
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 12,
+   "refusal": "obligation-unobservable",
+   "detail": "Pay no excess benefit; set compensation by independent review with comparability data: the evidence is the Foundation’s own records, which no public source holds",
+   "closes": "Board minutes approving each compensation arrangement with the comparability data relied on"
+  },
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 13,
+   "refusal": "obligation-unobservable",
+   "detail": "Operate exclusively for exempt purposes: no private inurement, no substantial lobbying, no political campaign intervention: the evidence is the Foundation’s own records, which no public source holds",
+   "closes": "Form 990 Schedule C and Part IV answers, and Board minutes, showing no inurement, no substantial lobbying and no campaign intervention"
+  },
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 14,
+   "refusal": "obligation-unobservable",
+   "detail": "Adopt a conflict of interest policy: no conflict of interest policy is published in the pinned repositories; mentioned in https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/The_UOR_Foundation_Bylaws.pdf",
+   "closes": "A conflict of interest policy adopted by Board resolution and published in UOR-Foundation/.github"
+  },
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 15,
+   "refusal": "obligation-unobservable",
+   "detail": "Discharge each director's and officer's duties in good faith and in the corporation's best interests: the evidence is the Foundation’s own records, which no public source holds",
+   "closes": "Board minutes recording the information each decision relied on"
+  },
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 16,
+   "refusal": "obligation-unobservable",
+   "detail": "Hold the regular annual meeting of the Board and elect the officers: the evidence is the Foundation’s own records, which no public source holds",
+   "closes": "Minutes of the annual meeting recording the election of the officers"
+  },
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 17,
+   "refusal": "obligation-undetermined",
+   "detail": "Register with the Secretary of State before soliciting contributions in Colorado: the charities database lists no registration for \"The UOR Foundation\" or \"UOR\" (control \"Habitat for Humanity\" found); whether the Foundation solicits in Colorado or qualifies for the C.R.S. 6-16-104(6)(c) exemption is not public",
+   "closes": "A charitable organization registration in the Secretary of State's charities database, or a record that the Foundation neither solicits in Colorado nor exceeds the exemption of C.R.S. 6-16-104(6)(c)"
+  },
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 18,
+   "refusal": "obligation-undetermined",
+   "detail": "File the annual charitable financial report with the Secretary of State: the charities database lists no registration for \"The UOR Foundation\" or \"UOR\" (control \"Habitat for Humanity\" found); whether the Foundation solicits in Colorado or qualifies for the C.R.S. 6-16-104(6)(c) exemption is not public",
+   "closes": "The financial report, or a copy of Form 990, filed by the earlier of the 15th day of the 8th month after the fiscal year or the Form 990 due date"
+  },
+  {
+   "area": "obligation",
+   "subjectKind": "obligation",
+   "subject": 19,
+   "refusal": "obligation-unobservable",
+   "detail": "File Form 990-T when gross unrelated business income is $1,000 or more: the evidence is the Foundation’s own records, which no public source holds",
+   "closes": "The accounting records' unrelated business gross income for the year, and Form 990-T when it is $1,000 or more"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 1,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 1b: no public source answers it",
+   "closes": "an answer to line 1b evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 2,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 2: no public source answers it",
+   "closes": "an answer to line 2 evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 3,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 3: no public source answers it",
+   "closes": "an answer to line 3 evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 4,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 4: no public source answers it",
+   "closes": "an answer to line 4 evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 5,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 5: no public source answers it",
+   "closes": "an answer to line 5 evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 6,
+   "refusal": "members-inconsistent",
+   "detail": "Form 990 Part VI line 6: the Articles (document 20251193974) state \"There are voting members for the nonprofit corporation.\"; Bylaws Article III states the corporation shall not have voting members",
+   "closes": "an answer to line 6 evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 7,
+   "refusal": "members-inconsistent",
+   "detail": "Form 990 Part VI line 7a: the Articles (document 20251193974) state \"There are voting members for the nonprofit corporation.\"; Bylaws Article III states the corporation shall not have voting members",
+   "closes": "an answer to line 7a evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 8,
+   "refusal": "members-inconsistent",
+   "detail": "Form 990 Part VI line 7b: the Articles (document 20251193974) state \"There are voting members for the nonprofit corporation.\"; Bylaws Article III states the corporation shall not have voting members",
+   "closes": "an answer to line 7b evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 9,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 8: no public source answers it",
+   "closes": "an answer to line 8 evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 10,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 8a: no public source answers it",
+   "closes": "an answer to line 8a evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 11,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 8b: no public source answers it",
+   "closes": "an answer to line 8b evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 12,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 9: no public source answers it",
+   "closes": "an answer to line 9 evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 13,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 10a: no public source answers it",
+   "closes": "an answer to line 10a evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 14,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 10b: no public source answers it",
+   "closes": "an answer to line 10b evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 15,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 11a: no public source answers it",
+   "closes": "an answer to line 11a evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 16,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 11b: no public source answers it",
+   "closes": "an answer to line 11b evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 17,
+   "refusal": "policy-unpublished",
+   "detail": "Form 990 Part VI line 12a: mentioned in https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/The_UOR_Foundation_Bylaws.pdf",
+   "closes": "an answer to line 12a evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 18,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 12b: no public source answers it",
+   "closes": "an answer to line 12b evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 19,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 12c: no public source answers it",
+   "closes": "an answer to line 12c evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 20,
+   "refusal": "policy-unpublished",
+   "detail": "Form 990 Part VI line 13: no pinned source names it",
+   "closes": "an answer to line 13 evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 21,
+   "refusal": "policy-unpublished",
+   "detail": "Form 990 Part VI line 14: no pinned source names it",
+   "closes": "an answer to line 14 evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 22,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 15: no public source answers it",
+   "closes": "an answer to line 15 evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 23,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 15a: no public source answers it",
+   "closes": "an answer to line 15a evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 24,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 15b: no public source answers it",
+   "closes": "an answer to line 15b evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 25,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 16a: no public source answers it",
+   "closes": "an answer to line 16a evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 26,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 16b: no public source answers it",
+   "closes": "an answer to line 16b evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 27,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 17: the states that require a copy depend on charitable registrations; the Colorado charities database lists none",
+   "closes": "an answer to line 17 evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 28,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 18: no public source answers it",
+   "closes": "an answer to line 18 evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 29,
+   "refusal": "disclosure-partial",
+   "detail": "Form 990 Part VI line 19: the Bylaws are public at https://github.com/UOR-Foundation/.github@92da114114fc9b76cbf2c5168e29d409b62ddde8:governance/The_UOR_Foundation_Bylaws.pdf; no conflict of interest policy or financial statement is",
+   "closes": "an answer to line 19 evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "form990-part-vi",
+   "subjectKind": "line",
+   "subject": 30,
+   "refusal": "not-public",
+   "detail": "Form 990 Part VI line 20: no public source answers it",
+   "closes": "an answer to line 20 evidenced by a record the Foundation publishes"
+  },
+  {
+   "area": "finance",
+   "subjectKind": "need",
+   "subject": 0,
+   "refusal": "financial-figures-not-public",
+   "detail": "Revenue for the tax year (Form 990 Part VIII; Bylaws 11.2)",
+   "closes": "the Foundation’s accounting records, or a filed return that states the figure"
+  },
+  {
+   "area": "finance",
+   "subjectKind": "need",
+   "subject": 1,
+   "refusal": "financial-figures-not-public",
+   "detail": "Functional expenses for the tax year (Form 990 Part IX; Bylaws 11.2)",
+   "closes": "the Foundation’s accounting records, or a filed return that states the figure"
+  },
+  {
+   "area": "finance",
+   "subjectKind": "need",
+   "subject": 2,
+   "refusal": "financial-figures-not-public",
+   "detail": "Balance sheet at the end of the tax year (Form 990 Part X; Bylaws 11.2)",
+   "closes": "the Foundation’s accounting records, or a filed return that states the figure"
+  },
+  {
+   "area": "finance",
+   "subjectKind": "need",
+   "subject": 3,
+   "refusal": "financial-figures-not-public",
+   "detail": "Summary of activities and finances (Form 990 Part I; Bylaws 11.2)",
+   "closes": "the Foundation’s accounting records, or a filed return that states the figure"
+  },
+  {
+   "area": "finance",
+   "subjectKind": "need",
+   "subject": 4,
+   "refusal": "financial-figures-not-public",
+   "detail": "Accounting period (the month the tax year ends) (Instructions for Form 990 (2025), General Instructions, Section E. When, Where, and How To File; Bylaws 11.2)",
+   "closes": "the Foundation’s accounting records, or a filed return that states the figure"
+  },
+  {
+   "area": "finance",
+   "subjectKind": "need",
+   "subject": 5,
+   "refusal": "financial-figures-not-public",
+   "detail": "Gross receipts normally $50,000 or less (Appendix B test) (Instructions for Form 990 (2025), General Instructions, Section A. Who Must File, Form 990-N; Bylaws 11.2)",
+   "closes": "the Foundation’s accounting records, or a filed return that states the figure"
+  },
+  {
+   "area": "finance",
+   "subjectKind": "need",
+   "subject": 6,
+   "refusal": "financial-figures-not-public",
+   "detail": "Gross receipts for the tax year against $200,000 (Instructions for Form 990 (2025), General Instructions, Section A. Who Must File; Bylaws 11.2)",
+   "closes": "the Foundation’s accounting records, or a filed return that states the figure"
+  },
+  {
+   "area": "finance",
+   "subjectKind": "need",
+   "subject": 7,
+   "refusal": "financial-figures-not-public",
+   "detail": "Total assets at the end of the tax year against $500,000 (Instructions for Form 990 (2025), General Instructions, Section A. Who Must File; Bylaws 11.2)",
+   "closes": "the Foundation’s accounting records, or a filed return that states the figure"
+  },
+  {
+   "area": "finance",
+   "subjectKind": "need",
+   "subject": 8,
+   "refusal": "financial-figures-not-public",
+   "detail": "Finance and Audit Committee establishment, members and charter (Bylaws 6.1; Bylaws 6.1)",
+   "closes": "the Foundation’s accounting records, or a filed return that states the figure"
+  },
+  {
+   "area": "statement",
+   "subjectKind": "statement",
+   "subject": 0,
+   "refusal": "statement-pending",
+   "detail": "src/about/content.ts:6 states \"line: \"A 501(c)(3) nonprofit maintaining the UOR specification and the projects built on it.\",\"; the Foundation states its Form 1023 is in preparation (nonprofit/attestations.json), so the statement is pending until a determination; IRS recognition of 501(c)(3) status is not observable in IRS public data (bmf-eo1 0/281266, bmf-eo2 0/728633, bmf-eo3 0/969932, bmf-eo4 0/5060, bmf-eo-co 0/36654, pub78 0/1437288)",
+   "closes": "an IRS determination letter, or the Foundation in the Business Master File or the Publication 78 data"
+  },
+  {
+   "area": "statement",
+   "subjectKind": "statement",
+   "subject": 1,
+   "refusal": "statement-pending",
+   "detail": "src/site/copy.ts:28 states \"steward: \"Stewarded by an independent 501(c)(3).\",\"; the Foundation states its Form 1023 is in preparation (nonprofit/attestations.json), so the statement is pending until a determination; IRS recognition of 501(c)(3) status is not observable in IRS public data (bmf-eo1 0/281266, bmf-eo2 0/728633, bmf-eo3 0/969932, bmf-eo4 0/5060, bmf-eo-co 0/36654, pub78 0/1437288)",
+   "closes": "an IRS determination letter, or the Foundation in the Business Master File or the Publication 78 data"
+  },
+  {
+   "area": "entity",
+   "subjectKind": "entity",
+   "subject": 0,
+   "refusal": "irs-recognition-unobserved",
+   "detail": "IRS recognition of 501(c)(3) status is not observable in IRS public data. A record matches when the tokens of its organization name, split on every character that is not a letter or digit and compared without case, include every token of the Foundation's legal name except the article: UOR and FOUNDATION. A record whose name carries the token UOR at all is counted too, so a near miss is visible; no matched name is kept. Searched 2026-11-15. bmf-eo1 0/281266, bmf-eo2 0/728633, bmf-eo3 0/969932, bmf-eo4 0/5060, bmf-eo-co 0/36654, pub78 0/1437288.",
+   "closes": "an IRS determination letter, or the Foundation in the Business Master File or the Publication 78 data"
+  },
+  {
+   "area": "irs-data",
+   "subjectKind": "observation",
+   "subject": 0,
+   "refusal": "name-not-found",
+   "detail": "bmf-eo1: 0 of 281266 records match (0 carry the token UOR); fetched 2026-11-15T19:01:25.481Z",
+   "closes": "the Foundation in this dataset"
+  },
+  {
+   "area": "irs-data",
+   "subjectKind": "observation",
+   "subject": 1,
+   "refusal": "name-not-found",
+   "detail": "bmf-eo2: 0 of 728633 records match (0 carry the token UOR); fetched 2026-11-15T19:01:27.959Z",
+   "closes": "the Foundation in this dataset"
+  },
+  {
+   "area": "irs-data",
+   "subjectKind": "observation",
+   "subject": 2,
+   "refusal": "name-not-found",
+   "detail": "bmf-eo3: 0 of 969932 records match (0 carry the token UOR); fetched 2026-11-15T19:01:32.346Z",
+   "closes": "the Foundation in this dataset"
+  },
+  {
+   "area": "irs-data",
+   "subjectKind": "observation",
+   "subject": 3,
+   "refusal": "name-not-found",
+   "detail": "bmf-eo4: 0 of 5060 records match (0 carry the token UOR); fetched 2026-11-15T19:01:36.165Z",
+   "closes": "the Foundation in this dataset"
+  },
+  {
+   "area": "irs-data",
+   "subjectKind": "observation",
+   "subject": 4,
+   "refusal": "name-not-found",
+   "detail": "bmf-eo-co: 0 of 36654 records match (0 carry the token UOR); fetched 2026-11-15T19:01:36.339Z",
+   "closes": "the Foundation in this dataset"
+  },
+  {
+   "area": "irs-data",
+   "subjectKind": "observation",
+   "subject": 5,
+   "refusal": "name-not-found",
+   "detail": "pub78: 0 of 1437288 records match (0 carry the token UOR); fetched 2026-11-15T19:01:37.109Z",
+   "closes": "the Foundation in this dataset"
+  },
+  {
+   "area": "irs-data",
+   "subjectKind": "observation",
+   "subject": 6,
+   "refusal": "name-not-found",
+   "detail": "epostcard: 0 of 1552842 records match (1 carry the token UOR); fetched 2026-11-15T19:01:41.664Z",
+   "closes": "a return of the Foundation in this dataset"
+  },
+  {
+   "area": "irs-data",
+   "subjectKind": "observation",
+   "subject": 7,
+   "refusal": "name-not-found",
+   "detail": "efile-index-2025: 0 of 748906 records match (0 carry the token UOR); fetched 2026-11-15T19:01:48.581Z",
+   "closes": "a return of the Foundation in this dataset"
+  },
+  {
+   "area": "irs-data",
+   "subjectKind": "observation",
+   "subject": 8,
+   "refusal": "name-not-found",
+   "detail": "efile-index-2026: 0 of 472357 records match (0 carry the token UOR); fetched 2026-11-15T19:01:52.035Z",
+   "closes": "a return of the Foundation in this dataset"
+  }
+ ]
+}

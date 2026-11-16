@@ -18,6 +18,30 @@ The three honesty levels (R2):
 `cargo xtask audit-limits` fails if any code path returns an error the
 model does not sanction.
 
+## accessibility
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `AX-01` | `build` | The accessibility register is valid: every page of the Foundation's public web content has one reading in each configuration and exactly one outcome for every WCAG 2.2 Level A and AA success criterion, each outcome agrees with what the axe-core rules mapped to the criterion did on the page, a criterion is passed only when a mapped rule ran and passed with none failed or incomplete, every outcome that is not a pass is named by an open claim, and EN 301 549 clause 9 requires every WCAG 2.1 Level A and AA criterion exactly once |
+| `AX-02` | `build` | The accessibility catalog declares every success criterion, axe rule, page, reading and outcome of accessibility/register.json, each reading's URL, fetch time and document digest, the axe-core version and lock integrity, the browser and Playwright versions, and the digests of the WCAG source, the website routes, the sitemap, the EN 301 549 text and the snapshot it was projected from |
+| `AX-03` | `open` | A WCAG 2.2 Level A or AA success criterion that axe-core fails, cannot decide, does not test or finds nothing to test on a page, a conformance requirement no automated rule observes, and a page or EN 301 549 clause the sources cannot settle are carried as open claims, never restated as conformance |
+
+## assets
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `AS-01` | `build` | The asset register is valid: every asset id is unique, every package, service and document resolves to a repository asset or is an open claim, every domain has an RDAP observation, and every organization the sources name has a stated relation or is an open claim |
+| `AS-02` | `build` | The asset catalog declares every asset of inventory/register.json under its id, and the digests of the snapshot, the pinned sources and the standards it was projected from |
+| `AS-03` | `open` | An asset that does not resolve, a service with no repository or no deployment, a host or registration RDAP and DNS cannot vouch for, and a relationship whose relation the source does not state, is carried as an open claim, never dropped or guessed |
+
+## bestpractices
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `BP-01` | `build` | The Best Practices register is valid: every criterion of the pinned OpenSSF Best Practices badge criteria, passing, silver and gold, has exactly one outcome for every public Foundation repository, an outcome is open exactly when its criterion is MUST and it is Unmet or unknown, N/A is recorded only where the criterion allows it, an unknown outcome carries no detective, and the counts reconcile with the release |
+| `BP-02` | `build` | The Best Practices catalog declares the badge project commit and the digests of its criteria and locale files, the digests of the criteria reading and the snapshot, the security register commit, the commit of every repository, and the badge detective file and line of every outcome that is not unknown |
+| `BP-03` | `open` | A MUST criterion a repository does not meet, or whose outcome only a person or the badge application can give, is carried as an open outcome, and a fact the detectives would read but the snapshot cannot attest at the pinned commit is carried as a typed refusal, never restated as Met |
+
 ## chaoss
 
 | ID | Level | Statement |
@@ -208,6 +232,14 @@ model does not sanction.
 | --- | --- | --- |
 | `CP-01` | `build` | The control set the verified build emits as an OSCAL 1.1.0 component definition is accepted by the locked oscal-1.1.0-structural oracle |
 
+## conventions
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `CV-01` | `build` | The conventions register is valid: every repository has exactly one outcome for each of Semantic Versioning 2.0.0, Conventional Commits 1.0.0, Keep a Changelog 1.1.0, the CHANGELOG.md norm and the release-notes norm, each outcome's status is the one its measured and failing counts decide, its requirement is the strongest the Foundation's norms set for that repository, every mandatory or conditional outcome that is unmet or unobserved is named by an open claim, and the counts reconcile with the records and the release |
+| `CV-02` | `build` | The conventions catalog declares the pinned specification and policy sources with their digests, the digest of the SemVer expression, every oracle by version and integrity, the oracle lock, the input digests and the commit of every repository it observed |
+| `CV-03` | `open` | A mandatory or conditional convention a repository does not meet or that this register cannot observe, an oracle disagreement, and every clause or norm the sources cannot settle are carried as open claims citing their sources, never dropped or guessed |
+
 ## ecosystem
 
 | ID | Level | Statement |
@@ -260,6 +292,22 @@ model does not sanction.
 | `IV-04` | `build` | Every enacted intervention's effect, and every untreated signal onset in each chart's history, is the uor-intervention-effect answer over the first nine complete weeks after it against the limits frozen at its signal, so an intervention's effect is read against what untreated signals did |
 | `IV-05` | `open` | The three intervention apps are re-checked by the pinned builder on every run but are not yet in apps/set.json, so no Lean proof covers them; a chart of an average or a ratio with a week of no value, and the Discord guild until a chat computation is bound, are carried as refusals, never charted |
 
+## licensing
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `LC-01` | `build` | The licensing register is valid: every declared license identifier is a License record taken from the pinned SPDX License List, a repository is REUSE compliant exactly when every count the REUSE tool holds against compliance is zero and every file carries copyright and licensing information, every non-compliant repository is named by an open claim, and the counts reconcile with the release |
+| `LC-02` | `build` | The licensing catalog declares the REUSE tool version and wheel digest, the SPDX License List version and digests, the digests of the scan, snapshot and policy sources, and the commit of every repository it observed |
+| `LC-03` | `open` | A repository the REUSE tool does not find compliant, a declaration the Foundation's license policy or website does not allow, a missing or unidentified LICENSE text, and an identifier off the SPDX License List are carried as open claims citing both sources, never dropped or guessed |
+
+## nonprofit
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `NP-01` | `build` | The nonprofit register is valid: every obligation cites the authority it names and is assigned to a governance post by a Bylaws provision, every authority is the law of the entity's jurisdiction or of the nation containing it, every open claim names a subject that exists, and the entity is recorded as IRS-recognized exactly when IRS recognition data matched it |
+| `NP-02` | `build` | The nonprofit catalog declares every source of nonprofit/register.json with the sha256 digest of the bytes read at its pinned commit or fetch |
+| `NP-03` | `open` | Every obligation not observed discharged, every Form 990 Part VI line no public source answers, every financial figure the returns need, and every status statement no authority bears out is carried as an open claim, never dropped or presumed |
+
 ## observations
 
 | ID | Level | Statement |
@@ -270,6 +318,14 @@ model does not sanction.
 | `OB-04` | `open` | A released CHAOSS metric the oracle binds no computation to, and a computation whose index, field, query, aggregation or script this corpus and projector cannot evaluate exactly as the oracle defines it, is carried as an open claim, never approximated |
 | `OB-05` | `open` | GitHub issues and pull requests, and the Foundation's Discord, enter the corpus only from responses the observations workflow recorded and replayed offline; a Discord channel is read only where the uor-discord-read app permits it, and the record keeps no message text and no member's name |
 
+## policies
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `PL-01` | `build` | The policy register is valid: every clause of the four drafts cites an authority, every section of each standard model is projected by exactly one clause with its text carried verbatim except named substitutions, every Form 990 Part VI line 12a, 12b, 12c, 13 and 14 requirement and every Bylaws 10.3 requirement is covered by a clause, every record class keeps the longest period its authorities state, every staged act is unexecuted, and the counts reconcile |
+| `PL-02` | `build` | The policy catalog declares every source of policies/register.json with the sha256 digest of the bytes read at its pinned commit or fetch, and every article and section of the IRS Sample Conflict of Interest Policy |
+| `PL-03` | `open` | Every requirement no clause covers, every post a policy names that no one holds, every record class no pinned authority states a retention period for, and every staged act is carried as an open claim, never dropped or presumed done |
+
 ## remediation
 
 | ID | Level | Statement |
@@ -278,6 +334,14 @@ model does not sanction.
 | `RM-02` | `build` | The remediation catalog declares every repository of remediation/register.json at the commit it was observed at, every change that applies at every tier, one issue draft per repository, and the digests of the ecosystem register, the observations and every pinned source and decision app |
 | `RM-03` | `open` | A change only a maintainer or owner can decide, and a norm no change can reach, is carried as an open claim with its evidence, never defaulted; no change is applied to another repository until the Foundation's owners approve it |
 
+## reorg
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `RO-01` | `build` | The reorganization register is valid: every public UOR Foundation repository has exactly one disposition, the one the uor-repo-disposition table gives its evidence; every fold names a kept host other than itself and no chain of folds returns to its start; every disposition cites evidence of its kind; and every staged act is unexecuted, references an existing repository, and waits on a TOC decision whenever its repository is under review |
+| `RO-02` | `build` | The reorganization catalog declares every repository of reorg/register.json with the commit its evidence was read at, the snapshot and repository-set digests, the pinned norms, and the digest of the uor-repo-disposition app with the builder commit that checked it |
+| `RO-03` | `open` | A candidate the evidence raises without deciding it, and every norm the reorganization needs that the Foundation's norms do not define, is carried as an open claim, never decided or defaulted |
+
 ## security
 
 | ID | Level | Statement |
@@ -285,6 +349,35 @@ model does not sanction.
 | `SE-01` | `build` | The Foundation security register is valid: every threat's overall likelihood and risk are NIST SP 800-30 Tables G-5 and I-2 of its levels; every mitigated threat has a control and every accepted one none; no technique is revoked or deprecated; every implemented or partial control has evidence; every NIST CSF 2.0 subcategory is achieved by a control or is a gap, never both; and every element is open to exactly its STRIDE-per-element categories and, when it carries personal data, every LINDDUN category, each answered by a threat or stated open |
 | `SE-02` | `build` | The security catalog is the projection of security/model.json against the standards security/sources.json pins: CSF 2.0's 6 functions, 22 categories and 106 subcategories, SP 800-30's Table G-5 and I-2 cells, and every named ATT&CK 20.1 or ATLAS technique and Scorecard check, each declared with the digest of its pinned source |
 | `SE-03` | `open` | What the assessment could not settle (an organization setting, a provider's live configuration, who makes a clone) is an open claim, and every telemetry indicator is carried with the threat it is consistent with, never as an attribution |
+
+## standards
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `ST-01` | `build` | The standards register is valid: every part of The UOR Foundation has at least one applicable standard, every candidate pair is decided once by the uor-standard-applicability table, every applicable pair has exactly one status, every implemented pair names an existing facet and a check of it, every pair that is not implemented is an open claim, and every pair the security facet owns carries owner security |
+| `ST-02` | `build` | The standards catalog declares every part, candidate standard, decided pair and open claim of standards/register.json, each standard's issuer page with its sha256 and fetch time, and the digests of the inputs and the security facet table it was projected from |
+| `ST-03` | `open` | A standard that applies to a part of The UOR Foundation but is not implemented there in full, and a candidate whose scope its issuer's page did not yield, are carried as open claims and grouped into workstreams, never dropped or guessed |
+
+## supply
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `SC-01` | `build` | The supply register is valid: every dependency edge joins two different repositories of the ecosystem register, every repository has a valid CycloneDX 1.7 SBOM that catalogues a component or an open claim, its component and license counts reconcile with its totals and the release, every package not published as the Foundation's is named by an open claim, and every repository is serialized once in each SBOM format with every invalid serialization and every valid one left uncommitted named by an open claim |
+| `SC-02` | `build` | The supply catalog declares every repository of supply/register.json at its pinned commit with the digest of its committed SBOM, the syft release and binary digests, and the digests of the CycloneDX, SPDX 2.3 and SPDX 3.0.1 schemas and purl type index it was validated against |
+| `SC-03` | `open` | A repository without a valid SBOM or with nothing catalogued in it, a reference the register cannot resolve, and a package declared for publication that its registry does not publish as the Foundation's are carried as open claims, never dropped or defaulted |
+| `SC-04` | `build` | Every repository is serialized by the pinned syft as CycloneDX 1.7, SPDX 2.3 and SPDX 3.0.1, each validated against its official schema and SPDX 2.3 also by the pinned spdx/tools-python, every committed CycloneDX 1.7 file has the digest and size the catalog declares, and every reproducible serialization is addressed by its digest |
+| `SC-05` | `open` | An SBOM format whose valid serializations are not committed, SPDX 3.0.1 because syft 1.55.0 does not reproduce its bytes and SPDX 2.3 because the committed SBOMs are held under 40 MB, is validated and counted on every run and carried as an open format claim, never dropped |
+
+## uor_990_return
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `U9R-01` | `build` | The app never answers form990n when normally is large |
+| `U9R-02` | `build` | The app never answers form990n when kind is supporting |
+| `U9R-03` | `build` | The app always answers form990 when normally is large and receipts is large |
+| `U9R-04` | `build` | The app always answers form990 when normally is large and assets is large |
+| `U9R-05` | `build` | The app always answers form990ez when normally is large and receipts is small and assets is small and kind is public |
+| `U9R-06` | `build` | The app never answers form990ez when normally is large and kind is sponsor |
 
 ## uor_coc_enforcement
 
@@ -368,6 +461,17 @@ model does not sanction.
 | `URW-03` | `build` | The app never answers permit when change is ruleset and actor is agent |
 | `URW-04` | `build` | The app always answers permit when actor is agent and change is file and repository is live and approval is given and route is pull-request |
 
+## uor_repo_disposition
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `URD-01` | `build` | The app always answers archive when archived is yes |
+| `URD-02` | `build` | The app never answers fold when statement is none |
+| `URD-03` | `build` | The app never answers fold when statement is relocated |
+| `URD-04` | `build` | The app always answers review when archived is no and reserved is no and statement is none and family is member |
+| `URD-05` | `build` | The app never answers archive when archived is no and statement is none |
+| `URD-06` | `build` | The app always answers keep when archived is no and reserved is yes |
+
 ## uor_repo_files
 
 | ID | Level | Statement |
@@ -413,6 +517,16 @@ model does not sanction.
 | `URT-01` | `build` | The app always answers t2 when recorded is t2 and role is framework |
 | `URT-02` | `build` | The app never answers t1 when recorded is none and role is experiment |
 | `URT-03` | `build` | The app always answers t3 when recorded is none and role is website |
+
+## uor_standard_applicability
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `USA-01` | `build` | The app never answers applicable when owner is security and inscope is yes |
+| `USA-02` | `build` | The app always answers undecided when owner is standards and scope is unread |
+| `USA-03` | `build` | The app always answers inapplicable when owner is standards and scope is quoted and inscope is yes and force is law and jurisdiction is foreign |
+| `USA-04` | `build` | The app never answers inapplicable when owner is standards and scope is quoted and inscope is yes and force is law and jurisdiction is own and activity is undetermined |
+| `USA-05` | `build` | The app always answers mandatory when owner is standards and scope is quoted and inscope is yes and force is law and jurisdiction is own and activity is present |
 
 ## uor_toc_lifecycle
 
