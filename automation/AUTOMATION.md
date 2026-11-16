@@ -118,10 +118,15 @@ or `active` switches the existing rulesets off or on and changes nothing else.
   owned repos on green checks, keeping the people, upstream and secrets
   gates). A diff that reaches a secret or a gate is decided as that, whatever
   else it reaches.
-- **H4, shared repositories.** A repository not in `repos.json` keeps the
-  review its own maintainers give. The controller answers not-applicable
-  there and changes nothing. This includes the 23 per-repository standards
-  pull requests.
+- **H4, shared repositories.** In a repository not listed as owned, a
+  person's pull request keeps the review its own maintainers give: the
+  controller answers not-applicable and changes nothing. An agent's pull
+  request there (opened by the account and from the branch prefix
+  `repos.json` `agents` names) is decided like one in an owned repository,
+  with H1 to H3 and the people gate kept, on the gate check the repository's
+  `shared` entry names (Alex, 2026-11-16: do not wait on Alex for merging).
+  The controller runs in a shared repository only once that repository calls
+  `automerge.yml` and reports its gate check.
 
 A human approves a head in one of two ways: an approving review on that
 commit by a human other than the author, or the `human-approved` label added
