@@ -1,0 +1,202 @@
+{
+ "tick": 4,
+ "families": {
+  "announcement": 2,
+  "text": 26,
+  "thread": 20,
+  "voice": 2
+ },
+ "probes": [
+  {
+   "strategy": "missing",
+   "family": "announcement",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "foreign",
+   "family": "announcement",
+   "outcome": "refused",
+   "rules": [
+    "REQ-004"
+   ]
+  },
+  {
+   "strategy": "floor",
+   "family": "announcement",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "REQ-009"
+   ]
+  },
+  {
+   "strategy": "foreign",
+   "family": "text",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "text",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "recent",
+   "family": "text",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "thread",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "floor",
+   "family": "thread",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "REQ-009"
+   ]
+  },
+  {
+   "strategy": "foreign",
+   "family": "thread",
+   "outcome": "refused",
+   "rules": [
+    "REQ-004"
+   ]
+  },
+  {
+   "strategy": "missing",
+   "family": "voice",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "foreign",
+   "family": "voice",
+   "outcome": "refused",
+   "rules": [
+    "REQ-004"
+   ]
+  },
+  {
+   "strategy": "floor",
+   "family": "voice",
+   "outcome": "failed",
+   "rules": [
+    "REQ-009"
+   ]
+  }
+ ],
+ "divergences": [
+  {
+   "trace": "825a4a1d88496cf0fb5928fee948d1eb",
+   "strategy": "floor",
+   "record": {
+    "state": "channel",
+    "response": "ok",
+    "returned": 0,
+    "limit": 100,
+    "remaining": 999,
+    "floor": 10000,
+    "sleep": "no"
+   },
+   "rule": "REQ-009",
+   "expected": "failed",
+   "observed": "paging"
+  },
+  {
+   "trace": "636e21b11672d05cc1dd85b2b6a5a24e",
+   "strategy": "floor",
+   "record": {
+    "state": "channel",
+    "response": "ok",
+    "returned": 0,
+    "limit": 100,
+    "remaining": 999,
+    "floor": 10000,
+    "sleep": "no"
+   },
+   "rule": "REQ-009",
+   "expected": "failed",
+   "observed": "paging"
+  },
+  {
+   "trace": "e552f940de1bd5af65a50897f7736bfd",
+   "strategy": "floor",
+   "record": {
+    "state": "channel",
+    "response": "ok",
+    "returned": 0,
+    "limit": 100,
+    "remaining": 999,
+    "floor": 10000,
+    "sleep": "no"
+   },
+   "rule": "REQ-009",
+   "expected": "failed",
+   "observed": "paging"
+  }
+ ],
+ "uncovered": [
+  "REQ-005",
+  "REQ-007"
+ ],
+ "weights": {
+  "announcement": {
+   "foreign": 7,
+   "full": 7,
+   "missing": 8,
+   "recent": 7,
+   "replay": 7,
+   "small": 7,
+   "floor": 10
+  },
+  "text": {
+   "floor": 7,
+   "foreign": 10,
+   "full": 6,
+   "missing": 7,
+   "recent": 6,
+   "replay": 7,
+   "small": 7
+  },
+  "thread": {
+   "floor": 12,
+   "foreign": 7,
+   "full": 9,
+   "missing": 7,
+   "recent": 7,
+   "replay": 7,
+   "small": 7
+  },
+  "voice": {
+   "foreign": 7,
+   "full": 7,
+   "missing": 8,
+   "recent": 7,
+   "replay": 7,
+   "small": 7,
+   "floor": 10
+  }
+ }
+}

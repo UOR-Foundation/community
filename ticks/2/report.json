@@ -1,0 +1,150 @@
+{
+ "tick": 2,
+ "families": {
+  "announcement": 2,
+  "text": 26,
+  "thread": 20,
+  "voice": 2
+ },
+ "probes": [
+  {
+   "strategy": "foreign",
+   "family": "announcement",
+   "outcome": "refused",
+   "rules": [
+    "REQ-004"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "announcement",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "missing",
+   "family": "announcement",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "foreign",
+   "family": "text",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "text",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "missing",
+   "family": "text",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "thread",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "foreign",
+   "family": "thread",
+   "outcome": "refused",
+   "rules": [
+    "REQ-004"
+   ]
+  },
+  {
+   "strategy": "missing",
+   "family": "thread",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "foreign",
+   "family": "voice",
+   "outcome": "refused",
+   "rules": [
+    "REQ-004"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "voice",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "missing",
+   "family": "voice",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  }
+ ],
+ "divergences": [],
+ "uncovered": [
+  "REQ-005",
+  "REQ-007",
+  "REQ-009"
+ ],
+ "weights": {
+  "announcement": {
+   "foreign": 9,
+   "full": 8,
+   "recent": 7,
+   "replay": 7,
+   "small": 7,
+   "missing": 10
+  },
+  "text": {
+   "foreign": 12,
+   "full": 8,
+   "recent": 7,
+   "replay": 7,
+   "small": 7,
+   "missing": 7
+  },
+  "thread": {
+   "foreign": 9,
+   "full": 11,
+   "recent": 7,
+   "replay": 7,
+   "small": 7,
+   "missing": 7
+  },
+  "voice": {
+   "foreign": 9,
+   "full": 8,
+   "recent": 7,
+   "replay": 7,
+   "small": 7,
+   "missing": 10
+  }
+ }
+}

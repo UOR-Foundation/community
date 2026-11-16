@@ -1,0 +1,168 @@
+{
+ "tick": 3,
+ "families": {
+  "announcement": 2,
+  "text": 26,
+  "thread": 20,
+  "voice": 2
+ },
+ "probes": [
+  {
+   "strategy": "missing",
+   "family": "announcement",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "foreign",
+   "family": "announcement",
+   "outcome": "refused",
+   "rules": [
+    "REQ-004"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "announcement",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "foreign",
+   "family": "text",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "text",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "floor",
+   "family": "text",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "thread",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "foreign",
+   "family": "thread",
+   "outcome": "refused",
+   "rules": [
+    "REQ-004"
+   ]
+  },
+  {
+   "strategy": "floor",
+   "family": "thread",
+   "outcome": "failed",
+   "rules": [
+    "REQ-009"
+   ]
+  },
+  {
+   "strategy": "missing",
+   "family": "voice",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "foreign",
+   "family": "voice",
+   "outcome": "refused",
+   "rules": [
+    "REQ-004"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "voice",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  }
+ ],
+ "divergences": [
+  {
+   "trace": "d62d6638ef1945c7aad8a4914dde7354",
+   "strategy": "floor",
+   "record": {
+    "state": "channel",
+    "response": "ok",
+    "returned": 0,
+    "limit": 100,
+    "remaining": 999,
+    "floor": 10000,
+    "sleep": "no"
+   },
+   "rule": "REQ-009",
+   "expected": "failed",
+   "observed": "paging"
+  }
+ ],
+ "uncovered": [
+  "REQ-005",
+  "REQ-007"
+ ],
+ "weights": {
+  "announcement": {
+   "foreign": 8,
+   "full": 7,
+   "missing": 9,
+   "recent": 7,
+   "replay": 7,
+   "small": 7
+  },
+  "text": {
+   "foreign": 11,
+   "full": 7,
+   "missing": 7,
+   "recent": 7,
+   "replay": 7,
+   "small": 7,
+   "floor": 7
+  },
+  "thread": {
+   "foreign": 8,
+   "full": 10,
+   "missing": 7,
+   "recent": 7,
+   "replay": 7,
+   "small": 7,
+   "floor": 10
+  },
+  "voice": {
+   "foreign": 8,
+   "full": 7,
+   "missing": 9,
+   "recent": 7,
+   "replay": 7,
+   "small": 7
+  }
+ }
+}
