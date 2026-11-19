@@ -1,0 +1,160 @@
+{
+ "tick": 20,
+ "families": {
+  "announcement": 2,
+  "text": 10,
+  "thread": 22,
+  "voice": 2
+ },
+ "probes": [
+  {
+   "strategy": "floor",
+   "family": "announcement",
+   "outcome": "failed",
+   "rules": [
+    "REQ-009",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "announcement",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "recent",
+   "family": "announcement",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "floor",
+   "family": "text",
+   "outcome": "failed",
+   "rules": [
+    "REQ-009",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "text",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "recent",
+   "family": "text",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "replay",
+   "family": "thread",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "foreign",
+   "family": "thread",
+   "outcome": "refused",
+   "rules": [
+    "REQ-004"
+   ]
+  },
+  {
+   "strategy": "missing",
+   "family": "thread",
+   "outcome": "failed",
+   "rules": [
+    "REQ-006"
+   ]
+  },
+  {
+   "strategy": "floor",
+   "family": "voice",
+   "outcome": "failed",
+   "rules": [
+    "REQ-009",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "full",
+   "family": "voice",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  },
+  {
+   "strategy": "recent",
+   "family": "voice",
+   "outcome": "done",
+   "rules": [
+    "REQ-008",
+    "otherwise"
+   ]
+  }
+ ],
+ "divergences": [],
+ "uncovered": [
+  "REQ-005",
+  "REQ-007"
+ ],
+ "weights": {
+  "announcement": {
+   "floor": 1,
+   "foreign": 1,
+   "full": 1,
+   "missing": 1,
+   "recent": 1,
+   "replay": 1,
+   "small": 1
+  },
+  "text": {
+   "floor": 1,
+   "foreign": 1,
+   "full": 1,
+   "missing": 1,
+   "recent": 1,
+   "replay": 1,
+   "small": 1
+  },
+  "thread": {
+   "floor": 2,
+   "foreign": 1,
+   "full": 1,
+   "missing": 1,
+   "recent": 1,
+   "replay": 1,
+   "small": 1
+  },
+  "voice": {
+   "floor": 1,
+   "foreign": 1,
+   "full": 1,
+   "missing": 1,
+   "recent": 1,
+   "replay": 1,
+   "small": 1
+  }
+ }
+}
