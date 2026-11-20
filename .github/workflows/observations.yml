@@ -103,7 +103,7 @@ jobs:
           printf 'key=observations-github-%s-%s-py%s-%s\n' "$ImageOS" "$ImageVersion" "${{ steps.python.outputs.python-version }}" \
             "${{ hashFiles('observations/sources.json', 'observations/collect.py', 'observations/oracle.sh', 'oracles/grimoirelab/oracle.lock.json') }}" >>"$GITHUB_OUTPUT"
       - name: The record of these exact inputs, kept by an earlier run
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: _observations-github
           key: ${{ steps.address.outputs.key }}
@@ -130,7 +130,7 @@ jobs:
           "$python" observations/collect.py github observations/sources.json _observations-github/responses
           printf '%s' "$KEY" >_observations-github/address
       - name: Keep the record for review and commit
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: github-responses
           path: _observations-github/responses
@@ -167,7 +167,7 @@ jobs:
           printf 'key=observations-discord-%s-%s-py%s-%s-k%s-%s\n' "$ImageOS" "$ImageVersion" "${{ steps.python.outputs.python-version }}" "$GUILD" "$fingerprint" \
             "${{ hashFiles('observations/sources.json', 'observations/collect.py', 'observations/oracle.sh', 'oracles/grimoirelab/oracle.lock.json', 'oracles/grimoirelab/perceval-discord/**', 'oracles/grimoirelab/chronicler-discord/**', 'governance/discord.json', 'apps/uor-discord-read.prompt.json', 'apps/uor-deidentification.prompt.json', 'observations/deidentification.json') }}" >>"$GITHUB_OUTPUT"
       - name: The record of these exact inputs, kept by an earlier run
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: _observations-discord
           key: ${{ steps.address.outputs.key }}
@@ -200,7 +200,7 @@ jobs:
           "$python" observations/collect.py discord observations/sources.json _observations-discord/responses
           printf '%s' "$KEY" >_observations-discord/address
       - name: Keep the record for review and commit
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: discord-responses
           path: _observations-discord/responses
@@ -254,7 +254,7 @@ jobs:
           wait -n && wait -n
           mv _rekey/corpus/corpus.json _rekey/corpus.json
           "$python" observations/collect.py replay _rekey/corpus.json _rekey/replay _rekey/replay.json
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: discord-deidentified
           path: |
