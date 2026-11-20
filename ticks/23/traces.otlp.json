@@ -1,0 +1,3540 @@
+{
+ "resourceSpans": [
+  {
+   "resource": {
+    "attributes": [
+     {
+      "key": "service.name",
+      "value": {
+       "stringValue": "perceval-discord-live"
+      }
+     },
+     {
+      "key": "service.version",
+      "value": {
+       "stringValue": "0.1.0"
+      }
+     }
+    ]
+   },
+   "scopeSpans": [
+    {
+     "scope": {
+      "name": "uor.community.discord-live",
+      "version": "1"
+     },
+     "spans": [
+      {
+       "traceId": "10c51de8621e550a5688d7461d95d40b",
+       "spanId": "f4e0a0282b98e6ad",
+       "name": "discord.probe",
+       "kind": 1,
+       "startTimeUnixNano": "1795135234805199436",
+       "endTimeUnixNano": "1795135235203513814",
+       "attributes": [
+        {
+         "key": "chronicler.events",
+         "value": {
+          "intValue": "56"
+         }
+        },
+        {
+         "key": "chronicler.message",
+         "value": {
+          "intValue": "18"
+         }
+        },
+        {
+         "key": "chronicler.message.authored_by",
+         "value": {
+          "intValue": "18"
+         }
+        },
+        {
+         "key": "chronicler.message.edited",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "chronicler.message.mentioned",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "chronicler.message.reaction",
+         "value": {
+          "intValue": "12"
+         }
+        },
+        {
+         "key": "chronicler.thread.created",
+         "value": {
+          "intValue": "5"
+         }
+        },
+        {
+         "key": "chronicler.valid",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.channel.family",
+         "value": {
+          "stringValue": "announcement"
+         }
+        },
+        {
+         "key": "discord.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.items",
+         "value": {
+          "intValue": "18"
+         }
+        },
+        {
+         "key": "discord.probe.outcome",
+         "value": {
+          "stringValue": "done"
+         }
+        },
+        {
+         "key": "discord.probe.strategy",
+         "value": {
+          "stringValue": "full"
+         }
+        },
+        {
+         "key": "discord.probe.trace",
+         "value": {
+          "stringValue": "10c51de8621e550a5688d7461d95d40b"
+         }
+        },
+        {
+         "key": "perceval.max_items",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "perceval.min_rate_to_sleep",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "perceval.sleep_for_rate",
+         "value": {
+          "boolValue": true
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "10c51de8621e550a5688d7461d95d40b",
+       "spanId": "c9a687d6b5f10aed",
+       "parentSpanId": "f4e0a0282b98e6ad",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135234805567347",
+       "endTimeUnixNano": "1795135234967190347",
+       "attributes": [
+        {
+         "key": "discord.channel.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.channel.type",
+         "value": {
+          "intValue": "5"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "1fffbf023286f3010f01e4db70df9a2c"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "999"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 0.001
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "10c51de8621e550a5688d7461d95d40b",
+       "spanId": "e618a0cbd6a15176",
+       "parentSpanId": "f4e0a0282b98e6ad",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135234967927849",
+       "endTimeUnixNano": "1795135235197449849",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "discord.page.past_cursor",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "18"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "16"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "4"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 1.0
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "e64082e3076487eb842ca36c1c38d2c6",
+       "spanId": "9c8c282a6e3fc34a",
+       "name": "discord.probe",
+       "kind": 1,
+       "startTimeUnixNano": "1795135235203748182",
+       "endTimeUnixNano": "1795135235511376220",
+       "attributes": [
+        {
+         "key": "discord.channel.family",
+         "value": {
+          "stringValue": "announcement"
+         }
+        },
+        {
+         "key": "discord.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.items",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.probe.outcome",
+         "value": {
+          "stringValue": "done"
+         }
+        },
+        {
+         "key": "discord.probe.strategy",
+         "value": {
+          "stringValue": "recent"
+         }
+        },
+        {
+         "key": "discord.probe.trace",
+         "value": {
+          "stringValue": "e64082e3076487eb842ca36c1c38d2c6"
+         }
+        },
+        {
+         "key": "perceval.max_items",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "perceval.min_rate_to_sleep",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "perceval.sleep_for_rate",
+         "value": {
+          "boolValue": true
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "e64082e3076487eb842ca36c1c38d2c6",
+       "spanId": "ef31dcbb577e24a4",
+       "parentSpanId": "9c8c282a6e3fc34a",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135235204046692",
+       "endTimeUnixNano": "1795135235367832692",
+       "attributes": [
+        {
+         "key": "discord.channel.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.channel.type",
+         "value": {
+          "intValue": "5"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "1fffbf023286f3010f01e4db70df9a2c"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "999"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 0.001
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "e64082e3076487eb842ca36c1c38d2c6",
+       "spanId": "6de0b529de5f2c9d",
+       "parentSpanId": "9c8c282a6e3fc34a",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135235368305157",
+       "endTimeUnixNano": "1795135235511266157",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "3"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 1.598
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "645711b01b5f58bd0c0c76a3850a3d3f",
+       "spanId": "bfad6f145a28e99f",
+       "name": "discord.probe",
+       "kind": 1,
+       "startTimeUnixNano": "1795135235511539442",
+       "endTimeUnixNano": "1795135236018015611",
+       "attributes": [
+        {
+         "key": "discord.channel.family",
+         "value": {
+          "stringValue": "announcement"
+         }
+        },
+        {
+         "key": "discord.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.items",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.probe.outcome",
+         "value": {
+          "stringValue": "done"
+         }
+        },
+        {
+         "key": "discord.probe.strategy",
+         "value": {
+          "stringValue": "small"
+         }
+        },
+        {
+         "key": "discord.probe.trace",
+         "value": {
+          "stringValue": "645711b01b5f58bd0c0c76a3850a3d3f"
+         }
+        },
+        {
+         "key": "perceval.max_items",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "perceval.min_rate_to_sleep",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "perceval.sleep_for_rate",
+         "value": {
+          "boolValue": true
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "645711b01b5f58bd0c0c76a3850a3d3f",
+       "spanId": "92762cdcf9c26ce4",
+       "parentSpanId": "bfad6f145a28e99f",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135235511780612",
+       "endTimeUnixNano": "1795135235736641612",
+       "attributes": [
+        {
+         "key": "discord.channel.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.channel.type",
+         "value": {
+          "intValue": "5"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "1fffbf023286f3010f01e4db70df9a2c"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "999"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 0.001
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "645711b01b5f58bd0c0c76a3850a3d3f",
+       "spanId": "5e891610bb5ccb48",
+       "parentSpanId": "bfad6f145a28e99f",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135235737140612",
+       "endTimeUnixNano": "1795135236017849612",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 2.097
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "6fd9ccdd7a4548735c6753c3b63e3f5b",
+       "spanId": "8b03760f88e11459",
+       "name": "discord.probe",
+       "kind": 1,
+       "startTimeUnixNano": "1795135236018254750",
+       "endTimeUnixNano": "1795135236381299521",
+       "attributes": [
+        {
+         "key": "chronicler.events",
+         "value": {
+          "intValue": "4"
+         }
+        },
+        {
+         "key": "chronicler.message",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "chronicler.message.authored_by",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "chronicler.message.edited",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "chronicler.message.reaction",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "chronicler.valid",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.channel.family",
+         "value": {
+          "stringValue": "text"
+         }
+        },
+        {
+         "key": "discord.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.items",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "discord.probe.outcome",
+         "value": {
+          "stringValue": "done"
+         }
+        },
+        {
+         "key": "discord.probe.strategy",
+         "value": {
+          "stringValue": "full"
+         }
+        },
+        {
+         "key": "discord.probe.trace",
+         "value": {
+          "stringValue": "6fd9ccdd7a4548735c6753c3b63e3f5b"
+         }
+        },
+        {
+         "key": "perceval.max_items",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "perceval.min_rate_to_sleep",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "perceval.sleep_for_rate",
+         "value": {
+          "boolValue": true
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "6fd9ccdd7a4548735c6753c3b63e3f5b",
+       "spanId": "5d25ebe5657315e0",
+       "parentSpanId": "8b03760f88e11459",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135236018609243",
+       "endTimeUnixNano": "1795135236193568243",
+       "attributes": [
+        {
+         "key": "discord.channel.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.channel.type",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "1fffbf023286f3010f01e4db70df9a2c"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "999"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 0.001
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "6fd9ccdd7a4548735c6753c3b63e3f5b",
+       "spanId": "c2a30e4639b43769",
+       "parentSpanId": "8b03760f88e11459",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135236194144522",
+       "endTimeUnixNano": "1795135236380678522",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "discord.page.past_cursor",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "4"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 1.0
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "74f8b8c52d385eee262e74527f8232bf",
+       "spanId": "14ffd13d5766a20a",
+       "name": "discord.probe",
+       "kind": 1,
+       "startTimeUnixNano": "1795135236381479994",
+       "endTimeUnixNano": "1795135236682381378",
+       "attributes": [
+        {
+         "key": "discord.channel.family",
+         "value": {
+          "stringValue": "text"
+         }
+        },
+        {
+         "key": "discord.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.items",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.probe.outcome",
+         "value": {
+          "stringValue": "done"
+         }
+        },
+        {
+         "key": "discord.probe.strategy",
+         "value": {
+          "stringValue": "recent"
+         }
+        },
+        {
+         "key": "discord.probe.trace",
+         "value": {
+          "stringValue": "74f8b8c52d385eee262e74527f8232bf"
+         }
+        },
+        {
+         "key": "perceval.max_items",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "perceval.min_rate_to_sleep",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "perceval.sleep_for_rate",
+         "value": {
+          "boolValue": true
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "74f8b8c52d385eee262e74527f8232bf",
+       "spanId": "706cc2f20030a1fb",
+       "parentSpanId": "14ffd13d5766a20a",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135236381733344",
+       "endTimeUnixNano": "1795135236550077344",
+       "attributes": [
+        {
+         "key": "discord.channel.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.channel.type",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "1fffbf023286f3010f01e4db70df9a2c"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "999"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 0.001
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "74f8b8c52d385eee262e74527f8232bf",
+       "spanId": "b8181f6724fcf7fb",
+       "parentSpanId": "14ffd13d5766a20a",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135236550563404",
+       "endTimeUnixNano": "1795135236682286404",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "3"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 1.651
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "50b3963126e0b5feb7f1f3dcd76cdc38",
+       "spanId": "a42a7ccc72f0f0c7",
+       "name": "discord.probe",
+       "kind": 1,
+       "startTimeUnixNano": "1795135236682557925",
+       "endTimeUnixNano": "1795135237078346955",
+       "attributes": [
+        {
+         "key": "discord.channel.family",
+         "value": {
+          "stringValue": "text"
+         }
+        },
+        {
+         "key": "discord.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.items",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.probe.outcome",
+         "value": {
+          "stringValue": "done"
+         }
+        },
+        {
+         "key": "discord.probe.strategy",
+         "value": {
+          "stringValue": "small"
+         }
+        },
+        {
+         "key": "discord.probe.trace",
+         "value": {
+          "stringValue": "50b3963126e0b5feb7f1f3dcd76cdc38"
+         }
+        },
+        {
+         "key": "perceval.max_items",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "perceval.min_rate_to_sleep",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "perceval.sleep_for_rate",
+         "value": {
+          "boolValue": true
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "50b3963126e0b5feb7f1f3dcd76cdc38",
+       "spanId": "93c7e9088103d3f2",
+       "parentSpanId": "a42a7ccc72f0f0c7",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135236686490697",
+       "endTimeUnixNano": "1795135236867248697",
+       "attributes": [
+        {
+         "key": "discord.channel.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.channel.type",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "1fffbf023286f3010f01e4db70df9a2c"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "999"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 0.001
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "50b3963126e0b5feb7f1f3dcd76cdc38",
+       "spanId": "3b2ca3587fde5087",
+       "parentSpanId": "a42a7ccc72f0f0c7",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135236867775329",
+       "endTimeUnixNano": "1795135237078235329",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 2.298
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "f8f3069fc56499120b2e929835b277f9",
+       "spanId": "70cd2b0e2bbe98b1",
+       "name": "discord.probe",
+       "kind": 1,
+       "startTimeUnixNano": "1795135237078577157",
+       "endTimeUnixNano": "1795135237541229672",
+       "attributes": [
+        {
+         "key": "chronicler.events",
+         "value": {
+          "intValue": "105"
+         }
+        },
+        {
+         "key": "chronicler.message",
+         "value": {
+          "intValue": "47"
+         }
+        },
+        {
+         "key": "chronicler.message.authored_by",
+         "value": {
+          "intValue": "47"
+         }
+        },
+        {
+         "key": "chronicler.message.mentioned",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "chronicler.message.reaction",
+         "value": {
+          "intValue": "8"
+         }
+        },
+        {
+         "key": "chronicler.message.reply",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "chronicler.valid",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.channel.family",
+         "value": {
+          "stringValue": "thread"
+         }
+        },
+        {
+         "key": "discord.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.items",
+         "value": {
+          "intValue": "47"
+         }
+        },
+        {
+         "key": "discord.probe.outcome",
+         "value": {
+          "stringValue": "done"
+         }
+        },
+        {
+         "key": "discord.probe.strategy",
+         "value": {
+          "stringValue": "full"
+         }
+        },
+        {
+         "key": "discord.probe.trace",
+         "value": {
+          "stringValue": "f8f3069fc56499120b2e929835b277f9"
+         }
+        },
+        {
+         "key": "perceval.max_items",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "perceval.min_rate_to_sleep",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "perceval.sleep_for_rate",
+         "value": {
+          "boolValue": true
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "f8f3069fc56499120b2e929835b277f9",
+       "spanId": "0c9956aaa094d676",
+       "parentSpanId": "70cd2b0e2bbe98b1",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135237078890345",
+       "endTimeUnixNano": "1795135237254264345",
+       "attributes": [
+        {
+         "key": "discord.channel.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.channel.type",
+         "value": {
+          "intValue": "11"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "1fffbf023286f3010f01e4db70df9a2c"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "999"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 0.001
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "f8f3069fc56499120b2e929835b277f9",
+       "spanId": "117602ea4203850a",
+       "parentSpanId": "70cd2b0e2bbe98b1",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135237254761653",
+       "endTimeUnixNano": "1795135237537365653",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "discord.page.past_cursor",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "47"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "47"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "4"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 1.0
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "9da1e2b851139e7542437a868c1826b1",
+       "spanId": "aee1b1da86e1ed49",
+       "name": "discord.probe",
+       "kind": 1,
+       "startTimeUnixNano": "1795135237541452914",
+       "endTimeUnixNano": "1795135237878037855",
+       "attributes": [
+        {
+         "key": "discord.channel.family",
+         "value": {
+          "stringValue": "thread"
+         }
+        },
+        {
+         "key": "discord.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.items",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.probe.outcome",
+         "value": {
+          "stringValue": "done"
+         }
+        },
+        {
+         "key": "discord.probe.strategy",
+         "value": {
+          "stringValue": "recent"
+         }
+        },
+        {
+         "key": "discord.probe.trace",
+         "value": {
+          "stringValue": "9da1e2b851139e7542437a868c1826b1"
+         }
+        },
+        {
+         "key": "perceval.max_items",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "perceval.min_rate_to_sleep",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "perceval.sleep_for_rate",
+         "value": {
+          "boolValue": true
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "9da1e2b851139e7542437a868c1826b1",
+       "spanId": "92a1159036db2bc1",
+       "parentSpanId": "aee1b1da86e1ed49",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135237541705054",
+       "endTimeUnixNano": "1795135237724297054",
+       "attributes": [
+        {
+         "key": "discord.channel.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.channel.type",
+         "value": {
+          "intValue": "11"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "1fffbf023286f3010f01e4db70df9a2c"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "999"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 0.001
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "9da1e2b851139e7542437a868c1826b1",
+       "spanId": "86ba23d57be0fa6d",
+       "parentSpanId": "aee1b1da86e1ed49",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135237724785668",
+       "endTimeUnixNano": "1795135237877945668",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "3"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 1.53
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "69247d7fa9f66766c0f4173480f88b9e",
+       "spanId": "558cd0c6efa89c10",
+       "name": "discord.probe",
+       "kind": 1,
+       "startTimeUnixNano": "1795135237878191623",
+       "endTimeUnixNano": "1795135238290589954",
+       "attributes": [
+        {
+         "key": "discord.channel.family",
+         "value": {
+          "stringValue": "thread"
+         }
+        },
+        {
+         "key": "discord.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.items",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.probe.outcome",
+         "value": {
+          "stringValue": "done"
+         }
+        },
+        {
+         "key": "discord.probe.strategy",
+         "value": {
+          "stringValue": "small"
+         }
+        },
+        {
+         "key": "discord.probe.trace",
+         "value": {
+          "stringValue": "69247d7fa9f66766c0f4173480f88b9e"
+         }
+        },
+        {
+         "key": "perceval.max_items",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "perceval.min_rate_to_sleep",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "perceval.sleep_for_rate",
+         "value": {
+          "boolValue": true
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "69247d7fa9f66766c0f4173480f88b9e",
+       "spanId": "b27efd4b3463e1bd",
+       "parentSpanId": "558cd0c6efa89c10",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135237878424638",
+       "endTimeUnixNano": "1795135238067212638",
+       "attributes": [
+        {
+         "key": "discord.channel.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.channel.type",
+         "value": {
+          "intValue": "11"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "1fffbf023286f3010f01e4db70df9a2c"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "999"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 0.001
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "69247d7fa9f66766c0f4173480f88b9e",
+       "spanId": "cd1a7a64002de274",
+       "parentSpanId": "558cd0c6efa89c10",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135238067699297",
+       "endTimeUnixNano": "1795135238290504297",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 2.135
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "5233e4a67ea5515c1dff62ec35f3640f",
+       "spanId": "c0fa8b52578187a9",
+       "name": "discord.probe",
+       "kind": 1,
+       "startTimeUnixNano": "1795135238290741139",
+       "endTimeUnixNano": "1795135238623784979",
+       "attributes": [
+        {
+         "key": "chronicler.events",
+         "value": {
+          "intValue": "35"
+         }
+        },
+        {
+         "key": "chronicler.message",
+         "value": {
+          "intValue": "17"
+         }
+        },
+        {
+         "key": "chronicler.message.authored_by",
+         "value": {
+          "intValue": "17"
+         }
+        },
+        {
+         "key": "chronicler.message.mentioned",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "chronicler.valid",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.channel.family",
+         "value": {
+          "stringValue": "voice"
+         }
+        },
+        {
+         "key": "discord.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.items",
+         "value": {
+          "intValue": "17"
+         }
+        },
+        {
+         "key": "discord.probe.outcome",
+         "value": {
+          "stringValue": "done"
+         }
+        },
+        {
+         "key": "discord.probe.strategy",
+         "value": {
+          "stringValue": "full"
+         }
+        },
+        {
+         "key": "discord.probe.trace",
+         "value": {
+          "stringValue": "5233e4a67ea5515c1dff62ec35f3640f"
+         }
+        },
+        {
+         "key": "perceval.max_items",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "perceval.min_rate_to_sleep",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "perceval.sleep_for_rate",
+         "value": {
+          "boolValue": true
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "5233e4a67ea5515c1dff62ec35f3640f",
+       "spanId": "6f403578a74330f0",
+       "parentSpanId": "c0fa8b52578187a9",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135238291013257",
+       "endTimeUnixNano": "1795135238436543257",
+       "attributes": [
+        {
+         "key": "discord.channel.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.channel.type",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "1fffbf023286f3010f01e4db70df9a2c"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "999"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 0.001
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "5233e4a67ea5515c1dff62ec35f3640f",
+       "spanId": "a21b05187741ceba",
+       "parentSpanId": "c0fa8b52578187a9",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135238437075227",
+       "endTimeUnixNano": "1795135238622376227",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "discord.page.past_cursor",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "17"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "17"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "4"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 1.0
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "6db1e6b87687df580fc2df5131891e8c",
+       "spanId": "af9bbc40996c05f9",
+       "name": "discord.probe",
+       "kind": 1,
+       "startTimeUnixNano": "1795135238623945568",
+       "endTimeUnixNano": "1795135239003664879",
+       "attributes": [
+        {
+         "key": "chronicler.events",
+         "value": {
+          "intValue": "18"
+         }
+        },
+        {
+         "key": "chronicler.message",
+         "value": {
+          "intValue": "9"
+         }
+        },
+        {
+         "key": "chronicler.message.authored_by",
+         "value": {
+          "intValue": "9"
+         }
+        },
+        {
+         "key": "chronicler.valid",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.channel.family",
+         "value": {
+          "stringValue": "voice"
+         }
+        },
+        {
+         "key": "discord.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.items",
+         "value": {
+          "intValue": "9"
+         }
+        },
+        {
+         "key": "discord.probe.outcome",
+         "value": {
+          "stringValue": "done"
+         }
+        },
+        {
+         "key": "discord.probe.strategy",
+         "value": {
+          "stringValue": "recent"
+         }
+        },
+        {
+         "key": "discord.probe.trace",
+         "value": {
+          "stringValue": "6db1e6b87687df580fc2df5131891e8c"
+         }
+        },
+        {
+         "key": "perceval.max_items",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "perceval.min_rate_to_sleep",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "perceval.sleep_for_rate",
+         "value": {
+          "boolValue": true
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "6db1e6b87687df580fc2df5131891e8c",
+       "spanId": "05d880ac555b629e",
+       "parentSpanId": "af9bbc40996c05f9",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135238624178656",
+       "endTimeUnixNano": "1795135238807192656",
+       "attributes": [
+        {
+         "key": "discord.channel.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.channel.type",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "1fffbf023286f3010f01e4db70df9a2c"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "999"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 0.001
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "6db1e6b87687df580fc2df5131891e8c",
+       "spanId": "d2e5d27f418e23ea",
+       "parentSpanId": "af9bbc40996c05f9",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135238807672076",
+       "endTimeUnixNano": "1795135239002788076",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "100"
+         }
+        },
+        {
+         "key": "discord.page.past_cursor",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "9"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "9"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "3"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 1.606
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "22ef3bfabf4be6b481a8da6bb8ff9f59",
+       "spanId": "617badf1f22e8607",
+       "name": "discord.probe",
+       "kind": 1,
+       "startTimeUnixNano": "1795135239003826979",
+       "endTimeUnixNano": "1795135249039132586",
+       "attributes": [
+        {
+         "key": "chronicler.events",
+         "value": {
+          "intValue": "33"
+         }
+        },
+        {
+         "key": "chronicler.message",
+         "value": {
+          "intValue": "16"
+         }
+        },
+        {
+         "key": "chronicler.message.authored_by",
+         "value": {
+          "intValue": "16"
+         }
+        },
+        {
+         "key": "chronicler.message.mentioned",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "chronicler.valid",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.channel.family",
+         "value": {
+          "stringValue": "voice"
+         }
+        },
+        {
+         "key": "discord.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.items",
+         "value": {
+          "intValue": "16"
+         }
+        },
+        {
+         "key": "discord.probe.outcome",
+         "value": {
+          "stringValue": "done"
+         }
+        },
+        {
+         "key": "discord.probe.strategy",
+         "value": {
+          "stringValue": "small"
+         }
+        },
+        {
+         "key": "discord.probe.trace",
+         "value": {
+          "stringValue": "22ef3bfabf4be6b481a8da6bb8ff9f59"
+         }
+        },
+        {
+         "key": "perceval.max_items",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "perceval.min_rate_to_sleep",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "perceval.sleep_for_rate",
+         "value": {
+          "boolValue": true
+         }
+        }
+       ],
+       "status": {
+        "code": 1
+       }
+      },
+      {
+       "traceId": "22ef3bfabf4be6b481a8da6bb8ff9f59",
+       "spanId": "3bedc816ee619faf",
+       "parentSpanId": "617badf1f22e8607",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135239004064079",
+       "endTimeUnixNano": "1795135239239688079",
+       "attributes": [
+        {
+         "key": "discord.channel.guild_id",
+         "value": {
+          "stringValue": "1342910418754076732"
+         }
+        },
+        {
+         "key": "discord.channel.type",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "1fffbf023286f3010f01e4db70df9a2c"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "999"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 0.001
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "22ef3bfabf4be6b481a8da6bb8ff9f59",
+       "spanId": "2a8f017b86a18665",
+       "parentSpanId": "617badf1f22e8607",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135239240182419",
+       "endTimeUnixNano": "1795135239523295419",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.past_cursor",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 2.182
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "22ef3bfabf4be6b481a8da6bb8ff9f59",
+       "spanId": "f3fa7a9f66090f65",
+       "parentSpanId": "617badf1f22e8607",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135239523892577",
+       "endTimeUnixNano": "1795135239679384577",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.past_cursor",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 2.897
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "22ef3bfabf4be6b481a8da6bb8ff9f59",
+       "spanId": "f3ea6477f047f61c",
+       "parentSpanId": "617badf1f22e8607",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135239679957936",
+       "endTimeUnixNano": "1795135239845969936",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.past_cursor",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 3.736
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "22ef3bfabf4be6b481a8da6bb8ff9f59",
+       "spanId": "8846e5e8bb5eaff9",
+       "parentSpanId": "617badf1f22e8607",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135243847003908",
+       "endTimeUnixNano": "1795135244008186908",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.past_cursor",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "4"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 1.0
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "22ef3bfabf4be6b481a8da6bb8ff9f59",
+       "spanId": "61648cae0cf8a671",
+       "parentSpanId": "617badf1f22e8607",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135244009117407",
+       "endTimeUnixNano": "1795135244226155407",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.past_cursor",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "3"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 1.817
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "22ef3bfabf4be6b481a8da6bb8ff9f59",
+       "spanId": "1ad62ac0933c89cb",
+       "parentSpanId": "617badf1f22e8607",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135244227062707",
+       "endTimeUnixNano": "1795135244436533707",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.past_cursor",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 2.575
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "22ef3bfabf4be6b481a8da6bb8ff9f59",
+       "spanId": "e1e57bdd002a9793",
+       "parentSpanId": "617badf1f22e8607",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135244437387218",
+       "endTimeUnixNano": "1795135244588684218",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.past_cursor",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "1"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 3.409
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "22ef3bfabf4be6b481a8da6bb8ff9f59",
+       "spanId": "ac8f5961dda45d95",
+       "parentSpanId": "617badf1f22e8607",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135248589877433",
+       "endTimeUnixNano": "1795135248766414433",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.past_cursor",
+         "value": {
+          "boolValue": true
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "4"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 1.0
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      },
+      {
+       "traceId": "22ef3bfabf4be6b481a8da6bb8ff9f59",
+       "spanId": "0a28bcfcdf7c5ff0",
+       "parentSpanId": "617badf1f22e8607",
+       "name": "GET",
+       "kind": 3,
+       "startTimeUnixNano": "1795135248767378312",
+       "endTimeUnixNano": "1795135249038529312",
+       "attributes": [
+        {
+         "key": "discord.page.content_empty",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.limit",
+         "value": {
+          "intValue": "2"
+         }
+        },
+        {
+         "key": "discord.page.returned",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.page.text_messages",
+         "value": {
+          "intValue": "0"
+         }
+        },
+        {
+         "key": "discord.ratelimit.bucket",
+         "value": {
+          "stringValue": "f9f85e747f3e8c1f8f7728d616c030bf"
+         }
+        },
+        {
+         "key": "discord.ratelimit.remaining",
+         "value": {
+          "intValue": "3"
+         }
+        },
+        {
+         "key": "discord.ratelimit.reset_after",
+         "value": {
+          "doubleValue": 1.688
+         }
+        },
+        {
+         "key": "http.request.method",
+         "value": {
+          "stringValue": "GET"
+         }
+        },
+        {
+         "key": "http.response.status_code",
+         "value": {
+          "intValue": "200"
+         }
+        },
+        {
+         "key": "server.address",
+         "value": {
+          "stringValue": "discord.com"
+         }
+        },
+        {
+         "key": "url.template",
+         "value": {
+          "stringValue": "/channels/{channel}/messages"
+         }
+        }
+       ],
+       "status": {
+        "code": 0
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
